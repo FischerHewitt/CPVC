@@ -1,14 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type { Course, CourseStatus, Professor } from "@/lib/types";
-import { getProfessors } from "@/lib/api";
+import type { Course, CourseInfo, CourseStatus, Professor } from "@/lib/types";
+import { getCourseInfo, getProfessors } from "@/lib/api";
 
 interface Props {
   course: Course | null;
   status: CourseStatus | null;
   allCourses: Course[];
-  completedSet: Set<string>;
+  completed: string[];
+  inProgress: string[];
+  inferred: string[];
   onClose: () => void;
 }
 
@@ -19,24 +21,92 @@ const CATEGORY_LABEL: Record<string, string> = {
   ge: "General Education",
 };
 
-export default function CourseDetailPanel({ course, status, allCourses, completedSet, onClose }: Props) {
+function norm(courseNumber: string) {
+  return courseNumber.toUpperCase().trim().replace(/\s+/g, " ");
+}
+
+function hasAnyCourseNumber(knownNums: Set<string>, courseNums: string[]) {
+  const normalizedKnown = new Set(Array.from(knownNums, norm));
+  return courseNums.some((num) => normalizedKnown.has(norm(num)));
+}
+
+function courseNumberCandidates(course: Course) {
+  return [course.course_number, ...course.quarter_equivalents];
+}
+
+function getLiveStatus(
+  course: Course,
+  status: CourseStatus | null,
+  completedNums: Set<string>,
+  inProgressNums: Set<string>,
+  inferredNums: Set<string>,
+): CourseStatus | null {
+  const candidates = courseNumberCandidates(course);
+  if (hasAnyCourseNumber(completedNums, candidates)) return "completed";
+  if (hasAnyCourseNumber(inferredNums, candidates)) return "inferred";
+  if (hasAnyCourseNumber(inProgressNums, candidates)) return "in_progress";
+  return status;
+}
+
+export default function CourseDetailPanel({
+  course,
+  status,
+  allCourses,
+  completed,
+  inProgress,
+  inferred,
+  onClose,
+}: Props) {
   const [professors, setProfessors] = useState<Professor[]>([]);
   const [loadingProfs, setLoadingProfs] = useState(false);
+  const [courseInfo, setCourseInfo] = useState<CourseInfo | null>(null);
+  const [loadingInfo, setLoadingInfo] = useState(false);
+  const courseNumber = course?.course_number;
 
   useEffect(() => {
-    if (!course) return;
-    setProfessors([]);
-    setLoadingProfs(true);
-    getProfessors(course.course_number)
-      .then(setProfessors)
-      .finally(() => setLoadingProfs(false));
-  }, [course?.course_number]);
+    if (!courseNumber) return;
+    let cancelled = false;
+
+    setTimeout(() => {
+      if (cancelled) return;
+      setProfessors([]);
+      setLoadingProfs(true);
+      setCourseInfo(null);
+      setLoadingInfo(true);
+    }, 0);
+
+    getCourseInfo(courseNumber)
+      .then((nextInfo) => {
+        if (!cancelled) setCourseInfo(nextInfo);
+      })
+      .finally(() => {
+        if (!cancelled) setLoadingInfo(false);
+      });
+
+    getProfessors(courseNumber)
+      .then((nextProfessors) => {
+        if (!cancelled) setProfessors(nextProfessors);
+      })
+      .finally(() => {
+        if (!cancelled) setLoadingProfs(false);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [courseNumber]);
 
   if (!course) return null;
 
+  const completedSet = new Set(completed);
+  const inProgressSet = new Set(inProgress);
+  const inferredSet = new Set(inferred);
+  const liveStatus = getLiveStatus(course, status, completedSet, inProgressSet, inferredSet);
+  const knownPrereqSet = new Set([...completed, ...inProgress, ...inferred]);
   const prereqCourses = allCourses.filter((c) =>
     course.prerequisites.includes(c.course_number)
   );
+  const catalogUrl = `https://catalog.calpoly.edu/courses/${course.course_number.split(" ")[0].toLowerCase()}/`;
 
   return (
     <>
@@ -64,18 +134,41 @@ export default function CourseDetailPanel({ course, status, allCourses, complete
         <div className="flex-1 px-5 py-4 flex flex-col gap-5">
           {/* Status */}
           <div className="flex items-center gap-2">
-            {status === "completed" && (
+            {liveStatus === "completed" && (
               <span className="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-1 rounded-full">✓ Completed</span>
             )}
-            {status === "in_progress" && (
+            {liveStatus === "in_progress" && (
               <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-1 rounded-full">In Progress</span>
             )}
-            {status === "incomplete" && (
+            {liveStatus === "inferred" && (
+              <span className="bg-green-100 text-green-700 text-xs font-semibold px-2.5 py-1 rounded-full">Inferred from Prereqs</span>
+            )}
+            {liveStatus === "incomplete" && (
               <span className="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-1 rounded-full">Not Yet Taken</span>
             )}
-            {status === "locked" && (
+            {liveStatus === "locked" && (
               <span className="bg-gray-100 text-gray-600 text-xs font-semibold px-2.5 py-1 rounded-full">🔒 Prerequisites Needed</span>
             )}
+          </div>
+
+          {/* Description */}
+          <div>
+            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Description</div>
+            {loadingInfo && <div className="text-xs text-gray-400">Loading…</div>}
+            {!loadingInfo && !courseInfo && (
+              <div className="text-xs text-gray-400 italic">No catalog description available.</div>
+            )}
+            {courseInfo && (
+              <p className="text-sm text-gray-700 leading-relaxed">{courseInfo.description}</p>
+            )}
+            <a
+              href={catalogUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-blue-500 hover:underline mt-1.5 inline-block"
+            >
+              View in Cal Poly catalog ↗
+            </a>
           </div>
 
           {/* Quarter equivalents */}
@@ -98,7 +191,7 @@ export default function CourseDetailPanel({ course, status, allCourses, complete
                 {prereqCourses.map((p) => (
                   <div key={p.id} className="flex items-center justify-between text-sm">
                     <span className="font-medium text-gray-700">{p.course_number}</span>
-                    {completedSet.has(p.course_number) ? (
+                    {hasAnyCourseNumber(knownPrereqSet, courseNumberCandidates(p)) ? (
                       <span className="text-green-600 text-xs font-semibold">✓ Done</span>
                     ) : (
                       <span className="text-red-500 text-xs font-semibold">✗ Needed</span>

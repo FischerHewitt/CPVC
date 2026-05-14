@@ -1,13 +1,14 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import { parseTranscript } from "@/lib/api";
-import { saveSession, generateSessionId } from "@/lib/session";
+import { getMajors, parseTranscript } from "@/lib/api";
+import { saveSession } from "@/lib/session";
+import type { MajorOption } from "@/lib/types";
 
-const MAJORS = [
-  { code: "CS",   label: "Computer Science" },
-  { code: "AERO", label: "Aerospace Engineering" },
+const FALLBACK_MAJORS: MajorOption[] = [
+  { code: "CS", name: "Computer Science" },
+  { code: "AERO", name: "Aerospace Engineering" },
 ];
 
 export default function HomePage() {
@@ -16,8 +17,25 @@ export default function HomePage() {
   const [dragging, setDragging] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const [majorCode, setMajorCode] = useState("CS");
+  const [majors, setMajors] = useState<MajorOption[]>(FALLBACK_MAJORS);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    getMajors()
+      .then((nextMajors) => {
+        if (!cancelled && nextMajors.length > 0) setMajors(nextMajors);
+      })
+      .catch(() => {
+        if (!cancelled) setMajors(FALLBACK_MAJORS);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const handleFile = (f: File) => {
     if (!f.name.endsWith(".pdf")) {
@@ -40,16 +58,18 @@ export default function HomePage() {
     setLoading(true);
     setError(null);
     try {
-      const result = await parseTranscript(file);
-      const sessionId = generateSessionId();
+      const result = await parseTranscript(file, majorCode);
+      // Backend created the DB session and returned its UUID
       saveSession({
-        sessionId,
+        sessionId:  result.session_id,
         studentName: result.student_name,
-        major: majorCode,
-        completed: result.completed,
+        major:      majorCode,
+        completed:  result.completed,
         inProgress: result.in_progress,
+        coursePositions: {},
+        plannedGECourses: {},
       });
-      router.push(`/flowchart/${sessionId}`);
+      router.push(`/flowchart/${result.session_id}`);
     } catch (e) {
       setError("Failed to parse transcript. Make sure it's a Cal Poly unofficial transcript PDF.");
       console.error(e);
@@ -120,8 +140,8 @@ export default function HomePage() {
                 onChange={(e) => setMajorCode(e.target.value)}
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none"
               >
-                {MAJORS.map((m) => (
-                  <option key={m.code} value={m.code}>{m.label}</option>
+                {majors.map((m) => (
+                  <option key={m.code} value={m.code}>{m.name}</option>
                 ))}
               </select>
             </div>

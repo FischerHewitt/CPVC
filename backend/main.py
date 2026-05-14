@@ -7,14 +7,14 @@ import os
 
 load_dotenv()
 
-from routers import transcript, flowchart, professors
-from services.polyratings import _ensure_cache
+from routers import transcript, flowchart, professors, ge, sessions, courses
+from services.polyratings import warm_cache
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Pre-warm PolyRatings cache in the background so first request is instant
-    threading.Thread(target=_ensure_cache, daemon=True).start()
+    threading.Thread(target=warm_cache, daemon=True).start()
     yield
 
 
@@ -31,6 +31,9 @@ app.add_middleware(
 app.include_router(transcript.router, prefix="/api/transcript", tags=["transcript"])
 app.include_router(flowchart.router, prefix="/api/flowchart", tags=["flowchart"])
 app.include_router(professors.router, prefix="/api/professors", tags=["professors"])
+app.include_router(ge.router, prefix="/api/ge", tags=["ge"])
+app.include_router(sessions.router, prefix="/api/sessions", tags=["sessions"])
+app.include_router(courses.router, prefix="/api/courses", tags=["courses"])
 
 
 @app.get("/api/health")

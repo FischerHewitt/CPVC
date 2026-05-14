@@ -20,6 +20,8 @@ def test_list_majors_includes_available_flowcharts():
     majors = response.json()["majors"]
     assert {"code": "CS", "name": "Computer Science"} in majors
     assert {"code": "AERO", "name": "Aerospace Engineering"} in majors
+    assert {"code": "SE", "name": "Software Engineering"} in majors
+    assert {"code": "CPE", "name": "Computer Engineering"} in majors
 
 
 def test_get_flowchart_is_case_insensitive_and_has_expected_shape():
@@ -32,6 +34,19 @@ def test_get_flowchart_is_case_insensitive_and_has_expected_shape():
     assert body["total_units"] == 120
     assert body["courses"]
     assert {"year": "Freshman", "term": "Fall"} in body["columns"]
+
+
+def test_new_engineering_flowcharts_are_available():
+    se_response = client.get("/api/flowchart/SE")
+    cpe_response = client.get("/api/flowchart/CPE")
+
+    assert se_response.status_code == 200
+    assert se_response.json()["major"] == "Software Engineering"
+    assert se_response.json()["courses"]
+
+    assert cpe_response.status_code == 200
+    assert cpe_response.json()["major"] == "Computer Engineering"
+    assert cpe_response.json()["courses"]
 
 
 def test_get_flowchart_returns_404_for_unknown_major():

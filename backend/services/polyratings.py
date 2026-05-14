@@ -86,20 +86,44 @@ def _build_quarter_lookup() -> dict[str, set[str]]:
 _QUARTER_LOOKUP: dict[str, set[str]] = _build_quarter_lookup()
 
 
+def warm_cache() -> None:
+    """Pre-warm the PolyRatings cache. Intended to be called from the app lifespan."""
+    _ensure_cache()
+
+
+def _derive_quarter_candidates(normed: str) -> set[str]:
+    """
+    Heuristic: Cal Poly semester numbers often prepend a leading digit to the
+    old 3-digit quarter number.  e.g. COMS 1101 -> COMS 101, ENGL 1134 -> ENGL 134.
+    Generate candidate quarter numbers by stripping the first digit of a 4-digit code.
+    """
+    candidates: set[str] = set()
+    parts = normed.split()
+    if len(parts) == 2:
+        dept, code = parts
+        if len(code) == 4 and code.isdigit():
+            stripped = str(int(code[1:]))  # "0101" -> "101", preserves "101"
+            candidates.add(f"{dept} {stripped}")
+    return candidates
+
+
 # ── public API ────────────────────────────────────────────────────────────────
 
 def get_professors_for_course(course_number: str) -> list[Professor]:
     """
     Return professors who have taught this course, sorted by numEvals desc.
-    Searches both semester number and all quarter equivalents.
+    Searches the semester number, all FLOWCHARTS-based quarter equivalents, and
+    a heuristic-derived quarter candidate (strip leading digit of 4-digit codes).
     """
     try:
         _ensure_cache()
     except Exception:
         return []
 
-    search_keys: set[str] = {_norm(course_number)}
-    search_keys.update(_QUARTER_LOOKUP.get(_norm(course_number), set()))
+    normed = _norm(course_number)
+    search_keys: set[str] = {normed}
+    search_keys.update(_QUARTER_LOOKUP.get(normed, set()))
+    search_keys.update(_derive_quarter_candidates(normed))
 
     seen_ids: set[str] = set()
     matched: list[dict] = []
