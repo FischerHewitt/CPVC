@@ -165,7 +165,7 @@ def test_flowcharts_have_valid_course_shape_and_unique_ids():
             assert course["title"]
             assert course["units"] > 0
             assert course["category"] in VALID_CATEGORIES
-            assert 0 <= course["grid_col"] <= 7
+            assert 0 <= course["grid_col"] < len(flowchart["columns"])
             assert course["grid_row"] >= 0
             assert isinstance(course["prerequisites"], list)
             assert isinstance(course["quarter_equivalents"], list)
@@ -406,6 +406,174 @@ def test_english_flowchart_contains_expected_core_and_catalog_buckets():
     assert "ENGL" not in CONCENTRATIONS
 
 
+def test_music_flowchart_contains_expected_core_and_catalog_buckets():
+    music_courses = {course["course_number"]: course for course in FLOWCHARTS["MU"]["courses"]}
+
+    assert FLOWCHARTS["MU"]["total_units"] == 120
+    assert music_courses["MU 1100"]["title"] == "Introduction to Music Studies"
+    assert music_courses["MU 1104"]["title"] == "Musicianship I"
+    assert music_courses["MU 1106"]["prerequisites"] == ["MU 1104"]
+    assert music_courses["MU 1122"]["title"] == "Ethnomusicology and World Music I"
+    assert music_courses["MU 2222"]["title"] == "Ethnomusicology and World Music II"
+    assert music_courses["MU 3311"]["title"] == "Introduction to Music Technology and Composition"
+    assert music_courses["MU 3331"]["title"] == "Historical Musicology I"
+    assert music_courses["MU 4431"]["title"] == "Historical Musicology II"
+    assert music_courses["MU 4461"]["title"] == "Senior Project"
+    assert music_courses["MU 3000+ 1"]["title"] == "Upper-Division Music Elective"
+    assert music_courses["GE UD-3"]["category"] == "ge"
+    assert "MU" not in CONCENTRATIONS
+
+
+def test_agricultural_communication_flowchart_contains_expected_core_and_support():
+    agc_courses = {course["course_number"]: course for course in FLOWCHARTS["AGC"]["courses"]}
+
+    assert FLOWCHARTS["AGC"]["total_units"] == 120
+    assert agc_courses["AGC 1102"]["title"] == "Orientation to Agricultural Communication & Agricultural Science"
+    assert agc_courses["AGC 2205"]["title"] == "Agricultural Communications"
+    assert agc_courses["AGC 2225"]["title"] == "Digital Communication in Agriculture and Science"
+    assert agc_courses["AGC 3301"]["title"] == "New Media Communication Strategies in Agriculture"
+    assert agc_courses["AGC 3339"]["title"] == "Internship in Agricultural Communications"
+    assert agc_courses["AGC 4463"]["title"] == "Senior Project"
+    assert agc_courses["AGC 4475"]["title"] == "Crisis Communication in Food and Agriculture"
+    assert agc_courses["STAT/DATA 1000"]["category"] == "support"
+    assert agc_courses["JOUR 2203"]["category"] == "support"
+    assert agc_courses["ENGL 3310"]["category"] == "support"
+    assert agc_courses["GE UD-3"]["category"] == "ge"
+    assert "AGC" not in CONCENTRATIONS
+
+
+def test_agricultural_science_flowchart_contains_expected_core_and_emphasis_slots():
+    ags_courses = {course["course_number"]: course for course in FLOWCHARTS["AGS"]["courses"]}
+    ags_by_id = {course["id"]: course for course in FLOWCHARTS["AGS"]["courses"]}
+
+    assert FLOWCHARTS["AGS"]["total_units"] == 120
+    assert ags_courses["AGC 1102"]["title"] == "Orientation to Agricultural Communication & Agricultural Science"
+    assert ags_courses["BRAE 1141"]["title"] == "Agricultural Machinery Safety"
+    assert ags_courses["AGB 2202"]["title"] == "Introduction to Sales"
+    assert ags_courses["AGB 2212"]["title"] == "Agricultural Economics"
+    assert ags_courses["AGED 4421"]["title"] == "Agricultural Mechanics"
+    assert ags_courses["AGC 4426"]["title"] == "Presentation Methods in Agricultural Communication"
+    assert ags_courses["AGC 4463"]["title"] == "Senior Project"
+    assert ags_courses["GE UD-4"]["category"] == "ge"
+    assert ags_by_id["AGS_EMP_JRF1"]["category"] == "concentration"
+    assert ags_by_id["AGS_EMP_SRS2"]["is_placeholder"] is True
+
+
+def test_agricultural_science_emphasis_areas_cover_catalog_options():
+    ags_concentrations = CONCENTRATIONS["AGS"]
+    concentration_ids = {concentration["id"] for concentration in ags_concentrations}
+
+    assert {
+        "none",
+        "ag_engineering_tech",
+        "agribusiness",
+        "animal_science",
+        "plant_crop_soil",
+        "forestry_natural_resources",
+        "ornamental_horticulture",
+    } <= concentration_ids
+
+    engineering = next(c for c in ags_concentrations if c["id"] == "ag_engineering_tech")
+    assert engineering["slot_overrides"]["AGS_EMP_JRF1"]["course_number"] == "BRAE 1150"
+
+    agribusiness = next(c for c in ags_concentrations if c["id"] == "agribusiness")
+    assert agribusiness["slot_overrides"]["AGS_EMP_SRS2"]["course_number"] == "AGB 3313"
+
+    ornamental = next(c for c in ags_concentrations if c["id"] == "ornamental_horticulture")
+    assert ornamental["slot_overrides"]["AGS_EMP_SRS2"]["course_number"] == "PLSC 3334"
+
+
+def test_animal_science_flowchart_contains_expected_core_and_placeholders():
+    asci_courses = {course["course_number"]: course for course in FLOWCHARTS["ASCI"]["courses"]}
+
+    assert FLOWCHARTS["ASCI"]["total_units"] == 120
+    assert asci_courses["ASCI 1100"]["title"] == "Introduction to the Animal Sciences"
+    assert asci_courses["ASCI 2210/2211"]["title"] == "Meat Science and Meat Science Laboratory"
+    assert asci_courses["ASCI 2220"]["title"] == "Animal Nutrition and Feeding"
+    assert asci_courses["ASCI 2229"]["title"] == "Anatomy and Physiology of Farm Animals"
+    assert asci_courses["ASCI 3302"]["title"] == "Animal Genetics"
+    assert asci_courses["ASCI 3304"]["title"] == "Animal Genomics"
+    assert asci_courses["ASCI 3351"]["title"] == "Mechanisms of Hormone Action and Reproductive Physiology"
+    assert asci_courses["ASCI 4477/4478/4479"]["title"] == "Senior Project"
+    assert asci_courses["MATH 1006"]["category"] == "support"
+    assert asci_courses["GE UD-4"]["category"] == "ge"
+    assert asci_courses["Animal Mgmt 1"]["is_placeholder"] is True
+    assert asci_courses["Free"]["category"] == "concentration"
+    assert "ASCI" not in CONCENTRATIONS
+
+
+def test_animal_science_prerequisites_and_quarter_equivalents_are_mapped():
+    asci_courses = {course["course_number"]: course for course in FLOWCHARTS["ASCI"]["courses"]}
+
+    assert asci_courses["ASCI 2220"]["prerequisites"] == ["ASCI 1101", "BIO 1151", "CHEM 1120"]
+    assert asci_courses["ASCI 3302"]["prerequisites"] == ["BIO 1151", "STAT 1110"]
+    assert asci_courses["ASCI 3304"]["prerequisites"] == ["ASCI 3302"]
+    assert asci_courses["ASCI 3351"]["prerequisites"] == ["ASCI 2229"]
+    assert "ASCI 101" in asci_courses["ASCI 1100"]["quarter_equivalents"]
+    assert "ASCI 220" in asci_courses["ASCI 2220"]["quarter_equivalents"]
+    assert "ASCI 302" in asci_courses["ASCI 3302"]["quarter_equivalents"]
+    assert "ASCI 477" in asci_courses["ASCI 4477/4478/4479"]["quarter_equivalents"]
+
+
+def test_anthropology_geography_flowchart_contains_expected_core_and_placeholders():
+    antgeog_courses = {course["course_number"]: course for course in FLOWCHARTS["ANTGEOG"]["courses"]}
+    antgeog_by_id = {course["id"]: course for course in FLOWCHARTS["ANTGEOG"]["courses"]}
+
+    assert FLOWCHARTS["ANTGEOG"]["total_units"] == 120
+    assert antgeog_courses["ANT 2201"]["title"] == "Cultural Anthropology"
+    assert antgeog_courses["GEOG 1150"]["title"] == "Human Geography"
+    assert antgeog_courses["ANT 2250"]["title"] == "Biological Anthropology"
+    assert antgeog_courses["ANT 3307"]["title"] == "World Prehistory"
+    assert antgeog_courses["GEOG 3320"]["title"] == "Applications in GIS"
+    assert antgeog_courses["GEOG 4410"]["title"] == "Advanced Applications in GIS"
+    assert antgeog_courses["ANT/GEOG 4462"]["title"] == "Senior Project"
+    assert antgeog_courses["STAT 1110"]["category"] == "support"
+    assert antgeog_courses["GE 4B"]["category"] == "ge"
+    assert antgeog_by_id["ANTGEOG_LDC1"]["is_placeholder"] is True
+    assert antgeog_by_id["ANTGEOG_CON_JRS1"]["category"] == "concentration"
+    assert antgeog_by_id["ANTGEOG_CON_JRS1"]["is_placeholder"] is True
+    assert antgeog_by_id["ANTGEOG_FREE1"]["category"] == "concentration"
+    assert antgeog_by_id["ANTGEOG_FREE1"]["is_placeholder"] is True
+    assert "ANTGEOG" in CONCENTRATIONS
+
+
+def test_anthropology_geography_prerequisites_and_quarter_equivalents_are_mapped():
+    antgeog_courses = {course["course_number"]: course for course in FLOWCHARTS["ANTGEOG"]["courses"]}
+
+    assert antgeog_courses["ANT 3307"]["prerequisites"] == ["ANT 2202"]
+    assert antgeog_courses["ANT 3303"]["prerequisites"] == ["ANT 2201"]
+    assert antgeog_courses["GEOG 3320"]["prerequisites"] == ["GEOG 1150"]
+    assert antgeog_courses["GEOG 4410"]["prerequisites"] == ["GEOG 3320"]
+    assert antgeog_courses["ANT/GEOG 4462"]["prerequisites"] == ["ANT 3303", "GEOG 3350"]
+    assert "ANT 201" in antgeog_courses["ANT 2201"]["quarter_equivalents"]
+    assert "GEOG 150" in antgeog_courses["GEOG 1150"]["quarter_equivalents"]
+    assert "ANT 307" in antgeog_courses["ANT 3307"]["quarter_equivalents"]
+    assert "GEOG 462" in antgeog_courses["ANT/GEOG 4462"]["quarter_equivalents"]
+
+
+def test_anthropology_geography_concentrations_cover_catalog_options():
+    antgeog_concentrations = CONCENTRATIONS["ANTGEOG"]
+    concentration_ids = {concentration["id"] for concentration in antgeog_concentrations}
+
+    assert {
+        "none",
+        "environmental_sustainability",
+        "global_studies",
+        "human_ecology",
+        "individualized",
+    } <= concentration_ids
+
+    environmental = next(c for c in antgeog_concentrations if c["id"] == "environmental_sustainability")
+    assert environmental["slot_overrides"]["ANTGEOG_CON_JRS2"]["course_number"] == "GEOG 4435"
+
+    global_studies = next(c for c in antgeog_concentrations if c["id"] == "global_studies")
+    assert global_studies["slot_overrides"]["ANTGEOG_CON_JRS1"]["course_number"] == "GEOG 4408"
+    assert global_studies["slot_overrides"]["ANTGEOG_CON_SRF1"]["course_number"] == "ANT 4401"
+
+    human_ecology = next(c for c in antgeog_concentrations if c["id"] == "human_ecology")
+    assert human_ecology["slot_overrides"]["ANTGEOG_CON_JRS1"]["course_number"] == "ANT 3309/3320"
+
+
 def test_psychology_flowchart_contains_expected_core_sequence():
     psy_courses = {course["course_number"]: course for course in FLOWCHARTS["PSY"]["courses"]}
 
@@ -472,3 +640,410 @@ def test_concentration_overrides_target_existing_slots_and_keep_course_shape():
                 assert isinstance(override["prerequisites"], list)
                 assert isinstance(override["quarter_equivalents"], list)
                 assert isinstance(override["is_placeholder"], bool)
+
+
+def test_agricultural_business_flowchart_contains_expected_core_sequence():
+    agb_courses = {course["course_number"]: course for course in FLOWCHARTS["AGB"]["courses"]}
+    agb_by_id = {course["id"]: course for course in FLOWCHARTS["AGB"]["courses"]}
+
+    assert FLOWCHARTS["AGB"]["total_units"] == 120
+    assert agb_courses["AGB 1101"]["title"] == "Introduction to Agribusiness"
+    assert agb_courses["AGB 2202"]["title"] == "Introduction to Sales"
+    assert agb_courses["AGB 2212"]["category"] == "major"
+    assert agb_courses["AGB 2214"]["category"] == "major"
+    assert agb_courses["AGB 2260"]["category"] == "major"
+    assert agb_courses["MATH 1267"]["category"] == "support"
+    assert agb_courses["ECON 2040"]["category"] == "support"
+    assert agb_courses["STAT 1210"]["category"] == "support"
+    assert agb_courses["AGB 3301"]["prerequisites"] == ["AGB 2212"]
+    assert agb_courses["AGB 3308"]["prerequisites"] == ["AGB 2214"]
+    assert agb_courses["AGB 3327"]["prerequisites"] == ["AGB 2260"]
+    assert agb_courses["AGB 3322"]["prerequisites"] == ["AGB 2212"]
+    assert agb_courses["AGB 4462"]["title"] == "Senior Project"
+    assert agb_courses["GE UD-3"]["category"] == "ge"
+    assert agb_courses["GE UD-4"]["category"] == "ge"
+    assert agb_by_id["AGB_GEN1"]["is_placeholder"] is True
+    assert agb_by_id["AGB_GEN1"]["category"] == "major"
+    assert "AGB" not in CONCENTRATIONS
+
+
+def test_architectural_engineering_flowchart_contains_expected_core_sequence():
+    arce_courses = {course["course_number"]: course for course in FLOWCHARTS["ARCE"]["courses"]}
+    arce_by_id = {course["id"]: course for course in FLOWCHARTS["ARCE"]["courses"]}
+
+    assert FLOWCHARTS["ARCE"]["total_units"] == 128
+    assert arce_courses["ARCE 1110"]["title"] == "Introduction to Architectural Engineering"
+    assert arce_courses["ARCE 1121"]["category"] == "major"
+    assert arce_courses["ARCE 1121"]["prerequisites"] == ["ARCE 1110"]
+    assert arce_courses["ARCE 2211"]["prerequisites"] == ["ARCE 1121"]
+    assert arce_courses["ARCE 3311"]["prerequisites"] == ["ARCE 2211"]
+    assert arce_courses["ARCE 3332"]["prerequisites"] == ["ARCE 3331"]
+    assert arce_courses["ARCE 3341"]["prerequisites"] == ["ARCE 3311"]
+    assert arce_courses["ARCE 4411"]["prerequisites"] == ["ARCE 3311"]
+    assert arce_courses["ARCE 4413"]["prerequisites"] == ["ARCE 4411"]
+    assert arce_courses["ARCE 4461"]["prerequisites"] == ["ARCE 3311"]
+    assert arce_courses["ARCE 4462"]["title"] == "Senior Project"
+    assert arce_courses["MATH 1261"]["category"] == "support"
+    assert arce_courses["CHEM 1120"]["category"] == "support"
+    assert arce_courses["STAT 3210"]["category"] == "support"
+    assert arce_courses["GE 4A"]["category"] == "ge"
+    assert arce_courses["GE UD-3"]["category"] == "ge"
+    assert arce_by_id["ARCE_FE_TE1"]["is_placeholder"] is True
+    assert arce_by_id["ARCE_SURVEY"]["is_placeholder"] is True
+    assert arce_by_id["ARCE_ELEC"]["is_placeholder"] is True
+    assert "ARCE" not in CONCENTRATIONS
+
+
+def test_architecture_flowchart_contains_expected_five_year_core_and_placeholders():
+    arch_courses = {course["course_number"]: course for course in FLOWCHARTS["ARCH"]["courses"]}
+    arch_by_id = {course["id"]: course for course in FLOWCHARTS["ARCH"]["courses"]}
+
+    assert FLOWCHARTS["ARCH"]["total_units"] == 150
+    assert FLOWCHARTS["ARCH"]["columns"][-1] == {"year": "Fifth Year", "term": "Spring"}
+    assert arch_courses["ARCH 1101"]["title"] == "Architectural Design I"
+    assert arch_courses["ARCH 2201"]["title"] == "Architectural Design III"
+    assert arch_courses["ARCH 3301"]["title"] == "Integrated Architectural Design"
+    assert arch_courses["ARCH 4425"]["title"] == "Seminar in Architectural History, Theory and Criticism"
+    assert arch_courses["ARCH 4461"]["title"] == "Senior Project: Architectural Thesis I"
+    assert arch_courses["ARCH 4462"]["title"] == "Senior Project: Architectural Thesis II"
+    assert arch_courses["EDES 1123"]["category"] == "support"
+    assert arch_courses["ARCE 3301"]["category"] == "support"
+    assert arch_courses["GE UD-4"]["category"] == "ge"
+    assert arch_by_id["ARCH_MATH_CHOICE"]["is_placeholder"] is True
+    assert arch_by_id["ARCH_PHYS_CHOICE"]["is_placeholder"] is True
+    assert arch_by_id["ARCH_PROF_ELEC1"]["category"] == "concentration"
+    assert arch_by_id["ARCH_PROF_ELEC1"]["is_placeholder"] is True
+    assert arch_by_id["ARCH_GE_UD25"]["is_placeholder"] is True
+    assert "ARCH" not in CONCENTRATIONS
+
+
+def test_architecture_prerequisites_and_quarter_equivalents_are_mapped():
+    arch_courses = {course["course_number"]: course for course in FLOWCHARTS["ARCH"]["courses"]}
+
+    assert arch_courses["ARCH 1102"]["prerequisites"] == ["ARCH 1101"]
+    assert arch_courses["ARCH 2201"]["prerequisites"] == ["ARCH 1102"]
+    assert arch_courses["ARCH 2242"]["prerequisites"] == ["ARCH 2241"]
+    assert arch_courses["ARCE 3301"]["prerequisites"] == ["ARCE 1121"]
+    assert arch_courses["ARCH 3301"]["prerequisites"] == ["ARCE 3301", "ARCH 2202", "ARCH 3341"]
+    assert arch_courses["ARCH 4462"]["prerequisites"] == ["ARCH 4461"]
+    assert "ARCH 131" in arch_courses["ARCH 1101"]["quarter_equivalents"]
+    assert "ARCH 251" in arch_courses["ARCH 2201"]["quarter_equivalents"]
+    assert "ARCH 351" in arch_courses["ARCH 4401"]["quarter_equivalents"]
+    assert "ARCH 481" in arch_courses["ARCH 4461"]["quarter_equivalents"]
+
+
+def test_biological_sciences_flowchart_contains_expected_core_and_placeholders():
+    bio_courses = {course["course_number"]: course for course in FLOWCHARTS["BIO"]["courses"]}
+    bio_by_id = {course["id"]: course for course in FLOWCHARTS["BIO"]["courses"]}
+
+    assert FLOWCHARTS["BIO"]["total_units"] == 120
+    assert bio_courses["BIO 1150"]["title"] == "Life: History and Diversity"
+    assert bio_courses["BIO 1151"]["title"] == "Life: Molecules and Cells"
+    assert bio_courses["BIO 2253"]["title"] == "Principles of Ecology and Evolution"
+    assert bio_courses["BIO 3351"]["title"] == "Principles of Genetics"
+    assert bio_courses["BIO 3352"]["title"] == "Principles of Animal Physiology"
+    assert bio_courses["BIO 4461/4462/4463"]["title"] == "Senior Project"
+    assert bio_courses["CHEM 1120"]["category"] == "support"
+    assert bio_courses["MATH 1264"]["category"] == "support"
+    assert bio_courses["GE UD-4"]["category"] == "ge"
+    assert bio_by_id["BIO_CHEM2240_2242"]["is_placeholder"] is True
+    assert bio_by_id["BIO_PHYS1121_1141"]["is_placeholder"] is True
+    assert bio_by_id["BIO_CON_JRF1"]["category"] == "concentration"
+    assert bio_by_id["BIO_CON_JRF1"]["is_placeholder"] is True
+    assert bio_by_id["BIO_FREE_SRS"]["category"] == "concentration"
+    assert bio_by_id["BIO_FREE_SRS"]["is_placeholder"] is True
+    assert "BIO" in CONCENTRATIONS
+
+
+def test_biological_sciences_prerequisites_and_quarter_equivalents_are_mapped():
+    bio_courses = {course["course_number"]: course for course in FLOWCHARTS["BIO"]["courses"]}
+
+    assert bio_courses["CHEM 1122"]["prerequisites"] == ["CHEM 1120"]
+    assert bio_courses["BIO 2253"]["prerequisites"] == ["BIO 1150", "BIO 1151"]
+    assert bio_courses["BIO 3351"]["prerequisites"] == ["BIO 1151", "CHEM 1120", "CHEM 1122"]
+    assert bio_courses["BIO 3352"]["prerequisites"] == ["BIO 1151", "CHEM 1120", "CHEM 1122"]
+    assert bio_courses["BIO 4461/4462/4463"]["prerequisites"] == ["STAT 1110"]
+    assert "BIO 150" in bio_courses["BIO 1150"]["quarter_equivalents"]
+    assert "BIO 161" in bio_courses["BIO 1151"]["quarter_equivalents"]
+    assert "BIO 263" in bio_courses["BIO 2253"]["quarter_equivalents"]
+    assert "BIO 351" in bio_courses["BIO 3351"]["quarter_equivalents"]
+    assert "BIO 461" in bio_courses["BIO 4461/4462/4463"]["quarter_equivalents"]
+
+
+def test_biological_sciences_concentrations_cover_catalog_options():
+    bio_concentrations = CONCENTRATIONS["BIO"]
+    concentration_ids = {concentration["id"] for concentration in bio_concentrations}
+
+    assert {
+        "none",
+        "anatomy_physiology",
+        "ecology_evolution_biodiversity_conservation",
+        "molecular_cellular",
+    } <= concentration_ids
+
+    anatomy = next(c for c in bio_concentrations if c["id"] == "anatomy_physiology")
+    assert anatomy["slot_overrides"]["BIO_CON_JRF1"]["course_number"] == "BIO 4431"
+    assert anatomy["slot_overrides"]["BIO_CON_JRS1"]["course_number"] == "BIO 4432"
+
+    ecology = next(c for c in bio_concentrations if c["id"] == "ecology_evolution_biodiversity_conservation")
+    assert ecology["slot_overrides"]["BIO_CON_JRS1"]["course_number"] == "BIO 4413/4414"
+    assert ecology["slot_overrides"]["BIO_CON_SRF1"]["course_number"] == "BIO 3343"
+
+    molecular = next(c for c in bio_concentrations if c["id"] == "molecular_cellular")
+    assert molecular["slot_overrides"]["BIO_CON_JRF1"]["course_number"] == "BIO 4457"
+    assert molecular["slot_overrides"]["BIO_CON_JRS1"]["course_number"] == "BIO 4452"
+
+
+def test_biomedical_engineering_flowchart_contains_expected_core_and_placeholders():
+    bmed_courses = {course["course_number"]: course for course in FLOWCHARTS["BMED"]["courses"]}
+    bmed_by_id = {course["id"]: course for course in FLOWCHARTS["BMED"]["courses"]}
+
+    assert FLOWCHARTS["BMED"]["total_units"] == 130
+    assert bmed_courses["BMED 1101"]["title"] == "Introduction to Biomedical Engineering"
+    assert bmed_courses["BMED 2212"]["title"] == "Biomedical Engineering Fundamentals"
+    assert bmed_courses["BMED 2420"]["title"] == "Biomaterials"
+    assert bmed_courses["BMED 3430"]["title"] == "Modeling of Biomedical Systems"
+    assert bmed_courses["BMED 4440"]["title"] == "Biomedical Instrumentation"
+    assert bmed_courses["BMED 4599"]["title"] == "Biomedical Engineering Senior Project"
+    assert bmed_courses["BIO 1151"]["category"] == "support"
+    assert bmed_courses["MATH 2341"]["category"] == "support"
+    assert bmed_courses["GE UD-2/5"]["category"] == "ge"
+    assert bmed_by_id["BMED_BIO2231_2232"]["is_placeholder"] is True
+    assert bmed_by_id["BMED_CON_JRF1"]["category"] == "concentration"
+    assert bmed_by_id["BMED_CON_JRF1"]["is_placeholder"] is True
+    assert bmed_by_id["BMED_FREE1"]["category"] == "concentration"
+    assert bmed_by_id["BMED_FREE1"]["is_placeholder"] is True
+    assert "BMED" in CONCENTRATIONS
+
+
+def test_biomedical_engineering_prerequisites_and_quarter_equivalents_are_mapped():
+    bmed_courses = {course["course_number"]: course for course in FLOWCHARTS["BMED"]["courses"]}
+
+    assert bmed_courses["CHEM 1122"]["prerequisites"] == ["CHEM 1120"]
+    assert bmed_courses["MATH 1262"]["prerequisites"] == ["MATH 1261"]
+    assert bmed_courses["PHYS 1143"]["prerequisites"] == ["PHYS 1141", "MATH 1261"]
+    assert bmed_courses["BMED 2420"]["prerequisites"] == ["BMED 2212", "CHEM 1120", "ENGR 2211"]
+    assert bmed_courses["BMED 4440"]["prerequisites"] == ["BMED 2310", "BMED 2311"]
+    assert bmed_courses["BMED 4599"]["prerequisites"] == ["BMED 3425"]
+    assert "BMED 101" in bmed_courses["BMED 1101"]["quarter_equivalents"]
+    assert "BMED 420" in bmed_courses["BMED 2420"]["quarter_equivalents"]
+    assert "BMED 440" in bmed_courses["BMED 4440"]["quarter_equivalents"]
+    assert "BMED 455" in bmed_courses["BMED 4599"]["quarter_equivalents"]
+
+
+def test_biomedical_engineering_concentrations_cover_catalog_options():
+    bmed_concentrations = CONCENTRATIONS["BMED"]
+    concentration_ids = {concentration["id"] for concentration in bmed_concentrations}
+
+    assert {
+        "none",
+        "bioinstrumentation",
+        "cell_and_tissue_engineering",
+        "mechanical_design",
+        "individualized",
+    } <= concentration_ids
+
+    bioinstrumentation = next(c for c in bmed_concentrations if c["id"] == "bioinstrumentation")
+    assert bioinstrumentation["slot_overrides"]["BMED_CON_JRF1"]["course_number"] == "BMED 3355"
+    assert bioinstrumentation["slot_overrides"]["BMED_CON_SRS1"]["course_number"] == "BMED 4445"
+
+    cell_tissue = next(c for c in bmed_concentrations if c["id"] == "cell_and_tissue_engineering")
+    assert cell_tissue["slot_overrides"]["BMED_CON_JRF1"]["course_number"] == "BIO/BMED 3360"
+    assert cell_tissue["slot_overrides"]["BMED_CON_SRS1"]["course_number"] == "BMED 4465"
+
+    mechanical = next(c for c in bmed_concentrations if c["id"] == "mechanical_design")
+    assert mechanical["slot_overrides"]["BMED_CON_JRS1"]["course_number"] == "ME 3328"
+    assert mechanical["slot_overrides"]["BMED_CON_SRS1"]["course_number"] == "ME 4421"
+
+
+def test_biochemistry_flowchart_contains_expected_core_sequence():
+    bioc_courses = {course["course_number"]: course for course in FLOWCHARTS["BIOC"]["courses"]}
+    bioc_by_id = {course["id"]: course for course in FLOWCHARTS["BIOC"]["courses"]}
+
+    assert FLOWCHARTS["BIOC"]["total_units"] == 120
+    assert bioc_courses["CHEM 1120"]["title"] == "Fundamentals of Chemical Structure and Properties"
+    assert bioc_courses["CHEM 1120"]["category"] == "major"
+    assert bioc_courses["BIO 1151"]["title"] == "Life: Molecules and Cells"
+    assert bioc_courses["BIO 1151"]["category"] == "support"
+    assert bioc_courses["CHEM 2242"]["title"] == "Organic Chemistry I"
+    assert bioc_courses["CHEM 3352"]["title"] == "Biochemistry"
+    assert bioc_courses["CHEM 3356"]["title"] == "Genetic Information Processing"
+    assert bioc_courses["CHEM 3354"]["title"] == "Metabolism"
+    assert bioc_courses["CHEM 4461"]["title"] == "Senior Project I"
+    assert bioc_courses["CHEM 4462"]["title"] == "Senior Project II"
+    assert bioc_courses["GE 1A"]["category"] == "ge"
+    assert bioc_by_id["BIOC_CHEM2201_2203"]["is_placeholder"] is True
+    assert bioc_by_id["BIOC_CON_JRF"]["category"] == "concentration"
+    assert bioc_by_id["BIOC_CON_JRF"]["is_placeholder"] is True
+    assert bioc_by_id["BIOC_FREE1"]["is_placeholder"] is True
+    assert "BIOC" in CONCENTRATIONS
+
+
+def test_biochemistry_prerequisites_and_quarter_equivalents_are_mapped():
+    bioc_courses = {course["course_number"]: course for course in FLOWCHARTS["BIOC"]["courses"]}
+
+    assert bioc_courses["CHEM 1122"]["prerequisites"] == ["CHEM 1120"]
+    assert bioc_courses["MATH 1262"]["prerequisites"] == ["MATH 1261"]
+    assert bioc_courses["CHEM 2242"]["prerequisites"] == ["CHEM 1122"]
+    assert bioc_courses["CHEM 3352"]["prerequisites"] == ["CHEM 2242"]
+    assert bioc_courses["CHEM 3356"]["prerequisites"] == ["CHEM 3352"]
+    assert bioc_courses["CHEM 4462"]["prerequisites"] == ["CHEM 4461"]
+    assert "CHEM 124" in bioc_courses["CHEM 1120"]["quarter_equivalents"]
+    assert "CHEM 125" in bioc_courses["CHEM 1122"]["quarter_equivalents"]
+    assert "MATH 141" in bioc_courses["MATH 1261"]["quarter_equivalents"]
+    assert "CHEM 312" in bioc_courses["CHEM 2242"]["quarter_equivalents"]
+    assert "CHEM 350" in bioc_courses["CHEM 3352"]["quarter_equivalents"]
+
+
+def test_biochemistry_concentrations_cover_catalog_options():
+    bioc_concentrations = CONCENTRATIONS["BIOC"]
+    concentration_ids = {concentration["id"] for concentration in bioc_concentrations}
+
+    assert {"none", "polymers_coatings"} <= concentration_ids
+
+    polymers = next(c for c in bioc_concentrations if c["id"] == "polymers_coatings")
+    assert polymers["slot_overrides"]["BIOC_CON_JRF"]["course_number"] == "CHEM 3380"
+    assert polymers["slot_overrides"]["BIOC_CON_JRS"]["course_number"] == "CHEM 4480/4481"
+    assert polymers["slot_overrides"]["BIOC_CON_SRF"]["course_number"] == "CHEM 4482/4483"
+    assert polymers["slot_overrides"]["BIOC_CON_SRS"]["course_number"] == "CHEM 4486"
+
+
+def test_agricultural_systems_management_flowchart_contains_expected_core_sequence():
+    asm_courses = {course["course_number"]: course for course in FLOWCHARTS["ASM"]["courses"]}
+    asm_by_id = {course["id"]: course for course in FLOWCHARTS["ASM"]["courses"]}
+
+    assert FLOWCHARTS["ASM"]["total_units"] == 121
+    assert asm_courses["BRAE 1128"]["title"] == "Careers in BioResource and Agricultural Engineering"
+    assert asm_courses["BRAE 2203"]["title"] == "Systems Management I"
+    assert asm_courses["BRAE 3317"]["title"] == "Systems Management II"
+    assert asm_courses["BRAE 4419"]["title"] == "Systems Management III"
+    assert asm_courses["BRAE 3340"]["title"] == "Irrigation Water Management"
+    assert asm_courses["BRAE 4460"]["title"] == "Senior Project I"
+    assert asm_courses["BRAE 4461"]["title"] == "Senior Project II"
+    assert asm_courses["BRAE 2203"]["category"] == "major"
+    assert asm_courses["AGB 2212"]["category"] == "support"
+    assert asm_courses["GE 1A"]["category"] == "ge"
+    assert asm_by_id["ASM_MATH1007_STAT1110"]["is_placeholder"] is True
+    assert asm_by_id["ASM_ELEC1"]["category"] == "concentration"
+    assert asm_by_id["ASM_ELEC1"]["is_placeholder"] is True
+    assert "ASM" not in CONCENTRATIONS
+
+
+def test_agricultural_systems_management_prerequisites_are_mapped():
+    asm_courses = {course["course_number"]: course for course in FLOWCHARTS["ASM"]["courses"]}
+
+    assert asm_courses["BRAE 2203"]["prerequisites"] == ["BRAE 1128", "BRAE 1150"]
+    assert asm_courses["BRAE 2142"]["prerequisites"] == ["BRAE 1150"]
+    assert asm_courses["BRAE 3317"]["prerequisites"] == ["BRAE 2203"]
+    assert asm_courses["BRAE 3343"]["prerequisites"] == ["BRAE 2142"]
+    assert asm_courses["BRAE 4419"]["prerequisites"] == ["BRAE 3317"]
+    assert asm_courses["BRAE 4440"]["prerequisites"] == ["BRAE 3340"]
+    assert asm_courses["BRAE 4461"]["prerequisites"] == ["BRAE 4460"]
+    assert "STAT 218" in asm_courses["MATH 1007/STAT 1110"]["quarter_equivalents"]
+    assert "AGB 212" in asm_courses["AGB 2212"]["quarter_equivalents"]
+    assert "AGB 308" in asm_courses["AGB 3308"]["quarter_equivalents"]
+
+
+def test_bioresource_agricultural_engineering_flowchart_contains_expected_core_sequence():
+    brae_courses = {course["course_number"]: course for course in FLOWCHARTS["BRAE"]["courses"]}
+    brae_by_id = {course["id"]: course for course in FLOWCHARTS["BRAE"]["courses"]}
+
+    assert FLOWCHARTS["BRAE"]["total_units"] == 128
+    assert brae_courses["BRAE 1128"]["title"] == "Careers in BioResource and Agricultural Engineering"
+    assert brae_courses["BRAE 1128"]["category"] == "major"
+    assert brae_courses["MATH 1261"]["category"] == "support"
+    assert brae_courses["BRAE 2221"]["title"] == "Engineering Mechanics with Agricultural Applications I"
+    assert brae_courses["BRAE 2222"]["title"] == "Engineering Mechanics with Agricultural Applications II"
+    assert brae_courses["BRAE 4414"]["title"] == "Irrigation Engineering"
+    assert brae_courses["BRAE 4461"]["title"] == "Senior Project II"
+    assert brae_by_id["BRAE_GE1A"]["is_placeholder"] is True
+    assert brae_by_id["BRAE_ELECTIVE"]["is_placeholder"] is True
+    assert brae_by_id["BRAE_FOCUS1"]["category"] == "concentration"
+    assert brae_by_id["BRAE_ECON"]["is_placeholder"] is True
+    assert "BRAE" not in CONCENTRATIONS
+
+
+def test_bioresource_agricultural_engineering_prerequisites_are_mapped():
+    brae_courses = {course["course_number"]: course for course in FLOWCHARTS["BRAE"]["courses"]}
+
+    assert "MATH 1261" in brae_courses["MATH 1262"]["prerequisites"]
+    assert "MATH 1262" in brae_courses["MATH 2263"]["prerequisites"]
+    assert "PHYS 1141" in brae_courses["PHYS 1143"]["prerequisites"]
+    assert "BRAE 1128" in brae_courses["BRAE 1150"]["prerequisites"]
+    assert "BRAE 2221" in brae_courses["BRAE 2222"]["prerequisites"]
+    assert "BRAE 2221" in brae_courses["BRAE 3312"]["prerequisites"]
+    assert "BRAE 2236" in brae_courses["BRAE 4414"]["prerequisites"]
+    assert "BRAE 2216" in brae_courses["BRAE 4428"]["prerequisites"]
+    assert "BRAE 3234" in brae_courses["BRAE 4422"]["prerequisites"]
+    assert "BRAE 4460" in brae_courses["BRAE 4461"]["prerequisites"]
+    assert "MATH 141" in brae_courses["MATH 1261"]["quarter_equivalents"]
+    assert "BRAE 236" in brae_courses["BRAE 2236"]["quarter_equivalents"]
+    assert "PHYS 132" in brae_courses["PHYS 1143"]["quarter_equivalents"]
+
+
+def test_business_administration_flowchart_contains_expected_core_sequence():
+    bus_courses = {course["course_number"]: course for course in FLOWCHARTS["BUS"]["courses"]}
+    bus_by_id = {course["id"]: course for course in FLOWCHARTS["BUS"]["courses"]}
+
+    assert FLOWCHARTS["BUS"]["total_units"] == 120
+    assert bus_courses["BUS 1100"]["title"] == "Career Readiness I"
+    assert bus_courses["BUS 2214"]["title"] == "Financial Accounting"
+    assert bus_courses["BUS 2215"]["title"] == "Managerial Accounting"
+    assert bus_courses["BUS 3346"]["title"] == "Principles of Marketing"
+    assert bus_courses["BUS 3387"]["title"] == "Organizational Behavior"
+    assert bus_courses["BUS 4401 & 4411"]["title"] == "Strategic Management and Assessment"
+    assert bus_courses["BUS 2214"]["category"] == "major"
+    assert bus_courses["ECON 2001"]["category"] == "support"
+    assert bus_courses["STAT 1210"]["category"] == "support"
+    assert bus_courses["STAT 1220"]["category"] == "support"
+    assert bus_courses["GE 1A"]["category"] == "ge"
+    assert bus_by_id["BUS_GE1A"]["is_placeholder"] is True
+    assert bus_by_id["BUS_CON1"]["is_placeholder"] is True
+    assert bus_by_id["BUS_CON1"]["category"] == "concentration"
+    assert bus_by_id["BUS_FREE1"]["is_placeholder"] is True
+    assert "BUS" in CONCENTRATIONS
+
+
+def test_business_administration_prerequisites_are_mapped():
+    bus_courses = {course["course_number"]: course for course in FLOWCHARTS["BUS"]["courses"]}
+
+    assert bus_courses["BUS 2215"]["prerequisites"] == ["BUS 2214"]
+    assert bus_courses["STAT 1220"]["prerequisites"] == ["STAT 1210"]
+    assert bus_courses["BUS 2206"]["prerequisites"] == ["BUS 1100"]
+    assert bus_courses["BUS 3306"]["prerequisites"] == ["BUS 2206"]
+    assert bus_courses["BUS 4404"]["prerequisites"] == ["BUS 2207"]
+    assert "BUS 3346" in bus_courses["BUS 4401 & 4411"]["prerequisites"]
+    assert "BUS 3387" in bus_courses["BUS 4401 & 4411"]["prerequisites"]
+    assert "BUS 214" in bus_courses["BUS 2214"]["quarter_equivalents"]
+    assert "BUS 215" in bus_courses["BUS 2215"]["quarter_equivalents"]
+    assert "STAT 251" in bus_courses["STAT 1210"]["quarter_equivalents"]
+    assert "STAT 252" in bus_courses["STAT 1220"]["quarter_equivalents"]
+
+
+def test_business_administration_ge_placeholders_are_present():
+    bus_by_id = {course["id"]: course for course in FLOWCHARTS["BUS"]["courses"]}
+
+    for ge_id in ["BUS_GE1A", "BUS_GE1B", "BUS_GE1C", "BUS_GE3A", "BUS_GE3B",
+                  "BUS_GE4A", "BUS_GE5A", "BUS_GE5B", "BUS_GE5C", "BUS_GE6",
+                  "BUS_GE_UD4", "BUS_GE_UD25", "BUS_GE_UD3"]:
+        assert ge_id in bus_by_id, f"{ge_id} missing from BUS flowchart"
+        assert bus_by_id[ge_id]["is_placeholder"] is True
+
+
+def test_business_administration_concentrations_cover_catalog_options():
+    bus_concentrations = CONCENTRATIONS["BUS"]
+    concentration_ids = {c["id"] for c in bus_concentrations}
+
+    assert {"accounting", "consumer_packaging", "entrepreneurship",
+            "financial_management", "information_systems_analytics",
+            "management_human_resources", "marketing_management",
+            "real_estate_finance", "supply_chain_management"} <= concentration_ids
+
+    acct = next(c for c in bus_concentrations if c["id"] == "accounting")
+    assert acct["slot_overrides"]["BUS_CON1"]["course_number"] == "BUS 3319"
+    assert acct["slot_overrides"]["BUS_CON5"]["units"] == 4
+    assert acct["slot_overrides"]["BUS_CON7"]["course_number"] == "BUS 3323"
+
+    isa = next(c for c in bus_concentrations if c["id"] == "information_systems_analytics")
+    assert isa["slot_overrides"]["BUS_CON1"]["course_number"] == "BUS 3393"
+    assert isa["slot_overrides"]["BUS_CON3"]["course_number"] == "BUS 3394"

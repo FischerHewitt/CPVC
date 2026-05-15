@@ -39,6 +39,14 @@ def test_list_majors_includes_available_flowcharts():
     assert {"code": "AD", "name": "Art and Design"} in majors
     assert {"code": "POLS", "name": "Political Science"} in majors
     assert {"code": "ENGL", "name": "English"} in majors
+    assert {"code": "MU", "name": "Music"} in majors
+    assert {"code": "AGC", "name": "Agricultural Communication"} in majors
+    assert {"code": "AGS", "name": "Agricultural Science"} in majors
+    assert {"code": "ASCI", "name": "Animal Science"} in majors
+    assert {"code": "ANTGEOG", "name": "Anthropology and Geography"} in majors
+    assert {"code": "ARCH", "name": "Architecture"} in majors
+    assert {"code": "BIO", "name": "Biological Sciences"} in majors
+    assert {"code": "BMED", "name": "Biomedical Engineering"} in majors
 
 
 def test_get_flowchart_is_case_insensitive_and_has_expected_shape():
@@ -91,6 +99,87 @@ def test_get_english_flowchart_is_available():
     body = response.json()
     assert body["major"] == "English"
     assert body["total_units"] == 120
+    assert body["courses"]
+
+
+def test_get_music_flowchart_is_available():
+    response = client.get("/api/flowchart/MU")
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body["major"] == "Music"
+    assert body["total_units"] == 120
+    assert body["courses"]
+
+
+def test_get_agricultural_communication_flowchart_is_available():
+    response = client.get("/api/flowchart/AGC")
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body["major"] == "Agricultural Communication"
+    assert body["total_units"] == 120
+    assert body["courses"]
+
+
+def test_get_agricultural_science_flowchart_is_available():
+    response = client.get("/api/flowchart/AGS")
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body["major"] == "Agricultural Science"
+    assert body["total_units"] == 120
+    assert body["courses"]
+
+
+def test_get_animal_science_flowchart_is_available():
+    response = client.get("/api/flowchart/ASCI")
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body["major"] == "Animal Science"
+    assert body["total_units"] == 120
+    assert body["courses"]
+
+
+def test_get_anthropology_geography_flowchart_is_available():
+    response = client.get("/api/flowchart/ANTGEOG")
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body["major"] == "Anthropology and Geography"
+    assert body["total_units"] == 120
+    assert body["courses"]
+
+
+def test_get_architecture_flowchart_is_available():
+    response = client.get("/api/flowchart/ARCH")
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body["major"] == "Architecture"
+    assert body["total_units"] == 150
+    assert {"year": "Fifth Year", "term": "Spring"} in body["columns"]
+    assert body["courses"]
+
+
+def test_get_biological_sciences_flowchart_is_available():
+    response = client.get("/api/flowchart/BIO")
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body["major"] == "Biological Sciences"
+    assert body["total_units"] == 120
+    assert body["courses"]
+
+
+def test_get_biomedical_engineering_flowchart_is_available():
+    response = client.get("/api/flowchart/BMED")
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body["major"] == "Biomedical Engineering"
+    assert body["total_units"] == 130
     assert body["courses"]
 
 
@@ -163,14 +252,75 @@ def test_get_political_science_concentrations_for_major():
     assert any(c["id"] == "individualized" for c in concentrations)
 
 
+def test_get_agricultural_science_emphasis_areas_for_major():
+    response = client.get("/api/flowchart/AGS/concentrations")
+
+    assert response.status_code == 200
+    concentrations = response.json()["concentrations"]
+    assert concentrations[0]["id"] == "none"
+    assert any(c["id"] == "ag_engineering_tech" for c in concentrations)
+    assert any(c["id"] == "agribusiness" for c in concentrations)
+    assert any(c["id"] == "animal_science" for c in concentrations)
+    assert any(c["id"] == "plant_crop_soil" for c in concentrations)
+    assert any(c["id"] == "forestry_natural_resources" for c in concentrations)
+    assert any(c["id"] == "ornamental_horticulture" for c in concentrations)
+
+
+def test_get_anthropology_geography_concentrations_for_major():
+    response = client.get("/api/flowchart/ANTGEOG/concentrations")
+
+    assert response.status_code == 200
+    concentrations = response.json()["concentrations"]
+    assert concentrations[0]["id"] == "none"
+    assert any(c["id"] == "environmental_sustainability" for c in concentrations)
+    assert any(c["id"] == "global_studies" for c in concentrations)
+    assert any(c["id"] == "human_ecology" for c in concentrations)
+    assert any(c["id"] == "individualized" for c in concentrations)
+
+
+def test_get_biological_sciences_concentrations_for_major():
+    response = client.get("/api/flowchart/BIO/concentrations")
+
+    assert response.status_code == 200
+    concentrations = response.json()["concentrations"]
+    assert concentrations[0]["id"] == "none"
+    assert any(c["id"] == "anatomy_physiology" for c in concentrations)
+    assert any(c["id"] == "ecology_evolution_biodiversity_conservation" for c in concentrations)
+    assert any(c["id"] == "molecular_cellular" for c in concentrations)
+
+
+def test_get_biomedical_engineering_concentrations_for_major():
+    response = client.get("/api/flowchart/BMED/concentrations")
+
+    assert response.status_code == 200
+    concentrations = response.json()["concentrations"]
+    assert concentrations[0]["id"] == "none"
+    assert any(c["id"] == "bioinstrumentation" for c in concentrations)
+    assert any(c["id"] == "cell_and_tissue_engineering" for c in concentrations)
+    assert any(c["id"] == "mechanical_design" for c in concentrations)
+    assert any(c["id"] == "individualized" for c in concentrations)
+
+
 def test_get_concentrations_returns_empty_list_for_major_without_overrides():
     response = client.get("/api/flowchart/SE/concentrations")
     english_response = client.get("/api/flowchart/ENGL/concentrations")
+    music_response = client.get("/api/flowchart/MU/concentrations")
+    agc_response = client.get("/api/flowchart/AGC/concentrations")
+    animal_science_response = client.get("/api/flowchart/ASCI/concentrations")
+    architecture_response = client.get("/api/flowchart/ARCH/concentrations")
 
     assert response.status_code == 200
     assert response.json() == {"concentrations": []}
     assert english_response.status_code == 200
     assert english_response.json() == {"concentrations": []}
+    assert music_response.status_code == 200
+    assert music_response.json() == {"concentrations": []}
+    assert agc_response.status_code == 200
+    assert agc_response.json() == {"concentrations": []}
+    assert animal_science_response.status_code == 200
+    assert animal_science_response.json() == {"concentrations": []}
+    assert architecture_response.status_code == 200
+    assert architecture_response.json() == {"concentrations": []}
 
 
 def test_get_flowchart_returns_404_for_unknown_major():

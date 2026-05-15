@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
+import Link from "next/link";
 import { loadSession, saveSession, persistSession } from "@/lib/session";
 import { getFlowchart, inferPrerequisites, getSession, getGEAreaMap, getConcentrations, syncSession } from "@/lib/api";
 import type { Course, CourseStatus, Flowchart, GEAreaMap, TranscriptSession, Concentration } from "@/lib/types";
@@ -360,7 +361,10 @@ export default function FlowchartPage() {
             </select>
           </>
         )}
-        <div className="ml-auto text-white font-bold text-sm">Mustang Blueprints</div>
+        <div className="ml-auto flex items-center gap-4">
+          <Link href="/support" className="text-white/70 hover:text-white text-sm transition-colors">Support</Link>
+          <span className="text-white font-bold text-sm">Mustang Blueprints</span>
+        </div>
       </header>
 
       <main className="flex-1 p-6">

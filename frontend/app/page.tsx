@@ -2,9 +2,100 @@
 
 import { useEffect, useState, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { getMajors, parseTranscript, getConcentrations, getFlowchart, syncSession } from "@/lib/api";
 import { saveSession } from "@/lib/session";
 import type { MajorOption, Concentration } from "@/lib/types";
+
+function concs(...pairs: [string, string][]): Concentration[] {
+  return pairs.map(([id, label]) => ({ id, label, slot_overrides: {} }));
+}
+
+const FALLBACK_CONCENTRATIONS: Record<string, Concentration[]> = {
+  CS: concs(
+    ["none", "General Curriculum"],
+    ["ai_ml", "AI & Machine Learning"],
+    ["data_eng", "Data Engineering"],
+    ["game_dev", "Game Development"],
+    ["graphics", "Graphics"],
+    ["privacy_security", "Privacy & Security"],
+  ),
+  AERO: concs(
+    ["none", "Concentration Not Yet Declared"],
+    ["aeronautics", "Aeronautics"],
+    ["astronautics", "Astronautics"],
+  ),
+  CPE: concs(
+    ["none", "General Curriculum"],
+    ["computer_architecture", "Computer Architecture"],
+    ["computer_hardware", "Computer Hardware Engineering"],
+    ["computer_systems", "Computer Systems"],
+    ["embedded_systems", "Embedded Systems"],
+    ["robotics", "Robotics and Autonomous Systems"],
+    ["security", "Privacy and Security"],
+  ),
+  CE: concs(
+    ["none", "General Civil Engineering"],
+    ["construction", "Construction Engineering"],
+    ["geotechnical", "Geotechnical Engineering"],
+    ["structural", "Structural Engineering"],
+    ["transportation", "Transportation Engineering"],
+    ["water_resources", "Water Resources Engineering"],
+  ),
+  ME: concs(
+    ["none", "General Curriculum"],
+    ["energy_resources", "Energy Resources"],
+    ["hvacr", "Sustainable Technology for the Built Environment (HVAC&R)"],
+    ["mechatronics", "Mechatronics"],
+    ["manufacturing", "Manufacturing"],
+  ),
+  AD: concs(
+    ["none", "Concentration Not Yet Declared"],
+    ["graphic_design", "Graphic Design"],
+    ["photo_video", "Photography and Video"],
+    ["studio_art", "Studio Art"],
+  ),
+  POLS: concs(
+    ["none", "Concentration Not Yet Declared"],
+    ["global_politics", "Global Politics"],
+    ["pre_law", "Pre-Law"],
+    ["us_politics", "U.S. Politics"],
+    ["individualized", "Individualized Course of Study"],
+  ),
+  AGS: concs(
+    ["none", "Emphasis Not Yet Declared"],
+    ["ag_engineering_tech", "Agricultural Engineering Technology"],
+    ["agribusiness", "Agribusiness"],
+    ["animal_science", "Animal Science"],
+    ["plant_crop_soil", "Plant, Crop, and Soil Science"],
+    ["forestry_natural_resources", "Forestry and Natural Resources"],
+    ["ornamental_horticulture", "Ornamental Horticulture"],
+  ),
+  ANTGEOG: concs(
+    ["none", "Concentration Not Yet Declared"],
+    ["environmental_sustainability", "Environmental Studies and Sustainability"],
+    ["global_studies", "Global Studies and International Development"],
+    ["human_ecology", "Human Ecology"],
+    ["individualized", "Individualized Course of Study"],
+  ),
+  BIO: concs(
+    ["none", "General Curriculum in Biology"],
+    ["anatomy_physiology", "Anatomy and Physiology"],
+    ["ecology_evolution_biodiversity_conservation", "Ecology, Evolution, Biodiversity, and Conservation"],
+    ["molecular_cellular", "Molecular and Cellular Biology"],
+  ),
+  BMED: concs(
+    ["none", "Concentration Not Yet Declared"],
+    ["bioinstrumentation", "Bioinstrumentation"],
+    ["cell_and_tissue_engineering", "Cell and Tissue Engineering"],
+    ["mechanical_design", "Mechanical Design"],
+    ["individualized", "Individualized Course of Study"],
+  ),
+  BIOC: concs(
+    ["none", "General Biochemistry"],
+    ["polymers_coatings", "Polymers and Coatings"],
+  ),
+};
 
 const FALLBACK_MAJORS: MajorOption[] = [
   { code: "CS", name: "Computer Science" },
@@ -17,6 +108,14 @@ const FALLBACK_MAJORS: MajorOption[] = [
   { code: "POLS", name: "Political Science" },
   { code: "PSY", name: "Psychology" },
   { code: "ENGL", name: "English" },
+  { code: "MU", name: "Music" },
+  { code: "AGC", name: "Agricultural Communication" },
+  { code: "AGS", name: "Agricultural Science" },
+  { code: "ASCI", name: "Animal Science" },
+  { code: "ANTGEOG", name: "Anthropology and Geography" },
+  { code: "ARCH", name: "Architecture" },
+  { code: "BIO", name: "Biological Sciences" },
+  { code: "BMED", name: "Biomedical Engineering" },
 ];
 
 export default function HomePage() {
@@ -26,7 +125,9 @@ export default function HomePage() {
   const [file, setFile] = useState<File | null>(null);
   const [majorCode, setMajorCode] = useState("CS");
   const [majors, setMajors] = useState<MajorOption[]>(FALLBACK_MAJORS);
-  const [concentrations, setConcentrations] = useState<Concentration[]>([]);
+  const [concentrations, setConcentrations] = useState<Concentration[]>(
+    () => FALLBACK_CONCENTRATIONS["CS"] ?? [],
+  );
   const [concentration, setConcentration] = useState<string>("none");
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -49,12 +150,16 @@ export default function HomePage() {
   }, []);
 
   useEffect(() => {
+    const fallback = FALLBACK_CONCENTRATIONS[majorCode] ?? [];
+    setConcentrations(fallback);
+    if (fallback.length === 0) setConcentration("none");
+
     let cancelled = false;
-    getConcentrations(majorCode).then((list) => {
-      if (cancelled) return;
-      setConcentrations(list);
-      if (list.length === 0) setConcentration("none");
-    });
+    getConcentrations(majorCode)
+      .then((list) => {
+        if (!cancelled && list.length > 0) setConcentrations(list);
+      })
+      .catch(() => {});
     return () => { cancelled = true; };
   }, [majorCode]);
 
@@ -173,7 +278,10 @@ export default function HomePage() {
       {/* Header */}
       <header style={{ background: "var(--cp-green)" }} className="px-6 py-4 flex items-center gap-3">
         <div className="text-white font-bold text-xl tracking-wide">Mustang Blueprints</div>
-        <div className="ml-auto text-white/70 text-xs">Unofficial Tool</div>
+        <div className="ml-auto flex items-center gap-4">
+          <Link href="/support" className="text-white/70 hover:text-white text-xs transition-colors">Support</Link>
+          <span className="text-white/70 text-xs">Unofficial Tool</span>
+        </div>
       </header>
 
       {/* Hero */}
@@ -229,7 +337,6 @@ export default function HomePage() {
                 onChange={(e) => {
                   setMajorCode(e.target.value);
                   setConcentration("none");
-                  setConcentrations([]);
                 }}
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none"
               >
@@ -248,7 +355,12 @@ export default function HomePage() {
                   onChange={(e) => setConcentration(e.target.value)}
                   className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none"
                 >
-                  {concentrations.map((c) => (
+                  {[
+                    ...concentrations.filter((c) => c.id === "none"),
+                    ...[...concentrations.filter((c) => c.id !== "none")].sort((a, b) =>
+                      a.label.localeCompare(b.label)
+                    ),
+                  ].map((c) => (
                     <option key={c.id} value={c.id}>{c.label}</option>
                   ))}
                 </select>
