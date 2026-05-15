@@ -16,7 +16,7 @@ interface Props {
 
 const CATEGORY_STYLES: Record<string, { bg: string; border: string; text: string }> = {
   major:         { bg: "#bae6fd", border: "#0284c7", text: "#0c4a6e" },
-  support:       { bg: "#fef3c7", border: "#b45309", text: "#78350f" },
+  support:       { bg: "#ede9fe", border: "#7c3aed", text: "#4c1d95" },
   concentration: { bg: "#fce7f3", border: "#be185d", text: "#831843" },
   ge:            { bg: "#dcfce7", border: "#15803d", text: "#14532d" },
 };
@@ -83,8 +83,8 @@ export default function CourseCard({
             <label
               className={`absolute right-1 top-1 flex h-4 min-w-5 items-center justify-center rounded border px-0.5 text-[8px] font-bold shadow-sm cursor-pointer transition-colors ${
                 inProgressChecked && !checked
-                  ? "bg-blue-600 border-blue-700 text-white"
-                  : "bg-white/85 border-gray-300 text-blue-700"
+                  ? "bg-amber-500 border-amber-600 text-white"
+                  : "bg-white/85 border-gray-300 text-amber-700"
               }`}
               title={inProgressChecked ? "Remove in progress" : "Mark in progress"}
               onClick={(e) => e.stopPropagation()}
@@ -104,7 +104,7 @@ export default function CourseCard({
         )}
         <div className="flex justify-center mb-0.5 h-3">
           {(geCompleted || nonGECompleted)   && <span className="text-green-800 text-[10px] font-bold">✓</span>}
-          {(geInProgress || nonGEInProgress) && <span className="text-blue-700 text-[10px] font-bold">IP</span>}
+          {(geInProgress || nonGEInProgress) && <span className="text-amber-600 text-[10px] font-bold">IP</span>}
           {geLocked && <span className="text-[10px]">🔒</span>}
         </div>
         <div className={isGE ? "font-semibold not-italic" : ""}>{course.title}</div>
@@ -161,8 +161,8 @@ export default function CourseCard({
       <label
         className={`absolute right-1 top-1 flex h-4 min-w-5 items-center justify-center rounded border px-0.5 text-[8px] font-bold shadow-sm cursor-pointer transition-colors ${
           inProgressChecked && !checked
-            ? "bg-blue-600 border-blue-700 text-white"
-            : "bg-white/85 border-gray-300 text-blue-700"
+            ? "bg-amber-500 border-amber-600 text-white"
+            : "bg-white/85 border-gray-300 text-amber-700"
         }`}
         title={inProgressChecked ? "Remove in progress" : "Mark in progress"}
         onClick={(event) => event.stopPropagation()}
@@ -183,7 +183,7 @@ export default function CourseCard({
       <div className="flex justify-center mb-0.5 h-3">
         {status === "completed"   && <span className="text-green-800 text-[10px] font-bold">✓</span>}
         {status === "inferred"    && <span className="text-green-700 text-[10px] font-semibold">~✓</span>}
-        {status === "in_progress" && <span className="text-blue-700 text-[10px] font-bold">IP</span>}
+        {status === "in_progress" && <span className="text-amber-600 text-[10px] font-bold">IP</span>}
         {status === "locked"      && <span className="text-gray-500 text-[10px]">🔒</span>}
       </div>
 

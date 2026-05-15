@@ -177,12 +177,12 @@ function GECourseRow({
             />
             Done
           </label>
-          <label className="flex items-center gap-1 text-[10px] font-semibold text-blue-700" title={inProgress ? "Remove in progress" : "Mark in progress"}>
+          <label className="flex items-center gap-1 text-[10px] font-semibold text-amber-700" title={inProgress ? "Remove in progress" : "Mark in progress"}>
             <input
               type="checkbox"
               checked={inProgress && !completed}
               onChange={() => onToggleInProgress(geCourse.course_number)}
-              className="h-3.5 w-3.5 accent-blue-700 cursor-pointer"
+              className="h-3.5 w-3.5 accent-amber-600 cursor-pointer"
               onClick={(e) => e.stopPropagation()}
             />
             IP
@@ -201,7 +201,7 @@ function GECourseRow({
 
         <div className="flex items-center gap-1.5 flex-shrink-0">
           {inProgress && !completed && (
-            <span className="rounded bg-blue-100 px-1.5 py-0.5 text-[10px] font-bold text-blue-800">
+            <span className="rounded bg-amber-100 px-1.5 py-0.5 text-[10px] font-bold text-amber-800">
               IP
             </span>
           )}

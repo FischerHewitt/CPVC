@@ -206,12 +206,12 @@ export default function ManualCourseChecklist({
                       />
                       Done
                     </label>
-                    <label className="flex items-center gap-1.5 text-[11px] font-semibold text-blue-700">
+                    <label className="flex items-center gap-1.5 text-[11px] font-semibold text-amber-700">
                       <input
                         type="checkbox"
                         checked={inProgressMatch && !checked}
                         onChange={() => onToggleCourseInProgress(course)}
-                        className="h-4 w-4 accent-blue-700"
+                        className="h-4 w-4 accent-amber-600"
                         aria-label={inProgressMatch ? `Remove ${course.course_number} from in progress` : `Mark ${course.course_number} in progress`}
                       />
                       IP
@@ -221,7 +221,7 @@ export default function ManualCourseChecklist({
                     <span className="flex flex-wrap items-center gap-1.5">
                       <span className="text-sm font-bold text-gray-800">{course.course_number}</span>
                       {inProgressMatch && !checked && (
-                        <span className="rounded bg-blue-50 px-1.5 py-0.5 text-[10px] font-bold text-blue-700">
+                        <span className="rounded bg-amber-50 px-1.5 py-0.5 text-[10px] font-bold text-amber-700">
                           IP
                         </span>
                       )}
@@ -267,12 +267,12 @@ export default function ManualCourseChecklist({
                       />
                       Done
                     </label>
-                    <label className="flex items-center gap-1.5 text-[11px] font-semibold text-blue-700">
+                    <label className="flex items-center gap-1.5 text-[11px] font-semibold text-amber-700">
                       <input
                         type="checkbox"
                         checked={inProgressMatch && !checked}
                         onChange={() => onToggleGEAreaInProgress(course)}
-                        className="h-4 w-4 accent-blue-700"
+                        className="h-4 w-4 accent-amber-600"
                         aria-label={inProgressMatch ? `Remove ${course.course_number} from in progress` : `Mark ${course.course_number} in progress`}
                       />
                       IP
@@ -282,7 +282,7 @@ export default function ManualCourseChecklist({
                     <span className="flex flex-wrap items-center gap-1.5">
                       <span className="text-sm font-bold text-gray-800">{course.course_number}</span>
                       {inProgressMatch && !checked && (
-                        <span className="rounded bg-blue-50 px-1.5 py-0.5 text-[10px] font-bold text-blue-700">
+                        <span className="rounded bg-amber-50 px-1.5 py-0.5 text-[10px] font-bold text-amber-700">
                           IP
                         </span>
                       )}

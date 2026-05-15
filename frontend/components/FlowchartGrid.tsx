@@ -260,7 +260,7 @@ export default function FlowchartGrid({
         </span>
         {inProgressUnits > 0 && (
           <span>
-            <span className="font-bold text-blue-700">+{inProgressUnits}</span>
+            <span className="font-bold text-amber-600">+{inProgressUnits}</span>
             <span className="text-gray-400"> in progress</span>
           </span>
         )}
@@ -394,7 +394,7 @@ export default function FlowchartGrid({
           <span className="font-bold" style={{ color: "#16a34a", opacity: 0.6 }}>✓</span> Inferred from prereqs
         </div>
         <div className="flex items-center gap-1.5">
-          <span className="font-bold text-blue-600">IP</span> In Progress
+          <span className="font-bold text-amber-600">IP</span> In Progress
         </div>
         <div className="flex items-center gap-1.5">
           <span>🔒</span> Prereqs needed
