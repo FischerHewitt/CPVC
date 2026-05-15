@@ -3,14 +3,16 @@ from data.ge_courses import GE_COURSES
 
 router = APIRouter()
 
+_GE_AREA_MAP = {
+    area_id: [c["course_number"] for c in data["courses"]]
+    for area_id, data in GE_COURSES.items()
+}
+
 
 @router.get("/all")
 def get_ge_area_map():
     """Return a lightweight map of {area_id -> [course_number, ...]} for all GE areas."""
-    return {
-        area_id: [c["course_number"] for c in data["courses"]]
-        for area_id, data in GE_COURSES.items()
-    }
+    return _GE_AREA_MAP
 
 
 @router.get("/{area_id:path}")

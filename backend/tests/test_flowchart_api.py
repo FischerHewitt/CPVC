@@ -81,6 +81,16 @@ def test_get_concentrations_for_major():
     assert any(c["id"] == "privacy_security" for c in concentrations)
 
 
+def test_get_aerospace_engineering_concentrations_for_major():
+    response = client.get("/api/flowchart/AERO/concentrations")
+
+    assert response.status_code == 200
+    concentrations = response.json()["concentrations"]
+    assert concentrations[0]["id"] == "none"
+    assert any(c["id"] == "aeronautics" for c in concentrations)
+    assert any(c["id"] == "astronautics" for c in concentrations)
+
+
 def test_get_art_and_design_concentrations_for_major():
     response = client.get("/api/flowchart/AD/concentrations")
 
@@ -118,7 +128,7 @@ def test_get_mechanical_engineering_concentrations_for_major():
 
 
 def test_get_concentrations_returns_empty_list_for_major_without_overrides():
-    response = client.get("/api/flowchart/AERO/concentrations")
+    response = client.get("/api/flowchart/SE/concentrations")
 
     assert response.status_code == 200
     assert response.json() == {"concentrations": []}

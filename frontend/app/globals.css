@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --cp-green:       #154734;
-  --cp-green-light: #1e6348;
+  --cp-green:       #1d4ed8;
+  --cp-green-light: #2563eb;
   --cp-gold:        #BD8B13;
   --cp-bg:          #f4f5f7;
   --cp-surface:     #ffffff;
@@ -11,14 +11,14 @@
   --cp-border:      #d1d5db;
 
   /* flowchart card colors */
-  --card-major:         #fde68a;
-  --card-major-border:  #d97706;
-  --card-support:       #fed7aa;
-  --card-support-border:#ea580c;
-  --card-conc:          #f9a8d4;
-  --card-conc-border:   #db2777;
-  --card-ge:            #bbf7d0;
-  --card-ge-border:     #16a34a;
+  --card-major:         #bae6fd;
+  --card-major-border:  #0284c7;
+  --card-support:       #fef3c7;
+  --card-support-border:#b45309;
+  --card-conc:          #fce7f3;
+  --card-conc-border:   #be185d;
+  --card-ge:            #dcfce7;
+  --card-ge-border:     #15803d;
 }
 
 @theme inline {

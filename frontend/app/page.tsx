@@ -48,7 +48,9 @@ export default function HomePage() {
   useEffect(() => {
     let cancelled = false;
     getConcentrations(majorCode).then((list) => {
-      if (!cancelled && list.length > 0) setConcentrations(list);
+      if (cancelled) return;
+      setConcentrations(list);
+      if (list.length === 0) setConcentration("none");
     });
     return () => { cancelled = true; };
   }, [majorCode]);
@@ -152,9 +154,8 @@ export default function HomePage() {
     <div className="min-h-screen flex flex-col" style={{ background: "var(--cp-bg)" }}>
       {/* Header */}
       <header style={{ background: "var(--cp-green)" }} className="px-6 py-4 flex items-center gap-3">
-        <div className="text-white font-bold text-xl tracking-wide">CAL POLY</div>
-        <div className="text-white/60 text-sm font-medium">SAN LUIS OBISPO</div>
-        <div className="ml-auto text-white/80 text-sm">Semester Conversion Tracker</div>
+        <div className="text-white font-bold text-xl tracking-wide">Mustang Blueprints</div>
+        <div className="ml-auto text-white/70 text-xs">Unofficial Tool</div>
       </header>
 
       {/* Hero */}
@@ -172,7 +173,7 @@ export default function HomePage() {
             {/* Drop zone */}
             <div
               className={`border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-colors ${
-                file ? "bg-green-50" : dragging ? "bg-green-50" : "hover:bg-gray-50"
+                file ? "bg-blue-50" : dragging ? "bg-blue-50" : "hover:bg-gray-50"
               }`}
               style={{ borderColor: dragging || file ? "var(--cp-green)" : "#d1d5db" }}
               onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
@@ -190,7 +191,7 @@ export default function HomePage() {
               {file ? (
                 <div>
                   <div className="text-2xl mb-1">✅</div>
-                  <div className="font-medium text-green-700 text-sm">{file.name}</div>
+                  <div className="font-medium text-blue-700 text-sm">{file.name}</div>
                   <div className="text-xs text-gray-400 mt-1">Click to change</div>
                 </div>
               ) : (
@@ -243,10 +244,10 @@ export default function HomePage() {
             )}
 
             {loading && (
-              <div className="rounded-xl border border-green-100 bg-green-50 px-4 py-3">
+              <div className="rounded-xl border border-blue-100 bg-blue-50 px-4 py-3">
                 <div className="mb-2 flex items-center justify-between gap-3 text-xs font-medium">
-                  <span className="text-green-900">{progressLabel}</span>
-                  <span className="tabular-nums text-green-700">{Math.round(progress)}%</span>
+                  <span className="text-blue-900">{progressLabel}</span>
+                  <span className="tabular-nums text-blue-700">{Math.round(progress)}%</span>
                 </div>
                 <div
                   className="h-2 overflow-hidden rounded-full bg-white"
@@ -294,6 +295,12 @@ export default function HomePage() {
           </div>
         </div>
       </main>
+
+      {/* Disclaimer */}
+      <footer className="px-6 py-4 text-center text-xs text-gray-400 border-t border-gray-100">
+        Mustang Blueprints is an independent student project and is <strong>not affiliated with or endorsed by Cal Poly San Luis Obispo</strong>.
+        Course requirements change — always verify your plan with your academic advisor.
+      </footer>
     </div>
   );
 }

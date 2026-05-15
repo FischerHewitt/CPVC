@@ -9,15 +9,16 @@ interface Props {
   checked: boolean;
   inProgressChecked: boolean;
   plannedCourseNumber?: string;
+  activeGECourseNumber?: string;
   onToggleCompleted: () => void;
   onToggleInProgress: () => void;
 }
 
 const CATEGORY_STYLES: Record<string, { bg: string; border: string; text: string }> = {
-  major:         { bg: "#fde68a", border: "#d97706", text: "#78350f" },
-  support:       { bg: "#fed7aa", border: "#ea580c", text: "#7c2d12" },
-  concentration: { bg: "#f9a8d4", border: "#db2777", text: "#831843" },
-  ge:            { bg: "#bbf7d0", border: "#16a34a", text: "#14532d" },
+  major:         { bg: "#bae6fd", border: "#0284c7", text: "#0c4a6e" },
+  support:       { bg: "#fef3c7", border: "#b45309", text: "#78350f" },
+  concentration: { bg: "#fce7f3", border: "#be185d", text: "#831843" },
+  ge:            { bg: "#dcfce7", border: "#15803d", text: "#14532d" },
 };
 
 export default function CourseCard({
@@ -27,6 +28,7 @@ export default function CourseCard({
   checked,
   inProgressChecked,
   plannedCourseNumber,
+  activeGECourseNumber,
   onToggleCompleted,
   onToggleInProgress,
 }: Props) {
@@ -54,7 +56,7 @@ export default function CourseCard({
           ${isGE ? "cursor-pointer hover:opacity-90 hover:scale-[1.03] active:scale-[0.98]" : "italic"}`}
         style={{
           background: style.bg,
-          borderColor: geCompleted ? "#16a34a" : style.border,
+          borderColor: geCompleted ? "#15803d" : style.border,
           borderWidth: geCompleted ? 2 : 1,
           color: style.text,
           opacity: isGE ? (geCompleted ? 0.6 : 0.75) : (nonGECompleted ? 0.55 : 0.5),
@@ -106,7 +108,10 @@ export default function CourseCard({
           {geLocked && <span className="text-[10px]">🔒</span>}
         </div>
         <div className={isGE ? "font-semibold not-italic" : ""}>{course.title}</div>
-        {plannedCourseNumber && (
+        {isGE && (geCompleted || geInProgress) && activeGECourseNumber && (
+          <div className="text-[9px] mt-0.5 font-bold">{activeGECourseNumber}</div>
+        )}
+        {isGE && !geCompleted && !geInProgress && plannedCourseNumber && (
           <div className="text-[9px] mt-0.5 font-semibold opacity-80">
             planned: {plannedCourseNumber}
           </div>

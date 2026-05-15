@@ -25,9 +25,8 @@ function norm(courseNumber: string) {
   return courseNumber.toUpperCase().trim().replace(/\s+/g, " ");
 }
 
-function hasAnyCourseNumber(knownNums: Set<string>, courseNums: string[]) {
-  const normalizedKnown = new Set(Array.from(knownNums, norm));
-  return courseNums.some((num) => normalizedKnown.has(norm(num)));
+function hasAnyCourseNumber(normalizedKnownNums: Set<string>, courseNums: string[]) {
+  return courseNums.some((num) => normalizedKnownNums.has(norm(num)));
 }
 
 function courseNumberCandidates(course: Course) {
@@ -98,11 +97,11 @@ export default function CourseDetailPanel({
 
   if (!course) return null;
 
-  const completedSet = new Set(completed);
-  const inProgressSet = new Set(inProgress);
-  const inferredSet = new Set(inferred);
+  const completedSet = new Set(completed.map(norm));
+  const inProgressSet = new Set(inProgress.map(norm));
+  const inferredSet = new Set(inferred.map(norm));
   const liveStatus = getLiveStatus(course, status, completedSet, inProgressSet, inferredSet);
-  const knownPrereqSet = new Set([...completed, ...inProgress, ...inferred]);
+  const knownPrereqSet = new Set([...completed, ...inProgress, ...inferred].map(norm));
   const prereqCourses = allCourses.filter((c) =>
     course.prerequisites.includes(c.course_number)
   );

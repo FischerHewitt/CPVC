@@ -39,14 +39,16 @@ function norm(courseNumber: string) {
   return courseNumber.toUpperCase().trim().replace(/\s+/g, " ");
 }
 
+function toNormalizedSet(courseNums: string[]) {
+  return new Set(courseNums.map(norm));
+}
+
 function courseIsCompleted(course: Course, completed: Set<string>) {
-  const normalizedCompleted = new Set(Array.from(completed, norm));
-  return [course.course_number, ...course.quarter_equivalents].some((num) => normalizedCompleted.has(norm(num)));
+  return [course.course_number, ...course.quarter_equivalents].some((num) => completed.has(norm(num)));
 }
 
 function courseIsInProgress(course: Course, inProgress: Set<string>) {
-  const normalizedInProgress = new Set(Array.from(inProgress, norm));
-  return [course.course_number, ...course.quarter_equivalents].some((num) => normalizedInProgress.has(norm(num)));
+  return [course.course_number, ...course.quarter_equivalents].some((num) => inProgress.has(norm(num)));
 }
 
 function geAreaCandidates(course: Course, geAreaMap: GEAreaMap) {
@@ -58,8 +60,7 @@ function geAreaCandidates(course: Course, geAreaMap: GEAreaMap) {
 }
 
 function geAreaIsKnown(course: Course, geAreaMap: GEAreaMap, known: Set<string>) {
-  const normalizedKnown = new Set(Array.from(known, norm));
-  return geAreaCandidates(course, geAreaMap).some((candidate) => normalizedKnown.has(norm(candidate)));
+  return geAreaCandidates(course, geAreaMap).some((candidate) => known.has(norm(candidate)));
 }
 
 export default function ManualCourseChecklist({
@@ -78,8 +79,8 @@ export default function ManualCourseChecklist({
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("all");
 
-  const completedSet = useMemo(() => new Set(completed), [completed]);
-  const inProgressSet = useMemo(() => new Set(inProgress), [inProgress]);
+  const completedSet = useMemo(() => toNormalizedSet(completed), [completed]);
+  const inProgressSet = useMemo(() => toNormalizedSet(inProgress), [inProgress]);
 
   const gePlaceholders = useMemo(
     () => courses.filter((course) => course.is_placeholder && course.category === "ge"),
@@ -153,7 +154,7 @@ export default function ManualCourseChecklist({
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               placeholder="Search course number, title, GE area, or quarter equivalent"
-              className="min-w-0 flex-1 rounded border border-gray-300 px-3 py-2 text-sm outline-none focus:border-green-700"
+              className="min-w-0 flex-1 rounded border border-gray-300 px-3 py-2 text-sm outline-none focus:border-blue-700"
             />
             <div className="flex flex-wrap gap-1">
               {availableCategories.map((item) => (

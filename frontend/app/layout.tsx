@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Cal Poly Semester Tracker",
-  description: "See where you stand in the quarter-to-semester conversion.",
+  title: "Mustang Blueprints",
+  description: "Plan your 4-year semester flowchart.",
 };
 
 export default function RootLayout({

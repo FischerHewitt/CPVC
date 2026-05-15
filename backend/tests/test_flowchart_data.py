@@ -46,6 +46,23 @@ def test_flowchart_prerequisites_reference_courses_in_same_major():
             assert missing == [], f"{major_code} {course['course_number']} has unknown prereqs: {missing}"
 
 
+def test_aerospace_engineering_concentrations_cover_catalog_options():
+    aero_concentrations = CONCENTRATIONS["AERO"]
+    concentration_ids = {concentration["id"] for concentration in aero_concentrations}
+
+    assert {"none", "aeronautics", "astronautics"} <= concentration_ids
+
+    aeronautics = next(c for c in aero_concentrations if c["id"] == "aeronautics")
+    assert aeronautics["slot_overrides"]["CON_JRS1"]["course_number"] == "AERO 3305"
+    assert aeronautics["slot_overrides"]["CON_SRF1"]["units"] == 3
+    assert aeronautics["slot_overrides"]["CON_SRS1"]["course_number"] == "AERO 4462"
+
+    astronautics = next(c for c in aero_concentrations if c["id"] == "astronautics")
+    assert astronautics["slot_overrides"]["CON_JRS1"]["course_number"] == "AERO 3351"
+    assert astronautics["slot_overrides"]["CON_SRF4"]["course_number"] == "AERO 4455/4456"
+    assert astronautics["slot_overrides"]["CON_SRS1"]["course_number"] == "AERO 4464"
+
+
 def test_civil_engineering_flowchart_contains_expected_core_sequence():
     ce_courses = {course["course_number"]: course for course in FLOWCHARTS["CE"]["courses"]}
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import type { Course, CourseStatus, Flowchart, GEAreaMap, TranscriptSession } from "@/lib/types";
 import CourseCard from "./CourseCard";
 
@@ -24,9 +24,12 @@ function norm(courseNumber: string) {
   return courseNumber.toUpperCase().trim().replace(/\s+/g, " ");
 }
 
-function hasAnyCourseNumber(knownNums: Set<string>, courseNums: string[]) {
-  const normalizedKnown = new Set(Array.from(knownNums, norm));
-  return courseNums.some((num) => normalizedKnown.has(norm(num)));
+function toNormalizedSet(courseNums: string[]) {
+  return new Set(courseNums.map(norm));
+}
+
+function hasAnyCourseNumber(normalizedKnownNums: Set<string>, courseNums: string[]) {
+  return courseNums.some((num) => normalizedKnownNums.has(norm(num)));
 }
 
 function getCourseStatus(
@@ -34,7 +37,8 @@ function getCourseStatus(
   completedNums: Set<string>,
   inProgressNums: Set<string>,
   inferredNums: Set<string>,
-  allCourses: Course[],
+  knownNums: Set<string>,
+  courseLookup: Map<string, Course>,
   geAreaMap: GEAreaMap,
 ): CourseStatus {
   // GE placeholder: check if any approved course for this area is completed/in-progress
@@ -46,11 +50,9 @@ function getCourseStatus(
     ];
     if (hasAnyCourseNumber(completedNums, approved)) return "completed";
     if (hasAnyCourseNumber(inProgressNums, approved)) return "in_progress";
-    // Locked if prerequisites haven't been met
     if (course.prerequisites.length > 0) {
-      const knownNums = new Set([...completedNums, ...inferredNums, ...inProgressNums]);
       const prereqsMet = course.prerequisites.every((prereqNum) => {
-        const prereq = allCourses.find((c) => c.course_number === prereqNum);
+        const prereq = courseLookup.get(norm(prereqNum));
         if (!prereq) return true;
         const prereqNums = [prereq.course_number, ...prereq.quarter_equivalents];
         return hasAnyCourseNumber(knownNums, prereqNums);
@@ -73,10 +75,8 @@ function getCourseStatus(
   if (allNums.some((n) => inferredNums.has(n)))  return "inferred";
   if (allNums.some((n) => inProgressNums.has(n))) return "in_progress";
 
-  // Locked if any prerequisite is neither completed nor inferred
-  const knownNums = new Set([...completedNums, ...inferredNums, ...inProgressNums]);
   const prereqsMet = course.prerequisites.every((prereqNum) => {
-    const prereq = allCourses.find((c) => c.course_number === prereqNum);
+    const prereq = courseLookup.get(norm(prereqNum));
     if (!prereq) return true;
     const prereqNums = [prereq.course_number, ...prereq.quarter_equivalents];
     return hasAnyCourseNumber(knownNums, prereqNums);
@@ -112,10 +112,10 @@ const YEAR_GROUPS = [
 ];
 
 const CATEGORY_LEGEND = [
-  { label: "Major",         bg: "#fde68a", border: "#d97706" },
-  { label: "Support",       bg: "#fed7aa", border: "#ea580c" },
-  { label: "Concentration", bg: "#f9a8d4", border: "#db2777" },
-  { label: "Gen Ed",        bg: "#bbf7d0", border: "#16a34a" },
+  { label: "Major",         bg: "#bae6fd", border: "#0284c7" },
+  { label: "Support",       bg: "#fef3c7", border: "#b45309" },
+  { label: "Concentration", bg: "#fce7f3", border: "#be185d" },
+  { label: "Gen Ed",        bg: "#dcfce7", border: "#15803d" },
 ];
 
 export default function FlowchartGrid({
@@ -128,21 +128,29 @@ export default function FlowchartGrid({
   onToggleCourseInProgress,
   onMoveCourse,
 }: Props) {
-  const completedNums  = new Set(session.completed);
-  const inProgressNums = new Set(session.inProgress);
-  const inferredNums   = new Set(inferred);
-  const positions = session.coursePositions ?? {};
-  const grid = buildGrid(flowchart.courses, positions);
+  const completedNums  = useMemo(() => toNormalizedSet(session.completed), [session.completed]);
+  const inProgressNums = useMemo(() => toNormalizedSet(session.inProgress), [session.inProgress]);
+  const inferredNums   = useMemo(() => toNormalizedSet(inferred), [inferred]);
+  const knownNums      = useMemo(() => new Set([...completedNums, ...inferredNums, ...inProgressNums]), [completedNums, inferredNums, inProgressNums]);
+  const positions = useMemo(() => session.coursePositions ?? {}, [session.coursePositions]);
+  const grid = useMemo(() => buildGrid(flowchart.courses, positions), [flowchart.courses, positions]);
+  const courseLookup = useMemo(() => {
+    const lookup = new Map<string, Course>();
+    for (const course of flowchart.courses) {
+      lookup.set(norm(course.course_number), course);
+    }
+    return lookup;
+  }, [flowchart.courses]);
   const [draggedCourseId, setDraggedCourseId] = useState<string | null>(null);
 
   // ── Per-category progress ──────────────────────────────────────────────────
   function isCompletedOrInferred(c: Course) {
     const nums = [c.course_number, ...c.quarter_equivalents];
-    return nums.some((n) => completedNums.has(n) || inferredNums.has(n));
+    return nums.some((n) => completedNums.has(norm(n)) || inferredNums.has(norm(n)));
   }
   function isDone(c: Course) {
     const nums = [c.course_number, ...c.quarter_equivalents];
-    return nums.some((n) => completedNums.has(n));
+    return nums.some((n) => completedNums.has(norm(n)));
   }
 
   const majorCourses   = flowchart.courses.filter((c) => c.category === "major");
@@ -162,7 +170,7 @@ export default function FlowchartGrid({
   let earnedUnits = 0;
   let inProgressUnits = 0;
   for (const course of flowchart.courses) {
-    const status = getCourseStatus(course, completedNums, inProgressNums, inferredNums, flowchart.courses, geAreaMap);
+    const status = getCourseStatus(course, completedNums, inProgressNums, inferredNums, knownNums, courseLookup, geAreaMap);
     const u = effectiveUnits(course);
     if (status === "completed" || status === "inferred") earnedUnits += u;
     else if (status === "in_progress") inProgressUnits += u;
@@ -212,33 +220,33 @@ export default function FlowchartGrid({
         {/* Major */}
         <div>
           <div className="flex justify-between text-xs mb-1">
-            <span className="font-semibold text-amber-800">Major</span>
+            <span className="font-semibold" style={{ color: "#0369a1" }}>Major</span>
             <span className="text-gray-500">{majorDone + majorInferred}/{majorCourses.length}</span>
           </div>
           <div className="bg-gray-200 rounded-full h-2 overflow-hidden flex">
-            <div className="h-full transition-all" style={{ width: `${(majorDone / majorCourses.length) * 100}%`, background: "#d97706" }} />
-            <div className="h-full transition-all" style={{ width: `${(majorInferred / majorCourses.length) * 100}%`, background: "#fcd34d" }} />
+            <div className="h-full transition-all" style={{ width: `${(majorDone / majorCourses.length) * 100}%`, background: "#0284c7" }} />
+            <div className="h-full transition-all" style={{ width: `${(majorInferred / majorCourses.length) * 100}%`, background: "#7dd3fc" }} />
           </div>
         </div>
         {/* Support */}
         <div>
           <div className="flex justify-between text-xs mb-1">
-            <span className="font-semibold text-orange-800">Support</span>
+            <span className="font-semibold" style={{ color: "#92400e" }}>Support</span>
             <span className="text-gray-500">{supportDone + supportInferred}/{supportCourses.length}</span>
           </div>
           <div className="bg-gray-200 rounded-full h-2 overflow-hidden flex">
-            <div className="h-full transition-all" style={{ width: `${(supportDone / supportCourses.length) * 100}%`, background: "#ea580c" }} />
-            <div className="h-full transition-all" style={{ width: `${(supportInferred / supportCourses.length) * 100}%`, background: "#fdba74" }} />
+            <div className="h-full transition-all" style={{ width: `${(supportDone / supportCourses.length) * 100}%`, background: "#b45309" }} />
+            <div className="h-full transition-all" style={{ width: `${(supportInferred / supportCourses.length) * 100}%`, background: "#fcd34d" }} />
           </div>
         </div>
         {/* GE */}
         <div>
           <div className="flex justify-between text-xs mb-1">
-            <span className="font-semibold text-green-800">Gen Ed</span>
+            <span className="font-semibold" style={{ color: "#166534" }}>Gen Ed</span>
             <span className="text-gray-500">{geDone}/{gePlaceholders.length}</span>
           </div>
           <div className="bg-gray-200 rounded-full h-2 overflow-hidden">
-            <div className="h-full transition-all" style={{ width: `${(geDone / gePlaceholders.length) * 100}%`, background: "#16a34a" }} />
+            <div className="h-full transition-all" style={{ width: `${(geDone / gePlaceholders.length) * 100}%`, background: "#15803d" }} />
           </div>
         </div>
       </div>
@@ -247,7 +255,7 @@ export default function FlowchartGrid({
       <div className="flex items-center gap-3 px-1 text-xs text-gray-600 border-t border-gray-100 pt-3 -mt-1">
         <span className="font-semibold text-gray-700">Units:</span>
         <span>
-          <span className="font-bold text-green-800">{earnedUnits}</span>
+          <span className="font-bold text-blue-800">{earnedUnits}</span>
           <span className="text-gray-400"> earned</span>
         </span>
         {inProgressUnits > 0 && (
@@ -283,7 +291,7 @@ export default function FlowchartGrid({
               const cur = currentUnitsPerCol[i] ?? 0;
               return (
                 <div key={i} className="text-center text-xs font-semibold rounded overflow-hidden"
-                     style={{ background: "#1e6348", color: "white" }}>
+                     style={{ background: "var(--cp-green-light)", color: "white" }}>
                   <div className="py-0.5">{col.term}</div>
                   <div className="border-t border-white/20 px-1 py-0.5 text-[9px] font-normal leading-tight">
                     <span className="opacity-70">rec </span>{rec}u
@@ -315,7 +323,7 @@ export default function FlowchartGrid({
                   );
                 }
                 const status = getCourseStatus(
-                  course, completedNums, inProgressNums, inferredNums, flowchart.courses, geAreaMap
+                  course, completedNums, inProgressNums, inferredNums, knownNums, courseLookup, geAreaMap
                 );
                 const allNums = [course.course_number, ...course.quarter_equivalents];
                 const checked = course.is_placeholder && course.category === "ge"
@@ -334,6 +342,9 @@ export default function FlowchartGrid({
                   : hasAnyCourseNumber(inProgressNums, allNums);
                 const plannedCourseNumber = course.is_placeholder && course.category === "ge"
                   ? session.plannedGECourses?.[course.course_number]
+                  : undefined;
+                const activeGECourseNumber = course.is_placeholder && course.category === "ge"
+                  ? (geAreaMap[course.course_number] ?? []).find((c) => completedNums.has(norm(c)) || inProgressNums.has(norm(c)))
                   : undefined;
                 return (
                   <div
@@ -355,6 +366,7 @@ export default function FlowchartGrid({
                       checked={checked}
                       inProgressChecked={inProgressChecked}
                       plannedCourseNumber={plannedCourseNumber}
+                      activeGECourseNumber={activeGECourseNumber}
                       onToggleCompleted={() => onToggleCourseCompleted(course)}
                       onToggleInProgress={() => onToggleCourseInProgress(course)}
                       onClick={() => onCourseClick(course, status)}

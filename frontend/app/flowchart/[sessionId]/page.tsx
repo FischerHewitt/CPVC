@@ -346,7 +346,7 @@ export default function FlowchartPage() {
             </select>
           </>
         )}
-        <div className="ml-auto text-white font-bold text-sm">CAL POLY</div>
+        <div className="ml-auto text-white font-bold text-sm">Mustang Blueprints</div>
       </header>
 
       <main className="flex-1 p-6">
@@ -409,6 +409,11 @@ export default function FlowchartPage() {
         onAreaLoaded={rememberGEAreaCourses}
         onClose={() => setSelectedGECourse(null)}
       />
+
+      {/* Disclaimer */}
+      <footer className="px-6 py-3 text-center text-xs text-gray-400 border-t border-gray-100 bg-white">
+        Mustang Blueprints is an independent student project — <strong>not affiliated with Cal Poly</strong>. Always verify your plan with your academic advisor.
+      </footer>
 
       <ManualCourseChecklist
         open={checklistOpen}
