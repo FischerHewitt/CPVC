@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
 
-from main import app
+from main import _allowed_frontend_origins, app
 
 
 client = TestClient(app)
@@ -11,6 +11,18 @@ def test_health_check():
 
     assert response.status_code == 200
     assert response.json() == {"status": "ok"}
+
+
+def test_allowed_frontend_origins_support_comma_separated_env(monkeypatch):
+    monkeypatch.setenv(
+        "FRONTEND_URLS",
+        "https://mustang-blueprints.vercel.app, https://blueprints.example.edu/",
+    )
+
+    assert _allowed_frontend_origins() == [
+        "https://mustang-blueprints.vercel.app",
+        "https://blueprints.example.edu",
+    ]
 
 
 def test_list_majors_includes_available_flowcharts():
@@ -25,6 +37,8 @@ def test_list_majors_includes_available_flowcharts():
     assert {"code": "CE", "name": "Civil Engineering"} in majors
     assert {"code": "ME", "name": "Mechanical Engineering"} in majors
     assert {"code": "AD", "name": "Art and Design"} in majors
+    assert {"code": "POLS", "name": "Political Science"} in majors
+    assert {"code": "ENGL", "name": "English"} in majors
 
 
 def test_get_flowchart_is_case_insensitive_and_has_expected_shape():
@@ -68,6 +82,16 @@ def test_new_engineering_flowcharts_are_available():
     assert ad_response.json()["major"] == "Art and Design"
     assert ad_response.json()["total_units"] == 120
     assert ad_response.json()["courses"]
+
+
+def test_get_english_flowchart_is_available():
+    response = client.get("/api/flowchart/ENGL")
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body["major"] == "English"
+    assert body["total_units"] == 120
+    assert body["courses"]
 
 
 def test_get_concentrations_for_major():
@@ -127,11 +151,26 @@ def test_get_mechanical_engineering_concentrations_for_major():
     assert any(c["id"] == "manufacturing" for c in concentrations)
 
 
+def test_get_political_science_concentrations_for_major():
+    response = client.get("/api/flowchart/POLS/concentrations")
+
+    assert response.status_code == 200
+    concentrations = response.json()["concentrations"]
+    assert concentrations[0]["id"] == "none"
+    assert any(c["id"] == "global_politics" for c in concentrations)
+    assert any(c["id"] == "pre_law" for c in concentrations)
+    assert any(c["id"] == "us_politics" for c in concentrations)
+    assert any(c["id"] == "individualized" for c in concentrations)
+
+
 def test_get_concentrations_returns_empty_list_for_major_without_overrides():
     response = client.get("/api/flowchart/SE/concentrations")
+    english_response = client.get("/api/flowchart/ENGL/concentrations")
 
     assert response.status_code == 200
     assert response.json() == {"concentrations": []}
+    assert english_response.status_code == 200
+    assert english_response.json() == {"concentrations": []}
 
 
 def test_get_flowchart_returns_404_for_unknown_major():

@@ -87,8 +87,11 @@ export default function FlowchartPage() {
         .then((fc) => {
           if (!cancelled) setFlowchart(fc);
         })
-        .catch(() => {
-          if (!cancelled) setError("Could not load flowchart. Make sure the backend is running.");
+        .catch((e) => {
+          console.error(e);
+          if (!cancelled) {
+            setError("Could not load flowchart from the deployed backend. Check the API deployment and NEXT_PUBLIC_API_URL.");
+          }
         });
     }
 

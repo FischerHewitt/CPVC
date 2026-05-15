@@ -27,10 +27,10 @@ _DEFERRED_LAYOUT_TITLE_PARTS = (
 
 
 def _layout_bucket(course: dict) -> int:
-    title = course["title"].lower()
+    title = course.get("title", "").lower()
     if any(part in title for part in _DEFERRED_LAYOUT_TITLE_PARTS):
         return 2
-    return _CATEGORY_LAYOUT_ORDER.get(course["category"], 5)
+    return _CATEGORY_LAYOUT_ORDER.get(course.get("category", "major"), 5)
 
 
 def sort_course_rows_by_category(
@@ -96,7 +96,20 @@ def align_prereq_chains(courses: list[dict]) -> list[dict]:
                 # Primary prereq: the one that appears latest (highest grid_col)
                 primary = max(in_data, key=lambda p: p["grid_col"])
                 preferred = assigned.get(primary["id"], primary["grid_row"])
-                chained.append((course, preferred))
+                # Only chain if aligning moves the course up (or keeps it in place).
+                # If the preferred row is below the course's current row, the prereq
+                # was bumped by a conflict in an earlier column; aligning here would
+                # push this course down past its category peers, breaking visual order.
+                course_bucket = _layout_bucket(course)
+                crosses_higher_priority_course = any(
+                    _layout_bucket(other) < course_bucket
+                    and preferred <= other["grid_row"] < course["grid_row"]
+                    for other in col_courses
+                )
+                if preferred <= course["grid_row"] and not crosses_higher_priority_course:
+                    chained.append((course, preferred))
+                else:
+                    free.append(course)
             else:
                 free.append(course)
 

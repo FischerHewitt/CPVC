@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException
 from data.flowcharts import FLOWCHARTS
 from data.concentrations import CONCENTRATIONS
 from services.inference import infer_completed
-from services.layout import sort_course_rows_by_category
+from services.layout import sort_course_rows_by_category, align_prereq_chains
 
 router = APIRouter()
 
@@ -19,10 +19,12 @@ _PINNED_LAYOUT_ROWS = {
 _ALIGNED_FLOWCHARTS = {
     key: {
         **fc,
-        "courses": sort_course_rows_by_category(
-            fc["courses"],
-            column_count=len(fc["columns"]),
-            pinned_rows=_PINNED_LAYOUT_ROWS.get(key),
+        "courses": align_prereq_chains(
+            sort_course_rows_by_category(
+                fc["courses"],
+                column_count=len(fc["columns"]),
+                pinned_rows=_PINNED_LAYOUT_ROWS.get(key),
+            )
         ),
     }
     for key, fc in FLOWCHARTS.items()

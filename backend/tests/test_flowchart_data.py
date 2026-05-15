@@ -100,6 +100,47 @@ def test_align_prereq_chains_placeholder_course_participates_in_chain():
     assert result["ph"]["grid_row"] == result["base"]["grid_row"]
 
 
+def test_align_prereq_chains_does_not_move_support_into_major_band():
+    courses = [
+        {
+            **_make_course("m1", "CPE 3160", 5, 0, prereqs=["CPE 2301"]),
+            "title": "Microcontrollers and Embedded Applications",
+            "category": "major",
+        },
+        {
+            **_make_course("m2", "CPE 4464", 5, 1, prereqs=["CPE 3300"]),
+            "title": "Introduction to Computer Networks",
+            "category": "major",
+        },
+        {
+            **_make_course("s1", "STAT 3210", 5, 2, prereqs=["MATH 1262"]),
+            "title": "Engineering Statistics",
+            "category": "support",
+        },
+        {
+            **_make_course("p1", "CPE 2301", 4, 0),
+            "title": "Computer Design and Assembly Language Programming",
+            "category": "major",
+        },
+        {
+            **_make_course("p2", "CPE 3300", 4, 0),
+            "title": "Computer Architecture",
+            "category": "major",
+        },
+        {
+            **_make_course("p3", "MATH 1262", 1, 1),
+            "title": "Calculus II",
+            "category": "support",
+        },
+    ]
+
+    result = {c["id"]: c for c in align_prereq_chains(courses)}
+
+    assert result["m1"]["grid_row"] == 0
+    assert result["m2"]["grid_row"] == 1
+    assert result["s1"]["grid_row"] == 2
+
+
 def test_align_prereq_chains_idempotent():
     courses = [
         _make_course("c1", "MATH 1261", 0, 0),
@@ -331,6 +372,86 @@ def test_art_and_design_flowchart_contains_expected_core_and_ge_sequence():
     assert ad_courses["GE 5A"]["category"] == "ge"
     assert ad_courses["GE 5C"]["units"] == 1
     assert ad_courses["GE UD-2/5"]["category"] == "ge"
+
+
+def test_political_science_flowchart_contains_expected_core_and_concentrations():
+    pols_courses = {course["course_number"]: course for course in FLOWCHARTS["POLS"]["courses"]}
+    pols_concentrations = CONCENTRATIONS["POLS"]
+    concentration_ids = {concentration["id"] for concentration in pols_concentrations}
+
+    assert FLOWCHARTS["POLS"]["total_units"] == 120
+    assert pols_courses["POLS 1112"]["title"] == "U.S. and California Government"
+    assert pols_courses["POLS 3359"]["title"] == "Research Design"
+    assert pols_courses["POLS 3361"]["prerequisites"] == ["POLS 3359"]
+    assert pols_courses["POLS 4462"]["prerequisites"] == ["POLS 4461"]
+    assert pols_courses["STAT 1110"]["category"] == "support"
+    assert pols_courses["GE UD-3"]["category"] == "ge"
+    assert {"none", "global_politics", "pre_law", "us_politics", "individualized"} <= concentration_ids
+
+    pre_law = next(c for c in pols_concentrations if c["id"] == "pre_law")
+    assert pre_law["slot_overrides"]["POLS_CON_JRF1"]["course_number"] == "POLS 2245"
+
+
+def test_english_flowchart_contains_expected_core_and_catalog_buckets():
+    english_courses = {course["course_number"]: course for course in FLOWCHARTS["ENGL"]["courses"]}
+
+    assert FLOWCHARTS["ENGL"]["total_units"] == 120
+    assert english_courses["ENGL 1101"]["title"] == "Introduction to English Studies"
+    assert english_courses["ENGL GE 3B"]["title"] == "Literature Elective"
+    assert english_courses["Language 1101"]["category"] == "support"
+    assert english_courses["ENGL UD GWR"]["title"] == "Upper-Division English GWR Elective"
+    assert english_courses["ENGL Diversity"]["title"] == "4000-Level Diversity Elective"
+    assert english_courses["ENGL 4461"]["title"] == "Senior Project"
+    assert english_courses["GE UD-3"]["category"] == "ge"
+    assert "ENGL" not in CONCENTRATIONS
+
+
+def test_psychology_flowchart_contains_expected_core_sequence():
+    psy_courses = {course["course_number"]: course for course in FLOWCHARTS["PSY"]["courses"]}
+
+    assert FLOWCHARTS["PSY"]["total_units"] == 120
+    assert psy_courses["PSY 1102"]["title"] == "Orientation to the Psychology Major"
+    assert psy_courses["PSY 2201"]["category"] == "major"
+    assert psy_courses["STAT 1110"]["category"] == "support"
+    assert psy_courses["PSY 2229"]["prerequisites"] == ["PSY 2201", "STAT 1110"]
+    assert psy_courses["PSY 3333"]["prerequisites"] == ["PSY 2229", "STAT 1110"]
+    assert psy_courses["PSY 4461"]["prerequisites"] == ["PSY 2229"]
+    assert psy_courses["PSY 4462"]["prerequisites"] == ["PSY 4461"]
+    assert psy_courses["PSY 4449/4454"]["prerequisites"] == ["PSY 4448/4453"]
+
+
+def test_psychology_research_methods_chain_spans_correct_semesters():
+    psy_courses = {course["course_number"]: course for course in FLOWCHARTS["PSY"]["courses"]}
+
+    assert psy_courses["PSY 2229"]["grid_col"] == 1   # Freshman Spring
+    assert psy_courses["PSY 3333"]["grid_col"] == 3   # Sophomore Spring
+    assert psy_courses["PSY 4461"]["grid_col"] == 6   # Senior Fall
+    assert psy_courses["PSY 4462"]["grid_col"] == 7   # Senior Spring
+
+
+def test_psychology_elective_placeholders_are_present():
+    psy_by_id = {course["id"]: course for course in FLOWCHARTS["PSY"]["courses"]}
+
+    assert "PSY_FOUND" in psy_by_id
+    assert "PSY_SOC_PERS" in psy_by_id
+    assert "PSY_MENTH" in psy_by_id
+    assert "PSY_COGN" in psy_by_id
+    assert "PSY_INTERN1" in psy_by_id
+    assert "PSY_INTERN2" in psy_by_id
+
+    assert psy_by_id["PSY_FOUND"]["is_placeholder"] is True
+    assert psy_by_id["PSY_INTERN1"]["is_placeholder"] is True
+
+
+def test_psychology_quarter_equivalents_are_mapped():
+    psy_courses = {course["course_number"]: course for course in FLOWCHARTS["PSY"]["courses"]}
+
+    assert "PSY 201" in psy_courses["PSY 2201"]["quarter_equivalents"]
+    assert "PSY 329" in psy_courses["PSY 2229"]["quarter_equivalents"]
+    assert "PSY 340" in psy_courses["PSY 2240"]["quarter_equivalents"]
+    assert "PSY 333" in psy_courses["PSY 3333"]["quarter_equivalents"]
+    assert "PSY 461" in psy_courses["PSY 4461"]["quarter_equivalents"]
+    assert "PSY 462" in psy_courses["PSY 4462"]["quarter_equivalents"]
 
 
 def test_concentration_overrides_target_existing_slots_and_keep_course_shape():

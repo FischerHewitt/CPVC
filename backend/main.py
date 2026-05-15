@@ -11,6 +11,11 @@ from routers import transcript, flowchart, professors, ge, sessions, courses
 from services.polyratings import warm_cache
 
 
+def _allowed_frontend_origins() -> list[str]:
+    raw_origins = os.getenv("FRONTEND_URLS") or os.getenv("FRONTEND_URL") or "http://localhost:3000"
+    return [origin.strip().rstrip("/") for origin in raw_origins.split(",") if origin.strip()]
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Pre-warm PolyRatings cache in the background so first request is instant
@@ -22,7 +27,7 @@ app = FastAPI(title="CPVC API", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[os.getenv("FRONTEND_URL", "http://localhost:3000")],
+    allow_origins=_allowed_frontend_origins(),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

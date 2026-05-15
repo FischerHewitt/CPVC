@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import { getMajors, parseTranscript, getConcentrations, syncSession } from "@/lib/api";
+import { getMajors, parseTranscript, getConcentrations, getFlowchart, syncSession } from "@/lib/api";
 import { saveSession } from "@/lib/session";
 import type { MajorOption, Concentration } from "@/lib/types";
 
@@ -14,6 +14,9 @@ const FALLBACK_MAJORS: MajorOption[] = [
   { code: "CE", name: "Civil Engineering" },
   { code: "ME", name: "Mechanical Engineering" },
   { code: "AD", name: "Art and Design" },
+  { code: "POLS", name: "Political Science" },
+  { code: "PSY", name: "Psychology" },
+  { code: "ENGL", name: "English" },
 ];
 
 export default function HomePage() {
@@ -134,7 +137,21 @@ export default function HomePage() {
     }
   };
 
-  const onBrowse = () => {
+  const onBrowse = async () => {
+    if (loading) return;
+    setLoading(true);
+    setError(null);
+    setProgress(35);
+    try {
+      await getFlowchart(majorCode);
+    } catch (e) {
+      console.error(e);
+      setError("Could not reach the deployed backend for this major. Check the API deployment and NEXT_PUBLIC_API_URL.");
+      setProgress(0);
+      setLoading(false);
+      return;
+    }
+
     const sessionId = crypto.randomUUID();
     const majorName = majors.find((m) => m.code === majorCode)?.name ?? majorCode;
     saveSession({
@@ -147,6 +164,7 @@ export default function HomePage() {
       plannedGECourses: {},
       concentration: concentration !== "none" ? concentration : undefined,
     });
+    setProgress(100);
     router.push(`/flowchart/${sessionId}`);
   };
 

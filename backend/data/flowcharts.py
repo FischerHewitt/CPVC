@@ -458,6 +458,195 @@ AD_FLOWCHART: list[Course] = [
 ]
 
 
+# ─────────────────────────────────────────────────────────────────────────────
+# POLITICAL SCIENCE (BA) — Concentration Not Yet Declared (120 units)
+# Source: catalog.calpoly.edu/liberal-arts/political-science/political-science-ba/
+# ─────────────────────────────────────────────────────────────────────────────
+POLS_FLOWCHART: list[Course] = [
+    # ── FRESHMAN FALL ─────────────────────────────────────────────────────────
+    {"id": "POLS1112",       "course_number": "POLS 1112", "title": "U.S. and California Government",            "units": 3, "category": "major", "grid_col": 0, "grid_row": 0, "prerequisites": [], "quarter_equivalents": ["POLS 112"], "is_placeholder": False},
+    {"id": "POLS1180",       "course_number": "POLS 1180", "title": "Political Inquiry",                        "units": 3, "category": "major", "grid_col": 0, "grid_row": 1, "prerequisites": [], "quarter_equivalents": ["POLS 180"], "is_placeholder": False},
+    {"id": "POLS2229",       "course_number": "POLS 2229", "title": "Introduction to Comparative Politics",      "units": 3, "category": "major", "grid_col": 0, "grid_row": 2, "prerequisites": [], "quarter_equivalents": ["POLS 229"], "is_placeholder": False},
+    {"id": "POLS_GE1A",      "course_number": "GE 1A",     "title": "Written Communication",                    "units": 3, "category": "ge",    "grid_col": 0, "grid_row": 3, "prerequisites": [], "quarter_equivalents": ["ENGL 134", "ENGL 1340"], "is_placeholder": True},
+    {"id": "POLS_GE1C",      "course_number": "GE 1C",     "title": "Oral Communication",                       "units": 3, "category": "ge",    "grid_col": 0, "grid_row": 4, "prerequisites": [], "quarter_equivalents": ["COMS 101"], "is_placeholder": True},
+
+    # ── FRESHMAN SPRING ───────────────────────────────────────────────────────
+    {"id": "POLS2225",       "course_number": "POLS 2225", "title": "Introduction to International Relations",   "units": 3, "category": "major",   "grid_col": 1, "grid_row": 0, "prerequisites": [], "quarter_equivalents": ["POLS 225"], "is_placeholder": False},
+    {"id": "POLS2230",       "course_number": "POLS 2230", "title": "Basic Concepts of Political Thought",       "units": 3, "category": "major",   "grid_col": 1, "grid_row": 1, "prerequisites": [], "quarter_equivalents": ["POLS 230"], "is_placeholder": False},
+    {"id": "POLS_SUPPORT4B", "course_number": "Support 4B", "title": "Social and Behavioral Sciences Support",   "units": 3, "category": "support", "grid_col": 1, "grid_row": 2, "prerequisites": [], "quarter_equivalents": ["ANT 201", "GEOG 150", "HIST 110", "HIST 111", "SOC 110"], "is_placeholder": True},
+    {"id": "POLS_GE1B",      "course_number": "GE 1B",     "title": "Critical Thinking",                        "units": 3, "category": "ge",      "grid_col": 1, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "POLS_GE3A",      "course_number": "GE 3A",     "title": "Arts",                                     "units": 3, "category": "ge",      "grid_col": 1, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+
+    # ── SOPHOMORE FALL ────────────────────────────────────────────────────────
+    {"id": "POLS_STAT1110",  "course_number": "STAT 1110", "title": "Applied Statistical Concepts and Methods", "units": 3, "category": "support", "grid_col": 2, "grid_row": 0, "prerequisites": [], "quarter_equivalents": ["STAT 217"], "is_placeholder": False},
+    {"id": "POLS_UD1",       "course_number": "POLS UD",   "title": "3000-4000 Level POLS Elective",            "units": 3, "category": "major",   "grid_col": 2, "grid_row": 1, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "POLS_GE3B",      "course_number": "GE 3B",     "title": "Humanities",                               "units": 3, "category": "ge",      "grid_col": 2, "grid_row": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "POLS_GE5A",      "course_number": "GE 5A",     "title": "Physical Sciences",                        "units": 3, "category": "ge",      "grid_col": 2, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "POLS_GE6",       "course_number": "GE 6",      "title": "Ethnic Studies",                           "units": 3, "category": "ge",      "grid_col": 2, "grid_row": 4, "prerequisites": [], "quarter_equivalents": ["ES 253", "ES 1112"], "is_placeholder": True},
+
+    # ── SOPHOMORE SPRING ──────────────────────────────────────────────────────
+    {"id": "POLS_UD2",       "course_number": "POLS UD 2", "title": "3000-4000 Level POLS Elective",            "units": 3, "category": "major",         "grid_col": 3, "grid_row": 0, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "POLS_UD3",       "course_number": "POLS UD 3", "title": "3000-4000 Level POLS Elective",            "units": 3, "category": "major",         "grid_col": 3, "grid_row": 1, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "POLS_GE5B",      "course_number": "GE 5B",     "title": "Life Sciences",                            "units": 3, "category": "ge",            "grid_col": 3, "grid_row": 2, "prerequisites": [], "quarter_equivalents": ["BIO 111", "BIO 1111"], "is_placeholder": True},
+    {"id": "POLS_GE5C",      "course_number": "GE 5C",     "title": "Laboratory",                               "units": 1, "category": "ge",            "grid_col": 3, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "POLS_FREE1",     "course_number": "Free",      "title": "Free Elective",                            "units": 3, "category": "concentration", "grid_col": 3, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+
+    # ── JUNIOR FALL ───────────────────────────────────────────────────────────
+    {"id": "POLS3359",       "course_number": "POLS 3359", "title": "Research Design",                          "units": 3, "category": "major",         "grid_col": 4, "grid_row": 0, "prerequisites": [], "quarter_equivalents": ["POLS 359"], "is_placeholder": False},
+    {"id": "POLS_DEI",       "course_number": "POLS DEI",  "title": "Diversity, Equity, and Inclusion Elective", "units": 3, "category": "major",         "grid_col": 4, "grid_row": 1, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "POLS_CON_JRF1",  "course_number": "Conc.",     "title": "Concentration Course",                     "units": 3, "category": "concentration", "grid_col": 4, "grid_row": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "POLS_CON_JRF2",  "course_number": "Conc.",     "title": "Concentration Course",                     "units": 3, "category": "concentration", "grid_col": 4, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "POLS_GE_UD25",   "course_number": "GE UD-2/5", "title": "Upper-Div Math or Science",                 "units": 3, "category": "ge",            "grid_col": 4, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+
+    # ── JUNIOR SPRING ─────────────────────────────────────────────────────────
+    {"id": "POLS3361",       "course_number": "POLS 3361", "title": "Data Analysis in Political Science",        "units": 3, "category": "major",         "grid_col": 5, "grid_row": 0, "prerequisites": ["POLS 3359"], "quarter_equivalents": ["POLS 361"], "is_placeholder": False},
+    {"id": "POLS_UD4",       "course_number": "POLS UD 4", "title": "3000-4000 Level POLS Elective",            "units": 3, "category": "major",         "grid_col": 5, "grid_row": 1, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "POLS_CON_JRS1",  "course_number": "Conc.",     "title": "Concentration Course",                     "units": 3, "category": "concentration", "grid_col": 5, "grid_row": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "POLS_CON_JRS2",  "course_number": "Conc.",     "title": "Concentration Course",                     "units": 3, "category": "concentration", "grid_col": 5, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "POLS_GE_UD3",    "course_number": "GE UD-3",   "title": "Upper-Division Arts and Humanities",        "units": 3, "category": "ge",            "grid_col": 5, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+
+    # ── SENIOR FALL ───────────────────────────────────────────────────────────
+    {"id": "POLS4461",       "course_number": "POLS 4461", "title": "Senior Project I",                         "units": 2, "category": "major",         "grid_col": 6, "grid_row": 0, "prerequisites": ["POLS 3359"], "quarter_equivalents": ["POLS 461"], "is_placeholder": False},
+    {"id": "POLS_CON_SRF1",  "course_number": "Conc.",     "title": "Concentration Course",                     "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 1, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "POLS_CON_SRF2",  "course_number": "Conc.",     "title": "Concentration Course",                     "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "POLS_FREE2",     "course_number": "Free 2",    "title": "Free Elective",                            "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "POLS_FREE3",     "course_number": "Free 3",    "title": "Free Elective",                            "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+
+    # ── SENIOR SPRING ─────────────────────────────────────────────────────────
+    {"id": "POLS4462",       "course_number": "POLS 4462", "title": "Senior Project II",                        "units": 2, "category": "major",         "grid_col": 7, "grid_row": 0, "prerequisites": ["POLS 4461"], "quarter_equivalents": ["POLS 462"], "is_placeholder": False},
+    {"id": "POLS_CON_SRS1",  "course_number": "Conc.",     "title": "Concentration Course",                     "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 1, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "POLS_FREE4",     "course_number": "Free 4",    "title": "Free Elective",                            "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "POLS_FREE5",     "course_number": "Free 5",    "title": "Free Elective",                            "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "POLS_FREE6",     "course_number": "Free 6",    "title": "Free Elective",                            "units": 4, "category": "concentration", "grid_col": 7, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+]
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# PSYCHOLOGY (BS) — General Curriculum (120 units)
+# Source: catalog.calpoly.edu/liberal-arts/psychology-child-development/psychology-bs/
+# ─────────────────────────────────────────────────────────────────────────────
+PSY_FLOWCHART: list[Course] = [
+    # ── FRESHMAN FALL ─────────────────────────────────────────────────────────
+    {"id": "PSY1102",      "course_number": "PSY 1102",  "title": "Orientation to the Psychology Major",         "units": 2, "category": "major",   "grid_col": 0, "grid_row": 0, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "PSY2201",      "course_number": "PSY 2201",  "title": "Introductory Psychology",                    "units": 3, "category": "major",   "grid_col": 0, "grid_row": 1, "prerequisites": [], "quarter_equivalents": ["PSY 201"], "is_placeholder": False},
+    {"id": "PSY_STAT1110", "course_number": "STAT 1110", "title": "Applied Statistical Concepts and Methods",   "units": 3, "category": "support", "grid_col": 0, "grid_row": 2, "prerequisites": [], "quarter_equivalents": ["STAT 217"], "is_placeholder": False},
+    {"id": "PSY_GE1A",     "course_number": "GE 1A",     "title": "Written Communication",                      "units": 3, "category": "ge",      "grid_col": 0, "grid_row": 3, "prerequisites": [], "quarter_equivalents": ["ENGL 134", "ENGL 1340"], "is_placeholder": True},
+    {"id": "PSY_GE1C",     "course_number": "GE 1C",     "title": "Oral Communication",                         "units": 3, "category": "ge",      "grid_col": 0, "grid_row": 4, "prerequisites": [], "quarter_equivalents": ["COMS 101"], "is_placeholder": True},
+
+    # ── FRESHMAN SPRING ───────────────────────────────────────────────────────
+    {"id": "PSY_FOUND",    "course_number": "PSY 2205/2252/2256", "title": "Foundation Course",                 "units": 3, "category": "major",   "grid_col": 1, "grid_row": 0, "prerequisites": ["PSY 2201"], "quarter_equivalents": ["PSY 305", "PSY 252", "PSY 256"], "is_placeholder": True},
+    {"id": "PSY2240",      "course_number": "PSY 2240",  "title": "Biopsychology",                              "units": 3, "category": "major",   "grid_col": 1, "grid_row": 1, "prerequisites": [], "quarter_equivalents": ["PSY 340"], "is_placeholder": False},
+    {"id": "PSY2229",      "course_number": "PSY 2229",  "title": "Research Methods in Psychology",             "units": 3, "category": "major",   "grid_col": 1, "grid_row": 2, "prerequisites": ["PSY 2201", "STAT 1110"], "quarter_equivalents": ["PSY 329"], "is_placeholder": False},
+    {"id": "PSY_GE1B",     "course_number": "GE 1B",     "title": "Critical Thinking",                          "units": 3, "category": "ge",      "grid_col": 1, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "PSY_GE3A",     "course_number": "GE 3A",     "title": "Arts",                                       "units": 3, "category": "ge",      "grid_col": 1, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+
+    # ── SOPHOMORE FALL ────────────────────────────────────────────────────────
+    {"id": "PSY_SOC_PERS", "course_number": "PSY Soc/Per", "title": "Social and Personality Elective",          "units": 4, "category": "major",   "grid_col": 2, "grid_row": 0, "prerequisites": ["PSY 2201"], "quarter_equivalents": ["PSY 302", "PSY 324", "PSY 352", "PSY 360", "PSY 419", "PSY 465", "PSY 475"], "is_placeholder": True},
+    {"id": "PSY3372",      "course_number": "PSY 3372",  "title": "Multicultural Psychology",                   "units": 4, "category": "major",   "grid_col": 2, "grid_row": 1, "prerequisites": ["PSY 2201"], "quarter_equivalents": ["PSY 372"], "is_placeholder": False},
+    {"id": "PSY_GE3B",     "course_number": "GE 3B",     "title": "Humanities",                                 "units": 3, "category": "ge",      "grid_col": 2, "grid_row": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "PSY_GE4A",     "course_number": "GE 4A",     "title": "American Institutions",                      "units": 3, "category": "ge",      "grid_col": 2, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "PSY_GE5A",     "course_number": "GE 5A",     "title": "Physical Sciences",                          "units": 3, "category": "ge",      "grid_col": 2, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+
+    # ── SOPHOMORE SPRING ──────────────────────────────────────────────────────
+    {"id": "PSY_MENTH",    "course_number": "PSY Mnt/Hlt", "title": "Mental and Physical Health Elective",      "units": 4, "category": "major",   "grid_col": 3, "grid_row": 0, "prerequisites": ["PSY 2201"], "quarter_equivalents": ["PSY 320", "PSY 356", "PSY 370", "PSY 405", "PSY 460"], "is_placeholder": True},
+    {"id": "PSY3333",      "course_number": "PSY 3333",  "title": "Advanced Research Methods",                  "units": 4, "category": "major",   "grid_col": 3, "grid_row": 1, "prerequisites": ["PSY 2229", "STAT 1110"], "quarter_equivalents": ["PSY 333"], "is_placeholder": False},
+    {"id": "PSY_GE5B",     "course_number": "GE 5B",     "title": "Life Sciences",                              "units": 3, "category": "ge",      "grid_col": 3, "grid_row": 2, "prerequisites": [], "quarter_equivalents": ["BIO 111", "BIO 1111"], "is_placeholder": True},
+    {"id": "PSY_GE5C",     "course_number": "GE 5C",     "title": "Laboratory",                                 "units": 1, "category": "ge",      "grid_col": 3, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "PSY_GE6",      "course_number": "GE 6",      "title": "Ethnic Studies",                             "units": 3, "category": "ge",      "grid_col": 3, "grid_row": 4, "prerequisites": [], "quarter_equivalents": ["ES 253", "ES 1112"], "is_placeholder": True},
+
+    # ── JUNIOR FALL ───────────────────────────────────────────────────────────
+    {"id": "PSY_COGN",     "course_number": "PSY Cogn",  "title": "Cognitive Elective",                         "units": 4, "category": "major",   "grid_col": 4, "grid_row": 0, "prerequisites": ["PSY 2201"], "quarter_equivalents": ["PSY 357", "PSY 430", "PSY 440", "PSY 480"], "is_placeholder": True},
+    {"id": "PSY_DEI",      "course_number": "PSY DEI",   "title": "Diversity, Equity and Inclusion Course",     "units": 4, "category": "support", "grid_col": 4, "grid_row": 1, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "PSY_PROF",     "course_number": "Prof. Skills", "title": "Professional Skills Support Course",      "units": 3, "category": "support", "grid_col": 4, "grid_row": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "PSY_GE_UD4",   "course_number": "GE UD-4",   "title": "Upper-Div Social Sciences",                  "units": 3, "category": "ge",      "grid_col": 4, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "PSY_FREE1",    "course_number": "Free",      "title": "Free Elective",                              "units": 3, "category": "concentration", "grid_col": 4, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+
+    # ── JUNIOR SPRING ─────────────────────────────────────────────────────────
+    {"id": "PSY_ELEC1",    "course_number": "PSY 3000+", "title": "PSY Approved Elective",                      "units": 4, "category": "major",   "grid_col": 5, "grid_row": 0, "prerequisites": ["PSY 2201"], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "PSY_SCI",      "course_number": "UD Science", "title": "Upper-Division Science Course",             "units": 4, "category": "support", "grid_col": 5, "grid_row": 1, "prerequisites": [], "quarter_equivalents": ["BIO 332", "PSY 344"], "is_placeholder": True},
+    {"id": "PSY_GE_UD3",   "course_number": "GE UD-3",   "title": "Upper-Div Arts and Humanities",              "units": 3, "category": "ge",      "grid_col": 5, "grid_row": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "PSY_FREE2",    "course_number": "Free 2",    "title": "Free Elective",                              "units": 3, "category": "concentration", "grid_col": 5, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "PSY_FREE3",    "course_number": "Free 3",    "title": "Free Elective",                              "units": 3, "category": "concentration", "grid_col": 5, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+
+    # ── SENIOR FALL ───────────────────────────────────────────────────────────
+    {"id": "PSY_INTERN1",  "course_number": "PSY 4448/4453", "title": "Research or Fieldwork Internship I",     "units": 3, "category": "major",   "grid_col": 6, "grid_row": 0, "prerequisites": ["PSY 2229"], "quarter_equivalents": ["PSY 448", "PSY 453"], "is_placeholder": True},
+    {"id": "PSY4461",      "course_number": "PSY 4461",  "title": "Senior Project Seminar",                     "units": 2, "category": "major",   "grid_col": 6, "grid_row": 1, "prerequisites": ["PSY 2229"], "quarter_equivalents": ["PSY 461"], "is_placeholder": False},
+    {"id": "PSY_FREE4",    "course_number": "Free 4",    "title": "Free Elective",                              "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "PSY_FREE5",    "course_number": "Free 5",    "title": "Free Elective",                              "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "PSY_FREE6",    "course_number": "Free 6",    "title": "Free Elective",                              "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+
+    # ── SENIOR SPRING ─────────────────────────────────────────────────────────
+    {"id": "PSY_INTERN2",  "course_number": "PSY 4449/4454", "title": "Research or Fieldwork Internship II",    "units": 3, "category": "major",   "grid_col": 7, "grid_row": 0, "prerequisites": ["PSY 4448/4453"], "quarter_equivalents": ["PSY 449", "PSY 454"], "is_placeholder": True},
+    {"id": "PSY4462",      "course_number": "PSY 4462",  "title": "Senior Project",                             "units": 2, "category": "major",   "grid_col": 7, "grid_row": 1, "prerequisites": ["PSY 4461"], "quarter_equivalents": ["PSY 462"], "is_placeholder": False},
+    {"id": "PSY_ELEC2",    "course_number": "PSY 3000+ (2)", "title": "PSY Approved Elective",                  "units": 4, "category": "major",   "grid_col": 7, "grid_row": 2, "prerequisites": ["PSY 2201"], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "PSY_FREE7",    "course_number": "Free 7",    "title": "Free Elective",                              "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "PSY_FREE8",    "course_number": "Free 8",    "title": "Free Elective",                              "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+]
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ENGLISH (BA) — General Curriculum (120 units)
+# Source: catalog.calpoly.edu/liberal-arts/english/english-ba/
+# ─────────────────────────────────────────────────────────────────────────────
+ENGL_FLOWCHART: list[Course] = [
+    # ── FRESHMAN FALL ─────────────────────────────────────────────────────────
+    {"id": "ENGL1101",     "course_number": "ENGL 1101",    "title": "Introduction to English Studies",          "units": 4, "category": "major", "grid_col": 0, "grid_row": 0, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "ENGL_LIT_3B",  "course_number": "ENGL GE 3B",   "title": "Literature Elective",                      "units": 3, "category": "major", "grid_col": 0, "grid_row": 1, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "ENGL_GE1A",    "course_number": "GE 1A",        "title": "Written Communication",                    "units": 3, "category": "ge",    "grid_col": 0, "grid_row": 2, "prerequisites": [], "quarter_equivalents": ["ENGL 134", "ENGL 1340"], "is_placeholder": True},
+    {"id": "ENGL_GE1C",    "course_number": "GE 1C",        "title": "Oral Communication",                       "units": 3, "category": "ge",    "grid_col": 0, "grid_row": 3, "prerequisites": [], "quarter_equivalents": ["COMS 101"], "is_placeholder": True},
+    {"id": "ENGL_GE2",     "course_number": "GE 2",         "title": "Mathematics and Quantitative Reasoning",    "units": 3, "category": "ge",    "grid_col": 0, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+
+    # ── FRESHMAN SPRING ───────────────────────────────────────────────────────
+    {"id": "ENGL_LD1",     "course_number": "ENGL LD 1",    "title": "Lower-Division English Elective",          "units": 3, "category": "major",   "grid_col": 1, "grid_row": 0, "prerequisites": [], "quarter_equivalents": ["ENGL 2200", "ENGL 2201", "ENGL 2220", "ENGL 2222", "ENGL 2290"], "is_placeholder": True},
+    {"id": "ENGL_LD2",     "course_number": "ENGL LD 2",    "title": "Lower-Division English Elective",          "units": 3, "category": "major",   "grid_col": 1, "grid_row": 1, "prerequisites": [], "quarter_equivalents": ["ENGL 2202", "ENGL 2203", "ENGL 2234", "ENGL 2245", "ENGL 2250"], "is_placeholder": True},
+    {"id": "ENGL_LANG",    "course_number": "Language 1101", "title": "Elementary Language and Culture",         "units": 4, "category": "support", "grid_col": 1, "grid_row": 2, "prerequisites": [], "quarter_equivalents": ["CHIN 101", "FR 101", "GER 101", "ITAL 101", "JPNS 101", "SPAN 101"], "is_placeholder": True},
+    {"id": "ENGL_GE1B",    "course_number": "GE 1B",        "title": "Critical Thinking",                        "units": 3, "category": "ge",      "grid_col": 1, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "ENGL_GE3A",    "course_number": "GE 3A",        "title": "Arts",                                     "units": 3, "category": "ge",      "grid_col": 1, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+
+    # ── SOPHOMORE FALL ────────────────────────────────────────────────────────
+    {"id": "ENGL_LD3",     "course_number": "ENGL LD 3",    "title": "Lower-Division English Elective",          "units": 3, "category": "major",         "grid_col": 2, "grid_row": 0, "prerequisites": [], "quarter_equivalents": ["ENGL 2204", "ENGL 2205", "ENGL 2246", "ENGL 2270"], "is_placeholder": True},
+    {"id": "ENGL_LD4",     "course_number": "ENGL LD 4",    "title": "Lower-Division English Elective",          "units": 3, "category": "major",         "grid_col": 2, "grid_row": 1, "prerequisites": [], "quarter_equivalents": ["ENGL 2206", "ENGL 2207", "ENGL 2250", "ENGL 2290"], "is_placeholder": True},
+    {"id": "ENGL_GE4A",    "course_number": "GE 4A",        "title": "American Institutions",                    "units": 3, "category": "ge",            "grid_col": 2, "grid_row": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "ENGL_GE5A",    "course_number": "GE 5A",        "title": "Physical Sciences",                        "units": 3, "category": "ge",            "grid_col": 2, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "ENGL_FREE1",   "course_number": "Free",         "title": "Free Elective",                            "units": 3, "category": "concentration", "grid_col": 2, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+
+    # ── SOPHOMORE SPRING ──────────────────────────────────────────────────────
+    {"id": "ENGL_GWR",     "course_number": "ENGL UD GWR",  "title": "Upper-Division English GWR Elective",      "units": 4, "category": "major",         "grid_col": 3, "grid_row": 0, "prerequisites": [], "quarter_equivalents": ["ENGL 3611", "ENGL 3618", "ENGL 3625", "ENGL 3626"], "is_placeholder": True},
+    {"id": "ENGL_INT1",    "course_number": "ENGL 3000+ 1", "title": "Intermediate English Elective",            "units": 3, "category": "major",         "grid_col": 3, "grid_row": 1, "prerequisites": [], "quarter_equivalents": ["ENGL 3301", "ENGL 3302", "ENGL 3390", "ENGL 3601"], "is_placeholder": True},
+    {"id": "ENGL_GE4B",    "course_number": "GE 4B",        "title": "Social and Behavioral Sciences",           "units": 3, "category": "ge",            "grid_col": 3, "grid_row": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "ENGL_GE5B",    "course_number": "GE 5B",        "title": "Life Sciences",                            "units": 3, "category": "ge",            "grid_col": 3, "grid_row": 3, "prerequisites": [], "quarter_equivalents": ["BIO 111", "BIO 1111"], "is_placeholder": True},
+    {"id": "ENGL_FREE2",   "course_number": "Free 2",       "title": "Free Elective",                            "units": 3, "category": "concentration", "grid_col": 3, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+
+    # ── JUNIOR FALL ───────────────────────────────────────────────────────────
+    {"id": "ENGL_INT2",    "course_number": "ENGL 3000+ 2", "title": "Intermediate English Elective",            "units": 3, "category": "major",         "grid_col": 4, "grid_row": 0, "prerequisites": [], "quarter_equivalents": ["ENGL 3303", "ENGL 3304", "ENGL 3391", "ENGL 3602"], "is_placeholder": True},
+    {"id": "ENGL_INT3",    "course_number": "ENGL 3000+ 3", "title": "Intermediate English Elective",            "units": 3, "category": "major",         "grid_col": 4, "grid_row": 1, "prerequisites": [], "quarter_equivalents": ["ENGL 3305", "ENGL 3306", "ENGL 3395", "ENGL 3603"], "is_placeholder": True},
+    {"id": "ENGL_INT4",    "course_number": "ENGL 3000+ 4", "title": "Intermediate English Elective",            "units": 3, "category": "major",         "grid_col": 4, "grid_row": 2, "prerequisites": [], "quarter_equivalents": ["ENGL 3612", "ENGL 3613", "ENGL 3614", "ENGL 3627"], "is_placeholder": True},
+    {"id": "ENGL_GE5C",    "course_number": "GE 5C",        "title": "Laboratory",                               "units": 1, "category": "ge",            "grid_col": 4, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "ENGL_FREE3",   "course_number": "Free 3",       "title": "Free Elective",                            "units": 3, "category": "concentration", "grid_col": 4, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+
+    # ── JUNIOR SPRING ─────────────────────────────────────────────────────────
+    {"id": "ENGL_ADV1",    "course_number": "ENGL 4000+ 1", "title": "Advanced English Elective",                "units": 4, "category": "major",         "grid_col": 5, "grid_row": 0, "prerequisites": [], "quarter_equivalents": ["ENGL 4401", "ENGL 4402", "ENGL 4403", "ENGL 4424"], "is_placeholder": True},
+    {"id": "ENGL_ADV2",    "course_number": "ENGL 4000+ 2", "title": "Advanced English Elective",                "units": 4, "category": "major",         "grid_col": 5, "grid_row": 1, "prerequisites": [], "quarter_equivalents": ["ENGL 4427", "ENGL 4428", "ENGL 4439", "ENGL 4449"], "is_placeholder": True},
+    {"id": "ENGL_GE_UD25", "course_number": "GE UD-2/5",    "title": "Upper-Div Math or Science",                 "units": 3, "category": "ge",            "grid_col": 5, "grid_row": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "ENGL_GE_UD4",  "course_number": "GE UD-4",      "title": "Upper-Div Social Sciences",                 "units": 3, "category": "ge",            "grid_col": 5, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "ENGL_FREE4",   "course_number": "Free 4",       "title": "Free Elective",                            "units": 3, "category": "concentration", "grid_col": 5, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+
+    # ── SENIOR FALL ───────────────────────────────────────────────────────────
+    {"id": "ENGL_ADV3",    "course_number": "ENGL 4000+ 3", "title": "Advanced English Elective",                "units": 4, "category": "major",         "grid_col": 6, "grid_row": 0, "prerequisites": [], "quarter_equivalents": ["ENGL 4459", "ENGL 4469", "ENGL 4470", "ENGL 4474"], "is_placeholder": True},
+    {"id": "ENGL_DIVERS",  "course_number": "ENGL Diversity", "title": "4000-Level Diversity Elective",          "units": 4, "category": "major",         "grid_col": 6, "grid_row": 1, "prerequisites": [], "quarter_equivalents": ["ENGL 4427", "ENGL 4439", "ENGL 4449", "ENGL 4459", "ENGL 4495"], "is_placeholder": True},
+    {"id": "ENGL_GE6",     "course_number": "GE 6",         "title": "Ethnic Studies",                           "units": 3, "category": "ge",            "grid_col": 6, "grid_row": 2, "prerequisites": [], "quarter_equivalents": ["ES 253", "ES 1112"], "is_placeholder": True},
+    {"id": "ENGL_FREE5",   "course_number": "Free 5",       "title": "Free Elective",                            "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "ENGL_FREE6",   "course_number": "Free 6",       "title": "Free Elective",                            "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+
+    # ── SENIOR SPRING ─────────────────────────────────────────────────────────
+    {"id": "ENGL_ADV4",    "course_number": "ENGL 4000+ 4", "title": "Advanced English Elective",                "units": 4, "category": "major",         "grid_col": 7, "grid_row": 0, "prerequisites": [], "quarter_equivalents": ["ENGL 4475", "ENGL 4476", "ENGL 4487", "ENGL 4488"], "is_placeholder": True},
+    {"id": "ENGL4461",     "course_number": "ENGL 4461",    "title": "Senior Project",                           "units": 4, "category": "major",         "grid_col": 7, "grid_row": 1, "prerequisites": [], "quarter_equivalents": ["ENGL 461"], "is_placeholder": False},
+    {"id": "ENGL_GE_UD3",  "course_number": "GE UD-3",      "title": "Upper-Division Arts and Humanities",        "units": 3, "category": "ge",            "grid_col": 7, "grid_row": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "ENGL_FREE7",   "course_number": "Free 7",       "title": "Free Elective",                            "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "ENGL_FREE8",   "course_number": "Free 8",       "title": "Free Elective",                            "units": 4, "category": "concentration", "grid_col": 7, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+]
+
+
 COLUMN_LABELS = [
     {"year": "Freshman",  "term": "Fall"},
     {"year": "Freshman",  "term": "Spring"},
@@ -529,6 +718,9 @@ CE_FLOWCHART = _compact_rows_by_category(
 )
 ME_FLOWCHART = _compact_rows_by_category(ME_FLOWCHART)
 AD_FLOWCHART = _compact_rows_by_category(AD_FLOWCHART)
+POLS_FLOWCHART = _compact_rows_by_category(POLS_FLOWCHART)
+PSY_FLOWCHART = _compact_rows_by_category(PSY_FLOWCHART)
+ENGL_FLOWCHART = _compact_rows_by_category(ENGL_FLOWCHART)
 
 
 FLOWCHARTS = {
@@ -579,6 +771,27 @@ FLOWCHARTS = {
         "code": "AD",
         "total_units": 120,
         "courses": AD_FLOWCHART,
+        "columns": COLUMN_LABELS,
+    },
+    "POLS": {
+        "major": "Political Science",
+        "code": "POLS",
+        "total_units": 120,
+        "courses": POLS_FLOWCHART,
+        "columns": COLUMN_LABELS,
+    },
+    "PSY": {
+        "major": "Psychology",
+        "code": "PSY",
+        "total_units": 120,
+        "courses": PSY_FLOWCHART,
+        "columns": COLUMN_LABELS,
+    },
+    "ENGL": {
+        "major": "English",
+        "code": "ENGL",
+        "total_units": 120,
+        "courses": ENGL_FLOWCHART,
         "columns": COLUMN_LABELS,
     },
 }

@@ -1,6 +1,21 @@
 import type { Flowchart, Professor, GEArea, GEAreaMap, CourseInfo, TranscriptSession, MajorOption, Concentration } from "./types";
 
-const API = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
+const configuredApi = process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "");
+const API =
+  configuredApi ??
+  (typeof window !== "undefined" && window.location.hostname === "localhost"
+    ? "http://localhost:8000"
+    : "");
+
+function apiUrl(path: string): string {
+  return `${API}${path}`;
+}
+
+async function responseError(res: Response, action: string): Promise<Error> {
+  const body = await res.text();
+  const detail = body ? ` ${body}` : "";
+  return new Error(`${action} failed (${res.status}) at ${res.url}.${detail}`);
+}
 
 export async function parseTranscript(file: File, major: string): Promise<{
   session_id: string;
@@ -13,20 +28,20 @@ export async function parseTranscript(file: File, major: string): Promise<{
   const form = new FormData();
   form.append("file", file);
   form.append("major", major);
-  const res = await fetch(`${API}/api/transcript/parse`, { method: "POST", body: form });
-  if (!res.ok) throw new Error(await res.text());
+  const res = await fetch(apiUrl("/api/transcript/parse"), { method: "POST", body: form });
+  if (!res.ok) throw await responseError(res, "Transcript parsing");
   return res.json();
 }
 
 export async function getFlowchart(majorCode: string): Promise<Flowchart> {
-  const res = await fetch(`${API}/api/flowchart/${majorCode}`);
-  if (!res.ok) throw new Error(await res.text());
+  const res = await fetch(apiUrl(`/api/flowchart/${majorCode}`));
+  if (!res.ok) throw await responseError(res, `Loading ${majorCode} flowchart`);
   return res.json();
 }
 
 export async function getConcentrations(majorCode: string): Promise<Concentration[]> {
   try {
-    const res = await fetch(`${API}/api/flowchart/${majorCode}/concentrations`);
+    const res = await fetch(apiUrl(`/api/flowchart/${majorCode}/concentrations`));
     if (!res.ok) return [];
     const data = await res.json();
     return data.concentrations ?? [];
@@ -36,8 +51,8 @@ export async function getConcentrations(majorCode: string): Promise<Concentratio
 }
 
 export async function getMajors(): Promise<MajorOption[]> {
-  const res = await fetch(`${API}/api/flowchart/majors`);
-  if (!res.ok) throw new Error(await res.text());
+  const res = await fetch(apiUrl("/api/flowchart/majors"));
+  if (!res.ok) throw await responseError(res, "Loading majors");
   const data = await res.json();
   return data.majors ?? [];
 }
@@ -46,7 +61,7 @@ export async function inferPrerequisites(
   majorCode: string,
   completed: string[],
 ): Promise<string[]> {
-  const res = await fetch(`${API}/api/flowchart/${majorCode}/infer`, {
+  const res = await fetch(apiUrl(`/api/flowchart/${majorCode}/infer`), {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ completed }),
@@ -57,7 +72,7 @@ export async function inferPrerequisites(
 }
 
 export async function getProfessors(courseNumber: string): Promise<Professor[]> {
-  const res = await fetch(`${API}/api/professors/${encodeURIComponent(courseNumber)}`);
+  const res = await fetch(apiUrl(`/api/professors/${encodeURIComponent(courseNumber)}`));
   if (!res.ok) return [];
   const data = await res.json();
   return data.professors ?? [];
@@ -65,7 +80,7 @@ export async function getProfessors(courseNumber: string): Promise<Professor[]> 
 
 export async function getCourseInfo(courseNumber: string): Promise<CourseInfo | null> {
   try {
-    const res = await fetch(`${API}/api/courses/${encodeURIComponent(courseNumber)}`);
+    const res = await fetch(apiUrl(`/api/courses/${encodeURIComponent(courseNumber)}`));
     if (!res.ok) return null;
     return res.json();
   } catch {
@@ -75,7 +90,7 @@ export async function getCourseInfo(courseNumber: string): Promise<CourseInfo | 
 
 export async function getGEAreaMap(): Promise<GEAreaMap> {
   try {
-    const res = await fetch(`${API}/api/ge/all`);
+    const res = await fetch(apiUrl("/api/ge/all"));
     if (!res.ok) return {};
     return res.json();
   } catch {
@@ -84,7 +99,7 @@ export async function getGEAreaMap(): Promise<GEAreaMap> {
 }
 
 export async function getGECourses(areaId: string): Promise<GEArea | null> {
-  const res = await fetch(`${API}/api/ge/${encodeURIComponent(areaId)}`);
+  const res = await fetch(apiUrl(`/api/ge/${encodeURIComponent(areaId)}`));
   if (!res.ok) return null;
   return res.json();
 }
@@ -92,7 +107,7 @@ export async function getGECourses(areaId: string): Promise<GEArea | null> {
 /** Fetch a session from the backend DB. Returns null if not found. */
 export async function getSession(sessionId: string): Promise<TranscriptSession | null> {
   try {
-    const res = await fetch(`${API}/api/sessions/${sessionId}`);
+    const res = await fetch(apiUrl(`/api/sessions/${sessionId}`));
     if (!res.ok) return null;
     const data = await res.json();
     return {
@@ -124,7 +139,7 @@ export async function syncSession(
   },
 ): Promise<void> {
   try {
-    await fetch(`${API}/api/sessions/${sessionId}`, {
+    await fetch(apiUrl(`/api/sessions/${sessionId}`), {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updates),
