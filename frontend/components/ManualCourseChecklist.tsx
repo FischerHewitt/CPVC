@@ -11,7 +11,9 @@ interface Props {
   geAreaMap: GEAreaMap;
   plannedGECourses: Record<string, string>;
   onToggleCourse: (course: Course) => void;
+  onToggleCourseInProgress: (course: Course) => void;
   onToggleGEArea: (course: Course) => void;
+  onToggleGEAreaInProgress: (course: Course) => void;
   onClose: () => void;
 }
 
@@ -38,11 +40,13 @@ function norm(courseNumber: string) {
 }
 
 function courseIsCompleted(course: Course, completed: Set<string>) {
-  return [course.course_number, ...course.quarter_equivalents].some((num) => completed.has(num));
+  const normalizedCompleted = new Set(Array.from(completed, norm));
+  return [course.course_number, ...course.quarter_equivalents].some((num) => normalizedCompleted.has(norm(num)));
 }
 
 function courseIsInProgress(course: Course, inProgress: Set<string>) {
-  return [course.course_number, ...course.quarter_equivalents].some((num) => inProgress.has(num));
+  const normalizedInProgress = new Set(Array.from(inProgress, norm));
+  return [course.course_number, ...course.quarter_equivalents].some((num) => normalizedInProgress.has(norm(num)));
 }
 
 function geAreaCandidates(course: Course, geAreaMap: GEAreaMap) {
@@ -66,7 +70,9 @@ export default function ManualCourseChecklist({
   geAreaMap,
   plannedGECourses,
   onToggleCourse,
+  onToggleCourseInProgress,
   onToggleGEArea,
+  onToggleGEAreaInProgress,
   onClose,
 }: Props) {
   const [query, setQuery] = useState("");
@@ -108,6 +114,12 @@ export default function ManualCourseChecklist({
 
   const completedCount = selectableCourses.filter((course) => courseIsCompleted(course, completedSet)).length;
   const geCompletedCount = gePlaceholders.filter((course) => geAreaIsKnown(course, geAreaMap, completedSet)).length;
+  const inProgressCount = selectableCourses.filter((course) => {
+    return !courseIsCompleted(course, completedSet) && courseIsInProgress(course, inProgressSet);
+  }).length;
+  const geInProgressCount = gePlaceholders.filter((course) => {
+    return !geAreaIsKnown(course, geAreaMap, completedSet) && geAreaIsKnown(course, geAreaMap, inProgressSet);
+  }).length;
   const totalTracked = selectableCourses.length + gePlaceholders.length;
 
   if (!open) return null;
@@ -123,7 +135,7 @@ export default function ManualCourseChecklist({
               Manual Course Checklist
             </div>
             <div className="mt-0.5 text-xs text-gray-500">
-              {completedCount + geCompletedCount} completed · {totalTracked} tracked
+              {completedCount + geCompletedCount} completed · {inProgressCount + geInProgressCount} in progress · {totalTracked} tracked
             </div>
           </div>
           <button
@@ -172,22 +184,39 @@ export default function ManualCourseChecklist({
               const inProgressMatch = courseIsInProgress(course, inProgressSet);
 
               return (
-                <label
+                <div
                   key={course.id}
-                  className={`flex cursor-pointer items-start gap-3 rounded border px-3 py-3 transition-colors ${
+                  className={`flex items-start gap-3 rounded border px-3 py-3 transition-colors ${
                     checked
                       ? "border-green-200 bg-green-50"
-                      : "border-gray-200 bg-white hover:bg-gray-50"
+                      : inProgressMatch
+                        ? "border-blue-200 bg-blue-50"
+                        : "border-gray-200 bg-white hover:bg-gray-50"
                   }`}
                 >
-                  <input
-                    type="checkbox"
-                    checked={checked}
-                    onChange={() => onToggleCourse(course)}
-                    className="mt-0.5 h-4 w-4 accent-green-700"
-                    aria-label={checked ? `Mark ${course.course_number} incomplete` : `Mark ${course.course_number} completed`}
-                  />
-                  <span className="min-w-0">
+                  <div className="flex shrink-0 flex-col gap-2">
+                    <label className="flex items-center gap-1.5 text-[11px] font-semibold text-gray-600">
+                      <input
+                        type="checkbox"
+                        checked={checked}
+                        onChange={() => onToggleCourse(course)}
+                        className="h-4 w-4 accent-green-700"
+                        aria-label={checked ? `Mark ${course.course_number} incomplete` : `Mark ${course.course_number} completed`}
+                      />
+                      Done
+                    </label>
+                    <label className="flex items-center gap-1.5 text-[11px] font-semibold text-blue-700">
+                      <input
+                        type="checkbox"
+                        checked={inProgressMatch && !checked}
+                        onChange={() => onToggleCourseInProgress(course)}
+                        className="h-4 w-4 accent-blue-700"
+                        aria-label={inProgressMatch ? `Remove ${course.course_number} from in progress` : `Mark ${course.course_number} in progress`}
+                      />
+                      IP
+                    </label>
+                  </div>
+                  <span className="min-w-0 flex-1">
                     <span className="flex flex-wrap items-center gap-1.5">
                       <span className="text-sm font-bold text-gray-800">{course.course_number}</span>
                       {inProgressMatch && !checked && (
@@ -206,7 +235,7 @@ export default function ManualCourseChecklist({
                       </span>
                     )}
                   </span>
-                </label>
+                </div>
               );
             })}
 
@@ -216,23 +245,38 @@ export default function ManualCourseChecklist({
               const plannedCourse = plannedGECourses[course.course_number];
 
               return (
-                <label
+                <div
                   key={course.id}
-                  className={`flex cursor-pointer items-start gap-3 rounded border px-3 py-3 transition-colors ${
+                  className={`flex items-start gap-3 rounded border px-3 py-3 transition-colors ${
                     checked
                       ? "border-green-200 bg-green-50"
-                      : plannedCourse
+                      : inProgressMatch || plannedCourse
                         ? "border-blue-200 bg-blue-50"
                         : "border-gray-200 bg-white hover:bg-gray-50"
                   }`}
                 >
-                  <input
-                    type="checkbox"
-                    checked={checked}
-                    onChange={() => onToggleGEArea(course)}
-                    className="mt-0.5 h-4 w-4 accent-green-700"
-                    aria-label={checked ? `Mark ${course.course_number} incomplete` : `Mark ${course.course_number} completed`}
-                  />
+                  <div className="flex shrink-0 flex-col gap-2">
+                    <label className="flex items-center gap-1.5 text-[11px] font-semibold text-gray-600">
+                      <input
+                        type="checkbox"
+                        checked={checked}
+                        onChange={() => onToggleGEArea(course)}
+                        className="h-4 w-4 accent-green-700"
+                        aria-label={checked ? `Mark ${course.course_number} incomplete` : `Mark ${course.course_number} completed`}
+                      />
+                      Done
+                    </label>
+                    <label className="flex items-center gap-1.5 text-[11px] font-semibold text-blue-700">
+                      <input
+                        type="checkbox"
+                        checked={inProgressMatch && !checked}
+                        onChange={() => onToggleGEAreaInProgress(course)}
+                        className="h-4 w-4 accent-blue-700"
+                        aria-label={inProgressMatch ? `Remove ${course.course_number} from in progress` : `Mark ${course.course_number} in progress`}
+                      />
+                      IP
+                    </label>
+                  </div>
                   <span className="min-w-0 flex-1">
                     <span className="flex flex-wrap items-center gap-1.5">
                       <span className="text-sm font-bold text-gray-800">{course.course_number}</span>
@@ -262,7 +306,7 @@ export default function ManualCourseChecklist({
                       </span>
                     )}
                   </span>
-                </label>
+                </div>
               );
             })}
           </div>

@@ -122,13 +122,24 @@ function GECourseDetail({ geCourse, onBack }: CourseDetailProps) {
 interface CourseRowProps {
   geCourse: GECourse;
   completed: boolean;
+  inProgress: boolean;
   planned: boolean;
   onToggle: (courseNumber: string) => void;
+  onToggleInProgress: (courseNumber: string) => void;
   onPlan: (courseNumber: string, units: number) => void;
   onSelect: (c: GECourse) => void;
 }
 
-function GECourseRow({ geCourse, completed, planned, onToggle, onPlan, onSelect }: CourseRowProps) {
+function GECourseRow({
+  geCourse,
+  completed,
+  inProgress,
+  planned,
+  onToggle,
+  onToggleInProgress,
+  onPlan,
+  onSelect,
+}: CourseRowProps) {
   const [expanded, setExpanded]     = useState(false);
   const [professors, setProfessors] = useState<Professor[]>([]);
   const [loading, setLoading]       = useState(false);
@@ -146,30 +157,54 @@ function GECourseRow({ geCourse, completed, planned, onToggle, onPlan, onSelect 
 
   return (
     <div className={`border rounded-lg overflow-hidden mb-1.5 transition-colors ${
-      completed ? "border-green-300 bg-green-50/40" : planned ? "border-blue-200 bg-blue-50/40" : "border-gray-100"
+      completed
+        ? "border-green-300 bg-green-50/40"
+        : inProgress
+          ? "border-blue-300 bg-blue-50/50"
+          : planned
+            ? "border-blue-200 bg-blue-50/40"
+            : "border-gray-100"
     }`}>
       <div className="flex items-center px-3 py-2.5 hover:bg-gray-50 transition-colors gap-2">
-        {/* Checkbox */}
-        <input
-          type="checkbox"
-          checked={completed}
-          onChange={() => onToggle(geCourse.course_number)}
-          className="h-3.5 w-3.5 accent-green-700 cursor-pointer flex-shrink-0"
-          title={completed ? "Mark not taken" : "Mark as completed"}
-          onClick={(e) => e.stopPropagation()}
-        />
+        <div className="flex flex-shrink-0 flex-col gap-1.5">
+          <label className="flex items-center gap-1 text-[10px] font-semibold text-gray-600" title={completed ? "Mark not taken" : "Mark as completed"}>
+            <input
+              type="checkbox"
+              checked={completed}
+              onChange={() => onToggle(geCourse.course_number)}
+              className="h-3.5 w-3.5 accent-green-700 cursor-pointer"
+              onClick={(e) => e.stopPropagation()}
+            />
+            Done
+          </label>
+          <label className="flex items-center gap-1 text-[10px] font-semibold text-blue-700" title={inProgress ? "Remove in progress" : "Mark in progress"}>
+            <input
+              type="checkbox"
+              checked={inProgress && !completed}
+              onChange={() => onToggleInProgress(geCourse.course_number)}
+              className="h-3.5 w-3.5 accent-blue-700 cursor-pointer"
+              onClick={(e) => e.stopPropagation()}
+            />
+            IP
+          </label>
+        </div>
 
         {/* Clickable title → detail view */}
         <button className="flex-1 text-left min-w-0" onClick={() => onSelect(geCourse)}>
           <div className={`text-sm font-semibold hover:text-green-800 transition-colors leading-tight ${
-            completed ? "text-green-800 line-through opacity-70" : "text-gray-800"
+            completed ? "text-green-800 line-through opacity-70" : inProgress ? "text-blue-800" : "text-gray-800"
           }`}>
             {geCourse.course_number}
           </div>
-          <div className="text-xs text-gray-500 leading-tight truncate">{geCourse.title}</div>
+          <div className="text-xs text-gray-500 leading-tight line-clamp-2">{geCourse.title}</div>
         </button>
 
         <div className="flex items-center gap-1.5 flex-shrink-0">
+          {inProgress && !completed && (
+            <span className="rounded bg-blue-100 px-1.5 py-0.5 text-[10px] font-bold text-blue-800">
+              IP
+            </span>
+          )}
           <button
             onClick={(e) => { e.stopPropagation(); onPlan(geCourse.course_number, geCourse.units); }}
             className={`text-[10px] px-1.5 py-0.5 rounded border transition-colors ${
@@ -208,10 +243,17 @@ function GECourseRow({ geCourse, completed, planned, onToggle, onPlan, onSelect 
 interface Props {
   course: Course | null;
   completedSet: Set<string>;
+  inProgressSet: Set<string>;
   plannedGECourses: Record<string, string>;
-  onToggleGECourse: (courseNumber: string) => void;
+  onToggleGECourse: (areaId: string, courseNumber: string) => void;
+  onToggleGECourseInProgress: (areaId: string, courseNumber: string) => void;
   onPlanGECourse: (areaId: string, courseNumber: string, units: number) => void;
+  onAreaLoaded?: (areaId: string, courseNumbers: string[]) => void;
   onClose: () => void;
+}
+
+function norm(courseNumber: string) {
+  return courseNumber.toUpperCase().trim().replace(/\s+/g, " ");
 }
 
 function quarterCandidate(courseNumber: string) {
@@ -220,17 +262,21 @@ function quarterCandidate(courseNumber: string) {
   return `${dept} ${Number(code.slice(1))}`;
 }
 
-function isCourseCompleted(geCourse: GECourse, completedSet: Set<string>) {
+function hasGEStatus(geCourse: GECourse, knownSet: Set<string>) {
+  const normalizedKnown = new Set(Array.from(knownSet, norm));
   const candidate = quarterCandidate(geCourse.course_number);
-  return completedSet.has(geCourse.course_number) || (candidate ? completedSet.has(candidate) : false);
+  return normalizedKnown.has(norm(geCourse.course_number)) || (candidate ? normalizedKnown.has(norm(candidate)) : false);
 }
 
 export default function GEDetailPanel({
   course,
   completedSet,
+  inProgressSet,
   plannedGECourses,
   onToggleGECourse,
+  onToggleGECourseInProgress,
   onPlanGECourse,
+  onAreaLoaded,
   onClose,
 }: Props) {
   const [area, setArea]         = useState<GEArea | null>(null);
@@ -254,11 +300,15 @@ export default function GEDetailPanel({
       setLoading(true);
     }, 0);
     getGECourses(courseNumber)
-      .then((a) => { if (!cancelled) setArea(a); })
+      .then((a) => {
+        if (cancelled) return;
+        setArea(a);
+        if (a) onAreaLoaded?.(a.area_id, a.courses.map((c) => c.course_number));
+      })
       .finally(() => { if (!cancelled) setLoading(false); });
 
     return () => { cancelled = true; };
-  }, [courseNumber]);
+  }, [courseNumber, onAreaLoaded]);
 
   if (!course) return null;
 
@@ -266,7 +316,7 @@ export default function GEDetailPanel({
     <>
       <div className="fixed inset-0 bg-black/20 z-40 transition-opacity" onClick={onClose} />
 
-      <div className="fixed right-0 top-0 h-full w-80 bg-white shadow-2xl z-50 flex flex-col">
+      <div className="fixed right-0 top-0 h-full w-[min(560px,100vw)] bg-white shadow-2xl z-50 flex flex-col">
         {/* Top header — always visible */}
         <div className="px-5 py-4 border-b border-white/20 flex items-start justify-between flex-shrink-0"
              style={{ background: "var(--cp-green)" }}>
@@ -303,9 +353,11 @@ export default function GEDetailPanel({
                 <GECourseRow
                   key={c.course_number}
                   geCourse={c}
-                  completed={isCourseCompleted(c, completedSet)}
+                  completed={hasGEStatus(c, completedSet)}
+                  inProgress={hasGEStatus(c, inProgressSet)}
                   planned={plannedGECourses[course.course_number] === c.course_number}
-                  onToggle={onToggleGECourse}
+                  onToggle={(courseNumber) => onToggleGECourse(course.course_number, courseNumber)}
+                  onToggleInProgress={(courseNumber) => onToggleGECourseInProgress(course.course_number, courseNumber)}
                   onPlan={(courseNumber, units) => onPlanGECourse(course.course_number, courseNumber, units)}
                   onSelect={setSelected}
                 />

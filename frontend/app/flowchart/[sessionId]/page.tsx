@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { loadSession, saveSession, persistSession } from "@/lib/session";
-import { getFlowchart, inferPrerequisites, getSession, getGEAreaMap } from "@/lib/api";
-import type { Course, CourseStatus, Flowchart, GEAreaMap, TranscriptSession } from "@/lib/types";
+import { getFlowchart, inferPrerequisites, getSession, getGEAreaMap, getConcentrations, syncSession } from "@/lib/api";
+import type { Course, CourseStatus, Flowchart, GEAreaMap, TranscriptSession, Concentration } from "@/lib/types";
 import FlowchartGrid from "@/components/FlowchartGrid";
 import CourseDetailPanel from "@/components/CourseDetailPanel";
 import GEDetailPanel from "@/components/GEDetailPanel";
@@ -22,7 +22,15 @@ export default function FlowchartPage() {
   const [selectedGECourse, setSelectedGECourse] = useState<Course | null>(null);
   const [geAreaMap, setGEAreaMap] = useState<GEAreaMap>({});
   const [checklistOpen, setChecklistOpen] = useState(false);
+  const [concentrations, setConcentrations] = useState<Concentration[]>([]);
   const [error, setError] = useState<string | null>(null);
+
+  const rememberGEAreaCourses = useCallback((areaId: string, courseNumbers: string[]) => {
+    setGEAreaMap((current) => ({
+      ...current,
+      [areaId]: courseNumbers,
+    }));
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -49,8 +57,9 @@ export default function FlowchartPage() {
       saveSession(s);
       if (!cancelled) setSession(s);
 
-      // Fetch GE area map in parallel with flowchart
+      // Fetch GE area map and concentrations in parallel with flowchart
       getGEAreaMap().then((map) => { if (!cancelled) setGEAreaMap(map); });
+      getConcentrations(s.major).then((list) => { if (!cancelled) setConcentrations(list); });
 
       getFlowchart(s.major)
         .then(async (fc) => {
@@ -95,33 +104,105 @@ export default function FlowchartPage() {
     setInferred(inf);
   };
 
-  const toggleGECourse = (courseNumber: string) => {
-    const isCompleted = session.completed.includes(courseNumber);
+  const normalizeCourseNumber = (courseNumber: string) => courseNumber.toUpperCase().trim().replace(/\s+/g, " ");
+
+  const courseCandidateSet = (course: Course) => {
+    return new Set([course.course_number, ...course.quarter_equivalents].map(normalizeCourseNumber));
+  };
+
+  const geAreaCandidateSet = (course: Course) => {
+    return new Set([
+      course.course_number,
+      ...course.quarter_equivalents,
+      ...(geAreaMap[course.course_number] ?? []),
+    ].map(normalizeCourseNumber));
+  };
+
+  const geCourseCandidateSet = (courseNumber: string) => {
+    const [dept, code] = courseNumber.split(/\s+/);
+    const quarterEquivalent = dept && /^\d{4}$/.test(code ?? "")
+      ? `${dept} ${Number(code.slice(1))}`
+      : null;
+    return new Set([courseNumber, quarterEquivalent].filter(Boolean).map((num) => normalizeCourseNumber(num as string)));
+  };
+
+  const toggleGECourse = (areaId: string, courseNumber: string) => {
+    const candidateSet = geCourseCandidateSet(courseNumber);
+    const areaCandidate = normalizeCourseNumber(areaId);
+    const removeSet = new Set(candidateSet);
+    removeSet.add(areaCandidate);
+
+    const isCompleted = session.completed.some((num) => removeSet.has(normalizeCourseNumber(num)));
     const completed = isCompleted
-      ? session.completed.filter((n) => n !== courseNumber)
-      : [...session.completed, courseNumber];
-    const nextSession = { ...session, completed };
+      ? session.completed.filter((num) => !removeSet.has(normalizeCourseNumber(num)))
+      : [
+          ...session.completed.filter((num) => !removeSet.has(normalizeCourseNumber(num))),
+          courseNumber,
+          areaId,
+        ];
+    const inProgress = isCompleted
+      ? session.inProgress
+      : session.inProgress.filter((num) => !removeSet.has(normalizeCourseNumber(num)));
+    const nextSession = { ...session, completed, inProgress };
     setSession(nextSession);
-    persistSession(nextSession, { completed });
+    persistSession(nextSession, { completed, in_progress: inProgress });
+    void refreshInferred(nextSession);
+  };
+
+  const toggleGECourseInProgress = (areaId: string, courseNumber: string) => {
+    const candidateSet = geCourseCandidateSet(courseNumber);
+    const areaCandidate = normalizeCourseNumber(areaId);
+    const removeSet = new Set(candidateSet);
+    removeSet.add(areaCandidate);
+
+    const isInProgress = session.inProgress.some((num) => removeSet.has(normalizeCourseNumber(num)));
+
+    const inProgress = isInProgress
+      ? session.inProgress.filter((num) => !removeSet.has(normalizeCourseNumber(num)))
+      : [
+          ...session.inProgress.filter((num) => !removeSet.has(normalizeCourseNumber(num))),
+          courseNumber,
+          areaId,
+        ];
+    const completed = isInProgress
+      ? session.completed
+      : session.completed.filter((num) => !removeSet.has(normalizeCourseNumber(num)));
+    const nextSession = { ...session, completed, inProgress };
+    setSession(nextSession);
+    persistSession(nextSession, { completed, in_progress: inProgress });
     void refreshInferred(nextSession);
   };
 
   const toggleGEArea = (course: Course) => {
-    const normalize = (courseNumber: string) => courseNumber.toUpperCase().trim().replace(/\s+/g, " ");
-    const candidates = [
-      course.course_number,
-      ...course.quarter_equivalents,
-      ...(geAreaMap[course.course_number] ?? []),
-    ];
-    const candidateSet = new Set(candidates.map(normalize));
-    const isCompleted = session.completed.some((courseNumber) => candidateSet.has(normalize(courseNumber)));
+    const candidateSet = geAreaCandidateSet(course);
+    const isCompleted = session.completed.some((courseNumber) => candidateSet.has(normalizeCourseNumber(courseNumber)));
 
     const completed = isCompleted
-      ? session.completed.filter((courseNumber) => !candidateSet.has(normalize(courseNumber)))
+      ? session.completed.filter((courseNumber) => !candidateSet.has(normalizeCourseNumber(courseNumber)))
       : [...session.completed, course.course_number];
     const inProgress = isCompleted
       ? session.inProgress
-      : session.inProgress.filter((courseNumber) => !candidateSet.has(normalize(courseNumber)));
+      : session.inProgress.filter((courseNumber) => !candidateSet.has(normalizeCourseNumber(courseNumber)));
+
+    const nextSession = { ...session, completed, inProgress };
+    setSession(nextSession);
+    persistSession(nextSession, { completed, in_progress: inProgress });
+    void refreshInferred(nextSession);
+  };
+
+  const toggleGEAreaInProgress = (course: Course) => {
+    const candidateSet = geAreaCandidateSet(course);
+    const isInProgress = session.inProgress.some((courseNumber) => candidateSet.has(normalizeCourseNumber(courseNumber)));
+
+    const inProgress = isInProgress
+      ? session.inProgress.filter((courseNumber) => !candidateSet.has(normalizeCourseNumber(courseNumber)))
+      : [
+          ...session.inProgress.filter((courseNumber) => !candidateSet.has(normalizeCourseNumber(courseNumber))),
+          course.course_number,
+        ];
+    const completed = isInProgress
+      ? session.completed
+      : session.completed.filter((courseNumber) => !candidateSet.has(normalizeCourseNumber(courseNumber)));
 
     const nextSession = { ...session, completed, inProgress };
     setSession(nextSession);
@@ -149,14 +230,14 @@ export default function FlowchartPage() {
   const toggleCourseCompleted = (course: Course) => {
     if (course.is_placeholder && course.category === "ge") return;
 
-    const allCourseNums = new Set([course.course_number, ...course.quarter_equivalents]);
-    const isCompleted = session.completed.some((courseNum) => allCourseNums.has(courseNum));
+    const allCourseNums = courseCandidateSet(course);
+    const isCompleted = session.completed.some((courseNum) => allCourseNums.has(normalizeCourseNumber(courseNum)));
     const completed = isCompleted
-      ? session.completed.filter((courseNum) => !allCourseNums.has(courseNum))
-      : [...session.completed.filter((courseNum) => !allCourseNums.has(courseNum)), course.course_number];
+      ? session.completed.filter((courseNum) => !allCourseNums.has(normalizeCourseNumber(courseNum)))
+      : [...session.completed.filter((courseNum) => !allCourseNums.has(normalizeCourseNumber(courseNum))), course.course_number];
     const inProgress = isCompleted
       ? session.inProgress
-      : session.inProgress.filter((courseNum) => !allCourseNums.has(courseNum));
+      : session.inProgress.filter((courseNum) => !allCourseNums.has(normalizeCourseNumber(courseNum)));
 
     const nextSession = { ...session, completed, inProgress };
     setSession(nextSession);
@@ -168,13 +249,38 @@ export default function FlowchartPage() {
     }
   };
 
+  const toggleCourseInProgress = (course: Course) => {
+    if (course.is_placeholder && course.category === "ge") return;
+
+    const allCourseNums = courseCandidateSet(course);
+    const isInProgress = session.inProgress.some((courseNum) => allCourseNums.has(normalizeCourseNumber(courseNum)));
+    const inProgress = isInProgress
+      ? session.inProgress.filter((courseNum) => !allCourseNums.has(normalizeCourseNumber(courseNum)))
+      : [
+          ...session.inProgress.filter((courseNum) => !allCourseNums.has(normalizeCourseNumber(courseNum))),
+          course.course_number,
+        ];
+    const completed = isInProgress
+      ? session.completed
+      : session.completed.filter((courseNum) => !allCourseNums.has(normalizeCourseNumber(courseNum)));
+
+    const nextSession = { ...session, completed, inProgress };
+    setSession(nextSession);
+    persistSession(nextSession, { completed, in_progress: inProgress });
+    void refreshInferred(nextSession);
+
+    if (selectedCourse?.id === course.id) {
+      setSelectedStatus(isInProgress ? "incomplete" : "in_progress");
+    }
+  };
+
   const moveCourse = (
     courseId: string,
     targetCol: number,
     targetRow: number,
     targetCourseId?: string,
   ) => {
-    const draggedCourse = flowchart.courses.find((course) => course.id === courseId);
+    const draggedCourse = resolvedFlowchart.courses.find((course) => course.id === courseId);
     if (!draggedCourse) return;
 
     const positions = { ...(session.coursePositions ?? {}) };
@@ -194,14 +300,52 @@ export default function FlowchartPage() {
     persistSession(nextSession, { course_positions: positions as Record<string, unknown> });
   };
 
+  const activeConcentration = concentrations.find((c) => c.id === (session.concentration ?? "none"));
+
+  const resolvedFlowchart: Flowchart =
+    !activeConcentration || Object.keys(activeConcentration.slot_overrides).length === 0
+      ? flowchart
+      : {
+          ...flowchart,
+          courses: flowchart.courses.map((course) => {
+            const override = activeConcentration.slot_overrides[course.id];
+            if (!override) return course;
+            return { ...course, ...override };
+          }),
+        };
+
+  const changeConcentration = (newId: string) => {
+    const nextSession = { ...session, concentration: newId === "none" ? undefined : newId };
+    setSession(nextSession);
+    saveSession(nextSession);
+    void syncSession(session.sessionId, { concentration: newId === "none" ? undefined : newId });
+  };
+
   return (
     <div className="min-h-screen flex flex-col" style={{ background: "var(--cp-bg)" }}>
       {/* Header */}
-      <header style={{ background: "var(--cp-green)" }} className="px-6 py-3 flex items-center gap-4">
+      <header style={{ background: "var(--cp-green)" }} className="px-6 py-3 flex items-center gap-4 flex-wrap">
         <button onClick={() => router.push("/")} className="text-white/70 hover:text-white text-sm">← Back</button>
         <div className="text-white font-bold text-sm">{session.studentName}</div>
         <div className="text-white/60 text-sm">·</div>
         <div className="text-white/80 text-sm">{flowchart.major}</div>
+        {concentrations.length > 0 && (
+          <>
+            <div className="text-white/40 text-sm">·</div>
+            <select
+              value={session.concentration ?? "none"}
+              onChange={(e) => changeConcentration(e.target.value)}
+              className="text-sm rounded px-2 py-0.5 font-medium"
+              style={{ background: "rgba(255,255,255,0.15)", color: "white", border: "1px solid rgba(255,255,255,0.3)" }}
+            >
+              {concentrations.map((c) => (
+                <option key={c.id} value={c.id} style={{ background: "var(--cp-green)", color: "white" }}>
+                  {c.label}
+                </option>
+              ))}
+            </select>
+          </>
+        )}
         <div className="ml-auto text-white font-bold text-sm">CAL POLY</div>
       </header>
 
@@ -223,11 +367,12 @@ export default function FlowchartPage() {
           </div>
 
           <FlowchartGrid
-            flowchart={flowchart}
+            flowchart={resolvedFlowchart}
             session={session}
             inferred={inferred}
             geAreaMap={geAreaMap}
             onToggleCourseCompleted={toggleCourseCompleted}
+            onToggleCourseInProgress={toggleCourseInProgress}
             onMoveCourse={moveCourse}
             onCourseClick={(course, status) => {
               if (course.is_placeholder && course.category === "ge") {
@@ -246,7 +391,7 @@ export default function FlowchartPage() {
       <CourseDetailPanel
         course={selectedCourse}
         status={selectedStatus}
-        allCourses={flowchart.courses}
+        allCourses={resolvedFlowchart.courses}
         completed={session.completed}
         inProgress={session.inProgress}
         inferred={inferred}
@@ -256,21 +401,26 @@ export default function FlowchartPage() {
       <GEDetailPanel
         course={selectedGECourse}
         completedSet={new Set(session.completed)}
+        inProgressSet={new Set(session.inProgress)}
         plannedGECourses={session.plannedGECourses ?? {}}
         onToggleGECourse={toggleGECourse}
+        onToggleGECourseInProgress={toggleGECourseInProgress}
         onPlanGECourse={planGECourse}
+        onAreaLoaded={rememberGEAreaCourses}
         onClose={() => setSelectedGECourse(null)}
       />
 
       <ManualCourseChecklist
         open={checklistOpen}
-        courses={flowchart.courses}
+        courses={resolvedFlowchart.courses}
         completed={session.completed}
         inProgress={session.inProgress}
         geAreaMap={geAreaMap}
         plannedGECourses={session.plannedGECourses ?? {}}
         onToggleCourse={toggleCourseCompleted}
+        onToggleCourseInProgress={toggleCourseInProgress}
         onToggleGEArea={toggleGEArea}
+        onToggleGEAreaInProgress={toggleGEAreaInProgress}
         onClose={() => setChecklistOpen(false)}
       />
     </div>

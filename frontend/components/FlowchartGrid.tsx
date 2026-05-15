@@ -11,6 +11,7 @@ interface Props {
   geAreaMap: GEAreaMap;
   onCourseClick: (course: Course, status: CourseStatus) => void;
   onToggleCourseCompleted: (course: Course) => void;
+  onToggleCourseInProgress: (course: Course) => void;
   onMoveCourse: (
     courseId: string,
     targetCol: number,
@@ -45,6 +46,17 @@ function getCourseStatus(
     ];
     if (hasAnyCourseNumber(completedNums, approved)) return "completed";
     if (hasAnyCourseNumber(inProgressNums, approved)) return "in_progress";
+    // Locked if prerequisites haven't been met
+    if (course.prerequisites.length > 0) {
+      const knownNums = new Set([...completedNums, ...inferredNums, ...inProgressNums]);
+      const prereqsMet = course.prerequisites.every((prereqNum) => {
+        const prereq = allCourses.find((c) => c.course_number === prereqNum);
+        if (!prereq) return true;
+        const prereqNums = [prereq.course_number, ...prereq.quarter_equivalents];
+        return hasAnyCourseNumber(knownNums, prereqNums);
+      });
+      if (!prereqsMet) return "locked";
+    }
     return "incomplete";
   }
   if (course.is_placeholder) {
@@ -113,6 +125,7 @@ export default function FlowchartGrid({
   geAreaMap,
   onCourseClick,
   onToggleCourseCompleted,
+  onToggleCourseInProgress,
   onMoveCourse,
 }: Props) {
   const completedNums  = new Set(session.completed);
@@ -311,7 +324,14 @@ export default function FlowchartGrid({
                       ...course.quarter_equivalents,
                       ...(geAreaMap[course.course_number] ?? []),
                     ])
-                  : allNums.some((n) => completedNums.has(n));
+                  : hasAnyCourseNumber(completedNums, allNums);
+                const inProgressChecked = course.is_placeholder && course.category === "ge"
+                  ? hasAnyCourseNumber(inProgressNums, [
+                      course.course_number,
+                      ...course.quarter_equivalents,
+                      ...(geAreaMap[course.course_number] ?? []),
+                    ])
+                  : hasAnyCourseNumber(inProgressNums, allNums);
                 const plannedCourseNumber = course.is_placeholder && course.category === "ge"
                   ? session.plannedGECourses?.[course.course_number]
                   : undefined;
@@ -333,8 +353,10 @@ export default function FlowchartGrid({
                       course={course}
                       status={status}
                       checked={checked}
+                      inProgressChecked={inProgressChecked}
                       plannedCourseNumber={plannedCourseNumber}
                       onToggleCompleted={() => onToggleCourseCompleted(course)}
+                      onToggleInProgress={() => onToggleCourseInProgress(course)}
                       onClick={() => onCourseClick(course, status)}
                     />
                   </div>

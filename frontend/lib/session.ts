@@ -34,6 +34,7 @@ export function persistSession(
     course_positions?: Record<string, unknown>;
     planned_ge_courses?: Record<string, string>;
     planned_ge_units?: Record<string, number>;
+    concentration?: string;
   },
 ): void {
   saveSession(session);

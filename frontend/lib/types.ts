@@ -41,6 +41,22 @@ export interface TranscriptSession {
   coursePositions?: Record<string, CoursePosition>;
   plannedGECourses?: Record<string, string>;
   plannedGEUnits?: Record<string, number>;
+  concentration?: string;
+}
+
+export interface ConcentrationSlotOverride {
+  course_number: string;
+  title: string;
+  units: number;
+  prerequisites: string[];
+  quarter_equivalents: string[];
+  is_placeholder: boolean;
+}
+
+export interface Concentration {
+  id: string;
+  label: string;
+  slot_overrides: Record<string, ConcentrationSlotOverride>;
 }
 
 export interface Professor {

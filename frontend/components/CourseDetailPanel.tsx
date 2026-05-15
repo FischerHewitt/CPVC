@@ -117,7 +117,7 @@ export default function CourseDetailPanel({
       />
 
       {/* Panel */}
-      <div className="fixed right-0 top-0 h-full w-80 bg-white shadow-2xl z-50 flex flex-col overflow-y-auto">
+      <div className="fixed right-0 top-0 h-full w-[min(560px,100vw)] bg-white shadow-2xl z-50 flex flex-col overflow-y-auto">
         {/* Header */}
         <div className="px-5 py-4 border-b border-gray-100 flex items-start justify-between"
              style={{ background: "var(--cp-green)" }}>

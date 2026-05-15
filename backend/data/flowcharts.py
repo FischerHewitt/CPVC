@@ -264,6 +264,200 @@ CPE_FLOWCHART: list[Course] = [
 ]
 
 
+# ─────────────────────────────────────────────────────────────────────────────
+# CIVIL ENGINEERING — General Curriculum (132 units)
+# Source: catalog.calpoly.edu/engineering/civil-environmental/civil-engineering-bs/
+# ─────────────────────────────────────────────────────────────────────────────
+CE_FLOWCHART: list[Course] = [
+    # ── FRESHMAN FALL ─────────────────────────────────────────────────────────
+    {"id": "CE1111",     "course_number": "CE 1111",    "title": "Introduction to Civil Engineering",                 "units": 1, "category": "major",   "grid_col": 0, "grid_row": 0, "prerequisites": [], "quarter_equivalents": ["CE 111"], "is_placeholder": False},
+    {"id": "CE_CHEM1120","course_number": "CHEM 1120",  "title": "Fundamentals of Chemical Structure and Properties", "units": 4, "category": "support", "grid_col": 0, "grid_row": 1, "prerequisites": [], "quarter_equivalents": ["CHEM 124"], "is_placeholder": False},
+    {"id": "CE_MATH1261","course_number": "MATH 1261",  "title": "Calculus I",                                        "units": 4, "category": "support", "grid_col": 0, "grid_row": 2, "prerequisites": [], "quarter_equivalents": ["MATH 141"], "is_placeholder": False},
+    {"id": "CE_PHYS1141","course_number": "PHYS 1141",  "title": "General Physics I",                                 "units": 4, "category": "support", "grid_col": 0, "grid_row": 3, "prerequisites": [], "quarter_equivalents": ["PHYS 141"], "is_placeholder": False},
+    {"id": "CE_GE1A",    "course_number": "GE 1A",      "title": "Written Communication",                            "units": 3, "category": "ge",      "grid_col": 0, "grid_row": 4, "prerequisites": [], "quarter_equivalents": ["ENGL 134", "ENGL 1340"], "is_placeholder": True},
+
+    # ── FRESHMAN SPRING ───────────────────────────────────────────────────────
+    {"id": "CE1112",     "course_number": "CE 1112",    "title": "Spatial Visualization and Drawing",                 "units": 3, "category": "major",   "grid_col": 1, "grid_row": 0, "prerequisites": [], "quarter_equivalents": ["CE 112", "ENVE 1112"], "is_placeholder": False},
+    {"id": "CE_MATH1262","course_number": "MATH 1262",  "title": "Calculus II",                                       "units": 4, "category": "support", "grid_col": 1, "grid_row": 1, "prerequisites": ["MATH 1261"], "quarter_equivalents": ["MATH 142"], "is_placeholder": False},
+    {"id": "CE_PHYS1143","course_number": "PHYS 1143",  "title": "General Physics II",                                "units": 4, "category": "support", "grid_col": 1, "grid_row": 2, "prerequisites": ["PHYS 1141", "MATH 1261"], "quarter_equivalents": ["PHYS 132"], "is_placeholder": False},
+    {"id": "CE_GE1B",    "course_number": "GE 1B",      "title": "Critical Thinking",                                "units": 3, "category": "ge",      "grid_col": 1, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "CE_GE1C",    "course_number": "GE 1C",      "title": "Oral Communication",                               "units": 3, "category": "ge",      "grid_col": 1, "grid_row": 4, "prerequisites": [], "quarter_equivalents": ["COMS 101"], "is_placeholder": True},
+
+    # ── SOPHOMORE FALL ────────────────────────────────────────────────────────
+    {"id": "CE2251",     "course_number": "CE 2251",    "title": "Computational Applications in Civil and Environmental Engineering", "units": 2, "category": "major", "grid_col": 2, "grid_row": 0, "prerequisites": ["MATH 1261"], "quarter_equivalents": ["CE 251"], "is_placeholder": False},
+    {"id": "CE_ENGR2211","course_number": "ENGR 2211",  "title": "Introduction to Mechanics",                        "units": 4, "category": "support", "grid_col": 2, "grid_row": 1, "prerequisites": ["PHYS 1141", "MATH 1261"], "quarter_equivalents": ["ME 211"], "is_placeholder": False},
+    {"id": "CE_MATH2263","course_number": "MATH 2263",  "title": "Calculus III",                                      "units": 3, "category": "support", "grid_col": 2, "grid_row": 2, "prerequisites": ["MATH 1262"], "quarter_equivalents": ["MATH 143"], "is_placeholder": False},
+    {"id": "CE_GE3A",    "course_number": "GE 3A",      "title": "Arts",                                              "units": 3, "category": "ge",      "grid_col": 2, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "CE_GE3B",    "course_number": "GE 3B",      "title": "Humanities",                                        "units": 3, "category": "ge",      "grid_col": 2, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+
+    # ── SOPHOMORE SPRING ──────────────────────────────────────────────────────
+    {"id": "CE2259",     "course_number": "CE 2259",    "title": "Civil Engineering Materials",                       "units": 3, "category": "major",   "grid_col": 3, "grid_row": 0, "prerequisites": ["CHEM 1120"], "quarter_equivalents": ["CE 259"], "is_placeholder": False},
+    {"id": "CE_ENGR2212","course_number": "ENGR 2212",  "title": "Introduction to Engineering Dynamics",              "units": 2, "category": "support", "grid_col": 3, "grid_row": 1, "prerequisites": ["ENGR 2211"], "quarter_equivalents": ["ME 212"], "is_placeholder": False},
+    {"id": "CE_GEOL2240","course_number": "GEOL 2240",  "title": "Physical Geology",                                  "units": 3, "category": "support", "grid_col": 3, "grid_row": 2, "prerequisites": [], "quarter_equivalents": ["GEOL 201"], "is_placeholder": False},
+    {"id": "CE_MATH2341","course_number": "MATH 2341",  "title": "Linear Analysis",                                   "units": 4, "category": "support", "grid_col": 3, "grid_row": 3, "prerequisites": ["MATH 1262"], "quarter_equivalents": ["MATH 244"], "is_placeholder": False},
+    {"id": "CE_GE4A",    "course_number": "GE 4A",      "title": "American Institutions",                             "units": 3, "category": "ge",      "grid_col": 3, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+
+    # ── JUNIOR FALL ───────────────────────────────────────────────────────────
+    {"id": "CE3321",     "course_number": "CE 3321",    "title": "Fundamentals of Transportation Engineering",         "units": 4, "category": "major",   "grid_col": 4, "grid_row": 0, "prerequisites": ["CE 2251"], "quarter_equivalents": ["CE 321"], "is_placeholder": False},
+    {"id": "CE3336",     "course_number": "CE 3336",    "title": "Environmental Fluid Mechanics and Hydraulic Systems","units": 4, "category": "major",   "grid_col": 4, "grid_row": 1, "prerequisites": ["ENGR 2212", "MATH 2341"], "quarter_equivalents": ["CE 336", "ENVE 3336"], "is_placeholder": False},
+    {"id": "CE3352",     "course_number": "CE 3352",    "title": "Structural Analysis",                               "units": 4, "category": "major",   "grid_col": 4, "grid_row": 2, "prerequisites": ["ENGR 2211"], "quarter_equivalents": ["CE 352"], "is_placeholder": False},
+    {"id": "CE_STAT3210","course_number": "STAT 3210",  "title": "Engineering Statistics",                            "units": 3, "category": "support", "grid_col": 4, "grid_row": 3, "prerequisites": ["MATH 1262"], "quarter_equivalents": ["STAT 312"], "is_placeholder": False},
+    {"id": "CE_GE4B",    "course_number": "GE 4B",      "title": "Social & Behavioral Sciences",                      "units": 3, "category": "ge",      "grid_col": 4, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+
+    # ── JUNIOR SPRING ─────────────────────────────────────────────────────────
+    {"id": "CE3337",     "course_number": "CE 3337",    "title": "Water Resources & Environmental Engineering",        "units": 4, "category": "major",   "grid_col": 5, "grid_row": 0, "prerequisites": ["CE 3336"], "quarter_equivalents": ["CE 337", "ENVE 3337"], "is_placeholder": False},
+    {"id": "CE3355",     "course_number": "CE 3355",    "title": "Reinforced Concrete Design",                        "units": 3, "category": "major",   "grid_col": 5, "grid_row": 1, "prerequisites": ["CE 3352"], "quarter_equivalents": ["CE 355"], "is_placeholder": False},
+    {"id": "CE3381",     "course_number": "CE 3381",    "title": "Geotechnical Engineering",                          "units": 4, "category": "major",   "grid_col": 5, "grid_row": 2, "prerequisites": ["CE 2259", "ENGR 2211"], "quarter_equivalents": ["CE 381"], "is_placeholder": False},
+    {"id": "CE3465",     "course_number": "CE 3465",    "title": "Infrastructure Systems",                            "units": 2, "category": "major",   "grid_col": 5, "grid_row": 3, "prerequisites": ["CE 2251"], "quarter_equivalents": ["CE 465", "ENVE 3465"], "is_placeholder": False},
+    {"id": "CE_GE5B",    "course_number": "GE 5B",      "title": "Life Sciences",                                      "units": 3, "category": "ge",      "grid_col": 5, "grid_row": 4, "prerequisites": [], "quarter_equivalents": ["BIO 111", "BIO 1111"], "is_placeholder": True},
+
+    # ── SENIOR FALL ───────────────────────────────────────────────────────────
+    {"id": "CE3375",     "course_number": "CE 3375",    "title": "Fundamentals of Construction Engineering and Management", "units": 4, "category": "major", "grid_col": 6, "grid_row": 0, "prerequisites": ["CE 2259"], "quarter_equivalents": ["CE 375"], "is_placeholder": False},
+    {"id": "CE4466",     "course_number": "CE 4466",    "title": "Senior Design Project I",                            "units": 1, "category": "major",   "grid_col": 6, "grid_row": 1, "prerequisites": ["CE 3337", "CE 3355", "CE 3381"], "quarter_equivalents": ["CE 466"], "is_placeholder": False},
+    {"id": "CE_TE_SRF1", "course_number": "TE",         "title": "Technical Elective",                                 "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "CE_TE_SRF2", "course_number": "TE",         "title": "Technical Elective",                                 "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "CE_TE_SRF3", "course_number": "TE",         "title": "Technical Elective",                                 "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "CE_GE6",     "course_number": "GE 6",       "title": "Ethnic Studies",                                     "units": 3, "category": "ge",      "grid_col": 6, "grid_row": 5, "prerequisites": [], "quarter_equivalents": ["ES 253", "ES 1112"], "is_placeholder": True},
+
+    # ── SENIOR SPRING ─────────────────────────────────────────────────────────
+    {"id": "CE4467",     "course_number": "CE 4467",    "title": "Senior Design Project II",                           "units": 3, "category": "major",   "grid_col": 7, "grid_row": 0, "prerequisites": ["CE 4466"], "quarter_equivalents": ["CE 467"], "is_placeholder": False},
+    {"id": "CE_TE_SRS1", "course_number": "TE",         "title": "Technical Elective",                                 "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 1, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "CE_TE_SRS2", "course_number": "TE",         "title": "Technical Elective",                                 "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "CE_TE_SRS3", "course_number": "TE",         "title": "Technical Elective",                                 "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "CE_GE_UD3",  "course_number": "GE UD-3",    "title": "Upper-Division Arts and Humanities",                  "units": 3, "category": "ge",      "grid_col": 7, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "CE_GE_UD4",  "course_number": "GE UD-4",    "title": "Upper-Division Social Sciences",                     "units": 3, "category": "ge",      "grid_col": 7, "grid_row": 5, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+]
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# MECHANICAL ENGINEERING — General Curriculum (128-129 units)
+# Source: catalog.calpoly.edu/engineering/mechanical/mechanical-engineering-bs/
+# ─────────────────────────────────────────────────────────────────────────────
+ME_FLOWCHART: list[Course] = [
+    # ── FRESHMAN FALL ─────────────────────────────────────────────────────────
+    {"id": "ME1125",      "course_number": "ME 1125",    "title": "Introduction to Mechanical Engineering",           "units": 1, "category": "major",   "grid_col": 0, "grid_row": 0, "prerequisites": [], "quarter_equivalents": ["ME 128"], "is_placeholder": False},
+    {"id": "ME1148",      "course_number": "ME 1148",    "title": "Engineering Design Communication",                 "units": 2, "category": "major",   "grid_col": 0, "grid_row": 1, "prerequisites": [], "quarter_equivalents": ["ME 129"], "is_placeholder": False},
+    {"id": "ME_CHEM1120", "course_number": "CHEM 1120",  "title": "Fundamentals of Chemical Structure and Properties", "units": 4, "category": "support", "grid_col": 0, "grid_row": 2, "prerequisites": [], "quarter_equivalents": ["CHEM 124"], "is_placeholder": False},
+    {"id": "ME_IME1143",  "course_number": "IME 1143",   "title": "Introduction to Design and Manufacturing",          "units": 2, "category": "support", "grid_col": 0, "grid_row": 3, "prerequisites": [], "quarter_equivalents": ["IME 144"], "is_placeholder": False},
+    {"id": "ME_MATH1261", "course_number": "MATH 1261",  "title": "Calculus I",                                        "units": 4, "category": "support", "grid_col": 0, "grid_row": 4, "prerequisites": [], "quarter_equivalents": ["MATH 141"], "is_placeholder": False},
+    {"id": "ME_GE1A",     "course_number": "GE 1A",      "title": "Written Communication",                            "units": 3, "category": "ge",      "grid_col": 0, "grid_row": 5, "prerequisites": [], "quarter_equivalents": ["ENGL 134", "ENGL 1340"], "is_placeholder": True},
+
+    # ── FRESHMAN SPRING ───────────────────────────────────────────────────────
+    {"id": "ME_IME114X",  "course_number": "IME 1141/1142/1149", "title": "Manufacturing Process Selective",          "units": 1, "category": "support", "grid_col": 1, "grid_row": 0, "prerequisites": [], "quarter_equivalents": ["IME 141", "IME 142"], "is_placeholder": True},
+    {"id": "ME_MATH1262", "course_number": "MATH 1262",  "title": "Calculus II",                                       "units": 4, "category": "support", "grid_col": 1, "grid_row": 1, "prerequisites": ["MATH 1261"], "quarter_equivalents": ["MATH 142"], "is_placeholder": False},
+    {"id": "ME_PHYS1141", "course_number": "PHYS 1141",  "title": "General Physics I",                                 "units": 4, "category": "support", "grid_col": 1, "grid_row": 2, "prerequisites": [], "quarter_equivalents": ["PHYS 141"], "is_placeholder": False},
+    {"id": "ME_GE1B",     "course_number": "GE 1B",      "title": "Critical Thinking",                                 "units": 3, "category": "ge",      "grid_col": 1, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "ME_GE1C",     "course_number": "GE 1C",      "title": "Oral Communication",                                "units": 3, "category": "ge",      "grid_col": 1, "grid_row": 4, "prerequisites": [], "quarter_equivalents": ["COMS 101"], "is_placeholder": True},
+
+    # ── SOPHOMORE FALL ────────────────────────────────────────────────────────
+    {"id": "ME2240",      "course_number": "ME 2240",    "title": "Applied Programming for Mechanical Engineering",    "units": 1, "category": "major",   "grid_col": 2, "grid_row": 0, "prerequisites": [], "quarter_equivalents": ["ME 228"], "is_placeholder": False},
+    {"id": "ME2248",      "course_number": "ME 2248",    "title": "Design Using Solid Modeling",                       "units": 1, "category": "major",   "grid_col": 2, "grid_row": 1, "prerequisites": ["ME 1148"], "quarter_equivalents": ["ME 130"], "is_placeholder": False},
+    {"id": "ME_ENGR2211", "course_number": "ENGR 2211",  "title": "Introduction to Mechanics",                         "units": 4, "category": "support", "grid_col": 2, "grid_row": 2, "prerequisites": ["PHYS 1141", "MATH 1261"], "quarter_equivalents": ["ME 211"], "is_placeholder": False},
+    {"id": "ME_MATH2263", "course_number": "MATH 2263",  "title": "Calculus III",                                       "units": 3, "category": "support", "grid_col": 2, "grid_row": 3, "prerequisites": ["MATH 1262"], "quarter_equivalents": ["MATH 143"], "is_placeholder": False},
+    {"id": "ME_PHYS1143", "course_number": "PHYS 1143",  "title": "General Physics II",                                 "units": 4, "category": "support", "grid_col": 2, "grid_row": 4, "prerequisites": ["PHYS 1141", "MATH 1261"], "quarter_equivalents": ["PHYS 132"], "is_placeholder": False},
+    {"id": "ME_GE3A",     "course_number": "GE 3A",      "title": "Arts",                                               "units": 3, "category": "ge",      "grid_col": 2, "grid_row": 5, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+
+    # ── SOPHOMORE SPRING ──────────────────────────────────────────────────────
+    {"id": "ME2212",      "course_number": "ME 2212",    "title": "Engineering Dynamics",                              "units": 3, "category": "major",   "grid_col": 3, "grid_row": 0, "prerequisites": ["ENGR 2211"], "quarter_equivalents": ["ME 212"], "is_placeholder": False},
+    {"id": "ME_EE2115",   "course_number": "EE 2115",    "title": "Circuits and Electronics for Non-Majors",           "units": 4, "category": "support", "grid_col": 3, "grid_row": 1, "prerequisites": ["PHYS 1143"], "quarter_equivalents": ["EE 201"], "is_placeholder": False},
+    {"id": "ME_MATE1220", "course_number": "MATE 1220",  "title": "Principles of Materials Engineering for Non-Majors", "units": 3, "category": "support", "grid_col": 3, "grid_row": 2, "prerequisites": ["CHEM 1120"], "quarter_equivalents": ["MATE 210"], "is_placeholder": False},
+    {"id": "ME_MATH2341", "course_number": "MATH 2341",  "title": "Linear Analysis",                                    "units": 4, "category": "support", "grid_col": 3, "grid_row": 3, "prerequisites": ["MATH 1262"], "quarter_equivalents": ["MATH 244"], "is_placeholder": False},
+    {"id": "ME_GE4A",     "course_number": "GE 4A",      "title": "American Institutions",                              "units": 3, "category": "ge",      "grid_col": 3, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+
+    # ── JUNIOR FALL ───────────────────────────────────────────────────────────
+    {"id": "ME3234",      "course_number": "ME 3234",    "title": "Design Thinking and Creativity",                    "units": 3, "category": "major",   "grid_col": 4, "grid_row": 0, "prerequisites": ["ME 1125"], "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "ME3236",      "course_number": "ME 3236",    "title": "Engineering Measurement and Data Analysis",         "units": 3, "category": "major",   "grid_col": 4, "grid_row": 1, "prerequisites": ["ME 2240"], "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "ME3302",      "course_number": "ME 3302",    "title": "Thermodynamics",                                    "units": 3, "category": "major",   "grid_col": 4, "grid_row": 2, "prerequisites": ["MATH 1262", "PHYS 1143"], "quarter_equivalents": ["ME 302"], "is_placeholder": False},
+    {"id": "ME3328",      "course_number": "ME 3328",    "title": "Design for Strength and Stiffness",                 "units": 4, "category": "major",   "grid_col": 4, "grid_row": 3, "prerequisites": ["ENGR 2211"], "quarter_equivalents": ["ME 328"], "is_placeholder": False},
+    {"id": "ME_GE3B",     "course_number": "GE 3B",      "title": "Humanities",                                        "units": 3, "category": "ge",      "grid_col": 4, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+
+    # ── JUNIOR SPRING ─────────────────────────────────────────────────────────
+    {"id": "ME3317",      "course_number": "ME 3317",    "title": "Vibrations and System Modeling",                    "units": 4, "category": "major",   "grid_col": 5, "grid_row": 0, "prerequisites": ["ME 2212", "MATH 2341"], "quarter_equivalents": ["ME 317"], "is_placeholder": False},
+    {"id": "ME3329",      "course_number": "ME 3329",    "title": "Mechanical Systems Design",                        "units": 3, "category": "major",   "grid_col": 5, "grid_row": 1, "prerequisites": ["ME 3328"], "quarter_equivalents": ["ME 329"], "is_placeholder": False},
+    {"id": "ME3341",      "course_number": "ME 3341",    "title": "Fluid Mechanics",                                  "units": 4, "category": "major",   "grid_col": 5, "grid_row": 2, "prerequisites": ["ME 2212", "MATH 2341"], "quarter_equivalents": ["ME 341", "ME 342"], "is_placeholder": False},
+    {"id": "ME_GE5B",     "course_number": "GE 5B",      "title": "Life Sciences",                                     "units": 3, "category": "ge",      "grid_col": 5, "grid_row": 3, "prerequisites": [], "quarter_equivalents": ["BIO 111", "BIO 1111"], "is_placeholder": True},
+    {"id": "ME_GE4B",     "course_number": "GE 4B",      "title": "Social and Behavioral Sciences",                    "units": 3, "category": "ge",      "grid_col": 5, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+
+    # ── SENIOR FALL ───────────────────────────────────────────────────────────
+    {"id": "ME3343",      "course_number": "ME 3343",    "title": "Heat Transfer",                                    "units": 4, "category": "major",   "grid_col": 6, "grid_row": 0, "prerequisites": ["ME 3341"], "quarter_equivalents": ["ME 343"], "is_placeholder": False},
+    {"id": "ME4417",      "course_number": "ME 4417",    "title": "Mechanical Controls and Implementations",          "units": 3, "category": "major",   "grid_col": 6, "grid_row": 1, "prerequisites": ["ME 3317"], "quarter_equivalents": ["ME 417"], "is_placeholder": False},
+    {"id": "ME4460",      "course_number": "ME 4460",    "title": "Senior Design Project I",                          "units": 2, "category": "major",   "grid_col": 6, "grid_row": 2, "prerequisites": ["ME 3234", "ME 3329", "ME 3343"], "quarter_equivalents": ["ME 428", "ME 429"], "is_placeholder": False},
+    {"id": "ME_TE_SRF1",  "course_number": "ME TE 1",    "title": "Technical Elective",                               "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "ME_TE_SRF2",  "course_number": "ME TE 2",    "title": "Technical Elective",                               "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "ME_GE6",      "course_number": "GE 6",       "title": "Ethnic Studies",                                   "units": 3, "category": "ge",      "grid_col": 6, "grid_row": 5, "prerequisites": [], "quarter_equivalents": ["ES 253", "ES 1112"], "is_placeholder": True},
+
+    # ── SENIOR SPRING ─────────────────────────────────────────────────────────
+    {"id": "ME4440",      "course_number": "ME 4440",    "title": "Thermal System Design",                            "units": 3, "category": "major",   "grid_col": 7, "grid_row": 0, "prerequisites": ["ME 3343"], "quarter_equivalents": ["ME 440"], "is_placeholder": False},
+    {"id": "ME4461",      "course_number": "ME 4461",    "title": "Senior Design Project II",                         "units": 2, "category": "major",   "grid_col": 7, "grid_row": 1, "prerequisites": ["ME 4460"], "quarter_equivalents": ["ME 430"], "is_placeholder": False},
+    {"id": "ME_TE_SRS1",  "course_number": "ME TE 3",    "title": "Technical Elective",                               "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "ME_TE_SRS2",  "course_number": "ME TE 4",    "title": "Technical Elective",                               "units": 2, "category": "concentration", "grid_col": 7, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "ME_GE_UD3",   "course_number": "GE UD-3",    "title": "Upper-Division Arts and Humanities",                "units": 3, "category": "ge",      "grid_col": 7, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+]
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ART AND DESIGN (BFA) — Concentration Not Yet Declared (120 units)
+# Source: catalog.calpoly.edu/liberal-arts/art-design/art-design-bfa/
+# ─────────────────────────────────────────────────────────────────────────────
+AD_FLOWCHART: list[Course] = [
+    # ── FRESHMAN FALL ─────────────────────────────────────────────────────────
+    {"id": "AD_ART1101", "course_number": "ART 1101", "title": "Fundamentals of Drawing",                   "units": 3, "category": "major", "grid_col": 0, "grid_row": 0, "prerequisites": [], "quarter_equivalents": ["ART 101"], "is_placeholder": False},
+    {"id": "AD_ART1102", "course_number": "ART 1102", "title": "2D Design",                                 "units": 3, "category": "major", "grid_col": 0, "grid_row": 1, "prerequisites": [], "quarter_equivalents": ["ART 102"], "is_placeholder": False},
+    {"id": "AD_GE1A",    "course_number": "GE 1A",   "title": "Written Communication",                     "units": 3, "category": "ge",    "grid_col": 0, "grid_row": 2, "prerequisites": [], "quarter_equivalents": ["ENGL 134", "ENGL 1340"], "is_placeholder": True},
+    {"id": "AD_GE1C",    "course_number": "GE 1C",   "title": "Oral Communication",                        "units": 3, "category": "ge",    "grid_col": 0, "grid_row": 3, "prerequisites": [], "quarter_equivalents": ["COMS 101"], "is_placeholder": True},
+    {"id": "AD_GE2",     "course_number": "GE 2",    "title": "Mathematics and Quantitative Reasoning",     "units": 3, "category": "ge",    "grid_col": 0, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+
+    # ── FRESHMAN SPRING ───────────────────────────────────────────────────────
+    {"id": "AD_ART1103", "course_number": "ART 1103", "title": "3D Design",                                 "units": 3, "category": "major", "grid_col": 1, "grid_row": 0, "prerequisites": [], "quarter_equivalents": ["ART 104"], "is_placeholder": False},
+    {"id": "AD_ART1141", "course_number": "ART 1141", "title": "Design Thinking and Methods",               "units": 3, "category": "major", "grid_col": 1, "grid_row": 1, "prerequisites": [], "quarter_equivalents": ["ART 183"], "is_placeholder": False},
+    {"id": "AD_ART2260", "course_number": "ART 2260", "title": "Camera and Light",                          "units": 3, "category": "major", "grid_col": 1, "grid_row": 2, "prerequisites": [], "quarter_equivalents": ["ART 224"], "is_placeholder": False},
+    {"id": "AD_GE1B",    "course_number": "GE 1B",   "title": "Critical Thinking",                         "units": 3, "category": "ge",    "grid_col": 1, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "AD_GE5A",    "course_number": "GE 5A",   "title": "Physical Sciences",                         "units": 3, "category": "ge",    "grid_col": 1, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+
+    # ── SOPHOMORE FALL ────────────────────────────────────────────────────────
+    {"id": "AD_ART1104", "course_number": "ART 1104", "title": "4D Design",                                 "units": 3, "category": "major", "grid_col": 2, "grid_row": 0, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "AD_ART1184_2282", "course_number": "ART 1184/2282", "title": "Beginning Sculpture or Painting", "units": 3, "category": "major", "grid_col": 2, "grid_row": 1, "prerequisites": ["ART 1101"], "quarter_equivalents": ["ART 1184", "ART 2282", "ART 148", "ART 209"], "is_placeholder": True},
+    {"id": "AD_ART2201", "course_number": "ART 2201", "title": "Visual Culture and Society",                "units": 3, "category": "major", "grid_col": 2, "grid_row": 2, "prerequisites": [], "quarter_equivalents": ["ART 222"], "is_placeholder": False},
+    {"id": "AD_ART2215", "course_number": "ART 2215", "title": "Global Contemporary Art",                   "units": 3, "category": "major", "grid_col": 2, "grid_row": 3, "prerequisites": [], "quarter_equivalents": ["ART 213"], "is_placeholder": False},
+    {"id": "AD_GE3B",    "course_number": "GE 3B",   "title": "Humanities",                                "units": 3, "category": "ge",    "grid_col": 2, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+
+    # ── SOPHOMORE SPRING ──────────────────────────────────────────────────────
+    {"id": "AD_ART2212", "course_number": "ART 2212", "title": "Renaissance to Modern Art",                 "units": 3, "category": "major", "grid_col": 3, "grid_row": 0, "prerequisites": [], "quarter_equivalents": ["ART 212"], "is_placeholder": False},
+    {"id": "AD_PORTFOLIO", "course_number": "ART 3359/3379/3399", "title": "Portfolio Review",             "units": 3, "category": "major", "grid_col": 3, "grid_row": 1, "prerequisites": [], "quarter_equivalents": ["ART 260", "ART 3359", "ART 3379", "ART 3399"], "is_placeholder": True},
+    {"id": "AD_GE4A",    "course_number": "GE 4A",   "title": "American Institutions",                    "units": 3, "category": "ge",    "grid_col": 3, "grid_row": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "AD_GE5B",    "course_number": "GE 5B",   "title": "Life Sciences",                            "units": 3, "category": "ge",    "grid_col": 3, "grid_row": 3, "prerequisites": [], "quarter_equivalents": ["BIO 111", "BIO 1111"], "is_placeholder": True},
+    {"id": "AD_GE6",     "course_number": "GE 6",    "title": "Ethnic Studies",                           "units": 3, "category": "ge",    "grid_col": 3, "grid_row": 4, "prerequisites": [], "quarter_equivalents": ["ES 253", "ES 1112"], "is_placeholder": True},
+
+    # ── JUNIOR FALL ───────────────────────────────────────────────────────────
+    {"id": "AD_CON_JRF1", "course_number": "Conc.",  "title": "Concentration Course",                     "units": 3, "category": "concentration", "grid_col": 4, "grid_row": 0, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "AD_CON_JRF2", "course_number": "Conc.",  "title": "Concentration Course",                     "units": 3, "category": "concentration", "grid_col": 4, "grid_row": 1, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "AD_CON_JRF3", "course_number": "Conc.",  "title": "Concentration Course",                     "units": 3, "category": "concentration", "grid_col": 4, "grid_row": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "AD_GE_UD25",  "course_number": "GE UD-2/5", "title": "Upper-Div Math/Science",                 "units": 3, "category": "ge", "grid_col": 4, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "AD_GE5C",     "course_number": "GE 5C",  "title": "Laboratory",                               "units": 1, "category": "ge", "grid_col": 4, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+
+    # ── JUNIOR SPRING ─────────────────────────────────────────────────────────
+    {"id": "AD_CON_JRS1", "course_number": "Conc.",  "title": "Concentration Course",                     "units": 3, "category": "concentration", "grid_col": 5, "grid_row": 0, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "AD_CON_JRS2", "course_number": "Conc.",  "title": "Concentration Course",                     "units": 3, "category": "concentration", "grid_col": 5, "grid_row": 1, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "AD_CON_JRS3", "course_number": "Conc.",  "title": "Concentration Course",                     "units": 3, "category": "concentration", "grid_col": 5, "grid_row": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "AD_CON_JRS4", "course_number": "Conc.",  "title": "Concentration Course",                     "units": 3, "category": "concentration", "grid_col": 5, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "AD_GE_UD4",   "course_number": "GE UD-4", "title": "Upper-Div Social Sciences",               "units": 3, "category": "ge", "grid_col": 5, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+
+    # ── SENIOR FALL ───────────────────────────────────────────────────────────
+    {"id": "AD_ART_HIST_UD", "course_number": "ART UD Hist", "title": "Upper-Division Art History Elective", "units": 3, "category": "major", "grid_col": 6, "grid_row": 0, "prerequisites": [], "quarter_equivalents": ["ART 3310", "ART 3311", "ART 3314", "ART 3317", "ART 3320", "ART 3321", "ART 3322", "ART 3323", "ART 3324"], "is_placeholder": True},
+    {"id": "AD_ART_ADV1", "course_number": "ART 3000+", "title": "3000-4000 Level Art Course",             "units": 4, "category": "major", "grid_col": 6, "grid_row": 1, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "AD_CON_SRF1", "course_number": "Conc.",    "title": "Concentration Course",                   "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "AD_CON_SRF2", "course_number": "Conc.",    "title": "Concentration Course",                   "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "AD_CON_SRF3", "course_number": "Conc.",    "title": "Concentration Course",                   "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+
+    # ── SENIOR SPRING ─────────────────────────────────────────────────────────
+    {"id": "AD_ART_ADV2", "course_number": "ART 3000+", "title": "3000-4000 Level Art Course",             "units": 4, "category": "major", "grid_col": 7, "grid_row": 0, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "AD_CON_SRS1", "course_number": "Conc.",    "title": "Concentration Course",                   "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 1, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "AD_CON_SRS2", "course_number": "Conc.",    "title": "Concentration Course",                   "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "AD_CON_SRS3", "course_number": "Conc.",    "title": "Concentration Course",                   "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "AD_FREE",     "course_number": "Free",     "title": "Free Elective",                          "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+]
+
+
 COLUMN_LABELS = [
     {"year": "Freshman",  "term": "Fall"},
     {"year": "Freshman",  "term": "Spring"},
@@ -302,6 +496,27 @@ FLOWCHARTS = {
         "code": "CPE",
         "total_units": 128,
         "courses": CPE_FLOWCHART,
+        "columns": COLUMN_LABELS,
+    },
+    "CE": {
+        "major": "Civil Engineering",
+        "code": "CE",
+        "total_units": 132,
+        "courses": CE_FLOWCHART,
+        "columns": COLUMN_LABELS,
+    },
+    "ME": {
+        "major": "Mechanical Engineering",
+        "code": "ME",
+        "total_units": 129,
+        "courses": ME_FLOWCHART,
+        "columns": COLUMN_LABELS,
+    },
+    "AD": {
+        "major": "Art and Design",
+        "code": "AD",
+        "total_units": 120,
+        "courses": AD_FLOWCHART,
         "columns": COLUMN_LABELS,
     },
 }

@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from data.flowcharts import FLOWCHARTS
+from data.concentrations import CONCENTRATIONS
 from services.inference import infer_completed
 
 router = APIRouter()
@@ -8,6 +9,11 @@ router = APIRouter()
 @router.get("/majors")
 def list_majors():
     return {"majors": [{"code": k, "name": v["major"]} for k, v in FLOWCHARTS.items()]}
+
+
+@router.get("/{major}/concentrations")
+def get_concentrations(major: str):
+    return {"concentrations": CONCENTRATIONS.get(major.upper(), [])}
 
 
 @router.get("/{major}")

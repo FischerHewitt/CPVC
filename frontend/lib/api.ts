@@ -1,4 +1,4 @@
-import type { Flowchart, Professor, GEArea, GEAreaMap, CourseInfo, TranscriptSession, MajorOption } from "./types";
+import type { Flowchart, Professor, GEArea, GEAreaMap, CourseInfo, TranscriptSession, MajorOption, Concentration } from "./types";
 
 const API = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
 
@@ -22,6 +22,17 @@ export async function getFlowchart(majorCode: string): Promise<Flowchart> {
   const res = await fetch(`${API}/api/flowchart/${majorCode}`);
   if (!res.ok) throw new Error(await res.text());
   return res.json();
+}
+
+export async function getConcentrations(majorCode: string): Promise<Concentration[]> {
+  try {
+    const res = await fetch(`${API}/api/flowchart/${majorCode}/concentrations`);
+    if (!res.ok) return [];
+    const data = await res.json();
+    return data.concentrations ?? [];
+  } catch {
+    return [];
+  }
 }
 
 export async function getMajors(): Promise<MajorOption[]> {
@@ -93,6 +104,7 @@ export async function getSession(sessionId: string): Promise<TranscriptSession |
       coursePositions: data.course_positions ?? {},
       plannedGECourses: data.planned_ge_courses ?? {},
       plannedGEUnits: data.planned_ge_units ?? {},
+      concentration: data.concentration ?? undefined,
     };
   } catch {
     return null;
@@ -108,6 +120,7 @@ export async function syncSession(
     course_positions?: Record<string, unknown>;
     planned_ge_courses?: Record<string, string>;
     planned_ge_units?: Record<string, number>;
+    concentration?: string;
   },
 ): Promise<void> {
   try {

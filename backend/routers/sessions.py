@@ -3,7 +3,7 @@ from services.sessions import get_session, update_session
 
 router = APIRouter()
 
-ALLOWED_UPDATE_FIELDS = {"completed", "in_progress", "course_positions", "planned_ge_courses", "planned_ge_units"}
+ALLOWED_UPDATE_FIELDS = {"completed", "in_progress", "course_positions", "planned_ge_courses", "planned_ge_units", "concentration"}
 
 
 @router.get("/{session_id}")
