@@ -231,12 +231,12 @@ export default function FlowchartGrid({
         {/* Support */}
         <div>
           <div className="flex justify-between text-xs mb-1">
-            <span className="font-semibold" style={{ color: "#92400e" }}>Support</span>
+            <span className="font-semibold" style={{ color: "#6d28d9" }}>Support</span>
             <span className="text-gray-500">{supportDone + supportInferred}/{supportCourses.length}</span>
           </div>
           <div className="bg-gray-200 rounded-full h-2 overflow-hidden flex">
-            <div className="h-full transition-all" style={{ width: `${(supportDone / supportCourses.length) * 100}%`, background: "#b45309" }} />
-            <div className="h-full transition-all" style={{ width: `${(supportInferred / supportCourses.length) * 100}%`, background: "#fcd34d" }} />
+            <div className="h-full transition-all" style={{ width: `${(supportDone / supportCourses.length) * 100}%`, background: "#7c3aed" }} />
+            <div className="h-full transition-all" style={{ width: `${(supportInferred / supportCourses.length) * 100}%`, background: "#c4b5fd" }} />
           </div>
         </div>
         {/* GE */}
@@ -344,7 +344,10 @@ export default function FlowchartGrid({
                   ? session.plannedGECourses?.[course.course_number]
                   : undefined;
                 const activeGECourseNumber = course.is_placeholder && course.category === "ge"
-                  ? (geAreaMap[course.course_number] ?? []).find((c) => completedNums.has(norm(c)) || inProgressNums.has(norm(c)))
+                  ? (
+                      (geAreaMap[course.course_number] ?? []).find((c) => completedNums.has(norm(c)) || inProgressNums.has(norm(c)))
+                      ?? course.quarter_equivalents.find((c) => completedNums.has(norm(c)) || inProgressNums.has(norm(c)))
+                    )
                   : undefined;
                 return (
                   <div
