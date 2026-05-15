@@ -2,6 +2,13 @@
 
 import { useMemo, useState } from "react";
 import type { Course, GEAreaMap } from "@/lib/types";
+import {
+  toNormalizedSet,
+  matchesCourse,
+  courseIsCompleted,
+  courseIsInProgress,
+  geAreaIsKnown,
+} from "@/lib/checklist-utils";
 
 interface Props {
   open: boolean;
@@ -24,44 +31,6 @@ const CATEGORY_LABELS: Record<string, string> = {
   concentration: "Conc.",
   ge: "GE",
 };
-
-function matchesCourse(course: Course, query: string) {
-  const haystack = [
-    course.course_number,
-    course.title,
-    course.category,
-    ...course.quarter_equivalents,
-  ].join(" ").toLowerCase();
-  return haystack.includes(query.toLowerCase().trim());
-}
-
-function norm(courseNumber: string) {
-  return courseNumber.toUpperCase().trim().replace(/\s+/g, " ");
-}
-
-function toNormalizedSet(courseNums: string[]) {
-  return new Set(courseNums.map(norm));
-}
-
-function courseIsCompleted(course: Course, completed: Set<string>) {
-  return [course.course_number, ...course.quarter_equivalents].some((num) => completed.has(norm(num)));
-}
-
-function courseIsInProgress(course: Course, inProgress: Set<string>) {
-  return [course.course_number, ...course.quarter_equivalents].some((num) => inProgress.has(norm(num)));
-}
-
-function geAreaCandidates(course: Course, geAreaMap: GEAreaMap) {
-  return [
-    course.course_number,
-    ...course.quarter_equivalents,
-    ...(geAreaMap[course.course_number] ?? []),
-  ];
-}
-
-function geAreaIsKnown(course: Course, geAreaMap: GEAreaMap, known: Set<string>) {
-  return geAreaCandidates(course, geAreaMap).some((candidate) => known.has(norm(candidate)));
-}
 
 export default function ManualCourseChecklist({
   open,
@@ -101,27 +70,36 @@ export default function ManualCourseChecklist({
     [gePlaceholders.length, selectableCourses],
   );
 
-  const visibleCourses = selectableCourses.filter((course) => {
-    if (category !== "all" && course.category !== category) return false;
-    if (query.trim() && !matchesCourse(course, query)) return false;
-    return true;
-  });
+  const visibleCourses = useMemo(() => {
+    const q = query.trim();
+    return selectableCourses.filter((course) => {
+      if (category !== "all" && course.category !== category) return false;
+      if (q && !matchesCourse(course, q)) return false;
+      return true;
+    });
+  }, [selectableCourses, category, query]);
 
-  const visibleGEAreas = gePlaceholders.filter((course) => {
-    if (category !== "all" && category !== "ge") return false;
-    if (query.trim() && !matchesCourse(course, query)) return false;
-    return true;
-  });
+  const visibleGEAreas = useMemo(() => {
+    const q = query.trim();
+    return gePlaceholders.filter((course) => {
+      if (category !== "all" && category !== "ge") return false;
+      if (q && !matchesCourse(course, q)) return false;
+      return true;
+    });
+  }, [gePlaceholders, category, query]);
 
-  const completedCount = selectableCourses.filter((course) => courseIsCompleted(course, completedSet)).length;
-  const geCompletedCount = gePlaceholders.filter((course) => geAreaIsKnown(course, geAreaMap, completedSet)).length;
-  const inProgressCount = selectableCourses.filter((course) => {
-    return !courseIsCompleted(course, completedSet) && courseIsInProgress(course, inProgressSet);
-  }).length;
-  const geInProgressCount = gePlaceholders.filter((course) => {
-    return !geAreaIsKnown(course, geAreaMap, completedSet) && geAreaIsKnown(course, geAreaMap, inProgressSet);
-  }).length;
-  const totalTracked = selectableCourses.length + gePlaceholders.length;
+  const { completedCount, geCompletedCount, inProgressCount, geInProgressCount, totalTracked } =
+    useMemo(() => ({
+      completedCount: selectableCourses.filter((c) => courseIsCompleted(c, completedSet)).length,
+      geCompletedCount: gePlaceholders.filter((c) => geAreaIsKnown(c, geAreaMap, completedSet)).length,
+      inProgressCount: selectableCourses.filter(
+        (c) => !courseIsCompleted(c, completedSet) && courseIsInProgress(c, inProgressSet)
+      ).length,
+      geInProgressCount: gePlaceholders.filter(
+        (c) => !geAreaIsKnown(c, geAreaMap, completedSet) && geAreaIsKnown(c, geAreaMap, inProgressSet)
+      ).length,
+      totalTracked: selectableCourses.length + gePlaceholders.length,
+    }), [selectableCourses, gePlaceholders, completedSet, inProgressSet, geAreaMap]);
 
   if (!open) return null;
 

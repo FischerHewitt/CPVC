@@ -20,16 +20,6 @@ def _dept_key(course_number: str) -> str:
     return course_number.strip().split()[0].lower()
 
 
-def _extract_prereq(block) -> str:
-    """Extract prerequisite text from a course block, checking extra and desc elements."""
-    for el in block.select(".courseblockextra, .courseblockdesc p, .courseblockdesc"):
-        text = el.get_text(" ", strip=True)
-        m = re.search(r"[Pp]rerequisites?\s*:\s*(.+?)(?:\.\s|$)", text)
-        if m:
-            return m.group(1).strip()
-    return ""
-
-
 def _fetch_dept(dept: str) -> dict[str, dict]:
     """Scrape all courses from catalog page for this department."""
     url = f"{CATALOG_BASE}/{dept}/"
@@ -43,27 +33,28 @@ def _fetch_dept(dept: str) -> dict[str, dict]:
     courses: dict[str, dict] = {}
 
     for block in soup.select(".courseblock"):
-        title_el = block.select_one(".courseblocktitle strong")
-        desc_el = block.select_one(".courseblockdesc")
-        if not title_el:
+        code_el  = block.select_one(".courseblockcode")
+        title_el = block.select_one(".courseblock__title")
+        hours_el = block.select_one(".courseblock__hours")
+        desc_el  = block.select_one(".courseblock__description")
+
+        if not code_el or not title_el:
             continue
 
-        # e.g. "COMS 1101. Public Speaking. 3 units."
-        raw_title = title_el.get_text(" ", strip=True)
-        match = re.match(r"^([A-Z]+\s+\d+)\.\s+(.+?)\.\s+([\d.]+)\s+units?\.$", raw_title, re.IGNORECASE)
-        if not match:
-            continue
+        num   = code_el.get_text(" ", strip=True).upper()
+        title = title_el.get_text(" ", strip=True)
 
-        num   = match.group(1).upper()
-        title = match.group(2).strip()
-        units = match.group(3)
-        desc  = desc_el.get_text(" ", strip=True) if desc_el else ""
+        # "(4 units)" or "(1-4 units)" or "(1 unit)"
+        hours_text = hours_el.get_text(" ", strip=True) if hours_el else ""
+        units_match = re.search(r"([\d][\d.\-–]*)\s+units?", hours_text, re.IGNORECASE)
+        units = units_match.group(1) if units_match else ""
+
+        desc = desc_el.get_text(" ", strip=True) if desc_el else ""
 
         courses[num] = {
             "title": title,
             "units": units,
             "description": desc,
-            "prerequisites_text": _extract_prereq(block),
         }
 
     return courses
@@ -84,3 +75,8 @@ def get_course_info(course_number: str) -> dict | None:
     courses = _ensure_dept(dept)
     normalized = " ".join(course_number.upper().split())
     return courses.get(normalized)
+
+
+def get_dept_courses(dept: str) -> dict[str, dict]:
+    """Return all courses for a department, fetched and cached from catalog."""
+    return _ensure_dept(dept.lower())

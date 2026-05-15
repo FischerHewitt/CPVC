@@ -14,7 +14,7 @@ interface Props {
   onToggleInProgress: () => void;
 }
 
-const CATEGORY_STYLES: Record<string, { bg: string; border: string; text: string }> = {
+export const CATEGORY_STYLES: Record<string, { bg: string; border: string; text: string }> = {
   major:         { bg: "#bae6fd", border: "#0284c7", text: "#0c4a6e" },
   support:       { bg: "#ede9fe", border: "#7c3aed", text: "#4c1d95" },
   concentration: { bg: "#fce7f3", border: "#be185d", text: "#831843" },
@@ -44,7 +44,7 @@ export default function CourseCard({
   const grayscale = status === "locked" ? "grayscale(30%)" : "none";
 
   if (course.is_placeholder) {
-    const isGE = course.category === "ge";
+    const isGE = course.category === "ge" || course.course_number.startsWith("ART 3000+");
     const geCompleted    = isGE  && status === "completed";
     const geInProgress   = isGE  && status === "in_progress";
     const geLocked       = isGE  && status === "locked";

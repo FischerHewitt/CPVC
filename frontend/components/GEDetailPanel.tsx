@@ -323,7 +323,9 @@ export default function GEDetailPanel({
           <div>
             <div className="text-white/70 text-xs font-medium">{course.course_number}</div>
             <div className="text-white font-bold text-base leading-tight mt-0.5">{course.title}</div>
-            <div className="text-white/70 text-xs mt-1">General Education Requirement</div>
+            <div className="text-white/70 text-xs mt-1">
+              {course.category === "ge" ? "General Education Requirement" : "Major Elective"}
+            </div>
           </div>
           <button onClick={onClose} className="text-white/70 hover:text-white text-xl leading-none ml-3 mt-0.5">×</button>
         </div>

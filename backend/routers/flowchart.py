@@ -2,14 +2,29 @@ from fastapi import APIRouter, HTTPException
 from data.flowcharts import FLOWCHARTS
 from data.concentrations import CONCENTRATIONS
 from services.inference import infer_completed
-from services.layout import align_prereq_chains
+from services.layout import sort_course_rows_by_category
 
 router = APIRouter()
 
-# Apply chain-alignment layout once at import time so every flowchart response
-# has prerequisite sequences (Calc I→II→III, Physics I→II) in the same row.
+# Apply the initial visual layout once at import time so every flowchart response
+# starts with major/support/concentration/GE courses grouped into clean rows.
+_PINNED_LAYOUT_ROWS = {
+    "CE": {
+        "CE_MATH1261": 2,
+        "CE_MATH1262": 2,
+        "CE_MATH2263": 2,
+    },
+}
+
 _ALIGNED_FLOWCHARTS = {
-    key: {**fc, "courses": align_prereq_chains(fc["courses"])}
+    key: {
+        **fc,
+        "courses": sort_course_rows_by_category(
+            fc["courses"],
+            column_count=len(fc["columns"]),
+            pinned_rows=_PINNED_LAYOUT_ROWS.get(key),
+        ),
+    }
     for key, fc in FLOWCHARTS.items()
 }
 

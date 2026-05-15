@@ -13,6 +13,62 @@ Algorithm (per column, left-to-right):
 from collections import defaultdict
 
 
+_CATEGORY_LAYOUT_ORDER = {
+    "major": 0,
+    "support": 1,
+    "concentration": 3,
+    "ge": 4,
+}
+
+_DEFERRED_LAYOUT_TITLE_PARTS = (
+    "orientation",
+    "professional preparation",
+)
+
+
+def _layout_bucket(course: dict) -> int:
+    title = course["title"].lower()
+    if any(part in title for part in _DEFERRED_LAYOUT_TITLE_PARTS):
+        return 2
+    return _CATEGORY_LAYOUT_ORDER.get(course["category"], 5)
+
+
+def sort_course_rows_by_category(
+    courses: list[dict],
+    column_count: int = 8,
+    pinned_rows: dict[str, int] | None = None,
+) -> list[dict]:
+    """Return courses with compact initial rows grouped by visual category.
+
+    Semester columns stay fixed. Optional pins keep hand-tuned chains, like
+    Civil Engineering's Calculus I/II/III row, aligned while the rest of the
+    column compacts around them.
+    """
+    pinned_rows = pinned_rows or {}
+    sorted_courses = [course.copy() for course in courses]
+
+    for grid_col in range(column_count):
+        column_courses = [course for course in sorted_courses if course["grid_col"] == grid_col]
+        used_rows = {
+            pinned_rows[course["id"]]
+            for course in column_courses
+            if course["id"] in pinned_rows
+        }
+        next_row = 0
+
+        for course in sorted(column_courses, key=lambda c: (_layout_bucket(c), c["grid_row"], c["id"])):
+            if course["id"] in pinned_rows:
+                course["grid_row"] = pinned_rows[course["id"]]
+                continue
+            while next_row in used_rows:
+                next_row += 1
+            course["grid_row"] = next_row
+            used_rows.add(next_row)
+            next_row += 1
+
+    return sorted_courses
+
+
 def align_prereq_chains(courses: list[dict]) -> list[dict]:
     # Build lookup by course_number; prefer non-placeholder for prereq resolution
     by_number: dict[str, dict] = {}

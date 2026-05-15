@@ -25,16 +25,16 @@ class Course(TypedDict):
 # ─────────────────────────────────────────────────────────────────────────────
 CS_FLOWCHART: list[Course] = [
     # ── FRESHMAN FALL ─────────────────────────────────────────────────────────
-    {"id": "CSC1000",  "course_number": "CSC 1000",  "title": "Computing Majors Orientation",         "units": 1, "category": "major",   "grid_col": 0, "grid_row": 0, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False},
-    {"id": "CSC1024",  "course_number": "CSC 1024",  "title": "Introduction to Computing",            "units": 2, "category": "major",   "grid_col": 0, "grid_row": 1, "prerequisites": [], "quarter_equivalents": ["CSC 101"], "is_placeholder": False},
-    {"id": "MATH1261", "course_number": "MATH 1261", "title": "Calculus I",                           "units": 4, "category": "support", "grid_col": 0, "grid_row": 2, "prerequisites": [], "quarter_equivalents": ["MATH 141"], "is_placeholder": False},
-    {"id": "LIFESCI",  "course_number": "BIO/BOT",   "title": "Life Science Elective",                "units": 4, "category": "support", "grid_col": 0, "grid_row": 3, "prerequisites": [], "quarter_equivalents": ["BIO 111", "BIO 1111"], "is_placeholder": True},
+    {"id": "CSC1000",  "course_number": "CSC 1000",  "title": "Computing Majors Orientation",         "units": 1, "category": "major",   "grid_col": 0, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "CSC1024",  "course_number": "CSC 1024",  "title": "Introduction to Computing",            "units": 2, "category": "major",   "grid_col": 0, "grid_row": 0, "prerequisites": [], "quarter_equivalents": ["CSC 101"], "is_placeholder": False},
+    {"id": "MATH1261", "course_number": "MATH 1261", "title": "Calculus I",                           "units": 4, "category": "support", "grid_col": 0, "grid_row": 1, "prerequisites": [], "quarter_equivalents": ["MATH 141"], "is_placeholder": False},
+    {"id": "LIFESCI",  "course_number": "BIO/BOT",   "title": "Life Science Elective",                "units": 4, "category": "support", "grid_col": 0, "grid_row": 2, "prerequisites": [], "quarter_equivalents": ["BIO 111", "BIO 1111"], "is_placeholder": True},
     {"id": "GE1A",     "course_number": "GE 1A",     "title": "Written Communication",                "units": 3, "category": "ge",      "grid_col": 0, "grid_row": 4, "prerequisites": [], "quarter_equivalents": ["ENGL 134", "ENGL 1340"], "is_placeholder": True},
 
     # ── FRESHMAN SPRING ───────────────────────────────────────────────────────
     {"id": "CSC1001",  "course_number": "CSC 1001",  "title": "Fundamentals of Computer Science",     "units": 4, "category": "major",   "grid_col": 1, "grid_row": 0, "prerequisites": ["CSC 1024"], "quarter_equivalents": ["CSC 101"], "is_placeholder": False},
-    {"id": "PHYS1141", "course_number": "PHYS 1141", "title": "General Physics I",                    "units": 4, "category": "support", "grid_col": 1, "grid_row": 1, "prerequisites": [], "quarter_equivalents": ["PHYS 141", "CHEM 124", "CHEM 1120"], "is_placeholder": False},
-    {"id": "MATH1262", "course_number": "MATH 1262", "title": "Calculus II",                          "units": 4, "category": "support", "grid_col": 1, "grid_row": 2, "prerequisites": ["MATH 1261"], "quarter_equivalents": ["MATH 142"], "is_placeholder": False},
+    {"id": "PHYS1141", "course_number": "PHYS 1141", "title": "General Physics I",                    "units": 4, "category": "support", "grid_col": 1, "grid_row": 2, "prerequisites": [], "quarter_equivalents": ["PHYS 141", "CHEM 124", "CHEM 1120"], "is_placeholder": False},
+    {"id": "MATH1262", "course_number": "MATH 1262", "title": "Calculus II",                          "units": 4, "category": "support", "grid_col": 1, "grid_row": 1, "prerequisites": ["MATH 1261"], "quarter_equivalents": ["MATH 142"], "is_placeholder": False},
     {"id": "GE1B",     "course_number": "GE 1B",     "title": "Critical Thinking",                    "units": 3, "category": "ge",      "grid_col": 1, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
 
     # ── SOPHOMORE FALL ────────────────────────────────────────────────────────
@@ -271,59 +271,59 @@ CPE_FLOWCHART: list[Course] = [
 CE_FLOWCHART: list[Course] = [
     # ── FRESHMAN FALL ─────────────────────────────────────────────────────────
     {"id": "CE1111",     "course_number": "CE 1111",    "title": "Introduction to Civil Engineering",                 "units": 1, "category": "major",   "grid_col": 0, "grid_row": 0, "prerequisites": [], "quarter_equivalents": ["CE 111"], "is_placeholder": False},
-    {"id": "CE_CHEM1120","course_number": "CHEM 1120",  "title": "Fundamentals of Chemical Structure and Properties", "units": 4, "category": "support", "grid_col": 0, "grid_row": 1, "prerequisites": [], "quarter_equivalents": ["CHEM 124"], "is_placeholder": False},
+    {"id": "CE_CHEM1120","course_number": "CHEM 1120",  "title": "Fundamentals of Chemical Structure and Properties", "units": 4, "category": "support", "grid_col": 0, "grid_row": 3, "prerequisites": [], "quarter_equivalents": ["CHEM 124"], "is_placeholder": False},
     {"id": "CE_MATH1261","course_number": "MATH 1261",  "title": "Calculus I",                                        "units": 4, "category": "support", "grid_col": 0, "grid_row": 2, "prerequisites": [], "quarter_equivalents": ["MATH 141"], "is_placeholder": False},
-    {"id": "CE_PHYS1141","course_number": "PHYS 1141",  "title": "General Physics I",                                 "units": 4, "category": "support", "grid_col": 0, "grid_row": 3, "prerequisites": [], "quarter_equivalents": ["PHYS 141"], "is_placeholder": False},
-    {"id": "CE_GE1A",    "course_number": "GE 1A",      "title": "Written Communication",                            "units": 3, "category": "ge",      "grid_col": 0, "grid_row": 4, "prerequisites": [], "quarter_equivalents": ["ENGL 134", "ENGL 1340"], "is_placeholder": True},
+    {"id": "CE_PHYS1141","course_number": "PHYS 1141",  "title": "General Physics I",                                 "units": 4, "category": "support", "grid_col": 0, "grid_row": 4, "prerequisites": [], "quarter_equivalents": ["PHYS 141"], "is_placeholder": False},
+    {"id": "CE_GE1A",    "course_number": "GE 1A",      "title": "Written Communication",                            "units": 3, "category": "ge",      "grid_col": 0, "grid_row": 5, "prerequisites": [], "quarter_equivalents": ["ENGL 134", "ENGL 1340"], "is_placeholder": True},
 
     # ── FRESHMAN SPRING ───────────────────────────────────────────────────────
     {"id": "CE1112",     "course_number": "CE 1112",    "title": "Spatial Visualization and Drawing",                 "units": 3, "category": "major",   "grid_col": 1, "grid_row": 0, "prerequisites": [], "quarter_equivalents": ["CE 112", "ENVE 1112"], "is_placeholder": False},
-    {"id": "CE_MATH1262","course_number": "MATH 1262",  "title": "Calculus II",                                       "units": 4, "category": "support", "grid_col": 1, "grid_row": 1, "prerequisites": ["MATH 1261"], "quarter_equivalents": ["MATH 142"], "is_placeholder": False},
-    {"id": "CE_PHYS1143","course_number": "PHYS 1143",  "title": "General Physics II",                                "units": 4, "category": "support", "grid_col": 1, "grid_row": 2, "prerequisites": ["PHYS 1141", "MATH 1261"], "quarter_equivalents": ["PHYS 132"], "is_placeholder": False},
-    {"id": "CE_GE1B",    "course_number": "GE 1B",      "title": "Critical Thinking",                                "units": 3, "category": "ge",      "grid_col": 1, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
-    {"id": "CE_GE1C",    "course_number": "GE 1C",      "title": "Oral Communication",                               "units": 3, "category": "ge",      "grid_col": 1, "grid_row": 4, "prerequisites": [], "quarter_equivalents": ["COMS 101"], "is_placeholder": True},
+    {"id": "CE_MATH1262","course_number": "MATH 1262",  "title": "Calculus II",                                       "units": 4, "category": "support", "grid_col": 1, "grid_row": 2, "prerequisites": ["MATH 1261"], "quarter_equivalents": ["MATH 142"], "is_placeholder": False},
+    {"id": "CE_PHYS1143","course_number": "PHYS 1143",  "title": "General Physics II",                                "units": 4, "category": "support", "grid_col": 1, "grid_row": 3, "prerequisites": ["PHYS 1141", "MATH 1261"], "quarter_equivalents": ["PHYS 132"], "is_placeholder": False},
+    {"id": "CE_GE1B",    "course_number": "GE 1B",      "title": "Critical Thinking",                                "units": 3, "category": "ge",      "grid_col": 1, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "CE_GE1C",    "course_number": "GE 1C",      "title": "Oral Communication",                               "units": 3, "category": "ge",      "grid_col": 1, "grid_row": 5, "prerequisites": [], "quarter_equivalents": ["COMS 101"], "is_placeholder": True},
 
     # ── SOPHOMORE FALL ────────────────────────────────────────────────────────
     {"id": "CE2251",     "course_number": "CE 2251",    "title": "Computational Applications in Civil and Environmental Engineering", "units": 2, "category": "major", "grid_col": 2, "grid_row": 0, "prerequisites": ["MATH 1261"], "quarter_equivalents": ["CE 251"], "is_placeholder": False},
-    {"id": "CE_ENGR2211","course_number": "ENGR 2211",  "title": "Introduction to Mechanics",                        "units": 4, "category": "support", "grid_col": 2, "grid_row": 1, "prerequisites": ["PHYS 1141", "MATH 1261"], "quarter_equivalents": ["ME 211"], "is_placeholder": False},
+    {"id": "CE_ENGR2211","course_number": "ENGR 2211",  "title": "Introduction to Mechanics",                        "units": 4, "category": "support", "grid_col": 2, "grid_row": 3, "prerequisites": ["PHYS 1141", "MATH 1261"], "quarter_equivalents": ["ME 211"], "is_placeholder": False},
     {"id": "CE_MATH2263","course_number": "MATH 2263",  "title": "Calculus III",                                      "units": 3, "category": "support", "grid_col": 2, "grid_row": 2, "prerequisites": ["MATH 1262"], "quarter_equivalents": ["MATH 143"], "is_placeholder": False},
-    {"id": "CE_GE3A",    "course_number": "GE 3A",      "title": "Arts",                                              "units": 3, "category": "ge",      "grid_col": 2, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
-    {"id": "CE_GE3B",    "course_number": "GE 3B",      "title": "Humanities",                                        "units": 3, "category": "ge",      "grid_col": 2, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "CE_GE3A",    "course_number": "GE 3A",      "title": "Arts",                                              "units": 3, "category": "ge",      "grid_col": 2, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "CE_GE3B",    "course_number": "GE 3B",      "title": "Humanities",                                        "units": 3, "category": "ge",      "grid_col": 2, "grid_row": 5, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
 
     # ── SOPHOMORE SPRING ──────────────────────────────────────────────────────
     {"id": "CE2259",     "course_number": "CE 2259",    "title": "Civil Engineering Materials",                       "units": 3, "category": "major",   "grid_col": 3, "grid_row": 0, "prerequisites": ["CHEM 1120"], "quarter_equivalents": ["CE 259"], "is_placeholder": False},
-    {"id": "CE_ENGR2212","course_number": "ENGR 2212",  "title": "Introduction to Engineering Dynamics",              "units": 2, "category": "support", "grid_col": 3, "grid_row": 1, "prerequisites": ["ENGR 2211"], "quarter_equivalents": ["ME 212"], "is_placeholder": False},
-    {"id": "CE_GEOL2240","course_number": "GEOL 2240",  "title": "Physical Geology",                                  "units": 3, "category": "support", "grid_col": 3, "grid_row": 2, "prerequisites": [], "quarter_equivalents": ["GEOL 201"], "is_placeholder": False},
-    {"id": "CE_MATH2341","course_number": "MATH 2341",  "title": "Linear Analysis",                                   "units": 4, "category": "support", "grid_col": 3, "grid_row": 3, "prerequisites": ["MATH 1262"], "quarter_equivalents": ["MATH 244"], "is_placeholder": False},
-    {"id": "CE_GE4A",    "course_number": "GE 4A",      "title": "American Institutions",                             "units": 3, "category": "ge",      "grid_col": 3, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "CE_ENGR2212","course_number": "ENGR 2212",  "title": "Introduction to Engineering Dynamics",              "units": 2, "category": "support", "grid_col": 3, "grid_row": 3, "prerequisites": ["ENGR 2211"], "quarter_equivalents": ["ME 212"], "is_placeholder": False},
+    {"id": "CE_GEOL2240","course_number": "GEOL 2240",  "title": "Physical Geology",                                  "units": 3, "category": "support", "grid_col": 3, "grid_row": 4, "prerequisites": [], "quarter_equivalents": ["GEOL 201"], "is_placeholder": False},
+    {"id": "CE_MATH2341","course_number": "MATH 2341",  "title": "Linear Analysis",                                   "units": 4, "category": "support", "grid_col": 3, "grid_row": 2, "prerequisites": ["MATH 1262"], "quarter_equivalents": ["MATH 244"], "is_placeholder": False},
+    {"id": "CE_GE4A",    "course_number": "GE 4A",      "title": "American Institutions",                             "units": 3, "category": "ge",      "grid_col": 3, "grid_row": 5, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
 
     # ── JUNIOR FALL ───────────────────────────────────────────────────────────
     {"id": "CE3321",     "course_number": "CE 3321",    "title": "Fundamentals of Transportation Engineering",         "units": 4, "category": "major",   "grid_col": 4, "grid_row": 0, "prerequisites": ["CE 2251"], "quarter_equivalents": ["CE 321"], "is_placeholder": False},
     {"id": "CE3336",     "course_number": "CE 3336",    "title": "Environmental Fluid Mechanics and Hydraulic Systems","units": 4, "category": "major",   "grid_col": 4, "grid_row": 1, "prerequisites": ["ENGR 2212", "MATH 2341"], "quarter_equivalents": ["CE 336", "ENVE 3336"], "is_placeholder": False},
     {"id": "CE3352",     "course_number": "CE 3352",    "title": "Structural Analysis",                               "units": 4, "category": "major",   "grid_col": 4, "grid_row": 2, "prerequisites": ["ENGR 2211"], "quarter_equivalents": ["CE 352"], "is_placeholder": False},
     {"id": "CE_STAT3210","course_number": "STAT 3210",  "title": "Engineering Statistics",                            "units": 3, "category": "support", "grid_col": 4, "grid_row": 3, "prerequisites": ["MATH 1262"], "quarter_equivalents": ["STAT 312"], "is_placeholder": False},
-    {"id": "CE_GE4B",    "course_number": "GE 4B",      "title": "Social & Behavioral Sciences",                      "units": 3, "category": "ge",      "grid_col": 4, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "CE_GE4B",    "course_number": "GE 4B",      "title": "Social & Behavioral Sciences",                      "units": 3, "category": "ge",      "grid_col": 4, "grid_row": 5, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
 
     # ── JUNIOR SPRING ─────────────────────────────────────────────────────────
     {"id": "CE3337",     "course_number": "CE 3337",    "title": "Water Resources & Environmental Engineering",        "units": 4, "category": "major",   "grid_col": 5, "grid_row": 0, "prerequisites": ["CE 3336"], "quarter_equivalents": ["CE 337", "ENVE 3337"], "is_placeholder": False},
     {"id": "CE3355",     "course_number": "CE 3355",    "title": "Reinforced Concrete Design",                        "units": 3, "category": "major",   "grid_col": 5, "grid_row": 1, "prerequisites": ["CE 3352"], "quarter_equivalents": ["CE 355"], "is_placeholder": False},
     {"id": "CE3381",     "course_number": "CE 3381",    "title": "Geotechnical Engineering",                          "units": 4, "category": "major",   "grid_col": 5, "grid_row": 2, "prerequisites": ["CE 2259", "ENGR 2211"], "quarter_equivalents": ["CE 381"], "is_placeholder": False},
     {"id": "CE3465",     "course_number": "CE 3465",    "title": "Infrastructure Systems",                            "units": 2, "category": "major",   "grid_col": 5, "grid_row": 3, "prerequisites": ["CE 2251"], "quarter_equivalents": ["CE 465", "ENVE 3465"], "is_placeholder": False},
-    {"id": "CE_GE5B",    "course_number": "GE 5B",      "title": "Life Sciences",                                      "units": 3, "category": "ge",      "grid_col": 5, "grid_row": 4, "prerequisites": [], "quarter_equivalents": ["BIO 111", "BIO 1111"], "is_placeholder": True},
+    {"id": "CE_GE5B",    "course_number": "GE 5B",      "title": "Life Sciences",                                      "units": 3, "category": "ge",      "grid_col": 5, "grid_row": 5, "prerequisites": [], "quarter_equivalents": ["BIO 111", "BIO 1111"], "is_placeholder": True},
 
     # ── SENIOR FALL ───────────────────────────────────────────────────────────
     {"id": "CE3375",     "course_number": "CE 3375",    "title": "Fundamentals of Construction Engineering and Management", "units": 4, "category": "major", "grid_col": 6, "grid_row": 0, "prerequisites": ["CE 2259"], "quarter_equivalents": ["CE 375"], "is_placeholder": False},
     {"id": "CE4466",     "course_number": "CE 4466",    "title": "Senior Design Project I",                            "units": 1, "category": "major",   "grid_col": 6, "grid_row": 1, "prerequisites": ["CE 3337", "CE 3355", "CE 3381"], "quarter_equivalents": ["CE 466"], "is_placeholder": False},
-    {"id": "CE_TE_SRF1", "course_number": "TE",         "title": "Technical Elective",                                 "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
-    {"id": "CE_TE_SRF2", "course_number": "TE",         "title": "Technical Elective",                                 "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
-    {"id": "CE_TE_SRF3", "course_number": "TE",         "title": "Technical Elective",                                 "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "CE_TE_SRF1", "course_number": "CE TE 1",    "title": "Technical Elective",                                 "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "CE_TE_SRF2", "course_number": "CE TE 2",    "title": "Technical Elective",                                 "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "CE_TE_SRF3", "course_number": "CE TE 3",    "title": "Technical Elective",                                 "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
     {"id": "CE_GE6",     "course_number": "GE 6",       "title": "Ethnic Studies",                                     "units": 3, "category": "ge",      "grid_col": 6, "grid_row": 5, "prerequisites": [], "quarter_equivalents": ["ES 253", "ES 1112"], "is_placeholder": True},
 
     # ── SENIOR SPRING ─────────────────────────────────────────────────────────
     {"id": "CE4467",     "course_number": "CE 4467",    "title": "Senior Design Project II",                           "units": 3, "category": "major",   "grid_col": 7, "grid_row": 0, "prerequisites": ["CE 4466"], "quarter_equivalents": ["CE 467"], "is_placeholder": False},
-    {"id": "CE_TE_SRS1", "course_number": "TE",         "title": "Technical Elective",                                 "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 1, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
-    {"id": "CE_TE_SRS2", "course_number": "TE",         "title": "Technical Elective",                                 "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
-    {"id": "CE_TE_SRS3", "course_number": "TE",         "title": "Technical Elective",                                 "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "CE_TE_SRS1", "course_number": "CE TE 4",    "title": "Technical Elective",                                 "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 1, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "CE_TE_SRS2", "course_number": "CE TE 5",    "title": "Technical Elective",                                 "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "CE_TE_SRS3", "course_number": "CE TE 6",    "title": "Technical Elective",                                 "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
     {"id": "CE_GE_UD3",  "course_number": "GE UD-3",    "title": "Upper-Division Arts and Humanities",                  "units": 3, "category": "ge",      "grid_col": 7, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
     {"id": "CE_GE_UD4",  "course_number": "GE UD-4",    "title": "Upper-Division Social Sciences",                     "units": 3, "category": "ge",      "grid_col": 7, "grid_row": 5, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
 ]
@@ -450,7 +450,7 @@ AD_FLOWCHART: list[Course] = [
     {"id": "AD_CON_SRF3", "course_number": "Conc.",    "title": "Concentration Course",                   "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
 
     # ── SENIOR SPRING ─────────────────────────────────────────────────────────
-    {"id": "AD_ART_ADV2", "course_number": "ART 3000+", "title": "3000-4000 Level Art Course",             "units": 4, "category": "major", "grid_col": 7, "grid_row": 0, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "AD_ART_ADV2", "course_number": "ART 3000+ (2)", "title": "3000-4000 Level Art Course",           "units": 4, "category": "major", "grid_col": 7, "grid_row": 0, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
     {"id": "AD_CON_SRS1", "course_number": "Conc.",    "title": "Concentration Course",                   "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 1, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
     {"id": "AD_CON_SRS2", "course_number": "Conc.",    "title": "Concentration Course",                   "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
     {"id": "AD_CON_SRS3", "course_number": "Conc.",    "title": "Concentration Course",                   "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
@@ -468,6 +468,68 @@ COLUMN_LABELS = [
     {"year": "Senior",    "term": "Fall"},
     {"year": "Senior",    "term": "Spring"},
 ]
+
+
+_CATEGORY_LAYOUT_ORDER = {
+    "major": 0,
+    "support": 1,
+    "concentration": 3,
+    "ge": 4,
+}
+
+_DEFERRED_LAYOUT_TITLE_PARTS = (
+    "orientation",
+    "professional preparation",
+)
+
+
+def _layout_bucket(course: Course) -> int:
+    title = course["title"].lower()
+    if any(part in title for part in _DEFERRED_LAYOUT_TITLE_PARTS):
+        return 2
+    return _CATEGORY_LAYOUT_ORDER.get(course["category"], 5)
+
+
+def _compact_rows_by_category(courses: list[Course], pinned_rows: dict[str, int] | None = None) -> list[Course]:
+    pinned_rows = pinned_rows or {}
+
+    for grid_col in range(len(COLUMN_LABELS)):
+        column_courses = [course for course in courses if course["grid_col"] == grid_col]
+        used_rows = {
+            pinned_rows[course["id"]]
+            for course in column_courses
+            if course["id"] in pinned_rows
+        }
+        next_row = 0
+
+        for course in sorted(column_courses, key=lambda c: (_layout_bucket(c), c["grid_row"])):
+            if course["id"] in pinned_rows:
+                course["grid_row"] = pinned_rows[course["id"]]
+                continue
+            while next_row in used_rows:
+                next_row += 1
+            course["grid_row"] = next_row
+            used_rows.add(next_row)
+            next_row += 1
+
+    return courses
+
+
+CS_FLOWCHART = _compact_rows_by_category(CS_FLOWCHART)
+AERO_FLOWCHART = _compact_rows_by_category(AERO_FLOWCHART)
+SE_FLOWCHART = _compact_rows_by_category(SE_FLOWCHART)
+CPE_FLOWCHART = _compact_rows_by_category(CPE_FLOWCHART)
+CE_FLOWCHART = _compact_rows_by_category(
+    CE_FLOWCHART,
+    {
+        "CE_MATH1261": 2,
+        "CE_MATH1262": 2,
+        "CE_MATH2263": 2,
+    },
+)
+ME_FLOWCHART = _compact_rows_by_category(ME_FLOWCHART)
+AD_FLOWCHART = _compact_rows_by_category(AD_FLOWCHART)
+
 
 FLOWCHARTS = {
     "CS": {

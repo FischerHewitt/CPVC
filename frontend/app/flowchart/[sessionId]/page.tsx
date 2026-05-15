@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { loadSession, saveSession, persistSession } from "@/lib/session";
 import { getFlowchart, inferPrerequisites, getSession, getGEAreaMap, getConcentrations, syncSession } from "@/lib/api";
@@ -24,6 +24,27 @@ export default function FlowchartPage() {
   const [checklistOpen, setChecklistOpen] = useState(false);
   const [concentrations, setConcentrations] = useState<Concentration[]>([]);
   const [error, setError] = useState<string | null>(null);
+
+  const activeConcentration = useMemo(
+    () => concentrations.find((c) => c.id === (session?.concentration ?? "none")),
+    [concentrations, session?.concentration],
+  );
+
+  const resolvedFlowchart: Flowchart | null = useMemo(() => {
+    if (!flowchart) return null;
+    if (!activeConcentration || Object.keys(activeConcentration.slot_overrides).length === 0) {
+      return flowchart;
+    }
+
+    return {
+      ...flowchart,
+      courses: flowchart.courses.map((course) => {
+        const override = activeConcentration.slot_overrides[course.id];
+        if (!override) return course;
+        return { ...course, ...override };
+      }),
+    };
+  }, [activeConcentration, flowchart]);
 
   const rememberGEAreaCourses = useCallback((areaId: string, courseNumbers: string[]) => {
     setGEAreaMap((current) => ({
@@ -57,16 +78,14 @@ export default function FlowchartPage() {
       saveSession(s);
       if (!cancelled) setSession(s);
 
-      // Fetch GE area map and concentrations in parallel with flowchart
+      // Fire all background fetches in parallel
       getGEAreaMap().then((map) => { if (!cancelled) setGEAreaMap(map); });
       getConcentrations(s.major).then((list) => { if (!cancelled) setConcentrations(list); });
+      inferPrerequisites(s.major, s.completed).then((inf) => { if (!cancelled) setInferred(inf); });
 
       getFlowchart(s.major)
-        .then(async (fc) => {
-          if (cancelled) return;
-          setFlowchart(fc);
-          const inf = await inferPrerequisites(s!.major, s!.completed);
-          if (!cancelled) setInferred(inf);
+        .then((fc) => {
+          if (!cancelled) setFlowchart(fc);
         })
         .catch(() => {
           if (!cancelled) setError("Could not load flowchart. Make sure the backend is running.");
@@ -91,7 +110,7 @@ export default function FlowchartPage() {
     );
   }
 
-  if (!session || !flowchart) {
+  if (!session || !flowchart || !resolvedFlowchart) {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ background: "var(--cp-bg)" }}>
         <div className="text-gray-400 text-sm">Loading flowchart…</div>
@@ -300,19 +319,11 @@ export default function FlowchartPage() {
     persistSession(nextSession, { course_positions: positions as Record<string, unknown> });
   };
 
-  const activeConcentration = concentrations.find((c) => c.id === (session.concentration ?? "none"));
-
-  const resolvedFlowchart: Flowchart =
-    !activeConcentration || Object.keys(activeConcentration.slot_overrides).length === 0
-      ? flowchart
-      : {
-          ...flowchart,
-          courses: flowchart.courses.map((course) => {
-            const override = activeConcentration.slot_overrides[course.id];
-            if (!override) return course;
-            return { ...course, ...override };
-          }),
-        };
+  const resetCourseLayout = () => {
+    const nextSession = { ...session, coursePositions: {} };
+    setSession(nextSession);
+    persistSession(nextSession, { course_positions: {} });
+  };
 
   const changeConcentration = (newId: string) => {
     const nextSession = { ...session, concentration: newId === "none" ? undefined : newId };
@@ -359,6 +370,12 @@ export default function FlowchartPage() {
               <span className="text-gray-400 text-sm">4-Year Semester Flowchart</span>
             </div>
             <button
+              onClick={resetCourseLayout}
+              className="w-fit rounded border border-gray-300 px-3 py-2 text-sm font-semibold text-gray-600 transition-colors hover:bg-gray-50"
+            >
+              Reset Layout
+            </button>
+            <button
               onClick={() => setChecklistOpen(true)}
               className="w-fit rounded border border-green-800 px-3 py-2 text-sm font-semibold text-green-900 transition-colors hover:bg-green-50"
             >
@@ -375,7 +392,7 @@ export default function FlowchartPage() {
             onToggleCourseInProgress={toggleCourseInProgress}
             onMoveCourse={moveCourse}
             onCourseClick={(course, status) => {
-              if (course.is_placeholder && course.category === "ge") {
+              if (course.is_placeholder && (course.category === "ge" || course.course_number.startsWith("ART 3000+"))) {
                 setSelectedGECourse(course);
                 setSelectedCourse(null);
               } else {

@@ -203,7 +203,17 @@ export default function CourseDetailPanel({
 
           {/* Professors */}
           <div>
-            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Professors</div>
+            <div className="flex items-center justify-between mb-2">
+              <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Professors</div>
+              <a
+                href="https://polyratings.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-semibold text-blue-500 uppercase tracking-wide hover:underline"
+              >
+                PolyRatings ↗
+              </a>
+            </div>
             {loadingProfs && <div className="text-xs text-gray-400">Loading…</div>}
             {!loadingProfs && professors.length === 0 && (
               <div className="text-xs text-gray-400">No professor data available yet.</div>

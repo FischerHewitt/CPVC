@@ -1,5 +1,7 @@
 from data.concentrations import CONCENTRATIONS
 from data.flowcharts import FLOWCHARTS
+from routers.flowchart import _ALIGNED_FLOWCHARTS
+from services.layout import align_prereq_chains
 
 
 REQUIRED_COURSE_KEYS = {
@@ -16,6 +18,98 @@ REQUIRED_COURSE_KEYS = {
 }
 
 VALID_CATEGORIES = {"major", "support", "concentration", "ge"}
+
+LAYOUT_CATEGORY_ORDER = {
+    "major": 0,
+    "support": 1,
+    "concentration": 3,
+    "ge": 4,
+}
+
+DEFERRED_LAYOUT_TITLE_PARTS = (
+    "orientation",
+    "professional preparation",
+)
+
+
+def layout_bucket(course):
+    title = course["title"].lower()
+    if any(part in title for part in DEFERRED_LAYOUT_TITLE_PARTS):
+        return 2
+    return LAYOUT_CATEGORY_ORDER[course["category"]]
+
+
+def _make_course(id, number, col, row, prereqs=None, placeholder=False):
+    return {
+        "id": id,
+        "course_number": number,
+        "grid_col": col,
+        "grid_row": row,
+        "prerequisites": prereqs or [],
+        "is_placeholder": placeholder,
+    }
+
+
+def test_align_prereq_chains_direct_chain_lands_in_same_row():
+    courses = [
+        _make_course("c1", "MATH 1261", 0, 0),
+        _make_course("c2", "MATH 1262", 1, 3, prereqs=["MATH 1261"]),
+        _make_course("c3", "MATH 2263", 2, 5, prereqs=["MATH 1262"]),
+    ]
+    result = {c["id"]: c for c in align_prereq_chains(courses)}
+    assert result["c1"]["grid_row"] == result["c2"]["grid_row"] == result["c3"]["grid_row"]
+
+
+def test_align_prereq_chains_free_courses_compact_without_gaps():
+    courses = [
+        _make_course("a", "CSC 1024", 0, 0),
+        _make_course("b", "MATH 1261", 0, 1),
+        _make_course("c", "GE 1A", 0, 2),
+    ]
+    result_courses = align_prereq_chains(courses)
+    rows = sorted(c["grid_row"] for c in result_courses)
+    assert rows == list(range(len(rows)))
+
+
+def test_align_prereq_chains_two_independent_chains_no_row_overlap():
+    courses = [
+        _make_course("a1", "CSC 1024", 0, 0),
+        _make_course("b1", "MATH 1261", 0, 1),
+        _make_course("a2", "CSC 1001", 1, 2, prereqs=["CSC 1024"]),
+        _make_course("b2", "MATH 1262", 1, 3, prereqs=["MATH 1261"]),
+    ]
+    result = {c["id"]: c for c in align_prereq_chains(courses)}
+    assert result["a2"]["grid_row"] == result["a1"]["grid_row"]
+    assert result["b2"]["grid_row"] == result["b1"]["grid_row"]
+    col1_rows = [result["a2"]["grid_row"], result["b2"]["grid_row"]]
+    assert len(col1_rows) == len(set(col1_rows)), "Two chains in same column must not share a row"
+
+
+def test_align_prereq_chains_unknown_prereq_treated_as_free():
+    courses = [_make_course("c1", "CSC 2001", 0, 5, prereqs=["CSC 1001"])]
+    result = align_prereq_chains(courses)
+    assert result[0]["grid_row"] == 0, "Single free course should compact to row 0"
+
+
+def test_align_prereq_chains_placeholder_course_participates_in_chain():
+    courses = [
+        _make_course("base", "MATH 1261", 0, 0),
+        _make_course("ph",   "MATH 1262", 1, 4, prereqs=["MATH 1261"], placeholder=True),
+    ]
+    result = {c["id"]: c for c in align_prereq_chains(courses)}
+    assert result["ph"]["grid_row"] == result["base"]["grid_row"]
+
+
+def test_align_prereq_chains_idempotent():
+    courses = [
+        _make_course("c1", "MATH 1261", 0, 0),
+        _make_course("c2", "MATH 1262", 1, 0, prereqs=["MATH 1261"]),
+        _make_course("c3", "MATH 2263", 2, 0, prereqs=["MATH 1262"]),
+    ]
+    once  = align_prereq_chains(courses)
+    twice = align_prereq_chains(once)
+    for a, b in zip(once, twice):
+        assert a["grid_row"] == b["grid_row"], "align_prereq_chains should be idempotent"
 
 
 def test_flowcharts_have_valid_course_shape_and_unique_ids():
@@ -46,6 +140,55 @@ def test_flowchart_prerequisites_reference_courses_in_same_major():
             assert missing == [], f"{major_code} {course['course_number']} has unknown prereqs: {missing}"
 
 
+def test_flowchart_columns_are_compacted_after_default_layout_pass():
+    for major_code, flowchart in FLOWCHARTS.items():
+        for grid_col in range(len(flowchart["columns"])):
+            rows = sorted(
+                course["grid_row"]
+                for course in flowchart["courses"]
+                if course["grid_col"] == grid_col
+            )
+            assert rows == list(range(len(rows))), f"{major_code} column {grid_col} has row gaps: {rows}"
+
+
+def test_flowchart_api_initial_layout_groups_categories_for_every_major():
+    for major_code, flowchart in _ALIGNED_FLOWCHARTS.items():
+        for grid_col in range(len(flowchart["columns"])):
+            column_courses = sorted(
+                (course for course in flowchart["courses"] if course["grid_col"] == grid_col),
+                key=lambda course: course["grid_row"],
+            )
+            rows = [course["grid_row"] for course in column_courses]
+            buckets = [layout_bucket(course) for course in column_courses]
+
+            assert rows == list(range(len(rows))), f"{major_code} column {grid_col} has row gaps: {rows}"
+            assert buckets == sorted(buckets), f"{major_code} column {grid_col} is not category grouped: {buckets}"
+
+
+def test_concentration_overlays_keep_initial_layout_grouped():
+    for major_code, concentrations in CONCENTRATIONS.items():
+        flowchart = _ALIGNED_FLOWCHARTS[major_code]
+
+        for concentration in concentrations:
+            resolved_courses = []
+            for course in flowchart["courses"]:
+                override = concentration["slot_overrides"].get(course["id"])
+                resolved_courses.append({**course, **override} if override else course)
+
+            for grid_col in range(len(flowchart["columns"])):
+                buckets = [
+                    layout_bucket(course)
+                    for course in sorted(
+                        (course for course in resolved_courses if course["grid_col"] == grid_col),
+                        key=lambda course: course["grid_row"],
+                    )
+                ]
+
+                assert buckets == sorted(buckets), (
+                    f"{major_code} {concentration['id']} column {grid_col} is not category grouped: {buckets}"
+                )
+
+
 def test_aerospace_engineering_concentrations_cover_catalog_options():
     aero_concentrations = CONCENTRATIONS["AERO"]
     concentration_ids = {concentration["id"] for concentration in aero_concentrations}
@@ -63,6 +206,25 @@ def test_aerospace_engineering_concentrations_cover_catalog_options():
     assert astronautics["slot_overrides"]["CON_SRS1"]["course_number"] == "AERO 4464"
 
 
+def test_computer_science_layout_groups_early_major_and_support_rows():
+    cs_courses = {course["course_number"]: course for course in FLOWCHARTS["CS"]["courses"]}
+
+    assert cs_courses["CSC 1024"]["grid_row"] == 0
+    assert cs_courses["CSC 1001"]["grid_row"] == 0
+    assert cs_courses["CSC 2001"]["grid_row"] == 0
+
+    assert cs_courses["MATH 1261"]["grid_row"] == 1
+    assert cs_courses["MATH 1262"]["grid_row"] == 1
+    assert cs_courses["MATH 1151"]["grid_row"] == 1
+
+    assert cs_courses["CSC 1000"]["grid_row"] == 3
+    assert cs_courses["PHYS 1141"]["grid_row"] == 2
+    assert cs_courses["GE 1C"]["grid_row"] == 2
+    assert cs_courses["BIO/BOT"]["grid_row"] == 2
+    assert cs_courses["GE 1A"]["grid_row"] > cs_courses["CSC 1000"]["grid_row"]
+    assert cs_courses["GE 1B"]["grid_row"] > cs_courses["PHYS 1141"]["grid_row"]
+
+
 def test_civil_engineering_flowchart_contains_expected_core_sequence():
     ce_courses = {course["course_number"]: course for course in FLOWCHARTS["CE"]["courses"]}
 
@@ -71,6 +233,33 @@ def test_civil_engineering_flowchart_contains_expected_core_sequence():
     assert ce_courses["CE 4467"]["prerequisites"] == ["CE 4466"]
     assert ce_courses["CE 3337"]["prerequisites"] == ["CE 3336"]
     assert ce_courses["GE UD-4"]["category"] == "ge"
+
+
+def test_civil_engineering_layout_prioritizes_calculus_row_and_category_bands():
+    ce_courses = {course["course_number"]: course for course in FLOWCHARTS["CE"]["courses"]}
+
+    calc_row = ce_courses["MATH 1261"]["grid_row"]
+    assert calc_row == ce_courses["MATH 1262"]["grid_row"] == ce_courses["MATH 2263"]["grid_row"]
+
+    assert ce_courses["CE 1111"]["grid_row"] < calc_row
+    assert ce_courses["CE 1112"]["grid_row"] < calc_row
+    assert ce_courses["CE 2251"]["grid_row"] < calc_row
+    assert ce_courses["CHEM 1120"]["grid_row"] == 1
+    assert ce_courses["PHYS 1141"]["grid_row"] > calc_row
+    assert ce_courses["GE 1A"]["grid_row"] > ce_courses["PHYS 1141"]["grid_row"]
+    assert ce_courses["GE 1B"]["grid_row"] > ce_courses["PHYS 1143"]["grid_row"]
+    assert ce_courses["GE 3A"]["grid_row"] > ce_courses["ENGR 2211"]["grid_row"]
+
+
+def test_civil_engineering_technical_elective_placeholders_are_unique():
+    ce_te_courses = [
+        course["course_number"]
+        for course in FLOWCHARTS["CE"]["courses"]
+        if course["id"].startswith("CE_TE_")
+    ]
+
+    assert len(ce_te_courses) == 6
+    assert len(ce_te_courses) == len(set(ce_te_courses))
 
 
 def test_civil_engineering_concentrations_replace_only_technical_electives():

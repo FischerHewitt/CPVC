@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { Course, CourseStatus, Flowchart, GEAreaMap, TranscriptSession } from "@/lib/types";
-import CourseCard from "./CourseCard";
+import CourseCard, { CATEGORY_STYLES } from "./CourseCard";
 
 interface Props {
   flowchart: Flowchart;
@@ -112,10 +112,10 @@ const YEAR_GROUPS = [
 ];
 
 const CATEGORY_LEGEND = [
-  { label: "Major",         bg: "#bae6fd", border: "#0284c7" },
-  { label: "Support",       bg: "#fef3c7", border: "#b45309" },
-  { label: "Concentration", bg: "#fce7f3", border: "#be185d" },
-  { label: "Gen Ed",        bg: "#dcfce7", border: "#15803d" },
+  { label: "Major",         ...CATEGORY_STYLES.major },
+  { label: "Support",       ...CATEGORY_STYLES.support },
+  { label: "Concentration", ...CATEGORY_STYLES.concentration },
+  { label: "Gen Ed",        ...CATEGORY_STYLES.ge },
 ];
 
 export default function FlowchartGrid({
@@ -143,6 +143,55 @@ export default function FlowchartGrid({
   }, [flowchart.courses]);
   const [draggedCourseId, setDraggedCourseId] = useState<string | null>(null);
 
+  // ── Memoized per-course status (avoids recomputing on every render/drag) ───
+  const courseStatuses = useMemo(
+    () =>
+      new Map(
+        flowchart.courses.map((course) => [
+          course.id,
+          getCourseStatus(course, completedNums, inProgressNums, inferredNums, knownNums, courseLookup, geAreaMap),
+        ])
+      ),
+    [flowchart.courses, completedNums, inProgressNums, inferredNums, knownNums, courseLookup, geAreaMap]
+  );
+
+  // ── Memoized per-course display data (checked, plannedCourseNumber, etc.) ──
+  const plannedGECourses = useMemo(() => session.plannedGECourses ?? {}, [session.plannedGECourses]);
+  const courseDisplayData = useMemo(() => {
+    const map = new Map<string, {
+      checked: boolean;
+      inProgressChecked: boolean;
+      plannedCourseNumber: string | undefined;
+      activeGECourseNumber: string | undefined;
+    }>();
+    for (const course of flowchart.courses) {
+      const allNums = [course.course_number, ...course.quarter_equivalents];
+      if (course.is_placeholder && course.category === "ge") {
+        const approved = [
+          course.course_number,
+          ...course.quarter_equivalents,
+          ...(geAreaMap[course.course_number] ?? []),
+        ];
+        map.set(course.id, {
+          checked: hasAnyCourseNumber(completedNums, approved),
+          inProgressChecked: hasAnyCourseNumber(inProgressNums, approved),
+          plannedCourseNumber: plannedGECourses[course.course_number],
+          activeGECourseNumber:
+            (geAreaMap[course.course_number] ?? []).find((c) => completedNums.has(norm(c)) || inProgressNums.has(norm(c)))
+            ?? course.quarter_equivalents.find((c) => completedNums.has(norm(c)) || inProgressNums.has(norm(c))),
+        });
+      } else {
+        map.set(course.id, {
+          checked: hasAnyCourseNumber(completedNums, allNums),
+          inProgressChecked: hasAnyCourseNumber(inProgressNums, allNums),
+          plannedCourseNumber: undefined,
+          activeGECourseNumber: undefined,
+        });
+      }
+    }
+    return map;
+  }, [flowchart.courses, completedNums, inProgressNums, geAreaMap, plannedGECourses]);
+
   // ── Per-category progress ──────────────────────────────────────────────────
   function isCompletedOrInferred(c: Course) {
     const nums = [c.course_number, ...c.quarter_equivalents];
@@ -153,12 +202,12 @@ export default function FlowchartGrid({
     return nums.some((n) => completedNums.has(norm(n)));
   }
 
-  const majorCourses   = flowchart.courses.filter((c) => c.category === "major");
-  const supportCourses = flowchart.courses.filter((c) => c.category === "support");
-  const gePlaceholders = flowchart.courses.filter((c) => c.category === "ge"      && c.is_placeholder);
+  const majorCourses   = useMemo(() => flowchart.courses.filter((c) => c.category === "major"),   [flowchart.courses]);
+  const supportCourses = useMemo(() => flowchart.courses.filter((c) => c.category === "support"), [flowchart.courses]);
+  const gePlaceholders = useMemo(() => flowchart.courses.filter((c) => c.category === "ge" && c.is_placeholder), [flowchart.courses]);
 
   // ── Total units ────────────────────────────────────────────────────────────
-  const plannedGEUnits = session.plannedGEUnits ?? {};
+  const plannedGEUnits = useMemo(() => session.plannedGEUnits ?? {}, [session.plannedGEUnits]);
 
   function effectiveUnits(course: Course): number {
     if (course.is_placeholder && course.category === "ge") {
@@ -167,26 +216,35 @@ export default function FlowchartGrid({
     return course.units;
   }
 
-  let earnedUnits = 0;
-  let inProgressUnits = 0;
-  for (const course of flowchart.courses) {
-    const status = getCourseStatus(course, completedNums, inProgressNums, inferredNums, knownNums, courseLookup, geAreaMap);
-    const u = effectiveUnits(course);
-    if (status === "completed" || status === "inferred") earnedUnits += u;
-    else if (status === "in_progress") inProgressUnits += u;
-  }
+  const { earnedUnits, inProgressUnits } = useMemo(() => {
+    let earnedUnits = 0;
+    let inProgressUnits = 0;
+    for (const course of flowchart.courses) {
+      const status = courseStatuses.get(course.id)!;
+      const u = effectiveUnits(course);
+      if (status === "completed" || status === "inferred") earnedUnits += u;
+      else if (status === "in_progress") inProgressUnits += u;
+    }
+    return { earnedUnits, inProgressUnits };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [flowchart.courses, courseStatuses, plannedGEUnits]);
+
   const totalUnits = flowchart.total_units;
 
   // ── Per-column unit totals ─────────────────────────────────────────────────
   const numCols = flowchart.columns.length;
-  const recommendedUnitsPerCol = Array<number>(numCols).fill(0);
-  const currentUnitsPerCol     = Array<number>(numCols).fill(0);
-  for (const course of flowchart.courses) {
-    const u = effectiveUnits(course);
-    recommendedUnitsPerCol[course.grid_col] += u;
-    const pos = getCoursePosition(course, positions);
-    currentUnitsPerCol[pos.grid_col] += u;
-  }
+  const { recommendedUnitsPerCol, currentUnitsPerCol } = useMemo(() => {
+    const recommended = Array<number>(numCols).fill(0);
+    const current     = Array<number>(numCols).fill(0);
+    for (const course of flowchart.courses) {
+      const u = effectiveUnits(course);
+      recommended[course.grid_col] += u;
+      const pos = getCoursePosition(course, positions);
+      current[pos.grid_col] += u;
+    }
+    return { recommendedUnitsPerCol: recommended, currentUnitsPerCol: current };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [flowchart.courses, positions, plannedGEUnits, numCols]);
 
   const majorDone     = majorCourses.filter(isDone).length;
   const majorInferred = majorCourses.filter((c) => !isDone(c) && isCompletedOrInferred(c)).length;
@@ -202,9 +260,9 @@ export default function FlowchartGrid({
     return hasAnyCourseNumber(completedNums, approved);
   }).length;
 
-  const maxRows = Math.max(
-    ...flowchart.courses.map((course) => getCoursePosition(course, positions).grid_row + 1),
-    1,
+  const maxRows = useMemo(
+    () => Math.max(...flowchart.courses.map((c) => getCoursePosition(c, positions).grid_row + 1), 1),
+    [flowchart.courses, positions]
   ) + (draggedCourseId ? 1 : 0);
 
   const handleDrop = (targetCol: number, targetRow: number, targetCourse?: Course) => {
@@ -322,33 +380,8 @@ export default function FlowchartGrid({
                     />
                   );
                 }
-                const status = getCourseStatus(
-                  course, completedNums, inProgressNums, inferredNums, knownNums, courseLookup, geAreaMap
-                );
-                const allNums = [course.course_number, ...course.quarter_equivalents];
-                const checked = course.is_placeholder && course.category === "ge"
-                  ? hasAnyCourseNumber(completedNums, [
-                      course.course_number,
-                      ...course.quarter_equivalents,
-                      ...(geAreaMap[course.course_number] ?? []),
-                    ])
-                  : hasAnyCourseNumber(completedNums, allNums);
-                const inProgressChecked = course.is_placeholder && course.category === "ge"
-                  ? hasAnyCourseNumber(inProgressNums, [
-                      course.course_number,
-                      ...course.quarter_equivalents,
-                      ...(geAreaMap[course.course_number] ?? []),
-                    ])
-                  : hasAnyCourseNumber(inProgressNums, allNums);
-                const plannedCourseNumber = course.is_placeholder && course.category === "ge"
-                  ? session.plannedGECourses?.[course.course_number]
-                  : undefined;
-                const activeGECourseNumber = course.is_placeholder && course.category === "ge"
-                  ? (
-                      (geAreaMap[course.course_number] ?? []).find((c) => completedNums.has(norm(c)) || inProgressNums.has(norm(c)))
-                      ?? course.quarter_equivalents.find((c) => completedNums.has(norm(c)) || inProgressNums.has(norm(c)))
-                    )
-                  : undefined;
+                const status = courseStatuses.get(course.id)!;
+                const display = courseDisplayData.get(course.id)!;
                 return (
                   <div
                     key={colIdx}
@@ -366,10 +399,10 @@ export default function FlowchartGrid({
                     <CourseCard
                       course={course}
                       status={status}
-                      checked={checked}
-                      inProgressChecked={inProgressChecked}
-                      plannedCourseNumber={plannedCourseNumber}
-                      activeGECourseNumber={activeGECourseNumber}
+                      checked={display.checked}
+                      inProgressChecked={display.inProgressChecked}
+                      plannedCourseNumber={display.plannedCourseNumber}
+                      activeGECourseNumber={display.activeGECourseNumber}
                       onToggleCompleted={() => onToggleCourseCompleted(course)}
                       onToggleInProgress={() => onToggleCourseInProgress(course)}
                       onClick={() => onCourseClick(course, status)}
