@@ -500,7 +500,29 @@ def test_agricultural_science_flowchart_contains_expected_core_and_emphasis_slot
     assert ags_courses["AGED 4421"]["title"] == "Agricultural Mechanics"
     assert ags_courses["AGC 4426"]["title"] == "Presentation Methods in Agricultural Communication"
     assert ags_courses["AGC 4463"]["title"] == "Senior Project"
+    assert ags_courses["BIO 1111 / BIO 1151 / BOT 1121 / MCRO 2221"]["is_placeholder"] is True
+    assert ags_courses["ASCI 1102 + ASCI 1103"]["is_placeholder"] is True
+    assert ags_courses["PLSC 1120 + PLSC 1120L"]["is_placeholder"] is True
+    assert ags_courses["SS 1120 / SS 1130"]["is_placeholder"] is True
+    assert ags_courses["DSCI 2229 / FSN 2245"]["is_placeholder"] is True
+    assert ags_courses["AGED 4410 / AGC 3314"]["is_placeholder"] is True
+    assert ags_courses["AGB 3301 / WVIT 3343"]["prerequisites"] == ["AGB 2212"]
+    assert ags_courses["NR 3308 / NR 3323"]["is_placeholder"] is True
+    assert ags_courses["PLSC 3301"]["prerequisites"] == ["PLSC 1120 + PLSC 1120L"]
+    assert ags_courses["AGC 4452 / AG 4452"]["is_placeholder"] is True
     assert ags_courses["GE UD-4"]["category"] == "ge"
+    assert ags_by_id["AGS_BIO5B"]["elective_key"] == "ags_life_science"
+    assert "BOT 1121" in ags_by_id["AGS_BIO5B"]["quarter_equivalents"]
+    assert ags_by_id["AGS_ASCI1102_1103"]["elective_key"] == "ags_asci_pair"
+    assert "ASCI 1103" in ags_by_id["AGS_ASCI1102_1103"]["quarter_equivalents"]
+    assert ags_by_id["AGS_SS1120"]["elective_key"] == "ags_soil_science"
+    assert "SS 1130" in ags_by_id["AGS_SS1120"]["quarter_equivalents"]
+    assert ags_by_id["AGS_DSCI_FSN"]["elective_key"] == "ags_dairy_food_safety"
+    assert "DSCI 2229" in ags_by_id["AGS_DSCI_FSN"]["quarter_equivalents"]
+    assert "FSN 2245" in ags_by_id["AGS_DSCI_FSN"]["quarter_equivalents"]
+    assert ags_by_id["AGS_AGED_AGC"]["elective_key"] == "ags_aged_agc_choice"
+    assert ags_by_id["AGS_NR3308"]["elective_key"] == "ags_nr_choice"
+    assert ags_by_id["AGS_AGC4452"]["elective_key"] == "ags_agc_ag_issues"
     assert ags_by_id["AGS_EMP_JRF1"]["category"] == "concentration"
     assert ags_by_id["AGS_EMP_SRS2"]["is_placeholder"] is True
 
@@ -521,29 +543,51 @@ def test_agricultural_science_emphasis_areas_cover_catalog_options():
 
     engineering = next(c for c in ags_concentrations if c["id"] == "ag_engineering_tech")
     assert engineering["slot_overrides"]["AGS_EMP_JRF1"]["course_number"] == "BRAE 1150"
+    assert engineering["slot_overrides"]["AGS_EMP_JRF1"]["units"] == 2
+    assert engineering["slot_overrides"]["AGS_EMP_SRS2"]["course_number"] == "BRAE/MSCI 4438 / BRAE 4440"
+    assert engineering["slot_overrides"]["AGS_EMP_SRS2"]["elective_key"] == "ags_brae_aquaculture_irrigation"
 
     agribusiness = next(c for c in ags_concentrations if c["id"] == "agribusiness")
     assert agribusiness["slot_overrides"]["AGS_EMP_SRS2"]["course_number"] == "AGB 3313"
 
+    animal = next(c for c in ags_concentrations if c["id"] == "animal_science")
+    assert animal["slot_overrides"]["AGS_EMP_JRF1"]["units"] == 1
+    assert animal["slot_overrides"]["AGS_EMP_JRS1"]["units"] == 2
+
+    plant = next(c for c in ags_concentrations if c["id"] == "plant_crop_soil")
+    assert plant["slot_overrides"]["AGS_EMP_JRF1"]["units"] == 4
+    assert plant["slot_overrides"]["AGS_EMP_SRF1"]["units"] == 4
+
+    forestry = next(c for c in ags_concentrations if c["id"] == "forestry_natural_resources")
+    assert forestry["slot_overrides"]["AGS_EMP_JRS1"]["units"] == 4
+    assert forestry["slot_overrides"]["AGS_EMP_SRF2"]["units"] == 4
+
     ornamental = next(c for c in ags_concentrations if c["id"] == "ornamental_horticulture")
+    assert ornamental["slot_overrides"]["AGS_EMP_JRF1"]["units"] == 4
     assert ornamental["slot_overrides"]["AGS_EMP_SRS2"]["course_number"] == "PLSC 3334"
 
 
 def test_animal_science_flowchart_contains_expected_core_and_placeholders():
     asci_courses = {course["course_number"]: course for course in FLOWCHARTS["ASCI"]["courses"]}
+    asci_by_id = {course["id"]: course for course in FLOWCHARTS["ASCI"]["courses"]}
 
     assert FLOWCHARTS["ASCI"]["total_units"] == 120
     assert asci_courses["ASCI 1100"]["title"] == "Introduction to the Animal Sciences"
-    assert asci_courses["ASCI 2210/2211"]["title"] == "Meat Science and Meat Science Laboratory"
+    assert asci_courses["ASCI 2210 + ASCI 2211"]["title"] == "Meat Science and Meat Science Laboratory"
     assert asci_courses["ASCI 2220"]["title"] == "Animal Nutrition and Feeding"
     assert asci_courses["ASCI 2229"]["title"] == "Anatomy and Physiology of Farm Animals"
     assert asci_courses["ASCI 3302"]["title"] == "Animal Genetics"
     assert asci_courses["ASCI 3304"]["title"] == "Animal Genomics"
     assert asci_courses["ASCI 3351"]["title"] == "Mechanisms of Hormone Action and Reproductive Physiology"
-    assert asci_courses["ASCI 4477/4478/4479"]["title"] == "Senior Project"
+    assert asci_courses["ASCI 4477 / ASCI 4478 / ASCI 4479"]["title"] == "Senior Project"
     assert asci_courses["MATH 1006"]["category"] == "support"
     assert asci_courses["GE UD-4"]["category"] == "ge"
     assert asci_courses["Animal Mgmt 1"]["is_placeholder"] is True
+    assert asci_by_id["ASCI_MGMT1"]["elective_key"] == "asci_animal_management"
+    assert asci_by_id["ASCI_ENTERPRISE"]["elective_key"] == "asci_enterprise_elective"
+    assert asci_by_id["ASCI_NUTRITION"]["elective_key"] == "asci_nutrition_elective"
+    assert asci_by_id["ASCI_PHYSIOLOGY"]["elective_key"] == "asci_physiology_elective"
+    assert asci_by_id["ASCI_APPROVED1"]["elective_key"] == "asci_approved_elective"
     assert asci_courses["Free"]["category"] == "concentration"
     assert "ASCI" not in CONCENTRATIONS
 
@@ -558,7 +602,12 @@ def test_animal_science_prerequisites_and_quarter_equivalents_are_mapped():
     assert "ASCI 101" in asci_courses["ASCI 1100"]["quarter_equivalents"]
     assert "ASCI 220" in asci_courses["ASCI 2220"]["quarter_equivalents"]
     assert "ASCI 302" in asci_courses["ASCI 3302"]["quarter_equivalents"]
-    assert "ASCI 477" in asci_courses["ASCI 4477/4478/4479"]["quarter_equivalents"]
+    assert "ASCI 2210" in asci_courses["ASCI 2210 + ASCI 2211"]["quarter_equivalents"]
+    assert "ASCI 2230" in asci_courses["Animal Mgmt 1"]["quarter_equivalents"]
+    assert "ASCI 3346" in asci_courses["Nutrition"]["quarter_equivalents"]
+    assert "DSCI 3330" in asci_courses["Physiology"]["quarter_equivalents"]
+    assert "ASCI 477" in asci_courses["ASCI 4477 / ASCI 4478 / ASCI 4479"]["quarter_equivalents"]
+    assert "ASCI 4479" in asci_courses["ASCI 4477 / ASCI 4478 / ASCI 4479"]["quarter_equivalents"]
 
 
 def test_anthropology_geography_flowchart_contains_expected_core_and_placeholders():
@@ -1004,25 +1053,36 @@ def test_agricultural_systems_management_flowchart_contains_expected_core_sequen
     assert asm_courses["BRAE 4461"]["title"] == "Senior Project II"
     assert asm_courses["BRAE 2203"]["category"] == "major"
     assert asm_courses["AGB 2212"]["category"] == "support"
+    assert asm_courses["MATH 1267"]["category"] == "support"
     assert asm_courses["GE 1A"]["category"] == "ge"
     assert asm_by_id["ASM_MATH1007_STAT1110"]["is_placeholder"] is True
+    assert asm_by_id["ASM_MATH1007_STAT1110"]["elective_key"] == "asm_math_elective"
     assert asm_by_id["ASM_ELEC1"]["category"] == "concentration"
     assert asm_by_id["ASM_ELEC1"]["is_placeholder"] is True
+    assert asm_by_id["ASM_ELEC1"]["elective_key"] == "asm_approved_elective"
+    assert asm_by_id["ASM_ELEC2"]["elective_key"] == "asm_approved_elective"
+    assert asm_by_id["ASM_ELEC3"]["elective_key"] == "asm_approved_elective"
     assert "ASM" not in CONCENTRATIONS
 
 
 def test_agricultural_systems_management_prerequisites_are_mapped():
     asm_courses = {course["course_number"]: course for course in FLOWCHARTS["ASM"]["courses"]}
 
-    assert asm_courses["BRAE 2203"]["prerequisites"] == ["BRAE 1128", "BRAE 1150"]
-    assert asm_courses["BRAE 2142"]["prerequisites"] == ["BRAE 1150"]
-    assert asm_courses["BRAE 3317"]["prerequisites"] == ["BRAE 2203"]
-    assert asm_courses["BRAE 3343"]["prerequisites"] == ["BRAE 2142"]
+    assert asm_courses["BRAE 2203"]["prerequisites"] == ["MATH 1267"]
+    assert asm_courses["BRAE 2142"]["prerequisites"] == ["MATH 1267"]
+    assert asm_courses["BRAE 3301"]["prerequisites"] == ["BRAE 1150", "PHYS 1121"]
+    assert asm_courses["AGB 3308"]["prerequisites"] == ["AGB 2214", "AGB 2260"]
+    assert asm_courses["BRAE 3317"]["prerequisites"] == ["AGB 2260", "BRAE 2203"]
+    assert asm_courses["BRAE 3343"]["prerequisites"] == ["PHYS 1121"]
+    assert asm_courses["AGB 3369"]["prerequisites"] == ["AGB 2212"]
     assert asm_courses["BRAE 4419"]["prerequisites"] == ["BRAE 3317"]
+    assert asm_courses["BRAE 4425"]["prerequisites"] == ["MATH 1267", "PHYS 1121"]
+    assert asm_courses["BRAE 4432"]["prerequisites"] == ["BRAE 3343", "PHYS 1121"]
     assert asm_courses["BRAE 4440"]["prerequisites"] == ["BRAE 3340"]
     assert asm_courses["BRAE 4461"]["prerequisites"] == ["BRAE 4460"]
-    assert "STAT 218" in asm_courses["MATH 1007 / STAT 1110 / MATH 1267"]["quarter_equivalents"]
-    assert "MATH 1267" in asm_courses["MATH 1007 / STAT 1110 / MATH 1267"]["quarter_equivalents"]
+    assert "STAT 218" in asm_courses["MATH 1007 / STAT 1110"]["quarter_equivalents"]
+    assert "MATH 1267" not in asm_courses["MATH 1007 / STAT 1110"]["quarter_equivalents"]
+    assert "MATH 221" in asm_courses["MATH 1267"]["quarter_equivalents"]
     assert "AGB 212" in asm_courses["AGB 2212"]["quarter_equivalents"]
     assert "AGB 308" in asm_courses["AGB 3308"]["quarter_equivalents"]
 
@@ -1208,3 +1268,68 @@ def test_brae_econ_slash_placeholder_has_elective_key():
     assert slot.get("elective_key") == "brae_econ_elective"
     assert "ECON 2001" in slot["quarter_equivalents"]
     assert "ECON 2040" in slot["quarter_equivalents"]
+
+
+def test_stat_flowchart():
+    stat = FLOWCHARTS.get("STAT")
+    assert stat is not None, "STAT must be in FLOWCHARTS"
+    assert stat["total_units"] == 120
+
+    courses = stat["courses"]
+    by_id = {c["id"]: c for c in courses}
+    by_num = {c["course_number"]: c for c in courses}
+
+    for c in courses:
+        assert REQUIRED_COURSE_KEYS <= c.keys(), f"Missing keys on {c['id']}"
+        assert c["category"] in VALID_CATEGORIES, f"Bad category on {c['id']}"
+
+    # Key course titles and categories
+    assert by_num["STAT 1510"]["title"] == "Statistics I"
+    assert by_num["STAT 1510"]["category"] == "major"
+    assert by_num["STAT 4610"]["title"] == "Probability Theory"
+    assert by_num["STAT 4620"]["title"] == "Statistical Theory"
+    assert by_num["STAT 3530"]["title"] == "Applied Linear Models"
+    assert by_num["STAT 4366"]["title"] == "Statistical Communication, Collaboration, and Consulting"
+    assert by_num["MATH 1264"]["category"] == "support"
+    assert by_num["CSC 1001"]["category"] == "support"
+
+    # Prerequisites
+    assert "STAT 1510" in by_num["STAT 3520"]["prerequisites"]
+    assert "MATH 1264" in by_num["MATH 1265"]["prerequisites"]
+    assert "STAT 4610" in by_num["STAT 4620"]["prerequisites"]
+    assert "STAT 4366" in by_num["STAT 4460"]["prerequisites"]
+
+    # GE placeholders
+    ge_courses = [c for c in courses if c["category"] == "ge"]
+    assert len(ge_courses) >= 10
+    ge_ids = {c["id"] for c in ge_courses}
+    assert "STAT_GE1A" in ge_ids
+    assert "STAT_GE1B" in ge_ids
+    assert "STAT_GE5A" in ge_ids
+    assert "STAT_GE6" in ge_ids
+    for c in ge_courses:
+        assert c["is_placeholder"] is True, f"{c['id']} GE must be placeholder"
+
+    # Elective placeholders
+    assert by_id["STAT_ELEC_A1"]["is_placeholder"] is True
+    assert by_id["STAT_ELEC_B1"]["is_placeholder"] is True
+
+    # No concentrations
+    assert "STAT" not in CONCENTRATIONS
+
+    # Category ordering invariant per column
+    col_courses: dict[int, list] = {}
+    for c in courses:
+        col_courses.setdefault(c["grid_col"], []).append(c)
+    for col, col_list in col_courses.items():
+        rows_by_bucket: dict[int, list[int]] = {}
+        for c in col_list:
+            b = layout_bucket(c)
+            rows_by_bucket.setdefault(b, []).append(c["grid_row"])
+        sorted_buckets = sorted(rows_by_bucket.keys())
+        for i in range(len(sorted_buckets) - 1):
+            b1, b2 = sorted_buckets[i], sorted_buckets[i + 1]
+            assert max(rows_by_bucket[b1]) < min(rows_by_bucket[b2]), (
+                f"STAT col {col}: bucket {b1} rows {rows_by_bucket[b1]} "
+                f"overlap with bucket {b2} rows {rows_by_bucket[b2]}"
+            )
