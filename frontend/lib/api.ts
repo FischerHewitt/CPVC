@@ -1,4 +1,4 @@
-import type { Flowchart, Professor, GEArea, GEAreaMap, CourseInfo, TranscriptSession, MajorOption, Concentration } from "./types";
+import type { Flowchart, Professor, GEArea, GEAreaMap, ElectiveArea, CourseInfo, TranscriptSession, MajorOption, Concentration } from "./types";
 
 const configuredApi = process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "");
 const API =
@@ -31,6 +31,37 @@ export async function parseTranscript(file: File, major: string): Promise<{
   const res = await fetch(apiUrl("/api/transcript/parse"), { method: "POST", body: form });
   if (!res.ok) throw await responseError(res, "Transcript parsing");
   return res.json();
+}
+
+export async function parseCsvTranscript(file: File, major: string): Promise<{
+  session_id: string;
+  student_name: string;
+  student_id: string;
+  major: string;
+  completed: string[];
+  in_progress: string[];
+}> {
+  const form = new FormData();
+  form.append("file", file);
+  form.append("major", major);
+  const res = await fetch(apiUrl("/api/transcript/parse-csv"), { method: "POST", body: form });
+  if (!res.ok) throw await responseError(res, "CSV parsing");
+  return res.json();
+}
+
+export async function sendContactMessage(payload: {
+  name: string;
+  email: string;
+  category: string;
+  custom_subject: string;
+  message: string;
+}): Promise<void> {
+  const res = await fetch(apiUrl("/api/contact/send"), {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+  if (!res.ok) throw await responseError(res, "Sending message");
 }
 
 export async function getFlowchart(majorCode: string): Promise<Flowchart> {
@@ -100,6 +131,29 @@ export async function getGEAreaMap(): Promise<GEAreaMap> {
 
 export async function getGECourses(areaId: string): Promise<GEArea | null> {
   const res = await fetch(apiUrl(`/api/ge/${encodeURIComponent(areaId)}`));
+  if (!res.ok) return null;
+  return res.json();
+}
+
+export async function getElectiveCourses(electiveKey: string): Promise<ElectiveArea | null> {
+  const res = await fetch(apiUrl(`/api/electives/${encodeURIComponent(electiveKey)}`));
+  if (!res.ok) return null;
+  return res.json();
+}
+
+export async function getPlaceholderElectiveCourses(course: {
+  id: string;
+  course_number: string;
+  title: string;
+  quarter_equivalents: string[];
+}): Promise<ElectiveArea | null> {
+  const params = new URLSearchParams({
+    course_id: course.id,
+    course_number: course.course_number,
+    title: course.title,
+    quarter_equivalents: course.quarter_equivalents.join(","),
+  });
+  const res = await fetch(apiUrl(`/api/electives/auto/placeholder?${params.toString()}`));
   if (!res.ok) return null;
   return res.json();
 }

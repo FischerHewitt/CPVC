@@ -11,6 +11,7 @@ export interface Course {
   grid_row: number;
   prerequisites: string[];
   quarter_equivalents: string[];
+  elective_key?: string;
   is_placeholder: boolean;
 }
 
@@ -85,6 +86,13 @@ export interface CourseInfo {
 
 export interface GEArea {
   area_id: string;
+  title: string;
+  description: string;
+  courses: GECourse[];
+}
+
+export interface ElectiveArea {
+  key: string;
   title: string;
   description: string;
   courses: GECourse[];

@@ -7,7 +7,7 @@ import os
 
 load_dotenv()
 
-from routers import transcript, flowchart, professors, ge, sessions, courses
+from routers import transcript, flowchart, professors, ge, sessions, courses, electives, contact
 from services.polyratings import warm_cache
 
 
@@ -37,8 +37,10 @@ app.include_router(transcript.router, prefix="/api/transcript", tags=["transcrip
 app.include_router(flowchart.router, prefix="/api/flowchart", tags=["flowchart"])
 app.include_router(professors.router, prefix="/api/professors", tags=["professors"])
 app.include_router(ge.router, prefix="/api/ge", tags=["ge"])
+app.include_router(electives.router, prefix="/api/electives", tags=["electives"])
 app.include_router(sessions.router, prefix="/api/sessions", tags=["sessions"])
 app.include_router(courses.router, prefix="/api/courses", tags=["courses"])
+app.include_router(contact.router, prefix="/api/contact", tags=["contact"])
 
 
 @app.get("/api/health")

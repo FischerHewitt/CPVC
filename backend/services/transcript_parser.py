@@ -1,3 +1,5 @@
+import csv
+import io
 import re
 import pdfplumber
 from dataclasses import dataclass, field
@@ -150,6 +152,55 @@ def parse_transcript(file: IO[bytes]) -> TranscriptResult:
         major=major,
         courses=unique,
     )
+
+
+_CSV_COMPLETED_STATUSES = {"Taken", "Transferred (Course)", "Transferred (Test)"}
+_CSV_IN_PROGRESS_STATUSES = {"In Progress"}
+
+
+def parse_csv_transcript(file: IO[bytes]) -> TranscriptResult:
+    """Parse a Cal Poly course list CSV (Student Center → Academic Process → Course List)."""
+    content = file.read().decode("utf-8-sig")  # handle BOM from Excel/browser exports
+    reader = csv.DictReader(io.StringIO(content))
+
+    courses: list[ParsedCourse] = []
+    for row in reader:
+        course_number = row.get("Course", "").strip()
+        status = row.get("Status", "").strip()
+        term = row.get("Term", "").strip()
+        grade = row.get("Grade", "").strip() or None
+        try:
+            units = float(row.get("Units", "0").strip())
+        except ValueError:
+            units = 0.0
+
+        if not course_number or status not in (_CSV_COMPLETED_STATUSES | _CSV_IN_PROGRESS_STATUSES):
+            continue
+
+        m = TERM_RE.search(term)
+        if m:
+            season, system, yr = m.groups()
+            parsed_term = f"{season} {system}"
+            year = int(yr)
+            is_quarter = system == "Quarter"
+        else:
+            parsed_term = term
+            year = 0
+            is_quarter = True
+
+        earned = units if status in _CSV_COMPLETED_STATUSES else 0.0
+        courses.append(ParsedCourse(
+            course_number=course_number,
+            title=row.get("Description", "").strip(),
+            attempted=units,
+            earned=earned,
+            grade=grade,
+            term=parsed_term,
+            year=year,
+            is_quarter=is_quarter,
+        ))
+
+    return TranscriptResult(student_name="", student_id="", major="", courses=courses)
 
 
 def completed_course_numbers(result: TranscriptResult) -> set[str]:

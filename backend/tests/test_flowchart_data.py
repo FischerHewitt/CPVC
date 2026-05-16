@@ -372,6 +372,13 @@ def test_art_and_design_flowchart_contains_expected_core_and_ge_sequence():
     assert ad_courses["GE 5A"]["category"] == "ge"
     assert ad_courses["GE 5C"]["units"] == 1
     assert ad_courses["GE UD-2/5"]["category"] == "ge"
+    assert ad_courses["ART 1184 / ART 2282"]["is_placeholder"] is True
+    assert "ART 1184" in ad_courses["ART 1184 / ART 2282"]["quarter_equivalents"]
+    assert "ART 2282" in ad_courses["ART 1184 / ART 2282"]["quarter_equivalents"]
+    assert ad_courses["ART 3359 / ART 3379 / ART 3399"]["is_placeholder"] is True
+    assert "ART 3359" in ad_courses["ART 3359 / ART 3379 / ART 3399"]["quarter_equivalents"]
+    assert "ART 3379" in ad_courses["ART 3359 / ART 3379 / ART 3399"]["quarter_equivalents"]
+    assert "ART 3399" in ad_courses["ART 3359 / ART 3379 / ART 3399"]["quarter_equivalents"]
 
 
 def test_political_science_flowchart_contains_expected_core_and_concentrations():
@@ -385,6 +392,10 @@ def test_political_science_flowchart_contains_expected_core_and_concentrations()
     assert pols_courses["POLS 3361"]["prerequisites"] == ["POLS 3359"]
     assert pols_courses["POLS 4462"]["prerequisites"] == ["POLS 4461"]
     assert pols_courses["STAT 1110"]["category"] == "support"
+    assert pols_courses["ANT 2201 / GEOG 1150 / HIST 2222 / HIST 2223 / SOC 1110"]["is_placeholder"] is True
+    assert "ANT 2201" in pols_courses["ANT 2201 / GEOG 1150 / HIST 2222 / HIST 2223 / SOC 1110"]["quarter_equivalents"]
+    assert "HIST 2222" in pols_courses["ANT 2201 / GEOG 1150 / HIST 2222 / HIST 2223 / SOC 1110"]["quarter_equivalents"]
+    assert "SOC 1110" in pols_courses["ANT 2201 / GEOG 1150 / HIST 2222 / HIST 2223 / SOC 1110"]["quarter_equivalents"]
     assert pols_courses["GE UD-3"]["category"] == "ge"
     assert {"none", "global_politics", "pre_law", "us_politics", "individualized"} <= concentration_ids
 
@@ -398,7 +409,12 @@ def test_english_flowchart_contains_expected_core_and_catalog_buckets():
     assert FLOWCHARTS["ENGL"]["total_units"] == 120
     assert english_courses["ENGL 1101"]["title"] == "Introduction to English Studies"
     assert english_courses["ENGL GE 3B"]["title"] == "Literature Elective"
-    assert english_courses["Language 1101"]["category"] == "support"
+    language = english_courses["CHIN 1101 / FR 1101 / GER 1101 / ITAL 1101 / JPNS 1101 / SPAN 1101 / WLC 1101"]
+    assert language["category"] == "support"
+    assert language["is_placeholder"] is True
+    assert "CHIN 1101" in language["quarter_equivalents"]
+    assert "SPAN 1101" in language["quarter_equivalents"]
+    assert "WLC 1101" in language["quarter_equivalents"]
     assert english_courses["ENGL UD GWR"]["title"] == "Upper-Division English GWR Elective"
     assert english_courses["ENGL Diversity"]["title"] == "4000-Level Diversity Elective"
     assert english_courses["ENGL 4461"]["title"] == "Senior Project"
@@ -420,12 +436,22 @@ def test_music_flowchart_contains_expected_core_and_catalog_buckets():
     assert music_courses["MU 4431"]["title"] == "Historical Musicology II"
     assert music_courses["MU 4461"]["title"] == "Senior Project"
     assert music_courses["MU 3000+ 1"]["title"] == "Upper-Division Music Elective"
+    assert music_courses["MU 1101 / MU 1103"]["is_placeholder"] is True
+    assert "MU 1101" in music_courses["MU 1101 / MU 1103"]["quarter_equivalents"]
+    assert "MU 1103" in music_courses["MU 1101 / MU 1103"]["quarter_equivalents"]
+    assert music_courses["MU 1103 / MU 2203"]["is_placeholder"] is True
+    assert "MU 1103" in music_courses["MU 1103 / MU 2203"]["quarter_equivalents"]
+    assert "MU 2203" in music_courses["MU 1103 / MU 2203"]["quarter_equivalents"]
+    assert music_courses["MU 2221 / MU 2227"]["is_placeholder"] is True
+    assert "MU 2221" in music_courses["MU 2221 / MU 2227"]["quarter_equivalents"]
+    assert "MU 2227" in music_courses["MU 2221 / MU 2227"]["quarter_equivalents"]
     assert music_courses["GE UD-3"]["category"] == "ge"
     assert "MU" not in CONCENTRATIONS
 
 
 def test_agricultural_communication_flowchart_contains_expected_core_and_support():
     agc_courses = {course["course_number"]: course for course in FLOWCHARTS["AGC"]["courses"]}
+    agc_by_id = {course["id"]: course for course in FLOWCHARTS["AGC"]["courses"]}
 
     assert FLOWCHARTS["AGC"]["total_units"] == 120
     assert agc_courses["AGC 1102"]["title"] == "Orientation to Agricultural Communication & Agricultural Science"
@@ -435,9 +461,29 @@ def test_agricultural_communication_flowchart_contains_expected_core_and_support
     assert agc_courses["AGC 3339"]["title"] == "Internship in Agricultural Communications"
     assert agc_courses["AGC 4463"]["title"] == "Senior Project"
     assert agc_courses["AGC 4475"]["title"] == "Crisis Communication in Food and Agriculture"
-    assert agc_courses["STAT/DATA 1000"]["category"] == "support"
+    assert agc_courses["STAT 1000 / DATA 1000"]["category"] == "support"
+    assert agc_courses["STAT 1000 / DATA 1000"]["is_placeholder"] is True
     assert agc_courses["JOUR 2203"]["category"] == "support"
     assert agc_courses["ENGL 3310"]["category"] == "support"
+    assert agc_courses["AGC 2225"]["prerequisites"] == ["AGC 2207"]
+    assert agc_courses["AGC 4407"]["prerequisites"] == ["AGC 2205", "AGC 2207"]
+    assert agc_courses["AGC 4425"]["prerequisites"] == ["AGC 2225"]
+    assert agc_courses["AGB 3312"]["prerequisites"] == ["AGB 2212", "ECON 2040"]
+    assert agc_by_id["AGC_MARKETING"]["prerequisites"] == ["AGB 2212"]
+    assert agc_by_id["AGC_MARKETING"]["is_placeholder"] is True
+    assert agc_by_id["AGC_MARKETING"]["elective_key"] == "agc_ags_marketing"
+    assert agc_by_id["AGC_STATDATA1000"]["elective_key"] == "agc_stat_data_1000"
+    assert "STAT 1000" in agc_by_id["AGC_STATDATA1000"]["quarter_equivalents"]
+    assert "DATA 1000" in agc_by_id["AGC_STATDATA1000"]["quarter_equivalents"]
+    assert agc_by_id["AGC_CHEM5A5C"]["elective_key"] == "agc_chem_elective"
+    assert "CHEM 1110" in agc_by_id["AGC_CHEM5A5C"]["quarter_equivalents"]
+    assert "CHEM 1120" in agc_by_id["AGC_CHEM5A5C"]["quarter_equivalents"]
+    assert agc_by_id["AGC_FSN"]["elective_key"] == "agc_fsn_elective"
+    assert "FSN 1111" in agc_by_id["AGC_FSN"]["quarter_equivalents"]
+    assert "FSN 2245" in agc_by_id["AGC_FSN"]["quarter_equivalents"]
+    assert agc_by_id["AGC_PLSC1120"]["elective_key"] == "agc_plsc_pair"
+    assert "PLSC 1120" in agc_by_id["AGC_PLSC1120"]["quarter_equivalents"]
+    assert "PLSC 1120L" in agc_by_id["AGC_PLSC1120"]["quarter_equivalents"]
     assert agc_courses["GE UD-3"]["category"] == "ge"
     assert "AGC" not in CONCENTRATIONS
 
@@ -526,7 +572,8 @@ def test_anthropology_geography_flowchart_contains_expected_core_and_placeholder
     assert antgeog_courses["ANT 3307"]["title"] == "World Prehistory"
     assert antgeog_courses["GEOG 3320"]["title"] == "Applications in GIS"
     assert antgeog_courses["GEOG 4410"]["title"] == "Advanced Applications in GIS"
-    assert antgeog_courses["ANT/GEOG 4462"]["title"] == "Senior Project"
+    assert antgeog_courses["ANT 4461 / GEOG 4461"]["title"] == "Anthropology or Geography Senior Project I"
+    assert antgeog_courses["ANT 4462 / GEOG 4462"]["title"] == "Anthropology or Geography Senior Project II"
     assert antgeog_courses["STAT 1110"]["category"] == "support"
     assert antgeog_courses["GE 4B"]["category"] == "ge"
     assert antgeog_by_id["ANTGEOG_LDC1"]["is_placeholder"] is True
@@ -544,11 +591,18 @@ def test_anthropology_geography_prerequisites_and_quarter_equivalents_are_mapped
     assert antgeog_courses["ANT 3303"]["prerequisites"] == ["ANT 2201"]
     assert antgeog_courses["GEOG 3320"]["prerequisites"] == ["GEOG 1150"]
     assert antgeog_courses["GEOG 4410"]["prerequisites"] == ["GEOG 3320"]
-    assert antgeog_courses["ANT/GEOG 4462"]["prerequisites"] == ["ANT 3303", "GEOG 3350"]
+    assert antgeog_courses["ANT 4461 / GEOG 4461"]["prerequisites"] == ["ANT 3303", "GEOG 3350"]
+    assert antgeog_courses["ANT 4462 / GEOG 4462"]["prerequisites"] == ["ANT 4461 / GEOG 4461"]
     assert "ANT 201" in antgeog_courses["ANT 2201"]["quarter_equivalents"]
     assert "GEOG 150" in antgeog_courses["GEOG 1150"]["quarter_equivalents"]
     assert "ANT 307" in antgeog_courses["ANT 3307"]["quarter_equivalents"]
-    assert "GEOG 462" in antgeog_courses["ANT/GEOG 4462"]["quarter_equivalents"]
+    assert antgeog_courses["ANT 4461 / GEOG 4461"]["is_placeholder"] is True
+    assert "ANT 4461" in antgeog_courses["ANT 4461 / GEOG 4461"]["quarter_equivalents"]
+    assert "GEOG 4461" in antgeog_courses["ANT 4461 / GEOG 4461"]["quarter_equivalents"]
+    assert antgeog_courses["ANT 4462 / GEOG 4462"]["is_placeholder"] is True
+    assert "ANT 4462" in antgeog_courses["ANT 4462 / GEOG 4462"]["quarter_equivalents"]
+    assert "GEOG 4462" in antgeog_courses["ANT 4462 / GEOG 4462"]["quarter_equivalents"]
+    assert "GEOG 462" in antgeog_courses["ANT 4462 / GEOG 4462"]["quarter_equivalents"]
 
 
 def test_anthropology_geography_concentrations_cover_catalog_options():
@@ -585,7 +639,7 @@ def test_psychology_flowchart_contains_expected_core_sequence():
     assert psy_courses["PSY 3333"]["prerequisites"] == ["PSY 2229", "STAT 1110"]
     assert psy_courses["PSY 4461"]["prerequisites"] == ["PSY 2229"]
     assert psy_courses["PSY 4462"]["prerequisites"] == ["PSY 4461"]
-    assert psy_courses["PSY 4449/4454"]["prerequisites"] == ["PSY 4448/4453"]
+    assert psy_courses["PSY 4449 / PSY 4454"]["prerequisites"] == ["PSY 4448 / PSY 4453"]
 
 
 def test_psychology_research_methods_chain_spans_correct_semesters():
@@ -609,6 +663,14 @@ def test_psychology_elective_placeholders_are_present():
 
     assert psy_by_id["PSY_FOUND"]["is_placeholder"] is True
     assert psy_by_id["PSY_INTERN1"]["is_placeholder"] is True
+    assert "PSY 2205" in psy_by_id["PSY_FOUND"]["quarter_equivalents"]
+    assert "PSY 2252" in psy_by_id["PSY_FOUND"]["quarter_equivalents"]
+    assert "PSY 2256" in psy_by_id["PSY_FOUND"]["quarter_equivalents"]
+    assert "PSY 4448" in psy_by_id["PSY_INTERN1"]["quarter_equivalents"]
+    assert "PSY 4453" in psy_by_id["PSY_INTERN1"]["quarter_equivalents"]
+    assert psy_by_id["PSY_INTERN2"]["is_placeholder"] is True
+    assert "PSY 4449" in psy_by_id["PSY_INTERN2"]["quarter_equivalents"]
+    assert "PSY 4454" in psy_by_id["PSY_INTERN2"]["quarter_equivalents"]
 
 
 def test_psychology_quarter_equivalents_are_mapped():
@@ -656,14 +718,29 @@ def test_agricultural_business_flowchart_contains_expected_core_sequence():
     assert agb_courses["ECON 2040"]["category"] == "support"
     assert agb_courses["STAT 1210"]["category"] == "support"
     assert agb_courses["AGB 3301"]["prerequisites"] == ["AGB 2212"]
-    assert agb_courses["AGB 3308"]["prerequisites"] == ["AGB 2214"]
-    assert agb_courses["AGB 3327"]["prerequisites"] == ["AGB 2260"]
-    assert agb_courses["AGB 3322"]["prerequisites"] == ["AGB 2212"]
-    assert agb_courses["AGB 4462"]["title"] == "Senior Project"
+    assert agb_courses["AGB 3308"]["prerequisites"] == ["AGB 2214", "AGB 2260"]
+    assert agb_courses["AGB 3327"]["prerequisites"] == ["AGB 2260", "STAT 1210"]
+    assert agb_courses["AGB 3322"]["prerequisites"] == ["AGB 2212", "AGB 2214"]
+    assert agb_courses["AGB 3328"]["prerequisites"] == ["AGB 2260", "MATH 1267", "STAT 1210"]
+    assert agb_courses["AGB 3312"]["prerequisites"] == ["AGB 2212", "ECON 2040"]
+    assert agb_courses["AGB 3369"]["prerequisites"] == ["AGB 2212"]
+    assert agb_courses["AGB 4462 / AGB 4463"]["title"] == "Senior Project"
+    assert agb_courses["AGB 4462 / AGB 4463"]["is_placeholder"] is True
+    assert "AGB 4462" in agb_courses["AGB 4462 / AGB 4463"]["quarter_equivalents"]
+    assert "AGB 4463" in agb_courses["AGB 4462 / AGB 4463"]["quarter_equivalents"]
     assert agb_courses["GE UD-3"]["category"] == "ge"
     assert agb_courses["GE UD-4"]["category"] == "ge"
+    assert agb_by_id["AGB_AGELE1"]["elective_key"] == "agb_agricultural_elective"
+    assert "ASCI 1112" in agb_by_id["AGB_AGELE1"]["quarter_equivalents"]
+    assert "PLSC 1120L" in agb_by_id["AGB_AGELE1"]["quarter_equivalents"]
+    assert "SS 120" in agb_by_id["AGB_AGELE1"]["quarter_equivalents"]
     assert agb_by_id["AGB_GEN1"]["is_placeholder"] is True
     assert agb_by_id["AGB_GEN1"]["category"] == "major"
+    assert agb_by_id["AGB_GEN1"]["elective_key"] == "agb_general_elective"
+    assert agb_by_id["AGB_GEN5"]["elective_key"] == "agb_4000_elective"
+    assert agb_by_id["AGB_CAFES1"]["title"] == "CAFES Prefix Elective"
+    assert agb_by_id["AGB_CAFES1"]["elective_key"] == "agb_cafes_prefix_elective"
+    assert agb_by_id["AGB_CAFES2"]["elective_key"] == "agb_cafes_prefix_elective"
     assert "AGB" not in CONCENTRATIONS
 
 
@@ -711,6 +788,10 @@ def test_architecture_flowchart_contains_expected_five_year_core_and_placeholder
     assert arch_courses["GE UD-4"]["category"] == "ge"
     assert arch_by_id["ARCH_MATH_CHOICE"]["is_placeholder"] is True
     assert arch_by_id["ARCH_PHYS_CHOICE"]["is_placeholder"] is True
+    assert "MATH 1007" in arch_by_id["ARCH_MATH_CHOICE"]["quarter_equivalents"]
+    assert "MATH 1261" in arch_by_id["ARCH_MATH_CHOICE"]["quarter_equivalents"]
+    assert "PHYS 1121" in arch_by_id["ARCH_PHYS_CHOICE"]["quarter_equivalents"]
+    assert "PHYS 1141" in arch_by_id["ARCH_PHYS_CHOICE"]["quarter_equivalents"]
     assert arch_by_id["ARCH_PROF_ELEC1"]["category"] == "concentration"
     assert arch_by_id["ARCH_PROF_ELEC1"]["is_placeholder"] is True
     assert arch_by_id["ARCH_GE_UD25"]["is_placeholder"] is True
@@ -724,6 +805,7 @@ def test_architecture_prerequisites_and_quarter_equivalents_are_mapped():
     assert arch_courses["ARCH 2201"]["prerequisites"] == ["ARCH 1102"]
     assert arch_courses["ARCH 2242"]["prerequisites"] == ["ARCH 2241"]
     assert arch_courses["ARCE 3301"]["prerequisites"] == ["ARCE 1121"]
+    assert arch_courses["ARCE 1121"]["prerequisites"] == ["PHYS 1121 / PHYS 1141", "MATH 1007 / MATH 1261"]
     assert arch_courses["ARCH 3301"]["prerequisites"] == ["ARCE 3301", "ARCH 2202", "ARCH 3341"]
     assert arch_courses["ARCH 4462"]["prerequisites"] == ["ARCH 4461"]
     assert "ARCH 131" in arch_courses["ARCH 1101"]["quarter_equivalents"]
@@ -939,7 +1021,8 @@ def test_agricultural_systems_management_prerequisites_are_mapped():
     assert asm_courses["BRAE 4419"]["prerequisites"] == ["BRAE 3317"]
     assert asm_courses["BRAE 4440"]["prerequisites"] == ["BRAE 3340"]
     assert asm_courses["BRAE 4461"]["prerequisites"] == ["BRAE 4460"]
-    assert "STAT 218" in asm_courses["MATH 1007/STAT 1110"]["quarter_equivalents"]
+    assert "STAT 218" in asm_courses["MATH 1007 / STAT 1110 / MATH 1267"]["quarter_equivalents"]
+    assert "MATH 1267" in asm_courses["MATH 1007 / STAT 1110 / MATH 1267"]["quarter_equivalents"]
     assert "AGB 212" in asm_courses["AGB 2212"]["quarter_equivalents"]
     assert "AGB 308" in asm_courses["AGB 3308"]["quarter_equivalents"]
 
@@ -998,6 +1081,12 @@ def test_business_administration_flowchart_contains_expected_core_sequence():
     assert bus_courses["STAT 1220"]["category"] == "support"
     assert bus_courses["GE 1A"]["category"] == "ge"
     assert bus_by_id["BUS_GE1A"]["is_placeholder"] is True
+    assert bus_by_id["BUS_MATH"]["is_placeholder"] is True
+    assert "MATH 1264" in bus_by_id["BUS_MATH"]["quarter_equivalents"]
+    assert "MATH 1267" in bus_by_id["BUS_MATH"]["quarter_equivalents"]
+    assert bus_by_id["BUS_FIN_ELEC"]["is_placeholder"] is True
+    assert "BUS 1342" in bus_by_id["BUS_FIN_ELEC"]["quarter_equivalents"]
+    assert "BUS 3343" in bus_by_id["BUS_FIN_ELEC"]["quarter_equivalents"]
     assert bus_by_id["BUS_CON1"]["is_placeholder"] is True
     assert bus_by_id["BUS_CON1"]["category"] == "concentration"
     assert bus_by_id["BUS_FREE1"]["is_placeholder"] is True
@@ -1047,3 +1136,75 @@ def test_business_administration_concentrations_cover_catalog_options():
     isa = next(c for c in bus_concentrations if c["id"] == "information_systems_analytics")
     assert isa["slot_overrides"]["BUS_CON1"]["course_number"] == "BUS 3393"
     assert isa["slot_overrides"]["BUS_CON3"]["course_number"] == "BUS 3394"
+
+
+def test_cpe_ethics_or_stats_is_or_choice_placeholder():
+    cpe_by_id = {course["id"]: course for course in FLOWCHARTS["CPE"]["courses"]}
+    cpe_by_num = {course["course_number"]: course for course in FLOWCHARTS["CPE"]["courses"]}
+
+    # The ethics/stats slot must be a single slash placeholder
+    assert "CPE_PHIL3323" in cpe_by_id
+    slot = cpe_by_id["CPE_PHIL3323"]
+    assert slot["is_placeholder"] is True
+    assert "PHIL 3323" in slot["course_number"]
+    assert "STAT 3210" in slot["course_number"]
+    assert "STAT 3310" in slot["course_number"]
+    assert slot.get("elective_key") == "cpe_ethics_or_stats"
+    assert "STAT 312" in slot["quarter_equivalents"]
+
+    # STAT 3210 must NOT appear as a separate required course
+    assert "STAT 3210" not in cpe_by_num
+
+
+def test_arce_history_elective_includes_all_three_options():
+    arce_by_id = {course["id"]: course for course in FLOWCHARTS["ARCE"]["courses"]}
+
+    hist = arce_by_id["ARCE_HIST"]
+    assert hist["is_placeholder"] is True
+    assert "ARCH 2221" in hist["course_number"]
+    assert "ARCH 2222" in hist["course_number"]
+    assert "ARCE 2280" in hist["course_number"]
+    assert hist.get("elective_key") == "arce_hist_elective"
+    assert "ARCH 2222" in hist["quarter_equivalents"]
+    assert "ARCH 2221" in hist["quarter_equivalents"]
+    assert "ARCE 2280" in hist["quarter_equivalents"]
+
+    survey = arce_by_id["ARCE_SURVEY"]
+    assert survey["is_placeholder"] is True
+    assert survey.get("elective_key") == "arce_surveying_elective"
+
+
+def test_me_ime_manufacturing_selective_has_elective_key():
+    me_by_id = {course["id"]: course for course in FLOWCHARTS["ME"]["courses"]}
+
+    slot = me_by_id["ME_IME114X"]
+    assert slot["is_placeholder"] is True
+    assert "IME 1141" in slot["course_number"]
+    assert slot.get("elective_key") == "me_ime_mfg_selective"
+    assert "IME 1141" in slot["quarter_equivalents"]
+    assert "IME 1142" in slot["quarter_equivalents"]
+    assert "IME 1149" in slot["quarter_equivalents"]
+
+
+def test_bmed_anatomy_physiology_slash_placeholder_has_elective_key():
+    bmed_by_id = {course["id"]: course for course in FLOWCHARTS["BMED"]["courses"]}
+
+    slot = bmed_by_id["BMED_BIO2231_2232"]
+    assert slot["is_placeholder"] is True
+    assert "BIO 2231" in slot["course_number"]
+    assert "BIO 2232" in slot["course_number"]
+    assert slot.get("elective_key") == "bmed_anat_phys"
+    assert "BIO 2231" in slot["quarter_equivalents"]
+    assert "BIO 2232" in slot["quarter_equivalents"]
+
+
+def test_brae_econ_slash_placeholder_has_elective_key():
+    brae_by_id = {course["id"]: course for course in FLOWCHARTS["BRAE"]["courses"]}
+
+    slot = brae_by_id["BRAE_ECON"]
+    assert slot["is_placeholder"] is True
+    assert "ECON 2001" in slot["course_number"]
+    assert "ECON 2040" in slot["course_number"]
+    assert slot.get("elective_key") == "brae_econ_elective"
+    assert "ECON 2001" in slot["quarter_equivalents"]
+    assert "ECON 2040" in slot["quarter_equivalents"]

@@ -32,6 +32,10 @@ function hasAnyCourseNumber(normalizedKnownNums: Set<string>, courseNums: string
   return courseNums.some((num) => normalizedKnownNums.has(norm(num)));
 }
 
+function isFreeElective(course: Course) {
+  return course.title.toLowerCase().includes("free elective") || course.course_number.toLowerCase().startsWith("free");
+}
+
 function getCourseStatus(
   course: Course,
   completedNums: Set<string>,
@@ -162,7 +166,7 @@ export default function FlowchartGrid({
       checked: boolean;
       inProgressChecked: boolean;
       plannedCourseNumber: string | undefined;
-      activeGECourseNumber: string | undefined;
+      activeCourseNumber: string | undefined;
     }>();
     for (const course of flowchart.courses) {
       const allNums = [course.course_number, ...course.quarter_equivalents];
@@ -176,16 +180,24 @@ export default function FlowchartGrid({
           checked: hasAnyCourseNumber(completedNums, approved),
           inProgressChecked: hasAnyCourseNumber(inProgressNums, approved),
           plannedCourseNumber: plannedGECourses[course.course_number],
-          activeGECourseNumber:
+          activeCourseNumber:
             (geAreaMap[course.course_number] ?? []).find((c) => completedNums.has(norm(c)) || inProgressNums.has(norm(c)))
             ?? course.quarter_equivalents.find((c) => completedNums.has(norm(c)) || inProgressNums.has(norm(c))),
+        });
+      } else if (course.is_placeholder && !isFreeElective(course)) {
+        const active = course.quarter_equivalents.find((c) => completedNums.has(norm(c)) || inProgressNums.has(norm(c)));
+        map.set(course.id, {
+          checked: hasAnyCourseNumber(completedNums, allNums),
+          inProgressChecked: hasAnyCourseNumber(inProgressNums, allNums),
+          plannedCourseNumber: plannedGECourses[course.course_number],
+          activeCourseNumber: plannedGECourses[course.course_number] ?? active,
         });
       } else {
         map.set(course.id, {
           checked: hasAnyCourseNumber(completedNums, allNums),
           inProgressChecked: hasAnyCourseNumber(inProgressNums, allNums),
           plannedCourseNumber: undefined,
-          activeGECourseNumber: undefined,
+          activeCourseNumber: undefined,
         });
       }
     }
@@ -210,7 +222,7 @@ export default function FlowchartGrid({
   const plannedGEUnits = useMemo(() => session.plannedGEUnits ?? {}, [session.plannedGEUnits]);
 
   function effectiveUnits(course: Course): number {
-    if (course.is_placeholder && course.category === "ge") {
+    if (course.is_placeholder && !isFreeElective(course)) {
       return plannedGEUnits[course.course_number] ?? course.units;
     }
     return course.units;
@@ -402,7 +414,7 @@ export default function FlowchartGrid({
                       checked={display.checked}
                       inProgressChecked={display.inProgressChecked}
                       plannedCourseNumber={display.plannedCourseNumber}
-                      activeGECourseNumber={display.activeGECourseNumber}
+                      activeCourseNumber={display.activeCourseNumber}
                       onToggleCompleted={() => onToggleCourseCompleted(course)}
                       onToggleInProgress={() => onToggleCourseInProgress(course)}
                       onClick={() => onCourseClick(course, status)}

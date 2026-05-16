@@ -3,7 +3,8 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { getMajors, parseTranscript, getConcentrations, getFlowchart, syncSession } from "@/lib/api";
+import Image from "next/image";
+import { getMajors, parseTranscript, parseCsvTranscript, getConcentrations, getFlowchart, syncSession } from "@/lib/api";
 import { saveSession } from "@/lib/session";
 import type { MajorOption, Concentration } from "@/lib/types";
 
@@ -132,6 +133,7 @@ export default function HomePage() {
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [error, setError] = useState<string | null>(null);
+  const [showInstructions, setShowInstructions] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -179,8 +181,8 @@ export default function HomePage() {
   }, [loading]);
 
   const handleFile = (f: File) => {
-    if (!f.name.endsWith(".pdf")) {
-      setError("Please upload a PDF file.");
+    if (!f.name.endsWith(".pdf") && !f.name.endsWith(".csv")) {
+      setError("Please upload a PDF transcript or CSV course list.");
       return;
     }
     setFile(f);
@@ -205,19 +207,22 @@ export default function HomePage() {
   }, []);
 
   const onSubmit = async () => {
-    if (!file) { setError("Please upload your transcript first."); return; }
+    if (!file) { setError("Please upload your transcript or course list first."); return; }
     if (loading) return;
     setLoading(true);
     setProgress(12);
     setError(null);
     let createdFlowchart = false;
+    const isCsv = file.name.endsWith(".csv");
     try {
-      const result = await parseTranscript(file, majorCode);
+      const result = isCsv
+        ? await parseCsvTranscript(file, majorCode)
+        : await parseTranscript(file, majorCode);
       setProgress(95);
-      // Backend created the DB session and returned its UUID
+      const majorName = majors.find((m) => m.code === majorCode)?.name ?? majorCode;
       saveSession({
         sessionId:   result.session_id,
-        studentName: result.student_name,
+        studentName: result.student_name || majorName,
         major:       majorCode,
         completed:   result.completed,
         inProgress:  result.in_progress,
@@ -232,7 +237,11 @@ export default function HomePage() {
       setProgress(100);
       router.push(`/flowchart/${result.session_id}`);
     } catch (e) {
-      setError("Failed to parse transcript. Make sure it's a Cal Poly unofficial transcript PDF.");
+      setError(
+        isCsv
+          ? "Failed to parse course list. Make sure it's the CSV downloaded from Student Center."
+          : "Failed to parse transcript. Make sure it's a Cal Poly unofficial transcript PDF."
+      );
       console.error(e);
     } finally {
       if (!createdFlowchart) {
@@ -276,11 +285,26 @@ export default function HomePage() {
   return (
     <div className="min-h-screen flex flex-col" style={{ background: "var(--cp-bg)" }}>
       {/* Header */}
-      <header style={{ background: "var(--cp-green)" }} className="px-6 py-4 flex items-center gap-3">
-        <div className="text-white font-bold text-xl tracking-wide">Mustang Blueprints</div>
+      <header
+        className="px-6 py-3 flex items-center gap-3 relative"
+        style={{
+          background: "#002D72",
+          backgroundImage: [
+            "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px)",
+            "linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)",
+          ].join(", "),
+          backgroundSize: "22px 22px",
+          borderBottom: "2px solid rgba(255,255,255,0.18)",
+        }}
+      >
+        <Image src="/mb-logo.png" alt="Mustang Blueprints" width={42} height={42} className="rounded flex-shrink-0" style={{ border: "2px solid rgba(255,255,255,0.85)" }} />
+        <div>
+          <div className="text-white font-bold text-base tracking-widest uppercase font-mono leading-tight">Mustang Blueprints</div>
+          <div className="text-white/45 text-[9px] tracking-widest uppercase font-mono">Cal Poly Course Planner</div>
+        </div>
         <div className="ml-auto flex items-center gap-4">
-          <Link href="/support" className="text-white/70 hover:text-white text-xs transition-colors">Support</Link>
-          <span className="text-white/70 text-xs">Unofficial Tool</span>
+          <Link href="/support" className="text-white/60 hover:text-white text-xs transition-colors font-mono tracking-wide">Support</Link>
+          <span className="text-white/40 text-xs font-mono tracking-wide">Unofficial Tool</span>
         </div>
       </header>
 
@@ -310,7 +334,7 @@ export default function HomePage() {
               <input
                 ref={fileInputRef}
                 type="file"
-                accept=".pdf"
+                accept=".pdf,.csv"
                 className="hidden"
                 onChange={(e) => { const f = e.target.files?.[0]; if (f) handleFile(f); }}
               />
@@ -323,8 +347,42 @@ export default function HomePage() {
               ) : (
                 <div>
                   <div className="text-3xl mb-2">📄</div>
-                  <div className="font-medium text-gray-600 text-sm">Drop your unofficial transcript</div>
-                  <div className="text-xs text-gray-400 mt-1">or click to upload (.pdf)</div>
+                  <div className="font-medium text-gray-600 text-sm">Drop your transcript or course list</div>
+                  <div className="text-xs text-gray-400 mt-1">or click to upload (.pdf or .csv)</div>
+                </div>
+              )}
+            </div>
+
+            {/* Instructions toggle */}
+            <div>
+              <button
+                type="button"
+                onClick={() => setShowInstructions((v) => !v)}
+                className="flex items-center gap-1 text-xs text-gray-500 hover:text-gray-700 transition-colors"
+              >
+                <span>{showInstructions ? "▲" : "▼"}</span>
+                How to download your file from my.calpoly.edu
+              </button>
+              {showInstructions && (
+                <div className="mt-3 flex flex-col gap-3 text-xs text-gray-600 bg-gray-50 rounded-xl p-4 border border-gray-100">
+                  <div>
+                    <div className="font-semibold text-gray-700 mb-1">
+                      📊 CSV — Course List <span className="text-green-600 font-semibold">(Recommended)</span>
+                    </div>
+                    <div className="text-gray-500 leading-relaxed">
+                      my.calpoly.edu → Student Center → <span className="font-medium">Academic Process</span> → Course List → download arrow (top right corner)
+                    </div>
+                    <div className="mt-1 text-gray-400">
+                      Includes transfer credit and test scores — most accurate option.
+                    </div>
+                  </div>
+                  <div className="border-t border-gray-200" />
+                  <div>
+                    <div className="font-semibold text-gray-700 mb-1">📄 PDF — Unofficial Transcript</div>
+                    <div className="text-gray-500 leading-relaxed">
+                      my.calpoly.edu → Student Center → <span className="font-medium">Student Records</span> → View Unofficial Transcript → Download PDF
+                    </div>
+                  </div>
                 </div>
               )}
             </div>
@@ -340,7 +398,7 @@ export default function HomePage() {
                 }}
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none"
               >
-                {majors.map((m) => (
+                {[...majors].sort((a, b) => a.name.localeCompare(b.name)).map((m) => (
                   <option key={m.code} value={m.code}>{m.name}</option>
                 ))}
               </select>
@@ -420,7 +478,7 @@ export default function HomePage() {
             </button>
 
             <p className="text-center text-xs text-gray-400">
-              Your PDF is only used to extract course data and is never stored.
+              Your file is only used to extract course data and is never stored.
             </p>
           </div>
         </div>

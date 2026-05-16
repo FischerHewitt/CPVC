@@ -42,3 +42,64 @@ Claude will:
 
 9. Report any catalog ambiguities or elective buckets represented as
    placeholders.
+
+
+HOW TO AUDIT AND FIX SUPPORT/ELECTIVE COURSES AGAINST THE CATALOG
+==================================================================
+
+Use this when a course appears in the flowchart or elective picker that
+doesn't exist in the semester catalog (e.g. "BIO 111" instead of "BIO 1111").
+
+Step 1 — Identify which courses are wrong
+  Run this in the backend (.venv activated) to see every real course in a
+  department:
+
+      python3 -c "
+      from services.catalog import get_dept_courses
+      for cn, info in sorted(get_dept_courses('bio').items()):
+          print(cn, info['title'])
+      "
+
+  Repeat for each relevant department (e.g. 'bot', 'zoo', 'mcro', 'math').
+  Any course number in the flowchart or elective list that doesn't appear
+  in this output is wrong and needs to be fixed.
+
+Step 2 — Fix the static elective list in electives.py
+  Find the relevant key in _STATIC (e.g. "cs_life_science") and:
+    - Remove course numbers that don't exist in the semester catalog
+    - Add any catalog courses that are missing
+    - Correct wrong course numbers (e.g. BOT 1111 -> BOT 1121)
+    - Correct wrong titles to match what get_dept_courses() returns
+
+Step 3 — Fix the auto-picker if it exposes quarter-system numbers
+  The /auto/placeholder endpoint parses course_number + quarter_equivalents
+  to build a course list. If that exposes old quarter numbers (e.g. BIO 111),
+  add the placeholder's id to _PLACEHOLDER_ELECTIVE_KEY in electives.py:
+
+      _PLACEHOLDER_ELECTIVE_KEY: dict[str, str] = {
+          "LIFESCI": "cs_life_science",   # <- add entry like this
+      }
+
+  This makes the endpoint use the clean static list instead of parsing
+  raw quarter_equivalents.
+
+Step 4 — Update quarter_equivalents in flowcharts.py
+  The quarter_equivalents list on each placeholder serves TWO purposes:
+    a) inference: marks the slot complete when a transcript shows that number
+    b) legacy mapping: maps old quarter course numbers for returning students
+  After fixing the catalog-facing list, also update quarter_equivalents to
+  include every valid SEMESTER course number so inference works for students
+  who took the correct semester course. Keep old quarter numbers (e.g.
+  "BIO 111") in the list — they don't appear in the picker, only in inference.
+
+  Example for LIFESCI after fix:
+      "quarter_equivalents": [
+          "BIO 111",                     # quarter legacy (kept for inference)
+          "BIO 1111", "BIO 1150",        # valid semester options
+          "BIO 1151", "BOT 1121",
+          "MCRO 2221"
+      ]
+
+Step 5 — Run tests
+  cd backend && source .venv/bin/activate && python3 -m pytest tests/ -q
+  All tests must pass before committing.
