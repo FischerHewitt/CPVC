@@ -1,21 +1,21 @@
 import os
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
+import httpx
 
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
 router = APIRouter()
 
-SUPPORT_EMAIL = os.getenv("SMTP_EMAIL", "fischerhewittdeveloper@gmail.com")
-DEVELOPER_EMAIL = os.getenv("DEVELOPER_EMAIL", "fihewitt@calpoly.edu")
+DEVELOPER_EMAIL = os.getenv("DEVELOPER_EMAIL", "fischerhewittdeveloper@gmail.com")
 
 _CATEGORY_LABELS = {
     "bug": "Bug Report",
     "feature": "Feature Request",
     "question": "Question",
 }
+
+_RESEND_URL = "https://api.resend.com/emails"
+_FROM_ADDRESS = "Mustang Blueprints <onboarding@resend.dev>"
 
 
 class ContactRequest(BaseModel):
@@ -28,8 +28,8 @@ class ContactRequest(BaseModel):
 
 @router.post("/send")
 def send_contact(req: ContactRequest):
-    smtp_password = os.getenv("SMTP_PASSWORD")
-    if not smtp_password:
+    api_key = os.getenv("RESEND_API_KEY")
+    if not api_key:
         raise HTTPException(status_code=503, detail="Email service not configured.")
 
     if not req.message.strip():
@@ -50,19 +50,24 @@ def send_contact(req: ContactRequest):
         f"{req.message.strip()}"
     )
 
-    msg = MIMEMultipart()
-    msg["From"] = SUPPORT_EMAIL
-    msg["To"] = SUPPORT_EMAIL
-    msg["Reply-To"] = reply_to
-    msg["Subject"] = subject
-    msg.attach(MIMEText(body, "plain"))
+    payload = {
+        "from": _FROM_ADDRESS,
+        "to": [DEVELOPER_EMAIL],
+        "reply_to": reply_to,
+        "subject": subject,
+        "text": body,
+    }
 
     try:
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-            server.login(SUPPORT_EMAIL, smtp_password)
-            server.send_message(msg)
-    except smtplib.SMTPAuthenticationError:
-        raise HTTPException(status_code=503, detail="Email authentication failed. Check SMTP credentials.")
+        res = httpx.post(
+            _RESEND_URL,
+            headers={"Authorization": f"Bearer {api_key}"},
+            json=payload,
+            timeout=10,
+        )
+        res.raise_for_status()
+    except httpx.HTTPStatusError as e:
+        raise HTTPException(status_code=502, detail=f"Resend error: {e.response.text}")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to send email: {e}")
 
