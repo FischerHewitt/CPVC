@@ -67,9 +67,9 @@ function getCourseStatus(
   }
   if (course.is_placeholder) {
     const allNums = [course.course_number, ...course.quarter_equivalents];
-    if (allNums.some((n) => completedNums.has(n))) return "completed";
-    if (allNums.some((n) => inferredNums.has(n))) return "inferred";
-    if (allNums.some((n) => inProgressNums.has(n))) return "in_progress";
+    if (allNums.some((n) => completedNums.has(norm(n)))) return "completed";
+    if (allNums.some((n) => inferredNums.has(norm(n)))) return "inferred";
+    if (allNums.some((n) => inProgressNums.has(norm(n)))) return "in_progress";
     return "incomplete";
   }
 

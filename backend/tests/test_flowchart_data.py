@@ -2225,3 +2225,210 @@ def test_fsn_placeholders_have_elective_keys():
     assert sft["slot_overrides"]["FSN_CON1"]["elective_key"] == "fsn_sft_elective"
     assert sft["slot_overrides"]["FSN_CON2"]["elective_key"] == "fsn_sft_elective"
     assert sft["slot_overrides"]["FSN_CON4"]["elective_key"] == "fsn_senior_project"
+
+
+def test_manufacturing_engineering_flowchart():
+    mfge = FLOWCHARTS["MFGE"]
+    assert mfge["total_units"] == 128
+
+    courses = mfge["courses"]
+    assert sum(c["units"] for c in courses) == 128
+
+    by_id = {c["id"]: c for c in courses}
+
+    # Key titles
+    assert by_id["MFGE_1143"]["title"] == "Introduction to Design and Manufacturing"
+    assert by_id["MFGE_3330"]["title"] == "Fundamentals of Manufacturing Engineering"
+    assert by_id["MFGE_4450"]["title"] == "Computer-Aided Manufacturing and Process Analysis"
+    assert by_id["MFGE_4461"]["title"] == "Senior Project - Design I"
+    assert by_id["MFGE_4462"]["title"] == "Senior Project - Design II"
+
+    # Categories
+    assert by_id["MFGE_1143"]["category"] == "major"
+    assert by_id["MFGE_MATH1261"]["category"] == "support"
+    assert by_id["MFGE_GE1A"]["category"] == "ge"
+    assert by_id["MFGE_TECH1"]["category"] == "concentration"
+
+    # Prerequisites
+    assert "PHYS 1141" in by_id["MFGE_PHYS1143"]["prerequisites"]
+    assert "IME 1143" in by_id["MFGE_2243"]["prerequisites"]
+    assert "IME 2243" in by_id["MFGE_3330"]["prerequisites"]
+    assert "IME 3330" in by_id["MFGE_3327"]["prerequisites"]
+    assert "IME 4461" in by_id["MFGE_4462"]["prerequisites"]
+
+    # GE placeholders
+    ge = [c for c in courses if c.get("is_placeholder") and c["category"] == "ge"]
+    assert len(ge) >= 9
+
+    # Elective placeholders
+    assert by_id["MFGE_TECH1"]["is_placeholder"] is True
+    assert by_id["MFGE_MATH_LIN"]["is_placeholder"] is True
+
+    # Term unit sums
+    by_col = {}
+    for c in courses:
+        by_col.setdefault(c["grid_col"], []).append(c["units"])
+    assert sum(by_col[0]) == 15   # FF
+    assert sum(by_col[1]) == 17   # FS
+    assert sum(by_col[2]) == 16   # SoF (with MATH 1151 = 3u)
+    assert sum(by_col[3]) == 16   # SoS
+    assert sum(by_col[4]) == 17   # JF
+    assert sum(by_col[5]) == 15   # JS
+    assert sum(by_col[6]) == 16   # SrF
+    assert sum(by_col[7]) == 16   # SrS
+
+    assert "MFGE" not in CONCENTRATIONS
+
+
+def test_mfge_placeholders_have_elective_keys():
+    mfge_by_id = {c["id"]: c for c in FLOWCHARTS["MFGE"]["courses"]}
+
+    assert mfge_by_id["MFGE_MATH_LIN"]["elective_key"] == "mfge_linear_math"
+    assert mfge_by_id["MFGE_TECH1"]["elective_key"] == "mfge_tech_elective"
+    assert mfge_by_id["MFGE_TECH2"]["elective_key"] == "mfge_tech_elective"
+    assert mfge_by_id["MFGE_TECH3"]["elective_key"] == "mfge_tech_elective"
+
+
+def test_physics_flowchart():
+    phys = FLOWCHARTS["PHYS"]
+    assert phys["total_units"] == 120
+
+    courses = phys["courses"]
+    assert sum(c["units"] for c in courses) == 120
+
+    by_id = {c["id"]: c for c in courses}
+
+    # Key titles
+    assert by_id["PHYS_1141"]["title"] == "General Physics I"
+    assert by_id["PHYS_2211"]["title"] == "General Physics III: Modern Physics"
+    assert by_id["PHYS_3320"]["title"] == "Methods of Theoretical Physics"
+    assert by_id["PHYS_4405"]["title"] == "Quantum Mechanics I"
+    assert by_id["PHYS_4461"]["title"] == "Senior Project I"
+
+    # Categories
+    assert by_id["PHYS_1141"]["category"] == "major"
+    assert by_id["PHYS_MATH1261"]["category"] == "support"
+    assert by_id["PHYS_GE1A"]["category"] == "ge"
+    assert by_id["PHYS_TECH1"]["category"] == "concentration"
+
+    # Prerequisites
+    assert "PHYS 1141" in by_id["PHYS_1143"]["prerequisites"]
+    assert "PHYS 1143" in by_id["PHYS_2211"]["prerequisites"]
+    assert "PHYS 2211" in by_id["PHYS_3305"]["prerequisites"]
+    assert "PHYS 3340" in by_id["PHYS_3341"]["prerequisites"]
+    assert "PHYS 3320" in by_id["PHYS_4405"]["prerequisites"]
+
+    # GE placeholders
+    ge = [c for c in courses if c.get("is_placeholder") and c["category"] == "ge"]
+    assert len(ge) >= 9
+
+    # Elective placeholders
+    assert by_id["PHYS_TECH1"]["is_placeholder"] is True
+    assert by_id["PHYS_LAB"]["is_placeholder"] is True
+
+    # Term unit sums
+    by_col = {}
+    for c in courses:
+        by_col.setdefault(c["grid_col"], []).append(c["units"])
+    assert sum(by_col[0]) == 15   # FF
+    assert sum(by_col[1]) == 15   # FS
+    assert sum(by_col[2]) == 16   # SoF
+    assert sum(by_col[3]) == 17   # SoS
+    assert sum(by_col[4]) == 15   # JF
+    assert sum(by_col[5]) == 14   # JS
+    assert sum(by_col[6]) == 15   # SrF
+    assert sum(by_col[7]) == 13   # SrS
+
+    assert "PHYS" not in CONCENTRATIONS
+
+
+def test_phys_placeholders_have_elective_keys():
+    phys_by_id = {c["id"]: c for c in FLOWCHARTS["PHYS"]["courses"]}
+
+    assert phys_by_id["PHYS_LAB"]["elective_key"] == "phys_lab_elective"
+    assert phys_by_id["PHYS_TECH1"]["elective_key"] == "phys_tech_elective"
+    assert phys_by_id["PHYS_TECH4"]["elective_key"] == "phys_tech_elective"
+    assert phys_by_id["PHYS_TECH6"]["elective_key"] == "phys_tech_elective"
+
+
+def test_journalism_flowchart():
+    jour = FLOWCHARTS["JOUR"]
+    assert jour["total_units"] == 120
+
+    courses = jour["courses"]
+    assert sum(c["units"] for c in courses) == 120
+
+    by_id = {c["id"]: c for c in courses}
+
+    # Key titles
+    assert by_id["JOUR_2203"]["title"] == "News Reporting and Writing"
+    assert by_id["JOUR_2228"]["title"] == "Media, Self and Society"
+    assert by_id["JOUR_3302"]["title"] == "Mass Media Law"
+    assert by_id["JOUR_3305"]["title"] == "Journalism Ethics"
+    assert by_id["JOUR_3334"]["title"] == "Editing for Online and Print Publication"
+    assert by_id["JOUR_4444"]["title"] == "Media Internship"
+
+    # Categories
+    assert by_id["JOUR_2203"]["category"] == "major"
+    assert by_id["JOUR_STAT"]["category"] == "support"
+    assert by_id["JOUR_GE1A"]["category"] == "ge"
+    assert by_id["JOUR_CON1"]["category"] == "concentration"
+    assert by_id["JOUR_FREE1"]["category"] == "concentration"
+
+    # Prerequisites
+    assert "JOUR 2203" in by_id["JOUR_3303"]["prerequisites"]
+    assert "JOUR 2203" in by_id["JOUR_3302"]["prerequisites"]
+    assert "JOUR 2203" in by_id["JOUR_3334"]["prerequisites"]
+
+    # GE placeholders
+    ge = [c for c in courses if c.get("is_placeholder") and c["category"] == "ge"]
+    assert len(ge) >= 10
+
+    # Concentration and free-elective placeholders
+    assert by_id["JOUR_CON1"]["is_placeholder"] is True
+    assert by_id["JOUR_FREE1"]["is_placeholder"] is True
+
+    # Term unit sums
+    by_col = {}
+    for c in courses:
+        by_col.setdefault(c["grid_col"], []).append(c["units"])
+    assert sum(by_col[0]) == 13   # FF
+    assert sum(by_col[1]) == 15   # FS
+    assert sum(by_col[2]) == 15   # SoF
+    assert sum(by_col[3]) == 16   # SoS
+    assert sum(by_col[4]) == 15   # JF
+    assert sum(by_col[5]) == 15   # JS
+    assert sum(by_col[6]) == 16   # SrF
+    assert sum(by_col[7]) == 15   # SrS
+
+    assert "JOUR" in CONCENTRATIONS
+    tracks = [t["id"] for t in CONCENTRATIONS["JOUR"]]
+    assert "media_innovation" in tracks
+    assert "news" in tracks
+    assert "public_relations" in tracks
+    assert "ics" in tracks
+
+
+def test_jour_placeholders_have_elective_keys():
+    jour_by_id = {c["id"]: c for c in FLOWCHARTS["JOUR"]["courses"]}
+
+    assert jour_by_id["JOUR_STAT"]["elective_key"] == "jour_stat_choice"
+    assert jour_by_id["JOUR_2219"]["elective_key"] == "jour_crosscultural"
+    assert jour_by_id["JOUR_ELEC1"]["elective_key"] == "jour_elective"
+    assert jour_by_id["JOUR_ELEC2"]["elective_key"] == "jour_elective"
+    assert jour_by_id["JOUR_ELEC3"]["elective_key"] == "jour_elective"
+
+    # Base concentration slots have no elective_key
+    assert jour_by_id["JOUR_CON1"].get("elective_key") is None
+
+    # Concentration overrides wire elective keys
+    mi = next(t for t in CONCENTRATIONS["JOUR"] if t["id"] == "media_innovation")
+    assert mi["slot_overrides"]["JOUR_CON2"]["elective_key"] == "jour_mi_method"
+    assert mi["slot_overrides"]["JOUR_CON3"]["elective_key"] == "jour_mi_practicum"
+
+    news = next(t for t in CONCENTRATIONS["JOUR"] if t["id"] == "news")
+    assert news["slot_overrides"]["JOUR_CON3"]["elective_key"] == "jour_news_elective"
+    assert news["slot_overrides"]["JOUR_CON4"]["elective_key"] == "jour_news_elective"
+
+    pr = next(t for t in CONCENTRATIONS["JOUR"] if t["id"] == "public_relations")
+    assert pr["slot_overrides"]["JOUR_CON4"]["elective_key"] == "jour_pr_or_choice"

@@ -1369,6 +1369,84 @@ _STATIC: dict[str, dict] = {
             {"course_number": "MATH 4982", "title": "Advanced Topics in Applied Mathematics",    "units": 3},
         ],
     },
+    # ── MANUFACTURING ENGINEERING ─────────────────────────────────────────────
+    "mfge_linear_math": {
+        "title": "Linear Algebra or Linear Analysis",
+        "description": "Select MATH 1151 (Linear Algebra, 3 units) or MATH 2341 (Linear Analysis, 4 units). MATH 2341 adds 1 unit to the program total (128 → 129 units).",
+        "courses": [
+            {"course_number": "MATH 1151", "title": "Linear Algebra",   "units": 3},
+            {"course_number": "MATH 2341", "title": "Linear Analysis",  "units": 4},
+        ],
+    },
+    # ── PHYSICS ──────────────────────────────────────────────────────────────
+    "phys_lab_elective": {
+        "title": "Physics Lab Elective",
+        "description": "Select one lab elective from: PHYS 3323 (Optics), PHYS 4425 (Solid State Physics), PHYS 4428 (Nonlinear Dynamics and Chaos), or ASTR 4444 (Observational Astronomy).",
+        "courses": [
+            {"course_number": "PHYS 3323", "title": "Optics",                                    "units": 4},
+            {"course_number": "PHYS 4425", "title": "Solid State Physics",                       "units": 4},
+            {"course_number": "PHYS 4428", "title": "Nonlinear Dynamics and Chaos",              "units": 4},
+            {"course_number": "ASTR 4444", "title": "Observational Astronomy",                   "units": 4},
+        ],
+    },
+    # ── JOURNALISM ───────────────────────────────────────────────────────────
+    "jour_stat_choice": {
+        "title": "Statistics",
+        "description": "Select one statistics course to satisfy the support requirement. Any of these three options are accepted.",
+        "courses": [
+            {"course_number": "STAT 1000", "title": "Statistical and Data Literacy",       "units": 3},
+            {"course_number": "STAT 1110", "title": "Applied Statistical Concepts and Methods", "units": 3},
+            {"course_number": "STAT 1210", "title": "Business Statistics I",                "units": 3},
+        ],
+    },
+    "jour_crosscultural": {
+        "title": "Mass Media in a Cross-Cultural Society or Global Communication",
+        "description": "Select either JOUR 2219 or JOUR 3319 to satisfy this cross-cultural communication requirement.",
+        "courses": [
+            {"course_number": "JOUR 2219", "title": "Mass Media in a Cross-Cultural Society", "units": 3},
+            {"course_number": "JOUR 3319", "title": "Global Communication",                  "units": 3},
+        ],
+    },
+    "jour_mi_method": {
+        "title": "Media Innovation: Method Elective",
+        "description": "Select JOUR 3345 (Social Media for Strategic Communication) or JOUR 3310 (Advanced Digital Journalism).",
+        "courses": [
+            {"course_number": "JOUR 3345", "title": "Social Media for Strategic Communication", "units": 3},
+            {"course_number": "JOUR 3310", "title": "Advanced Digital Journalism",               "units": 3},
+        ],
+    },
+    "jour_mi_practicum": {
+        "title": "Media Innovation: Advanced Practicum",
+        "description": "Select JOUR 3352 (Advanced News Reporting Practicum) or JOUR 3353 (Advanced Broadcast Journalism Practicum).",
+        "courses": [
+            {"course_number": "JOUR 3352", "title": "Advanced News Reporting Practicum",          "units": 3},
+            {"course_number": "JOUR 3353", "title": "Advanced Broadcast Journalism Practicum",    "units": 3},
+        ],
+    },
+    "jour_news_elective": {
+        "title": "News Concentration Elective",
+        "description": "Select from the Writing/Digital path (JOUR 3307, 3350, 3352) or the Audio/Visual path (JOUR 3333, 3338, 3346, 3348, 3353, 3378).",
+        "courses": [
+            {"course_number": "JOUR 3307", "title": "Feature Writing",                           "units": 3},
+            {"course_number": "JOUR 3333", "title": "Broadcast News",                            "units": 3},
+            {"course_number": "JOUR 3338", "title": "Podcasting",                                "units": 3},
+            {"course_number": "JOUR 3346", "title": "Broadcast Announcing and Production",       "units": 3},
+            {"course_number": "JOUR 3348", "title": "Video News Gathering",                      "units": 3},
+            {"course_number": "JOUR 3350", "title": "Data Journalism",                           "units": 3},
+            {"course_number": "JOUR 3352", "title": "Advanced News Reporting Practicum",         "units": 3},
+            {"course_number": "JOUR 3353", "title": "Advanced Broadcast Journalism Practicum",   "units": 3},
+            {"course_number": "JOUR 3378", "title": "Advanced Sportscasting",                    "units": 3},
+        ],
+    },
+    "jour_pr_or_choice": {
+        "title": "Public Relations: Or-Choice Elective",
+        "description": "Select one of JOUR 3314 (PR & Crisis Management), JOUR 3315 (PR & Advertising Production), or JOUR 3345 (Social Media for Strategic Communication).",
+        "courses": [
+            {"course_number": "JOUR 3314", "title": "Public Relations and Crisis Management",          "units": 3},
+            {"course_number": "JOUR 3315", "title": "Public Relations and Advertising Production",     "units": 3},
+            {"course_number": "JOUR 3345", "title": "Social Media for Strategic Communication",        "units": 3},
+        ],
+    },
     # ── FOOD SCIENCE AND NUTRITION ────────────────────────────────────────────
     "fsn_senior_project": {
         "title": "Food Science Senior Project",
@@ -1677,6 +1755,27 @@ _DYNAMIC: dict[str, dict] = {
         "depts": ["ee", "cpe", "csc", "me", "phys", "chem", "ime"],
         "min_level": 1000,
         "max_level": 5999,
+    },
+    "jour_elective": {
+        "title": "Journalism Elective",
+        "description": "Any JOUR course (1000–4999 level) not used to satisfy another requirement.",
+        "depts": ["jour"],
+        "min_level": 1000,
+        "max_level": 4999,
+    },
+    "mfge_tech_elective": {
+        "title": "Manufacturing Engineering Technical Elective",
+        "description": "Upper-division IME course (3000–4999 level) approved as a technical elective by the Industrial and Manufacturing Engineering department.",
+        "depts": ["ime"],
+        "min_level": 3000,
+        "max_level": 4999,
+    },
+    "phys_tech_elective": {
+        "title": "Physics Technical Elective",
+        "description": "Upper-division PHYS or ASTR course (3000–4999 level) approved as a technical elective by the Physics department.",
+        "depts": ["phys", "astr"],
+        "min_level": 3000,
+        "max_level": 4999,
     },
 }
 

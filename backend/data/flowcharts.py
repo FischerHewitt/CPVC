@@ -1963,6 +1963,185 @@ EE_FLOWCHART: list[Course] = [
 ]
 
 
+# ─────────────────────────────────────────────────────────────────────────────
+# MANUFACTURING ENGINEERING — BS (128–129 units)
+# Source: catalog.calpoly.edu/engineering/industrial-manufacturing/manufacturing-engineering-bs/
+# No concentrations; unified curriculum.
+# 128u uses MATH 1151 (3u); 129u if MATH 2341 (4u) is taken instead.
+# GE 2 satisfied by MATH 1261 (support); GE 5A+5C satisfied by CHEM 1120 (support);
+# GE UD-2/5 satisfied by STAT 3210 (support).
+# ─────────────────────────────────────────────────────────────────────────────
+MFGE_FLOWCHART: list[Course] = [
+    # ── Freshman Fall (15u) ──────────────────────────────────────────────────
+    {"id": "MFGE_1101",    "course_number": "IME 1101",   "title": "Introduction to Industrial and Manufacturing Engineering", "units": 1, "category": "major",        "grid_col": 0, "grid_row": 0, "prerequisites": [],                         "quarter_equivalents": [],                  "is_placeholder": False},
+    {"id": "MFGE_1140",    "course_number": "IME 1140",   "title": "Technical Graphics Communication for Design and Manufacturing", "units": 1, "category": "major",   "grid_col": 0, "grid_row": 0, "prerequisites": [],                         "quarter_equivalents": [],                  "is_placeholder": False},
+    {"id": "MFGE_1143",    "course_number": "IME 1143",   "title": "Introduction to Design and Manufacturing",                "units": 2, "category": "major",        "grid_col": 0, "grid_row": 0, "prerequisites": [],                         "quarter_equivalents": [],                  "is_placeholder": False},
+    {"id": "MFGE_CHEM1120","course_number": "CHEM 1120",  "title": "Fundamentals of Chemical Structure and Properties",       "units": 4, "category": "support",       "grid_col": 0, "grid_row": 0, "prerequisites": [],                         "quarter_equivalents": ["CHEM 124"],        "is_placeholder": False},
+    {"id": "MFGE_MATH1261","course_number": "MATH 1261",  "title": "Calculus I",                                              "units": 4, "category": "support",       "grid_col": 0, "grid_row": 0, "prerequisites": [],                         "quarter_equivalents": ["MATH 141"],        "is_placeholder": False},
+    {"id": "MFGE_GE1A",    "course_number": "GE 1A",      "title": "Written Communication",                                   "units": 3, "category": "ge",            "grid_col": 0, "grid_row": 0, "prerequisites": [],                         "quarter_equivalents": ["ENGL 134"],        "is_placeholder": True},
+    # ── Freshman Spring (17u) ────────────────────────────────────────────────
+    {"id": "MFGE_1156",    "course_number": "IME 1156",   "title": "Introduction to Modern Electronics Manufacturing",        "units": 2, "category": "major",        "grid_col": 1, "grid_row": 0, "prerequisites": [],                         "quarter_equivalents": [],                  "is_placeholder": False},
+    {"id": "MFGE_1223",    "course_number": "IME 1223",   "title": "Process Improvement Fundamentals",                       "units": 4, "category": "major",        "grid_col": 1, "grid_row": 0, "prerequisites": [],                         "quarter_equivalents": [],                  "is_placeholder": False},
+    {"id": "MFGE_MATH1262","course_number": "MATH 1262",  "title": "Calculus II",                                             "units": 4, "category": "support",       "grid_col": 1, "grid_row": 0, "prerequisites": ["MATH 1261"],              "quarter_equivalents": ["MATH 142"],        "is_placeholder": False},
+    {"id": "MFGE_PHYS1141","course_number": "PHYS 1141",  "title": "General Physics I",                                       "units": 4, "category": "support",       "grid_col": 1, "grid_row": 0, "prerequisites": ["MATH 1261"],              "quarter_equivalents": ["PHYS 141"],        "is_placeholder": False},
+    {"id": "MFGE_GE1B",    "course_number": "GE 1B",      "title": "Critical Thinking",                                       "units": 3, "category": "ge",            "grid_col": 1, "grid_row": 0, "prerequisites": [],                         "quarter_equivalents": [],                  "is_placeholder": True},
+    # ── Sophomore Fall (16u) ─────────────────────────────────────────────────
+    {"id": "MFGE_1141",    "course_number": "IME 1141",   "title": "Introduction to Metal Casting and Prototyping",           "units": 1, "category": "major",        "grid_col": 2, "grid_row": 0, "prerequisites": [],                         "quarter_equivalents": [],                  "is_placeholder": False},
+    {"id": "MFGE_1142",    "course_number": "IME 1142",   "title": "Materials Joining",                                       "units": 1, "category": "major",        "grid_col": 2, "grid_row": 0, "prerequisites": [],                         "quarter_equivalents": [],                  "is_placeholder": False},
+    {"id": "MFGE_ENGR2211","course_number": "ENGR 2211",  "title": "Introduction to Mechanics",                               "units": 4, "category": "support",       "grid_col": 2, "grid_row": 0, "prerequisites": ["PHYS 1141"],              "quarter_equivalents": ["ENGR 211"],        "is_placeholder": False},
+    {"id": "MFGE_MATH_LIN","course_number": "MATH 1151/2341","title": "Linear Algebra or Linear Analysis",                    "units": 3, "category": "support",       "grid_col": 2, "grid_row": 0, "prerequisites": [],                         "quarter_equivalents": ["MATH 244"],        "is_placeholder": True,  "elective_key": "mfge_linear_math"},
+    {"id": "MFGE_PHYS1143","course_number": "PHYS 1143",  "title": "General Physics II",                                      "units": 4, "category": "support",       "grid_col": 2, "grid_row": 0, "prerequisites": ["PHYS 1141", "MATH 1262"], "quarter_equivalents": ["PHYS 143"],        "is_placeholder": False},
+    {"id": "MFGE_GE1C",    "course_number": "GE 1C",      "title": "Oral Communication",                                      "units": 3, "category": "ge",            "grid_col": 2, "grid_row": 0, "prerequisites": [],                         "quarter_equivalents": ["COMS 101"],        "is_placeholder": True},
+    # ── Sophomore Spring (16u) ───────────────────────────────────────────────
+    {"id": "MFGE_2243",    "course_number": "IME 2243",   "title": "Intermediate Design and Manufacturing",                   "units": 2, "category": "major",        "grid_col": 3, "grid_row": 0, "prerequisites": ["IME 1143"],               "quarter_equivalents": [],                  "is_placeholder": False},
+    {"id": "MFGE_2315",    "course_number": "IME 2315",   "title": "Financial Decision Making for Engineers",                 "units": 2, "category": "major",        "grid_col": 3, "grid_row": 0, "prerequisites": [],                         "quarter_equivalents": [],                  "is_placeholder": False},
+    {"id": "MFGE_ENGR2212","course_number": "ENGR 2212",  "title": "Introduction to Engineering Dynamics",                    "units": 2, "category": "support",       "grid_col": 3, "grid_row": 0, "prerequisites": ["ENGR 2211"],              "quarter_equivalents": ["ENGR 212"],        "is_placeholder": False},
+    {"id": "MFGE_MATE1210","course_number": "MATE 1210",  "title": "Principles of Materials Engineering",                     "units": 4, "category": "support",       "grid_col": 3, "grid_row": 0, "prerequisites": [],                         "quarter_equivalents": ["MATE 210"],        "is_placeholder": False},
+    {"id": "MFGE_MATH2263","course_number": "MATH 2263",  "title": "Calculus III",                                            "units": 3, "category": "support",       "grid_col": 3, "grid_row": 0, "prerequisites": ["MATH 1262"],              "quarter_equivalents": ["MATH 241"],        "is_placeholder": False},
+    {"id": "MFGE_GE3A",    "course_number": "GE 3A",      "title": "Arts",                                                    "units": 3, "category": "ge",            "grid_col": 3, "grid_row": 0, "prerequisites": [],                         "quarter_equivalents": [],                  "is_placeholder": True},
+    # ── Junior Fall (17u) ────────────────────────────────────────────────────
+    {"id": "MFGE_3330",    "course_number": "IME 3330",   "title": "Fundamentals of Manufacturing Engineering",               "units": 4, "category": "major",        "grid_col": 4, "grid_row": 0, "prerequisites": ["IME 2243"],               "quarter_equivalents": [],                  "is_placeholder": False},
+    {"id": "MFGE_CSC1032", "course_number": "CSC 1032",   "title": "Programming for Scientists and Engineers",                "units": 3, "category": "support",       "grid_col": 4, "grid_row": 0, "prerequisites": [],                         "quarter_equivalents": [],                  "is_placeholder": False},
+    {"id": "MFGE_EE2115",  "course_number": "EE 2115",    "title": "Circuits and Electronics for Non-Majors",                 "units": 4, "category": "support",       "grid_col": 4, "grid_row": 0, "prerequisites": ["PHYS 1141"],              "quarter_equivalents": [],                  "is_placeholder": False},
+    {"id": "MFGE_STAT3210","course_number": "STAT 3210",  "title": "Engineering Statistics",                                  "units": 3, "category": "support",       "grid_col": 4, "grid_row": 0, "prerequisites": ["MATH 1262"],              "quarter_equivalents": ["STAT 312"],        "is_placeholder": False},
+    {"id": "MFGE_GE4A",    "course_number": "GE 4A",      "title": "American Institutions",                                   "units": 3, "category": "ge",            "grid_col": 4, "grid_row": 0, "prerequisites": [],                         "quarter_equivalents": [],                  "is_placeholder": True},
+    # ── Junior Spring (15u) ──────────────────────────────────────────────────
+    {"id": "MFGE_3327",    "course_number": "IME 3327",   "title": "Test Design and Analysis in Manufacturing Engineering",   "units": 4, "category": "major",        "grid_col": 5, "grid_row": 0, "prerequisites": ["IME 3330"],               "quarter_equivalents": [],                  "is_placeholder": False},
+    {"id": "MFGE_3356",    "course_number": "IME 3356",   "title": "Manufacturing and Process Automation",                    "units": 4, "category": "major",        "grid_col": 5, "grid_row": 0, "prerequisites": ["IME 3330"],               "quarter_equivalents": [],                  "is_placeholder": False},
+    {"id": "MFGE_4450",    "course_number": "IME 4450",   "title": "Computer-Aided Manufacturing and Process Analysis",       "units": 4, "category": "major",        "grid_col": 5, "grid_row": 0, "prerequisites": ["IME 3356"],               "quarter_equivalents": [],                  "is_placeholder": False},
+    {"id": "MFGE_GE5B",    "course_number": "GE 5B",      "title": "Life Sciences",                                           "units": 3, "category": "ge",            "grid_col": 5, "grid_row": 0, "prerequisites": [],                         "quarter_equivalents": [],                  "is_placeholder": True},
+    # ── Senior Fall (16u) ────────────────────────────────────────────────────
+    {"id": "MFGE_4418",    "course_number": "IME 4418",   "title": "Product and Process Development",                         "units": 4, "category": "major",        "grid_col": 6, "grid_row": 0, "prerequisites": ["IME 3330"],               "quarter_equivalents": [],                  "is_placeholder": False},
+    {"id": "MFGE_4461",    "course_number": "IME 4461",   "title": "Senior Project - Design I",                               "units": 2, "category": "major",        "grid_col": 6, "grid_row": 0, "prerequisites": ["IME 3330"],               "quarter_equivalents": [],                  "is_placeholder": False},
+    {"id": "MFGE_TECH1",   "course_number": "Tech Elective","title": "Technical Elective",                                    "units": 4, "category": "concentration", "grid_col": 6, "grid_row": 0, "prerequisites": [],                         "quarter_equivalents": [],                  "is_placeholder": True,  "elective_key": "mfge_tech_elective"},
+    {"id": "MFGE_GE3B",    "course_number": "GE 3B",      "title": "Humanities",                                              "units": 3, "category": "ge",            "grid_col": 6, "grid_row": 0, "prerequisites": [],                         "quarter_equivalents": [],                  "is_placeholder": True},
+    {"id": "MFGE_GE4B",    "course_number": "GE 4B",      "title": "Social and Behavioral Sciences",                          "units": 3, "category": "ge",            "grid_col": 6, "grid_row": 0, "prerequisites": [],                         "quarter_equivalents": [],                  "is_placeholder": True},
+    # ── Senior Spring (16u) ──────────────────────────────────────────────────
+    {"id": "MFGE_4462",    "course_number": "IME 4462",   "title": "Senior Project - Design II",                              "units": 2, "category": "major",        "grid_col": 7, "grid_row": 0, "prerequisites": ["IME 4461"],               "quarter_equivalents": [],                  "is_placeholder": False},
+    {"id": "MFGE_TECH2",   "course_number": "Tech Elective","title": "Technical Elective",                                    "units": 4, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],                         "quarter_equivalents": [],                  "is_placeholder": True,  "elective_key": "mfge_tech_elective"},
+    {"id": "MFGE_TECH3",   "course_number": "Tech Elective","title": "Technical Elective",                                    "units": 1, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],                         "quarter_equivalents": [],                  "is_placeholder": True,  "elective_key": "mfge_tech_elective"},
+    {"id": "MFGE_GE_UD3",  "course_number": "GE UD-3",    "title": "Upper-Division Arts and Humanities",                      "units": 3, "category": "ge",            "grid_col": 7, "grid_row": 0, "prerequisites": [],                         "quarter_equivalents": [],                  "is_placeholder": True},
+    {"id": "MFGE_GE_UD4",  "course_number": "GE UD-4",    "title": "Upper-Division Social and Behavioral Sciences",           "units": 3, "category": "ge",            "grid_col": 7, "grid_row": 0, "prerequisites": [],                         "quarter_equivalents": [],                  "is_placeholder": True},
+    {"id": "MFGE_GE6",     "course_number": "GE 6",        "title": "Ethnic Studies",                                         "units": 3, "category": "ge",            "grid_col": 7, "grid_row": 0, "prerequisites": [],                         "quarter_equivalents": [],                  "is_placeholder": True},
+]
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# PHYSICS — BS (120 units)
+# Source: catalog.calpoly.edu/science-mathematics/physics/physics-bs/
+# No concentrations; unified curriculum.
+# GE 2 satisfied by MATH 1261 (support); GE 5A satisfied by PHYS 1141 (major);
+# GE UD-2/5 satisfied by PHYS 3305 (major).
+# ─────────────────────────────────────────────────────────────────────────────
+PHYS_FLOWCHART: list[Course] = [
+    # ── Freshman Fall (15u) ──────────────────────────────────────────────────
+    {"id": "PHYS_1100",      "course_number": "PHYS 1100",  "title": "Introduction to the Physics Major",                "units": 1, "category": "major",        "grid_col": 0, "grid_row": 0, "prerequisites": [],                              "quarter_equivalents": [],                      "is_placeholder": False},
+    {"id": "PHYS_CHEM1120",  "course_number": "CHEM 1120",  "title": "Fundamentals of Chemical Structure and Properties","units": 4, "category": "support",       "grid_col": 0, "grid_row": 0, "prerequisites": [],                              "quarter_equivalents": ["CHEM 124"],            "is_placeholder": False},
+    {"id": "PHYS_MATH1261",  "course_number": "MATH 1261",  "title": "Calculus I",                                       "units": 4, "category": "support",       "grid_col": 0, "grid_row": 0, "prerequisites": [],                              "quarter_equivalents": ["MATH 141"],            "is_placeholder": False},
+    {"id": "PHYS_GE1A",      "course_number": "GE 1A",      "title": "Written Communication",                            "units": 3, "category": "ge",            "grid_col": 0, "grid_row": 0, "prerequisites": [],                              "quarter_equivalents": ["ENGL 134"],            "is_placeholder": True},
+    {"id": "PHYS_GE1C",      "course_number": "GE 1C",      "title": "Oral Communication",                               "units": 3, "category": "ge",            "grid_col": 0, "grid_row": 0, "prerequisites": [],                              "quarter_equivalents": ["COMS 101"],            "is_placeholder": True},
+    # ── Freshman Spring (15u) ────────────────────────────────────────────────
+    {"id": "PHYS_1141",      "course_number": "PHYS 1141",  "title": "General Physics I",                                "units": 4, "category": "major",        "grid_col": 1, "grid_row": 0, "prerequisites": ["MATH 1261"],                   "quarter_equivalents": ["PHYS 141"],            "is_placeholder": False},
+    {"id": "PHYS_CSC1001",   "course_number": "CSC 1001",   "title": "Fundamentals of Computer Science",                 "units": 4, "category": "support",       "grid_col": 1, "grid_row": 0, "prerequisites": [],                              "quarter_equivalents": ["CSC 101"],             "is_placeholder": False},
+    {"id": "PHYS_MATH1262",  "course_number": "MATH 1262",  "title": "Calculus II",                                      "units": 4, "category": "support",       "grid_col": 1, "grid_row": 0, "prerequisites": ["MATH 1261"],                   "quarter_equivalents": ["MATH 142"],            "is_placeholder": False},
+    {"id": "PHYS_GE1B",      "course_number": "GE 1B",      "title": "Critical Thinking",                                "units": 3, "category": "ge",            "grid_col": 1, "grid_row": 0, "prerequisites": [],                              "quarter_equivalents": [],                      "is_placeholder": True},
+    # ── Sophomore Fall (16u) ─────────────────────────────────────────────────
+    {"id": "PHYS_1143",      "course_number": "PHYS 1143",  "title": "General Physics II",                               "units": 4, "category": "major",        "grid_col": 2, "grid_row": 0, "prerequisites": ["PHYS 1141", "MATH 1262"],       "quarter_equivalents": ["PHYS 143"],            "is_placeholder": False},
+    {"id": "PHYS_MATH2263",  "course_number": "MATH 2263",  "title": "Calculus III",                                     "units": 3, "category": "support",       "grid_col": 2, "grid_row": 0, "prerequisites": ["MATH 1262"],                   "quarter_equivalents": ["MATH 241"],            "is_placeholder": False},
+    {"id": "PHYS_GE3A",      "course_number": "GE 3A",      "title": "Arts",                                             "units": 3, "category": "ge",            "grid_col": 2, "grid_row": 0, "prerequisites": [],                              "quarter_equivalents": [],                      "is_placeholder": True},
+    {"id": "PHYS_GE4B",      "course_number": "GE 4B",      "title": "Social and Behavioral Sciences",                   "units": 3, "category": "ge",            "grid_col": 2, "grid_row": 0, "prerequisites": [],                              "quarter_equivalents": [],                      "is_placeholder": True},
+    {"id": "PHYS_GE5B",      "course_number": "GE 5B",      "title": "Life Sciences",                                    "units": 3, "category": "ge",            "grid_col": 2, "grid_row": 0, "prerequisites": [],                              "quarter_equivalents": [],                      "is_placeholder": True},
+    # ── Sophomore Spring (17u) ───────────────────────────────────────────────
+    {"id": "PHYS_2211",      "course_number": "PHYS 2211",  "title": "General Physics III: Modern Physics",              "units": 4, "category": "major",        "grid_col": 3, "grid_row": 0, "prerequisites": ["PHYS 1143"],                   "quarter_equivalents": ["PHYS 211"],            "is_placeholder": False},
+    {"id": "PHYS_MATH2341",  "course_number": "MATH 2341",  "title": "Linear Analysis",                                  "units": 4, "category": "support",       "grid_col": 3, "grid_row": 0, "prerequisites": ["MATH 2263"],                   "quarter_equivalents": ["MATH 244"],            "is_placeholder": False},
+    {"id": "PHYS_GE3B",      "course_number": "GE 3B",      "title": "Humanities",                                       "units": 3, "category": "ge",            "grid_col": 3, "grid_row": 0, "prerequisites": [],                              "quarter_equivalents": [],                      "is_placeholder": True},
+    {"id": "PHYS_GE4A",      "course_number": "GE 4A",      "title": "American Institutions",                            "units": 3, "category": "ge",            "grid_col": 3, "grid_row": 0, "prerequisites": [],                              "quarter_equivalents": [],                      "is_placeholder": True},
+    {"id": "PHYS_GE6",       "course_number": "GE 6",       "title": "Ethnic Studies",                                   "units": 3, "category": "ge",            "grid_col": 3, "grid_row": 0, "prerequisites": [],                              "quarter_equivalents": [],                      "is_placeholder": True},
+    # ── Junior Fall (15u) ────────────────────────────────────────────────────
+    {"id": "PHYS_3305",      "course_number": "PHYS 3305",  "title": "Classical Mechanics I",                            "units": 3, "category": "major",        "grid_col": 4, "grid_row": 0, "prerequisites": ["PHYS 2211"],                   "quarter_equivalents": [],                      "is_placeholder": False},
+    {"id": "PHYS_3316",      "course_number": "PHYS 3316",  "title": "Instrumentation and Techniques of Experimental Physics", "units": 4, "category": "major", "grid_col": 4, "grid_row": 0, "prerequisites": ["PHYS 2211"],                   "quarter_equivalents": [],                      "is_placeholder": False},
+    {"id": "PHYS_3320",      "course_number": "PHYS 3320",  "title": "Methods of Theoretical Physics",                   "units": 4, "category": "major",        "grid_col": 4, "grid_row": 0, "prerequisites": ["PHYS 2211", "MATH 2341"],       "quarter_equivalents": [],                      "is_placeholder": False},
+    {"id": "PHYS_TECH1",     "course_number": "Tech Elective","title": "Technical Elective",                             "units": 4, "category": "concentration", "grid_col": 4, "grid_row": 0, "prerequisites": [],                              "quarter_equivalents": [],                      "is_placeholder": True,  "elective_key": "phys_tech_elective"},
+    # ── Junior Spring (14u) ──────────────────────────────────────────────────
+    {"id": "PHYS_3301",      "course_number": "PHYS 3301",  "title": "Statistical Mechanics",                            "units": 3, "category": "major",        "grid_col": 5, "grid_row": 0, "prerequisites": ["PHYS 2211"],                   "quarter_equivalents": [],                      "is_placeholder": False},
+    {"id": "PHYS_3339",      "course_number": "PHYS 3339",  "title": "Communicating Physics",                            "units": 1, "category": "major",        "grid_col": 5, "grid_row": 0, "prerequisites": [],                              "quarter_equivalents": [],                      "is_placeholder": False},
+    {"id": "PHYS_3340",      "course_number": "PHYS 3340",  "title": "Quantum Physics Laboratory I",                     "units": 1, "category": "major",        "grid_col": 5, "grid_row": 0, "prerequisites": ["PHYS 2211"],                   "quarter_equivalents": [],                      "is_placeholder": False},
+    {"id": "PHYS_4408",      "course_number": "PHYS 4408",  "title": "Electromagnetic Fields and Waves I",               "units": 3, "category": "major",        "grid_col": 5, "grid_row": 0, "prerequisites": ["PHYS 2211", "MATH 2341"],       "quarter_equivalents": [],                      "is_placeholder": False},
+    {"id": "PHYS_GE_UD3",    "course_number": "GE UD-3",    "title": "Upper-Division Arts and Humanities",               "units": 3, "category": "ge",            "grid_col": 5, "grid_row": 0, "prerequisites": [],                              "quarter_equivalents": [],                      "is_placeholder": True},
+    {"id": "PHYS_FREE1",     "course_number": "Free Elective","title": "Free Elective",                                  "units": 3, "category": "concentration", "grid_col": 5, "grid_row": 0, "prerequisites": [],                              "quarter_equivalents": [],                      "is_placeholder": True},
+    # ── Senior Fall (15u) ────────────────────────────────────────────────────
+    {"id": "PHYS_3341",      "course_number": "PHYS 3341",  "title": "Quantum Physics Laboratory II",                    "units": 1, "category": "major",        "grid_col": 6, "grid_row": 0, "prerequisites": ["PHYS 3340"],                   "quarter_equivalents": [],                      "is_placeholder": False},
+    {"id": "PHYS_4405",      "course_number": "PHYS 4405",  "title": "Quantum Mechanics I",                              "units": 3, "category": "major",        "grid_col": 6, "grid_row": 0, "prerequisites": ["PHYS 2211", "PHYS 3320"],       "quarter_equivalents": [],                      "is_placeholder": False},
+    {"id": "PHYS_4461",      "course_number": "PHYS 4461",  "title": "Senior Project I",                                 "units": 2, "category": "major",        "grid_col": 6, "grid_row": 0, "prerequisites": [],                              "quarter_equivalents": [],                      "is_placeholder": False},
+    {"id": "PHYS_TECH2",     "course_number": "Tech Elective","title": "Technical Elective",                             "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 0, "prerequisites": [],                              "quarter_equivalents": [],                      "is_placeholder": True,  "elective_key": "phys_tech_elective"},
+    {"id": "PHYS_TECH3",     "course_number": "Tech Elective","title": "Technical Elective",                             "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 0, "prerequisites": [],                              "quarter_equivalents": [],                      "is_placeholder": True,  "elective_key": "phys_tech_elective"},
+    {"id": "PHYS_GE_UD4",    "course_number": "GE UD-4",    "title": "Upper-Division Social and Behavioral Sciences",    "units": 3, "category": "ge",            "grid_col": 6, "grid_row": 0, "prerequisites": [],                              "quarter_equivalents": [],                      "is_placeholder": True},
+    # ── Senior Spring (13u) ──────────────────────────────────────────────────
+    {"id": "PHYS_LAB",       "course_number": "PHYS Lab Elective","title": "Physics Lab Elective",                       "units": 4, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],                              "quarter_equivalents": [],                      "is_placeholder": True,  "elective_key": "phys_lab_elective"},
+    {"id": "PHYS_TECH4",     "course_number": "Tech Elective","title": "Technical Elective",                             "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],                              "quarter_equivalents": [],                      "is_placeholder": True,  "elective_key": "phys_tech_elective"},
+    {"id": "PHYS_TECH5",     "course_number": "Tech Elective","title": "Technical Elective",                             "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],                              "quarter_equivalents": [],                      "is_placeholder": True,  "elective_key": "phys_tech_elective"},
+    {"id": "PHYS_TECH6",     "course_number": "Tech Elective","title": "Technical Elective",                             "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],                              "quarter_equivalents": [],                      "is_placeholder": True,  "elective_key": "phys_tech_elective"},
+]
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# JOURNALISM — BS (120 units)
+# Source: catalog.calpoly.edu/liberal-arts/journalism/journalism-bs/
+# Concentrations: Media Innovation, News, Public Relations, Individualized (ICS)
+# ─────────────────────────────────────────────────────────────────────────────
+JOUR_FLOWCHART: list[Course] = [
+    # ── Freshman Fall (13u) ──────────────────────────────────────────────────
+    {"id": "JOUR_1102",    "course_number": "JOUR 1102",  "title": "Introduction to Journalism",                          "units": 1, "category": "major",        "grid_col": 0, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": False},
+    {"id": "JOUR_2203",    "course_number": "JOUR 2203",  "title": "News Reporting and Writing",                          "units": 3, "category": "major",        "grid_col": 0, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": ["JOUR 218"],         "is_placeholder": False},
+    {"id": "JOUR_GE1A",    "course_number": "GE 1A",      "title": "Written Communication",                               "units": 3, "category": "ge",            "grid_col": 0, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": ["ENGL 134"],         "is_placeholder": True},
+    {"id": "JOUR_GE1C",    "course_number": "GE 1C",      "title": "Oral Communication",                                  "units": 3, "category": "ge",            "grid_col": 0, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": ["COMS 101"],         "is_placeholder": True},
+    {"id": "JOUR_GE3A",    "course_number": "GE 3A",      "title": "Arts",                                                "units": 3, "category": "ge",            "grid_col": 0, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": True},
+    # ── Freshman Spring (15u) ────────────────────────────────────────────────
+    {"id": "JOUR_2228",    "course_number": "JOUR 2228",  "title": "Media, Self and Society",                             "units": 3, "category": "major",        "grid_col": 1, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": False},
+    {"id": "JOUR_2285",    "course_number": "JOUR 2285",  "title": "Introduction to Multimedia Journalism",               "units": 3, "category": "major",        "grid_col": 1, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": False},
+    {"id": "JOUR_STAT",    "course_number": "STAT 1000/1110/1210", "title": "Statistics",                                  "units": 3, "category": "support",       "grid_col": 1, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": ["STAT 130"],         "is_placeholder": True,  "elective_key": "jour_stat_choice"},
+    {"id": "JOUR_GE1B",    "course_number": "GE 1B",      "title": "Critical Thinking",                                   "units": 3, "category": "ge",            "grid_col": 1, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": True},
+    {"id": "JOUR_GE5B",    "course_number": "GE 5B",      "title": "Life Sciences",                                       "units": 3, "category": "ge",            "grid_col": 1, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": True},
+    # ── Sophomore Fall (15u) ─────────────────────────────────────────────────
+    {"id": "JOUR_2219",    "course_number": "JOUR 2219/3319", "title": "Mass Media in a Cross-Cultural Society or Global Communication", "units": 3, "category": "major", "grid_col": 2, "grid_row": 0, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "jour_crosscultural"},
+    {"id": "JOUR_3300",    "course_number": "JOUR 3300",  "title": "Public Relations",                                    "units": 3, "category": "major",        "grid_col": 2, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": False},
+    {"id": "JOUR_CON1",    "course_number": "Concentration","title": "Concentration Course 1",                            "units": 3, "category": "concentration", "grid_col": 2, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": True},
+    {"id": "JOUR_GE3B",    "course_number": "GE 3B",      "title": "Humanities",                                          "units": 3, "category": "ge",            "grid_col": 2, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": True},
+    {"id": "JOUR_GE4A",    "course_number": "GE 4A",      "title": "American Institutions",                               "units": 3, "category": "ge",            "grid_col": 2, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": True},
+    # ── Sophomore Spring (16u) ───────────────────────────────────────────────
+    {"id": "JOUR_3303",    "course_number": "JOUR 3303",  "title": "Video Storytelling",                                  "units": 3, "category": "major",        "grid_col": 3, "grid_row": 0, "prerequisites": ["JOUR 2203"],    "quarter_equivalents": [],                   "is_placeholder": False},
+    {"id": "JOUR_ELEC1",   "course_number": "JOUR Elective", "title": "Journalism Elective",                              "units": 3, "category": "major",        "grid_col": 3, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": True,  "elective_key": "jour_elective"},
+    {"id": "JOUR_CON2",    "course_number": "Concentration","title": "Concentration Course 2",                            "units": 3, "category": "concentration", "grid_col": 3, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": True},
+    {"id": "JOUR_GE5A",    "course_number": "GE 5A",      "title": "Physical Sciences",                                   "units": 3, "category": "ge",            "grid_col": 3, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": True},
+    {"id": "JOUR_GE5C",    "course_number": "GE 5C",      "title": "Laboratory",                                          "units": 1, "category": "ge",            "grid_col": 3, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": True},
+    {"id": "JOUR_FREE1",   "course_number": "Free Elective","title": "Free Elective",                                     "units": 3, "category": "concentration", "grid_col": 3, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": True},
+    # ── Junior Fall (15u) ────────────────────────────────────────────────────
+    {"id": "JOUR_3302",    "course_number": "JOUR 3302",  "title": "Mass Media Law",                                      "units": 3, "category": "major",        "grid_col": 4, "grid_row": 0, "prerequisites": ["JOUR 2203"],    "quarter_equivalents": [],                   "is_placeholder": False},
+    {"id": "JOUR_3305",    "course_number": "JOUR 3305",  "title": "Journalism Ethics",                                   "units": 3, "category": "major",        "grid_col": 4, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": False},
+    {"id": "JOUR_CON3",    "course_number": "Concentration","title": "Concentration Course 3",                            "units": 3, "category": "concentration", "grid_col": 4, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": True},
+    {"id": "JOUR_GE6",     "course_number": "GE 6",       "title": "Ethnic Studies",                                      "units": 3, "category": "ge",            "grid_col": 4, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": True},
+    {"id": "JOUR_FREE2",   "course_number": "Free Elective","title": "Free Elective",                                     "units": 3, "category": "concentration", "grid_col": 4, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": True},
+    # ── Junior Spring (15u) ──────────────────────────────────────────────────
+    {"id": "JOUR_3334",    "course_number": "JOUR 3334",  "title": "Editing for Online and Print Publication",            "units": 3, "category": "major",        "grid_col": 5, "grid_row": 0, "prerequisites": ["JOUR 2203"],    "quarter_equivalents": [],                   "is_placeholder": False},
+    {"id": "JOUR_3390",    "course_number": "JOUR 3390",  "title": "Visual Communication for the Mass Media",            "units": 3, "category": "major",        "grid_col": 5, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": False},
+    {"id": "JOUR_CON4",    "course_number": "Concentration","title": "Concentration Course 4",                            "units": 3, "category": "concentration", "grid_col": 5, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": True},
+    {"id": "JOUR_GE_UD3",  "course_number": "GE UD-3",    "title": "Upper-Division Arts and Humanities",                  "units": 3, "category": "ge",            "grid_col": 5, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": True},
+    {"id": "JOUR_FREE3",   "course_number": "Free Elective","title": "Free Elective",                                     "units": 3, "category": "concentration", "grid_col": 5, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": True},
+    # ── Senior Fall (16u) ────────────────────────────────────────────────────
+    {"id": "JOUR_ELEC2",   "course_number": "JOUR Elective", "title": "Journalism Elective",                              "units": 3, "category": "major",        "grid_col": 6, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": True,  "elective_key": "jour_elective"},
+    {"id": "JOUR_CON5",    "course_number": "Concentration","title": "Concentration Course 5",                            "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": True},
+    {"id": "JOUR_GE_UD25", "course_number": "GE UD-2/5",   "title": "Upper-Division Mathematics or Sciences",             "units": 3, "category": "ge",            "grid_col": 6, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": True},
+    {"id": "JOUR_FREE4",   "course_number": "Free Elective","title": "Free Elective",                                     "units": 4, "category": "concentration", "grid_col": 6, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": True},
+    {"id": "JOUR_FREE5",   "course_number": "Free Elective","title": "Free Elective",                                     "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": True},
+    # ── Senior Spring (15u) ──────────────────────────────────────────────────
+    {"id": "JOUR_4444",    "course_number": "JOUR 4444",  "title": "Media Internship",                                    "units": 2, "category": "major",        "grid_col": 7, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": False},
+    {"id": "JOUR_ELEC3",   "course_number": "JOUR Elective", "title": "Journalism Elective",                              "units": 3, "category": "major",        "grid_col": 7, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": True,  "elective_key": "jour_elective"},
+    {"id": "JOUR_GE_UD4",  "course_number": "GE UD-4",    "title": "Upper-Division Social and Behavioral Sciences",       "units": 3, "category": "ge",            "grid_col": 7, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": True},
+    {"id": "JOUR_FREE6",   "course_number": "Free Elective","title": "Free Elective",                                     "units": 4, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": True},
+    {"id": "JOUR_FREE7",   "course_number": "Free Elective","title": "Free Elective",                                     "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],               "quarter_equivalents": [],                   "is_placeholder": True},
+]
+
+
 FSN_FLOWCHART = [
     # ── Freshman Fall (14u) ─────────────────────────────────────────────────
     {"id": "FSN_FDSC1101",  "course_number": "FDSC 1101",  "title": "Orientation to the Food Science Major",              "units": 1, "category": "major",        "grid_col": 0, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": False},
@@ -2215,6 +2394,9 @@ CRP_FLOWCHART = _compact_rows_by_category(CRP_FLOWCHART)
 MATE_FLOWCHART = _compact_rows_by_category(MATE_FLOWCHART)
 IE_FLOWCHART = _compact_rows_by_category(IE_FLOWCHART)
 EE_FLOWCHART = _compact_rows_by_category(EE_FLOWCHART)
+MFGE_FLOWCHART = _compact_rows_by_category(MFGE_FLOWCHART)
+PHYS_FLOWCHART = _compact_rows_by_category(PHYS_FLOWCHART)
+JOUR_FLOWCHART = _compact_rows_by_category(JOUR_FLOWCHART)
 FSN_FLOWCHART = _compact_rows_by_category(FSN_FLOWCHART)
 KINE_FLOWCHART = _compact_rows_by_category(KINE_FLOWCHART)
 MATH_FLOWCHART = _compact_rows_by_category(MATH_FLOWCHART)
@@ -2444,6 +2626,27 @@ FLOWCHARTS = {
         "code": "MATH",
         "total_units": 120,
         "courses": MATH_FLOWCHART,
+        "columns": COLUMN_LABELS,
+    },
+    "MFGE": {
+        "major": "Manufacturing Engineering",
+        "code": "MFGE",
+        "total_units": 128,
+        "courses": MFGE_FLOWCHART,
+        "columns": COLUMN_LABELS,
+    },
+    "PHYS": {
+        "major": "Physics",
+        "code": "PHYS",
+        "total_units": 120,
+        "courses": PHYS_FLOWCHART,
+        "columns": COLUMN_LABELS,
+    },
+    "JOUR": {
+        "major": "Journalism",
+        "code": "JOUR",
+        "total_units": 120,
+        "courses": JOUR_FLOWCHART,
         "columns": COLUMN_LABELS,
     },
     "FSN": {

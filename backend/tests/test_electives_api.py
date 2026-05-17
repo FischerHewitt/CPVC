@@ -631,3 +631,61 @@ def test_elective_endpoint_returns_fsn_options():
     sft = [c["course_number"] for c in r3.json()["courses"]]
     assert "BRAE 3348" in sft
     assert "NR 3324" in sft
+
+
+def test_elective_endpoint_returns_mfge_options():
+    # Linear math choice
+    r1 = client.get("/api/electives/mfge_linear_math")
+    assert r1.status_code == 200
+    lin = [c["course_number"] for c in r1.json()["courses"]]
+    assert "MATH 1151" in lin
+    assert "MATH 2341" in lin
+
+
+def test_elective_endpoint_returns_phys_options():
+    # Lab elective (static)
+    r1 = client.get("/api/electives/phys_lab_elective")
+    assert r1.status_code == 200
+    lab = [c["course_number"] for c in r1.json()["courses"]]
+    assert "PHYS 3323" in lab
+    assert "PHYS 4425" in lab
+    assert "ASTR 4444" in lab
+
+
+def test_elective_endpoint_returns_jour_options():
+    # Stats choice
+    r1 = client.get("/api/electives/jour_stat_choice")
+    assert r1.status_code == 200
+    stats = [c["course_number"] for c in r1.json()["courses"]]
+    assert "STAT 1000" in stats
+    assert "STAT 1110" in stats
+    assert "STAT 1210" in stats
+
+    # Cross-cultural slash choice
+    r2 = client.get("/api/electives/jour_crosscultural")
+    assert r2.status_code == 200
+    cross = [c["course_number"] for c in r2.json()["courses"]]
+    assert "JOUR 2219" in cross
+    assert "JOUR 3319" in cross
+
+    # MI method choice
+    r3 = client.get("/api/electives/jour_mi_method")
+    assert r3.status_code == 200
+    mi = [c["course_number"] for c in r3.json()["courses"]]
+    assert "JOUR 3345" in mi
+    assert "JOUR 3310" in mi
+
+    # News elective
+    r4 = client.get("/api/electives/jour_news_elective")
+    assert r4.status_code == 200
+    news = [c["course_number"] for c in r4.json()["courses"]]
+    assert "JOUR 3307" in news
+    assert "JOUR 3350" in news
+    assert "JOUR 3353" in news
+
+    # PR or-choice
+    r5 = client.get("/api/electives/jour_pr_or_choice")
+    assert r5.status_code == 200
+    pr = [c["course_number"] for c in r5.json()["courses"]]
+    assert "JOUR 3314" in pr
+    assert "JOUR 3345" in pr

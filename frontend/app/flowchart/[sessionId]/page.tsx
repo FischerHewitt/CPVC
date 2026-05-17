@@ -323,9 +323,9 @@ export default function FlowchartPage() {
   };
 
   const toggleCourseCompleted = (course: Course) => {
-    if (course.is_placeholder && !isFreeElective(course)) return;
-
-    const allCourseNums = courseCandidateSet(course);
+    const allCourseNums = course.is_placeholder && course.category === "ge"
+      ? geAreaCandidateSet(course)
+      : courseCandidateSet(course);
     const isCompleted = session.completed.some((courseNum) => allCourseNums.has(normalizeCourseNumber(courseNum)));
     const completed = isCompleted
       ? session.completed.filter((courseNum) => !allCourseNums.has(normalizeCourseNumber(courseNum)))
@@ -345,9 +345,9 @@ export default function FlowchartPage() {
   };
 
   const toggleCourseInProgress = (course: Course) => {
-    if (course.is_placeholder && !isFreeElective(course)) return;
-
-    const allCourseNums = courseCandidateSet(course);
+    const allCourseNums = course.is_placeholder && course.category === "ge"
+      ? geAreaCandidateSet(course)
+      : courseCandidateSet(course);
     const isInProgress = session.inProgress.some((courseNum) => allCourseNums.has(normalizeCourseNumber(courseNum)));
     const inProgress = isInProgress
       ? session.inProgress.filter((courseNum) => !allCourseNums.has(normalizeCourseNumber(courseNum)))
