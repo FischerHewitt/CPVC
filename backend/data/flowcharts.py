@@ -1963,6 +1963,156 @@ EE_FLOWCHART: list[Course] = [
 ]
 
 
+FSN_FLOWCHART = [
+    # ── Freshman Fall (14u) ─────────────────────────────────────────────────
+    {"id": "FSN_FDSC1101",  "course_number": "FDSC 1101",  "title": "Orientation to the Food Science Major",              "units": 1, "category": "major",        "grid_col": 0, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": False},
+    {"id": "FSN_FDSC1110",  "course_number": "FDSC 1110",  "title": "Introduction to Food Science and Sustainability",    "units": 3, "category": "major",        "grid_col": 0, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": False},
+    {"id": "FSN_2250",      "course_number": "FSN 2250",   "title": "Food and Nutrition: Culture and Customs",           "units": 3, "category": "major",        "grid_col": 0, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": False},
+    {"id": "FSN_CHEM1120",  "course_number": "CHEM 1120",  "title": "Fundamentals of Chemical Structure and Properties", "units": 4, "category": "support",       "grid_col": 0, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": False},
+    {"id": "FSN_GE1A",      "course_number": "GE 1A",      "title": "Written Communication",                             "units": 3, "category": "ge",            "grid_col": 0, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": True},
+    # ── Freshman Spring (14u) ───────────────────────────────────────────────
+    {"id": "FSN_2202",      "course_number": "FSN 2202",   "title": "Introduction to Human Nutrition",                   "units": 3, "category": "major",        "grid_col": 1, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": False},
+    {"id": "FSN_CHEM1122",  "course_number": "CHEM 1122",  "title": "Fundamentals of Chemical Reactivity",               "units": 4, "category": "support",       "grid_col": 1, "grid_row": 0, "prerequisites": ["CHEM 1120"],      "quarter_equivalents": [],           "is_placeholder": False},
+    {"id": "FSN_MATH1261",  "course_number": "MATH 1261",  "title": "Calculus I",                                        "units": 4, "category": "support",       "grid_col": 1, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": ["MATH 141"], "is_placeholder": False},
+    {"id": "FSN_GE1C",      "course_number": "GE 1C",      "title": "Oral Communication",                                "units": 3, "category": "ge",            "grid_col": 1, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": True},
+    # ── Sophomore Fall (16u) ────────────────────────────────────────────────
+    {"id": "FSN_BIO1111",   "course_number": "BIO 1111",   "title": "General Biology",                                   "units": 3, "category": "support",       "grid_col": 2, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": False},
+    {"id": "FSN_STAT1110",  "course_number": "STAT 1110",  "title": "Applied Statistical Concepts and Methods",         "units": 3, "category": "support",       "grid_col": 2, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": False},
+    {"id": "FSN_CHEM2240",  "course_number": "CHEM 2240",  "title": "Organic Chemistry: Fundamentals and Applications",  "units": 4, "category": "support",       "grid_col": 2, "grid_row": 0, "prerequisites": ["CHEM 1122"],      "quarter_equivalents": [],           "is_placeholder": False},
+    {"id": "FSN_GE1B",      "course_number": "GE 1B",      "title": "Critical Thinking",                                 "units": 3, "category": "ge",            "grid_col": 2, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": True},
+    {"id": "FSN_GE_SOF",    "course_number": "GE",         "title": "GE Elective",                                       "units": 3, "category": "ge",            "grid_col": 2, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": True},
+    # ── Sophomore Spring (14u) ──────────────────────────────────────────────
+    {"id": "FSN_MCRO2221",  "course_number": "MCRO 2221",  "title": "Introduction to Microbiology",                      "units": 4, "category": "support",       "grid_col": 3, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": False},
+    {"id": "FSN_PHYS1121",  "course_number": "PHYS 1121",  "title": "College Physics I",                                 "units": 4, "category": "support",       "grid_col": 3, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": ["PHYS 121"], "is_placeholder": False},
+    {"id": "FSN_GE_SOS1",   "course_number": "GE",         "title": "GE Elective",                                       "units": 3, "category": "ge",            "grid_col": 3, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": True},
+    {"id": "FSN_GE_SOS2",   "course_number": "GE",         "title": "GE Elective",                                       "units": 3, "category": "ge",            "grid_col": 3, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": True},
+    # ── Junior Fall (17u) ───────────────────────────────────────────────────
+    {"id": "FSN_FDSC3330",  "course_number": "FDSC 3330",  "title": "Food Processing and Engineering I",                 "units": 4, "category": "major",        "grid_col": 4, "grid_row": 0, "prerequisites": ["CHEM 2240"],      "quarter_equivalents": [],           "is_placeholder": False},
+    {"id": "FSN_CHEM3350",  "course_number": "CHEM 3350",  "title": "Biochemistry: Fundamentals and Applications",       "units": 4, "category": "support",       "grid_col": 4, "grid_row": 0, "prerequisites": ["CHEM 2240"],      "quarter_equivalents": [],           "is_placeholder": False},
+    {"id": "FSN_CON1",      "course_number": "Concentration","title": "Concentration Course 1",                          "units": 3, "category": "concentration", "grid_col": 4, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": True},
+    {"id": "FSN_CON2",      "course_number": "Concentration","title": "Concentration Course 2",                          "units": 3, "category": "concentration", "grid_col": 4, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": True},
+    {"id": "FSN_GE_JF",     "course_number": "GE",         "title": "GE Elective (Upper Division)",                      "units": 3, "category": "ge",            "grid_col": 4, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": True},
+    # ── Junior Spring (14u) ─────────────────────────────────────────────────
+    {"id": "FSN_FDSC3310",  "course_number": "FDSC 3310",  "title": "Food Laws and Regulations",                         "units": 3, "category": "major",        "grid_col": 5, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": False},
+    {"id": "FSN_FDSC3340",  "course_number": "FDSC 3340",  "title": "Food Quality Assurance and Prerequisite Programs",  "units": 4, "category": "major",        "grid_col": 5, "grid_row": 0, "prerequisites": ["FDSC 1110"],      "quarter_equivalents": [],           "is_placeholder": False},
+    {"id": "FSN_FDSC3350",  "course_number": "FDSC 3350",  "title": "Food Chemistry",                                    "units": 4, "category": "major",        "grid_col": 5, "grid_row": 0, "prerequisites": ["CHEM 3350"],      "quarter_equivalents": [],           "is_placeholder": False},
+    {"id": "FSN_STAT3320",  "course_number": "STAT 3320",  "title": "Statistical Methods for Food Science",              "units": 3, "category": "support",       "grid_col": 5, "grid_row": 0, "prerequisites": ["STAT 1110"],      "quarter_equivalents": [],           "is_placeholder": False},
+    # ── Senior Fall (16u) ───────────────────────────────────────────────────
+    {"id": "FSN_FDSC3345",  "course_number": "FDSC 3345",  "title": "Food Safety and Sanitation",                        "units": 4, "category": "major",        "grid_col": 6, "grid_row": 0, "prerequisites": ["MCRO 2221"],      "quarter_equivalents": [],           "is_placeholder": False},
+    {"id": "FSN_FDSC3355",  "course_number": "FDSC 3355",  "title": "Food Analysis",                                     "units": 3, "category": "major",        "grid_col": 6, "grid_row": 0, "prerequisites": ["FDSC 3350"],      "quarter_equivalents": [],           "is_placeholder": False},
+    {"id": "FSN_FDSC4420",  "course_number": "FDSC 4420",  "title": "Sensory Evaluation of Food",                        "units": 3, "category": "major",        "grid_col": 6, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": False},
+    {"id": "FSN_MCRO4421",  "course_number": "MCRO 4421",  "title": "Food Microbiology",                                 "units": 3, "category": "support",       "grid_col": 6, "grid_row": 0, "prerequisites": ["MCRO 2221"],      "quarter_equivalents": [],           "is_placeholder": False},
+    {"id": "FSN_GE_SRF",    "course_number": "GE",         "title": "GE Elective (Upper Division)",                      "units": 3, "category": "ge",            "grid_col": 6, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": True},
+    # ── Senior Spring (15u) ─────────────────────────────────────────────────
+    {"id": "FSN_FDSC4425",  "course_number": "FDSC 4425",  "title": "Food Product Development",                          "units": 3, "category": "major",        "grid_col": 7, "grid_row": 0, "prerequisites": ["FDSC 3350"],      "quarter_equivalents": [],           "is_placeholder": False},
+    {"id": "FSN_CON3",      "course_number": "Concentration","title": "Concentration Course 3",                          "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": True},
+    {"id": "FSN_CON4",      "course_number": "Concentration","title": "Concentration Course 4",                          "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": True},
+    {"id": "FSN_GE_SRS1",   "course_number": "GE",         "title": "GE Elective (Upper Division)",                      "units": 3, "category": "ge",            "grid_col": 7, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": True},
+    {"id": "FSN_GE_SRS2",   "course_number": "GE",         "title": "GE Elective (Upper Division)",                      "units": 3, "category": "ge",            "grid_col": 7, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": True},
+]
+
+
+KINE_FLOWCHART = [
+    # ── Freshman Fall (15u) ─────────────────────────────────────────────────
+    {"id": "KINE_1180",    "course_number": "KINE 1180",          "title": "Introduction to Kinesiology",              "units": 1, "category": "major",        "grid_col": 0, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": False},
+    {"id": "KINE_HLTH_FF", "course_number": "HLTH 1155/1160",     "title": "Multicultural Perspectives or Women's Health","units":3, "category": "major",        "grid_col": 0, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": True,  "elective_key": "kine_hlth_choice"},
+    {"id": "KINE_BIO1151", "course_number": "BIO 1151",           "title": "Life: Molecules and Cells",                "units": 4, "category": "support",       "grid_col": 0, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": False},
+    {"id": "KINE_CHEM1120","course_number": "CHEM 1120",          "title": "Fundamentals of Chemical Structure and Properties","units":4,"category": "support", "grid_col": 0, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": False},
+    {"id": "KINE_MATH_FF", "course_number": "MATH 1007/1261",     "title": "Precalculus or Calculus I",                "units": 3, "category": "support",       "grid_col": 0, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": True,  "elective_key": "kine_math_choice"},
+    # ── Freshman Spring (15u) ───────────────────────────────────────────────
+    {"id": "KINE_PHYS1121","course_number": "PHYS 1121",          "title": "College Physics I",                        "units": 4, "category": "support",       "grid_col": 1, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": ["PHYS 121"],   "is_placeholder": False},
+    {"id": "KINE_STAT1110","course_number": "STAT 1110",          "title": "Applied Statistical Concepts and Methods", "units": 3, "category": "support",       "grid_col": 1, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": False},
+    {"id": "KINE_GE1A",    "course_number": "GE 1A",              "title": "Written Communication",                    "units": 3, "category": "ge",            "grid_col": 1, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": True},
+    {"id": "KINE_GE1C",    "course_number": "GE 1C",              "title": "Oral Communication",                       "units": 3, "category": "ge",            "grid_col": 1, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": True},
+    {"id": "KINE_FREE1",   "course_number": "Free Elective",      "title": "Free Elective",                            "units": 2, "category": "concentration", "grid_col": 1, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": True},
+    # ── Sophomore Fall (16u) ────────────────────────────────────────────────
+    {"id": "KINE_2266",    "course_number": "KINE 2266",          "title": "Sport and Performance Psychology",         "units": 3, "category": "major",        "grid_col": 2, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": False},
+    {"id": "KINE_3312",    "course_number": "KINE 3312",          "title": "Motor Learning",                           "units": 3, "category": "major",        "grid_col": 2, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": False},
+    {"id": "KINE_BIO2231", "course_number": "BIO 2231",           "title": "Human Anatomy and Physiology I",           "units": 4, "category": "support",       "grid_col": 2, "grid_row": 0, "prerequisites": ["BIO 1151"],                "quarter_equivalents": [],             "is_placeholder": False},
+    {"id": "KINE_GE1B",    "course_number": "GE 1B",              "title": "Critical Thinking",                        "units": 3, "category": "ge",            "grid_col": 2, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": True},
+    {"id": "KINE_GE3A",    "course_number": "GE 3A",              "title": "Arts",                                     "units": 3, "category": "ge",            "grid_col": 2, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": True},
+    # ── Sophomore Spring (16u) ──────────────────────────────────────────────
+    {"id": "KINE_BIO2232", "course_number": "BIO 2232",           "title": "Human Anatomy and Physiology II",          "units": 4, "category": "support",       "grid_col": 3, "grid_row": 0, "prerequisites": ["BIO 2231"],                "quarter_equivalents": [],             "is_placeholder": False},
+    {"id": "KINE_3307",    "course_number": "KINE 3307",          "title": "Adapted Physical Activity",                "units": 3, "category": "major",        "grid_col": 3, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": False},
+    {"id": "KINE_GE3B",    "course_number": "GE 3B",              "title": "Humanities",                               "units": 3, "category": "ge",            "grid_col": 3, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": True},
+    {"id": "KINE_GE4A",    "course_number": "GE 4A",              "title": "American Institutions",                    "units": 3, "category": "ge",            "grid_col": 3, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": True},
+    {"id": "KINE_FREE2",   "course_number": "Free Elective",      "title": "Free Elective",                            "units": 3, "category": "concentration", "grid_col": 3, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": True},
+    # ── Junior Fall (14u) ───────────────────────────────────────────────────
+    {"id": "KINE_3303",    "course_number": "KINE 3303",          "title": "Physiology of Exercise",                   "units": 4, "category": "major",        "grid_col": 4, "grid_row": 0, "prerequisites": ["BIO 2232"],                "quarter_equivalents": [],             "is_placeholder": False},
+    {"id": "KINE_3319",    "course_number": "KINE 3319",          "title": "Introduction to Research Methods in Kinesiology","units":4,"category": "major",    "grid_col": 4, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": False},
+    {"id": "KINE_3323",    "course_number": "KINE 3323/3324/3325","title": "Sport and Society Course",                 "units": 3, "category": "major",        "grid_col": 4, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": True,  "elective_key": "kine_cultural_course"},
+    {"id": "KINE_GE6",     "course_number": "GE 6",               "title": "Ethnic Studies",                           "units": 3, "category": "ge",            "grid_col": 4, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": True},
+    # ── Junior Spring (14u) ─────────────────────────────────────────────────
+    {"id": "KINE_CON1",    "course_number": "Concentration",      "title": "Concentration Course 1",                   "units": 3, "category": "concentration", "grid_col": 5, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": True},
+    {"id": "KINE_CON2",    "course_number": "Concentration",      "title": "Concentration Course 2",                   "units": 3, "category": "concentration", "grid_col": 5, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": True},
+    {"id": "KINE_GE_UD25", "course_number": "GE UD-2/5",         "title": "Upper-Division Math or Science",           "units": 3, "category": "ge",            "grid_col": 5, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": True},
+    {"id": "KINE_GE_UD3",  "course_number": "GE UD-3",           "title": "Upper-Division Arts and Humanities",       "units": 3, "category": "ge",            "grid_col": 5, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": True},
+    {"id": "KINE_FREE3",   "course_number": "Free Elective",      "title": "Free Elective",                            "units": 2, "category": "concentration", "grid_col": 5, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": True},
+    # ── Senior Fall (15u) ───────────────────────────────────────────────────
+    {"id": "KINE_4403",    "course_number": "KINE 4403",          "title": "Biomechanics",                             "units": 4, "category": "major",        "grid_col": 6, "grid_row": 0, "prerequisites": ["KINE 3303"],               "quarter_equivalents": [],             "is_placeholder": False},
+    {"id": "KINE_4412",    "course_number": "KINE 4412",          "title": "Physical Activity and Public Health",      "units": 3, "category": "major",        "grid_col": 6, "grid_row": 0, "prerequisites": ["KINE 3319"],               "quarter_equivalents": [],             "is_placeholder": False},
+    {"id": "KINE_CON3",    "course_number": "Concentration",      "title": "Concentration Course 3",                   "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": True},
+    {"id": "KINE_CON4",    "course_number": "Concentration",      "title": "Concentration Course 4",                   "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": True},
+    {"id": "KINE_FREE4",   "course_number": "Free Elective",      "title": "Free Elective",                            "units": 2, "category": "concentration", "grid_col": 6, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": True},
+    # ── Senior Spring (15u) ─────────────────────────────────────────────────
+    {"id": "KINE_4451",    "course_number": "KINE 4451",          "title": "Nutrition for Fitness and Sport",          "units": 4, "category": "major",        "grid_col": 7, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": False},
+    {"id": "KINE_SENIOR",  "course_number": "KINE 4460/4461/4462/4463","title": "Senior Project",                     "units": 2, "category": "major",        "grid_col": 7, "grid_row": 0, "prerequisites": ["KINE 4403"],               "quarter_equivalents": [],             "is_placeholder": True,  "elective_key": "kine_senior_project"},
+    {"id": "KINE_CON5",    "course_number": "Concentration",      "title": "Concentration Course 5",                   "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": True},
+    {"id": "KINE_CON6",    "course_number": "Concentration",      "title": "Concentration Course 6",                   "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": True},
+    {"id": "KINE_GE_UD4",  "course_number": "GE UD-4",           "title": "Upper-Division Social and Behavioral Sciences","units":3,"category": "ge",         "grid_col": 7, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": True},
+]
+
+
+MATH_FLOWCHART = [
+    # ── Freshman Fall (15u) ─────────────────────────────────────────────────
+    {"id": "MATH_1261",    "course_number": "MATH 1261",                          "title": "Calculus I",                              "units": 4, "category": "major",         "grid_col": 0, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": ["MATH 141"],  "is_placeholder": False},
+    {"id": "MATH_CSC1001", "course_number": "CSC 1001",                           "title": "Fundamentals of Computer Science",        "units": 4, "category": "support",        "grid_col": 0, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": ["CSC 101"],   "is_placeholder": False},
+    {"id": "MATH_PHYS1141","course_number": "PHYS 1141",                          "title": "General Physics I",                       "units": 4, "category": "support",        "grid_col": 0, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": ["PHYS 141"],  "is_placeholder": False},
+    {"id": "MATH_GE1A",    "course_number": "GE 1A",                              "title": "Written Communication",                   "units": 3, "category": "ge",             "grid_col": 0, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True},
+    # ── Freshman Spring (13u) ───────────────────────────────────────────────
+    {"id": "MATH_1151",    "course_number": "MATH 1151",                          "title": "Linear Algebra",                          "units": 3, "category": "major",         "grid_col": 1, "grid_row": 0, "prerequisites": ["MATH 1261"],               "quarter_equivalents": ["MATH 241"],  "is_placeholder": False},
+    {"id": "MATH_1262",    "course_number": "MATH 1262",                          "title": "Calculus II",                             "units": 4, "category": "major",         "grid_col": 1, "grid_row": 0, "prerequisites": ["MATH 1261"],               "quarter_equivalents": ["MATH 142"],  "is_placeholder": False},
+    {"id": "MATH_PROG",    "course_number": "CSC 2001 or CSC 2600 or MATH 3681",  "title": "Programming/Scientific Computing Elective","units": 3, "category": "major",         "grid_col": 1, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True,  "elective_key": "math_programming_elective"},
+    {"id": "MATH_GE1C",    "course_number": "GE 1C",                              "title": "Oral Communication",                      "units": 3, "category": "ge",             "grid_col": 1, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True},
+    # ── Sophomore Fall (16u) ────────────────────────────────────────────────
+    {"id": "MATH_2001",    "course_number": "MATH 2001",                          "title": "Mathematics Orientation",                 "units": 1, "category": "major",         "grid_col": 2, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": False},
+    {"id": "MATH_2031",    "course_number": "MATH 2031",                          "title": "Transition to Advanced Mathematics",      "units": 3, "category": "major",         "grid_col": 2, "grid_row": 0, "prerequisites": ["MATH 1262"],               "quarter_equivalents": [],            "is_placeholder": False},
+    {"id": "MATH_2263",    "course_number": "MATH 2263",                          "title": "Calculus III",                            "units": 3, "category": "major",         "grid_col": 2, "grid_row": 0, "prerequisites": ["MATH 1262"],               "quarter_equivalents": ["MATH 143"],  "is_placeholder": False},
+    {"id": "MATH_STAT1510","course_number": "STAT 1510",                          "title": "Statistics I",                            "units": 3, "category": "support",        "grid_col": 2, "grid_row": 0, "prerequisites": ["MATH 1261"],               "quarter_equivalents": ["STAT 312"],  "is_placeholder": False},
+    {"id": "MATH_GE1B",    "course_number": "GE 1B",                              "title": "Critical Thinking",                       "units": 3, "category": "ge",             "grid_col": 2, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True},
+    {"id": "MATH_GE_SOF",  "course_number": "GE",                                 "title": "GE Elective",                             "units": 3, "category": "ge",             "grid_col": 2, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True},
+    # ── Sophomore Spring (16u) ──────────────────────────────────────────────
+    {"id": "MATH_2343",    "course_number": "MATH 2343",                          "title": "Differential Equations",                  "units": 3, "category": "major",         "grid_col": 3, "grid_row": 0, "prerequisites": ["MATH 2263"],               "quarter_equivalents": ["MATH 244"],  "is_placeholder": False},
+    {"id": "MATH_3152",    "course_number": "MATH 3152",                          "title": "Advanced Linear Algebra",                 "units": 4, "category": "major",         "grid_col": 3, "grid_row": 0, "prerequisites": ["MATH 1151", "MATH 2031"],  "quarter_equivalents": [],            "is_placeholder": False},
+    {"id": "MATH_GE_SOS1", "course_number": "GE",                                 "title": "GE Elective",                             "units": 3, "category": "ge",             "grid_col": 3, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True},
+    {"id": "MATH_GE_SOS2", "course_number": "GE",                                 "title": "GE Elective",                             "units": 3, "category": "ge",             "grid_col": 3, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True},
+    {"id": "MATH_FREE1",   "course_number": "Free Elective",                      "title": "Free Elective",                           "units": 3, "category": "concentration",  "grid_col": 3, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True},
+    # ── Junior Fall (16u) ───────────────────────────────────────────────────
+    {"id": "MATH_UD1",     "course_number": "MATH 3051/3111/3301",                "title": "Upper-Division Math Elective (GE UD 2/5)","units": 3, "category": "major",         "grid_col": 4, "grid_row": 0, "prerequisites": ["MATH 2031"],               "quarter_equivalents": [],            "is_placeholder": True,  "elective_key": "math_upper_div_choice"},
+    {"id": "MATH_4201",    "course_number": "MATH 4201",                          "title": "Abstract Algebra I",                      "units": 4, "category": "major",         "grid_col": 4, "grid_row": 0, "prerequisites": ["MATH 2031"],               "quarter_equivalents": [],            "is_placeholder": False},
+    {"id": "MATH_TRACK1",  "course_number": "Track Elective",                     "title": "Track Elective",                          "units": 3, "category": "concentration",  "grid_col": 4, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True,  "elective_key": "math_track_elective"},
+    {"id": "MATH_GE_JF",   "course_number": "GE",                                 "title": "GE Elective",                             "units": 3, "category": "ge",             "grid_col": 4, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True},
+    {"id": "MATH_FREE2",   "course_number": "Free Elective",                      "title": "Free Elective",                           "units": 3, "category": "concentration",  "grid_col": 4, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True},
+    # ── Junior Spring (15u) ─────────────────────────────────────────────────
+    {"id": "MATH_4202",    "course_number": "MATH 4202",                          "title": "Abstract Algebra II",                     "units": 3, "category": "major",         "grid_col": 5, "grid_row": 0, "prerequisites": ["MATH 4201"],               "quarter_equivalents": [],            "is_placeholder": False},
+    {"id": "MATH_TRACK2",  "course_number": "Track Elective",                     "title": "Track Elective",                          "units": 3, "category": "concentration",  "grid_col": 5, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True,  "elective_key": "math_track_elective"},
+    {"id": "MATH_TRACK3",  "course_number": "Track Elective",                     "title": "Track Elective",                          "units": 3, "category": "concentration",  "grid_col": 5, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True,  "elective_key": "math_track_elective"},
+    {"id": "MATH_GE_JS1",  "course_number": "GE",                                 "title": "GE Elective",                             "units": 3, "category": "ge",             "grid_col": 5, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True},
+    {"id": "MATH_GE_JS2",  "course_number": "GE",                                 "title": "GE Elective",                             "units": 3, "category": "ge",             "grid_col": 5, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True},
+    # ── Senior Fall (13u) ───────────────────────────────────────────────────
+    {"id": "MATH_4264",    "course_number": "MATH 4264",                          "title": "Real Analysis I",                         "units": 4, "category": "major",         "grid_col": 6, "grid_row": 0, "prerequisites": ["MATH 2343"],               "quarter_equivalents": [],            "is_placeholder": False},
+    {"id": "MATH_SENIOR",  "course_number": "MATH 4463/4464",                     "title": "Senior Project Seminar",                  "units": 3, "category": "major",         "grid_col": 6, "grid_row": 0, "prerequisites": ["MATH 4264"],               "quarter_equivalents": [],            "is_placeholder": True,  "elective_key": "math_senior_project"},
+    {"id": "MATH_TRACK4",  "course_number": "Track Elective",                     "title": "Track Elective",                          "units": 3, "category": "concentration",  "grid_col": 6, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True,  "elective_key": "math_track_elective"},
+    {"id": "MATH_GE_SRF",  "course_number": "GE",                                 "title": "GE Elective (Upper Division)",            "units": 3, "category": "ge",             "grid_col": 6, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True},
+    # ── Senior Spring (16u) ─────────────────────────────────────────────────
+    {"id": "MATH_TRACK5",  "course_number": "Track Elective",                     "title": "Track Elective",                          "units": 3, "category": "concentration",  "grid_col": 7, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True,  "elective_key": "math_track_elective"},
+    {"id": "MATH_TRACK6",  "course_number": "Track Elective",                     "title": "Track Elective",                          "units": 3, "category": "concentration",  "grid_col": 7, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True,  "elective_key": "math_track_elective"},
+    {"id": "MATH_TRACK7",  "course_number": "Track Elective",                     "title": "Track Elective",                          "units": 3, "category": "concentration",  "grid_col": 7, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True,  "elective_key": "math_track_elective"},
+    {"id": "MATH_GE_SRS",  "course_number": "GE",                                 "title": "GE Elective (Upper Division)",            "units": 3, "category": "ge",             "grid_col": 7, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True},
+    {"id": "MATH_FREE3",   "course_number": "Free Elective",                      "title": "Free Elective",                           "units": 4, "category": "concentration",  "grid_col": 7, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True},
+]
+
+
 COLUMN_LABELS = [
     {"year": "Freshman",  "term": "Fall"},
     {"year": "Freshman",  "term": "Spring"},
@@ -2065,6 +2215,9 @@ CRP_FLOWCHART = _compact_rows_by_category(CRP_FLOWCHART)
 MATE_FLOWCHART = _compact_rows_by_category(MATE_FLOWCHART)
 IE_FLOWCHART = _compact_rows_by_category(IE_FLOWCHART)
 EE_FLOWCHART = _compact_rows_by_category(EE_FLOWCHART)
+FSN_FLOWCHART = _compact_rows_by_category(FSN_FLOWCHART)
+KINE_FLOWCHART = _compact_rows_by_category(KINE_FLOWCHART)
+MATH_FLOWCHART = _compact_rows_by_category(MATH_FLOWCHART)
 
 
 FLOWCHARTS = {
@@ -2277,6 +2430,27 @@ FLOWCHARTS = {
         "code": "EE",
         "total_units": 128,
         "courses": EE_FLOWCHART,
+        "columns": COLUMN_LABELS,
+    },
+    "KINE": {
+        "major": "Kinesiology",
+        "code": "KINE",
+        "total_units": 120,
+        "courses": KINE_FLOWCHART,
+        "columns": COLUMN_LABELS,
+    },
+    "MATH": {
+        "major": "Mathematics",
+        "code": "MATH",
+        "total_units": 120,
+        "courses": MATH_FLOWCHART,
+        "columns": COLUMN_LABELS,
+    },
+    "FSN": {
+        "major": "Food Science and Nutrition",
+        "code": "FSN",
+        "total_units": 120,
+        "courses": FSN_FLOWCHART,
         "columns": COLUMN_LABELS,
     },
 }

@@ -656,13 +656,15 @@ export default function ManualCourseChecklist({
   }, [selectableCourses, category, query]);
 
   const visibleGEAreas = useMemo(() => {
-    const q = query.trim();
+    const q = query.trim().toLowerCase();
     return gePlaceholders.filter((c) => {
       if (category !== "all" && category !== "ge") return false;
-      if (q && !matchesCourse(c, q)) return false;
-      return true;
+      if (!q) return true;
+      if (matchesCourse(c, q)) return true;
+      // Also match against geAreaMap approved courses (same logic as completion detection)
+      return (geAreaMap[c.course_number] ?? []).some((cn) => cn.toLowerCase().includes(q));
     });
-  }, [gePlaceholders, category, query]);
+  }, [gePlaceholders, category, query, geAreaMap]);
 
   const visibleElectives = useMemo(() => {
     const q = query.trim();

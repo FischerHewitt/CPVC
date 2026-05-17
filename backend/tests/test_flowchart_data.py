@@ -1815,8 +1815,8 @@ def test_electrical_engineering_flowchart():
     assert sum(by_col[6]) == 14   # SrF
     assert sum(by_col[7]) == 16   # SrS
 
-    # No concentrations for EE (uses general curriculum)
-    assert "EE" not in CONCENTRATIONS
+    # EE has 3 concentration tracks including general curriculum
+    assert "EE" in CONCENTRATIONS
 
 
 def test_ee_placeholders_have_elective_keys():
@@ -1972,3 +1972,256 @@ def test_mate_placeholders_have_elective_keys():
     assert mate_by_id["MATE_TECH2"]["elective_key"] == "mate_technical_elective"
     assert mate_by_id["MATE_PROF"]["elective_key"] == "mate_prof_dev_elective"
     assert mate_by_id["MATE_GE6"].get("elective_key") is None
+
+
+def test_mathematics_flowchart():
+    math = FLOWCHARTS["MATH"]
+    assert math["total_units"] == 120
+
+    courses = math["courses"]
+    total = sum(c["units"] for c in courses)
+    assert total == 120
+
+    by_id = {c["id"]: c for c in courses}
+
+    # Key course titles
+    assert by_id["MATH_1261"]["title"] == "Calculus I"
+    assert by_id["MATH_1262"]["title"] == "Calculus II"
+    assert by_id["MATH_2031"]["title"] == "Transition to Advanced Mathematics"
+    assert by_id["MATH_3152"]["title"] == "Advanced Linear Algebra"
+    assert by_id["MATH_4201"]["title"] == "Abstract Algebra I"
+    assert by_id["MATH_4264"]["title"] == "Real Analysis I"
+
+    # Categories
+    assert by_id["MATH_1261"]["category"] == "major"
+    assert by_id["MATH_PHYS1141"]["category"] == "support"
+    assert by_id["MATH_STAT1510"]["category"] == "support"
+    assert by_id["MATH_GE1A"]["category"] == "ge"
+    assert by_id["MATH_TRACK1"]["category"] == "concentration"
+
+    # Prerequisites
+    assert "MATH 1261" in by_id["MATH_1262"]["prerequisites"]
+    assert "MATH 1261" in by_id["MATH_1151"]["prerequisites"]
+    assert "MATH 1262" in by_id["MATH_2031"]["prerequisites"]
+    assert "MATH 1262" in by_id["MATH_2263"]["prerequisites"]
+    assert "MATH 2263" in by_id["MATH_2343"]["prerequisites"]
+    assert "MATH 2031" in by_id["MATH_3152"]["prerequisites"]
+    assert "MATH 4201" in by_id["MATH_4202"]["prerequisites"]
+    assert "MATH 2343" in by_id["MATH_4264"]["prerequisites"]
+
+    # Quarter equivalents
+    assert "MATH 141" in by_id["MATH_1261"]["quarter_equivalents"]
+    assert "MATH 142" in by_id["MATH_1262"]["quarter_equivalents"]
+    assert "MATH 143" in by_id["MATH_2263"]["quarter_equivalents"]
+    assert "MATH 244" in by_id["MATH_2343"]["quarter_equivalents"]
+
+    # GE placeholders
+    ge_placeholders = [c for c in courses if c.get("is_placeholder") and c["category"] == "ge"]
+    assert len(ge_placeholders) >= 10
+
+    # Elective placeholders are marked
+    assert by_id["MATH_TRACK1"]["is_placeholder"] is True
+    assert by_id["MATH_FREE1"]["is_placeholder"] is True
+
+    # Term unit sums
+    by_col = {}
+    for c in courses:
+        by_col.setdefault(c["grid_col"], []).append(c["units"])
+    assert sum(by_col[0]) == 15   # FF
+    assert sum(by_col[1]) == 13   # FS
+    assert sum(by_col[2]) == 16   # SoF
+    assert sum(by_col[3]) == 16   # SoS
+    assert sum(by_col[4]) == 16   # JF
+    assert sum(by_col[5]) == 15   # JS
+    assert sum(by_col[6]) == 13   # SrF
+    assert sum(by_col[7]) == 16   # SrS
+
+    assert "MATH" in CONCENTRATIONS
+    math_concs = CONCENTRATIONS["MATH"]
+    track_ids = [t["id"] for t in math_concs]
+    assert "none" in track_ids
+    assert "applied" in track_ids
+    assert "teaching" in track_ids
+
+
+def test_math_placeholders_have_elective_keys():
+    math_by_id = {c["id"]: c for c in FLOWCHARTS["MATH"]["courses"]}
+
+    assert math_by_id["MATH_PROG"]["elective_key"] == "math_programming_elective"
+    assert math_by_id["MATH_UD1"]["elective_key"] == "math_upper_div_choice"
+    assert math_by_id["MATH_SENIOR"]["elective_key"] == "math_senior_project"
+    for i in range(1, 8):
+        assert math_by_id[f"MATH_TRACK{i}"]["elective_key"] == "math_track_elective"
+
+    # Teaching concentration overrides all track slots to math_track_teaching
+    teaching = next(t for t in CONCENTRATIONS["MATH"] if t["id"] == "teaching")
+    for i in range(1, 8):
+        assert teaching["slot_overrides"][f"MATH_TRACK{i}"]["elective_key"] == "math_track_teaching"
+
+    # Free electives have no elective_key
+    assert math_by_id["MATH_FREE1"].get("elective_key") is None
+    assert math_by_id["MATH_GE1A"].get("elective_key") is None
+
+
+def test_kinesiology_flowchart():
+    kine = FLOWCHARTS["KINE"]
+    assert kine["total_units"] == 120
+
+    courses = kine["courses"]
+    assert sum(c["units"] for c in courses) == 120
+
+    by_id = {c["id"]: c for c in courses}
+
+    # Key titles
+    assert by_id["KINE_1180"]["title"] == "Introduction to Kinesiology"
+    assert by_id["KINE_3303"]["title"] == "Physiology of Exercise"
+    assert by_id["KINE_3319"]["title"] == "Introduction to Research Methods in Kinesiology"
+    assert by_id["KINE_4403"]["title"] == "Biomechanics"
+    assert by_id["KINE_4451"]["title"] == "Nutrition for Fitness and Sport"
+
+    # Categories
+    assert by_id["KINE_1180"]["category"] == "major"
+    assert by_id["KINE_BIO1151"]["category"] == "support"
+    assert by_id["KINE_CHEM1120"]["category"] == "support"
+    assert by_id["KINE_GE1A"]["category"] == "ge"
+    assert by_id["KINE_CON1"]["category"] == "concentration"
+
+    # Prerequisites
+    assert "BIO 1151" in by_id["KINE_BIO2231"]["prerequisites"]
+    assert "BIO 2231" in by_id["KINE_BIO2232"]["prerequisites"]
+    assert "BIO 2232" in by_id["KINE_3303"]["prerequisites"]
+    assert "KINE 3303" in by_id["KINE_4403"]["prerequisites"]
+    assert "KINE 3319" in by_id["KINE_4412"]["prerequisites"]
+    assert "KINE 4403" in by_id["KINE_SENIOR"]["prerequisites"]
+
+    # GE placeholders
+    ge = [c for c in courses if c.get("is_placeholder") and c["category"] == "ge"]
+    assert len(ge) >= 10
+
+    # Elective placeholders marked
+    assert by_id["KINE_CON1"]["is_placeholder"] is True
+    assert by_id["KINE_FREE1"]["is_placeholder"] is True
+
+    # Term unit sums
+    by_col = {}
+    for c in courses:
+        by_col.setdefault(c["grid_col"], []).append(c["units"])
+    assert sum(by_col[0]) == 15   # FF
+    assert sum(by_col[1]) == 15   # FS
+    assert sum(by_col[2]) == 16   # SoF
+    assert sum(by_col[3]) == 16   # SoS
+    assert sum(by_col[4]) == 14   # JF
+    assert sum(by_col[5]) == 14   # JS
+    assert sum(by_col[6]) == 15   # SrF
+    assert sum(by_col[7]) == 15   # SrS
+
+    assert "KINE" in CONCENTRATIONS
+    tracks = [t["id"] for t in CONCENTRATIONS["KINE"]]
+    assert "exercise_science" in tracks
+    assert "health_promotion" in tracks
+    assert "sport_science" in tracks
+
+
+def test_kine_placeholders_have_elective_keys():
+    kine_by_id = {c["id"]: c for c in FLOWCHARTS["KINE"]["courses"]}
+
+    assert kine_by_id["KINE_HLTH_FF"]["elective_key"] == "kine_hlth_choice"
+    assert kine_by_id["KINE_MATH_FF"]["elective_key"] == "kine_math_choice"
+    assert kine_by_id["KINE_3323"]["elective_key"] == "kine_cultural_course"
+    assert kine_by_id["KINE_SENIOR"]["elective_key"] == "kine_senior_project"
+
+    # Base concentration slots have no elective_key (set by concentration)
+    assert kine_by_id["KINE_CON1"].get("elective_key") is None
+
+    # ES concentration wires elective keys on CON5/CON6
+    es = next(t for t in CONCENTRATIONS["KINE"] if t["id"] == "exercise_science")
+    assert es["slot_overrides"]["KINE_CON5"]["elective_key"] == "kine_es_elective"
+    assert es["slot_overrides"]["KINE_CON6"]["elective_key"] == "kine_es_elective"
+    assert es["slot_overrides"]["KINE_CON3"]["is_placeholder"] is False  # KINE 3330 is required
+    assert es["slot_overrides"]["KINE_CON3"]["units"] == 2               # KINE 3330 is 2u
+
+    # HP concentration
+    hp = next(t for t in CONCENTRATIONS["KINE"] if t["id"] == "health_promotion")
+    assert hp["slot_overrides"]["KINE_CON5"]["units"] == 4   # HLTH 4434 is 4u
+    assert hp["slot_overrides"]["KINE_CON6"]["units"] == 2   # last HP elective slot is 2u
+
+    # SS concentration overrides KINE_3323 to require KINE 3325
+    ss = next(t for t in CONCENTRATIONS["KINE"] if t["id"] == "sport_science")
+    assert ss["slot_overrides"]["KINE_3323"]["course_number"] == "KINE 3325"
+    assert ss["slot_overrides"]["KINE_CON1"]["units"] == 2   # KINE 3330 is 2u
+    assert ss["slot_overrides"]["KINE_FREE3"]["units"] == 3  # compensates CON1 1u drop
+
+
+def test_food_science_flowchart():
+    fsn = FLOWCHARTS["FSN"]
+    assert fsn["total_units"] == 120
+
+    courses = fsn["courses"]
+    assert sum(c["units"] for c in courses) == 120
+
+    by_id = {c["id"]: c for c in courses}
+
+    # Key titles
+    assert by_id["FSN_FDSC1110"]["title"] == "Introduction to Food Science and Sustainability"
+    assert by_id["FSN_FDSC3350"]["title"] == "Food Chemistry"
+    assert by_id["FSN_FDSC3345"]["title"] == "Food Safety and Sanitation"
+    assert by_id["FSN_FDSC4425"]["title"] == "Food Product Development"
+    assert by_id["FSN_STAT3320"]["title"] == "Statistical Methods for Food Science"
+
+    # Categories
+    assert by_id["FSN_FDSC1110"]["category"] == "major"
+    assert by_id["FSN_CHEM1120"]["category"] == "support"
+    assert by_id["FSN_GE1A"]["category"] == "ge"
+    assert by_id["FSN_CON1"]["category"] == "concentration"
+
+    # Prerequisites
+    assert "CHEM 2240" in by_id["FSN_FDSC3330"]["prerequisites"]
+    assert "FDSC 1110" in by_id["FSN_FDSC3340"]["prerequisites"]
+    assert "CHEM 3350" in by_id["FSN_FDSC3350"]["prerequisites"]
+    assert "MCRO 2221" in by_id["FSN_FDSC3345"]["prerequisites"]
+    assert "FDSC 3350" in by_id["FSN_FDSC4425"]["prerequisites"]
+
+    # GE placeholders
+    ge = [c for c in courses if c.get("is_placeholder") and c["category"] == "ge"]
+    assert len(ge) >= 7
+
+    # Concentration placeholders
+    assert by_id["FSN_CON1"]["is_placeholder"] is True
+    assert by_id["FSN_CON4"]["is_placeholder"] is True
+
+    # Term unit sums
+    by_col = {}
+    for c in courses:
+        by_col.setdefault(c["grid_col"], []).append(c["units"])
+    assert sum(by_col[0]) == 14   # FF
+    assert sum(by_col[1]) == 14   # FS
+    assert sum(by_col[2]) == 16   # SoF
+    assert sum(by_col[3]) == 14   # SoS
+    assert sum(by_col[4]) == 17   # JF
+    assert sum(by_col[5]) == 14   # JS
+    assert sum(by_col[6]) == 16   # SrF
+    assert sum(by_col[7]) == 15   # SrS
+
+    assert "FSN" in CONCENTRATIONS
+    tracks = [t["id"] for t in CONCENTRATIONS["FSN"]]
+    assert "none" in tracks
+    assert "culinology" in tracks
+    assert "food_safety" in tracks
+    assert "sft" in tracks
+
+
+def test_fsn_placeholders_have_elective_keys():
+    # Concentration base slots have no elective_key (set by concentration overrides)
+    fsn_by_id = {c["id"]: c for c in FLOWCHARTS["FSN"]["courses"]}
+    assert fsn_by_id["FSN_CON1"].get("elective_key") is None
+    assert fsn_by_id["FSN_CON3"].get("elective_key") is None
+
+    # Concentration overrides wire elective keys
+    food_safety = next(t for t in CONCENTRATIONS["FSN"] if t["id"] == "food_safety")
+    assert food_safety["slot_overrides"]["FSN_CON1"]["elective_key"] == "fsn_fs_elective"
+    assert food_safety["slot_overrides"]["FSN_CON4"]["elective_key"] == "fsn_senior_project"
+
+    sft = next(t for t in CONCENTRATIONS["FSN"] if t["id"] == "sft")
+    assert sft["slot_overrides"]["FSN_CON1"]["elective_key"] == "fsn_sft_elective"
+    assert sft["slot_overrides"]["FSN_CON2"]["elective_key"] == "fsn_sft_elective"
+    assert sft["slot_overrides"]["FSN_CON4"]["elective_key"] == "fsn_senior_project"

@@ -525,3 +525,109 @@ def test_elective_endpoint_returns_mate_options():
     assert r3.status_code == 200
     assert len(r3.json()["courses"]) > 0
     assert all(c["course_number"].startswith("MATE ") for c in r3.json()["courses"])
+
+
+def test_elective_endpoint_returns_math_options():
+    # Programming elective
+    r1 = client.get("/api/electives/math_programming_elective")
+    assert r1.status_code == 200
+    prog = [c["course_number"] for c in r1.json()["courses"]]
+    assert "CSC 2001" in prog
+    assert "MATH 3681" in prog
+    assert "STAT 2610" in prog
+
+    # Senior project
+    r2 = client.get("/api/electives/math_senior_project")
+    assert r2.status_code == 200
+    senior = [c["course_number"] for c in r2.json()["courses"]]
+    assert "MATH 4463" in senior
+    assert "MATH 4464" in senior
+
+    # Upper-division GE choice
+    r3 = client.get("/api/electives/math_upper_div_choice")
+    assert r3.status_code == 200
+    ud = [c["course_number"] for c in r3.json()["courses"]]
+    assert "MATH 3051" in ud
+    assert "MATH 3111" in ud
+    assert "MATH 3301" in ud
+
+    # Track elective (general/applied)
+    r4 = client.get("/api/electives/math_track_elective")
+    assert r4.status_code == 200
+    track = [c["course_number"] for c in r4.json()["courses"]]
+    assert "MATH 4265" in track
+    assert "MATH 4911" in track
+    assert len(track) >= 15
+
+    # Teaching track elective (adds MATH 3971, 4972)
+    r5 = client.get("/api/electives/math_track_teaching")
+    assert r5.status_code == 200
+    teaching = [c["course_number"] for c in r5.json()["courses"]]
+    assert "MATH 3971" in teaching
+    assert "MATH 4972" in teaching
+
+
+def test_elective_endpoint_returns_kine_options():
+    # HLTH choice
+    r1 = client.get("/api/electives/kine_hlth_choice")
+    assert r1.status_code == 200
+    hlth = [c["course_number"] for c in r1.json()["courses"]]
+    assert "HLTH 1155" in hlth
+    assert "HLTH 1160" in hlth
+
+    # Cultural course
+    r2 = client.get("/api/electives/kine_cultural_course")
+    assert r2.status_code == 200
+    cultural = [c["course_number"] for c in r2.json()["courses"]]
+    assert "KINE 3323" in cultural
+    assert "KINE 3325" in cultural
+
+    # Senior project
+    r3 = client.get("/api/electives/kine_senior_project")
+    assert r3.status_code == 200
+    senior = [c["course_number"] for c in r3.json()["courses"]]
+    assert "KINE 4461" in senior
+
+    # ES elective
+    r4 = client.get("/api/electives/kine_es_elective")
+    assert r4.status_code == 200
+    es = [c["course_number"] for c in r4.json()["courses"]]
+    assert "KINE 2278" in es
+    assert "KINE 4408" in es
+
+    # HP elective
+    r5 = client.get("/api/electives/kine_hp_elective")
+    assert r5.status_code == 200
+    hp = [c["course_number"] for c in r5.json()["courses"]]
+    assert "HLTH 4435" in hp
+    assert "KINE 3349" in hp
+
+    # SS elective
+    r6 = client.get("/api/electives/kine_ss_elective")
+    assert r6.status_code == 200
+    ss = [c["course_number"] for c in r6.json()["courses"]]
+    assert "COMS 3387" in ss
+    assert "EIM 2260" in ss
+
+
+def test_elective_endpoint_returns_fsn_options():
+    # Senior project
+    r1 = client.get("/api/electives/fsn_senior_project")
+    assert r1.status_code == 200
+    senior = [c["course_number"] for c in r1.json()["courses"]]
+    assert "FDSC 4461" in senior
+    assert "FDSC 4462" in senior
+
+    # Food safety elective
+    r2 = client.get("/api/electives/fsn_fs_elective")
+    assert r2.status_code == 200
+    fs = [c["course_number"] for c in r2.json()["courses"]]
+    assert "FDSC 5545" in fs
+    assert "MCRO 3342" in fs
+
+    # SFT elective
+    r3 = client.get("/api/electives/fsn_sft_elective")
+    assert r3.status_code == 200
+    sft = [c["course_number"] for c in r3.json()["courses"]]
+    assert "BRAE 3348" in sft
+    assert "NR 3324" in sft
