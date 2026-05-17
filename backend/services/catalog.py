@@ -57,6 +57,37 @@ def _fetch_dept(dept: str) -> dict[str, dict]:
             "description": desc,
         }
 
+    if courses:
+        return courses
+
+    course_heading = re.compile(
+        r"^([A-Z]{2,6}(?:/[A-Z]{2,6})?\s+\d{4}[A-Z]?)\s+(.+?)\s+\(([\d][\d.\-–]*)\s+units?\)$"
+    )
+    current_num: str | None = None
+    current_desc: list[str] = []
+
+    for raw_line in soup.get_text("\n", strip=True).splitlines():
+        line = raw_line.strip()
+        match = course_heading.match(line)
+        if match:
+            if current_num:
+                courses[current_num]["description"] = " ".join(current_desc).strip()
+
+            current_num = match.group(1).upper()
+            courses[current_num] = {
+                "title": match.group(2).strip(),
+                "units": match.group(3).replace("–", "-"),
+                "description": "",
+            }
+            current_desc = []
+            continue
+
+        if current_num:
+            current_desc.append(line)
+
+    if current_num:
+        courses[current_num]["description"] = " ".join(current_desc).strip()
+
     return courses
 
 

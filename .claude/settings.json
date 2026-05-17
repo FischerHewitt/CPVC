@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s \"https://flowcharts.calpoly.edu/lookups/myProgram.php?cat=54&plan=2019\")",
+      "Bash(curl -s \"https://flowcharts.calpoly.edu/lookups/myProgram.php?cat=54&plan=2018\")",
+      "Bash(curl -s \"https://flowcharts.calpoly.edu/lookups/myButtons.php?cat=54&plan=2019&prog=\")",
+      "Bash(curl -s \"https://flowcharts.calpoly.edu/lookups/myButtons.php?cat=54&plan=2019&prog=2\")",
+      "Bash(curl -s \"https://catalog.calpoly.edu/engineering/aerospace/aerospace-engineering-bs/\")",
+      "Bash(.venv/bin/pytest tests/test_flowchart_data.py -x --tb=short -q)",
+      "Bash(git log *)",
+      "Bash(.venv/bin/pytest tests/test_flowchart_data.py -k \"psy\" -x -q)",
+      "Bash(.venv/bin/pytest tests/ -x -q)",
+      "Bash(.venv/bin/pytest tests/test_flowchart_data.py -x -q)",
+      "Bash(.venv/bin/python -)",
+      "Bash(.venv/bin/python -c ' *)",
+      "Bash(.venv/bin/pytest tests/test_flowchart_data.py -q)",
+      "Bash(.venv/bin/pytest tests/test_flowchart_data.py::test_english_flowchart_contains_expected_core_and_catalog_buckets -v)",
+      "Bash(python3 -c ' *)",
+      "Bash(.venv/bin/python -m pytest tests/test_flowchart_data.py -v --tb=short)",
+      "Bash(cd /Users/fischerhewitt/Documents/CPVC/frontend && npx tsc --noEmit *)",
+      "Bash(source .venv/bin/activate && python3 -m pytest tests/ *)",
+      "Bash(source .venv/bin/activate && python3 -m pytest tests/test_flowchart_data.py *)",
+      "Bash(cd /Users/fischerhewitt/Documents/CPVC/backend && source .venv/bin/activate && python3 -m pytest *)"
+    ]
+  }
+}

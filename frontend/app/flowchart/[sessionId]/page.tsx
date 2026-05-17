@@ -462,25 +462,30 @@ export default function FlowchartPage() {
 
       <main className="flex-1 p-6">
         <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-5">
-          <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mb-5 grid grid-cols-3 items-center gap-2">
             <div className="flex items-baseline gap-3">
               <h1 className="text-lg font-bold" style={{ color: "var(--cp-green)" }}>
                 {flowchart.major}
               </h1>
-              <span className="text-gray-400 text-sm">4-Year Semester Flowchart</span>
+              <span className="text-gray-400 text-sm hidden sm:inline">4-Year Semester Flowchart</span>
             </div>
-            <button
-              onClick={resetCourseLayout}
-              className="w-fit rounded border border-gray-300 px-3 py-2 text-sm font-semibold text-gray-600 transition-colors hover:bg-gray-50"
-            >
-              Reset Layout
-            </button>
-            <button
-              onClick={() => setChecklistOpen(true)}
-              className="w-fit rounded border border-green-800 px-3 py-2 text-sm font-semibold text-green-900 transition-colors hover:bg-green-50"
-            >
-              Course Checklist
-            </button>
+            <div className="flex justify-center">
+              <button
+                onClick={() => setChecklistOpen(true)}
+                className="rounded-lg px-5 py-2 text-sm font-bold text-white shadow-sm transition-colors hover:opacity-90 active:scale-[0.98]"
+                style={{ background: "var(--cp-green)" }}
+              >
+                Course Checklist
+              </button>
+            </div>
+            <div className="flex justify-end">
+              <button
+                onClick={resetCourseLayout}
+                className="rounded border border-gray-200 px-2.5 py-1 text-xs text-gray-400 transition-colors hover:border-gray-300 hover:text-gray-600"
+              >
+                Reset Layout
+              </button>
+            </div>
           </div>
 
           <FlowchartGrid
@@ -560,6 +565,27 @@ export default function FlowchartPage() {
         onToggleCourseInProgress={toggleCourseInProgress}
         onToggleGEArea={toggleGEArea}
         onToggleGEAreaInProgress={toggleGEAreaInProgress}
+        onTogglePickedCourse={(courseNumber) => {
+          const n = normalizeCourseNumber(courseNumber);
+          const isIn = session.completed.some((c) => normalizeCourseNumber(c) === n);
+          const nextCompleted = isIn
+            ? session.completed.filter((c) => normalizeCourseNumber(c) !== n)
+            : [...session.completed, courseNumber];
+          const nextSession = { ...session, completed: nextCompleted };
+          setSession(nextSession);
+          persistSession(nextSession, { completed: nextCompleted });
+          void refreshInferred(nextSession);
+        }}
+        onTogglePickedCourseInProgress={(courseNumber) => {
+          const n = normalizeCourseNumber(courseNumber);
+          const isIn = session.inProgress.some((c) => normalizeCourseNumber(c) === n);
+          const nextInProgress = isIn
+            ? session.inProgress.filter((c) => normalizeCourseNumber(c) !== n)
+            : [...session.inProgress, courseNumber];
+          const nextSession = { ...session, inProgress: nextInProgress };
+          setSession(nextSession);
+          persistSession(nextSession, { in_progress: nextInProgress });
+        }}
         onImportCSV={importCSV}
         onClose={() => setChecklistOpen(false)}
       />

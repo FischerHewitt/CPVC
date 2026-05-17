@@ -329,14 +329,21 @@ def test_civil_engineering_concentrations_replace_only_technical_electives():
 
 def test_mechanical_engineering_flowchart_contains_core_and_double_counted_ge():
     me_courses = {course["course_number"]: course for course in FLOWCHARTS["ME"]["courses"]}
+    me_by_id = {course["id"]: course for course in FLOWCHARTS["ME"]["courses"]}
 
     assert FLOWCHARTS["ME"]["total_units"] == 129
+    assert sum(course["units"] for course in FLOWCHARTS["ME"]["courses"]) == 129
     assert me_courses["ME 1125"]["title"] == "Introduction to Mechanical Engineering"
     assert me_courses["MATH 1261"]["category"] == "support"
     assert me_courses["CHEM 1120"]["category"] == "support"
+    assert me_courses["EE 2115 & EE 2115L"]["category"] == "support"
+    assert me_courses["MATE 1220 & MATE 1215"]["units"] == 3
+    assert me_courses["ME 3341 & ME 3342"]["title"] == "Fluid Mechanics with Laboratory"
     assert me_courses["ME 3234"]["category"] == "major"
     assert me_courses["ME 3236"]["category"] == "major"
-    assert me_courses["GE 5B"]["category"] == "ge"
+    assert me_courses["BIO 1111 / BIO 2213 / BIO 2215 / BIO 2217"]["category"] == "support"
+    assert me_by_id["ME_GE5B"]["elective_key"] == "me_life_science"
+    assert me_by_id["ME_TE_SRF1"]["elective_key"] == "me_tech_elective"
     assert me_courses["GE UD-3"]["category"] == "ge"
 
 
@@ -354,12 +361,16 @@ def test_mechanical_engineering_concentrations_cover_catalog_options():
 
     hvac = next(c for c in me_concentrations if c["id"] == "hvacr")
     assert hvac["slot_overrides"]["ME4460"]["course_number"] == "ME 4465"
+    assert hvac["slot_overrides"]["ME_TE_SRF1"]["elective_key"] is None
 
     mechatronics = next(c for c in me_concentrations if c["id"] == "mechatronics")
     assert mechatronics["slot_overrides"]["ME3317"]["course_number"] == "ME 3305"
+    assert mechatronics["slot_overrides"]["ME3317"]["prerequisites"] == ["EE 2115 & EE 2115L", "ME 2240"]
+    assert mechatronics["slot_overrides"]["ME_TE_SRS1"]["elective_key"] == "me_mechatronics_technical_elective"
 
     manufacturing = next(c for c in me_concentrations if c["id"] == "manufacturing")
     assert manufacturing["slot_overrides"]["ME_TE_SRF1"]["course_number"] == "IME 3327"
+    assert manufacturing["slot_overrides"]["ME_TE_SRS1"]["elective_key"] == "me_manufacturing_elective"
 
 
 def test_art_and_design_flowchart_contains_expected_core_and_ge_sequence():
@@ -387,6 +398,7 @@ def test_political_science_flowchart_contains_expected_core_and_concentrations()
     concentration_ids = {concentration["id"] for concentration in pols_concentrations}
 
     assert FLOWCHARTS["POLS"]["total_units"] == 120
+    assert sum(course["units"] for course in FLOWCHARTS["POLS"]["courses"]) == 120
     assert pols_courses["POLS 1112"]["title"] == "U.S. and California Government"
     assert pols_courses["POLS 3359"]["title"] == "Research Design"
     assert pols_courses["POLS 3361"]["prerequisites"] == ["POLS 3359"]
@@ -407,6 +419,7 @@ def test_english_flowchart_contains_expected_core_and_catalog_buckets():
     english_courses = {course["course_number"]: course for course in FLOWCHARTS["ENGL"]["courses"]}
 
     assert FLOWCHARTS["ENGL"]["total_units"] == 120
+    assert sum(course["units"] for course in FLOWCHARTS["ENGL"]["courses"]) == 120
     assert english_courses["ENGL 1101"]["title"] == "Introduction to English Studies"
     assert english_courses["ENGL GE 3B"]["title"] == "Literature Elective"
     language = english_courses["CHIN 1101 / FR 1101 / GER 1101 / ITAL 1101 / JPNS 1101 / SPAN 1101 / WLC 1101"]
@@ -416,9 +429,12 @@ def test_english_flowchart_contains_expected_core_and_catalog_buckets():
     assert "SPAN 1101" in language["quarter_equivalents"]
     assert "WLC 1101" in language["quarter_equivalents"]
     assert english_courses["ENGL UD GWR"]["title"] == "Upper-Division English GWR Elective"
-    assert english_courses["ENGL Diversity"]["title"] == "4000-Level Diversity Elective"
+    divers = english_courses["ENGL Diversity"]
+    assert divers["title"] == "4000-Level Diversity Elective"
+    assert "ENGL 4467" in divers["quarter_equivalents"]
     assert english_courses["ENGL 4461"]["title"] == "Senior Project"
-    assert english_courses["GE UD-3"]["category"] == "ge"
+    # GE UD-3 is satisfied by the GWR major course; no separate tile
+    assert "GE UD-3" not in english_courses
     assert "ENGL" not in CONCENTRATIONS
 
 
@@ -426,6 +442,7 @@ def test_music_flowchart_contains_expected_core_and_catalog_buckets():
     music_courses = {course["course_number"]: course for course in FLOWCHARTS["MU"]["courses"]}
 
     assert FLOWCHARTS["MU"]["total_units"] == 120
+    assert sum(course["units"] for course in FLOWCHARTS["MU"]["courses"]) == 120
     assert music_courses["MU 1100"]["title"] == "Introduction to Music Studies"
     assert music_courses["MU 1104"]["title"] == "Musicianship I"
     assert music_courses["MU 1106"]["prerequisites"] == ["MU 1104"]
@@ -572,6 +589,7 @@ def test_animal_science_flowchart_contains_expected_core_and_placeholders():
     asci_by_id = {course["id"]: course for course in FLOWCHARTS["ASCI"]["courses"]}
 
     assert FLOWCHARTS["ASCI"]["total_units"] == 120
+    assert sum(course["units"] for course in FLOWCHARTS["ASCI"]["courses"]) == 120
     assert asci_courses["ASCI 1100"]["title"] == "Introduction to the Animal Sciences"
     assert asci_courses["ASCI 2210 + ASCI 2211"]["title"] == "Meat Science and Meat Science Laboratory"
     assert asci_courses["ASCI 2220"]["title"] == "Animal Nutrition and Feeding"
@@ -615,36 +633,50 @@ def test_anthropology_geography_flowchart_contains_expected_core_and_placeholder
     antgeog_by_id = {course["id"]: course for course in FLOWCHARTS["ANTGEOG"]["courses"]}
 
     assert FLOWCHARTS["ANTGEOG"]["total_units"] == 120
+    assert sum(course["units"] for course in FLOWCHARTS["ANTGEOG"]["courses"]) == 120
     assert antgeog_courses["ANT 2201"]["title"] == "Cultural Anthropology"
     assert antgeog_courses["GEOG 1150"]["title"] == "Human Geography"
     assert antgeog_courses["ANT 2250"]["title"] == "Biological Anthropology"
-    assert antgeog_courses["ANT 3307"]["title"] == "World Prehistory"
-    assert antgeog_courses["GEOG 3320"]["title"] == "Applications in GIS"
-    assert antgeog_courses["GEOG 4410"]["title"] == "Advanced Applications in GIS"
-    assert antgeog_courses["ANT 4461 / GEOG 4461"]["title"] == "Anthropology or Geography Senior Project I"
-    assert antgeog_courses["ANT 4462 / GEOG 4462"]["title"] == "Anthropology or Geography Senior Project II"
+    assert antgeog_courses["GEOG 2250 / ERSC 2250"]["title"] == "Physical Geography"
+    assert antgeog_courses["ANT 3384 / GEOG 3384"]["title"] == "Professional Preparation for Anthropologists/Geographers"
+    assert antgeog_courses["GEOG 2218"]["title"] == "Applications in GIS"
+    assert antgeog_courses["Methods Elective"]["elective_key"] == "antgeog_methods_elective"
+    assert antgeog_courses["ANT 4465 / GEOG 4465"]["title"] == "Internship"
+    assert antgeog_courses["GEOG 3308"]["title"] == "Global Geography"
+    assert antgeog_courses["GEOG 3350"]["title"] == "The Global Environment"
+    assert antgeog_courses["ANT 4455 / GEOG 4455"]["title"] == "Anthropology-Geography Research Design and Methods"
+    assert antgeog_courses["ANT 4461 / GEOG 4461"]["title"] == "Senior Project I"
+    assert antgeog_courses["ANT 4461 / GEOG 4461"]["units"] == 1
+    assert antgeog_courses["ANT 4462 / GEOG 4462"]["title"] == "Senior Project II"
+    assert antgeog_courses["ANT 4462 / GEOG 4462"]["units"] == 2
     assert antgeog_courses["STAT 1110"]["category"] == "support"
     assert antgeog_courses["GE 4B"]["category"] == "ge"
-    assert antgeog_by_id["ANTGEOG_LDC1"]["is_placeholder"] is True
+    assert antgeog_by_id["ANTGEOG_PHYS_GEOG"]["is_placeholder"] is True
+    assert antgeog_by_id["ANTGEOG_RESEARCH_DESIGN"]["elective_key"] == "antgeog_research_design"
     assert antgeog_by_id["ANTGEOG_CON_JRS1"]["category"] == "concentration"
     assert antgeog_by_id["ANTGEOG_CON_JRS1"]["is_placeholder"] is True
-    assert antgeog_by_id["ANTGEOG_FREE1"]["category"] == "concentration"
-    assert antgeog_by_id["ANTGEOG_FREE1"]["is_placeholder"] is True
+    assert antgeog_by_id["ANTGEOG_FREE5"]["category"] == "concentration"
+    assert antgeog_by_id["ANTGEOG_FREE5"]["is_placeholder"] is True
     assert "ANTGEOG" in CONCENTRATIONS
 
 
 def test_anthropology_geography_prerequisites_and_quarter_equivalents_are_mapped():
     antgeog_courses = {course["course_number"]: course for course in FLOWCHARTS["ANTGEOG"]["courses"]}
 
-    assert antgeog_courses["ANT 3307"]["prerequisites"] == ["ANT 2202"]
-    assert antgeog_courses["ANT 3303"]["prerequisites"] == ["ANT 2201"]
-    assert antgeog_courses["GEOG 3320"]["prerequisites"] == ["GEOG 1150"]
-    assert antgeog_courses["GEOG 4410"]["prerequisites"] == ["GEOG 3320"]
-    assert antgeog_courses["ANT 4461 / GEOG 4461"]["prerequisites"] == ["ANT 3303", "GEOG 3350"]
+    assert antgeog_courses["ANT 3360"]["prerequisites"] == ["ANT 2201"]
+    assert antgeog_courses["ANT 4455 / GEOG 4455"]["prerequisites"] == []
+    assert antgeog_courses["ANT 4461 / GEOG 4461"]["prerequisites"] == []
     assert antgeog_courses["ANT 4462 / GEOG 4462"]["prerequisites"] == ["ANT 4461 / GEOG 4461"]
     assert "ANT 201" in antgeog_courses["ANT 2201"]["quarter_equivalents"]
     assert "GEOG 150" in antgeog_courses["GEOG 1150"]["quarter_equivalents"]
-    assert "ANT 307" in antgeog_courses["ANT 3307"]["quarter_equivalents"]
+    assert "GEOG 2250" in antgeog_courses["GEOG 2250 / ERSC 2250"]["quarter_equivalents"]
+    assert "ERSC 250" in antgeog_courses["GEOG 2250 / ERSC 2250"]["quarter_equivalents"]
+    assert "ANT 3384" in antgeog_courses["ANT 3384 / GEOG 3384"]["quarter_equivalents"]
+    assert "GEOG 218" in antgeog_courses["GEOG 2218"]["quarter_equivalents"]
+    assert "ANT 465" in antgeog_courses["ANT 4465 / GEOG 4465"]["quarter_equivalents"]
+    assert "GEOG 308" in antgeog_courses["GEOG 3308"]["quarter_equivalents"]
+    assert "GEOG 350" in antgeog_courses["GEOG 3350"]["quarter_equivalents"]
+    assert "ANT 455" in antgeog_courses["ANT 4455 / GEOG 4455"]["quarter_equivalents"]
     assert antgeog_courses["ANT 4461 / GEOG 4461"]["is_placeholder"] is True
     assert "ANT 4461" in antgeog_courses["ANT 4461 / GEOG 4461"]["quarter_equivalents"]
     assert "GEOG 4461" in antgeog_courses["ANT 4461 / GEOG 4461"]["quarter_equivalents"]
@@ -668,19 +700,32 @@ def test_anthropology_geography_concentrations_cover_catalog_options():
 
     environmental = next(c for c in antgeog_concentrations if c["id"] == "environmental_sustainability")
     assert environmental["slot_overrides"]["ANTGEOG_CON_JRS2"]["course_number"] == "GEOG 4435"
+    assert environmental["slot_overrides"]["ANTGEOG_CON_JRS2"]["title"] == "Biodiversity and Biogeography Methods"
+    assert environmental["slot_overrides"]["ANTGEOG_CON_JRS2"]["units"] == 3
+    assert environmental["slot_overrides"]["ANTGEOG_CON_JRS1"]["elective_key"] == "antgeog_env_climate"
+    assert environmental["slot_overrides"]["ANTGEOG_CON_SRF1"]["elective_key"] == "antgeog_env_geospatial"
+    assert environmental["slot_overrides"]["ANTGEOG_CON_SRF2"]["units"] == 4
 
     global_studies = next(c for c in antgeog_concentrations if c["id"] == "global_studies")
     assert global_studies["slot_overrides"]["ANTGEOG_CON_JRS1"]["course_number"] == "GEOG 4408"
+    assert global_studies["slot_overrides"]["ANTGEOG_CON_JRS1"]["title"] == "Geography of International Development"
     assert global_studies["slot_overrides"]["ANTGEOG_CON_SRF1"]["course_number"] == "ANT 4401"
+    assert global_studies["slot_overrides"]["ANTGEOG_CON_SRF1"]["title"] == "Culture and Health"
+    assert global_studies["slot_overrides"]["ANTGEOG_CON_JRS2"]["elective_key"] == "antgeog_global_problems"
 
     human_ecology = next(c for c in antgeog_concentrations if c["id"] == "human_ecology")
-    assert human_ecology["slot_overrides"]["ANTGEOG_CON_JRS1"]["course_number"] == "ANT 3309/3320"
+    assert human_ecology["slot_overrides"]["ANTGEOG_CON_JRS1"]["course_number"] == "ANT 3309 / ANT 3320"
+    assert human_ecology["slot_overrides"]["ANTGEOG_CON_JRS1"]["units"] == 3
+    assert human_ecology["slot_overrides"]["ANTGEOG_CON_JRS1"]["elective_key"] == "antgeog_human_ecology_foundation"
+    assert human_ecology["slot_overrides"]["ANTGEOG_CON_JRS2"]["units"] == 3
+    assert human_ecology["slot_overrides"]["ANTGEOG_CON_SRF2"]["elective_key"] == "antgeog_human_ecology_geog"
 
 
 def test_psychology_flowchart_contains_expected_core_sequence():
     psy_courses = {course["course_number"]: course for course in FLOWCHARTS["PSY"]["courses"]}
 
     assert FLOWCHARTS["PSY"]["total_units"] == 120
+    assert sum(course["units"] for course in FLOWCHARTS["PSY"]["courses"]) == 120
     assert psy_courses["PSY 1102"]["title"] == "Orientation to the Psychology Major"
     assert psy_courses["PSY 2201"]["category"] == "major"
     assert psy_courses["STAT 1110"]["category"] == "support"
@@ -758,6 +803,7 @@ def test_agricultural_business_flowchart_contains_expected_core_sequence():
     agb_by_id = {course["id"]: course for course in FLOWCHARTS["AGB"]["courses"]}
 
     assert FLOWCHARTS["AGB"]["total_units"] == 120
+    assert sum(course["units"] for course in FLOWCHARTS["AGB"]["courses"]) == 120
     assert agb_courses["AGB 1101"]["title"] == "Introduction to Agribusiness"
     assert agb_courses["AGB 2202"]["title"] == "Introduction to Sales"
     assert agb_courses["AGB 2212"]["category"] == "major"
@@ -798,7 +844,10 @@ def test_architectural_engineering_flowchart_contains_expected_core_sequence():
     arce_by_id = {course["id"]: course for course in FLOWCHARTS["ARCE"]["courses"]}
 
     assert FLOWCHARTS["ARCE"]["total_units"] == 128
+    assert sum(course["units"] for course in FLOWCHARTS["ARCE"]["courses"]) == 128
     assert arce_courses["ARCE 1110"]["title"] == "Introduction to Architectural Engineering"
+    assert arce_courses["ARCH 1101"]["units"] == 4
+    assert arce_courses["ARCH 1131"]["units"] == 2
     assert arce_courses["ARCE 1121"]["category"] == "major"
     assert arce_courses["ARCE 1121"]["prerequisites"] == ["ARCE 1110"]
     assert arce_courses["ARCE 2211"]["prerequisites"] == ["ARCE 1121"]
@@ -808,8 +857,9 @@ def test_architectural_engineering_flowchart_contains_expected_core_sequence():
     assert arce_courses["ARCE 4411"]["prerequisites"] == ["ARCE 3311"]
     assert arce_courses["ARCE 4413"]["prerequisites"] == ["ARCE 4411"]
     assert arce_courses["ARCE 4461"]["prerequisites"] == ["ARCE 3311"]
-    assert arce_courses["ARCE 4462"]["title"] == "Senior Project"
+    assert arce_courses["ARCE 4462"]["title"] == "Senior Project - Reinforced Concrete and Masonry Laboratory"
     assert arce_courses["MATH 1261"]["category"] == "support"
+    assert arce_courses["CHEM 1120"]["title"] == "Fundamentals of Chemical Structure and Properties"
     assert arce_courses["CHEM 1120"]["category"] == "support"
     assert arce_courses["STAT 3210"]["category"] == "support"
     assert arce_courses["GE 4A"]["category"] == "ge"
@@ -817,6 +867,23 @@ def test_architectural_engineering_flowchart_contains_expected_core_sequence():
     assert arce_by_id["ARCE_FE_TE1"]["is_placeholder"] is True
     assert arce_by_id["ARCE_SURVEY"]["is_placeholder"] is True
     assert arce_by_id["ARCE_ELEC"]["is_placeholder"] is True
+    assert arce_by_id["ARCE_CAED"]["is_placeholder"] is True
+    assert arce_by_id["ARCE_FE_TE1"]["units"] == 2
+    assert arce_by_id["ARCE_SURVEY"]["units"] == 2
+    assert arce_by_id["ARCE_CAED"]["units"] == 2
+    assert arce_by_id["ARCE_FE_TE1"]["elective_key"] == "arce_fe_technical_elective"
+    assert arce_by_id["ARCE_FE_TE2"]["elective_key"] == "arce_fe_technical_elective"
+    assert arce_by_id["ARCE_ELEC"]["elective_key"] == "arce_upper_division_elective"
+    assert arce_by_id["ARCE_CAED"]["elective_key"] == "arce_caed_interdisciplinary_elective"
+    assert "ARCH 131" in arce_courses["ARCH 1101"]["quarter_equivalents"]
+    assert "ARCH 101" in arce_courses["ARCH 1131"]["quarter_equivalents"]
+    assert "ARCE 211" in arce_courses["ARCE 1121"]["quarter_equivalents"]
+    assert "ARCE 223" in arce_courses["ARCE 2211"]["quarter_equivalents"]
+    assert "ARCE 224" in arce_courses["ARCE 2212"]["quarter_equivalents"]
+    assert "ARCE 302" in arce_courses["ARCE 3311"]["quarter_equivalents"]
+    assert "ARCE 451" in arce_courses["ARCE 3332"]["quarter_equivalents"]
+    assert "ARCE 483" in arce_courses["ARCE 4413"]["quarter_equivalents"]
+    assert "ARCE 452" in arce_courses["ARCE 4462"]["quarter_equivalents"]
     assert "ARCE" not in CONCENTRATIONS
 
 
@@ -825,6 +892,7 @@ def test_architecture_flowchart_contains_expected_five_year_core_and_placeholder
     arch_by_id = {course["id"]: course for course in FLOWCHARTS["ARCH"]["courses"]}
 
     assert FLOWCHARTS["ARCH"]["total_units"] == 150
+    assert sum(course["units"] for course in FLOWCHARTS["ARCH"]["courses"]) == 150
     assert FLOWCHARTS["ARCH"]["columns"][-1] == {"year": "Fifth Year", "term": "Spring"}
     assert arch_courses["ARCH 1101"]["title"] == "Architectural Design I"
     assert arch_courses["ARCH 2201"]["title"] == "Architectural Design III"
@@ -843,12 +911,15 @@ def test_architecture_flowchart_contains_expected_five_year_core_and_placeholder
     assert "PHYS 1141" in arch_by_id["ARCH_PHYS_CHOICE"]["quarter_equivalents"]
     assert arch_by_id["ARCH_PROF_ELEC1"]["category"] == "concentration"
     assert arch_by_id["ARCH_PROF_ELEC1"]["is_placeholder"] is True
+    assert arch_by_id["ARCH_PROF_ELEC1"]["elective_key"] == "arch_professional_elective"
+    assert arch_by_id["ARCH_PROF_ELEC4"]["elective_key"] == "arch_professional_elective"
     assert arch_by_id["ARCH_GE_UD25"]["is_placeholder"] is True
     assert "ARCH" not in CONCENTRATIONS
 
 
 def test_architecture_prerequisites_and_quarter_equivalents_are_mapped():
     arch_courses = {course["course_number"]: course for course in FLOWCHARTS["ARCH"]["courses"]}
+    arch_by_id = {course["id"]: course for course in FLOWCHARTS["ARCH"]["courses"]}
 
     assert arch_courses["ARCH 1102"]["prerequisites"] == ["ARCH 1101"]
     assert arch_courses["ARCH 2201"]["prerequisites"] == ["ARCH 1102"]
@@ -860,6 +931,10 @@ def test_architecture_prerequisites_and_quarter_equivalents_are_mapped():
     assert "ARCH 131" in arch_courses["ARCH 1101"]["quarter_equivalents"]
     assert "ARCH 251" in arch_courses["ARCH 2201"]["quarter_equivalents"]
     assert "ARCH 351" in arch_courses["ARCH 4401"]["quarter_equivalents"]
+    assert "ARCH 4401" in arch_by_id["ARCH_ARCH4401_2"]["quarter_equivalents"]
+    assert "ARCH 4401" in arch_by_id["ARCH_ARCH4401_3"]["quarter_equivalents"]
+    assert "ARCH 420" in arch_courses["ARCH 4425"]["quarter_equivalents"]
+    assert "ARCH 420" not in arch_courses["ARCH 4460"]["quarter_equivalents"]
     assert "ARCH 481" in arch_courses["ARCH 4461"]["quarter_equivalents"]
 
 
@@ -931,19 +1006,20 @@ def test_biomedical_engineering_flowchart_contains_expected_core_and_placeholder
 
     assert FLOWCHARTS["BMED"]["total_units"] == 130
     assert bmed_courses["BMED 1101"]["title"] == "Introduction to Biomedical Engineering"
-    assert bmed_courses["BMED 2212"]["title"] == "Biomedical Engineering Fundamentals"
-    assert bmed_courses["BMED 2420"]["title"] == "Biomaterials"
-    assert bmed_courses["BMED 3430"]["title"] == "Modeling of Biomedical Systems"
-    assert bmed_courses["BMED 4440"]["title"] == "Biomedical Instrumentation"
-    assert bmed_courses["BMED 4599"]["title"] == "Biomedical Engineering Senior Project"
+    assert bmed_courses["BMED 2212"]["title"] == "Introduction to Mechanical Design in Biomedical Engineering"
+    assert bmed_courses["BMED 2420"]["title"] == "Principles and Applications of Biomaterials"
+    assert bmed_courses["BMED 3430"]["title"] == "Biomedical Modeling and Simulation"
+    assert bmed_courses["BMED 4440"]["title"] == "Bioelectronics and Instrumentation"
+    assert bmed_courses["BMED 4465"]["title"] == "Senior Project: Design I"
+    assert bmed_courses["BMED 4466"]["title"] == "Senior Project: Design II"
     assert bmed_courses["BIO 1151"]["category"] == "support"
     assert bmed_courses["MATH 2341"]["category"] == "support"
-    assert bmed_courses["GE UD-2/5"]["category"] == "ge"
+    assert bmed_courses["GE UD-4"]["category"] == "ge"
     assert bmed_by_id["BMED_BIO2231_2232"]["is_placeholder"] is True
     assert bmed_by_id["BMED_CON_JRF1"]["category"] == "concentration"
     assert bmed_by_id["BMED_CON_JRF1"]["is_placeholder"] is True
-    assert bmed_by_id["BMED_FREE1"]["category"] == "concentration"
-    assert bmed_by_id["BMED_FREE1"]["is_placeholder"] is True
+    assert bmed_by_id["BMED_CON_SRS3"]["category"] == "concentration"
+    assert bmed_by_id["BMED_CON_SRS3"]["is_placeholder"] is True
     assert "BMED" in CONCENTRATIONS
 
 
@@ -955,11 +1031,13 @@ def test_biomedical_engineering_prerequisites_and_quarter_equivalents_are_mapped
     assert bmed_courses["PHYS 1143"]["prerequisites"] == ["PHYS 1141", "MATH 1261"]
     assert bmed_courses["BMED 2420"]["prerequisites"] == ["BMED 2212", "CHEM 1120", "ENGR 2211"]
     assert bmed_courses["BMED 4440"]["prerequisites"] == ["BMED 2310", "BMED 2311"]
-    assert bmed_courses["BMED 4599"]["prerequisites"] == ["BMED 3425"]
+    assert bmed_courses["BMED 4465"]["prerequisites"] == ["BMED 3430"]
+    assert bmed_courses["BMED 4466"]["prerequisites"] == ["BMED 4465"]
     assert "BMED 101" in bmed_courses["BMED 1101"]["quarter_equivalents"]
     assert "BMED 420" in bmed_courses["BMED 2420"]["quarter_equivalents"]
     assert "BMED 440" in bmed_courses["BMED 4440"]["quarter_equivalents"]
-    assert "BMED 455" in bmed_courses["BMED 4599"]["quarter_equivalents"]
+    assert "BMED 455" in bmed_courses["BMED 4465"]["quarter_equivalents"]
+    assert "BMED 456" in bmed_courses["BMED 4466"]["quarter_equivalents"]
 
 
 def test_biomedical_engineering_concentrations_cover_catalog_options():
@@ -1039,11 +1117,42 @@ def test_biochemistry_concentrations_cover_catalog_options():
     assert polymers["slot_overrides"]["BIOC_CON_SRS"]["course_number"] == "CHEM 4486"
 
 
+def test_biochemistry_or_choice_placeholders_have_elective_keys():
+    bioc_by_id = {c["id"]: c for c in FLOWCHARTS["BIOC"]["courses"]}
+
+    # CHEM 2201 / CHEM 2203 OR choice
+    r = bioc_by_id["BIOC_CHEM2201_2203"]
+    assert r["is_placeholder"] is True
+    assert r["elective_key"] == "bioc_research_or_methods2"
+    assert "CHEM 2201" in r["course_number"]
+    assert "CHEM 2203" in r["course_number"]
+
+    # CHEM 4453 / CHEM 4454 OR choice
+    mb = bioc_by_id["BIOC_CHEM4453_4454"]
+    assert mb["is_placeholder"] is True
+    assert mb["elective_key"] == "bioc_mol_bio_or_protein"
+    assert "CHEM 4453" in mb["course_number"]
+    assert "CHEM 4454" in mb["course_number"]
+
+    # Biochemistry advanced elective (CHEM 4450, 4452, 4456, 4457, 4458)
+    ce = bioc_by_id["BIOC_CHEM_ELEC"]
+    assert ce["is_placeholder"] is True
+    assert ce["elective_key"] == "bioc_chem_advanced_elective"
+    assert ce["category"] == "major"
+
+    # BIO/MCRO advanced elective — must be category "major" per catalog
+    bm = bioc_by_id["BIOC_BIO_MCRO_ELEC"]
+    assert bm["is_placeholder"] is True
+    assert bm["elective_key"] == "bioc_bio_mcro_advanced_elective"
+    assert bm["category"] == "major"
+
+
 def test_agricultural_systems_management_flowchart_contains_expected_core_sequence():
     asm_courses = {course["course_number"]: course for course in FLOWCHARTS["ASM"]["courses"]}
     asm_by_id = {course["id"]: course for course in FLOWCHARTS["ASM"]["courses"]}
 
     assert FLOWCHARTS["ASM"]["total_units"] == 121
+    assert sum(course["units"] for course in FLOWCHARTS["ASM"]["courses"]) == 121
     assert asm_courses["BRAE 1128"]["title"] == "Careers in BioResource and Agricultural Engineering"
     assert asm_courses["BRAE 2203"]["title"] == "Systems Management I"
     assert asm_courses["BRAE 3317"]["title"] == "Systems Management II"
@@ -1200,20 +1309,22 @@ def test_business_administration_concentrations_cover_catalog_options():
 
 def test_cpe_ethics_or_stats_is_or_choice_placeholder():
     cpe_by_id = {course["id"]: course for course in FLOWCHARTS["CPE"]["courses"]}
-    cpe_by_num = {course["course_number"]: course for course in FLOWCHARTS["CPE"]["courses"]}
 
-    # The ethics/stats slot must be a single slash placeholder
+    # PHIL 3323 is now a fixed required course (not a placeholder)
     assert "CPE_PHIL3323" in cpe_by_id
-    slot = cpe_by_id["CPE_PHIL3323"]
-    assert slot["is_placeholder"] is True
-    assert "PHIL 3323" in slot["course_number"]
-    assert "STAT 3210" in slot["course_number"]
-    assert "STAT 3310" in slot["course_number"]
-    assert slot.get("elective_key") == "cpe_ethics_or_stats"
-    assert "STAT 312" in slot["quarter_equivalents"]
+    ethics = cpe_by_id["CPE_PHIL3323"]
+    assert ethics["is_placeholder"] is False
+    assert ethics["course_number"] == "PHIL 3323"
+    assert ethics["title"] == "Ethics, Science, and Technology"
 
-    # STAT 3210 must NOT appear as a separate required course
-    assert "STAT 3210" not in cpe_by_num
+    # STAT is a separate placeholder slot
+    assert "CPE_STAT" in cpe_by_id
+    stat = cpe_by_id["CPE_STAT"]
+    assert stat["is_placeholder"] is True
+    assert "STAT 3210" in stat["course_number"]
+    assert "STAT 3310" in stat["course_number"]
+    assert stat.get("elective_key") == "cpe_stats"
+    assert "STAT 312" in stat["quarter_equivalents"]
 
 
 def test_arce_history_elective_includes_all_three_options():
@@ -1232,6 +1343,9 @@ def test_arce_history_elective_includes_all_three_options():
     survey = arce_by_id["ARCE_SURVEY"]
     assert survey["is_placeholder"] is True
     assert survey.get("elective_key") == "arce_surveying_elective"
+    assert "BRAE 1239" in survey["quarter_equivalents"]
+    assert "BRAE 2237" in survey["quarter_equivalents"]
+    assert "CM 2239" in survey["quarter_equivalents"]
 
 
 def test_me_ime_manufacturing_selective_has_elective_key():
@@ -1244,6 +1358,25 @@ def test_me_ime_manufacturing_selective_has_elective_key():
     assert "IME 1141" in slot["quarter_equivalents"]
     assert "IME 1142" in slot["quarter_equivalents"]
     assert "IME 1149" in slot["quarter_equivalents"]
+
+
+def test_mechanical_engineering_catalog_mappings_cover_paired_and_elective_slots():
+    me_courses = {course["course_number"]: course for course in FLOWCHARTS["ME"]["courses"]}
+    me_by_id = {course["id"]: course for course in FLOWCHARTS["ME"]["courses"]}
+
+    assert "EE 2115" in me_courses["EE 2115 & EE 2115L"]["quarter_equivalents"]
+    assert "EE 2115L" in me_courses["EE 2115 & EE 2115L"]["quarter_equivalents"]
+    assert "MATE 1220" in me_courses["MATE 1220 & MATE 1215"]["quarter_equivalents"]
+    assert "MATE 1215" in me_courses["MATE 1220 & MATE 1215"]["quarter_equivalents"]
+    assert "ME 3342" in me_courses["ME 3341 & ME 3342"]["quarter_equivalents"]
+    assert me_courses["ME 3343"]["prerequisites"] == ["ME 3341 & ME 3342"]
+    assert "ME 251" in me_courses["ME 2248"]["quarter_equivalents"]
+    assert "ME 303" in me_courses["ME 3302"]["quarter_equivalents"]
+    assert "ME 418" in me_courses["ME 4417"]["quarter_equivalents"]
+    assert "ME 428" in me_courses["ME 4460"]["quarter_equivalents"]
+    assert "ME 429" in me_courses["ME 4461"]["quarter_equivalents"]
+    assert "ME 448" in me_courses["ME 4440"]["quarter_equivalents"]
+    assert "BIO 2217" in me_by_id["ME_GE5B"]["quarter_equivalents"]
 
 
 def test_bmed_anatomy_physiology_slash_placeholder_has_elective_key():
@@ -1333,3 +1466,509 @@ def test_stat_flowchart():
                 f"STAT col {col}: bucket {b1} rows {rows_by_bucket[b1]} "
                 f"overlap with bucket {b2} rows {rows_by_bucket[b2]}"
             )
+
+
+def test_chemistry_flowchart():
+    chem = FLOWCHARTS["CHEM"]
+    assert chem["total_units"] == 120
+
+    # Verify unit sum matches 120
+    total = sum(c["units"] for c in chem["courses"])
+    assert total == 120
+
+    chem_cn = {c["course_number"]: c for c in chem["courses"]}
+
+    # Key course titles
+    assert chem_cn["CHEM 1120"]["title"] == "Fundamentals of Chemical Structure and Properties"
+    assert chem_cn["CHEM 1122"]["title"] == "Fundamentals of Chemical Reactivity"
+    assert chem_cn["CHEM 2242"]["title"] == "Organic Chemistry I"
+    assert chem_cn["CHEM 3330"]["title"] == "Foundations of Chemical Analysis"
+    assert chem_cn["CHEM 3392"]["title"] == "Physical Chemistry I"
+    assert chem_cn["CHEM 3380"]["title"] == "Foundations of Macromolecular Chemistry"
+
+    # Categories
+    assert chem_cn["CHEM 1120"]["category"] == "major"
+    assert chem_cn["BIO 1151"]["category"] == "support"
+    assert chem_cn["MATH 1261"]["category"] == "support"
+    assert chem_cn["PHYS 1141"]["category"] == "support"
+    assert chem_cn["MATH 2263"]["category"] == "support"
+
+    # Prerequisites (at least 2)
+    assert chem_cn["CHEM 1122"]["prerequisites"] == ["CHEM 1120"]
+    assert chem_cn["CHEM 2242"]["prerequisites"] == ["CHEM 1122"]
+    assert chem_cn["CHEM 3392"]["prerequisites"] == ["CHEM 1122", "MATH 1262", "PHYS 1141"]
+    assert chem_cn["CHEM 4462"]["prerequisites"] == ["CHEM 4461"]
+
+    # Quarter equivalents
+    assert "CHEM 124" in chem_cn["CHEM 1120"]["quarter_equivalents"]
+    assert "CHEM 125" in chem_cn["CHEM 1122"]["quarter_equivalents"]
+    assert "CHEM 312" in chem_cn["CHEM 2242"]["quarter_equivalents"]
+    assert "MATH 141" in chem_cn["MATH 1261"]["quarter_equivalents"]
+    assert "PHYS 141" in chem_cn["PHYS 1141"]["quarter_equivalents"]
+
+    # GE placeholders
+    ge_placeholders = [c for c in chem["courses"] if c.get("is_placeholder") and c["category"] == "ge"]
+    assert len(ge_placeholders) >= 8
+
+    # CHEM is in CONCENTRATIONS
+    assert "CHEM" in CONCENTRATIONS
+
+
+def test_chemistry_placeholders_have_elective_keys():
+    chem_by_id = {c["id"]: c for c in FLOWCHARTS["CHEM"]["courses"]}
+
+    research = chem_by_id["CHEM_CHEM2201_2203"]
+    assert research["is_placeholder"] is True
+    assert research["elective_key"] == "chem_research_or_methods"
+    assert "CHEM 2201" in research["course_number"]
+
+    subdisc = chem_by_id["CHEM_SUBDISC1"]
+    assert subdisc["is_placeholder"] is True
+    assert subdisc["elective_key"] == "chem_subdiscipline_elective"
+
+    adv = chem_by_id["CHEM_ADV1"]
+    assert adv["is_placeholder"] is True
+    assert adv["elective_key"] == "chem_advanced_elective"
+
+
+def test_chemistry_concentrations():
+    chem_concentrations = CONCENTRATIONS["CHEM"]
+    concentration_ids = {c["id"] for c in chem_concentrations}
+    assert "none" in concentration_ids
+    assert "polymers_coatings" in concentration_ids
+
+    polymers = next(c for c in chem_concentrations if c["id"] == "polymers_coatings")
+    overrides = polymers["slot_overrides"]
+
+    assert "CHEM_SUBDISC2" in overrides
+    assert overrides["CHEM_SUBDISC2"]["course_number"] == "CHEM 4486"
+    assert overrides["CHEM_SUBDISC2"]["elective_key"] is None
+
+    assert "CHEM_ADV1" in overrides
+    assert overrides["CHEM_ADV1"]["course_number"] == "CHEM 4480"
+    assert overrides["CHEM_ADV1"]["elective_key"] is None
+
+    assert "CHEM_ADV3" in overrides
+    assert overrides["CHEM_ADV3"]["course_number"] == "CHEM 4482"
+
+
+def test_software_engineering_flowchart_unit_count():
+    se = FLOWCHARTS["SE"]
+    se_courses = {course["course_number"]: course for course in se["courses"]}
+    se_by_id = {course["id"]: course for course in se["courses"]}
+
+    assert se["total_units"] == 120
+    assert sum(course["units"] for course in se["courses"]) == 120
+    assert se_courses["CSC 1001"]["title"] == "Fundamentals of Computer Science"
+    assert se_courses["CSC 1001"]["units"] == 3
+    assert se_courses["CSC 2001"]["title"] == "Data Structures"
+    assert se_courses["CSC 2001"]["units"] == 3
+    assert se_courses["CSC 3660"]["title"] == "Database Modeling, Design and Implementation"
+    assert se_courses["CSC 3660"]["units"] == 2
+    assert se_courses["CSC 3660"]["prerequisites"] == ["CSC 2001"]
+    assert se_courses["CSC 4160"]["prerequisites"] == ["CSC 3100"]
+    assert se_courses["GE UD-4"]["category"] == "ge"
+    assert se_by_id["SE_CON_JRS1"]["is_placeholder"] is True
+    assert "SE" not in CONCENTRATIONS
+
+
+def test_aerospace_engineering_flowchart_unit_count():
+    aero = FLOWCHARTS["AERO"]
+    aero_courses = {course["course_number"]: course for course in aero["courses"]}
+
+    assert aero["total_units"] == 128
+    assert sum(course["units"] for course in aero["courses"]) == 128
+    assert aero_courses["IME 1143 / IME 1140"]["units"] == 3
+    assert aero_courses["IME 1143 / IME 1140"]["category"] == "support"
+    assert aero_courses["AERO 1121"]["category"] == "major"
+    assert aero_courses["AERO 2220"]["prerequisites"] == ["ENGR 2211"]
+    assert aero_courses["AERO 3331"]["prerequisites"] == ["ENGR 2211"]
+    assert aero_courses["GE UD-4"]["category"] == "ge"
+
+
+def test_child_development_flowchart():
+    cd = FLOWCHARTS["CD"]
+    assert cd["total_units"] == 120
+
+    total = sum(c["units"] for c in cd["courses"])
+    assert total == 120
+
+    cd_cn = {c["course_number"]: c for c in cd["courses"]}
+
+    # Key course titles
+    assert cd_cn["CD 1102"]["title"] == "Orientation to the Child Development Major"
+    assert cd_cn["CD 2229"]["title"] == "Research Methods in Psychology"
+    assert cd_cn["CD 2256"]["title"] == "Developmental Psychology"
+    assert cd_cn["CD 2230"]["title"] == "Preschool Laboratory"
+    assert cd_cn["CD 3329"]["title"] == "Advanced Research Methods in Developmental Science"
+    assert cd_cn["CD 4424"]["title"] == "Children's Development in Diverse Cultures"
+    assert cd_cn["CD 4461"]["title"] == "Senior Project Seminar"
+    assert cd_cn["CD 4462"]["title"] == "Senior Project"
+
+    # Categories
+    assert cd_cn["CD 1102"]["category"] == "major"
+    assert cd_cn["PSY 2201"]["category"] == "support"
+    assert cd_cn["STAT 1110"]["category"] == "support"
+    assert cd_cn["PSY 2240"]["category"] == "support"
+    assert cd_cn["CD 3329"]["category"] == "major"
+
+    # Prerequisites (at least 2 chains)
+    assert cd_cn["CD 2229"]["prerequisites"] == ["PSY 2201", "STAT 1110"]
+    assert cd_cn["CD 2256"]["prerequisites"] == ["PSY 2201"]
+    assert cd_cn["CD 3329"]["prerequisites"] == ["CD 2229", "STAT 1110"]
+    assert cd_cn["CD 4462"]["prerequisites"] == ["CD 4461"]
+
+    # Quarter equivalents
+    assert "PSY 201" in cd_cn["PSY 2201"]["quarter_equivalents"]
+    assert "STAT 217" in cd_cn["STAT 1110"]["quarter_equivalents"]
+    assert "CD 256" in cd_cn["CD 2256"]["quarter_equivalents"]
+    assert "CD 329" in cd_cn["CD 3329"]["quarter_equivalents"]
+    assert "CD 424" in cd_cn["CD 4424"]["quarter_equivalents"]
+    assert "CD 461" in cd_cn["CD 4461"]["quarter_equivalents"]
+
+    # GE placeholders
+    ge_placeholders = [c for c in cd["courses"] if c.get("is_placeholder") and c["category"] == "ge"]
+    assert len(ge_placeholders) >= 8
+
+    # CD has no concentrations
+    assert "CD" not in CONCENTRATIONS
+
+
+def test_child_development_placeholders_have_elective_keys():
+    cd_by_id = {c["id"]: c for c in FLOWCHARTS["CD"]["courses"]}
+
+    found = cd_by_id["CD_FOUND"]
+    assert found["is_placeholder"] is True
+    assert found["elective_key"] == "cd_foundational_course"
+
+    ls1 = cd_by_id["CD_LIFESTAGE1"]
+    assert ls1["is_placeholder"] is True
+    assert ls1["elective_key"] == "cd_lifestage_elective"
+
+    ls2 = cd_by_id["CD_LIFESTAGE2"]
+    assert ls2["is_placeholder"] is True
+    assert ls2["elective_key"] == "cd_lifestage_elective"
+
+    for elec_id in ("CD_ELEC1", "CD_ELEC2", "CD_ELEC3", "CD_ELEC4"):
+        assert cd_by_id[elec_id]["is_placeholder"] is True
+        assert cd_by_id[elec_id]["elective_key"] == "cd_upper_div_elective"
+
+    prof = cd_by_id["CD_PROF"]
+    assert prof["is_placeholder"] is True
+    assert prof["elective_key"] == "cd_professional_skills"
+
+    dei = cd_by_id["CD_DEI"]
+    assert dei["is_placeholder"] is True
+    assert dei["elective_key"] == "cd_dei_elective"
+
+    udsci = cd_by_id["CD_UDSCI"]
+    assert udsci["is_placeholder"] is True
+    assert udsci["elective_key"] == "cd_upper_div_science"
+
+    intern_ = cd_by_id["CD_INTERN"]
+    assert intern_["is_placeholder"] is True
+    assert intern_["elective_key"] == "cd_internship_i"
+
+    # Free electives should have no elective_key
+    assert cd_by_id["CD_FREE1"].get("elective_key") is None
+    assert cd_by_id["CD_FREE7"].get("elective_key") is None
+
+
+def test_city_and_regional_planning_flowchart():
+    crp = FLOWCHARTS["CRP"]
+    assert crp["total_units"] == 120
+
+    total = sum(c["units"] for c in crp["courses"])
+    assert total == 120
+
+    crp_cn = {c["course_number"]: c for c in crp["courses"]}
+
+    # Key course titles
+    assert crp_cn["CRP 1211"]["title"] == "Urban Planning History"
+    assert crp_cn["CRP 1212"]["title"] == "Introduction to City Planning"
+    assert crp_cn["CRP 1213"]["title"] == "Methods of Population and Housing Analysis"
+    assert crp_cn["CRP 1215"]["title"] == "Planning Approaches to a Just City"
+    assert crp_cn["CRP 3202"]["title"] == "Urban Design Studio"
+    assert crp_cn["CRP 3341"]["title"] == "Urban Development Studio"
+    assert crp_cn["CRP 4410"]["title"] == "Urban Planning Studio"
+    assert crp_cn["CRP 4420"]["title"] == "Land Use Law"
+
+    # Categories
+    assert crp_cn["CRP 1211"]["category"] == "major"
+    assert crp_cn["CRP 2457"]["category"] == "major"
+    assert crp_cn["DATA 1000 / STAT 1110"]["category"] == "support"
+
+    # Prerequisites (at least 2 chains)
+    assert crp_cn["CRP 3202"]["prerequisites"] == ["CRP 1212", "CRP 2216"]
+    assert crp_cn["CRP 3336"]["prerequisites"] == ["CRP 1212"]
+    assert crp_cn["CRP 3341"]["prerequisites"] == ["CRP 3202"]
+    assert crp_cn["CRP 4410"]["prerequisites"] == ["CRP 1213", "CRP 2214"]
+
+    # Quarter equivalents
+    assert "CRP 112" in crp_cn["CRP 1212"]["quarter_equivalents"]
+    assert "CRP 214" in crp_cn["CRP 2214"]["quarter_equivalents"]
+    assert "CRP 410" in crp_cn["CRP 4410"]["quarter_equivalents"]
+    assert "CRP 461" in crp_cn["CRP 4461 / CRP 4463"]["quarter_equivalents"]
+
+    # GE placeholders
+    ge_placeholders = [c for c in crp["courses"] if c.get("is_placeholder") and c["category"] == "ge"]
+    assert len(ge_placeholders) >= 10
+
+    # Term unit counts
+    by_col = {}
+    for c in crp["courses"]:
+        by_col.setdefault(c["grid_col"], []).append(c["units"])
+    assert sum(by_col[0]) == 14  # FF
+    assert sum(by_col[1]) == 14  # FS
+    assert sum(by_col[2]) == 17  # SoF
+    assert sum(by_col[3]) == 17  # SoS
+    assert sum(by_col[6]) == 14  # SrF
+    assert sum(by_col[7]) == 16  # SrS
+
+    # CRP has no concentrations
+    assert "CRP" not in CONCENTRATIONS
+
+
+def test_crp_placeholders_have_elective_keys():
+    crp_by_id = {c["id"]: c for c in FLOWCHARTS["CRP"]["courses"]}
+
+    stat = crp_by_id["CRP_STAT"]
+    assert stat["is_placeholder"] is True
+    assert stat["elective_key"] == "crp_stat_data_support"
+
+    senior = crp_by_id["CRP_SENIOR"]
+    assert senior["is_placeholder"] is True
+    assert senior["elective_key"] == "crp_senior_project"
+
+    caed1 = crp_by_id["CRP_CAED1"]
+    assert caed1["is_placeholder"] is True
+    assert caed1["elective_key"] == "crp_caed_elective"
+
+    caed2 = crp_by_id["CRP_CAED2"]
+    assert caed2["is_placeholder"] is True
+    assert caed2["elective_key"] == "crp_caed_elective"
+
+    # Free electives have no elective_key
+    assert crp_by_id["CRP_FREE1"].get("elective_key") is None
+    assert crp_by_id["CRP_FREE5"].get("elective_key") is None
+
+
+def test_electrical_engineering_flowchart():
+    assert "EE" in FLOWCHARTS
+    ee = FLOWCHARTS["EE"]
+    assert ee["total_units"] == 128
+    assert sum(c["units"] for c in ee["courses"]) == 128
+
+    ee_cn = {c["course_number"]: c for c in ee["courses"]}
+
+    # Key course titles
+    assert "Introduction to Electrical Engineering and Lab" in ee_cn["EE 1111"]["title"]
+    assert "Electric Circuit Analysis I" in ee_cn["EE 2211"]["title"]
+    assert "Signals and Systems" in ee_cn["EE 2328"]["title"]
+    assert "Classical Control Systems and Lab" in ee_cn["EE 3302"]["title"]
+    assert "Electronics I" in ee_cn["EE 3306"]["title"]
+    assert "Electromagnetic Fields" in ee_cn["EE 3335"]["title"]
+    assert "Communication Systems" in ee_cn["EE 4314"]["title"]
+    assert "Senior Project I" in ee_cn["EE 4461"]["title"]
+    assert "Probability and Random Processes" in ee_cn["STAT 3310"]["title"]
+
+    # Categories
+    assert ee_cn["EE 1111"]["category"] == "major"
+    assert ee_cn["MATH 1261"]["category"] == "support"
+    assert ee_cn["PHYS 1141"]["category"] == "support"
+    assert ee_cn["BIO 2213"]["category"] == "support"
+    assert ee_cn["EE 2211"]["category"] == "major"
+    assert ee_cn["GE 1A"]["category"] == "ge"
+
+    # Prerequisites
+    assert "EE 1111" in ee_cn["EE 2211"]["prerequisites"]
+    assert "EE 2211" in ee_cn["EE 2212"]["prerequisites"]
+    assert "EE 2211" in ee_cn["EE 2328"]["prerequisites"]
+    assert "MATH 2341" in ee_cn["EE 2328"]["prerequisites"]
+    assert "EE 2328" in ee_cn["EE 3302"]["prerequisites"]
+    assert "MATH 2263" in ee_cn["EE 3302"]["prerequisites"]
+    assert "EE 2212" in ee_cn["EE 3306"]["prerequisites"]
+    assert "EE 3306" in ee_cn["EE 3255"]["prerequisites"]
+    assert "EE 3329" in ee_cn["EE 4314"]["prerequisites"]
+    assert "EE 4461" in ee_cn["EE 4462"]["prerequisites"]
+
+    # Quarter equivalents
+    assert "MATH 141" in ee_cn["MATH 1261"]["quarter_equivalents"]
+    assert "MATH 142" in ee_cn["MATH 1262"]["quarter_equivalents"]
+    assert "PHYS 141" in ee_cn["PHYS 1141"]["quarter_equivalents"]
+    assert "EE 461" in ee_cn["EE 4461"]["quarter_equivalents"]
+
+    # GE placeholders
+    ge_placeholders = [c for c in ee["courses"] if c.get("is_placeholder") and c["category"] == "ge"]
+    assert len(ge_placeholders) >= 10
+
+    # Term unit sums
+    by_col = {}
+    for c in ee["courses"]:
+        by_col.setdefault(c["grid_col"], []).append(c["units"])
+    assert sum(by_col[0]) == 16   # FF
+    assert sum(by_col[1]) == 15   # FS
+    assert sum(by_col[2]) == 18   # SoF
+    assert sum(by_col[3]) == 16   # SoS
+    assert sum(by_col[4]) == 18   # JF
+    assert sum(by_col[5]) == 15   # JS
+    assert sum(by_col[6]) == 14   # SrF
+    assert sum(by_col[7]) == 16   # SrS
+
+    # No concentrations for EE (uses general curriculum)
+    assert "EE" not in CONCENTRATIONS
+
+
+def test_ee_placeholders_have_elective_keys():
+    ee_by_id = {c["id"]: c for c in FLOWCHARTS["EE"]["courses"]}
+
+    # Senior project lab choices
+    assert ee_by_id["EE_4463"]["elective_key"] == "ee_senior_proj_lab_i"
+    assert ee_by_id["EE_4464"]["elective_key"] == "ee_senior_proj_lab_ii"
+
+    # Technical electives
+    assert ee_by_id["EE_TECH1"]["elective_key"] == "ee_technical_elective"
+    assert ee_by_id["EE_TECH2"]["elective_key"] == "ee_technical_elective"
+
+    # Lower-div / technical electives
+    assert ee_by_id["EE_ELEC3"]["elective_key"] == "ee_lower_div_elective"
+    assert ee_by_id["EE_ELEC4"]["elective_key"] == "ee_lower_div_elective"
+
+    # GE UD-3 has no elective_key
+    assert ee_by_id["EE_GE_UD3"].get("elective_key") is None
+
+
+def test_industrial_engineering_flowchart():
+    assert "IE" in FLOWCHARTS
+    ie = FLOWCHARTS["IE"]
+    assert ie["total_units"] == 127
+    assert sum(c["units"] for c in ie["courses"]) == 127
+
+    ie_cn = {c["course_number"]: c for c in ie["courses"]}
+
+    # Key course titles
+    assert "Introduction to Industrial and Manufacturing Engineering" in ie_cn["IME 1101"]["title"]
+    assert "Process Improvement" in ie_cn["IME 1223"]["title"]
+    assert "Enterprise Analytics" in ie_cn["IME 2212"]["title"]
+    assert "Operations Research" in ie_cn["IME 3302"]["title"]
+    assert "Quality Control" in ie_cn["IME 3326"]["title"]
+    assert "Production Planning" in ie_cn["IME 3410"]["title"]
+    assert "Supply Chain" in ie_cn["IME 4417"]["title"]
+    assert "Senior Project - Design I" in ie_cn["IME 4461"]["title"]
+
+    # Categories
+    assert ie_cn["IME 1101"]["category"] == "major"
+    assert ie_cn["MATH 1261"]["category"] == "support"
+    assert ie_cn["CHEM 1120"]["category"] == "support"
+    assert ie_cn["PSY 2201"]["category"] == "support"
+    assert ie_cn["GE 1A"]["category"] == "ge"
+
+    # Prerequisites
+    assert "IME 1101" in ie_cn["IME 2315"]["prerequisites"]
+    assert "MATH 1261" in ie_cn["MATH 1262"]["prerequisites"]
+    assert "PHYS 1141" in ie_cn["PHYS 1143"]["prerequisites"]
+    assert "IME 2212" in ie_cn["IME 3302"]["prerequisites"]
+    assert "STAT 3210" in ie_cn["IME 3326"]["prerequisites"]
+    assert "IME 3302" in ie_cn["IME 3410"]["prerequisites"]
+    assert "IME 3302" in ie_cn["IME 3443"]["prerequisites"]
+    assert "IME 4461" in ie_cn["IME 4462"]["prerequisites"]
+
+    # GE placeholders
+    ge_placeholders = [c for c in ie["courses"] if c.get("is_placeholder") and c["category"] == "ge"]
+    assert len(ge_placeholders) >= 10
+
+    # Term unit sums
+    by_col = {}
+    for c in ie["courses"]:
+        by_col.setdefault(c["grid_col"], []).append(c["units"])
+    assert sum(by_col[0]) == 15   # FF
+    assert sum(by_col[1]) == 16   # FS
+    assert sum(by_col[2]) == 15   # SoF
+    assert sum(by_col[3]) == 16   # SoS
+    assert sum(by_col[4]) == 17   # JF
+    assert sum(by_col[5]) == 15   # JS
+    assert sum(by_col[6]) == 16   # SrF
+    assert sum(by_col[7]) == 17   # SrS
+
+    assert "IE" not in CONCENTRATIONS
+
+
+def test_ie_placeholders_have_elective_keys():
+    ie_by_id = {c["id"]: c for c in FLOWCHARTS["IE"]["courses"]}
+
+    assert ie_by_id["IE_1141"]["elective_key"] == "ie_intro_lab"
+    assert ie_by_id["IE_MATH1151"]["elective_key"] == "ie_linear_math"
+    assert ie_by_id["IE_SUPPORT1"]["elective_key"] == "ie_support_elective"
+    assert ie_by_id["IE_SUPPORT2"]["elective_key"] == "ie_support_elective"
+    assert ie_by_id["IE_TECH1"]["elective_key"] == "ie_technical_elective"
+    assert ie_by_id["IE_TECH2"]["elective_key"] == "ie_technical_elective"
+    assert ie_by_id["IE_GE6"].get("elective_key") is None
+
+
+def test_materials_engineering_flowchart():
+    assert "MATE" in FLOWCHARTS
+    mate = FLOWCHARTS["MATE"]
+    assert mate["total_units"] == 125
+    assert sum(c["units"] for c in mate["courses"]) == 125
+
+    mate_cn = {c["course_number"]: c for c in mate["courses"]}
+
+    # Key course titles
+    assert "Introduction to Materials Engineering" in mate_cn["MATE 1110"]["title"]
+    assert "Principles of Materials Engineering" in mate_cn["MATE 1210"]["title"]
+    assert "Materials Thermodynamics" in mate_cn["MATE 2280"]["title"]
+    assert "Metallurgical" in mate_cn["MATE 3360"]["title"]
+    assert "Polymeric" in mate_cn["MATE 3310"]["title"]
+    assert "Composite" in mate_cn["MATE 3480"]["title"]
+    assert "Electronic" in mate_cn["MATE 3340"]["title"]
+    assert "Ceramic" in mate_cn["MATE 4422"]["title"]
+    assert "Senior Project I" in mate_cn["MATE 4461"]["title"]
+
+    # Categories
+    assert mate_cn["MATE 1110"]["category"] == "major"
+    assert mate_cn["CHEM 1120"]["category"] == "support"
+    assert mate_cn["MATH 1261"]["category"] == "support"
+    assert mate_cn["ENGR 2211"]["category"] == "support"
+    assert mate_cn["GE 1A"]["category"] == "ge"
+
+    # Prerequisites
+    assert "MATE 1110" in mate_cn["MATE 1210"]["prerequisites"]
+    assert "MATE 1210" in mate_cn["MATE 2280"]["prerequisites"]
+    assert "MATE 2280" in mate_cn["MATE 3360"]["prerequisites"]
+    assert "MATE 2280" in mate_cn["MATE 3310"]["prerequisites"]
+    assert "MATE 2280" in mate_cn["MATE 3340"]["prerequisites"]
+    assert "MATE 4461" in mate_cn["MATE 4462"]["prerequisites"]
+
+    # Quarter equivalents
+    assert "MATH 141" in mate_cn["MATH 1261"]["quarter_equivalents"]
+    assert "PHYS 141" in mate_cn["PHYS 1141"]["quarter_equivalents"]
+
+    # GE placeholders
+    ge_placeholders = [c for c in mate["courses"] if c.get("is_placeholder") and c["category"] == "ge"]
+    assert len(ge_placeholders) >= 9
+
+    # Term unit sums
+    by_col = {}
+    for c in mate["courses"]:
+        by_col.setdefault(c["grid_col"], []).append(c["units"])
+    assert sum(by_col[0]) == 16   # FF
+    assert sum(by_col[1]) == 16   # FS
+    assert sum(by_col[2]) == 17   # SoF
+    assert sum(by_col[3]) == 15   # SoS
+    assert sum(by_col[4]) == 18   # JF
+    assert sum(by_col[5]) == 16   # JS
+    assert sum(by_col[6]) == 13   # SrF
+    assert sum(by_col[7]) == 14   # SrS
+
+    assert "MATE" not in CONCENTRATIONS
+
+
+def test_mate_placeholders_have_elective_keys():
+    mate_by_id = {c["id"]: c for c in FLOWCHARTS["MATE"]["courses"]}
+
+    assert mate_by_id["MATE_CHEM"]["elective_key"] == "mate_chem_elective"
+    assert mate_by_id["MATE_DESIGN"]["elective_key"] == "mate_design_elective"
+    assert mate_by_id["MATE_TECH1"]["elective_key"] == "mate_technical_elective"
+    assert mate_by_id["MATE_TECH2"]["elective_key"] == "mate_technical_elective"
+    assert mate_by_id["MATE_PROF"]["elective_key"] == "mate_prof_dev_elective"
+    assert mate_by_id["MATE_GE6"].get("elective_key") is None

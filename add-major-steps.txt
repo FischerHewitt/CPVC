@@ -8,6 +8,10 @@ Claude will:
 1. Fetch the catalog page from catalog.calpoly.edu and extract every course
    with: course number, title, units, term (Freshman Fall -> Senior Spring),
    and whether it's a major requirement, support course, or GE.
+   - Verify each tile's units against the catalog. For paired lecture/lab
+     requirements or slash-choice placeholders, use the catalog's required
+     total units for that slot and make sure the flowchart total still matches
+     the program total/range.
 
 2. Add [CODE]_FLOWCHART in backend/data/flowcharts.py:
    - Prefix all IDs with [CODE]_ to avoid collisions with other majors
@@ -30,17 +34,49 @@ Claude will:
 5. If the major has concentrations/emphases/tracks, add them to
    backend/data/concentrations.py following the existing pattern.
 
-6. Add a major-specific test in backend/tests/test_flowchart_data.py
-   that checks: total_units, key course titles, categories, at least 2
-   prerequisites, GE placeholders, elective placeholder is_placeholder,
-   and whether the major is/isn't in CONCENTRATIONS.
+6. Wire checklist/sidebar course options for every selectable placeholder:
+   - Any slash-choice, support elective, technical elective, concentration
+     elective, or other non-GE placeholder that should show course options in
+     the Manual Course Checklist must have an elective_key in flowcharts.py or
+     in the relevant concentration slot_override.
+   - Add a matching _STATIC or _DYNAMIC entry in backend/routers/electives.py.
+     Use _STATIC for exact catalog lists and _DYNAMIC only for broad catalog
+     buckets such as "any 3000-4000 level ME course".
+   - If the placeholder's course_number or quarter_equivalents would make the
+     auto-picker expose old quarter numbers or incomplete options, add the
+     placeholder id to _PLACEHOLDER_ELECTIVE_KEY.
+   - Fixed course overrides in concentrations.py that replace a base elective
+     slot must set "elective_key": None so they do not inherit the base
+     picker.
+   - For every picker option, use the exact catalog course number, title, and
+     units. Picker options should let students mark the selected class done or
+     in progress and open PolyRatings/professors from the option detail.
+   - Free/unrestricted elective placeholders may stay without an elective_key
+     when there is no catalog-restricted course list to show.
 
-7. Run pytest from the backend directory using .venv and confirm all
+7. Add a major-specific test in backend/tests/test_flowchart_data.py
+   that checks: total_units, the sum of tile units when the catalog has a
+   fixed total or accepted total range, key course titles, categories, at
+   least 2 prerequisites, GE placeholders, elective placeholder
+   is_placeholder, and whether the major is/isn't in CONCENTRATIONS.
+   Also assert elective_key values for every catalog-backed placeholder and
+   assert fixed concentration overrides clear inherited elective_key values
+   with None when needed.
+
+8. Add or update backend/tests/test_electives_api.py for every new _STATIC,
+   _DYNAMIC, or _PLACEHOLDER_ELECTIVE_KEY path so the Manual Course Checklist
+   can keep loading the right course options.
+
+9. Run pytest from the backend directory using .venv and confirm all
    tests pass.
 
-8. Do not commit or push when done.
+10. If frontend checklist behavior changed, run the frontend tests and build.
+    The Manual Course Checklist should display rows in this order: Major,
+    Support, GE, then Concentration/free-elective items.
 
-9. Report any catalog ambiguities or elective buckets represented as
+11. Do not commit or push when done.
+
+12. Report any catalog ambiguities or elective buckets represented as
    placeholders.
 
 

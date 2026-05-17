@@ -598,8 +598,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
             "id": "security",
             "label": "Privacy and Security",
             "slot_overrides": {
-                # Replaces the standard CPE senior project slot
-                "CPE4610": {
+                # Replaces the standard CPE capstone I slot
+                "CPE4460": {
                     "course_number": "CSC 4260",
                     "title": "Privacy & Security Capstone I",
                     "units": 3,
@@ -951,6 +951,7 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                     "units": 4,
                     "prerequisites": [],
                     "quarter_equivalents": [],
+                    "elective_key": "me_energy_technical_elective",
                     "is_placeholder": True,
                 },
                 "ME_TE_SRF2": {
@@ -959,6 +960,7 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                     "units": 4,
                     "prerequisites": [],
                     "quarter_equivalents": [],
+                    "elective_key": "me_energy_technical_elective",
                     "is_placeholder": True,
                 },
                 "ME_TE_SRS1": {
@@ -966,7 +968,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                     "title": "Mechanical Controls and Implementations",
                     "units": 3,
                     "prerequisites": ["ME 3317"],
-                    "quarter_equivalents": ["ME 417"],
+                    "quarter_equivalents": ["ME 418"],
+                    "elective_key": None,
                     "is_placeholder": False,
                 },
                 "ME_TE_SRS2": {
@@ -975,6 +978,7 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                     "units": 1,
                     "prerequisites": [],
                     "quarter_equivalents": [],
+                    "elective_key": "me_energy_technical_elective",
                     "is_placeholder": True,
                 },
             },
@@ -989,6 +993,7 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                     "units": 3,
                     "prerequisites": ["ME 3302"],
                     "quarter_equivalents": ["ME 355"],
+                    "elective_key": None,
                     "is_placeholder": False,
                 },
                 "ME_TE_SRF2": {
@@ -997,6 +1002,7 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                     "units": 3,
                     "prerequisites": ["ME 3355"],
                     "quarter_equivalents": ["ME 455"],
+                    "elective_key": None,
                     "is_placeholder": False,
                 },
                 "ME4460": {
@@ -1019,8 +1025,9 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                     "course_number": "ME 4456",
                     "title": "HVAC&R Air and Water Distribution for Sustainable Building Environments",
                     "units": 3,
-                    "prerequisites": ["ME 3355", "ME 3341"],
+                    "prerequisites": ["ME 3355", "ME 3341 & ME 3342"],
                     "quarter_equivalents": [],
+                    "elective_key": None,
                     "is_placeholder": False,
                 },
                 "ME_TE_SRS2": {
@@ -1029,6 +1036,7 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                     "units": 3,
                     "prerequisites": ["ME 3355"],
                     "quarter_equivalents": [],
+                    "elective_key": None,
                     "is_placeholder": False,
                 },
             },
@@ -1041,7 +1049,7 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                     "course_number": "ME 3305",
                     "title": "Mechatronics I",
                     "units": 4,
-                    "prerequisites": ["EE 2115", "ME 2240"],
+                    "prerequisites": ["EE 2115 & EE 2115L", "ME 2240"],
                     "quarter_equivalents": ["ME 305"],
                     "is_placeholder": False,
                 },
@@ -1059,6 +1067,7 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                     "units": 3,
                     "prerequisites": ["ME 3305"],
                     "quarter_equivalents": ["ME 405"],
+                    "elective_key": None,
                     "is_placeholder": False,
                 },
                 "ME_TE_SRF2": {
@@ -1067,6 +1076,7 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                     "units": 3,
                     "prerequisites": ["ME 3319"],
                     "quarter_equivalents": ["ME 419"],
+                    "elective_key": None,
                     "is_placeholder": False,
                 },
                 "ME_TE_SRS1": {
@@ -1075,6 +1085,7 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                     "units": 3,
                     "prerequisites": [],
                     "quarter_equivalents": [],
+                    "elective_key": "me_mechatronics_technical_elective",
                     "is_placeholder": True,
                 },
                 "ME_TE_SRS2": {
@@ -1083,6 +1094,7 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                     "units": 2,
                     "prerequisites": [],
                     "quarter_equivalents": [],
+                    "elective_key": "me_mechatronics_technical_elective",
                     "is_placeholder": True,
                 },
             },
@@ -1097,6 +1109,7 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                     "units": 4,
                     "prerequisites": [],
                     "quarter_equivalents": [],
+                    "elective_key": None,
                     "is_placeholder": False,
                 },
                 "ME_TE_SRF2": {
@@ -1105,6 +1118,7 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                     "units": 4,
                     "prerequisites": ["IME 1143"],
                     "quarter_equivalents": ["IME 330"],
+                    "elective_key": None,
                     "is_placeholder": False,
                 },
                 "ME_TE_SRS1": {
@@ -1113,6 +1127,7 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                     "units": 3,
                     "prerequisites": [],
                     "quarter_equivalents": [],
+                    "elective_key": "me_manufacturing_elective",
                     "is_placeholder": True,
                 },
                 "ME_TE_SRS2": {
@@ -1121,6 +1136,7 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                     "units": 1,
                     "prerequisites": [],
                     "quarter_equivalents": [],
+                    "elective_key": "me_manufacturing_elective",
                     "is_placeholder": True,
                 },
             },
@@ -1759,12 +1775,12 @@ CONCENTRATIONS: dict[str, list[dict]] = {
             "id": "ag_engineering_tech",
             "label": "Agricultural Engineering Technology",
             "slot_overrides": {
-                "AGS_EMP_JRF1": {"course_number": "BRAE 1150", "title": "Design Graphics and CAD for Agricultural Engineering", "units": 3, "prerequisites": [], "quarter_equivalents": ["BRAE 150"], "is_placeholder": False},
+                "AGS_EMP_JRF1": {"course_number": "BRAE 1150", "title": "Design Graphics and CAD for Agricultural Engineering", "units": 2, "prerequisites": [], "quarter_equivalents": ["BRAE 150"], "is_placeholder": False},
                 "AGS_EMP_JRS1": {"course_number": "BRAE 2142", "title": "Agricultural Power and Machinery Management", "units": 3, "prerequisites": [], "quarter_equivalents": ["BRAE 142"], "is_placeholder": False},
-                "AGS_EMP_SRF1": {"course_number": "BRAE 2220", "title": "Introduction to Biological Systems", "units": 3, "prerequisites": [], "quarter_equivalents": ["BRAE 220"], "is_placeholder": False},
+                "AGS_EMP_SRF1": {"course_number": "BRAE 2220", "title": "Introduction to Biological Systems", "units": 4, "prerequisites": [], "quarter_equivalents": ["BRAE 220"], "is_placeholder": False},
                 "AGS_EMP_SRF2": {"course_number": "BRAE 3335", "title": "Internal Combustion Engines", "units": 3, "prerequisites": [], "quarter_equivalents": ["BRAE 335"], "is_placeholder": False},
                 "AGS_EMP_SRS1": {"course_number": "BRAE 3348", "title": "Energy for a Sustainable Society", "units": 3, "prerequisites": [], "quarter_equivalents": ["BRAE 348"], "is_placeholder": False},
-                "AGS_EMP_SRS2": {"course_number": "BRAE 4438/4440", "title": "Aquaculture or Agricultural Structures Design", "units": 3, "prerequisites": [], "quarter_equivalents": ["BRAE 438", "BRAE 440"], "is_placeholder": True},
+                "AGS_EMP_SRS2": {"course_number": "BRAE/MSCI 4438 / BRAE 4440", "title": "Aquaculture or Agricultural Irrigation Systems", "units": 4, "prerequisites": [], "quarter_equivalents": ["BRAE 438", "BRAE 440", "BRAE 4438", "MSCI 4438", "BRAE 4440"], "elective_key": "ags_brae_aquaculture_irrigation", "is_placeholder": True},
             },
         },
         {
@@ -1783,9 +1799,9 @@ CONCENTRATIONS: dict[str, list[dict]] = {
             "id": "animal_science",
             "label": "Animal Science",
             "slot_overrides": {
-                "AGS_EMP_JRF1": {"course_number": "ASCI 2005", "title": "Dairy Fit and Show Enterprise", "units": 3, "prerequisites": [], "quarter_equivalents": ["ASCI 205"], "is_placeholder": False},
-                "AGS_EMP_JRS1": {"course_number": "ASCI 2210", "title": "Meat Science", "units": 3, "prerequisites": [], "quarter_equivalents": ["ASCI 210"], "is_placeholder": False},
-                "AGS_EMP_SRF1": {"course_number": "ASCI 2226", "title": "Livestock Evaluation", "units": 3, "prerequisites": [], "quarter_equivalents": ["ASCI 226"], "is_placeholder": False},
+                "AGS_EMP_JRF1": {"course_number": "ASCI 2005", "title": "Dairy Fit and Show Enterprise", "units": 1, "prerequisites": [], "quarter_equivalents": ["ASCI 205"], "is_placeholder": False},
+                "AGS_EMP_JRS1": {"course_number": "ASCI 2210", "title": "Meat Science", "units": 2, "prerequisites": [], "quarter_equivalents": ["ASCI 210"], "is_placeholder": False},
+                "AGS_EMP_SRF1": {"course_number": "ASCI 2226", "title": "Livestock Evaluation", "units": 2, "prerequisites": [], "quarter_equivalents": ["ASCI 226"], "is_placeholder": False},
                 "AGS_EMP_SRF2": {"course_number": "ASCI 2230", "title": "Beef and Dairy Cattle Management", "units": 3, "prerequisites": [], "quarter_equivalents": ["ASCI 230"], "is_placeholder": False},
                 "AGS_EMP_SRS1": {"course_number": "ASCI 2231", "title": "Swine and Poultry Management", "units": 3, "prerequisites": [], "quarter_equivalents": ["ASCI 231"], "is_placeholder": False},
                 "AGS_EMP_SRS2": {"course_number": "ASCI 2232", "title": "Small Ruminant and Rangeland Management", "units": 3, "prerequisites": [], "quarter_equivalents": ["ASCI 232"], "is_placeholder": False},
@@ -1795,10 +1811,10 @@ CONCENTRATIONS: dict[str, list[dict]] = {
             "id": "plant_crop_soil",
             "label": "Plant, Crop, and Soil Science",
             "slot_overrides": {
-                "AGS_EMP_JRF1": {"course_number": "PLSC 1132", "title": "Introduction to Fruit Crop Production", "units": 3, "prerequisites": [], "quarter_equivalents": ["PLSC 132"], "is_placeholder": False},
-                "AGS_EMP_JRS1": {"course_number": "PLSC 1150", "title": "California Row Crop Production", "units": 3, "prerequisites": [], "quarter_equivalents": ["PLSC 150"], "is_placeholder": False},
-                "AGS_EMP_SRF1": {"course_number": "PLSC 3321", "title": "Weed Biology and Management", "units": 3, "prerequisites": [], "quarter_equivalents": ["PLSC 321"], "is_placeholder": False},
-                "AGS_EMP_SRF2": {"course_number": "PLSC 3360", "title": "Advanced Fruit Crop Production", "units": 3, "prerequisites": [], "quarter_equivalents": ["PLSC 360"], "is_placeholder": False},
+                "AGS_EMP_JRF1": {"course_number": "PLSC 1132", "title": "Introduction to Fruit Crop Production", "units": 4, "prerequisites": [], "quarter_equivalents": ["PLSC 132"], "is_placeholder": False},
+                "AGS_EMP_JRS1": {"course_number": "PLSC 1150", "title": "California Row Crop Production", "units": 4, "prerequisites": [], "quarter_equivalents": ["PLSC 150"], "is_placeholder": False},
+                "AGS_EMP_SRF1": {"course_number": "PLSC 3321", "title": "Weed Biology and Management", "units": 4, "prerequisites": [], "quarter_equivalents": ["PLSC 321"], "is_placeholder": False},
+                "AGS_EMP_SRF2": {"course_number": "PLSC 3360", "title": "Advanced Fruit Crop Production", "units": 4, "prerequisites": [], "quarter_equivalents": ["PLSC 360"], "is_placeholder": False},
                 "AGS_EMP_SRS1": {"course_number": "PLSC 4421", "title": "Postharvest Technology", "units": 3, "prerequisites": [], "quarter_equivalents": ["PLSC 421"], "is_placeholder": False},
                 "AGS_EMP_SRS2": {"course_number": "PLSC 4441", "title": "Biological Control for Pest Management", "units": 3, "prerequisites": [], "quarter_equivalents": ["PLSC 441"], "is_placeholder": False},
             },
@@ -1808,9 +1824,9 @@ CONCENTRATIONS: dict[str, list[dict]] = {
             "label": "Forestry and Natural Resources",
             "slot_overrides": {
                 "AGS_EMP_JRF1": {"course_number": "BIO 2217", "title": "Wildlife Conservation Biology", "units": 3, "prerequisites": [], "quarter_equivalents": ["BIO 227"], "is_placeholder": False},
-                "AGS_EMP_JRS1": {"course_number": "NR 1142", "title": "Environmental Management", "units": 3, "prerequisites": [], "quarter_equivalents": ["NR 142"], "is_placeholder": False},
+                "AGS_EMP_JRS1": {"course_number": "NR 1142", "title": "Environmental Management", "units": 4, "prerequisites": [], "quarter_equivalents": ["NR 142"], "is_placeholder": False},
                 "AGS_EMP_SRF1": {"course_number": "NR 2208", "title": "Dendrology", "units": 3, "prerequisites": [], "quarter_equivalents": ["NR 208"], "is_placeholder": False},
-                "AGS_EMP_SRF2": {"course_number": "NR 3306", "title": "Natural Resource Ecology and Habitat Management", "units": 3, "prerequisites": [], "quarter_equivalents": ["NR 306"], "is_placeholder": False},
+                "AGS_EMP_SRF2": {"course_number": "NR 3306", "title": "Natural Resource Ecology and Habitat Management", "units": 4, "prerequisites": [], "quarter_equivalents": ["NR 306"], "is_placeholder": False},
                 "AGS_EMP_SRS1": {"course_number": "NR 3312", "title": "Technology of Wildland Fire Management", "units": 3, "prerequisites": [], "quarter_equivalents": ["NR 312"], "is_placeholder": False},
                 "AGS_EMP_SRS2": {"course_number": "NR 3321", "title": "Water Resources Technology and Society", "units": 3, "prerequisites": [], "quarter_equivalents": ["NR 321"], "is_placeholder": False},
             },
@@ -1819,7 +1835,7 @@ CONCENTRATIONS: dict[str, list[dict]] = {
             "id": "ornamental_horticulture",
             "label": "Ornamental Horticulture",
             "slot_overrides": {
-                "AGS_EMP_JRF1": {"course_number": "BOT 1121", "title": "General Botany", "units": 3, "prerequisites": [], "quarter_equivalents": ["BOT 121"], "is_placeholder": False},
+                "AGS_EMP_JRF1": {"course_number": "BOT 1121", "title": "General Botany", "units": 4, "prerequisites": [], "quarter_equivalents": ["BOT 121"], "is_placeholder": False},
                 "AGS_EMP_JRS1": {"course_number": "PLSC 1123", "title": "Introduction to Sustainable Site Horticulture", "units": 3, "prerequisites": [], "quarter_equivalents": ["PLSC 123"], "is_placeholder": False},
                 "AGS_EMP_SRF1": {"course_number": "PLSC 1124", "title": "Plant Propagation", "units": 3, "prerequisites": [], "quarter_equivalents": ["PLSC 124"], "is_placeholder": False},
                 "AGS_EMP_SRF2": {"course_number": "PLSC 2225", "title": "Floral Design", "units": 3, "prerequisites": [], "quarter_equivalents": ["PLSC 225"], "is_placeholder": False},
@@ -1838,33 +1854,33 @@ CONCENTRATIONS: dict[str, list[dict]] = {
             "id": "environmental_sustainability",
             "label": "Environmental Studies and Sustainability",
             "slot_overrides": {
-                "ANTGEOG_CON_JRS1": {"course_number": "GEOG/ERSC 3325/4414/4415", "title": "Earth Systems or Climate Change Course", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
-                "ANTGEOG_CON_JRS2": {"course_number": "GEOG 4435", "title": "Environmental Planning", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False},
-                "ANTGEOG_CON_SRF1": {"course_number": "GEOG 3328/4441", "title": "Remote Sensing or Geospatial Technologies", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
-                "ANTGEOG_CON_SRF2": {"course_number": "Environmental Elective", "title": "Environmental Problems, Issues, and Methods Elective", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
-                "ANTGEOG_CON_SRS1": {"course_number": "Environmental Elective 2", "title": "Environmental Problems, Issues, and Methods Elective", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+                "ANTGEOG_CON_JRS1": {"course_number": "ERSC 3325 / ERSC 4414 / GEOG 4414 / ERSC 4415 / GEOG 4415", "title": "Earth Systems or Climate Change Course", "units": 3, "prerequisites": [], "quarter_equivalents": ["ERSC 325", "GEOG 325", "ERSC 414", "GEOG 414", "ERSC 415", "GEOG 415", "ERSC 3325", "ERSC 4414", "GEOG 4414", "ERSC 4415", "GEOG 4415"], "elective_key": "antgeog_env_climate", "is_placeholder": True},
+                "ANTGEOG_CON_JRS2": {"course_number": "GEOG 4435", "title": "Biodiversity and Biogeography Methods", "units": 3, "prerequisites": [], "quarter_equivalents": ["GEOG 435"], "is_placeholder": False},
+                "ANTGEOG_CON_SRF1": {"course_number": "GEOG 3328 / GEOG 4441", "title": "Remote Sensing or Geospatial Technologies", "units": 3, "prerequisites": [], "quarter_equivalents": ["GEOG 328", "GEOG 441", "GEOG 3328", "GEOG 4441"], "elective_key": "antgeog_env_geospatial", "is_placeholder": True},
+                "ANTGEOG_CON_SRF2": {"course_number": "Environmental Elective", "title": "Environmental Problems, Issues, and Methods Elective", "units": 4, "prerequisites": [], "quarter_equivalents": [], "elective_key": "antgeog_environmental_problems", "is_placeholder": True},
+                "ANTGEOG_CON_SRS1": {"course_number": "Environmental Elective 2", "title": "Environmental Problems, Issues, and Methods Elective", "units": 3, "prerequisites": [], "quarter_equivalents": [], "elective_key": "antgeog_environmental_problems", "is_placeholder": True},
             },
         },
         {
             "id": "global_studies",
             "label": "Global Studies and International Development",
             "slot_overrides": {
-                "ANTGEOG_CON_JRS1": {"course_number": "GEOG 4408", "title": "Global Geography", "units": 3, "prerequisites": [], "quarter_equivalents": ["GEOG 408"], "is_placeholder": False},
-                "ANTGEOG_CON_JRS2": {"course_number": "Regional Course", "title": "Regional Geography or Anthropology Course", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
-                "ANTGEOG_CON_SRF1": {"course_number": "ANT 4401", "title": "Globalization and Cultural Change", "units": 4, "prerequisites": [], "quarter_equivalents": ["ANT 401"], "is_placeholder": False},
-                "ANTGEOG_CON_SRF2": {"course_number": "Global Studies Elective", "title": "Global Problems, Issues, and Methods Elective", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
-                "ANTGEOG_CON_SRS1": {"course_number": "Global Studies Elective 2", "title": "Global Problems, Issues, and Methods Elective", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+                "ANTGEOG_CON_JRS1": {"course_number": "GEOG 4408", "title": "Geography of International Development", "units": 3, "prerequisites": [], "quarter_equivalents": ["GEOG 408"], "is_placeholder": False},
+                "ANTGEOG_CON_JRS2": {"course_number": "Global Studies Elective", "title": "Global Problems, Issues, and Methods Elective", "units": 3, "prerequisites": [], "quarter_equivalents": [], "elective_key": "antgeog_global_problems", "is_placeholder": True},
+                "ANTGEOG_CON_SRF1": {"course_number": "ANT 4401", "title": "Culture and Health", "units": 4, "prerequisites": [], "quarter_equivalents": ["ANT 401"], "is_placeholder": False},
+                "ANTGEOG_CON_SRF2": {"course_number": "Global Studies Elective 2", "title": "Global Problems, Issues, and Methods Elective", "units": 3, "prerequisites": [], "quarter_equivalents": [], "elective_key": "antgeog_global_problems", "is_placeholder": True},
+                "ANTGEOG_CON_SRS1": {"course_number": "Global Studies Elective 3", "title": "Global Problems, Issues, and Methods Elective", "units": 3, "prerequisites": [], "quarter_equivalents": [], "elective_key": "antgeog_global_problems", "is_placeholder": True},
             },
         },
         {
             "id": "human_ecology",
             "label": "Human Ecology",
             "slot_overrides": {
-                "ANTGEOG_CON_JRS1": {"course_number": "ANT 3309/3320", "title": "Prehistoric Health and Disease or Human Behavioral Ecology", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
-                "ANTGEOG_CON_JRS2": {"course_number": "ANT 3345", "title": "Human Behavioral Ecology", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False},
-                "ANTGEOG_CON_SRF1": {"course_number": "ANT 4401", "title": "Globalization and Cultural Change", "units": 4, "prerequisites": [], "quarter_equivalents": ["ANT 401"], "is_placeholder": False},
-                "ANTGEOG_CON_SRF2": {"course_number": "GEOG/ERSC 3325 or GEOG 4408", "title": "Earth Systems or Global Geography", "units": 3, "prerequisites": [], "quarter_equivalents": ["GEOG 408"], "is_placeholder": True},
-                "ANTGEOG_CON_SRS1": {"course_number": "Human Ecology Elective", "title": "Approved Human Ecology Elective", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+                "ANTGEOG_CON_JRS1": {"course_number": "ANT 3309 / ANT 3320", "title": "Elements of Archaeology or California's Indigenous Past", "units": 3, "prerequisites": [], "quarter_equivalents": ["ANT 309", "ANT 320", "ANT 3309", "ANT 3320"], "elective_key": "antgeog_human_ecology_foundation", "is_placeholder": True},
+                "ANTGEOG_CON_JRS2": {"course_number": "ANT 3345", "title": "Human Behavioral Ecology", "units": 3, "prerequisites": [], "quarter_equivalents": ["ANT 345"], "is_placeholder": False},
+                "ANTGEOG_CON_SRF1": {"course_number": "ANT 4401", "title": "Culture and Health", "units": 4, "prerequisites": [], "quarter_equivalents": ["ANT 401"], "is_placeholder": False},
+                "ANTGEOG_CON_SRF2": {"course_number": "ERSC 3325 / GEOG 3308", "title": "Climate and Humanity or Global Geography", "units": 3, "prerequisites": [], "quarter_equivalents": ["ERSC 325", "GEOG 325", "GEOG 308", "ERSC 3325", "GEOG 3308"], "elective_key": "antgeog_human_ecology_geog", "is_placeholder": True},
+                "ANTGEOG_CON_SRS1": {"course_number": "Human Ecology Elective", "title": "Approved Human Ecology Elective", "units": 3, "prerequisites": [], "quarter_equivalents": [], "elective_key": "antgeog_human_ecology_elective", "is_placeholder": True},
             },
         },
         {
@@ -1997,6 +2013,20 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "BIOC_CON_JRS": {"course_number": "CHEM 4480/4481", "title": "Polymer Synthesis and Characterization", "units": 5, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False},
                 "BIOC_CON_SRF": {"course_number": "CHEM 4482/4483", "title": "Coatings and Formulations", "units": 5, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False},
                 "BIOC_CON_SRS": {"course_number": "CHEM 4486", "title": "Surface Chemistry of Materials", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False},
+            },
+        },
+    ],
+    "CHEM": [
+        {"id": "none", "label": "No Concentration Declared", "slot_overrides": {}},
+        {
+            "id": "polymers_coatings",
+            "label": "Polymers and Coatings",
+            "slot_overrides": {
+                "CHEM_SUBDISC2": {"course_number": "CHEM 4486", "title": "Surface Chemistry of Materials",               "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+                "CHEM_ADV1":     {"course_number": "CHEM 4480", "title": "Polymer Synthesis and Characterization",       "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+                "CHEM_ADV2":     {"course_number": "CHEM 4481", "title": "Polymer Synthesis and Characterization Laboratory", "units": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+                "CHEM_ADV3":     {"course_number": "CHEM 4482", "title": "Coatings and Formulations",                    "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+                "CHEM_ADV4":     {"course_number": "CHEM 4483", "title": "Coatings and Formulations Laboratory",         "units": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
             },
         },
     ],

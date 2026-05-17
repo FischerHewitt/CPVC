@@ -67,45 +67,41 @@ export default function CourseCard({
         }}
         onClick={canOpenOptions ? onClick : undefined}
       >
-        {!canOpenOptions && (
-          <>
-            <label
-              className="absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded border bg-white/85 shadow-sm cursor-pointer"
-              title={checked ? "Mark incomplete" : "Mark completed"}
-              onClick={(e) => e.stopPropagation()}
-              onMouseDown={(e) => e.stopPropagation()}
-              draggable={false}
-            >
-              <input
-                type="checkbox"
-                checked={checked}
-                onChange={onToggleCompleted}
-                className="h-3 w-3 accent-green-700 cursor-pointer"
-                aria-label={checked ? `Mark ${course.course_number} incomplete` : `Mark ${course.course_number} completed`}
-              />
-            </label>
-            <label
-              className={`absolute right-1 top-1 flex h-4 min-w-5 items-center justify-center rounded border px-0.5 text-[8px] font-bold shadow-sm cursor-pointer transition-colors ${
-                inProgressChecked && !checked
-                  ? "bg-amber-500 border-amber-600 text-white"
-                  : "bg-white/85 border-gray-300 text-amber-700"
-              }`}
-              title={inProgressChecked ? "Remove in progress" : "Mark in progress"}
-              onClick={(e) => e.stopPropagation()}
-              onMouseDown={(e) => e.stopPropagation()}
-              draggable={false}
-            >
-              <input
-                type="checkbox"
-                checked={inProgressChecked && !checked}
-                onChange={onToggleInProgress}
-                className="sr-only"
-                aria-label={inProgressChecked ? `Remove ${course.course_number} from in progress` : `Mark ${course.course_number} in progress`}
-              />
-              IP
-            </label>
-          </>
-        )}
+        <label
+          className="absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded border bg-white/85 shadow-sm cursor-pointer"
+          title={checked ? "Mark incomplete" : "Mark completed"}
+          onClick={(e) => e.stopPropagation()}
+          onMouseDown={(e) => e.stopPropagation()}
+          draggable={false}
+        >
+          <input
+            type="checkbox"
+            checked={checked}
+            onChange={onToggleCompleted}
+            className="h-3 w-3 accent-green-700 cursor-pointer"
+            aria-label={checked ? `Mark ${course.course_number} incomplete` : `Mark ${course.course_number} completed`}
+          />
+        </label>
+        <label
+          className={`absolute right-1 top-1 flex h-4 min-w-5 items-center justify-center rounded border px-0.5 text-[8px] font-bold shadow-sm cursor-pointer transition-colors ${
+            inProgressChecked && !checked
+              ? "bg-amber-500 border-amber-600 text-white"
+              : "bg-white/85 border-gray-300 text-amber-700"
+          }`}
+          title={inProgressChecked ? "Remove in progress" : "Mark in progress"}
+          onClick={(e) => e.stopPropagation()}
+          onMouseDown={(e) => e.stopPropagation()}
+          draggable={false}
+        >
+          <input
+            type="checkbox"
+            checked={inProgressChecked && !checked}
+            onChange={onToggleInProgress}
+            className="sr-only"
+            aria-label={inProgressChecked ? `Remove ${course.course_number} from in progress` : `Mark ${course.course_number} in progress`}
+          />
+          IP
+        </label>
         <div className="flex justify-center mb-0.5 h-3">
           {(geCompleted || nonGECompleted)   && <span className="text-green-800 text-[10px] font-bold">✓</span>}
           {(geInProgress || nonGEInProgress) && <span className="text-amber-600 text-[10px] font-bold">IP</span>}

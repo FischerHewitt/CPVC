@@ -359,16 +359,17 @@ export default function FlowchartGrid({
             {flowchart.columns.map((col, i) => {
               const rec = recommendedUnitsPerCol[i] ?? 0;
               const cur = currentUnitsPerCol[i] ?? 0;
+              const over  = cur > rec;
+              const under = cur < rec;
               return (
                 <div key={i} className="text-center text-xs font-semibold rounded overflow-hidden"
                      style={{ background: "var(--cp-green-light)", color: "white" }}>
                   <div className="py-0.5">{col.term}</div>
-                  <div className="border-t border-white/20 px-1 py-0.5 text-[9px] font-normal leading-tight">
-                    <span className="opacity-70">rec </span>{rec}u
-                    {cur !== rec
-                      ? <span className="text-yellow-200"> · {cur}u</span>
-                      : <span className="opacity-50"> · {cur}u</span>
-                    }
+                  <div className="border-t border-white/20 px-1 py-1 flex flex-col items-center gap-0.5">
+                    <div className="text-[9px] font-normal opacity-70 leading-none">rec {rec}u</div>
+                    <div className={`text-[11px] font-bold leading-none ${over ? "text-yellow-300" : under ? "text-white/60" : "text-white"}`}>
+                      {cur}u
+                    </div>
                   </div>
                 </div>
               );
