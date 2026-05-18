@@ -84,7 +84,26 @@ Claude will follow this checklist:
     The Manual Course Checklist should display rows in this order: Major,
     Support, GE, then Concentration/free-elective items.
 
-11. Do not commit or push when done.
+11. **REQUIRED — log all ambiguities to `catalog_ambiguities.txt`** in the
+    repo root. Append a section for the new major using this format:
 
-12. Report any catalog ambiguities or elective buckets represented as
+    ```
+    --------------------------------------------------------------------------------
+    [CODE] — [MAJOR NAME]
+    --------------------------------------------------------------------------------
+    - [Description of ambiguity, e.g. slash-choice tile, unit range variance,
+      broad dynamic bucket, missing catalog info, assumed term placement, etc.]
+    - ...
+    ```
+
+    If the major has zero ambiguities, append:
+    ```
+    [CODE] — [MAJOR NAME]: no ambiguities.
+    ```
+
+    Do not overwrite existing entries. Always append.
+
+12. Do not commit or push when done.
+
+13. Report any catalog ambiguities or elective buckets represented as
     placeholders.
