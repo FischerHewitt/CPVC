@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { getCourseStatus, toNormalizedSet } from "./course-status";
+import { getCourseStatus, toNormalizedSet, expandSlashCourseNumber } from "./course-status";
 import type { Course, GEAreaMap } from "./types";
 
 function makeCourse(partial: Partial<Course> = {}): Course {
@@ -59,6 +59,20 @@ describe("getCourseStatus — regular course", () => {
     const lookup = new Map([["CSC 1024", prereq]]);
     expect(getCourseStatus(course, new Set(), new Set(), new Set(), new Set(), lookup, emptyGEMap)).toBe("locked");
   });
+
+  it("returns completed via quarter_equivalent that needs norm() (regression)", () => {
+    // completedNums is always uppercase-normalized; course_number and quarter_equivalents
+    // must also be norm()'d before lookup so mixed-case values still match.
+    const course = makeCourse({ course_number: "csc 1024", quarter_equivalents: ["csc 101"] });
+    const completed = toNormalizedSet(["CSC 101"]);
+    expect(getCourseStatus(course, completed, new Set(), new Set(), new Set(), emptyLookup, emptyGEMap)).toBe("completed");
+  });
+
+  it("returns in_progress via lowercase course_number (regression)", () => {
+    const course = makeCourse({ course_number: "math 1261" });
+    const inProgress = toNormalizedSet(["MATH 1261"]);
+    expect(getCourseStatus(course, new Set(), inProgress, new Set(), new Set(), emptyLookup, emptyGEMap)).toBe("in_progress");
+  });
 });
 
 // ── non-GE placeholder (the bug that was fixed) ───────────────────────────────
@@ -106,6 +120,73 @@ describe("getCourseStatus — non-GE placeholder with mixed-case course_number",
     });
     const completed = toNormalizedSet(["IME 141"]);
     expect(getCourseStatus(elective, completed, new Set(), new Set(), new Set(), emptyLookup, emptyGEMap)).toBe("completed");
+  });
+});
+
+// ── expandSlashCourseNumber ───────────────────────────────────────────────────
+
+describe("expandSlashCourseNumber", () => {
+  it("returns single-element array when no slash", () => {
+    expect(expandSlashCourseNumber("CSC 1024")).toEqual(["CSC 1024"]);
+  });
+
+  it("expands two-part slash course", () => {
+    expect(expandSlashCourseNumber("CHEM 2240/2242")).toEqual(["CHEM 2240", "CHEM 2242"]);
+  });
+
+  it("expands three-part slash course", () => {
+    expect(expandSlashCourseNumber("BIO 4461/4462/4463")).toEqual(["BIO 4461", "BIO 4462", "BIO 4463"]);
+  });
+
+  it("handles letter suffix variant", () => {
+    expect(expandSlashCourseNumber("PLSC 1120/1120L")).toEqual(["PLSC 1120", "PLSC 1120L"]);
+  });
+});
+
+// ── prereq_warning status ─────────────────────────────────────────────────────
+
+describe("getCourseStatus — prereq_warning", () => {
+  it("returns prereq_warning when sole unmet prereq is a slash-choice tile", () => {
+    const slashTile = makeCourse({ course_number: "CHEM 2240/2242" });
+    const course = makeCourse({ course_number: "CHEM 3000", prerequisites: ["CHEM 2240/2242"] });
+    const lookup = new Map([
+      ["CHEM 2240/2242", slashTile],
+      ["CHEM 2240", slashTile],
+      ["CHEM 2242", slashTile],
+    ]);
+    expect(getCourseStatus(course, new Set(), new Set(), new Set(), new Set(), lookup, emptyGEMap)).toBe("prereq_warning");
+  });
+
+  it("returns incomplete when slash prereq is satisfied via a component number", () => {
+    const slashTile = makeCourse({ course_number: "CHEM 2240/2242" });
+    const course = makeCourse({ course_number: "CHEM 3000", prerequisites: ["CHEM 2240/2242"] });
+    const lookup = new Map([
+      ["CHEM 2240/2242", slashTile],
+      ["CHEM 2240", slashTile],
+      ["CHEM 2242", slashTile],
+    ]);
+    const known = toNormalizedSet(["CHEM 2240"]);
+    expect(getCourseStatus(course, known, new Set(), new Set(), known, lookup, emptyGEMap)).toBe("incomplete");
+  });
+
+  it("returns locked (not warning) when unmet prereq is a regular course", () => {
+    const prereq = makeCourse({ course_number: "CSC 1024" });
+    const course = makeCourse({ course_number: "CSC 2000", prerequisites: ["CSC 1024"] });
+    const lookup = new Map([["CSC 1024", prereq]]);
+    expect(getCourseStatus(course, new Set(), new Set(), new Set(), new Set(), lookup, emptyGEMap)).toBe("locked");
+  });
+
+  it("returns locked when one prereq is a slash tile and another is a definite lock", () => {
+    const slashTile = makeCourse({ course_number: "CHEM 2240/2242" });
+    const solidPrereq = makeCourse({ course_number: "CSC 1024" });
+    const course = makeCourse({ course_number: "CSC 3000", prerequisites: ["CHEM 2240/2242", "CSC 1024"] });
+    const lookup = new Map([
+      ["CHEM 2240/2242", slashTile],
+      ["CHEM 2240", slashTile],
+      ["CHEM 2242", slashTile],
+      ["CSC 1024", solidPrereq],
+    ]);
+    expect(getCourseStatus(course, new Set(), new Set(), new Set(), new Set(), lookup, emptyGEMap)).toBe("locked");
   });
 });
 

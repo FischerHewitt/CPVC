@@ -1,0 +1,160 @@
+Catalog Ambiguities & Known Limitations
+========================================
+Generated: 2026-05-18
+
+--------------------------------------------------------------------------------
+1. UNIT RANGE DISCREPANCIES
+--------------------------------------------------------------------------------
+These slots model a fixed unit count but the catalog allows two options with
+different units. The flowchart total may be slightly off depending on which
+course a student takes.
+
+  WVIT | Math slot
+    Options: MATH 1261 (4u) vs MATH 1267 (3u)
+    Issue: Modeled as 3u; a student taking Calc I would have 1 extra unit.
+
+  KINE | Math slot
+    Options: MATH 1007 (3u) vs MATH 1261 (4u)
+    Issue: Same as WVIT — 1-unit variance depending on path.
+
+  EIM | Math slot
+    Options: MATH 1004 / MATH 1007
+    Issue: Unit range 3–5u depending on placement; modeled at 3u.
+
+--------------------------------------------------------------------------------
+2. FSN CULINOLOGY — CONFIRMED UNIT GAP
+--------------------------------------------------------------------------------
+The Culinology concentration lists FSN 3323 (Culinary Internship, 1u) in the
+catalog but it doesn't fit cleanly into the 8-semester grid without pushing the
+track to 121u. The concentration was modeled at 120u and this course is absent.
+This is the only major with an unresolved catalog-to-flowchart unit mismatch.
+
+--------------------------------------------------------------------------------
+3. SLASH-CHOICE COURSES (Pick One of Two)
+--------------------------------------------------------------------------------
+Tiles with a slash course_number (e.g., "CHEM 2240/2242") mean:
+  - Other tiles cannot list them as prerequisites by exact course_number.
+  - Affected downstream tiles have their prerequisites cleared to [].
+  - The prerequisite chain is broken at that point in the flowchart.
+
+  MCRO:
+    - CHEM 2240/2242 (Organic Chem)
+    - CHEM 3350/3352 (Biochemistry)
+    - BIO 4461/4462/4463 (Senior Project)
+    - BIO 1151/1153 (Intro Bio II)
+
+  PLSC:
+    - PLSC 1120/1120L (Principles of Plant Sciences with Lab)
+      -> PLSC 3321 lost its prereq link to this tile
+
+  CPE:
+    - MATH 1151/2341
+    - EE 3306/2328
+    - STAT 3210/3310
+    - WGQS 3350/3351
+
+  ME:
+    - IME 1141/1142/1149
+
+  AERO:
+    - IME 1143/1140
+
+  Others: PSY, ENGL, AD, POLS (various or-choice support courses)
+
+--------------------------------------------------------------------------------
+4. DYNAMIC ELECTIVE BUCKETS (BROAD APPROXIMATIONS)
+--------------------------------------------------------------------------------
+These _DYNAMIC elective pickers filter by dept + level range but do not
+represent the exact approved course list from the catalog. Students should
+verify with their advisor.
+
+  hist_ud_elective       | All HIST 3000–4999
+    Risk: Catalog may restrict to specific sub-areas; level filter over-includes.
+
+  hist_global_elective   | All HIST 3000–4999
+    Risk: Should exclude US-focused courses; no way to filter by topic.
+
+  hist_ld_elective       | All HIST 2000–2999
+    Risk: Catalog restricts to a specific subset of lower-div HIST options.
+
+  coms_upper_div_elective| All COMS 3000–4999
+    Risk: May over-include courses not approved for the requirement.
+
+  pols_upper_div_elective| All POLS 3000–4000
+    Risk: Catalog narrows to specific distribution areas within POLS.
+
+  psy_social_personality / psy_mental_health / psy_cognitive
+                         | All PSY 3000–4999
+    Risk: Topic-area filters can't be enforced by level alone.
+
+  phys_tech_elective     | PHYS/ASTR 3000–4999
+    Risk: Actual catalog-approved list is only ~8 specific courses.
+
+  plsc_concentration_elective | PLSC/SS/BOT 1000–4999
+    Risk: Very broad; used as fallback when no concentration is selected.
+
+  agb_cafes_prefix_elective   | 11 CAFES dept prefixes, any level
+    Risk: Extremely broad; catalog has a specific approved list.
+
+--------------------------------------------------------------------------------
+5. HIST — LANGUAGE AND UPPER-DIVISION SUPPORT REQUIREMENTS
+--------------------------------------------------------------------------------
+  HIST_LANG: "World Language Requirement"
+    The catalog requires demonstrating proficiency in a foreign language but
+    doesn't prescribe specific courses. Modeled as a 1-tile placeholder with
+    no elective_key — the checklist shows no course options for this slot.
+
+  HIST_GEUD4: "Non-History Social Science Upper Division"
+    Catalog requires 3u UD Social Science from a non-HIST department. Modeled
+    as a support-category placeholder with no elective_key; any qualifying UD
+    social science course counts.
+
+--------------------------------------------------------------------------------
+6. MCRO — SENIOR PROJECT SLOT
+--------------------------------------------------------------------------------
+BIO 4461/4462/4463 (Senior Project) is a slash-choice among three options.
+The elective picker (mcro_senior_project) lists all three as static options,
+but students typically enroll in all three sequentially (1u + 1u + 2u), not
+just one. The flowchart models this as a single 2u tile, which may undercount
+the actual senior project commitment by 2 units.
+
+--------------------------------------------------------------------------------
+7. PLSC — CONCENTRATION ELECTIVE UNIT MISMATCH WITHIN SLOTS
+--------------------------------------------------------------------------------
+CON10 is 4u while CON1–9, CON11, CON12 are all 3u. The concentration-specific
+pickers (plsc_fruit_crop_elective, plsc_environ_hort_elective,
+plsc_plant_protection_elective) list courses of mixed units (3u and 4u). The
+picker does not enforce which unit-size course goes into the 4u slot — a
+student could put a 3u course into CON10 or a 4u course into a 3u slot.
+
+--------------------------------------------------------------------------------
+8. ECON — PROJECT LAB PAIRING
+--------------------------------------------------------------------------------
+Many upper-division ECON electives come as a lecture+lab pair (e.g.,
+ECON 3001 + ECON 3001L). The flowchart models these as a combined unit count,
+but the _DYNAMIC picker only surfaces the lecture course. Students may not
+realize they need to also register for the paired lab section.
+
+--------------------------------------------------------------------------------
+9. FREE / UNRESTRICTED ELECTIVE SLOTS (NO CATALOG BACKING)
+--------------------------------------------------------------------------------
+These placeholders have is_placeholder=True but no elective_key. The checklist
+shows them as empty slots with no course options. This is by design for
+unrestricted slots, but it means the checklist cannot help students discover
+what courses qualify.
+
+  POLS  : 6 free elective slots (POLS_FREE1–6)
+  PSY   : 8 free elective slots
+  ENGL  : 3 free elective slots
+  HIST  : Language requirement slot (HIST_LANG)
+  CS/SE/CPE/CE/ME/EE: Various "External Elective" and concentration slots
+
+--------------------------------------------------------------------------------
+SUMMARY: MOST ACTIONABLE ISSUES
+--------------------------------------------------------------------------------
+1. FSN Culinology unit gap (1u unresolved) — only confirmed unit mismatch
+2. HIST global/UD elective pickers over-include (topic filtering not possible)
+3. Slash-choice prereq breaks — structural limitation affecting all majors
+   with paired lecture/lab or or-choice requirements
+4. MCRO senior project undercounts total project units by ~2u
+5. PLSC CON10 unit enforcement — picker doesn't constrain 3u vs 4u placement

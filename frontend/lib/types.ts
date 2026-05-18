@@ -1,5 +1,5 @@
 export type Category = "major" | "support" | "concentration" | "ge";
-export type CourseStatus = "completed" | "inferred" | "in_progress" | "incomplete" | "locked";
+export type CourseStatus = "completed" | "inferred" | "in_progress" | "incomplete" | "locked" | "prereq_warning";
 
 export interface Course {
   id: string;

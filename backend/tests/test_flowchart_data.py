@@ -3567,3 +3567,97 @@ def test_microbiology_flowchart():
 
     # No concentrations for MCRO
     assert "MCRO" not in CONCENTRATIONS
+
+
+def test_plant_sciences_flowchart():
+    assert "PLSC" in FLOWCHARTS
+    fc = FLOWCHARTS["PLSC"]
+    courses = fc["courses"]
+    by_id = {c["id"]: c for c in courses}
+
+    # Total units = 120
+    total = sum(c["units"] for c in courses)
+    assert total == 120, f"Expected 120 units, got {total}"
+
+    # Column unit checks
+    col_units = {}
+    for c in courses:
+        col_units[c["grid_col"]] = col_units.get(c["grid_col"], 0) + c["units"]
+    assert col_units[0] == 14, f"FF should be 14u, got {col_units[0]}"
+    assert col_units[1] == 13, f"FS should be 13u, got {col_units[1]}"
+    assert col_units[2] == 16, f"SoF should be 16u, got {col_units[2]}"
+    assert col_units[3] == 17, f"SoS should be 17u, got {col_units[3]}"
+    assert col_units[4] == 12, f"JF should be 12u, got {col_units[4]}"
+    assert col_units[5] == 15, f"JS should be 15u, got {col_units[5]}"
+    assert col_units[6] == 16, f"SeF should be 16u, got {col_units[6]}"
+    assert col_units[7] == 17, f"SeS should be 17u, got {col_units[7]}"
+
+    # Key course titles
+    assert by_id["PLSC_1101"]["title"] == "Orientation to Plant Sciences"
+    assert by_id["PLSC_3321"]["title"] == "Weed Biology and Management"
+    assert by_id["PLSC_3313"]["title"] == "Agricultural Entomology"
+    assert by_id["PLSC_3323"]["title"] == "Plant Pathology"
+    assert by_id["PLSC_4410"]["title"] == "Crop Physiology"
+
+    # Categories
+    assert by_id["PLSC_1101"]["category"] == "major"
+    assert by_id["PLSC_BOT1121"]["category"] == "support"
+    assert by_id["PLSC_MATH1006"]["category"] == "support"
+    assert by_id["PLSC_SS1120"]["category"] == "support"
+    assert by_id["PLSC_BRAE3340"]["category"] == "support"
+    assert by_id["PLSC_GE1A"]["category"] == "ge"
+
+    # Prerequisites
+    assert by_id["PLSC_3321"]["prerequisites"] == []  # slash tile PLSC 1120/1120L can't be referenced by exact number
+    assert "SS 1120" in by_id["PLSC_SS2221"]["prerequisites"]
+    assert "PLSC 3321" in by_id["PLSC_3351"]["prerequisites"]
+    assert "PLSC 3351" in by_id["PLSC_4461"]["prerequisites"]
+    assert "PLSC 4461" in by_id["PLSC_4462"]["prerequisites"]
+
+    # GE placeholders
+    for gid in ["PLSC_GE1A", "PLSC_GE1B", "PLSC_GE1C", "PLSC_GE3A",
+                "PLSC_GE3B", "PLSC_GE4A", "PLSC_GE4B", "PLSC_GE6",
+                "PLSC_GEUD3", "PLSC_GEUD4"]:
+        assert by_id[gid]["is_placeholder"] is True
+        assert by_id[gid]["category"] == "ge"
+
+    # All 12 concentration slots have the base elective key
+    for i in range(1, 13):
+        slot = by_id[f"PLSC_CON{i}"]
+        assert slot["category"] == "concentration"
+        assert slot["is_placeholder"] is True
+        assert slot["elective_key"] == "plsc_concentration_elective"
+
+    # CON10 is 4u, others are 3u
+    assert by_id["PLSC_CON10"]["units"] == 4
+    for i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12]:
+        assert by_id[f"PLSC_CON{i}"]["units"] == 3
+
+    # Concentrations exist
+    assert "PLSC" in CONCENTRATIONS
+    tracks = [t["id"] for t in CONCENTRATIONS["PLSC"]]
+    assert "none" in tracks
+    assert "fruit_crop_science" in tracks
+    assert "environ_horticultural_science" in tracks
+    assert "plant_protection_science" in tracks
+
+
+def test_plsc_concentration_overrides():
+    plsc_concs = CONCENTRATIONS["PLSC"]
+    by_id_map = {t["id"]: t for t in plsc_concs}
+
+    # Fruit and Crop overrides all 12 CON slots
+    fruit = by_id_map["fruit_crop_science"]
+    assert fruit["slot_overrides"]["PLSC_CON1"]["elective_key"] == "plsc_fruit_crop_elective"
+    assert fruit["slot_overrides"]["PLSC_CON10"]["elective_key"] == "plsc_fruit_crop_elective"
+    assert fruit["slot_overrides"]["PLSC_CON12"]["elective_key"] == "plsc_fruit_crop_elective"
+
+    # Environmental Horticultural overrides all 12 CON slots
+    env = by_id_map["environ_horticultural_science"]
+    assert env["slot_overrides"]["PLSC_CON1"]["elective_key"] == "plsc_environ_hort_elective"
+    assert env["slot_overrides"]["PLSC_CON10"]["elective_key"] == "plsc_environ_hort_elective"
+
+    # Plant Protection overrides all 12 CON slots
+    pp = by_id_map["plant_protection_science"]
+    assert pp["slot_overrides"]["PLSC_CON1"]["elective_key"] == "plsc_plant_protection_elective"
+    assert pp["slot_overrides"]["PLSC_CON12"]["elective_key"] == "plsc_plant_protection_elective"

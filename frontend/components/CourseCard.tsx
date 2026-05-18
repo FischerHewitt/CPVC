@@ -39,9 +39,10 @@ export default function CourseCard({
   const isClickable = !course.is_placeholder || hasElectiveOptions || (course.is_placeholder && !isFreeElective);
 
   const opacity =
-    status === "completed" ? 0.55 :
-    status === "inferred"  ? 0.65 :
-    status === "locked"    ? 0.75 :
+    status === "completed"      ? 0.55 :
+    status === "inferred"       ? 0.65 :
+    status === "locked"         ? 0.75 :
+    status === "prereq_warning" ? 0.90 :
     1.0;
 
   const grayscale = status === "locked" ? "grayscale(30%)" : "none";
@@ -105,7 +106,8 @@ export default function CourseCard({
         <div className="flex justify-center mb-0.5 h-3">
           {(geCompleted || nonGECompleted)   && <span className="text-green-800 text-[10px] font-bold">✓</span>}
           {(geInProgress || nonGEInProgress) && <span className="text-amber-600 text-[10px] font-bold">IP</span>}
-          {geLocked && <span className="text-[10px]">🔒</span>}
+          {geLocked                          && <span className="text-[10px]">🔒</span>}
+          {status === "prereq_warning"       && <span className="text-amber-500 text-[10px]">⚠️</span>}
         </div>
         <div className={isGE ? "font-semibold not-italic" : ""}>{course.title}</div>
         {canOpenOptions && (status === "completed" || status === "in_progress") && activeCourseNumber && (
@@ -189,16 +191,20 @@ export default function CourseCard({
 
         {/* Status badge */}
         <div className="flex justify-center mb-0.5 h-3">
-          {status === "completed"   && <span className="text-green-800 text-[10px] font-bold">✓</span>}
-          {status === "inferred"    && <span className="text-green-700 text-[10px] font-semibold">~✓</span>}
-          {status === "in_progress" && <span className="text-amber-600 text-[10px] font-bold">IP</span>}
-          {status === "locked"      && <span className="text-gray-500 text-[10px]">🔒</span>}
+          {status === "completed"      && <span className="text-green-800 text-[10px] font-bold">✓</span>}
+          {status === "inferred"       && <span className="text-green-700 text-[10px] font-semibold">~✓</span>}
+          {status === "in_progress"    && <span className="text-amber-600 text-[10px] font-bold">IP</span>}
+          {status === "locked"         && <span className="text-gray-500 text-[10px]">🔒</span>}
+          {status === "prereq_warning" && <span className="text-amber-500 text-[10px]">⚠️</span>}
         </div>
 
         <div className="text-[11px] font-bold leading-tight">{course.title}</div>
         <div className="text-[10px] mt-0.5 font-medium opacity-75">
           {course.course_number} ({course.units})
         </div>
+        {status === "prereq_warning" && (
+          <div className="text-[9px] mt-0.5 text-amber-600 font-medium">check prereqs</div>
+        )}
 
       </div>
     </div>

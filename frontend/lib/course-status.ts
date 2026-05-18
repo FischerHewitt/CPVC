@@ -16,6 +16,20 @@ export function isFreeElective(course: Course): boolean {
   return course.title.toLowerCase().includes("free elective") || course.course_number.toLowerCase().startsWith("free");
 }
 
+// Expands "CHEM 2240/2242" → ["CHEM 2240", "CHEM 2242"], "BIO 4461/4462/4463" → ["BIO 4461", "BIO 4462", "BIO 4463"]
+export function expandSlashCourseNumber(courseNumber: string): string[] {
+  if (!courseNumber.includes("/")) return [courseNumber];
+  const parts = courseNumber.split("/");
+  const first = parts[0].trim();
+  const deptMatch = first.match(/^([A-Z]+)\s+/);
+  const dept = deptMatch ? deptMatch[1] : null;
+  return parts.map((p, i) => {
+    p = p.trim();
+    if (i === 0 || !dept) return p;
+    return p.includes(" ") ? p : `${dept} ${p}`;
+  });
+}
+
 export function getCourseStatus(
   course: Course,
   completedNums: Set<string>,
@@ -53,16 +67,27 @@ export function getCourseStatus(
   }
 
   const allNums = [course.course_number, ...course.quarter_equivalents];
-  if (allNums.some((n) => completedNums.has(n))) return "completed";
-  if (allNums.some((n) => inferredNums.has(n)))  return "inferred";
-  if (allNums.some((n) => inProgressNums.has(n))) return "in_progress";
+  if (allNums.some((n) => completedNums.has(norm(n)))) return "completed";
+  if (allNums.some((n) => inferredNums.has(norm(n))))  return "inferred";
+  if (allNums.some((n) => inProgressNums.has(norm(n)))) return "in_progress";
 
-  const prereqsMet = course.prerequisites.every((prereqNum) => {
+  let anyUnmet = false;
+  let allUnmetAreSlash = true;
+  for (const prereqNum of course.prerequisites) {
     const prereq = courseLookup.get(norm(prereqNum));
-    if (!prereq) return true;
-    const prereqNums = [prereq.course_number, ...prereq.quarter_equivalents];
-    return hasAnyCourseNumber(knownNums, prereqNums);
-  });
+    if (!prereq) continue;
+    const prereqNums = [
+      prereq.course_number,
+      ...prereq.quarter_equivalents,
+      ...expandSlashCourseNumber(prereq.course_number),
+    ];
+    if (!hasAnyCourseNumber(knownNums, prereqNums)) {
+      anyUnmet = true;
+      if (!prereq.course_number.includes("/")) allUnmetAreSlash = false;
+    }
+  }
 
-  return prereqsMet ? "incomplete" : "locked";
+  if (!anyUnmet) return "incomplete";
+  if (allUnmetAreSlash) return "prereq_warning";
+  return "locked";
 }

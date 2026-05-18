@@ -322,17 +322,33 @@ export default function FlowchartPage() {
     planGECourse(placeholder.course_number, courseNumber, units);
   };
 
+  // When a non-GE elective placeholder has a specific course elected (e.g. "MATH 2341"
+  // for the "MATH 1151/2341" slot), both the placeholder AND the elected course were
+  // added to completed by toggleElectiveCourse. The quick-toggle needs to remove both
+  // on uncheck, while leaving the planned selection (plannedGECourses) intact.
+  const expandWithElectedCourse = (baseCourseNums: Set<string>, course: Course): Set<string> => {
+    if (!course.is_placeholder || course.category === "ge") return baseCourseNums;
+    const electedNum = (session.plannedGECourses ?? {})[course.course_number];
+    if (!electedNum) return baseCourseNums;
+    const expanded = new Set(baseCourseNums);
+    for (const candidate of courseNumberCandidateSet(electedNum)) expanded.add(candidate);
+    return expanded;
+  };
+
   const toggleCourseCompleted = (course: Course) => {
-    const allCourseNums = course.is_placeholder && course.category === "ge"
+    const baseCourseNums = course.is_placeholder && course.category === "ge"
       ? geAreaCandidateSet(course)
       : courseCandidateSet(course);
-    const isCompleted = session.completed.some((courseNum) => allCourseNums.has(normalizeCourseNumber(courseNum)));
+    const isCompleted = session.completed.some((courseNum) => baseCourseNums.has(normalizeCourseNumber(courseNum)));
+    // On uncheck: expand the remove set to include the elected course so it is fully cleared.
+    // On check: use only the base set so we don't accidentally treat a transcript course as "completed".
+    const removeNums = isCompleted ? expandWithElectedCourse(baseCourseNums, course) : baseCourseNums;
     const completed = isCompleted
-      ? session.completed.filter((courseNum) => !allCourseNums.has(normalizeCourseNumber(courseNum)))
-      : [...session.completed.filter((courseNum) => !allCourseNums.has(normalizeCourseNumber(courseNum))), course.course_number];
+      ? session.completed.filter((courseNum) => !removeNums.has(normalizeCourseNumber(courseNum)))
+      : [...session.completed.filter((courseNum) => !removeNums.has(normalizeCourseNumber(courseNum))), course.course_number];
     const inProgress = isCompleted
       ? session.inProgress
-      : session.inProgress.filter((courseNum) => !allCourseNums.has(normalizeCourseNumber(courseNum)));
+      : session.inProgress.filter((courseNum) => !removeNums.has(normalizeCourseNumber(courseNum)));
 
     const nextSession = { ...session, completed, inProgress };
     setSession(nextSession);
@@ -345,19 +361,20 @@ export default function FlowchartPage() {
   };
 
   const toggleCourseInProgress = (course: Course) => {
-    const allCourseNums = course.is_placeholder && course.category === "ge"
+    const baseCourseNums = course.is_placeholder && course.category === "ge"
       ? geAreaCandidateSet(course)
       : courseCandidateSet(course);
-    const isInProgress = session.inProgress.some((courseNum) => allCourseNums.has(normalizeCourseNumber(courseNum)));
+    const isInProgress = session.inProgress.some((courseNum) => baseCourseNums.has(normalizeCourseNumber(courseNum)));
+    const removeNums = isInProgress ? expandWithElectedCourse(baseCourseNums, course) : baseCourseNums;
     const inProgress = isInProgress
-      ? session.inProgress.filter((courseNum) => !allCourseNums.has(normalizeCourseNumber(courseNum)))
+      ? session.inProgress.filter((courseNum) => !removeNums.has(normalizeCourseNumber(courseNum)))
       : [
-          ...session.inProgress.filter((courseNum) => !allCourseNums.has(normalizeCourseNumber(courseNum))),
+          ...session.inProgress.filter((courseNum) => !removeNums.has(normalizeCourseNumber(courseNum))),
           course.course_number,
         ];
     const completed = isInProgress
       ? session.completed
-      : session.completed.filter((courseNum) => !allCourseNums.has(normalizeCourseNumber(courseNum)));
+      : session.completed.filter((courseNum) => !removeNums.has(normalizeCourseNumber(courseNum)));
 
     const nextSession = { ...session, completed, inProgress };
     setSession(nextSession);

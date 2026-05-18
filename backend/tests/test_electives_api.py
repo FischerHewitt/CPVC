@@ -1281,3 +1281,34 @@ def test_elective_endpoint_returns_mcro_options():
     assert "BIO 4461" in sp
     assert "BIO 4462" in sp
     assert "BIO 4463" in sp
+
+
+def test_elective_endpoint_returns_plsc_options():
+    # Base concentration elective (dynamic)
+    r1 = client.get("/api/electives/plsc_concentration_elective")
+    assert r1.status_code == 200
+    assert len(r1.json()["courses"]) > 0
+
+    # Fruit and Crop Science static list
+    r2 = client.get("/api/electives/plsc_fruit_crop_elective")
+    assert r2.status_code == 200
+    fruit = [c["course_number"] for c in r2.json()["courses"]]
+    assert "PLSC 1132" in fruit
+    assert "PLSC 3360" in fruit
+    assert "PLSC 4420" in fruit
+
+    # Environmental Horticultural Science static list
+    r3 = client.get("/api/electives/plsc_environ_hort_elective")
+    assert r3.status_code == 200
+    env = [c["course_number"] for c in r3.json()["courses"]]
+    assert "PLSC 1123" in env
+    assert "PLSC 3332" in env
+    assert "PLSC 4427" in env
+
+    # Plant Protection Science static list
+    r4 = client.get("/api/electives/plsc_plant_protection_elective")
+    assert r4.status_code == 200
+    pp = [c["course_number"] for c in r4.json()["courses"]]
+    assert "PLSC 4406" in pp
+    assert "PLSC 4431" in pp
+    assert "PLSC 4441" in pp

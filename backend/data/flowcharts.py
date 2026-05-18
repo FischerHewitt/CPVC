@@ -2685,6 +2685,66 @@ COMS_FLOWCHART: list[Course] = [
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# PLANT SCIENCES — BS (120 units)
+# Source: catalog.calpoly.edu/agriculture-food-environmental-sciences/plant-sciences/plant-sciences-bs/
+# 3 concentrations: Fruit and Crop Science, Environmental Horticultural Science,
+# Plant Protection Science (each 37u of concentration electives in CON1-CON12 slots)
+# BOT 1121 satisfies GE 5B+5C; CHEM 1120 satisfies GE 5A; MATH 1006 satisfies GE 2;
+# BRAE 3340 satisfies GE UD2/5.
+# ─────────────────────────────────────────────────────────────────────────────
+PLSC_FLOWCHART: list[Course] = [
+    # ── FRESHMAN FALL (col 0, 14u) ────────────────────────────────────────────
+    {"id": "PLSC_1101",     "course_number": "PLSC 1101",      "title": "Orientation to Plant Sciences",                   "units": 1, "category": "major",         "grid_col": 0, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": [],        "is_placeholder": False},
+    {"id": "PLSC_1120",     "course_number": "PLSC 1120/1120L","title": "Principles of Plant Sciences with Lab",           "units": 3, "category": "major",         "grid_col": 0, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": [],        "is_placeholder": True},
+    {"id": "PLSC_BOT1121",  "course_number": "BOT 1121",       "title": "General Botany (GE 5B & 5C)",                    "units": 4, "category": "support",       "grid_col": 0, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": ["BOT 121"], "is_placeholder": False},
+    {"id": "PLSC_MATH1006", "course_number": "MATH 1006",      "title": "College Algebra (GE 2)",                         "units": 3, "category": "support",       "grid_col": 0, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": [],        "is_placeholder": False},
+    {"id": "PLSC_GE1A",     "course_number": "GE 1A",          "title": "Written Communication",                          "units": 3, "category": "ge",            "grid_col": 0, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": [],        "is_placeholder": True},
+    # ── FRESHMAN SPRING (col 1, 13u) ──────────────────────────────────────────
+    {"id": "PLSC_1124",     "course_number": "PLSC 1124",      "title": "Plant Propagation",                              "units": 3, "category": "major",         "grid_col": 1, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": [],        "is_placeholder": False},
+    {"id": "PLSC_CHEM1120", "course_number": "CHEM 1120",      "title": "Fundamentals of Chemical Structure and Properties (GE 5A)", "units": 4, "category": "support", "grid_col": 1, "grid_row": 0, "prerequisites": [], "quarter_equivalents": ["CHEM 124"], "is_placeholder": False},
+    {"id": "PLSC_GE1B",     "course_number": "GE 1B",          "title": "Critical Thinking",                              "units": 3, "category": "ge",            "grid_col": 1, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": [],        "is_placeholder": True},
+    {"id": "PLSC_GE1C",     "course_number": "GE 1C",          "title": "Oral Communication",                             "units": 3, "category": "ge",            "grid_col": 1, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": [],        "is_placeholder": True},
+    # ── SOPHOMORE FALL (col 2, 16u) ───────────────────────────────────────────
+    {"id": "PLSC_SS1120",   "course_number": "SS 1120",        "title": "Introductory Soil Science",                      "units": 4, "category": "support",       "grid_col": 2, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": ["SS 121"], "is_placeholder": False},
+    {"id": "PLSC_CON1",     "course_number": "Concentration",  "title": "Concentration Elective 1",                       "units": 3, "category": "concentration", "grid_col": 2, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": [],        "is_placeholder": True,  "elective_key": "plsc_concentration_elective"},
+    {"id": "PLSC_CON2",     "course_number": "Concentration",  "title": "Concentration Elective 2",                       "units": 3, "category": "concentration", "grid_col": 2, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": [],        "is_placeholder": True,  "elective_key": "plsc_concentration_elective"},
+    {"id": "PLSC_CON3",     "course_number": "Concentration",  "title": "Concentration Elective 3",                       "units": 3, "category": "concentration", "grid_col": 2, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": [],        "is_placeholder": True,  "elective_key": "plsc_concentration_elective"},
+    {"id": "PLSC_GE3A",     "course_number": "GE 3A",          "title": "Arts",                                           "units": 3, "category": "ge",            "grid_col": 2, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": [],        "is_placeholder": True},
+    # ── SOPHOMORE SPRING (col 3, 17u) ─────────────────────────────────────────
+    {"id": "PLSC_3321",     "course_number": "PLSC 3321",      "title": "Weed Biology and Management",                    "units": 4, "category": "major",         "grid_col": 3, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": [],        "is_placeholder": False},
+    {"id": "PLSC_SS2221",   "course_number": "SS 2221",        "title": "Soil Health and Plant Nutrition",                "units": 4, "category": "support",       "grid_col": 3, "grid_row": 0, "prerequisites": ["SS 1120"],   "quarter_equivalents": [],        "is_placeholder": False},
+    {"id": "PLSC_STAT1110", "course_number": "STAT 1110",      "title": "Applied Statistical Concepts and Methods",       "units": 3, "category": "support",       "grid_col": 3, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": ["STAT 217"], "is_placeholder": False},
+    {"id": "PLSC_CON4",     "course_number": "Concentration",  "title": "Concentration Elective 4",                       "units": 3, "category": "concentration", "grid_col": 3, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": [],        "is_placeholder": True,  "elective_key": "plsc_concentration_elective"},
+    {"id": "PLSC_GE4A",     "course_number": "GE 4A",          "title": "American Institutions",                          "units": 3, "category": "ge",            "grid_col": 3, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": [],        "is_placeholder": True},
+    # ── JUNIOR FALL (col 4, 12u) ──────────────────────────────────────────────
+    {"id": "PLSC_3313",     "course_number": "PLSC 3313",      "title": "Agricultural Entomology",                        "units": 3, "category": "major",         "grid_col": 4, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": [],        "is_placeholder": False},
+    {"id": "PLSC_3323",     "course_number": "PLSC 3323",      "title": "Plant Pathology",                                "units": 3, "category": "major",         "grid_col": 4, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": [],        "is_placeholder": False},
+    {"id": "PLSC_3351",     "course_number": "PLSC 3351",      "title": "Experimental Techniques and Analysis",           "units": 3, "category": "major",         "grid_col": 4, "grid_row": 0, "prerequisites": ["PLSC 3321"], "quarter_equivalents": [],        "is_placeholder": False},
+    {"id": "PLSC_BRAE3340", "course_number": "BRAE 3340",      "title": "Irrigation Water Management (GE UD2/5)",         "units": 3, "category": "support",       "grid_col": 4, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": [],        "is_placeholder": False},
+    # ── JUNIOR SPRING (col 5, 15u) ────────────────────────────────────────────
+    {"id": "PLSC_3304",     "course_number": "PLSC 3304",      "title": "Introduction to Plant Breeding",                 "units": 3, "category": "major",         "grid_col": 5, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": [],        "is_placeholder": False},
+    {"id": "PLSC_CON5",     "course_number": "Concentration",  "title": "Concentration Elective 5",                       "units": 3, "category": "concentration", "grid_col": 5, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": [],        "is_placeholder": True,  "elective_key": "plsc_concentration_elective"},
+    {"id": "PLSC_CON6",     "course_number": "Concentration",  "title": "Concentration Elective 6",                       "units": 3, "category": "concentration", "grid_col": 5, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": [],        "is_placeholder": True,  "elective_key": "plsc_concentration_elective"},
+    {"id": "PLSC_CON7",     "course_number": "Concentration",  "title": "Concentration Elective 7",                       "units": 3, "category": "concentration", "grid_col": 5, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": [],        "is_placeholder": True,  "elective_key": "plsc_concentration_elective"},
+    {"id": "PLSC_GE3B",     "course_number": "GE 3B",          "title": "Humanities",                                     "units": 3, "category": "ge",            "grid_col": 5, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": [],        "is_placeholder": True},
+    # ── SENIOR FALL (col 6, 16u) ──────────────────────────────────────────────
+    {"id": "PLSC_4461",     "course_number": "PLSC 4461",      "title": "Senior Project I",                               "units": 1, "category": "major",         "grid_col": 6, "grid_row": 0, "prerequisites": ["PLSC 3351"], "quarter_equivalents": [],        "is_placeholder": False},
+    {"id": "PLSC_CON8",     "course_number": "Concentration",  "title": "Concentration Elective 8",                       "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": [],        "is_placeholder": True,  "elective_key": "plsc_concentration_elective"},
+    {"id": "PLSC_CON9",     "course_number": "Concentration",  "title": "Concentration Elective 9",                       "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": [],        "is_placeholder": True,  "elective_key": "plsc_concentration_elective"},
+    {"id": "PLSC_GEUD3",    "course_number": "GE UD3",         "title": "Upper Division Arts and Humanities",             "units": 3, "category": "ge",            "grid_col": 6, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": [],        "is_placeholder": True},
+    {"id": "PLSC_GEUD4",    "course_number": "GE UD4",         "title": "Upper Division Social and Behavioral Sciences",  "units": 3, "category": "ge",            "grid_col": 6, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": [],        "is_placeholder": True},
+    {"id": "PLSC_GE6",      "course_number": "GE 6",           "title": "Sustainability",                                 "units": 3, "category": "ge",            "grid_col": 6, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": [],        "is_placeholder": True},
+    # ── SENIOR SPRING (col 7, 17u) ────────────────────────────────────────────
+    {"id": "PLSC_4410",     "course_number": "PLSC 4410",      "title": "Crop Physiology",                                "units": 3, "category": "major",         "grid_col": 7, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": [],        "is_placeholder": False},
+    {"id": "PLSC_4462",     "course_number": "PLSC 4462",      "title": "Senior Project II",                              "units": 1, "category": "major",         "grid_col": 7, "grid_row": 0, "prerequisites": ["PLSC 4461"], "quarter_equivalents": [],        "is_placeholder": False},
+    {"id": "PLSC_CON10",    "course_number": "Concentration",  "title": "Concentration Elective 10",                      "units": 4, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": [],        "is_placeholder": True,  "elective_key": "plsc_concentration_elective"},
+    {"id": "PLSC_CON11",    "course_number": "Concentration",  "title": "Concentration Elective 11",                      "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": [],        "is_placeholder": True,  "elective_key": "plsc_concentration_elective"},
+    {"id": "PLSC_CON12",    "course_number": "Concentration",  "title": "Concentration Elective 12",                      "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": [],        "is_placeholder": True,  "elective_key": "plsc_concentration_elective"},
+    {"id": "PLSC_GE4B",     "course_number": "GE 4B",          "title": "American Institutions",                          "units": 3, "category": "ge",            "grid_col": 7, "grid_row": 0, "prerequisites": [],            "quarter_equivalents": [],        "is_placeholder": True},
+]
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # MICROBIOLOGY — BS (120 units)
 # Source: catalog.calpoly.edu/science-mathematics/biological-sciences/microbiology-bs/
 # BIO 1150 satisfies GE 5B+5C; CHEM 1120 satisfies GE 5A; MATH 1264 satisfies GE 2;
@@ -3015,6 +3075,7 @@ EIM_FLOWCHART = _compact_rows_by_category(EIM_FLOWCHART)
 ENVE_FLOWCHART = _compact_rows_by_category(ENVE_FLOWCHART)
 GRC_FLOWCHART = _compact_rows_by_category(GRC_FLOWCHART)
 COMS_FLOWCHART = _compact_rows_by_category(COMS_FLOWCHART)
+PLSC_FLOWCHART = _compact_rows_by_category(PLSC_FLOWCHART)
 MCRO_FLOWCHART = _compact_rows_by_category(MCRO_FLOWCHART)
 HIST_FLOWCHART = _compact_rows_by_category(HIST_FLOWCHART)
 ECON_FLOWCHART = _compact_rows_by_category(ECON_FLOWCHART)
@@ -3328,6 +3389,13 @@ FLOWCHARTS = {
         "code": "COMS",
         "total_units": 120,
         "courses": COMS_FLOWCHART,
+        "columns": COLUMN_LABELS,
+    },
+    "PLSC": {
+        "major": "Plant Sciences",
+        "code": "PLSC",
+        "total_units": 120,
+        "courses": PLSC_FLOWCHART,
         "columns": COLUMN_LABELS,
     },
     "MCRO": {

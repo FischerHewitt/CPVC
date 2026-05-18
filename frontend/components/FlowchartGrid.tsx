@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { Course, CourseStatus, Flowchart, GEAreaMap, TranscriptSession } from "@/lib/types";
-import { norm, toNormalizedSet, hasAnyCourseNumber, isFreeElective, getCourseStatus } from "@/lib/course-status";
+import { norm, toNormalizedSet, hasAnyCourseNumber, isFreeElective, getCourseStatus, expandSlashCourseNumber } from "@/lib/course-status";
 import CourseCard, { CATEGORY_STYLES } from "./CourseCard";
 
 interface Props {
@@ -69,6 +69,11 @@ export default function FlowchartGrid({
     const lookup = new Map<string, Course>();
     for (const course of flowchart.courses) {
       lookup.set(norm(course.course_number), course);
+      if (course.course_number.includes("/")) {
+        for (const component of expandSlashCourseNumber(course.course_number)) {
+          lookup.set(norm(component), course);
+        }
+      }
     }
     return lookup;
   }, [flowchart.courses]);
