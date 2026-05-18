@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { Course, CourseStatus, Flowchart, GEAreaMap, TranscriptSession } from "@/lib/types";
+import { norm, toNormalizedSet, hasAnyCourseNumber, isFreeElective, getCourseStatus } from "@/lib/course-status";
 import CourseCard, { CATEGORY_STYLES } from "./CourseCard";
 
 interface Props {
@@ -20,74 +21,6 @@ interface Props {
   ) => void;
 }
 
-function norm(courseNumber: string) {
-  return courseNumber.toUpperCase().trim().replace(/\s+/g, " ");
-}
-
-function toNormalizedSet(courseNums: string[]) {
-  return new Set(courseNums.map(norm));
-}
-
-function hasAnyCourseNumber(normalizedKnownNums: Set<string>, courseNums: string[]) {
-  return courseNums.some((num) => normalizedKnownNums.has(norm(num)));
-}
-
-function isFreeElective(course: Course) {
-  return course.title.toLowerCase().includes("free elective") || course.course_number.toLowerCase().startsWith("free");
-}
-
-function getCourseStatus(
-  course: Course,
-  completedNums: Set<string>,
-  inProgressNums: Set<string>,
-  inferredNums: Set<string>,
-  knownNums: Set<string>,
-  courseLookup: Map<string, Course>,
-  geAreaMap: GEAreaMap,
-): CourseStatus {
-  // GE placeholder: check if any approved course for this area is completed/in-progress
-  if (course.is_placeholder && course.category === "ge") {
-    const approved = [
-      course.course_number,
-      ...course.quarter_equivalents,
-      ...(geAreaMap[course.course_number] ?? []),
-    ];
-    if (hasAnyCourseNumber(completedNums, approved)) return "completed";
-    if (hasAnyCourseNumber(inProgressNums, approved)) return "in_progress";
-    if (course.prerequisites.length > 0) {
-      const prereqsMet = course.prerequisites.every((prereqNum) => {
-        const prereq = courseLookup.get(norm(prereqNum));
-        if (!prereq) return true;
-        const prereqNums = [prereq.course_number, ...prereq.quarter_equivalents];
-        return hasAnyCourseNumber(knownNums, prereqNums);
-      });
-      if (!prereqsMet) return "locked";
-    }
-    return "incomplete";
-  }
-  if (course.is_placeholder) {
-    const allNums = [course.course_number, ...course.quarter_equivalents];
-    if (allNums.some((n) => completedNums.has(norm(n)))) return "completed";
-    if (allNums.some((n) => inferredNums.has(norm(n)))) return "inferred";
-    if (allNums.some((n) => inProgressNums.has(norm(n)))) return "in_progress";
-    return "incomplete";
-  }
-
-  const allNums = [course.course_number, ...course.quarter_equivalents];
-
-  if (allNums.some((n) => completedNums.has(n))) return "completed";
-  if (allNums.some((n) => inferredNums.has(n)))  return "inferred";
-  if (allNums.some((n) => inProgressNums.has(n))) return "in_progress";
-
-  const prereqsMet = course.prerequisites.every((prereqNum) => {
-    const prereq = courseLookup.get(norm(prereqNum));
-    if (!prereq) return true;
-    const prereqNums = [prereq.course_number, ...prereq.quarter_equivalents];
-    return hasAnyCourseNumber(knownNums, prereqNums);
-  });
-
-  return prereqsMet ? "incomplete" : "locked";
-}
 
 function buildGrid(courses: Course[], positions: TranscriptSession["coursePositions"] = {}): Map<string, Course> {
   const grid = new Map<string, Course>();
@@ -108,12 +41,6 @@ function getCoursePosition(course: Course, positions: TranscriptSession["courseP
   };
 }
 
-const YEAR_GROUPS = [
-  { label: "Freshman",  cols: [0, 1] },
-  { label: "Sophomore", cols: [2, 3] },
-  { label: "Junior",    cols: [4, 5] },
-  { label: "Senior",    cols: [6, 7] },
-];
 
 const CATEGORY_LEGEND = [
   { label: "Major",         ...CATEGORY_STYLES.major },
@@ -258,6 +185,18 @@ export default function FlowchartGrid({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [flowchart.courses, positions, plannedGEUnits, numCols]);
 
+  const yearGroups = useMemo(() => {
+    const groups: Array<{ label: string; count: number }> = [];
+    for (const col of flowchart.columns) {
+      if (groups.length > 0 && groups[groups.length - 1].label === col.year) {
+        groups[groups.length - 1].count++;
+      } else {
+        groups.push({ label: col.year, count: 1 });
+      }
+    }
+    return groups;
+  }, [flowchart.columns]);
+
   const majorDone     = majorCourses.filter(isDone).length;
   const majorInferred = majorCourses.filter((c) => !isDone(c) && isCompletedOrInferred(c)).length;
   const supportDone     = supportCourses.filter(isDone).length;
@@ -345,17 +284,17 @@ export default function FlowchartGrid({
       <div className="overflow-x-auto">
         <div style={{ minWidth: 900 }}>
           {/* Year headers */}
-          <div className="grid grid-cols-8 gap-1 mb-1">
-            {YEAR_GROUPS.map((yg) => (
-              <div key={yg.label} className="col-span-2 text-center text-xs font-bold uppercase tracking-wider py-1 rounded"
-                   style={{ background: "var(--cp-green)", color: "white" }}>
+          <div className="grid gap-1 mb-1" style={{ gridTemplateColumns: `repeat(${numCols}, minmax(0, 1fr))` }}>
+            {yearGroups.map((yg) => (
+              <div key={yg.label} className="text-center text-xs font-bold uppercase tracking-wider py-1 rounded"
+                   style={{ gridColumn: `span ${yg.count}`, background: "var(--cp-green)", color: "white" }}>
                 {yg.label}
               </div>
             ))}
           </div>
 
           {/* Term sub-headers */}
-          <div className="grid grid-cols-8 gap-1 mb-2">
+          <div className="grid gap-1 mb-2" style={{ gridTemplateColumns: `repeat(${numCols}, minmax(0, 1fr))` }}>
             {flowchart.columns.map((col, i) => {
               const rec = recommendedUnitsPerCol[i] ?? 0;
               const cur = currentUnitsPerCol[i] ?? 0;
@@ -378,8 +317,8 @@ export default function FlowchartGrid({
 
           {/* Course rows */}
           {Array.from({ length: maxRows }).map((_, rowIdx) => (
-            <div key={rowIdx} className="grid grid-cols-8 gap-1 mb-1">
-              {Array.from({ length: 8 }).map((_, colIdx) => {
+            <div key={rowIdx} className="grid gap-1 mb-1" style={{ gridTemplateColumns: `repeat(${numCols}, minmax(0, 1fr))` }}>
+              {Array.from({ length: numCols }).map((_, colIdx) => {
                 const course = grid.get(`${colIdx}:${rowIdx}`);
                 if (!course) {
                   return (

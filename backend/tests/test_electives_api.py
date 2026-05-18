@@ -689,3 +689,595 @@ def test_elective_endpoint_returns_jour_options():
     pr = [c["course_number"] for c in r5.json()["courses"]]
     assert "JOUR 3314" in pr
     assert "JOUR 3345" in pr
+
+
+def test_elective_endpoint_returns_cm_options():
+    # Accounting slash choice
+    r1 = client.get("/api/electives/cm_accounting_choice")
+    assert r1.status_code == 200
+    acct = [c["course_number"] for c in r1.json()["courses"]]
+    assert "BUS 2212" in acct
+    assert "BUS 2214" in acct
+
+    # Major elective list
+    r2 = client.get("/api/electives/cm_major_elective")
+    assert r2.status_code == 200
+    elec = [c["course_number"] for c in r2.json()["courses"]]
+    assert "CM 4421" in elec
+    assert "CM 4475" in elec
+    assert "CRP 4442" in elec
+    assert "LA 4410" in elec
+
+    # Business elective (dynamic)
+    r3 = client.get("/api/electives/cm_bus_elective")
+    assert r3.status_code == 200
+    bus = r3.json()["courses"]
+    assert len(bus) > 0
+
+
+def test_elective_endpoint_returns_soc_options():
+    # WI elective (static)
+    r1 = client.get("/api/electives/soc_wi_elective")
+    assert r1.status_code == 200
+    wi = [c["course_number"] for c in r1.json()["courses"]]
+    assert "SOC 3315" in wi
+    assert "SOC 3321" in wi
+    assert "SOC 3326" in wi
+    assert "SOC 3343" in wi
+
+    # Generic SOC upper-div elective (dynamic)
+    r2 = client.get("/api/electives/soc_elective")
+    assert r2.status_code == 200
+    elec = [c["course_number"] for c in r2.json()["courses"]]
+    assert "SOC 3353" in elec or "SOC 3302" in elec  # at least one 3000-level SOC course
+
+    # Lower-division social sciences support elective (dynamic, multi-dept)
+    r3 = client.get("/api/electives/soc_ld_support")
+    assert r3.status_code == 200
+    ld = r3.json()["courses"]
+    assert len(ld) > 0
+
+    # CJ required choice
+    r4 = client.get("/api/electives/soc_cj_req_choice")
+    assert r4.status_code == 200
+    cj_req = [c["course_number"] for c in r4.json()["courses"]]
+    assert "SOC 4402" in cj_req
+    assert "SOC 4412" in cj_req
+
+    # CJ elective
+    r5 = client.get("/api/electives/soc_cj_elective")
+    assert r5.status_code == 200
+    cj = [c["course_number"] for c in r5.json()["courses"]]
+    assert "SOC 3303" in cj
+    assert "SOC 4406" in cj
+    assert "SOC 4414" in cj
+
+    # Organizations core choice
+    r6 = client.get("/api/electives/soc_org_core")
+    assert r6.status_code == 200
+    org = [c["course_number"] for c in r6.json()["courses"]]
+    assert "SOC 3395" in org
+    assert "SOC 4423" in org
+
+    # Social Justice required
+    r7 = client.get("/api/electives/soc_sj_req")
+    assert r7.status_code == 200
+    sj = [c["course_number"] for c in r7.json()["courses"]]
+    assert "SOC 3305" in sj
+    assert "SOC 4402" in sj
+    assert "SOC 4444" in sj
+
+    # Social Services elective
+    r8 = client.get("/api/electives/soc_ss_elective")
+    assert r8.status_code == 200
+    ss = [c["course_number"] for c in r8.json()["courses"]]
+    assert "SOC 3303" not in ss  # fixed course, not in elective pool
+    assert "SOC 3395" in ss
+    assert "SOC 4435" in ss
+
+
+def test_elective_endpoint_returns_la_options():
+    # Plant biology choice
+    r1 = client.get("/api/electives/la_bio_choice")
+    assert r1.status_code == 200
+    bio = [c["course_number"] for c in r1.json()["courses"]]
+    assert "BIO 1114" in bio
+    assert "BOT 1121" in bio
+
+    # Designated Elective Group 1
+    r2 = client.get("/api/electives/la_des_elec1")
+    assert r2.status_code == 200
+    de1 = [c["course_number"] for c in r2.json()["courses"]]
+    assert "STAT 1110" in de1
+    assert "SS 1120" in de1
+
+    # Designated Elective Group 2
+    r3 = client.get("/api/electives/la_des_elec2")
+    assert r3.status_code == 200
+    de2 = [c["course_number"] for c in r3.json()["courses"]]
+    assert "BIO 2215" in de2
+    assert "GEOL 2240" in de2
+
+    # Designated Elective Group 3
+    r4 = client.get("/api/electives/la_des_elec3")
+    assert r4.status_code == 200
+    de3 = [c["course_number"] for c in r4.json()["courses"]]
+    assert "BOT 3326" in de3
+    assert "NR 3310" in de3
+    assert "PLSC 3334" in de3
+
+    # CAED Theory elective
+    r5 = client.get("/api/electives/la_caed_theory")
+    assert r5.status_code == 200
+    theory = [c["course_number"] for c in r5.json()["courses"]]
+    assert "ARCE 2280" in theory
+    assert "CRP 4448" in theory
+
+    # CAED Finance elective
+    r6 = client.get("/api/electives/la_caed_finance")
+    assert r6.status_code == 200
+    finance = [c["course_number"] for c in r6.json()["courses"]]
+    assert "CM 4475" in finance
+    assert "CRP 4420" in finance
+    assert "LA 5531" in finance
+
+    # CAED Sustainability elective
+    r7 = client.get("/api/electives/la_caed_sustain")
+    assert r7.status_code == 200
+    sustain = [c["course_number"] for c in r7.json()["courses"]]
+    assert "CM 3317" in sustain
+    assert "LA 5520" in sustain
+
+    # Professional Topics elective
+    r8 = client.get("/api/electives/la_pro_topics")
+    assert r8.status_code == 200
+    topics = [c["course_number"] for c in r8.json()["courses"]]
+    assert "LA 4414" in topics
+    assert "LA 4418" in topics
+
+    # Design Studio choice
+    r9 = client.get("/api/electives/la_studio_choice")
+    assert r9.status_code == 200
+    studio = [c["course_number"] for c in r9.json()["courses"]]
+    assert "LA 4422" in studio
+    assert "LA 4424" in studio
+
+
+def test_elective_endpoint_returns_wvit_options():
+    # Math choice
+    r1 = client.get("/api/electives/wvit_math_choice")
+    assert r1.status_code == 200
+    math_courses = [c["course_number"] for c in r1.json()["courses"]]
+    assert "MATH 1261" in math_courses
+    assert "MATH 1267" in math_courses
+
+    # Accounting choice
+    r2 = client.get("/api/electives/wvit_accounting_choice")
+    assert r2.status_code == 200
+    acct = [c["course_number"] for c in r2.json()["courses"]]
+    assert "AGB 2214" in acct
+    assert "BUS 2214" in acct
+
+    # Wine Business micro/econ choice
+    r3 = client.get("/api/electives/wvit_wb_micro_choice")
+    assert r3.status_code == 200
+    micro = [c["course_number"] for c in r3.json()["courses"]]
+    assert "AGB 2212" in micro
+    assert "ECON 2030" in micro
+
+    # Wine Business HR choice
+    r4 = client.get("/api/electives/wvit_wb_hr_choice")
+    assert r4.status_code == 200
+    hr = [c["course_number"] for c in r4.json()["courses"]]
+    assert "AGB 3369" in hr
+    assert "BUS 3384" in hr
+
+    # Senior project choice
+    r5 = client.get("/api/electives/wvit_senior_project")
+    assert r5.status_code == 200
+    sp = [c["course_number"] for c in r5.json()["courses"]]
+    assert "WVIT 4464" in sp
+    assert "WVIT 4465" in sp
+
+
+def test_elective_endpoint_returns_econ_options():
+    client = TestClient(app)
+
+    # Intro micro/survey choice
+    r1 = client.get("/api/electives/econ_intro_choice")
+    assert r1.status_code == 200
+    intro = [c["course_number"] for c in r1.json()["courses"]]
+    assert "ECON 2030" in intro
+    assert "ECON 2001" in intro
+
+    # Macro choice
+    r2 = client.get("/api/electives/econ_macro_choice")
+    assert r2.status_code == 200
+    macro = [c["course_number"] for c in r2.json()["courses"]]
+    assert "ECON 2040" in macro
+    assert "ECON 2021" in macro
+
+    # BUS intro choice
+    r3 = client.get("/api/electives/econ_bus_choice")
+    assert r3.status_code == 200
+    bus = [c["course_number"] for c in r3.json()["courses"]]
+    assert "BUS 2207" in bus
+    assert "BUS 2214" in bus
+
+    # Accounting concentration electives
+    r4 = client.get("/api/electives/econ_accounting_elective")
+    assert r4.status_code == 200
+    acct = [c["course_number"] for c in r4.json()["courses"]]
+    assert "BUS 4424" in acct
+    assert "BUS 4428" in acct
+
+    # Project elective (dynamic — should return ECON courses)
+    r5 = client.get("/api/electives/econ_project_elective")
+    assert r5.status_code == 200
+    proj = r5.json()["courses"]
+    assert len(proj) > 0
+    assert all(c["course_number"].startswith("ECON") for c in proj)
+
+    # Info systems project picker
+    r6 = client.get("/api/electives/econ_info_sys_project")
+    assert r6.status_code == 200
+    isp = [c["course_number"] for c in r6.json()["courses"]]
+    assert "BUS 4497" in isp
+
+    # Management HR project picker
+    r7 = client.get("/api/electives/econ_mgmt_hr_project")
+    assert r7.status_code == 200
+    mhr = [c["course_number"] for c in r7.json()["courses"]]
+    assert "BUS 4477" in mhr
+
+
+
+def test_elective_endpoint_returns_coms_options():
+    client = TestClient(app)
+
+    # Public speaking choice
+    r1 = client.get("/api/electives/coms_public_speaking")
+    assert r1.status_code == 200
+    ps = [c["course_number"] for c in r1.json()["courses"]]
+    assert "COMS 1101" in ps
+    assert "COMS 1102" in ps
+
+    # Interpersonal/org/media/group choice
+    r2 = client.get("/api/electives/coms_interp_choice")
+    assert r2.status_code == 200
+    interp = [c["course_number"] for c in r2.json()["courses"]]
+    assert "COMS 2211" in interp
+    assert "COMS 2213" in interp
+    assert "COMS 2215" in interp
+    assert "COMS 2217" in interp
+
+    # Advocacy choice
+    r3 = client.get("/api/electives/coms_advocacy_choice")
+    assert r3.status_code == 200
+    adv = [c["course_number"] for c in r3.json()["courses"]]
+    assert "COMS 2250" in adv
+    assert "COMS 2208" in adv
+
+    # Research methods choice
+    r4 = client.get("/api/electives/coms_research_methods")
+    assert r4.status_code == 200
+    res = [c["course_number"] for c in r4.json()["courses"]]
+    assert "COMS 3312" in res
+    assert "COMS 3313" in res
+
+    # Criticism choice
+    r5 = client.get("/api/electives/coms_criticism_choice")
+    assert r5.status_code == 200
+    crit = [c["course_number"] for c in r5.json()["courses"]]
+    assert "COMS 3332" in crit
+    assert "COMS 3385" in crit
+
+    # Upper-div elective (dynamic)
+    r6 = client.get("/api/electives/coms_upper_div_elective")
+    assert r6.status_code == 200
+    ud = r6.json()["courses"]
+    assert len(ud) > 0
+    assert all(c["course_number"].startswith("COMS") for c in ud)
+
+    # Focus area base elective (dynamic)
+    r7 = client.get("/api/electives/coms_focus_elective")
+    assert r7.status_code == 200
+    focus = r7.json()["courses"]
+    assert len(focus) > 0
+
+    # Culture, Identity, and Power focus area (static)
+    r8 = client.get("/api/electives/coms_focus_culture")
+    assert r8.status_code == 200
+    culture = [c["course_number"] for c in r8.json()["courses"]]
+    assert "COMS 3319" in culture
+    assert "COMS 4421" in culture
+
+    # Media and Technology focus area (static)
+    r9 = client.get("/api/electives/coms_focus_media")
+    assert r9.status_code == 200
+    media = [c["course_number"] for c in r9.json()["courses"]]
+    assert "COMS 3317" in media
+    assert "COMS 3384" in media
+
+    # Persuasion focus area (static)
+    r10 = client.get("/api/electives/coms_focus_persuasion")
+    assert r10.status_code == 200
+    persuasion = [c["course_number"] for c in r10.json()["courses"]]
+    assert "COMS 3305" in persuasion
+    assert "COMS 4435" in persuasion
+
+    # Politics focus area (static)
+    r11 = client.get("/api/electives/coms_focus_politics")
+    assert r11.status_code == 200
+    politics = [c["course_number"] for c in r11.json()["courses"]]
+    assert "COMS 3390" in politics
+    assert "COMS 4435" in politics
+
+    # Relationships focus area (static)
+    r12 = client.get("/api/electives/coms_focus_relationships")
+    assert r12.status_code == 200
+    rels = [c["course_number"] for c in r12.json()["courses"]]
+    assert "COMS 4413" in rels
+    assert "COMS 4428" in rels
+
+
+def test_elective_endpoint_returns_grc_options():
+    client = TestClient(app)
+
+    # Senior project choice
+    r1 = client.get("/api/electives/grc_senior_project")
+    assert r1.status_code == 200
+    sp = [c["course_number"] for c in r1.json()["courses"]]
+    assert "GRC 4461" in sp
+    assert "GRC 4462" in sp
+    assert "GRC 4463" in sp
+
+    # Concentration elective (dynamic)
+    r2 = client.get("/api/electives/grc_concentration_elective")
+    assert r2.status_code == 200
+    conc = r2.json()["courses"]
+    assert len(conc) > 0
+    assert all(c["course_number"].startswith("GRC") for c in conc)
+
+    # Design Reproduction Technology elective
+    r3 = client.get("/api/electives/grc_design_elective")
+    assert r3.status_code == 200
+    drt = [c["course_number"] for c in r3.json()["courses"]]
+    assert "GRC 4550" in drt
+    assert "ART 1103" in drt
+
+    # Management concentration elective
+    r4 = client.get("/api/electives/grc_mgmt_elective")
+    assert r4.status_code == 200
+    mgmt = [c["course_number"] for c in r4.json()["courses"]]
+    assert "BUS 3310" in mgmt
+    assert "GRC 3270" in mgmt
+
+    # Packaging concentration elective
+    r5 = client.get("/api/electives/grc_packaging_elective")
+    assert r5.status_code == 200
+    pkg = [c["course_number"] for c in r5.json()["courses"]]
+    assert "ITP 3334" in pkg
+
+    # Immersive Experience Design elective
+    r6 = client.get("/api/electives/grc_immersive_elective")
+    assert r6.status_code == 200
+    ied = [c["course_number"] for c in r6.json()["courses"]]
+    assert "GRC 3990" in ied
+    assert "GRC 4900" in ied
+
+    # UX/UI elective
+    r7 = client.get("/api/electives/grc_uxui_elective")
+    assert r7.status_code == 200
+    uxui = [c["course_number"] for c in r7.json()["courses"]]
+    assert "GRC 4290" in uxui
+    assert "COMS 3317" in uxui
+
+
+def test_elective_endpoint_returns_grc_options():
+    client = TestClient(app)
+
+    # Senior project (static)
+    r1 = client.get("/api/electives/grc_senior_project")
+    assert r1.status_code == 200
+    sp = [c["course_number"] for c in r1.json()["courses"]]
+    assert "GRC 4461" in sp
+    assert "GRC 4462" in sp
+    assert "GRC 4463" in sp
+
+    # Concentration elective (dynamic)
+    r2 = client.get("/api/electives/grc_concentration_elective")
+    assert r2.status_code == 200
+    ce = r2.json()["courses"]
+    assert len(ce) > 0
+    assert all(c["course_number"].startswith("GRC") for c in ce)
+
+    # Design Reproduction Technology elective
+    r3 = client.get("/api/electives/grc_design_elective")
+    assert r3.status_code == 200
+    de = [c["course_number"] for c in r3.json()["courses"]]
+    assert "GRC 4550" in de
+    assert "ART 1103" in de
+
+    # GRC Management elective
+    r4 = client.get("/api/electives/grc_mgmt_elective")
+    assert r4.status_code == 200
+    me = [c["course_number"] for c in r4.json()["courses"]]
+    assert "BUS 3310" in me
+    assert "GRC 4600" not in me  # fixed, not an elective
+
+    # Graphics for Packaging elective
+    r5 = client.get("/api/electives/grc_packaging_elective")
+    assert r5.status_code == 200
+    pe = [c["course_number"] for c in r5.json()["courses"]]
+    assert "ITP 3334" in pe
+
+    # Immersive Experience Design elective
+    r6 = client.get("/api/electives/grc_immersive_elective")
+    assert r6.status_code == 200
+    ie = [c["course_number"] for c in r6.json()["courses"]]
+    assert "GRC 3990" in ie
+
+    # UX/UI elective
+    r7 = client.get("/api/electives/grc_uxui_elective")
+    assert r7.status_code == 200
+    ue = [c["course_number"] for c in r7.json()["courses"]]
+    assert "COMS 3317" in ue
+    assert "GRC 4290" in ue
+
+
+def test_elective_endpoint_returns_enve_options():
+    client = TestClient(app)
+
+    # CE technical elective (static)
+    r1 = client.get("/api/electives/enve_ce_elective")
+    assert r1.status_code == 200
+    ce = [c["course_number"] for c in r1.json()["courses"]]
+    assert "CE 3321" in ce
+    assert "CE 5537" in ce
+
+    # ENVE technical elective (dynamic)
+    r2 = client.get("/api/electives/enve_tech_elective")
+    assert r2.status_code == 200
+    te = r2.json()["courses"]
+    assert len(te) > 0
+    assert all(c["course_number"].startswith("ENVE") for c in te)
+
+
+def test_elective_endpoint_returns_enve_options():
+    client = TestClient(app)
+
+    # ENVE tech elective (dynamic)
+    r1 = client.get("/api/electives/enve_tech_elective")
+    assert r1.status_code == 200
+    enve = r1.json()["courses"]
+    assert len(enve) > 0
+    assert all(c["course_number"].startswith("ENVE") for c in enve)
+
+    # CE tech elective (static)
+    r2 = client.get("/api/electives/enve_ce_elective")
+    assert r2.status_code == 200
+    ce = [c["course_number"] for c in r2.json()["courses"]]
+    assert "CE 3381" in ce
+    assert "CE 4434" in ce
+    assert "CE 5537" in ce
+    assert "CE 4474" in ce
+
+
+def test_elective_endpoint_returns_eim_options():
+    client = TestClient(app)
+
+    # Math choice
+    r1 = client.get("/api/electives/eim_math_elective")
+    assert r1.status_code == 200
+    math = [c["course_number"] for c in r1.json()["courses"]]
+    assert "MATH 1004" in math
+    assert "MATH 1267" in math
+
+    # Financial accounting choice
+    r2 = client.get("/api/electives/eim_acct_choice")
+    assert r2.status_code == 200
+    acct = [c["course_number"] for c in r2.json()["courses"]]
+    assert "BUS 2212" in acct
+    assert "AGB 2214" in acct
+
+    # Statistics choice
+    r3 = client.get("/api/electives/eim_stat_choice")
+    assert r3.status_code == 200
+    stat = [c["course_number"] for c in r3.json()["courses"]]
+    assert "STAT 1110" in stat
+    assert "STAT 1210" in stat
+
+    # Managerial accounting choice
+    r4 = client.get("/api/electives/eim_mgmt_acct_choice")
+    assert r4.status_code == 200
+    mgmt = [c["course_number"] for c in r4.json()["courses"]]
+    assert "BUS 2215" in mgmt
+    assert "AGB 3323" in mgmt
+
+    # Senior project choice
+    r5 = client.get("/api/electives/eim_senior_project")
+    assert r5.status_code == 200
+    sp = [c["course_number"] for c in r5.json()["courses"]]
+    assert "EIM 4460" in sp
+    assert "EIM 4461" in sp
+
+    # Concentration elective (dynamic)
+    r6 = client.get("/api/electives/eim_concentration_elective")
+    assert r6.status_code == 200
+    conc = r6.json()["courses"]
+    assert len(conc) > 0
+
+    # Event planning elective
+    r7 = client.get("/api/electives/eim_event_elective")
+    assert r7.status_code == 200
+    event = [c["course_number"] for c in r7.json()["courses"]]
+    assert "EIM 3321" in event
+    assert "EIM 3323" in event
+
+    # Sport intro slash choice
+    r8 = client.get("/api/electives/eim_sport_intro_choice")
+    assert r8.status_code == 200
+    intro = [c["course_number"] for c in r8.json()["courses"]]
+    assert "EIM 1112" in intro
+    assert "EIM 1160" in intro
+
+    # Tourism elective
+    r9 = client.get("/api/electives/eim_tourism_elective")
+    assert r9.status_code == 200
+    tourism = [c["course_number"] for c in r9.json()["courses"]]
+    assert "EIM 3321" in tourism
+    assert "EIM 4450" in tourism
+
+
+def test_elective_endpoint_returns_hist_options():
+    # LD elective (dynamic — HIST 2000-2999)
+    r1 = client.get("/api/electives/hist_ld_elective")
+    assert r1.status_code == 200
+    ld = r1.json()["courses"]
+    assert len(ld) > 0
+
+    # UD elective (dynamic — HIST 3000-4999)
+    r2 = client.get("/api/electives/hist_ud_elective")
+    assert r2.status_code == 200
+    ud = r2.json()["courses"]
+    assert len(ud) > 0
+
+    # Global history elective (dynamic — HIST 3000-4999)
+    r3 = client.get("/api/electives/hist_global_elective")
+    assert r3.status_code == 200
+    glob = r3.json()["courses"]
+    assert len(glob) > 0
+
+
+def test_elective_endpoint_returns_mcro_options():
+    # Organic chemistry choice (static)
+    r1 = client.get("/api/electives/mcro_orga_choice")
+    assert r1.status_code == 200
+    orga = [c["course_number"] for c in r1.json()["courses"]]
+    assert "CHEM 2240" in orga
+    assert "CHEM 2242" in orga
+
+    # Biochemistry choice (static)
+    r2 = client.get("/api/electives/mcro_bioc_choice")
+    assert r2.status_code == 200
+    bioc = [c["course_number"] for c in r2.json()["courses"]]
+    assert "CHEM 3350" in bioc
+    assert "CHEM 3352" in bioc
+
+    # Restricted elective (static)
+    r3 = client.get("/api/electives/mcro_restricted_elective")
+    assert r3.status_code == 200
+    rest = [c["course_number"] for c in r3.json()["courses"]]
+    assert "MCRO 4402" in rest
+    assert "MCRO 4423" in rest
+    assert "BIO 4452" in rest
+    assert "BIO 4456" in rest
+
+    # Senior project (static)
+    r4 = client.get("/api/electives/mcro_senior_project")
+    assert r4.status_code == 200
+    sp = [c["course_number"] for c in r4.json()["courses"]]
+    assert "BIO 4461" in sp
+    assert "BIO 4462" in sp
+    assert "BIO 4463" in sp
