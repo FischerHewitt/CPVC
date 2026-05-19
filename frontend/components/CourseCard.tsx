@@ -11,6 +11,7 @@ interface Props {
   inProgressChecked: boolean;
   plannedCourseNumber?: string;
   activeCourseNumber?: string;
+  plannedUnits?: number;
   onToggleCompleted: () => void;
   onToggleInProgress: () => void;
 }
@@ -30,6 +31,7 @@ export default function CourseCard({
   inProgressChecked,
   plannedCourseNumber,
   activeCourseNumber,
+  plannedUnits,
   onToggleCompleted,
   onToggleInProgress,
 }: Props) {
@@ -109,13 +111,13 @@ export default function CourseCard({
           {geLocked                          && <span className="text-[10px]">🔒</span>}
           {status === "prereq_warning"       && <span className="text-amber-500 text-[10px]">⚠️</span>}
         </div>
-        <div className={isGE ? "font-semibold not-italic" : ""}>{course.title}</div>
+        <div className={isGE ? "font-semibold not-italic" : ""}>{course.title} ({plannedUnits ?? course.units})</div>
         {canOpenOptions && (status === "completed" || status === "in_progress") && activeCourseNumber && (
           <div className="text-[9px] mt-0.5 font-bold">{activeCourseNumber}</div>
         )}
         {canOpenOptions && status !== "completed" && status !== "in_progress" && plannedCourseNumber && (
           <div className="text-[9px] mt-0.5 font-semibold opacity-80">
-            planned: {plannedCourseNumber}
+            planned: {plannedCourseNumber} ({plannedUnits ?? course.units})
           </div>
         )}
         {isGE && !geCompleted && !geInProgress && !geLocked && (

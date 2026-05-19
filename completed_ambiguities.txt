@@ -1,0 +1,63 @@
+Completed / Resolved Discrepancies
+=====================================
+These items were previously listed in catalog_ambiguities.txt and have been
+resolved in the codebase.
+
+--------------------------------------------------------------------------------
+1. UNIT RANGE DISCREPANCIES (RESOLVED)
+--------------------------------------------------------------------------------
+
+  WVIT | Math slot                                                    [DONE]
+    Options: MATH 1261 (4u) vs MATH 1267 (3u)
+    Resolution: Tile defaulted to 3u; updated to 4u so the flowchart total
+    is correct when a student takes Calc I. If a student takes MATH 1267
+    (3u) the total will show 1u fewer — acceptable variance.
+
+  KINE | Math slot                                                    [DONE]
+    Options: MATH 1007 (3u) vs MATH 1261 (4u)
+    Resolution: Same fix as WVIT — tile updated from 3u to 4u as the default.
+    1-unit variance remains when a student takes MATH 1007.
+
+  EIM | Math slot                                                     [DONE]
+    Options: MATH 1004 / MATH 1006 / MATH 1007 / MATH 1267
+    Resolution: Tile default kept at 3u (matches MATH 1006/1007/1267 which
+    are all 3u). Unit counts in eim_math_elective picker corrected:
+      MATH 1004 Stretch College Algebra: 5u  (was incorrectly 3u)
+      MATH 1006 College Algebra:         3u  (unchanged)
+      MATH 1007 Precalculus:             3u  (was incorrectly 4u)
+      MATH 1267 Business Calculus:       3u  (was incorrectly 4u)
+    A student taking MATH 1004 (5u) will show 2u over the baseline.
+
+--------------------------------------------------------------------------------
+2. FSN CULINOLOGY — UNIT GAP (RESOLVED)
+--------------------------------------------------------------------------------
+
+  FSN | Culinology concentration                                       [DONE]
+    Issue: FSN 3323 (Culinary Internship, 1u) was absent; track showed 120u
+    but catalog specifies 121u for this concentration.
+    Resolution: Added FSN 3323 (1u) as an extra_courses entry on the Culinology
+    concentration in concentrations.py. The resolvedFlowchart logic in
+    page.tsx now appends extra_courses after applying slot_overrides.
+    Culinology total = 121u; all other FSN concentrations remain 120u.
+
+--------------------------------------------------------------------------------
+3. HIST — WORLD LANGUAGE REQUIREMENT (RESOLVED)
+--------------------------------------------------------------------------------
+
+  HIST_LANG: "World Language Requirement"                              [DONE]
+    Issue: Tile had no elective_key; checklist showed no course options.
+    Resolution: Added hist_lang_elective static picker with 7 options:
+    CHIN 2201, FR 2201, GER 2201, ITAL 2201, JPNS 2201, SPAN 2201, WLC 2201
+    (all 4u). Tile units confirmed at 4u.
+
+--------------------------------------------------------------------------------
+4. SLASH-CHOICE COURSES (Pick One of Two)                              [RESOLVED]
+--------------------------------------------------------------------------------
+Resolution: expandSlashCourseNumber in frontend/lib/course-status.ts splits
+"CHEM 2240/2242" → ["CHEM 2240", "CHEM 2242"], etc. The course lookup in
+FlowchartGrid.tsx maps both the slash form and each component. Downstream tiles
+whose only unmet prereqs are slash-choice tiles show ⚠️ prereq_warning instead
+of 🔒 locked, indicating the student has options to fulfill the requirement.
+
+Affected majors: MCRO, PLSC, CPE, ME, AERO, PSY, ENGL, AD, POLS, and others
+with paired lecture/lab or or-choice requirements.

@@ -1249,6 +1249,19 @@ def test_elective_endpoint_returns_hist_options():
     glob = r3.json()["courses"]
     assert len(glob) > 0
 
+    # World language requirement (static — 7 options at 4 units each)
+    r4 = client.get("/api/electives/hist_lang_elective")
+    assert r4.status_code == 200
+    lang_nums = [c["course_number"] for c in r4.json()["courses"]]
+    assert "CHIN 2201" in lang_nums
+    assert "FR 2201"   in lang_nums
+    assert "GER 2201"  in lang_nums
+    assert "ITAL 2201" in lang_nums
+    assert "JPNS 2201" in lang_nums
+    assert "SPAN 2201" in lang_nums
+    assert "WLC 2201"  in lang_nums
+    assert all(c["units"] == 4 for c in r4.json()["courses"])
+
 
 def test_elective_endpoint_returns_mcro_options():
     # Organic chemistry choice (static)
@@ -1312,3 +1325,191 @@ def test_elective_endpoint_returns_plsc_options():
     assert "PLSC 4406" in pp
     assert "PLSC 4431" in pp
     assert "PLSC 4441" in pp
+
+
+def test_elective_endpoint_returns_envm_options():
+    # Static pickers
+    for key, expected in [
+        ("envm_bio_plant_choice",   "BOT 1121"),
+        ("envm_math_choice",        "MATH 1267"),
+        ("envm_bio_ecology_choice", "BIO 2215"),
+        ("envm_chem_choice",        "CHEM 1122"),
+        ("envm_bio_life_choice",    "BIO 1150"),
+        ("envm_soc_choice",         "NR 3323"),
+        ("envm_enviro_choice",      "BRAE 3348"),
+        ("envm_ecology_choice",     "NR 3305"),
+        ("envm_water_choice",       "SS 3321"),
+        ("envm_quant_choice",       "NR 4418"),
+        ("envm_policy_choice",      "NR 4408"),
+        ("envm_senior_project",     "NR 4462"),
+        ("envm_conservation_elective", "BIO 3327"),
+        ("envm_corporate_elective",    "NR 4442"),
+        ("envm_data_science_elective", "STAT 3430"),
+        ("envm_law_justice_elective",  "POLS 3351"),
+        ("envm_sust_ag_elective",      "PLSC 3315"),
+        ("envm_sust_urban_elective",   "CRP 3336"),
+        ("envm_water_mgmt_elective",   "NR 4422"),
+    ]:
+        r = client.get(f"/api/electives/{key}")
+        assert r.status_code == 200, f"Failed for {key}"
+        nums = [c["course_number"] for c in r.json()["courses"]]
+        assert expected in nums, f"{expected} not in {key} results"
+
+    # Dynamic concentration fallback
+    r = client.get("/api/electives/envm_concentration_elective")
+    assert r.status_code == 200
+    nums = [c["course_number"] for c in r.json()["courses"]]
+    assert any(n.startswith("NR ") for n in nums)
+
+
+def test_elective_endpoint_returns_phil_options():
+    for key, expected in [
+        ("phil_hist_group1",          "PHIL 3310"),
+        ("phil_hist_group2",          "PHIL 3314"),
+        ("phil_hist_group3",          "PHIL 3318"),
+        ("phil_ethics_elective",      "PHIL 3337"),
+        ("phil_tech_ethics_elective", "PHIL 3339"),
+        ("phil_sci_tech_elective",    "PHIL 3327"),
+        ("phil_senior_sem_elective",  "PHIL 4422"),
+        ("phil_asian_rel_elective",   "RELS 3301"),
+        ("phil_religion_elective",    "RELS 3311"),
+        ("phil_senior_phil_elective", "PHIL 4449"),
+    ]:
+        r = client.get(f"/api/electives/{key}")
+        assert r.status_code == 200, f"Failed for {key}"
+        nums = [c["course_number"] for c in r.json()["courses"]]
+        assert expected in nums, f"{expected} not in {key} results"
+
+    for key, dept_prefix in [
+        ("phil_gen_elective",      "PHIL "),
+        ("phil_arts_hum_support",  "ENGL "),
+    ]:
+        r = client.get(f"/api/electives/{key}")
+        assert r.status_code == 200, f"Failed for {key}"
+        nums = [c["course_number"] for c in r.json()["courses"]]
+        assert any(n.startswith(dept_prefix) for n in nums), f"No {dept_prefix} course in {key}"
+
+
+def test_elective_endpoint_returns_nut_options():
+    for key, expected in [
+        ("nut_mcro_choice",    "MCRO 2221"),
+        ("nut_senior_project", "NUTR 4461"),
+    ]:
+        r = client.get(f"/api/electives/{key}")
+        assert r.status_code == 200, f"Failed for {key}"
+        nums = [c["course_number"] for c in r.json()["courses"]]
+        assert expected in nums, f"{expected} not in {key} results"
+
+    # Dynamic pickers
+    for key, dept_prefix in [
+        ("nut_dietetics_elective", "PSY "),
+        ("nut_prehealth_elective", "BIO "),
+    ]:
+        r = client.get(f"/api/electives/{key}")
+        assert r.status_code == 200, f"Failed for {key}"
+        nums = [c["course_number"] for c in r.json()["courses"]]
+        assert any(n.startswith(dept_prefix) for n in nums), f"No {dept_prefix} course in {key}"
+
+
+def test_elective_endpoint_returns_ph_options():
+    for key, expected in [
+        ("ph_hlth_freshman_elective", "HLTH 1160"),
+        ("ph_ant_soc_elective",       "SOC 1110"),
+        ("ph_senior_project",         "HLTH 4462"),
+        ("ph_com_health_elective",    "KINE 4412"),
+        ("ph_equity_global_elective", "SOC 4435"),
+        ("ph_bus_econ_elective",      "ECON 2001"),
+        ("ph_mgmt_admin_elective",    "PSY 3302"),
+    ]:
+        r = client.get(f"/api/electives/{key}")
+        assert r.status_code == 200, f"Failed for {key}"
+        nums = [c["course_number"] for c in r.json()["courses"]]
+        assert expected in nums, f"{expected} not in {key} results"
+
+
+def test_elective_endpoint_returns_span_options():
+    for key, expected in [
+        ("span_2202_2206",   "SPAN 2202"),
+        ("span_3k_elective", "SPAN 3303"),
+        ("span_4k_elective", "SPAN 4402"),
+    ]:
+        r = client.get(f"/api/electives/{key}")
+        assert r.status_code == 200, f"Failed for {key}"
+        data = r.json()
+        nums = [c["course_number"] for c in data["courses"]]
+        assert expected in nums, f"{expected} not in {key} results"
+
+    # Dynamic picker: span_lang_cult_elective should return SPAN and other language courses
+    r = client.get("/api/electives/span_lang_cult_elective")
+    assert r.status_code == 200
+    nums = [c["course_number"] for c in r.json()["courses"]]
+    assert any(n.startswith("SPAN ") for n in nums), "No SPAN course in span_lang_cult_elective"
+
+
+def test_elective_endpoint_returns_thea_options():
+    for key, expected in [
+        ("th_mainstage_choice",    "TH 1145"),
+        ("th_history_choice",      "TH 2227"),
+        ("th_construction_choice", "TH 3325"),
+        ("th_design_choice",       "TH 4430"),
+        ("th_ld_elective",         "TH 2240"),
+        ("th_ud_elective",         "TH 3320"),
+    ]:
+        r = client.get(f"/api/electives/{key}")
+        assert r.status_code == 200, f"Failed for {key}"
+        nums = [c["course_number"] for c in r.json()["courses"]]
+        assert expected in nums, f"{expected} not in {key} results"
+
+
+def test_elective_endpoint_returns_libs_options():
+    for key, expected in [
+        ("libs_stat_choice",         "STAT 1000"),
+        ("libs_phil_choice",         "PHIL 2230"),
+        ("libs_advanced_integration","LS 4411"),
+        ("libs_senior_project",      "LS 4461"),
+        ("libs_math_upper_div",      "MATH 3511"),
+        ("libs_engl_3393_choice",    "ENGL 3393"),
+        ("libs_am_lit_elective",     "ENGL 3340"),
+        ("libs_engl_ling_choice",    "ENGL 2290"),
+        ("libs_pols_elective",       "POLS 1112"),
+        ("libs_geog_elective",       "GEOG 1150"),
+        ("libs_soc_hist_elective",   "HIST 3322"),
+        ("libs_env_cultural",        "PHIL 3340"),
+        ("libs_env_ecological",      "NR 3310"),
+        ("libs_env_education",       "COMS 3390"),
+        ("libs_env_capstone",        "SCM 3360"),
+        ("libs_hd_apps_ed",          "CD 3350"),
+        ("libs_hd_child_dev",        "CD 3304"),
+        ("libs_hd_social_context",   "LS 3350"),
+        ("libs_sci_core",            "CHEM 1110"),
+        ("libs_sci_approved",        "ASTR 1101"),
+    ]:
+        r = client.get(f"/api/electives/{key}")
+        assert r.status_code == 200, f"Failed for {key}"
+        nums = [c["course_number"] for c in r.json()["courses"]]
+        assert expected in nums, f"{expected} not in {key} results"
+
+    # Dynamic picker: libs_hd_cd_course should return CD courses
+    r = client.get("/api/electives/libs_hd_cd_course")
+    assert r.status_code == 200
+    nums = [c["course_number"] for c in r.json()["courses"]]
+    assert any(n.startswith("CD ") for n in nums), "No CD course in libs_hd_cd_course"
+
+
+def test_elective_endpoint_returns_dsci_options():
+    # Static pickers
+    for key, expected in [
+        ("dsci_senior_project", "ASCI 4477"),
+        ("dsci_ud_elective",    "DSCI 4401"),
+    ]:
+        r = client.get(f"/api/electives/{key}")
+        assert r.status_code == 200, f"Failed for {key}"
+        nums = [c["course_number"] for c in r.json()["courses"]]
+        assert expected in nums, f"{expected} not in {key} results"
+
+    # Dynamic picker: dsci_approved_elective should return ASCI and DSCI courses
+    r = client.get("/api/electives/dsci_approved_elective")
+    assert r.status_code == 200
+    nums = [c["course_number"] for c in r.json()["courses"]]
+    assert any(n.startswith("ASCI ") or n.startswith("DSCI ") for n in nums), \
+        "No ASCI/DSCI course in dsci_approved_elective"

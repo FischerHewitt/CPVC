@@ -2015,9 +2015,18 @@ def test_mathematics_flowchart():
     assert "MATH 143" in by_id["MATH_2263"]["quarter_equivalents"]
     assert "MATH 244" in by_id["MATH_2343"]["quarter_equivalents"]
 
-    # GE placeholders
+    # GE placeholders — all 8 free areas must be specific area codes (not generic "GE")
     ge_placeholders = [c for c in courses if c.get("is_placeholder") and c["category"] == "ge"]
     assert len(ge_placeholders) >= 10
+    ge_course_numbers = {c["course_number"] for c in ge_placeholders}
+    for area in ("GE 1A", "GE 1B", "GE 1C", "GE 3A", "GE 3B", "GE 4A", "GE 4B", "GE 5B", "GE 6", "GE UD-3", "GE UD-4"):
+        assert area in ge_course_numbers, f"{area} missing from MATH GE placeholders"
+    assert "GE" not in ge_course_numbers, "Generic 'GE' course_number should not remain"
+    assert by_id["MATH_GE_JS1"]["course_number"] == "GE 5B"
+    assert by_id["MATH_GE_JS2"]["course_number"] == "GE 6"
+    assert "ES 253" in by_id["MATH_GE_JS2"]["quarter_equivalents"]
+    assert by_id["MATH_GE_SRF"]["course_number"] == "GE UD-3"
+    assert by_id["MATH_GE_SRS"]["course_number"] == "GE UD-4"
 
     # Elective placeholders are marked
     assert by_id["MATH_TRACK1"]["is_placeholder"] is True
@@ -2068,7 +2077,7 @@ def test_kinesiology_flowchart():
     assert kine["total_units"] == 120
 
     courses = kine["courses"]
-    assert sum(c["units"] for c in courses) == 120
+    assert sum(c["units"] for c in courses) == 121  # +1 when student takes MATH 1261 (4u) vs MATH 1007 (3u)
 
     by_id = {c["id"]: c for c in courses}
 
@@ -2106,7 +2115,7 @@ def test_kinesiology_flowchart():
     by_col = {}
     for c in courses:
         by_col.setdefault(c["grid_col"], []).append(c["units"])
-    assert sum(by_col[0]) == 15   # FF
+    assert sum(by_col[0]) == 16   # FF (16 when MATH 1261 4u; 15 if MATH 1007 3u)
     assert sum(by_col[1]) == 15   # FS
     assert sum(by_col[2]) == 16   # SoF
     assert sum(by_col[3]) == 16   # SoS
@@ -2208,6 +2217,26 @@ def test_food_science_flowchart():
     assert "culinology" in tracks
     assert "food_safety" in tracks
     assert "sft" in tracks
+
+    # Culinology has FSN 3323 as extra_course (track total = 121u)
+    culinology = next(t for t in CONCENTRATIONS["FSN"] if t["id"] == "culinology")
+    extra = culinology.get("extra_courses", [])
+    assert len(extra) == 1
+    assert extra[0]["course_number"] == "FSN 3323"
+    assert extra[0]["units"] == 1
+    assert extra[0]["category"] == "concentration"
+    culin_total = (
+        sum(c["units"] for c in FLOWCHARTS["FSN"]["courses"])
+        - sum(
+            FLOWCHARTS["FSN"]["courses"][
+                next(i for i, c in enumerate(FLOWCHARTS["FSN"]["courses"]) if c["id"] == k)
+            ]["units"]
+            for k in culinology["slot_overrides"]
+        )
+        + sum(v["units"] for v in culinology["slot_overrides"].values())
+        + sum(c["units"] for c in extra)
+    )
+    assert culin_total == 121
 
 
 def test_fsn_placeholders_have_elective_keys():
@@ -2687,7 +2716,7 @@ def test_wine_viticulture_flowchart():
     by_id = {c["id"]: c for c in courses}
 
     assert FLOWCHARTS["WVIT"]["total_units"] == 120
-    assert sum(c["units"] for c in courses) == 120
+    assert sum(c["units"] for c in courses) == 121  # +1 when student takes MATH 1261 (4u) vs MATH 1267 (3u)
 
     # Key course titles
     assert by_id["WVIT_1102"]["title"] == "Global Wine and Viticulture"
@@ -2725,7 +2754,7 @@ def test_wine_viticulture_flowchart():
     for c in courses:
         by_col.setdefault(c["grid_col"], []).append(c["units"])
     assert sum(by_col[0]) == 17   # Freshman Fall
-    assert sum(by_col[1]) == 16   # Freshman Spring
+    assert sum(by_col[1]) == 17   # Freshman Spring (17 when MATH 1261 4u; 16 if MATH 1267 3u)
     assert sum(by_col[2]) == 15   # Sophomore Fall
     assert sum(by_col[3]) == 15   # Sophomore Spring
     assert sum(by_col[4]) == 16   # Junior Fall
@@ -3486,6 +3515,8 @@ def test_history_flowchart():
     assert by_id["HIST_UD2"]["elective_key"] == "hist_ud_elective"
     assert by_id["HIST_GLOBAL1"]["elective_key"] == "hist_global_elective"
     assert by_id["HIST_GLOBAL2"]["elective_key"] == "hist_global_elective"
+    assert by_id["HIST_LANG"]["elective_key"] == "hist_lang_elective"
+    assert by_id["HIST_LANG"]["units"] == 4
 
     # Free elective placeholders
     for fid in ["HIST_FREE1", "HIST_FREE2", "HIST_FREE3", "HIST_FREE4",
@@ -3661,3 +3692,712 @@ def test_plsc_concentration_overrides():
     pp = by_id_map["plant_protection_science"]
     assert pp["slot_overrides"]["PLSC_CON1"]["elective_key"] == "plsc_plant_protection_elective"
     assert pp["slot_overrides"]["PLSC_CON12"]["elective_key"] == "plsc_plant_protection_elective"
+
+
+def test_envm_flowchart():
+    fc = FLOWCHARTS["ENVM"]
+    courses = fc["courses"]
+    by_id = {c["id"]: c for c in courses}
+
+    # Total units
+    assert fc["total_units"] == 120
+    total = sum(c["units"] for c in courses)
+    assert total == 120, f"Expected 120 units, got {total}"
+
+    # Column sums
+    col_sums = {}
+    for c in courses:
+        col_sums[c["grid_col"]] = col_sums.get(c["grid_col"], 0) + c["units"]
+    assert col_sums[0] == 17
+    assert col_sums[1] == 16
+    assert col_sums[2] == 16
+    assert col_sums[3] == 14
+    assert col_sums[4] == 14
+    assert col_sums[5] == 13
+    assert col_sums[6] == 16
+    assert col_sums[7] == 14
+
+    # Key course titles and categories
+    assert by_id["ENVM_NR1142"]["title"] == "Environmental Management"
+    assert by_id["ENVM_NR1142"]["category"] == "major"
+    assert by_id["ENVM_NR2218"]["title"] == "Introduction to GIS"
+    assert by_id["ENVM_NR3363"]["title"] == "Career Preparation in Natural Resources"
+    assert by_id["ENVM_SS1120"]["category"] == "support"
+    assert by_id["ENVM_STAT1110"]["category"] == "support"
+    assert by_id["ENVM_GE1A"]["category"] == "ge"
+    assert by_id["ENVM_GE6"]["category"] == "ge"
+
+    # Prerequisites
+    assert "NR 1142" in by_id["ENVM_NR2218"]["prerequisites"]
+    assert "NR 1142" in by_id["ENVM_NR3363"]["prerequisites"]
+    assert "NR 2218" in by_id["ENVM_QUANT_CRS"]["prerequisites"]
+    assert "NR 3363" in by_id["ENVM_SENIOR"]["prerequisites"]
+
+    # GE placeholders
+    for gid in ["ENVM_GE1A", "ENVM_GE1B", "ENVM_GE1C", "ENVM_GE3A", "ENVM_GE4A", "ENVM_GE4B", "ENVM_GE6", "ENVM_GEUD3", "ENVM_GEUD4"]:
+        assert by_id[gid]["is_placeholder"] is True
+        assert by_id[gid]["category"] == "ge"
+
+    # Elective placeholder elective_keys
+    assert by_id["ENVM_BIO_PLANT"]["elective_key"] == "envm_bio_plant_choice"
+    assert by_id["ENVM_MATH"]["elective_key"] == "envm_math_choice"
+    assert by_id["ENVM_BIO_ECO"]["elective_key"] == "envm_bio_ecology_choice"
+    assert by_id["ENVM_CHEM"]["elective_key"] == "envm_chem_choice"
+    assert by_id["ENVM_BIO_LIFE"]["elective_key"] == "envm_bio_life_choice"
+    assert by_id["ENVM_SOC_CRS"]["elective_key"] == "envm_soc_choice"
+    assert by_id["ENVM_ENVIRO_CRS"]["elective_key"] == "envm_enviro_choice"
+    assert by_id["ENVM_ECOL_CRS"]["elective_key"] == "envm_ecology_choice"
+    assert by_id["ENVM_WATER_CRS"]["elective_key"] == "envm_water_choice"
+    assert by_id["ENVM_QUANT_CRS"]["elective_key"] == "envm_quant_choice"
+    assert by_id["ENVM_POLICY_CRS"]["elective_key"] == "envm_policy_choice"
+    assert by_id["ENVM_SENIOR"]["elective_key"] == "envm_senior_project"
+    for i in range(1, 6):
+        assert by_id[f"ENVM_CON{i}"]["elective_key"] == "envm_concentration_elective"
+
+    # Concentrations
+    assert "ENVM" in CONCENTRATIONS
+    con_ids = [c["id"] for c in CONCENTRATIONS["ENVM"]]
+    assert "none" in con_ids
+    assert "conservation_science" in con_ids
+    assert "corporate_environmental" in con_ids
+    assert "environmental_data_science" in con_ids
+    assert "env_law_justice_policy" in con_ids
+    assert "sustainable_agriculture" in con_ids
+    assert "sustainable_urban_development" in con_ids
+    assert "water_science_management" in con_ids
+    assert len(CONCENTRATIONS["ENVM"]) == 8
+
+
+def test_envm_concentration_overrides():
+    by_id = {c["id"]: c for c in CONCENTRATIONS["ENVM"]}
+    for con_id in ["conservation_science", "corporate_environmental", "environmental_data_science",
+                   "env_law_justice_policy", "sustainable_agriculture",
+                   "sustainable_urban_development", "water_science_management"]:
+        overrides = by_id[con_id]["slot_overrides"]
+        assert len(overrides) == 5
+        for slot_key, slot in overrides.items():
+            for field in ["course_number", "title", "units", "prerequisites", "quarter_equivalents", "is_placeholder", "elective_key"]:
+                assert field in slot, f"{con_id}/{slot_key} missing field {field}"
+            assert slot["elective_key"] is not None
+
+    conservation = by_id["conservation_science"]["slot_overrides"]
+    assert conservation["ENVM_CON1"]["elective_key"] == "envm_conservation_elective"
+    assert conservation["ENVM_CON5"]["elective_key"] == "envm_conservation_elective"
+
+    water = by_id["water_science_management"]["slot_overrides"]
+    assert water["ENVM_CON1"]["elective_key"] == "envm_water_mgmt_elective"
+
+
+def test_philosophy_flowchart():
+    fc = FLOWCHARTS["PHIL"]
+    assert fc["total_units"] == 120
+    courses = fc["courses"]
+    total = sum(c["units"] for c in courses)
+    assert total == 120
+
+    by_id = {c["id"]: c for c in courses}
+
+    # Key titles and categories
+    assert by_id["PHIL_1101"]["title"] == "Introduction to Philosophy"
+    assert by_id["PHIL_1101"]["category"] == "major"
+    assert by_id["PHIL_3331"]["title"] == "Ethics"
+    assert by_id["PHIL_4411"]["title"] == "Metaphysics"
+    assert by_id["PHIL_4412"]["title"] == "Epistemology"
+    assert by_id["PHIL_4459"]["units"] == 1
+    assert by_id["PHIL_4460"]["units"] == 2
+
+    # Prerequisites
+    assert "PHIL 4411" in by_id["PHIL_4459"]["prerequisites"]
+    assert "PHIL 4459" in by_id["PHIL_4460"]["prerequisites"]
+
+    # GE placeholders (11 tiles including 4u 5B/5C combo)
+    ge_tiles = [c for c in courses if c["category"] == "ge"]
+    assert len(ge_tiles) == 11
+    assert all(c["is_placeholder"] for c in ge_tiles)
+    ge5 = by_id["PHIL_GE5B5C"]
+    assert ge5["units"] == 4
+
+    # History of philosophy electives
+    assert by_id["PHIL_HIST1"]["is_placeholder"] is True
+    assert by_id["PHIL_HIST1"]["elective_key"] == "phil_hist_group1"
+    assert by_id["PHIL_HIST2"]["elective_key"] == "phil_hist_group2"
+    assert by_id["PHIL_HIST3"]["elective_key"] == "phil_hist_group3"
+
+    # General philosophy elective
+    assert by_id["PHIL_GEN_ELEC"]["is_placeholder"] is True
+    assert by_id["PHIL_GEN_ELEC"]["elective_key"] == "phil_gen_elective"
+
+    # Support course
+    assert by_id["PHIL_SUPPORT"]["category"] == "support"
+    assert by_id["PHIL_SUPPORT"]["is_placeholder"] is True
+    assert by_id["PHIL_SUPPORT"]["elective_key"] == "phil_arts_hum_support"
+
+    # Concentration slots
+    for slot in ["PHIL_CON1", "PHIL_CON2", "PHIL_CON3", "PHIL_CON4", "PHIL_CON5"]:
+        assert by_id[slot]["is_placeholder"] is True
+
+    # Concentrations
+    assert "PHIL" in CONCENTRATIONS
+    con_ids = [c["id"] for c in CONCENTRATIONS["PHIL"]]
+    assert "none" in con_ids
+    assert "ethics_and_society" in con_ids
+    assert "ethics_science_technology" in con_ids
+    assert "philosophy_and_religion" in con_ids
+    assert len(CONCENTRATIONS["PHIL"]) == 4
+
+
+def test_philosophy_concentration_overrides():
+    by_id = {c["id"]: c for c in CONCENTRATIONS["PHIL"]}
+
+    for con_id in ["ethics_and_society", "ethics_science_technology", "philosophy_and_religion"]:
+        overrides = by_id[con_id]["slot_overrides"]
+        assert len(overrides) == 5
+        for slot_key, slot in overrides.items():
+            for field in ["course_number", "title", "units", "prerequisites", "quarter_equivalents", "is_placeholder", "elective_key"]:
+                assert field in slot, f"{con_id}/{slot_key} missing field {field}"
+
+    es = by_id["ethics_and_society"]["slot_overrides"]
+    assert es["PHIL_CON1"]["course_number"] == "PHIL 4439"
+    assert es["PHIL_CON1"]["elective_key"] is None
+    assert es["PHIL_CON2"]["elective_key"] == "phil_ethics_elective"
+    assert es["PHIL_CON5"]["elective_key"] == "phil_tech_ethics_elective"
+
+    est = by_id["ethics_science_technology"]["slot_overrides"]
+    assert est["PHIL_CON1"]["course_number"] == "PHIL 3323"
+    assert est["PHIL_CON1"]["elective_key"] is None
+    assert est["PHIL_CON2"]["elective_key"] == "phil_sci_tech_elective"
+    assert est["PHIL_CON5"]["elective_key"] == "phil_senior_sem_elective"
+
+    rel = by_id["philosophy_and_religion"]["slot_overrides"]
+    assert rel["PHIL_CON1"]["course_number"] == "PHIL 3342"
+    assert rel["PHIL_CON2"]["elective_key"] == "phil_asian_rel_elective"
+    assert rel["PHIL_CON3"]["elective_key"] == "phil_religion_elective"
+    assert rel["PHIL_CON5"]["elective_key"] == "phil_senior_phil_elective"
+
+
+def test_nutrition_flowchart():
+    fc = FLOWCHARTS["NUT"]
+    assert fc["total_units"] == 120
+    courses = fc["courses"]
+    total = sum(c["units"] for c in courses)
+    assert total == 120
+
+    by_id = {c["id"]: c for c in courses}
+
+    # Key course titles and categories
+    assert by_id["NUT_FSN2202"]["title"] == "Introduction to Human Nutrition"
+    assert by_id["NUT_FSN2202"]["category"] == "major"
+    assert by_id["NUT_NUTR1101"]["units"] == 1
+    assert by_id["NUT_NUTR3331"]["title"] == "Macronutrient Metabolism"
+    assert by_id["NUT_NUTR4431"]["units"] == 4
+    assert by_id["NUT_NUTR3333"]["units"] == 1
+    assert by_id["NUT_CHEM3350"]["category"] == "support"
+
+    # Prerequisites
+    assert "CHEM 1120" in by_id["NUT_CHEM2240"]["prerequisites"]
+    assert "CHEM 2240" in by_id["NUT_CHEM3350"]["prerequisites"]
+    assert "BIO 1151" in by_id["NUT_BIO2231"]["prerequisites"]
+    assert "BIO 2231" in by_id["NUT_BIO2232"]["prerequisites"]
+    assert "NUTR 3331" in by_id["NUT_NUTR3332"]["prerequisites"]
+    assert "NUTR 4431" in by_id["NUT_NUTR4432"]["prerequisites"]
+    assert "NUTR 4432" in by_id["NUT_NUTR_SP"]["prerequisites"]
+
+    # GE placeholders
+    ge_tiles = [c for c in courses if c["category"] == "ge"]
+    assert len(ge_tiles) == 10
+    assert all(c["is_placeholder"] for c in ge_tiles)
+
+    # Slash-choice support
+    assert by_id["NUT_MCRO"]["is_placeholder"] is True
+    assert by_id["NUT_MCRO"]["elective_key"] == "nut_mcro_choice"
+
+    # Senior project
+    assert by_id["NUT_NUTR_SP"]["is_placeholder"] is True
+    assert by_id["NUT_NUTR_SP"]["elective_key"] == "nut_senior_project"
+    assert by_id["NUT_NUTR_SP"]["units"] == 2
+
+    # Concentration slots
+    for slot in ["NUT_CON1", "NUT_CON2", "NUT_CON3", "NUT_CON4", "NUT_CON5"]:
+        assert by_id[slot]["is_placeholder"] is True
+
+    # Free elective slots
+    assert by_id["NUT_FREE1"]["units"] == 3
+    assert by_id["NUT_FREE2"]["units"] == 3
+
+    # Concentrations
+    assert "NUT" in CONCENTRATIONS
+    con_ids = [c["id"] for c in CONCENTRATIONS["NUT"]]
+    assert "none" in con_ids
+    assert "dietetics" in con_ids
+    assert "nutrition_prehealth" in con_ids
+    assert len(CONCENTRATIONS["NUT"]) == 3
+
+
+def test_nutrition_concentration_overrides():
+    by_id = {c["id"]: c for c in CONCENTRATIONS["NUT"]}
+
+    for con_id in ["dietetics", "nutrition_prehealth"]:
+        overrides = by_id[con_id]["slot_overrides"]
+        assert len(overrides) == 5
+        for slot_key, slot in overrides.items():
+            for field in ["course_number", "title", "units", "prerequisites", "quarter_equivalents", "is_placeholder", "elective_key"]:
+                assert field in slot, f"{con_id}/{slot_key} missing field {field}"
+
+    # Dietetics: 4 fixed + 1 elective
+    diet = by_id["dietetics"]["slot_overrides"]
+    assert diet["NUT_CON1"]["course_number"] == "PSY 2201"
+    assert diet["NUT_CON1"]["elective_key"] is None
+    assert diet["NUT_CON2"]["course_number"] == "NUTR 3321"
+    assert diet["NUT_CON3"]["course_number"] == "FSN 3346"
+    assert diet["NUT_CON4"]["course_number"] == "NUTR 4426"
+    assert diet["NUT_CON5"]["elective_key"] == "nut_dietetics_elective"
+    assert diet["NUT_CON5"]["is_placeholder"] is True
+
+    # Pre-Health: 1 fixed + 4 elective
+    ph = by_id["nutrition_prehealth"]["slot_overrides"]
+    assert ph["NUT_CON1"]["course_number"] == "FSN 3305"
+    assert ph["NUT_CON1"]["elective_key"] is None
+    assert ph["NUT_CON2"]["elective_key"] == "nut_prehealth_elective"
+    assert ph["NUT_CON5"]["elective_key"] == "nut_prehealth_elective"
+
+
+def test_public_health_flowchart():
+    fc = FLOWCHARTS["PH"]
+    assert fc["total_units"] == 120
+    courses = fc["courses"]
+    total = sum(c["units"] for c in courses)
+    assert total == 120
+
+    by_id = {c["id"]: c for c in courses}
+
+    # Key course titles
+    assert by_id["PH_HLTH1101"]["title"] == "Introduction to Public Health"
+    assert by_id["PH_HLTH1101"]["category"] == "major"
+    assert by_id["PH_HLTH1101"]["units"] == 3
+    assert by_id["PH_HLTH3318"]["title"] == "Applied Epidemiology"
+    assert by_id["PH_HLTH3318"]["units"] == 4
+    assert by_id["PH_HLTH4402"]["title"] == "Research Methods in Public Health Settings"
+    assert by_id["PH_HLTH4402"]["units"] == 4
+    assert by_id["PH_BIO1151"]["category"] == "support"
+    assert by_id["PH_BIO2231"]["units"] == 4
+
+    # Prerequisites
+    assert "HLTH 1101" in by_id["PH_HLTH2261"]["prerequisites"]
+    assert "HLTH 2261" in by_id["PH_HLTH3318"]["prerequisites"]
+    assert "HLTH 3318" in by_id["PH_HLTH3344"]["prerequisites"]
+    assert "HLTH 4402" in by_id["PH_HLTH4434"]["prerequisites"]
+    assert "HLTH 4435" in by_id["PH_HLTH_SP"]["prerequisites"]
+    assert "BIO 2231" in by_id["PH_BIO2232"]["prerequisites"]
+    assert "STAT 1110" in by_id["PH_STAT3520"]["prerequisites"]
+
+    # GE placeholders
+    ge_tiles = [c for c in courses if c["category"] == "ge"]
+    assert len(ge_tiles) == 9
+    assert all(c["is_placeholder"] for c in ge_tiles)
+
+    # Elective placeholders
+    assert by_id["PH_HLTH_FRESH"]["is_placeholder"] is True
+    assert by_id["PH_HLTH_FRESH"]["elective_key"] == "ph_hlth_freshman_elective"
+    assert by_id["PH_ANT_SOC"]["is_placeholder"] is True
+    assert by_id["PH_ANT_SOC"]["elective_key"] == "ph_ant_soc_elective"
+    assert by_id["PH_HLTH_SP"]["is_placeholder"] is True
+    assert by_id["PH_HLTH_SP"]["elective_key"] == "ph_senior_project"
+
+    # Concentration slots have no base elective_key (set by concentration overrides)
+    for slot in ["PH_CON1", "PH_CON2", "PH_CON3", "PH_CON4"]:
+        assert by_id[slot]["is_placeholder"] is True
+        assert "elective_key" not in by_id[slot] or by_id[slot].get("elective_key") is None
+
+    # Free elective slots (no elective_key)
+    assert by_id["PH_FREE1"]["is_placeholder"] is True
+    assert by_id["PH_FREE1"]["units"] == 4
+    assert by_id["PH_FREE2"]["is_placeholder"] is True
+    assert by_id["PH_FREE2"]["units"] == 4
+
+    # Concentrations
+    assert "PH" in CONCENTRATIONS
+    con_ids = [c["id"] for c in CONCENTRATIONS["PH"]]
+    assert "none" in con_ids
+    assert "community_health_promotion" in con_ids
+    assert "health_equity_global_health" in con_ids
+    assert "health_management_administration" in con_ids
+    assert len(CONCENTRATIONS["PH"]) == 4
+
+
+def test_public_health_concentration_overrides():
+    by_id = {c["id"]: c for c in CONCENTRATIONS["PH"]}
+
+    # Every non-none concentration must have 4 slot_overrides with required fields
+    for con_id in ["community_health_promotion", "health_equity_global_health", "health_management_administration"]:
+        overrides = by_id[con_id]["slot_overrides"]
+        assert len(overrides) == 4
+        for slot_key, slot in overrides.items():
+            for field in ["course_number", "title", "units", "prerequisites", "quarter_equivalents", "is_placeholder", "elective_key"]:
+                assert field in slot, f"{con_id}/{slot_key} missing field {field}"
+
+    # Community Health Promotion: first 3 fixed, CON4 has elective
+    comm = by_id["community_health_promotion"]["slot_overrides"]
+    assert comm["PH_CON1"]["course_number"] == "HLTH 3305"
+    assert comm["PH_CON1"]["elective_key"] is None
+    assert comm["PH_CON2"]["course_number"] == "HLTH 3310"
+    assert comm["PH_CON3"]["course_number"] == "HLTH 3348"
+    assert comm["PH_CON4"]["elective_key"] == "ph_com_health_elective"
+    assert comm["PH_CON4"]["is_placeholder"] is True
+
+    # Health Equity: fixed courses + elective
+    equity = by_id["health_equity_global_health"]["slot_overrides"]
+    assert equity["PH_CON1"]["course_number"] == "HLTH 3348"
+    assert equity["PH_CON2"]["course_number"] == "HLTH 4413"
+    assert equity["PH_CON3"]["course_number"] == "HLTH 4444"
+    assert equity["PH_CON3"]["elective_key"] is None
+    assert equity["PH_CON4"]["elective_key"] == "ph_equity_global_elective"
+
+    # Health Management: CON1 is slash-choice placeholder, CON3 fixed, CON4 elective
+    mgmt = by_id["health_management_administration"]["slot_overrides"]
+    assert mgmt["PH_CON1"]["is_placeholder"] is True
+    assert mgmt["PH_CON1"]["elective_key"] == "ph_bus_econ_elective"
+    assert mgmt["PH_CON2"]["course_number"] == "KINE 4401"
+    assert mgmt["PH_CON2"]["elective_key"] is None
+    assert mgmt["PH_CON3"]["course_number"] == "HLTH 4444"
+    assert mgmt["PH_CON4"]["elective_key"] == "ph_mgmt_admin_elective"
+
+
+def test_spanish_flowchart():
+    assert "SPAN" in FLOWCHARTS
+    courses = FLOWCHARTS["SPAN"]["courses"]
+    assert FLOWCHARTS["SPAN"]["total_units"] == 120
+
+    total = sum(c["units"] for c in courses)
+    assert total == 120, f"SPAN total units {total} != 120"
+
+    assert len(courses) == 40
+
+    by_id = {c["id"]: c for c in courses}
+
+    # Key course titles and categories
+    assert by_id["SPAN_2201"]["title"] == "Intermediate Spanish I"
+    assert by_id["SPAN_2201"]["category"] == "major"
+    assert by_id["SPAN_2201"]["units"] == 4
+
+    assert by_id["SPAN_3301"]["title"] == "Advanced Writing in Spanish"
+    assert by_id["SPAN_3301"]["category"] == "major"
+
+    assert by_id["SPAN_3302"]["title"] == "Spanish Conversation, Composition, Advocacy"
+    assert by_id["SPAN_3302"]["category"] == "major"
+
+    assert by_id["SPAN_WLC3360"]["title"] == "Research Methods in World Languages and Cultures"
+    assert by_id["SPAN_WLC3360"]["category"] == "major"
+
+    assert by_id["SPAN_WLC4460"]["title"] == "Senior Project"
+    assert by_id["SPAN_WLC4460"]["category"] == "major"
+
+    assert by_id["SPAN_2207"]["title"] == "Introduction to Spanish Linguistics"
+    assert by_id["SPAN_2233"]["title"] == "Introduction to Hispanic Literature"
+
+    # Prerequisites
+    assert "SPAN 2201" in by_id["SPAN_2207"]["prerequisites"]
+    assert "SPAN 2233" in by_id["SPAN_3301"]["prerequisites"]
+    assert "SPAN 3301" in by_id["SPAN_3302"]["prerequisites"]
+    assert "WLC 3360" in by_id["SPAN_WLC4460"]["prerequisites"]
+
+    # GE placeholders
+    ge_tiles = [c for c in courses if c["category"] == "ge"]
+    assert len(ge_tiles) == 14
+    assert all(c["is_placeholder"] for c in ge_tiles)
+
+    # Slash-choice elective placeholder
+    assert by_id["SPAN_2202"]["is_placeholder"] is True
+    assert by_id["SPAN_2202"]["elective_key"] == "span_2202_2206"
+
+    # 3000-level elective placeholders
+    assert by_id["SPAN_3K_1"]["is_placeholder"] is True
+    assert by_id["SPAN_3K_1"]["elective_key"] == "span_3k_elective"
+    assert by_id["SPAN_3K_4"]["is_placeholder"] is True
+    assert by_id["SPAN_3K_4"]["elective_key"] == "span_3k_elective"
+
+    # 4000-level elective placeholders
+    assert by_id["SPAN_4K_1"]["is_placeholder"] is True
+    assert by_id["SPAN_4K_1"]["elective_key"] == "span_4k_elective"
+    assert by_id["SPAN_4K_2"]["is_placeholder"] is True
+    assert by_id["SPAN_4K_2"]["elective_key"] == "span_4k_elective"
+
+    # Language/culture support placeholders
+    assert by_id["SPAN_LANG_1"]["is_placeholder"] is True
+    assert by_id["SPAN_LANG_1"]["elective_key"] == "span_lang_cult_elective"
+    assert by_id["SPAN_LANG_1"]["category"] == "support"
+
+    # Free elective tiles (concentration category, no elective_key)
+    free_tiles = [c for c in courses if c["id"].startswith("SPAN_FREE")]
+    assert len(free_tiles) == 9
+    assert all(c["category"] == "concentration" for c in free_tiles)
+    assert all(c["is_placeholder"] for c in free_tiles)
+
+    # No concentrations for Spanish
+    assert "SPAN" not in CONCENTRATIONS
+
+
+def test_theatre_arts_flowchart():
+    assert "THEA" in FLOWCHARTS
+    courses = FLOWCHARTS["THEA"]["courses"]
+    assert FLOWCHARTS["THEA"]["total_units"] == 120
+
+    total = sum(c["units"] for c in courses)
+    assert total == 120, f"THEA total units {total} != 120"
+
+    assert len(courses) == 41
+
+    by_id = {c["id"]: c for c in courses}
+
+    # Key course titles and categories
+    assert by_id["THEA_2201"]["title"] == "First Year Theatre Experience"
+    assert by_id["THEA_2201"]["category"] == "major"
+    assert by_id["THEA_2201"]["units"] == 3
+
+    assert by_id["THEA_2220"]["title"] == "Acting I"
+    assert by_id["THEA_2220"]["category"] == "major"
+
+    assert by_id["THEA_2230"]["title"] == "Stagecraft I"
+    assert by_id["THEA_3305"]["title"] == "Diversity in U.S. Theatre"
+    assert by_id["THEA_4450"]["title"] == "Directing"
+    assert by_id["THEA_4461"]["title"] == "Senior Project Seminar"
+    assert by_id["THEA_4461"]["category"] == "major"
+
+    assert by_id["THEA_ENGL3339"]["title"] == "Introduction to Shakespeare"
+    assert by_id["THEA_ENGL3339"]["category"] == "support"
+
+    # Prerequisites
+    assert "TH 2201" in by_id["THEA_2220"]["prerequisites"]
+    assert "TH 2201" in by_id["THEA_2230"]["prerequisites"]
+    assert "TH 2295" in by_id["THEA_4430"]["prerequisites"]
+    assert "TH 3305" in by_id["THEA_4450"]["prerequisites"]
+    assert "TH 4450" in by_id["THEA_4461"]["prerequisites"]
+
+    # GE placeholders (14 GE tiles: 1A,1C,1B,2,3B,4A,4B,5C,5A,5B,6,UD25,UD4 + note TH3305→UD3)
+    ge_tiles = [c for c in courses if c["category"] == "ge"]
+    assert len(ge_tiles) == 13
+    assert all(c["is_placeholder"] for c in ge_tiles)
+    ge_ids = {c["id"] for c in ge_tiles}
+    assert "THEA_GE5C" in ge_ids
+    assert by_id["THEA_GE5C"]["units"] == 1
+
+    # Slash-choice elective placeholders
+    assert by_id["THEA_1145"]["is_placeholder"] is True
+    assert by_id["THEA_1145"]["elective_key"] == "th_mainstage_choice"
+    assert by_id["THEA_2227"]["is_placeholder"] is True
+    assert by_id["THEA_2227"]["elective_key"] == "th_history_choice"
+    assert by_id["THEA_3325"]["is_placeholder"] is True
+    assert by_id["THEA_3325"]["elective_key"] == "th_construction_choice"
+    assert by_id["THEA_4430"]["is_placeholder"] is True
+    assert by_id["THEA_4430"]["elective_key"] == "th_design_choice"
+
+    # LD and UD elective placeholders
+    assert by_id["THEA_LD_EL1"]["is_placeholder"] is True
+    assert by_id["THEA_LD_EL1"]["elective_key"] == "th_ld_elective"
+    assert by_id["THEA_UD_EL1"]["is_placeholder"] is True
+    assert by_id["THEA_UD_EL1"]["elective_key"] == "th_ud_elective"
+
+    # Free elective tiles (concentration category)
+    free_tiles = [c for c in courses if c["id"].startswith("THEA_FREE")]
+    assert len(free_tiles) == 5
+    assert all(c["category"] == "concentration" for c in free_tiles)
+    assert all(c["is_placeholder"] for c in free_tiles)
+    free_units = sum(c["units"] for c in free_tiles)
+    assert free_units == 14
+
+    # 2u free elective in JS
+    assert by_id["THEA_FREE1"]["units"] == 2
+
+    # No concentrations for Theatre Arts
+    assert "THEA" not in CONCENTRATIONS
+
+
+def test_liberal_studies_flowchart():
+    assert "LIBS" in FLOWCHARTS
+    courses = FLOWCHARTS["LIBS"]["courses"]
+    assert FLOWCHARTS["LIBS"]["total_units"] == 120
+
+    total = sum(c["units"] for c in courses)
+    assert total == 120, f"LIBS total units {total} != 120"
+
+    assert len(courses) == 40
+
+    by_id = {c["id"]: c for c in courses}
+
+    # Key course titles and categories
+    assert by_id["LIBS_1201"]["title"] == "Orientation to Liberal Studies"
+    assert by_id["LIBS_1201"]["category"] == "major"
+    assert by_id["LIBS_1201"]["units"] == 1
+
+    assert by_id["LIBS_3214"]["title"] == "Constitutional Issues and Education Foundations"
+    assert by_id["LIBS_3214"]["units"] == 4
+    assert by_id["LIBS_3214"]["category"] == "major"
+
+    assert by_id["LIBS_MATH3481"]["title"] == "Mathematics for Elementary Teaching I"
+    assert by_id["LIBS_MATH3481"]["category"] == "support"
+    assert by_id["LIBS_MATH3481"]["units"] == 4
+
+    assert by_id["LIBS_BIO3210"]["title"] == "Biology of Plants and Animals for Future Teachers"
+    assert by_id["LIBS_BIO3210"]["category"] == "support"
+
+    assert by_id["LIBS_4411"]["title"] == "Advanced History/Social Sciences, Arts, or Science/Engineering Integration"
+    assert by_id["LIBS_4411"]["category"] == "major"
+    assert by_id["LIBS_4411"]["is_placeholder"] is True
+    assert by_id["LIBS_4411"]["elective_key"] == "libs_advanced_integration"
+
+    assert by_id["LIBS_4461"]["elective_key"] == "libs_senior_project"
+
+    # Prerequisites
+    assert "PSC 1101" in by_id["LIBS_PSC1102"]["prerequisites"]
+    assert "MATH 3481" in by_id["LIBS_MATH3482"]["prerequisites"]
+    assert "MATH 3482" in by_id["LIBS_MATH3483"]["prerequisites"]
+
+    # Slash-choice support placeholders
+    assert by_id["LIBS_STAT"]["is_placeholder"] is True
+    assert by_id["LIBS_STAT"]["elective_key"] == "libs_stat_choice"
+    assert by_id["LIBS_PHIL"]["is_placeholder"] is True
+    assert by_id["LIBS_PHIL"]["elective_key"] == "libs_phil_choice"
+
+    # GE placeholders (8 standalone GE tiles: 1A, 1B, 1C, 5B, 6, UD3, UD4, UD25)
+    ge_tiles = [c for c in courses if c["category"] == "ge"]
+    assert len(ge_tiles) == 8
+    assert all(c["is_placeholder"] for c in ge_tiles)
+
+    # Concentration slots (no elective_key in base)
+    for slot in ["LIBS_CON_EL1", "LIBS_CON_EL2", "LIBS_CON_EL3", "LIBS_CON_EL4"]:
+        assert by_id[slot]["is_placeholder"] is True
+        assert by_id[slot].get("elective_key") is None
+
+    # Free elective tile
+    assert by_id["LIBS_FREE"]["is_placeholder"] is True
+    assert by_id["LIBS_FREE"]["units"] == 3
+    assert by_id["LIBS_FREE"]["category"] == "concentration"
+
+    # LIBS has concentrations
+    assert "LIBS" in CONCENTRATIONS
+    con_ids = [c["id"] for c in CONCENTRATIONS["LIBS"]]
+    assert "none" in con_ids
+    assert "environmental_education" in con_ids
+    assert "human_development" in con_ids
+    assert "mathematics" in con_ids
+    assert "english" in con_ids
+    assert "science" in con_ids
+    assert "social_science" in con_ids
+    assert "tesol" in con_ids
+    assert "individualized" in con_ids
+    assert len(CONCENTRATIONS["LIBS"]) == 9
+
+
+def test_liberal_studies_concentration_overrides():
+    by_id = {c["id"]: c for c in CONCENTRATIONS["LIBS"]}
+
+    # Every non-none concentration must have 4 slot_overrides with required fields
+    for con_id in ["environmental_education", "human_development", "mathematics",
+                   "english", "science", "social_science", "tesol", "individualized"]:
+        overrides = by_id[con_id]["slot_overrides"]
+        assert len(overrides) == 4, f"{con_id} should have 4 slot overrides"
+        for slot_key, slot in overrides.items():
+            for field in ["course_number", "title", "units", "prerequisites",
+                          "quarter_equivalents", "is_placeholder", "elective_key"]:
+                assert field in slot, f"{con_id}/{slot_key} missing field {field}"
+
+    # Environmental Education: all 4 slots are elective placeholders
+    env = by_id["environmental_education"]["slot_overrides"]
+    assert env["LIBS_CON_EL1"]["elective_key"] == "libs_env_cultural"
+    assert env["LIBS_CON_EL4"]["elective_key"] == "libs_env_capstone"
+
+    # Mathematics: CON_EL1 and CON_EL2 are 4u fixed courses
+    math = by_id["mathematics"]["slot_overrides"]
+    assert math["LIBS_CON_EL1"]["course_number"] == "MATH 1261"
+    assert math["LIBS_CON_EL1"]["units"] == 4
+    assert math["LIBS_CON_EL1"]["elective_key"] is None
+    assert math["LIBS_CON_EL2"]["course_number"] == "MATH 1262"
+    assert math["LIBS_CON_EL3"]["course_number"] == "MATH 2031"
+    assert math["LIBS_CON_EL4"]["elective_key"] == "libs_math_upper_div"
+
+    # English: CON_EL1 fixed 3u, CON_EL2 fixed 4u, CON_EL3 placeholder 4u, CON_EL4 elective
+    engl = by_id["english"]["slot_overrides"]
+    assert engl["LIBS_CON_EL1"]["course_number"] == "ENGL 3311"
+    assert engl["LIBS_CON_EL1"]["elective_key"] is None
+    assert engl["LIBS_CON_EL2"]["course_number"] == "ENGL 3392"
+    assert engl["LIBS_CON_EL2"]["units"] == 4
+    assert engl["LIBS_CON_EL3"]["elective_key"] == "libs_engl_3393_choice"
+    assert engl["LIBS_CON_EL4"]["elective_key"] == "libs_am_lit_elective"
+
+    # Social Science: HIST 2208 is fixed CON_EL1
+    soc = by_id["social_science"]["slot_overrides"]
+    assert soc["LIBS_CON_EL1"]["course_number"] == "HIST 2208"
+    assert soc["LIBS_CON_EL1"]["elective_key"] is None
+    assert soc["LIBS_CON_EL2"]["elective_key"] == "libs_pols_elective"
+    assert soc["LIBS_CON_EL3"]["elective_key"] == "libs_geog_elective"
+    assert soc["LIBS_CON_EL4"]["elective_key"] == "libs_soc_hist_elective"
+
+    # TESOL: COMS 3316 and ENGL 4497/4498 are fixed
+    tesol = by_id["tesol"]["slot_overrides"]
+    assert tesol["LIBS_CON_EL1"]["course_number"] == "COMS 3316"
+    assert tesol["LIBS_CON_EL1"]["elective_key"] is None
+    assert tesol["LIBS_CON_EL2"]["elective_key"] == "libs_engl_ling_choice"
+    assert tesol["LIBS_CON_EL3"]["course_number"] == "ENGL 4497"
+    assert tesol["LIBS_CON_EL4"]["course_number"] == "ENGL 4498"
+
+    # Human Development: CON_EL2 is 4u, CON_EL4 is 2u
+    hd = by_id["human_development"]["slot_overrides"]
+    assert hd["LIBS_CON_EL2"]["units"] == 4
+    assert hd["LIBS_CON_EL2"]["elective_key"] == "libs_hd_child_dev"
+    assert hd["LIBS_CON_EL4"]["units"] == 2
+    assert hd["LIBS_CON_EL4"]["elective_key"] == "libs_hd_cd_course"
+
+
+def test_dairy_science_flowchart():
+    fc = FLOWCHARTS["DSCI"]
+    courses = fc["courses"]
+    assert fc["total_units"] == 120
+    assert sum(c["units"] for c in courses) == 120
+
+    by_id = {c["id"]: c for c in courses}
+
+    # Total tile count
+    assert len(courses) == 40
+
+    # Key course titles
+    assert by_id["DSCI_2230"]["title"] == "General Dairy Husbandry"
+    assert by_id["DSCI_3321"]["title"] == "Lactation Physiology"
+    assert by_id["DSCI_3330"]["title"] == "Dairy Cattle Reproductive Management and AI"
+    assert by_id["DSCI_4432"]["title"] == "Advanced Dairy Herd Management"
+    assert by_id["DSCI_4422"]["title"] == "Breeding and Genetics of Dairy Cattle"
+    assert by_id["DSCI_3344"]["title"] == "Dairy Microbiology"
+
+    # Categories
+    assert by_id["DSCI_2230"]["category"] == "major"
+    assert by_id["DSCI_ASCI1101"]["category"] == "support"
+    assert by_id["DSCI_GE1A"]["category"] == "ge"
+    assert by_id["DSCI_APR_EL1"]["category"] == "concentration"
+    assert by_id["DSCI_FREE"]["category"] == "concentration"
+
+    # Prerequisites
+    assert "DSCI 2230" in by_id["DSCI_3321"]["prerequisites"]
+    assert "DSCI 3321" in by_id["DSCI_3330"]["prerequisites"]
+    assert "DSCI 3330" in by_id["DSCI_4432"]["prerequisites"]
+    assert "ASCI 2220" in by_id["DSCI_ASCI3355"]["prerequisites"]
+    assert "ASCI 3302" in by_id["DSCI_4422"]["prerequisites"]
+
+    # GE placeholders: 11 standalone tiles
+    ge_tiles = [c for c in courses if c["category"] == "ge"]
+    assert len(ge_tiles) == 11
+    assert all(c["is_placeholder"] for c in ge_tiles)
+
+    # Elective placeholders
+    assert by_id["DSCI_APR_EL1"]["is_placeholder"] is True
+    assert by_id["DSCI_APR_EL1"]["elective_key"] == "dsci_approved_elective"
+    assert by_id["DSCI_UD_EL1"]["is_placeholder"] is True
+    assert by_id["DSCI_UD_EL1"]["elective_key"] == "dsci_ud_elective"
+    assert by_id["DSCI_UD_EL2"]["is_placeholder"] is True
+    assert by_id["DSCI_UD_EL2"]["elective_key"] == "dsci_ud_elective"
+    assert by_id["DSCI_SP"]["is_placeholder"] is True
+    assert by_id["DSCI_SP"]["elective_key"] == "dsci_senior_project"
+
+    # Free elective
+    assert by_id["DSCI_FREE"]["units"] == 4
+    assert by_id["DSCI_FREE"]["is_placeholder"] is True
+
+    # No concentrations
+    assert "DSCI" not in CONCENTRATIONS

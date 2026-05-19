@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getMajors, parseTranscript, parseCsvTranscript, getConcentrations, getFlowchart, syncSession } from "@/lib/api";
 import { saveSession } from "@/lib/session";
+import { parseMbpFile } from "@/lib/mbp";
 import type { MajorOption, Concentration } from "@/lib/types";
 
 function concs(...pairs: [string, string][]): Concentration[] {
@@ -134,6 +135,7 @@ export default function HomePage() {
   const [progress, setProgress] = useState(0);
   const [error, setError] = useState<string | null>(null);
   const [showInstructions, setShowInstructions] = useState(false);
+  const [isMbpFile, setIsMbpFile] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -181,11 +183,13 @@ export default function HomePage() {
   }, [loading]);
 
   const handleFile = (f: File) => {
-    if (!f.name.endsWith(".pdf") && !f.name.endsWith(".csv")) {
-      setError("Please upload a PDF transcript or CSV course list.");
+    const isMbp = f.name.endsWith(".mbp");
+    if (!f.name.endsWith(".pdf") && !f.name.endsWith(".csv") && !isMbp) {
+      setError("Please upload a PDF transcript, CSV course list, or .mbp flowchart file.");
       return;
     }
     setFile(f);
+    setIsMbpFile(isMbp);
     setProgress(0);
     setError(null);
   };
@@ -209,6 +213,20 @@ export default function HomePage() {
   const onSubmit = async () => {
     if (!file) { setError("Please upload your transcript or course list first."); return; }
     if (loading) return;
+
+    if (isMbpFile) {
+      try {
+        const text = await file.text();
+        const data = parseMbpFile(text);
+        const newSessionId = crypto.randomUUID();
+        saveSession({ ...data, sessionId: newSessionId });
+        router.push(`/flowchart/${newSessionId}`);
+      } catch {
+        setError("Could not read the flowchart file. Make sure it's a valid .mbp file.");
+      }
+      return;
+    }
+
     setLoading(true);
     setProgress(12);
     setError(null);
@@ -334,21 +352,21 @@ export default function HomePage() {
               <input
                 ref={fileInputRef}
                 type="file"
-                accept=".pdf,.csv"
+                accept=".pdf,.csv,.mbp"
                 className="hidden"
                 onChange={(e) => { const f = e.target.files?.[0]; if (f) handleFile(f); }}
               />
               {file ? (
                 <div>
-                  <div className="text-2xl mb-1">✅</div>
+                  <div className="text-2xl mb-1">{isMbpFile ? "🗺️" : "✅"}</div>
                   <div className="font-medium text-blue-700 text-sm">{file.name}</div>
                   <div className="text-xs text-gray-400 mt-1">Click to change</div>
                 </div>
               ) : (
                 <div>
                   <div className="text-3xl mb-2">📄</div>
-                  <div className="font-medium text-gray-600 text-sm">Drop your transcript or course list</div>
-                  <div className="text-xs text-gray-400 mt-1">or click to upload (.pdf or .csv)</div>
+                  <div className="font-medium text-gray-600 text-sm">Drop your transcript, course list, or flowchart</div>
+                  <div className="text-xs text-gray-400 mt-1">or click to upload (.pdf, .csv, or .mbp)</div>
                 </div>
               )}
             </div>
@@ -387,8 +405,8 @@ export default function HomePage() {
               )}
             </div>
 
-            {/* Major selector */}
-            <div>
+            {/* Major selector (hidden when restoring from .mbp — major is embedded in file) */}
+            {!isMbpFile && <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Major</label>
               <select
                 value={majorCode}
@@ -402,10 +420,10 @@ export default function HomePage() {
                   <option key={m.code} value={m.code}>{m.name}</option>
                 ))}
               </select>
-            </div>
+            </div>}
 
-            {/* Concentration selector (only shown when available) */}
-            {concentrations.length > 0 && (
+            {/* Concentration selector (only shown when available and not restoring from .mbp) */}
+            {!isMbpFile && concentrations.length > 0 && (
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Concentration</label>
                 <select
@@ -459,7 +477,7 @@ export default function HomePage() {
               className="w-full py-3 rounded-xl font-semibold text-white text-sm transition-opacity disabled:opacity-50"
               style={{ background: "var(--cp-green)" }}
             >
-              {loading ? "Creating flowchart…" : "View My Flowchart →"}
+              {loading ? (isMbpFile ? "Restoring flowchart…" : "Creating flowchart…") : isMbpFile ? "Restore My Flowchart →" : "View My Flowchart →"}
             </button>
 
             <div className="relative flex items-center gap-3">

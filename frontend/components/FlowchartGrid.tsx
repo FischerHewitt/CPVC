@@ -360,6 +360,7 @@ export default function FlowchartGrid({
                       inProgressChecked={display.inProgressChecked}
                       plannedCourseNumber={display.plannedCourseNumber}
                       activeCourseNumber={display.activeCourseNumber}
+                      plannedUnits={course.is_placeholder ? effectiveUnits(course) : undefined}
                       onToggleCompleted={() => onToggleCourseCompleted(course)}
                       onToggleInProgress={() => onToggleCourseInProgress(course)}
                       onClick={() => onCourseClick(course, status)}
@@ -391,6 +392,9 @@ export default function FlowchartGrid({
         </div>
         <div className="flex items-center gap-1.5">
           <span>🔒</span> Prereqs needed
+        </div>
+        <div className="flex items-center gap-1.5">
+          <span className="text-amber-500">⚠️</span> Prereq warning
         </div>
       </div>
     </div>
