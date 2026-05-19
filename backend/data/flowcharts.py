@@ -924,7 +924,7 @@ ASCI_FLOWCHART: list[Course] = [
     {"id": "ASCI_MATH1006", "course_number": "MATH 1006", "title": "College Algebra", "units": 3, "category": "support", "grid_col": 0, "grid_row": 2, "prerequisites": [], "quarter_equivalents": ["MATH 118"], "is_placeholder": False},
     {"id": "ASCI_GE1A", "course_number": "GE 1A", "title": "Written Communication", "units": 3, "category": "ge", "grid_col": 0, "grid_row": 3, "prerequisites": [], "quarter_equivalents": ["ENGL 134", "ENGL 1340"], "is_placeholder": True},
     {"id": "ASCI_GE1C", "course_number": "GE 1C", "title": "Oral Communication", "units": 3, "category": "ge", "grid_col": 0, "grid_row": 4, "prerequisites": [], "quarter_equivalents": ["COMS 101"], "is_placeholder": True},
-    {"id": "ASCI_GE_LD1", "course_number": "GE", "title": "General Education Requirement", "units": 3, "category": "ge", "grid_col": 0, "grid_row": 5, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "ASCI_GE_LD1", "course_number": "GE 6", "title": "Ethnic Studies", "units": 3, "category": "ge", "grid_col": 0, "grid_row": 5, "prerequisites": [], "quarter_equivalents": ["ES 253", "ES 1112"], "is_placeholder": True},
 
     # ── FRESHMAN SPRING ───────────────────────────────────────────────────────
     {"id": "ASCI_ASCI1102", "course_number": "ASCI 1102", "title": "Animal Management Systems", "units": 3, "category": "major", "grid_col": 1, "grid_row": 0, "prerequisites": [], "quarter_equivalents": ["ASCI 112"], "is_placeholder": False},
@@ -1062,7 +1062,7 @@ ANTGEOG_FLOWCHART: list[Course] = [
     {"id": "ANTGEOG_GEOG1150", "course_number": "GEOG 1150", "title": "Human Geography", "units": 3, "category": "major", "grid_col": 1, "grid_row": 0, "prerequisites": [], "quarter_equivalents": ["GEOG 150"], "is_placeholder": False},
     {"id": "ANTGEOG_STAT1110", "course_number": "STAT 1110", "title": "Applied Statistical Concepts and Methods", "units": 3, "category": "support", "grid_col": 1, "grid_row": 0, "prerequisites": [], "quarter_equivalents": ["STAT 217"], "is_placeholder": False},
     {"id": "ANTGEOG_GE1B", "course_number": "GE 1B", "title": "Critical Thinking", "units": 3, "category": "ge", "grid_col": 1, "grid_row": 0, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
-    {"id": "ANTGEOG_GE_LD1", "course_number": "GE", "title": "General Education Requirement", "units": 3, "category": "ge", "grid_col": 1, "grid_row": 0, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "ANTGEOG_GE_LD1", "course_number": "GE 3A", "title": "Arts", "units": 3, "category": "ge", "grid_col": 1, "grid_row": 0, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
     {"id": "ANTGEOG_GE_LD2", "course_number": "GE 2", "title": "Mathematics and Quantitative Reasoning", "units": 3, "category": "ge", "grid_col": 1, "grid_row": 0, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
 
     # Sophomore Fall
@@ -1074,7 +1074,7 @@ ANTGEOG_FLOWCHART: list[Course] = [
 
     # Sophomore Spring
     {"id": "ANTGEOG_METHODS", "course_number": "Methods Elective", "title": "Methodological Course Elective", "units": 3, "category": "major", "grid_col": 3, "grid_row": 0, "prerequisites": [], "quarter_equivalents": ["ANT 310", "ANT 311", "ANT 312", "ANT 3310", "ANT 3311", "ANT 3312", "ISLA 3393", "GEOG 328", "GEOG 441", "GEOG 3328", "GEOG 4441"], "elective_key": "antgeog_methods_elective", "is_placeholder": True},
-    {"id": "ANTGEOG_GE_LD3", "course_number": "GE", "title": "General Education Requirement", "units": 3, "category": "ge", "grid_col": 3, "grid_row": 0, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "ANTGEOG_GE_LD3", "course_number": "GE 4A", "title": "American Institutions", "units": 3, "category": "ge", "grid_col": 3, "grid_row": 0, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
     {"id": "ANTGEOG_GE3B", "course_number": "GE 3B", "title": "Humanities", "units": 3, "category": "ge", "grid_col": 3, "grid_row": 0, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
     {"id": "ANTGEOG_GE5A", "course_number": "GE 5A", "title": "Physical Sciences", "units": 3, "category": "ge", "grid_col": 3, "grid_row": 0, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
     {"id": "ANTGEOG_GE5C", "course_number": "GE 5C", "title": "Laboratory", "units": 1, "category": "ge", "grid_col": 3, "grid_row": 0, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
@@ -1085,7 +1085,7 @@ ANTGEOG_FLOWCHART: list[Course] = [
     {"id": "ANTGEOG_GEOG3308", "course_number": "GEOG 3308", "title": "Global Geography", "units": 3, "category": "major", "grid_col": 4, "grid_row": 0, "prerequisites": [], "quarter_equivalents": ["GEOG 308"], "is_placeholder": False},
     {"id": "ANTGEOG_ANT_ELEC1", "course_number": "ANT Elective", "title": "Upper-Division Anthropology Elective", "units": 3, "category": "major", "grid_col": 4, "grid_row": 0, "prerequisites": [], "quarter_equivalents": [], "elective_key": "antgeog_ant_elective", "is_placeholder": True},
     {"id": "ANTGEOG_GE4B", "course_number": "GE 4B", "title": "Social and Behavioral Sciences", "units": 3, "category": "ge", "grid_col": 4, "grid_row": 0, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
-    {"id": "ANTGEOG_GE_LD4", "course_number": "GE", "title": "General Education Requirement", "units": 3, "category": "ge", "grid_col": 4, "grid_row": 0, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "ANTGEOG_GE_LD4", "course_number": "GE 6", "title": "Ethnic Studies", "units": 3, "category": "ge", "grid_col": 4, "grid_row": 0, "prerequisites": [], "quarter_equivalents": ["ES 253", "ES 1112"], "is_placeholder": True},
 
     # Junior Spring
     {"id": "ANTGEOG_ANT3360", "course_number": "ANT 3360", "title": "Human Cultural Adaptations", "units": 3, "category": "major", "grid_col": 5, "grid_row": 0, "prerequisites": ["ANT 2201"], "quarter_equivalents": ["ANT 360"], "is_placeholder": False},
@@ -2159,18 +2159,18 @@ FSN_FLOWCHART = [
     {"id": "FSN_STAT1110",  "course_number": "STAT 1110",  "title": "Applied Statistical Concepts and Methods",         "units": 3, "category": "support",       "grid_col": 2, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": False},
     {"id": "FSN_CHEM2240",  "course_number": "CHEM 2240",  "title": "Organic Chemistry: Fundamentals and Applications",  "units": 4, "category": "support",       "grid_col": 2, "grid_row": 0, "prerequisites": ["CHEM 1122"],      "quarter_equivalents": [],           "is_placeholder": False},
     {"id": "FSN_GE1B",      "course_number": "GE 1B",      "title": "Critical Thinking",                                 "units": 3, "category": "ge",            "grid_col": 2, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": True},
-    {"id": "FSN_GE_SOF",    "course_number": "GE",         "title": "GE Elective",                                       "units": 3, "category": "ge",            "grid_col": 2, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": True},
+    {"id": "FSN_GE_SOF",    "course_number": "GE 4A",      "title": "American Institutions",                             "units": 3, "category": "ge",            "grid_col": 2, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": True},
     # ── Sophomore Spring (14u) ──────────────────────────────────────────────
     {"id": "FSN_MCRO2221",  "course_number": "MCRO 2221",  "title": "Introduction to Microbiology",                      "units": 4, "category": "support",       "grid_col": 3, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": False},
     {"id": "FSN_PHYS1121",  "course_number": "PHYS 1121",  "title": "College Physics I",                                 "units": 4, "category": "support",       "grid_col": 3, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": ["PHYS 121"], "is_placeholder": False},
-    {"id": "FSN_GE_SOS1",   "course_number": "GE",         "title": "GE Elective",                                       "units": 3, "category": "ge",            "grid_col": 3, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": True},
-    {"id": "FSN_GE_SOS2",   "course_number": "GE",         "title": "GE Elective",                                       "units": 3, "category": "ge",            "grid_col": 3, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": True},
+    {"id": "FSN_GE_SOS1",   "course_number": "GE 3A",      "title": "Arts",                                              "units": 3, "category": "ge",            "grid_col": 3, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": True},
+    {"id": "FSN_GE_SOS2",   "course_number": "GE 3B",      "title": "Humanities",                                        "units": 3, "category": "ge",            "grid_col": 3, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": True},
     # ── Junior Fall (17u) ───────────────────────────────────────────────────
     {"id": "FSN_FDSC3330",  "course_number": "FDSC 3330",  "title": "Food Processing and Engineering I",                 "units": 4, "category": "major",        "grid_col": 4, "grid_row": 0, "prerequisites": ["CHEM 2240"],      "quarter_equivalents": [],           "is_placeholder": False},
     {"id": "FSN_CHEM3350",  "course_number": "CHEM 3350",  "title": "Biochemistry: Fundamentals and Applications",       "units": 4, "category": "support",       "grid_col": 4, "grid_row": 0, "prerequisites": ["CHEM 2240"],      "quarter_equivalents": [],           "is_placeholder": False},
     {"id": "FSN_CON1",      "course_number": "Concentration","title": "Concentration Course 1",                          "units": 3, "category": "concentration", "grid_col": 4, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": True},
     {"id": "FSN_CON2",      "course_number": "Concentration","title": "Concentration Course 2",                          "units": 3, "category": "concentration", "grid_col": 4, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": True},
-    {"id": "FSN_GE_JF",     "course_number": "GE",         "title": "GE Elective (Upper Division)",                      "units": 3, "category": "ge",            "grid_col": 4, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": True},
+    {"id": "FSN_GE_JF",     "course_number": "GE 4B",      "title": "Social & Behavioral Sciences",                      "units": 3, "category": "ge",            "grid_col": 4, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": True},
     # ── Junior Spring (14u) ─────────────────────────────────────────────────
     {"id": "FSN_FDSC3310",  "course_number": "FDSC 3310",  "title": "Food Laws and Regulations",                         "units": 3, "category": "major",        "grid_col": 5, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": False},
     {"id": "FSN_FDSC3340",  "course_number": "FDSC 3340",  "title": "Food Quality Assurance and Prerequisite Programs",  "units": 4, "category": "major",        "grid_col": 5, "grid_row": 0, "prerequisites": ["FDSC 1110"],      "quarter_equivalents": [],           "is_placeholder": False},
@@ -2181,13 +2181,13 @@ FSN_FLOWCHART = [
     {"id": "FSN_FDSC3355",  "course_number": "FDSC 3355",  "title": "Food Analysis",                                     "units": 3, "category": "major",        "grid_col": 6, "grid_row": 0, "prerequisites": ["FDSC 3350"],      "quarter_equivalents": [],           "is_placeholder": False},
     {"id": "FSN_FDSC4420",  "course_number": "FDSC 4420",  "title": "Sensory Evaluation of Food",                        "units": 3, "category": "major",        "grid_col": 6, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": False},
     {"id": "FSN_MCRO4421",  "course_number": "MCRO 4421",  "title": "Food Microbiology",                                 "units": 3, "category": "support",       "grid_col": 6, "grid_row": 0, "prerequisites": ["MCRO 2221"],      "quarter_equivalents": [],           "is_placeholder": False},
-    {"id": "FSN_GE_SRF",    "course_number": "GE",         "title": "GE Elective (Upper Division)",                      "units": 3, "category": "ge",            "grid_col": 6, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": True},
+    {"id": "FSN_GE_SRF",    "course_number": "GE 6",       "title": "Ethnic Studies",                                    "units": 3, "category": "ge",            "grid_col": 6, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": ["ES 253", "ES 1112"], "is_placeholder": True},
     # ── Senior Spring (15u) ─────────────────────────────────────────────────
     {"id": "FSN_FDSC4425",  "course_number": "FDSC 4425",  "title": "Food Product Development",                          "units": 3, "category": "major",        "grid_col": 7, "grid_row": 0, "prerequisites": ["FDSC 3350"],      "quarter_equivalents": [],           "is_placeholder": False},
     {"id": "FSN_CON3",      "course_number": "Concentration","title": "Concentration Course 3",                          "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": True},
     {"id": "FSN_CON4",      "course_number": "Concentration","title": "Concentration Course 4",                          "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": True},
-    {"id": "FSN_GE_SRS1",   "course_number": "GE",         "title": "GE Elective (Upper Division)",                      "units": 3, "category": "ge",            "grid_col": 7, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": True},
-    {"id": "FSN_GE_SRS2",   "course_number": "GE",         "title": "GE Elective (Upper Division)",                      "units": 3, "category": "ge",            "grid_col": 7, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": True},
+    {"id": "FSN_GE_SRS1",   "course_number": "GE UD-3",    "title": "Upper-Div Arts & Humanities",                       "units": 3, "category": "ge",            "grid_col": 7, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": True},
+    {"id": "FSN_GE_SRS2",   "course_number": "GE UD-4",    "title": "Upper-Div Social Sciences",                         "units": 3, "category": "ge",            "grid_col": 7, "grid_row": 0, "prerequisites": [],                 "quarter_equivalents": [],           "is_placeholder": True},
 ]
 
 
@@ -2197,7 +2197,7 @@ KINE_FLOWCHART = [
     {"id": "KINE_HLTH_FF", "course_number": "HLTH 1155/1160",     "title": "Multicultural Perspectives or Women's Health","units":3, "category": "major",        "grid_col": 0, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": True,  "elective_key": "kine_hlth_choice"},
     {"id": "KINE_BIO1151", "course_number": "BIO 1151",           "title": "Life: Molecules and Cells",                "units": 4, "category": "support",       "grid_col": 0, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": False},
     {"id": "KINE_CHEM1120","course_number": "CHEM 1120",          "title": "Fundamentals of Chemical Structure and Properties","units":4,"category": "support", "grid_col": 0, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": False},
-    {"id": "KINE_MATH_FF", "course_number": "MATH 1007/1261",     "title": "Precalculus or Calculus I",                "units": 3, "category": "support",       "grid_col": 0, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": True,  "elective_key": "kine_math_choice"},
+    {"id": "KINE_MATH_FF", "course_number": "MATH 1007/1261",     "title": "Precalculus or Calculus I",                "units": 4, "category": "support",       "grid_col": 0, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": True,  "elective_key": "kine_math_choice"},
     # ── Freshman Spring (15u) ───────────────────────────────────────────────
     {"id": "KINE_PHYS1121","course_number": "PHYS 1121",          "title": "College Physics I",                        "units": 4, "category": "support",       "grid_col": 1, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": ["PHYS 121"],   "is_placeholder": False},
     {"id": "KINE_STAT1110","course_number": "STAT 1110",          "title": "Applied Statistical Concepts and Methods", "units": 3, "category": "support",       "grid_col": 1, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],             "is_placeholder": False},
@@ -2259,35 +2259,35 @@ MATH_FLOWCHART = [
     {"id": "MATH_2263",    "course_number": "MATH 2263",                          "title": "Calculus III",                            "units": 3, "category": "major",         "grid_col": 2, "grid_row": 0, "prerequisites": ["MATH 1262"],               "quarter_equivalents": ["MATH 143"],  "is_placeholder": False},
     {"id": "MATH_STAT1510","course_number": "STAT 1510",                          "title": "Statistics I",                            "units": 3, "category": "support",        "grid_col": 2, "grid_row": 0, "prerequisites": ["MATH 1261"],               "quarter_equivalents": ["STAT 312"],  "is_placeholder": False},
     {"id": "MATH_GE1B",    "course_number": "GE 1B",                              "title": "Critical Thinking",                       "units": 3, "category": "ge",             "grid_col": 2, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True},
-    {"id": "MATH_GE_SOF",  "course_number": "GE",                                 "title": "GE Elective",                             "units": 3, "category": "ge",             "grid_col": 2, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True},
+    {"id": "MATH_GE_SOF",  "course_number": "GE 4A",                              "title": "American Institutions",                   "units": 3, "category": "ge",             "grid_col": 2, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True},
     # ── Sophomore Spring (16u) ──────────────────────────────────────────────
     {"id": "MATH_2343",    "course_number": "MATH 2343",                          "title": "Differential Equations",                  "units": 3, "category": "major",         "grid_col": 3, "grid_row": 0, "prerequisites": ["MATH 2263"],               "quarter_equivalents": ["MATH 244"],  "is_placeholder": False},
     {"id": "MATH_3152",    "course_number": "MATH 3152",                          "title": "Advanced Linear Algebra",                 "units": 4, "category": "major",         "grid_col": 3, "grid_row": 0, "prerequisites": ["MATH 1151", "MATH 2031"],  "quarter_equivalents": [],            "is_placeholder": False},
-    {"id": "MATH_GE_SOS1", "course_number": "GE",                                 "title": "GE Elective",                             "units": 3, "category": "ge",             "grid_col": 3, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True},
-    {"id": "MATH_GE_SOS2", "course_number": "GE",                                 "title": "GE Elective",                             "units": 3, "category": "ge",             "grid_col": 3, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True},
+    {"id": "MATH_GE_SOS1", "course_number": "GE 3A",                              "title": "Arts",                                    "units": 3, "category": "ge",             "grid_col": 3, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True},
+    {"id": "MATH_GE_SOS2", "course_number": "GE 3B",                              "title": "Humanities",                              "units": 3, "category": "ge",             "grid_col": 3, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True},
     {"id": "MATH_FREE1",   "course_number": "Free Elective",                      "title": "Free Elective",                           "units": 3, "category": "concentration",  "grid_col": 3, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True},
     # ── Junior Fall (16u) ───────────────────────────────────────────────────
     {"id": "MATH_UD1",     "course_number": "MATH 3051/3111/3301",                "title": "Upper-Division Math Elective (GE UD 2/5)","units": 3, "category": "major",         "grid_col": 4, "grid_row": 0, "prerequisites": ["MATH 2031"],               "quarter_equivalents": [],            "is_placeholder": True,  "elective_key": "math_upper_div_choice"},
     {"id": "MATH_4201",    "course_number": "MATH 4201",                          "title": "Abstract Algebra I",                      "units": 4, "category": "major",         "grid_col": 4, "grid_row": 0, "prerequisites": ["MATH 2031"],               "quarter_equivalents": [],            "is_placeholder": False},
     {"id": "MATH_TRACK1",  "course_number": "Track Elective",                     "title": "Track Elective",                          "units": 3, "category": "concentration",  "grid_col": 4, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True,  "elective_key": "math_track_elective"},
-    {"id": "MATH_GE_JF",   "course_number": "GE",                                 "title": "GE Elective",                             "units": 3, "category": "ge",             "grid_col": 4, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True},
+    {"id": "MATH_GE_JF",   "course_number": "GE 4B",                              "title": "Social & Behavioral Sciences",            "units": 3, "category": "ge",             "grid_col": 4, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True},
     {"id": "MATH_FREE2",   "course_number": "Free Elective",                      "title": "Free Elective",                           "units": 3, "category": "concentration",  "grid_col": 4, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True},
     # ── Junior Spring (15u) ─────────────────────────────────────────────────
     {"id": "MATH_4202",    "course_number": "MATH 4202",                          "title": "Abstract Algebra II",                     "units": 3, "category": "major",         "grid_col": 5, "grid_row": 0, "prerequisites": ["MATH 4201"],               "quarter_equivalents": [],            "is_placeholder": False},
     {"id": "MATH_TRACK2",  "course_number": "Track Elective",                     "title": "Track Elective",                          "units": 3, "category": "concentration",  "grid_col": 5, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True,  "elective_key": "math_track_elective"},
     {"id": "MATH_TRACK3",  "course_number": "Track Elective",                     "title": "Track Elective",                          "units": 3, "category": "concentration",  "grid_col": 5, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True,  "elective_key": "math_track_elective"},
-    {"id": "MATH_GE_JS1",  "course_number": "GE",                                 "title": "GE Elective",                             "units": 3, "category": "ge",             "grid_col": 5, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True},
-    {"id": "MATH_GE_JS2",  "course_number": "GE",                                 "title": "GE Elective",                             "units": 3, "category": "ge",             "grid_col": 5, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True},
+    {"id": "MATH_GE_JS1",  "course_number": "GE 5B",                              "title": "Life Sciences",                           "units": 3, "category": "ge",             "grid_col": 5, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": ["BIO 111", "BIO 1111"], "is_placeholder": True},
+    {"id": "MATH_GE_JS2",  "course_number": "GE 6",                               "title": "Ethnic Studies",                          "units": 3, "category": "ge",             "grid_col": 5, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": ["ES 253", "ES 1112"],   "is_placeholder": True},
     # ── Senior Fall (13u) ───────────────────────────────────────────────────
     {"id": "MATH_4264",    "course_number": "MATH 4264",                          "title": "Real Analysis I",                         "units": 4, "category": "major",         "grid_col": 6, "grid_row": 0, "prerequisites": ["MATH 2343"],               "quarter_equivalents": [],            "is_placeholder": False},
     {"id": "MATH_SENIOR",  "course_number": "MATH 4463/4464",                     "title": "Senior Project Seminar",                  "units": 3, "category": "major",         "grid_col": 6, "grid_row": 0, "prerequisites": ["MATH 4264"],               "quarter_equivalents": [],            "is_placeholder": True,  "elective_key": "math_senior_project"},
     {"id": "MATH_TRACK4",  "course_number": "Track Elective",                     "title": "Track Elective",                          "units": 3, "category": "concentration",  "grid_col": 6, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True,  "elective_key": "math_track_elective"},
-    {"id": "MATH_GE_SRF",  "course_number": "GE",                                 "title": "GE Elective (Upper Division)",            "units": 3, "category": "ge",             "grid_col": 6, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True},
+    {"id": "MATH_GE_SRF",  "course_number": "GE UD-3",                            "title": "Upper-Div Arts & Humanities",             "units": 3, "category": "ge",             "grid_col": 6, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True},
     # ── Senior Spring (16u) ─────────────────────────────────────────────────
     {"id": "MATH_TRACK5",  "course_number": "Track Elective",                     "title": "Track Elective",                          "units": 3, "category": "concentration",  "grid_col": 7, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True,  "elective_key": "math_track_elective"},
     {"id": "MATH_TRACK6",  "course_number": "Track Elective",                     "title": "Track Elective",                          "units": 3, "category": "concentration",  "grid_col": 7, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True,  "elective_key": "math_track_elective"},
     {"id": "MATH_TRACK7",  "course_number": "Track Elective",                     "title": "Track Elective",                          "units": 3, "category": "concentration",  "grid_col": 7, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True,  "elective_key": "math_track_elective"},
-    {"id": "MATH_GE_SRS",  "course_number": "GE",                                 "title": "GE Elective (Upper Division)",            "units": 3, "category": "ge",             "grid_col": 7, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True},
+    {"id": "MATH_GE_SRS",  "course_number": "GE UD-4",                            "title": "Upper-Div Social Sciences",               "units": 3, "category": "ge",             "grid_col": 7, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True},
     {"id": "MATH_FREE3",   "course_number": "Free Elective",                      "title": "Free Elective",                           "units": 4, "category": "concentration",  "grid_col": 7, "grid_row": 0, "prerequisites": [],                          "quarter_equivalents": [],            "is_placeholder": True},
 ]
 
@@ -2413,7 +2413,7 @@ WVIT_FLOWCHART = [
     # Freshman Spring (col 1) — 16 units
     {"id": "WVIT_2202",      "course_number": "WVIT 2202",        "title": "Fundamentals of Enology",                                           "units": 3, "category": "major",         "grid_col": 1, "grid_row": 0, "prerequisites": ["WVIT 1102"],   "quarter_equivalents": [],                        "is_placeholder": False},
     {"id": "WVIT_BOT1121",   "course_number": "BOT 1121",         "title": "General Botany",                                                    "units": 4, "category": "support",        "grid_col": 1, "grid_row": 0, "prerequisites": [],              "quarter_equivalents": [],                        "is_placeholder": False},
-    {"id": "WVIT_MATH",      "course_number": "MATH 1261/1267",   "title": "Calculus I or Business Calculus",                                   "units": 3, "category": "support",        "grid_col": 1, "grid_row": 0, "prerequisites": [],              "quarter_equivalents": [],                        "is_placeholder": True,  "elective_key": "wvit_math_choice"},
+    {"id": "WVIT_MATH",      "course_number": "MATH 1261/1267",   "title": "Calculus I or Business Calculus",                                   "units": 4, "category": "support",        "grid_col": 1, "grid_row": 0, "prerequisites": [],              "quarter_equivalents": [],                        "is_placeholder": True,  "elective_key": "wvit_math_choice"},
     {"id": "WVIT_STAT1110",  "course_number": "STAT 1110",        "title": "Applied Statistical Concepts and Methods",                          "units": 3, "category": "support",        "grid_col": 1, "grid_row": 0, "prerequisites": [],              "quarter_equivalents": ["STAT 217"],              "is_placeholder": False},
     {"id": "WVIT_GE1B",      "course_number": "GE 1B",            "title": "Critical Thinking",                                                 "units": 3, "category": "ge",            "grid_col": 1, "grid_row": 0, "prerequisites": [],              "quarter_equivalents": [],                        "is_placeholder": True},
     # Sophomore Fall (col 2) — 15 units
@@ -2685,6 +2685,65 @@ COMS_FLOWCHART: list[Course] = [
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# ENVIRONMENTAL MANAGEMENT AND PROTECTION — BS (120 units)
+# Source: catalog.calpoly.edu/agriculture-food-environmental-sciences/natural-resources-management-environmental-sciences/environmental-management-protection-bs/
+# 7 concentrations (15u each): Conservation Science and Management,
+# Corporate Environmental Management, Environmental Data Science,
+# Environmental Law Justice and Policy, Sustainable Agriculture,
+# Sustainable Urban Development and Planning, Water Science and Management.
+# MATH 1264/1267 slot: 3-4u variance; BIO/BOT plant choice cross-dept slash.
+# NR 3310 etc slot satisfies GE UD-2/5; upper-div GE area term placements approximate.
+# ─────────────────────────────────────────────────────────────────────────────
+ENVM_FLOWCHART: list[Course] = [
+    # ── FRESHMAN FALL (col 0, 17u) ────────────────────────────────────────────
+    {"id": "ENVM_NR1142",    "course_number": "NR 1142",             "title": "Environmental Management",                       "units": 4, "category": "major",         "grid_col": 0, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],         "is_placeholder": False},
+    {"id": "ENVM_BIO_PLANT", "course_number": "BIO 1114/BOT 1121",   "title": "Plant/Life Sciences (GE 5B/5C)",                  "units": 4, "category": "support",       "grid_col": 0, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],         "is_placeholder": True,  "elective_key": "envm_bio_plant_choice"},
+    {"id": "ENVM_GE1A",      "course_number": "GE 1A",               "title": "Written Communication",                          "units": 3, "category": "ge",           "grid_col": 0, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": ["ENGL 134", "ENGL 1340"], "is_placeholder": True},
+    {"id": "ENVM_GE1C",      "course_number": "GE 1C",               "title": "Oral Communication",                             "units": 3, "category": "ge",           "grid_col": 0, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": ["COMS 101"], "is_placeholder": True},
+    {"id": "ENVM_FREE1",     "course_number": "Free Elective",        "title": "Free Elective 1",                                "units": 3, "category": "concentration","grid_col": 0, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],         "is_placeholder": True},
+    # ── FRESHMAN SPRING (col 1, 16u) ─────────────────────────────────────────
+    {"id": "ENVM_MATH",      "course_number": "MATH 1264/1267",       "title": "Mathematics (GE 2)",                             "units": 3, "category": "support",      "grid_col": 1, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],         "is_placeholder": True,  "elective_key": "envm_math_choice"},
+    {"id": "ENVM_SS1120",    "course_number": "SS 1120",              "title": "Introductory Soil Science",                      "units": 4, "category": "support",      "grid_col": 1, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],         "is_placeholder": False},
+    {"id": "ENVM_GE1B",      "course_number": "GE 1B",               "title": "Critical Thinking",                              "units": 3, "category": "ge",           "grid_col": 1, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],         "is_placeholder": True},
+    {"id": "ENVM_FREE2",     "course_number": "Free Elective",        "title": "Free Elective 2",                                "units": 3, "category": "concentration","grid_col": 1, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],         "is_placeholder": True},
+    {"id": "ENVM_FREE3",     "course_number": "Free Elective",        "title": "Free Elective 3",                                "units": 3, "category": "concentration","grid_col": 1, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],         "is_placeholder": True},
+    # ── SOPHOMORE FALL (col 2, 16u) ───────────────────────────────────────────
+    {"id": "ENVM_BIO_ECO",   "course_number": "NR 2208/BIO 2215/BIO 2217", "title": "Ecology/Wildlife Elective",                "units": 3, "category": "major",        "grid_col": 2, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],         "is_placeholder": True,  "elective_key": "envm_bio_ecology_choice"},
+    {"id": "ENVM_CHEM",      "course_number": "CHEM 1120/1122",       "title": "General Chemistry (GE 5A)",                      "units": 4, "category": "support",      "grid_col": 2, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],         "is_placeholder": True,  "elective_key": "envm_chem_choice"},
+    {"id": "ENVM_STAT1110",  "course_number": "STAT 1110",            "title": "Applied Statistical Concepts",                   "units": 3, "category": "support",      "grid_col": 2, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],         "is_placeholder": False},
+    {"id": "ENVM_GE3A",      "course_number": "GE 3A",               "title": "Arts",                                           "units": 3, "category": "ge",           "grid_col": 2, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],         "is_placeholder": True},
+    {"id": "ENVM_GE4A",      "course_number": "GE 4A",               "title": "American Institutions",                          "units": 3, "category": "ge",           "grid_col": 2, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],         "is_placeholder": True},
+    # ── SOPHOMORE SPRING (col 3, 14u) ─────────────────────────────────────────
+    {"id": "ENVM_NR2218",    "course_number": "NR 2218",              "title": "Introduction to GIS",                            "units": 3, "category": "major",        "grid_col": 3, "grid_row": 0, "prerequisites": ["NR 1142"],    "quarter_equivalents": [],         "is_placeholder": False},
+    {"id": "ENVM_BIO_LIFE",  "course_number": "BIO 1111/1150/1151",   "title": "Life Sciences Lab (GE 5B/5C)",                   "units": 4, "category": "support",      "grid_col": 3, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],         "is_placeholder": True,  "elective_key": "envm_bio_life_choice"},
+    {"id": "ENVM_GE4B",      "course_number": "GE 4B",               "title": "Social and Behavioral Sciences",                 "units": 3, "category": "ge",           "grid_col": 3, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],         "is_placeholder": True},
+    {"id": "ENVM_FREE4",     "course_number": "Free Elective",        "title": "Free Elective 4",                                "units": 4, "category": "concentration","grid_col": 3, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],         "is_placeholder": True},
+    # ── JUNIOR FALL (col 4, 14u) ──────────────────────────────────────────────
+    {"id": "ENVM_SOC_CRS",   "course_number": "NR Social Elective",   "title": "Human/Social Dimensions Elective",               "units": 3, "category": "major",        "grid_col": 4, "grid_row": 0, "prerequisites": ["NR 1142"],    "quarter_equivalents": [],         "is_placeholder": True,  "elective_key": "envm_soc_choice"},
+    {"id": "ENVM_ENVIRO_CRS","course_number": "NR Enviro Elective",   "title": "Environmental Science Elective (GE UD2/5)",       "units": 3, "category": "major",        "grid_col": 4, "grid_row": 0, "prerequisites": ["NR 1142"],    "quarter_equivalents": [],         "is_placeholder": True,  "elective_key": "envm_enviro_choice"},
+    {"id": "ENVM_NR3363",    "course_number": "NR 3363",              "title": "Career Preparation in Natural Resources",         "units": 2, "category": "major",        "grid_col": 4, "grid_row": 0, "prerequisites": ["NR 1142"],    "quarter_equivalents": [],         "is_placeholder": False},
+    {"id": "ENVM_CON1",      "course_number": "Concentration",        "title": "Concentration Elective 1",                       "units": 3, "category": "concentration","grid_col": 4, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],         "is_placeholder": True,  "elective_key": "envm_concentration_elective"},
+    {"id": "ENVM_GEUD3",     "course_number": "GE UD-3",             "title": "Upper-Div Arts/Humanities",                      "units": 3, "category": "ge",           "grid_col": 4, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],         "is_placeholder": True},
+    # ── JUNIOR SPRING (col 5, 13u) ────────────────────────────────────────────
+    {"id": "ENVM_ECOL_CRS",  "course_number": "NR Ecology Elective",  "title": "Ecology/Habitat Elective",                       "units": 4, "category": "major",        "grid_col": 5, "grid_row": 0, "prerequisites": ["NR 1142"],    "quarter_equivalents": [],         "is_placeholder": True,  "elective_key": "envm_ecology_choice"},
+    {"id": "ENVM_WATER_CRS", "course_number": "NR Water/Soil Elective","title": "Watershed/Soil Science Elective",                "units": 3, "category": "major",        "grid_col": 5, "grid_row": 0, "prerequisites": ["NR 1142"],    "quarter_equivalents": [],         "is_placeholder": True,  "elective_key": "envm_water_choice"},
+    {"id": "ENVM_CON2",      "course_number": "Concentration",        "title": "Concentration Elective 2",                       "units": 3, "category": "concentration","grid_col": 5, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],         "is_placeholder": True,  "elective_key": "envm_concentration_elective"},
+    {"id": "ENVM_GE6",       "course_number": "GE 6",                "title": "Ethnic Studies",                                 "units": 3, "category": "ge",           "grid_col": 5, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": ["ES 253", "ES 1112"], "is_placeholder": True},
+    # ── SENIOR FALL (col 6, 16u) ──────────────────────────────────────────────
+    {"id": "ENVM_QUANT_CRS", "course_number": "NR Quant Elective",    "title": "Applied Quantitative Methods Elective",          "units": 3, "category": "major",        "grid_col": 6, "grid_row": 0, "prerequisites": ["NR 2218"],    "quarter_equivalents": [],         "is_placeholder": True,  "elective_key": "envm_quant_choice"},
+    {"id": "ENVM_POLICY_CRS","course_number": "NR Policy Elective",   "title": "Environmental Law/Policy Elective",              "units": 4, "category": "major",        "grid_col": 6, "grid_row": 0, "prerequisites": ["NR 1142"],    "quarter_equivalents": [],         "is_placeholder": True,  "elective_key": "envm_policy_choice"},
+    {"id": "ENVM_CON3",      "course_number": "Concentration",        "title": "Concentration Elective 3",                       "units": 3, "category": "concentration","grid_col": 6, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],         "is_placeholder": True,  "elective_key": "envm_concentration_elective"},
+    {"id": "ENVM_GEUD4",     "course_number": "GE UD-4",             "title": "Upper-Div Social Sciences",                      "units": 3, "category": "ge",           "grid_col": 6, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],         "is_placeholder": True},
+    {"id": "ENVM_FREE5",     "course_number": "Free Elective",        "title": "Free Elective 5",                                "units": 3, "category": "concentration","grid_col": 6, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],         "is_placeholder": True},
+    # ── SENIOR SPRING (col 7, 14u) ────────────────────────────────────────────
+    {"id": "ENVM_SENIOR",    "course_number": "NR Senior Project",    "title": "Senior Project",                                 "units": 4, "category": "major",        "grid_col": 7, "grid_row": 0, "prerequisites": ["NR 3363"],    "quarter_equivalents": [],         "is_placeholder": True,  "elective_key": "envm_senior_project"},
+    {"id": "ENVM_CON4",      "course_number": "Concentration",        "title": "Concentration Elective 4",                       "units": 3, "category": "concentration","grid_col": 7, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],         "is_placeholder": True,  "elective_key": "envm_concentration_elective"},
+    {"id": "ENVM_CON5",      "course_number": "Concentration",        "title": "Concentration Elective 5",                       "units": 3, "category": "concentration","grid_col": 7, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],         "is_placeholder": True,  "elective_key": "envm_concentration_elective"},
+    {"id": "ENVM_FREE6",     "course_number": "Free Elective",        "title": "Free Elective 6",                                "units": 4, "category": "concentration","grid_col": 7, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],         "is_placeholder": True},
+]
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # PLANT SCIENCES — BS (120 units)
 # Source: catalog.calpoly.edu/agriculture-food-environmental-sciences/plant-sciences/plant-sciences-bs/
 # 3 concentrations: Fruit and Crop Science, Environmental Horticultural Science,
@@ -2810,14 +2869,14 @@ HIST_FLOWCHART: list[Course] = [
     {"id": "HIST_FREE1",   "course_number": "Free Elective","title": "Free Elective",                             "units": 4, "category": "concentration", "grid_col": 0, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],  "is_placeholder": True},
     # ── FRESHMAN SPRING (col 1, 16u) ──────────────────────────────────────────
     {"id": "HIST_2222",    "course_number": "HIST 2222",   "title": "History of the Americas I",                  "units": 3, "category": "major",         "grid_col": 1, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],  "is_placeholder": False},
-    {"id": "HIST_LD1",     "course_number": "HIST 2XXX",   "title": "Lower Division HIST Elective",               "units": 3, "category": "major",         "grid_col": 1, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],  "is_placeholder": True,  "elective_key": "hist_ld_elective"},
+    {"id": "HIST_LD1",     "course_number": "HIST 2XXX",   "title": "2XXX Level History Elective",               "units": 3, "category": "major",         "grid_col": 1, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],  "is_placeholder": True,  "elective_key": "hist_ld_elective"},
     {"id": "HIST_GE1B",    "course_number": "GE 1B",       "title": "Critical Thinking",                          "units": 3, "category": "ge",            "grid_col": 1, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],  "is_placeholder": True},
     {"id": "HIST_GE1C",    "course_number": "GE 1C",       "title": "Oral Communication",                         "units": 3, "category": "ge",            "grid_col": 1, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],  "is_placeholder": True},
     {"id": "HIST_FREE2",   "course_number": "Free Elective","title": "Free Elective",                             "units": 4, "category": "concentration", "grid_col": 1, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],  "is_placeholder": True},
     # ── SOPHOMORE FALL (col 2, 16u) ───────────────────────────────────────────
     {"id": "HIST_2202",    "course_number": "HIST 2202",   "title": "United States History II",                   "units": 3, "category": "major",         "grid_col": 2, "grid_row": 0, "prerequisites": ["HIST 2201"],  "quarter_equivalents": [],  "is_placeholder": False},
-    {"id": "HIST_LD2",     "course_number": "HIST 2XXX",   "title": "Lower Division HIST Elective",               "units": 3, "category": "major",         "grid_col": 2, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],  "is_placeholder": True,  "elective_key": "hist_ld_elective"},
-    {"id": "HIST_LANG",    "course_number": "LANG",        "title": "World Language Requirement",                  "units": 4, "category": "support",       "grid_col": 2, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],  "is_placeholder": True},
+    {"id": "HIST_LD2",     "course_number": "HIST 2XXX",   "title": "2XXX Level History Elective",               "units": 3, "category": "major",         "grid_col": 2, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],  "is_placeholder": True,  "elective_key": "hist_ld_elective"},
+    {"id": "HIST_LANG",    "course_number": "LANG",        "title": "World Language Requirement",                  "units": 4, "category": "support",       "grid_col": 2, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],  "is_placeholder": True, "elective_key": "hist_lang_elective"},
     {"id": "HIST_GE2",     "course_number": "GE 2",        "title": "Mathematical Communication",                  "units": 3, "category": "ge",            "grid_col": 2, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],  "is_placeholder": True},
     {"id": "HIST_GE3A",    "course_number": "GE 3A",       "title": "Arts",                                       "units": 3, "category": "ge",            "grid_col": 2, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],  "is_placeholder": True},
     # ── SOPHOMORE SPRING (col 3, 16u) ─────────────────────────────────────────
@@ -2830,7 +2889,7 @@ HIST_FLOWCHART: list[Course] = [
     # ── JUNIOR FALL (col 4, 15u) ──────────────────────────────────────────────
     {"id": "HIST_1101_A",  "course_number": "HIST 1101",   "title": "History Colloquium",                         "units": 1, "category": "major",         "grid_col": 4, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],  "is_placeholder": False},
     {"id": "HIST_3303",    "course_number": "HIST 3303",   "title": "Historical Methods and Writing I",           "units": 4, "category": "major",         "grid_col": 4, "grid_row": 0, "prerequisites": ["HIST 1100"],  "quarter_equivalents": [],  "is_placeholder": False},
-    {"id": "HIST_UD1",     "course_number": "HIST 3XXX",   "title": "Upper Division HIST Elective",               "units": 4, "category": "major",         "grid_col": 4, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],  "is_placeholder": True,  "elective_key": "hist_ud_elective"},
+    {"id": "HIST_UD1",     "course_number": "HIST 3XXX",   "title": "3XXX–4XXX Level History Elective",               "units": 4, "category": "major",         "grid_col": 4, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],  "is_placeholder": True,  "elective_key": "hist_ud_elective"},
     {"id": "HIST_GEUD4",   "course_number": "SS UD",       "title": "Non-History Social Science Upper Division",  "units": 3, "category": "support",       "grid_col": 4, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],  "is_placeholder": True},
     {"id": "HIST_GEUD3",   "course_number": "GE UD3",      "title": "Upper Division Arts and Humanities",         "units": 3, "category": "ge",            "grid_col": 4, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],  "is_placeholder": True},
     # ── JUNIOR SPRING (col 5, 15u) ────────────────────────────────────────────
@@ -2847,7 +2906,7 @@ HIST_FLOWCHART: list[Course] = [
     # ── SENIOR SPRING (col 7, 15u) ────────────────────────────────────────────
     {"id": "HIST_1101_C",  "course_number": "HIST 1101",   "title": "History Colloquium",                         "units": 1, "category": "major",         "grid_col": 7, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],  "is_placeholder": False},
     {"id": "HIST_4461",    "course_number": "HIST 4461",   "title": "Senior Thesis II",                           "units": 2, "category": "major",         "grid_col": 7, "grid_row": 0, "prerequisites": ["HIST 4460"],  "quarter_equivalents": [],  "is_placeholder": False},
-    {"id": "HIST_UD2",     "course_number": "HIST 3XXX",   "title": "Upper Division HIST Elective",               "units": 4, "category": "major",         "grid_col": 7, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],  "is_placeholder": True,  "elective_key": "hist_ud_elective"},
+    {"id": "HIST_UD2",     "course_number": "HIST 3XXX",   "title": "3XXX–4XXX Level History Elective",               "units": 4, "category": "major",         "grid_col": 7, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],  "is_placeholder": True,  "elective_key": "hist_ud_elective"},
     {"id": "HIST_GE5C",    "course_number": "GE 5C",       "title": "Science Lab",                                "units": 1, "category": "ge",            "grid_col": 7, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],  "is_placeholder": True},
     {"id": "HIST_FREE6",   "course_number": "Free Elective","title": "Free Elective",                             "units": 4, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],  "is_placeholder": True},
     {"id": "HIST_FREE7",   "course_number": "Free Elective","title": "Free Elective",                             "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],             "quarter_equivalents": [],  "is_placeholder": True},
@@ -3075,10 +3134,425 @@ EIM_FLOWCHART = _compact_rows_by_category(EIM_FLOWCHART)
 ENVE_FLOWCHART = _compact_rows_by_category(ENVE_FLOWCHART)
 GRC_FLOWCHART = _compact_rows_by_category(GRC_FLOWCHART)
 COMS_FLOWCHART = _compact_rows_by_category(COMS_FLOWCHART)
+ENVM_FLOWCHART = _compact_rows_by_category(ENVM_FLOWCHART)
 PLSC_FLOWCHART = _compact_rows_by_category(PLSC_FLOWCHART)
 MCRO_FLOWCHART = _compact_rows_by_category(MCRO_FLOWCHART)
 HIST_FLOWCHART = _compact_rows_by_category(HIST_FLOWCHART)
 ECON_FLOWCHART = _compact_rows_by_category(ECON_FLOWCHART)
+
+# ---------------------------------------------------------------------------
+# Public Health (PH), BS — 120 units, 3 concentrations
+# ---------------------------------------------------------------------------
+PH_FLOWCHART = [
+    # Freshman Fall (col 0, 16u)
+    {"id": "PH_HLTH1101",   "course_number": "HLTH 1101", "title": "Introduction to Public Health",              "units": 3, "category": "major",         "is_placeholder": False, "prerequisites": [],              "quarter_equivalents": [], "grid_col": 0, "grid_row": 0},
+    {"id": "PH_HLTH_FRESH", "course_number": "HLTH 1155/1160", "title": "Multicultural Perspectives/Women's Health", "units": 3, "category": "major",         "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 0, "grid_row": 0, "elective_key": "ph_hlth_freshman_elective"},
+    {"id": "PH_ANT_SOC",    "course_number": "ANT 2201/SOC 1110", "title": "Cultural Anthropology/Comparative Societies", "units": 3, "category": "support",       "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 0, "grid_row": 0, "elective_key": "ph_ant_soc_elective"},
+    {"id": "PH_BIO1151",    "course_number": "BIO 1151",  "title": "Life: Molecules and Cells",                 "units": 4, "category": "support",       "is_placeholder": False, "prerequisites": [],              "quarter_equivalents": [], "grid_col": 0, "grid_row": 0},
+    {"id": "PH_GE1A",       "course_number": "GE 1A",     "title": "Written Communication",                     "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 0, "grid_row": 0},
+    # Freshman Spring (col 1, 16u)
+    {"id": "PH_HLTH2261",   "course_number": "HLTH 2261", "title": "Social Determinants of Health",             "units": 3, "category": "major",         "is_placeholder": False, "prerequisites": ["HLTH 1101"],   "quarter_equivalents": [], "grid_col": 1, "grid_row": 0},
+    {"id": "PH_CHEM1120",   "course_number": "CHEM 1120", "title": "Fundamentals of Chemical Structure and Properties", "units": 4, "category": "support",  "is_placeholder": False, "prerequisites": [],              "quarter_equivalents": [], "grid_col": 1, "grid_row": 0},
+    {"id": "PH_PSY2201",    "course_number": "PSY 2201",  "title": "Introductory Psychology",                   "units": 3, "category": "support",       "is_placeholder": False, "prerequisites": [],              "quarter_equivalents": [], "grid_col": 1, "grid_row": 0},
+    {"id": "PH_STAT1110",   "course_number": "STAT 1110", "title": "Applied Statistical Concepts and Methods",  "units": 3, "category": "support",       "is_placeholder": False, "prerequisites": [],              "quarter_equivalents": [], "grid_col": 1, "grid_row": 0},
+    {"id": "PH_GE1C",       "course_number": "GE 1C",     "title": "Oral Communication",                        "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 1, "grid_row": 0},
+    # Sophomore Fall (col 2, 13u)
+    {"id": "PH_BIO2231",    "course_number": "BIO 2231",  "title": "Human Anatomy and Physiology I",            "units": 4, "category": "support",       "is_placeholder": False, "prerequisites": [],              "quarter_equivalents": [], "grid_col": 2, "grid_row": 0},
+    {"id": "PH_STAT3520",   "course_number": "STAT 3520", "title": "Statistics II",                             "units": 3, "category": "support",       "is_placeholder": False, "prerequisites": ["STAT 1110"],   "quarter_equivalents": [], "grid_col": 2, "grid_row": 0},
+    {"id": "PH_GE1B",       "course_number": "GE 1B",     "title": "Critical Thinking",                         "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 2, "grid_row": 0},
+    {"id": "PH_GE3A",       "course_number": "GE 3A",     "title": "Arts",                                      "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 2, "grid_row": 0},
+    # Sophomore Spring (col 3, 14u)
+    {"id": "PH_HLTH3316",   "course_number": "HLTH 3316", "title": "Environmental Health",                      "units": 3, "category": "major",         "is_placeholder": False, "prerequisites": ["HLTH 2261"],   "quarter_equivalents": [], "grid_col": 3, "grid_row": 0},
+    {"id": "PH_BIO2232",    "course_number": "BIO 2232",  "title": "Human Anatomy and Physiology II",           "units": 4, "category": "support",       "is_placeholder": False, "prerequisites": ["BIO 2231"],    "quarter_equivalents": [], "grid_col": 3, "grid_row": 0},
+    {"id": "PH_FSN2202",    "course_number": "FSN 2202",  "title": "Introduction to Human Nutrition",           "units": 3, "category": "support",       "is_placeholder": False, "prerequisites": [],              "quarter_equivalents": [], "grid_col": 3, "grid_row": 0},
+    {"id": "PH_MCRO2221",   "course_number": "MCRO 2221", "title": "Introduction to Microbiology",              "units": 4, "category": "support",       "is_placeholder": False, "prerequisites": [],              "quarter_equivalents": [], "grid_col": 3, "grid_row": 0},
+    # Junior Fall (col 4, 16u)
+    {"id": "PH_HLTH3318",   "course_number": "HLTH 3318", "title": "Applied Epidemiology",                      "units": 4, "category": "major",         "is_placeholder": False, "prerequisites": ["HLTH 2261"],   "quarter_equivalents": [], "grid_col": 4, "grid_row": 0},
+    {"id": "PH_HLTH3322",   "course_number": "HLTH 3322", "title": "Public Health Policy and Advocacy",         "units": 3, "category": "major",         "is_placeholder": False, "prerequisites": ["HLTH 2261"],   "quarter_equivalents": [], "grid_col": 4, "grid_row": 0},
+    {"id": "PH_CON1",       "course_number": "Concentration", "title": "Concentration Course 1",               "units": 3, "category": "concentration", "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 4, "grid_row": 0},
+    {"id": "PH_GE3B",       "course_number": "GE 3B",     "title": "Humanities",                                "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 4, "grid_row": 0},
+    {"id": "PH_GE4A",       "course_number": "GE 4A",     "title": "American Institutions",                     "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 4, "grid_row": 0},
+    # Junior Spring (col 5, 16u)
+    {"id": "PH_HLTH3344",   "course_number": "HLTH 3344", "title": "Health Care Systems",                       "units": 3, "category": "major",         "is_placeholder": False, "prerequisites": ["HLTH 3318"],   "quarter_equivalents": [], "grid_col": 5, "grid_row": 0},
+    {"id": "PH_CON2",       "course_number": "Concentration", "title": "Concentration Course 2",               "units": 3, "category": "concentration", "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 5, "grid_row": 0},
+    {"id": "PH_GE6",        "course_number": "GE 6",      "title": "Ethnic Studies",                            "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 5, "grid_row": 0},
+    {"id": "PH_GE_UD25",    "course_number": "Upper Division GE", "title": "Upper Division GE (Area 2/5)",      "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 5, "grid_row": 0},
+    {"id": "PH_FREE1",      "course_number": "Free Elective", "title": "Free Elective",                         "units": 4, "category": "concentration", "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 5, "grid_row": 0},
+    # Senior Fall (col 6, 14u)
+    {"id": "PH_HLTH4402",   "course_number": "HLTH 4402", "title": "Research Methods in Public Health Settings","units": 4, "category": "major",         "is_placeholder": False, "prerequisites": ["HLTH 3318"],   "quarter_equivalents": [], "grid_col": 6, "grid_row": 0},
+    {"id": "PH_HLTH4434",   "course_number": "HLTH 4434", "title": "Health Promotion Program Planning",         "units": 4, "category": "major",         "is_placeholder": False, "prerequisites": ["HLTH 4402"],   "quarter_equivalents": [], "grid_col": 6, "grid_row": 0},
+    {"id": "PH_CON3",       "course_number": "Concentration", "title": "Concentration Course 3",               "units": 3, "category": "concentration", "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 6, "grid_row": 0},
+    {"id": "PH_CON4",       "course_number": "Concentration", "title": "Concentration Elective",               "units": 3, "category": "concentration", "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 6, "grid_row": 0},
+    # Senior Spring (col 7, 15u)
+    {"id": "PH_HLTH4410",   "course_number": "HLTH 4410", "title": "Global Health",                             "units": 3, "category": "major",         "is_placeholder": False, "prerequisites": ["HLTH 3344"],   "quarter_equivalents": [], "grid_col": 7, "grid_row": 0},
+    {"id": "PH_HLTH4435",   "course_number": "HLTH 4435", "title": "Health Promotion Program Implementation and Evaluation", "units": 3, "category": "major", "is_placeholder": False, "prerequisites": ["HLTH 4434"], "quarter_equivalents": [], "grid_col": 7, "grid_row": 0},
+    {"id": "PH_HLTH_SP",    "course_number": "HLTH 4460/4461/4462/4463", "title": "Senior Project",            "units": 2, "category": "major",         "is_placeholder": True,  "prerequisites": ["HLTH 4435"],   "quarter_equivalents": [], "grid_col": 7, "grid_row": 0, "elective_key": "ph_senior_project"},
+    {"id": "PH_GE_UD3",     "course_number": "Upper Division GE", "title": "Upper Division GE (Area 3)",       "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 7, "grid_row": 0},
+    {"id": "PH_FREE2",      "course_number": "Free Elective", "title": "Free Elective",                         "units": 4, "category": "concentration", "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 7, "grid_row": 0},
+]
+PH_FLOWCHART = _compact_rows_by_category(PH_FLOWCHART)
+
+# ---------------------------------------------------------------------------
+# Nutrition (NUT), BS — 120 units, 2 concentrations
+# ---------------------------------------------------------------------------
+NUT_FLOWCHART = [
+    # Freshman Fall (col 0, 14u)
+    {"id": "NUT_NUTR1101",  "course_number": "NUTR 1101",      "title": "Orientation to the Nutrition Major",                         "units": 1, "category": "major",         "is_placeholder": False, "prerequisites": [],            "quarter_equivalents": [], "grid_col": 0, "grid_row": 0},
+    {"id": "NUT_FSN2202",   "course_number": "FSN 2202",       "title": "Introduction to Human Nutrition",                            "units": 3, "category": "major",         "is_placeholder": False, "prerequisites": [],            "quarter_equivalents": [], "grid_col": 0, "grid_row": 0},
+    {"id": "NUT_CHEM1120",  "course_number": "CHEM 1120",      "title": "Fundamentals of Chemical Structure and Properties",          "units": 4, "category": "support",       "is_placeholder": False, "prerequisites": [],            "quarter_equivalents": [], "grid_col": 0, "grid_row": 0},
+    {"id": "NUT_GE1A",      "course_number": "GE 1A",          "title": "Written Communication",                                      "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 0, "grid_row": 0},
+    {"id": "NUT_GE1C",      "course_number": "GE 1C",          "title": "Oral Communication",                                         "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 0, "grid_row": 0},
+    # Freshman Spring (col 1, 16u)
+    {"id": "NUT_BIO1151",   "course_number": "BIO 1151",       "title": "Life: Molecules and Cells",                                  "units": 4, "category": "support",       "is_placeholder": False, "prerequisites": [],            "quarter_equivalents": [], "grid_col": 1, "grid_row": 0},
+    {"id": "NUT_FSN1121",   "course_number": "FSN 1121",       "title": "Fundamentals of Food",                                       "units": 3, "category": "major",         "is_placeholder": False, "prerequisites": [],            "quarter_equivalents": [], "grid_col": 1, "grid_row": 0},
+    {"id": "NUT_STAT1110",  "course_number": "STAT 1110",      "title": "Applied Statistical Concepts and Methods",                   "units": 3, "category": "support",       "is_placeholder": False, "prerequisites": [],            "quarter_equivalents": [], "grid_col": 1, "grid_row": 0},
+    {"id": "NUT_GE1B",      "course_number": "GE 1B",          "title": "Critical Thinking",                                          "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 1, "grid_row": 0},
+    {"id": "NUT_GE4B",      "course_number": "GE 4B",          "title": "Social and Behavioral Sciences",                             "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 1, "grid_row": 0},
+    # Sophomore Fall (col 2, 16u)
+    {"id": "NUT_NUTR3315",  "course_number": "NUTR 3315",      "title": "Nutrition in Aging",                                         "units": 2, "category": "major",         "is_placeholder": False, "prerequisites": [],            "quarter_equivalents": [], "grid_col": 2, "grid_row": 0},
+    {"id": "NUT_CHEM2240",  "course_number": "CHEM 2240",      "title": "Organic Chemistry: Fundamentals and Applications",           "units": 4, "category": "support",       "is_placeholder": False, "prerequisites": ["CHEM 1120"], "quarter_equivalents": [], "grid_col": 2, "grid_row": 0},
+    {"id": "NUT_MCRO",      "course_number": "MCRO 2224/2221", "title": "General Microbiology I/Introduction to Microbiology",        "units": 4, "category": "support",       "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 2, "grid_row": 0, "elective_key": "nut_mcro_choice"},
+    {"id": "NUT_GE3A",      "course_number": "GE 3A",          "title": "Arts",                                                       "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 2, "grid_row": 0},
+    {"id": "NUT_GE3B",      "course_number": "GE 3B",          "title": "Humanities",                                                 "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 2, "grid_row": 0},
+    # Sophomore Spring (col 3, 14u)
+    {"id": "NUT_NUTR3310",  "course_number": "NUTR 3310",      "title": "Maternal and Child Nutrition",                               "units": 3, "category": "major",         "is_placeholder": False, "prerequisites": [],            "quarter_equivalents": [], "grid_col": 3, "grid_row": 0},
+    {"id": "NUT_FSN2250",   "course_number": "FSN 2250",       "title": "Food and Nutrition: Culture and Customs",                   "units": 3, "category": "major",         "is_placeholder": False, "prerequisites": [],            "quarter_equivalents": [], "grid_col": 3, "grid_row": 0},
+    {"id": "NUT_BIO2231",   "course_number": "BIO 2231",       "title": "Human Anatomy and Physiology I",                            "units": 4, "category": "support",       "is_placeholder": False, "prerequisites": ["BIO 1151"],  "quarter_equivalents": [], "grid_col": 3, "grid_row": 0},
+    {"id": "NUT_CHEM3350",  "course_number": "CHEM 3350",      "title": "Biochemistry: Fundamentals and Applications",               "units": 4, "category": "support",       "is_placeholder": False, "prerequisites": ["CHEM 2240"], "quarter_equivalents": [], "grid_col": 3, "grid_row": 0},
+    # Junior Fall (col 4, 16u)
+    {"id": "NUT_BIO2232",   "course_number": "BIO 2232",       "title": "Human Anatomy and Physiology II",                           "units": 4, "category": "support",       "is_placeholder": False, "prerequisites": ["BIO 2231"],  "quarter_equivalents": [], "grid_col": 4, "grid_row": 0},
+    {"id": "NUT_NUTR3331",  "course_number": "NUTR 3331",      "title": "Macronutrient Metabolism",                                  "units": 3, "category": "major",         "is_placeholder": False, "prerequisites": ["FSN 2202"],  "quarter_equivalents": [], "grid_col": 4, "grid_row": 0},
+    {"id": "NUT_CON1",      "course_number": "Concentration",  "title": "Concentration Course 1",                                    "units": 3, "category": "concentration", "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 4, "grid_row": 0},
+    {"id": "NUT_CON2",      "course_number": "Concentration",  "title": "Concentration Course 2",                                    "units": 3, "category": "concentration", "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 4, "grid_row": 0},
+    {"id": "NUT_GE4A",      "course_number": "GE 4A",          "title": "American Institutions",                                     "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 4, "grid_row": 0},
+    # Junior Spring (col 5, 13u)
+    {"id": "NUT_NUTR3332",  "course_number": "NUTR 3332",      "title": "Micronutrient Metabolism",                                  "units": 3, "category": "major",         "is_placeholder": False, "prerequisites": ["NUTR 3331"], "quarter_equivalents": [], "grid_col": 5, "grid_row": 0},
+    {"id": "NUT_NUTR3333",  "course_number": "NUTR 3333",      "title": "Nutrient Metabolism Lab",                                   "units": 1, "category": "major",         "is_placeholder": False, "prerequisites": ["NUTR 3331"], "quarter_equivalents": [], "grid_col": 5, "grid_row": 0},
+    {"id": "NUT_CON3",      "course_number": "Concentration",  "title": "Concentration Course 3",                                    "units": 3, "category": "concentration", "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 5, "grid_row": 0},
+    {"id": "NUT_GE6",       "course_number": "GE 6",           "title": "Ethnic Studies",                                            "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 5, "grid_row": 0},
+    {"id": "NUT_FREE1",     "course_number": "Free Elective",  "title": "Free Elective",                                             "units": 3, "category": "concentration", "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 5, "grid_row": 0},
+    # Senior Fall (col 6, 16u)
+    {"id": "NUT_NUTR4415",  "course_number": "NUTR 4415",      "title": "Nutrition Counseling and Education",                        "units": 3, "category": "major",         "is_placeholder": False, "prerequisites": [],            "quarter_equivalents": [], "grid_col": 6, "grid_row": 0},
+    {"id": "NUT_NUTR4431",  "course_number": "NUTR 4431",      "title": "Medical Nutrition Therapy I",                               "units": 4, "category": "major",         "is_placeholder": False, "prerequisites": ["NUTR 3331"], "quarter_equivalents": [], "grid_col": 6, "grid_row": 0},
+    {"id": "NUT_CON4",      "course_number": "Concentration",  "title": "Concentration Course 4",                                    "units": 3, "category": "concentration", "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 6, "grid_row": 0},
+    {"id": "NUT_GE_UD4",    "course_number": "Upper Division GE", "title": "Upper Division GE (Area 4)",                            "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 6, "grid_row": 0},
+    {"id": "NUT_FREE2",     "course_number": "Free Elective",  "title": "Free Elective",                                             "units": 3, "category": "concentration", "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 6, "grid_row": 0},
+    # Senior Spring (col 7, 15u)
+    {"id": "NUT_NUTR4416",  "course_number": "NUTR 4416",      "title": "Community Nutrition",                                       "units": 3, "category": "major",         "is_placeholder": False, "prerequisites": [],            "quarter_equivalents": [], "grid_col": 7, "grid_row": 0},
+    {"id": "NUT_NUTR4432",  "course_number": "NUTR 4432",      "title": "Medical Nutrition Therapy II",                              "units": 4, "category": "major",         "is_placeholder": False, "prerequisites": ["NUTR 4431"], "quarter_equivalents": [], "grid_col": 7, "grid_row": 0},
+    {"id": "NUT_NUTR_SP",   "course_number": "NUTR 4460/4461/4462", "title": "Senior Project",                                       "units": 2, "category": "major",         "is_placeholder": True,  "prerequisites": ["NUTR 4432"], "quarter_equivalents": [], "grid_col": 7, "grid_row": 0, "elective_key": "nut_senior_project"},
+    {"id": "NUT_CON5",      "course_number": "Concentration",  "title": "Concentration Course 5",                                    "units": 3, "category": "concentration", "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 7, "grid_row": 0},
+    {"id": "NUT_GE_UD3",    "course_number": "Upper Division GE", "title": "Upper Division GE (Area 3)",                            "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 7, "grid_row": 0},
+]
+NUT_FLOWCHART = _compact_rows_by_category(NUT_FLOWCHART)
+
+# ---------------------------------------------------------------------------
+# Philosophy (PHIL), BA — 120 units, 3 concentrations
+# ---------------------------------------------------------------------------
+PHIL_FLOWCHART = [
+    # Freshman Fall (col 0, 15u)
+    {"id": "PHIL_1101",      "course_number": "PHIL 1101", "title": "Introduction to Philosophy",              "units": 3, "category": "major",         "is_placeholder": False, "prerequisites": [],          "quarter_equivalents": [], "grid_col": 0, "grid_row": 0},
+    {"id": "PHIL_GE1A",      "course_number": "GE 1A",    "title": "Written Communication",                   "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],          "quarter_equivalents": [], "grid_col": 0, "grid_row": 0},
+    {"id": "PHIL_GE1C",      "course_number": "GE 1C",    "title": "Oral Communication",                      "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],          "quarter_equivalents": [], "grid_col": 0, "grid_row": 0},
+    {"id": "PHIL_GE4B",      "course_number": "GE 4B",    "title": "Social and Behavioral Sciences",          "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],          "quarter_equivalents": [], "grid_col": 0, "grid_row": 0},
+    {"id": "PHIL_GE2",       "course_number": "GE 2",     "title": "Mathematics and Quantitative Reasoning",  "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],          "quarter_equivalents": [], "grid_col": 0, "grid_row": 0},
+    # Freshman Spring (col 1, 15u)
+    {"id": "PHIL_1126",      "course_number": "PHIL 1126","title": "Logic and Argumentative Writing",         "units": 3, "category": "major",         "is_placeholder": False, "prerequisites": [],          "quarter_equivalents": [], "grid_col": 1, "grid_row": 0},
+    {"id": "PHIL_GE3A",      "course_number": "GE 3A",    "title": "Arts",                                    "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],          "quarter_equivalents": [], "grid_col": 1, "grid_row": 0},
+    {"id": "PHIL_GE4A",      "course_number": "GE 4A",    "title": "American Institutions",                   "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],          "quarter_equivalents": [], "grid_col": 1, "grid_row": 0},
+    {"id": "PHIL_GE5A",      "course_number": "GE 5A",    "title": "Physical Sciences",                       "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],          "quarter_equivalents": [], "grid_col": 1, "grid_row": 0},
+    {"id": "PHIL_FREE1",     "course_number": "Free Elective", "title": "Free Elective",                      "units": 3, "category": "concentration", "is_placeholder": True,  "prerequisites": [],          "quarter_equivalents": [], "grid_col": 1, "grid_row": 0},
+    # Sophomore Fall (col 2, 16u)
+    {"id": "PHIL_2230",      "course_number": "PHIL 2230","title": "Philosophical Classics: Knowledge and Reality",         "units": 3, "category": "major", "is_placeholder": False, "prerequisites": [],      "quarter_equivalents": [], "grid_col": 2, "grid_row": 0},
+    {"id": "PHIL_2231",      "course_number": "PHIL 2231","title": "Philosophical Classics: Ethics and Political Philosophy","units": 3, "category": "major", "is_placeholder": False, "prerequisites": [],      "quarter_equivalents": [], "grid_col": 2, "grid_row": 0},
+    {"id": "PHIL_2241",      "course_number": "PHIL 2241","title": "Symbolic Logic",                          "units": 3, "category": "major",         "is_placeholder": False, "prerequisites": [],          "quarter_equivalents": [], "grid_col": 2, "grid_row": 0},
+    {"id": "PHIL_GE5B5C",    "course_number": "GE 5B/5C", "title": "Life Sciences with Lab",                 "units": 4, "category": "ge",            "is_placeholder": True,  "prerequisites": [],          "quarter_equivalents": [], "grid_col": 2, "grid_row": 0},
+    {"id": "PHIL_FREE2",     "course_number": "Free Elective", "title": "Free Elective",                      "units": 3, "category": "concentration", "is_placeholder": True,  "prerequisites": [],          "quarter_equivalents": [], "grid_col": 2, "grid_row": 0},
+    # Sophomore Spring (col 3, 15u)
+    {"id": "PHIL_3331",      "course_number": "PHIL 3331","title": "Ethics",                                  "units": 3, "category": "major",         "is_placeholder": False, "prerequisites": [],          "quarter_equivalents": [], "grid_col": 3, "grid_row": 0},
+    {"id": "PHIL_GE6",       "course_number": "GE 6",     "title": "Ethnic Studies",                          "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],          "quarter_equivalents": [], "grid_col": 3, "grid_row": 0},
+    {"id": "PHIL_GE_UD4",    "course_number": "Upper Division GE", "title": "Upper Division GE (Area 4)",     "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],          "quarter_equivalents": [], "grid_col": 3, "grid_row": 0},
+    {"id": "PHIL_FREE3",     "course_number": "Free Elective", "title": "Free Elective",                      "units": 3, "category": "concentration", "is_placeholder": True,  "prerequisites": [],          "quarter_equivalents": [], "grid_col": 3, "grid_row": 0},
+    {"id": "PHIL_FREE4",     "course_number": "Free Elective", "title": "Free Elective",                      "units": 3, "category": "concentration", "is_placeholder": True,  "prerequisites": [],          "quarter_equivalents": [], "grid_col": 3, "grid_row": 0},
+    # Junior Fall (col 4, 15u)
+    {"id": "PHIL_3300",      "course_number": "PHIL 3300","title": "Philosophical Writing and Research",      "units": 3, "category": "major",         "is_placeholder": False, "prerequisites": [],          "quarter_equivalents": [], "grid_col": 4, "grid_row": 0},
+    {"id": "PHIL_3321",      "course_number": "PHIL 3321","title": "Philosophy of Science",                   "units": 3, "category": "major",         "is_placeholder": False, "prerequisites": [],          "quarter_equivalents": [], "grid_col": 4, "grid_row": 0},
+    {"id": "PHIL_HIST1",     "course_number": "History of Philosophy", "title": "History of Philosophy Group 1 (Ancient/Medieval)", "units": 3, "category": "major", "is_placeholder": True, "prerequisites": [], "quarter_equivalents": [], "grid_col": 4, "grid_row": 0, "elective_key": "phil_hist_group1"},
+    {"id": "PHIL_FREE5",     "course_number": "Free Elective", "title": "Free Elective",                      "units": 3, "category": "concentration", "is_placeholder": True,  "prerequisites": [],          "quarter_equivalents": [], "grid_col": 4, "grid_row": 0},
+    {"id": "PHIL_FREE6",     "course_number": "Free Elective", "title": "Free Elective",                      "units": 3, "category": "concentration", "is_placeholder": True,  "prerequisites": [],          "quarter_equivalents": [], "grid_col": 4, "grid_row": 0},
+    # Junior Spring (col 5, 15u)
+    {"id": "PHIL_SUPPORT",   "course_number": "Arts/Humanities Elective", "title": "Upper Division Arts and Humanities (non-PHIL)", "units": 3, "category": "support", "is_placeholder": True, "prerequisites": [], "quarter_equivalents": [], "grid_col": 5, "grid_row": 0, "elective_key": "phil_arts_hum_support"},
+    {"id": "PHIL_GE_UD25",   "course_number": "Upper Division GE", "title": "Upper Division GE (Area 2/5)",   "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],          "quarter_equivalents": [], "grid_col": 5, "grid_row": 0},
+    {"id": "PHIL_HIST2",     "course_number": "History of Philosophy", "title": "History of Philosophy Group 2 (Early Modern)", "units": 3, "category": "major", "is_placeholder": True, "prerequisites": [], "quarter_equivalents": [], "grid_col": 5, "grid_row": 0, "elective_key": "phil_hist_group2"},
+    {"id": "PHIL_HIST3",     "course_number": "History of Philosophy", "title": "History of Philosophy Group 3 (19th-20th Century)", "units": 3, "category": "major", "is_placeholder": True, "prerequisites": [], "quarter_equivalents": [], "grid_col": 5, "grid_row": 0, "elective_key": "phil_hist_group3"},
+    {"id": "PHIL_FREE7",     "course_number": "Free Elective", "title": "Free Elective",                      "units": 3, "category": "concentration", "is_placeholder": True,  "prerequisites": [],          "quarter_equivalents": [], "grid_col": 5, "grid_row": 0},
+    # Senior Fall (col 6, 14u)
+    {"id": "PHIL_4411",      "course_number": "PHIL 4411","title": "Metaphysics",                             "units": 3, "category": "major",         "is_placeholder": False, "prerequisites": [],          "quarter_equivalents": [], "grid_col": 6, "grid_row": 0},
+    {"id": "PHIL_GEN_ELEC",  "course_number": "Philosophy Elective", "title": "General Philosophy Elective (3000-4000 level)", "units": 3, "category": "major", "is_placeholder": True, "prerequisites": [], "quarter_equivalents": [], "grid_col": 6, "grid_row": 0, "elective_key": "phil_gen_elective"},
+    {"id": "PHIL_CON1",      "course_number": "Concentration", "title": "Concentration Course 1",             "units": 3, "category": "concentration", "is_placeholder": True,  "prerequisites": [],          "quarter_equivalents": [], "grid_col": 6, "grid_row": 0},
+    {"id": "PHIL_CON2",      "course_number": "Concentration", "title": "Concentration Course 2",             "units": 3, "category": "concentration", "is_placeholder": True,  "prerequisites": [],          "quarter_equivalents": [], "grid_col": 6, "grid_row": 0},
+    {"id": "PHIL_FREE8",     "course_number": "Free Elective", "title": "Free Elective",                      "units": 2, "category": "concentration", "is_placeholder": True,  "prerequisites": [],          "quarter_equivalents": [], "grid_col": 6, "grid_row": 0},
+    # Senior Spring (col 7, 15u)
+    {"id": "PHIL_4412",      "course_number": "PHIL 4412","title": "Epistemology",                            "units": 3, "category": "major",         "is_placeholder": False, "prerequisites": [],          "quarter_equivalents": [], "grid_col": 7, "grid_row": 0},
+    {"id": "PHIL_4459",      "course_number": "PHIL 4459","title": "Senior Project Preparation",              "units": 1, "category": "major",         "is_placeholder": False, "prerequisites": ["PHIL 4411"],"quarter_equivalents": [], "grid_col": 7, "grid_row": 0},
+    {"id": "PHIL_4460",      "course_number": "PHIL 4460","title": "Senior Project",                          "units": 2, "category": "major",         "is_placeholder": False, "prerequisites": ["PHIL 4459"],"quarter_equivalents": [], "grid_col": 7, "grid_row": 0},
+    {"id": "PHIL_CON3",      "course_number": "Concentration", "title": "Concentration Course 3",             "units": 3, "category": "concentration", "is_placeholder": True,  "prerequisites": [],          "quarter_equivalents": [], "grid_col": 7, "grid_row": 0},
+    {"id": "PHIL_CON4",      "course_number": "Concentration", "title": "Concentration Course 4",             "units": 3, "category": "concentration", "is_placeholder": True,  "prerequisites": [],          "quarter_equivalents": [], "grid_col": 7, "grid_row": 0},
+    {"id": "PHIL_CON5",      "course_number": "Concentration", "title": "Concentration Elective",             "units": 3, "category": "concentration", "is_placeholder": True,  "prerequisites": [],          "quarter_equivalents": [], "grid_col": 7, "grid_row": 0},
+]
+PHIL_FLOWCHART = _compact_rows_by_category(PHIL_FLOWCHART)
+
+# ---------------------------------------------------------------------------
+# Spanish (SPAN), BA — 120 units, no concentrations
+# ---------------------------------------------------------------------------
+SPAN_FLOWCHART = [
+    # Freshman Fall (col 0, 13u)
+    {"id": "SPAN_2201",       "course_number": "SPAN 2201",        "title": "Intermediate Spanish I",                           "units": 4, "category": "major",         "is_placeholder": False, "prerequisites": [],              "quarter_equivalents": [], "grid_col": 0, "grid_row": 0},
+    {"id": "SPAN_GE1A",       "course_number": "GE 1A",            "title": "Written Communication",                            "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 0, "grid_row": 0},
+    {"id": "SPAN_GE1C",       "course_number": "GE 1C",            "title": "Oral Communication",                               "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 0, "grid_row": 0},
+    {"id": "SPAN_GE3A",       "course_number": "GE 3A",            "title": "Arts",                                             "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 0, "grid_row": 0},
+    # Freshman Spring (col 1, 16u)
+    {"id": "SPAN_2202",       "course_number": "SPAN 2202/2206",   "title": "Intermediate Spanish II or Spanish for Heritage Speakers", "units": 4, "category": "major", "is_placeholder": True, "prerequisites": ["SPAN 2201"],   "quarter_equivalents": [], "grid_col": 1, "grid_row": 0, "elective_key": "span_2202_2206"},
+    {"id": "SPAN_GE1B",       "course_number": "GE 1B",            "title": "Critical Thinking",                                "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 1, "grid_row": 0},
+    {"id": "SPAN_GE2",        "course_number": "GE 2",             "title": "Mathematics and Quantitative Reasoning",           "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 1, "grid_row": 0},
+    {"id": "SPAN_FREE_FS1",   "course_number": "Free Elective",    "title": "Free Elective",                                    "units": 3, "category": "concentration", "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 1, "grid_row": 0},
+    {"id": "SPAN_FREE_FS2",   "course_number": "Free Elective",    "title": "Free Elective",                                    "units": 3, "category": "concentration", "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 1, "grid_row": 0},
+    # Sophomore Fall (col 2, 15u)
+    {"id": "SPAN_2207",       "course_number": "SPAN 2207",        "title": "Introduction to Spanish Linguistics",              "units": 3, "category": "major",         "is_placeholder": False, "prerequisites": ["SPAN 2201"],   "quarter_equivalents": [], "grid_col": 2, "grid_row": 0},
+    {"id": "SPAN_2233",       "course_number": "SPAN 2233",        "title": "Introduction to Hispanic Literature",              "units": 3, "category": "major",         "is_placeholder": False, "prerequisites": ["SPAN 2202/2206"], "quarter_equivalents": [], "grid_col": 2, "grid_row": 0},
+    {"id": "SPAN_GE4A",       "course_number": "GE 4A",            "title": "American Institutions",                            "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 2, "grid_row": 0},
+    {"id": "SPAN_GE4B",       "course_number": "GE 4B",            "title": "Social and Behavioral Sciences",                   "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 2, "grid_row": 0},
+    {"id": "SPAN_FREE_SOF",   "course_number": "Free Elective",    "title": "Free Elective",                                    "units": 3, "category": "concentration", "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 2, "grid_row": 0},
+    # Sophomore Spring (col 3, 16u)
+    {"id": "SPAN_3301",       "course_number": "SPAN 3301",        "title": "Advanced Writing in Spanish",                      "units": 3, "category": "major",         "is_placeholder": False, "prerequisites": ["SPAN 2233"],   "quarter_equivalents": [], "grid_col": 3, "grid_row": 0},
+    {"id": "SPAN_3K_1",       "course_number": "SPAN 3XXX",        "title": "SPAN 3000-Level Elective",                         "units": 3, "category": "major",         "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 3, "grid_row": 0, "elective_key": "span_3k_elective"},
+    {"id": "SPAN_GE5A",       "course_number": "GE 5A",            "title": "Physical Sciences",                                "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 3, "grid_row": 0},
+    {"id": "SPAN_GE5B",       "course_number": "GE 5B",            "title": "Life Sciences",                                    "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 3, "grid_row": 0},
+    {"id": "SPAN_GE5C",       "course_number": "GE 5C",            "title": "Laboratory",                                       "units": 1, "category": "ge",            "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 3, "grid_row": 0},
+    {"id": "SPAN_FREE_SOS",   "course_number": "Free Elective",    "title": "Free Elective",                                    "units": 3, "category": "concentration", "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 3, "grid_row": 0},
+    # Junior Fall (col 4, 15u)
+    {"id": "SPAN_3302",       "course_number": "SPAN 3302",        "title": "Spanish Conversation, Composition, Advocacy",      "units": 3, "category": "major",         "is_placeholder": False, "prerequisites": ["SPAN 3301"],   "quarter_equivalents": [], "grid_col": 4, "grid_row": 0},
+    {"id": "SPAN_3K_2",       "course_number": "SPAN 3XXX",        "title": "SPAN 3000-Level Elective",                         "units": 3, "category": "major",         "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 4, "grid_row": 0, "elective_key": "span_3k_elective"},
+    {"id": "SPAN_3K_3",       "course_number": "SPAN 3XXX",        "title": "SPAN 3000-Level Elective",                         "units": 3, "category": "major",         "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 4, "grid_row": 0, "elective_key": "span_3k_elective"},
+    {"id": "SPAN_GE6",        "course_number": "GE 6",             "title": "Ethnic Studies",                                   "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 4, "grid_row": 0},
+    {"id": "SPAN_FREE_JF",    "course_number": "Free Elective",    "title": "Free Elective",                                    "units": 3, "category": "concentration", "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 4, "grid_row": 0},
+    # Junior Spring (col 5, 15u)
+    {"id": "SPAN_WLC3360",    "course_number": "WLC 3360",         "title": "Research Methods in World Languages and Cultures",  "units": 3, "category": "major",         "is_placeholder": False, "prerequisites": [],              "quarter_equivalents": [], "grid_col": 5, "grid_row": 0},
+    {"id": "SPAN_3K_4",       "course_number": "SPAN 3XXX",        "title": "SPAN 3000-Level Elective",                         "units": 3, "category": "major",         "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 5, "grid_row": 0, "elective_key": "span_3k_elective"},
+    {"id": "SPAN_LANG_1",     "course_number": "Language/Culture Elective", "title": "Approved Language/Culture Elective",      "units": 3, "category": "support",       "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 5, "grid_row": 0, "elective_key": "span_lang_cult_elective"},
+    {"id": "SPAN_GE_UD3",     "course_number": "Upper Division GE","title": "Upper Division GE (Area 3)",                       "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 5, "grid_row": 0},
+    {"id": "SPAN_FREE_JS",    "course_number": "Free Elective",    "title": "Free Elective",                                    "units": 3, "category": "concentration", "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 5, "grid_row": 0},
+    # Senior Fall (col 6, 15u)
+    {"id": "SPAN_4K_1",       "course_number": "SPAN 4XXX",        "title": "SPAN 4000-Level Elective",                         "units": 3, "category": "major",         "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 6, "grid_row": 0, "elective_key": "span_4k_elective"},
+    {"id": "SPAN_LANG_2",     "course_number": "Language/Culture Elective", "title": "Approved Language/Culture Elective",      "units": 3, "category": "support",       "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 6, "grid_row": 0, "elective_key": "span_lang_cult_elective"},
+    {"id": "SPAN_LANG_3",     "course_number": "Language/Culture Elective", "title": "Approved Language/Culture Elective",      "units": 3, "category": "support",       "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 6, "grid_row": 0, "elective_key": "span_lang_cult_elective"},
+    {"id": "SPAN_GE_UD25",    "course_number": "Upper Division GE","title": "Upper Division GE (Area 2/5)",                     "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 6, "grid_row": 0},
+    {"id": "SPAN_FREE_SEF",   "course_number": "Free Elective",    "title": "Free Elective",                                    "units": 3, "category": "concentration", "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 6, "grid_row": 0},
+    # Senior Spring (col 7, 15u)
+    {"id": "SPAN_WLC4460",    "course_number": "WLC 4460",         "title": "Senior Project",                                   "units": 3, "category": "major",         "is_placeholder": False, "prerequisites": ["WLC 3360"],    "quarter_equivalents": [], "grid_col": 7, "grid_row": 0},
+    {"id": "SPAN_4K_2",       "course_number": "SPAN 4XXX",        "title": "SPAN 4000-Level Elective",                         "units": 3, "category": "major",         "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 7, "grid_row": 0, "elective_key": "span_4k_elective"},
+    {"id": "SPAN_GE_UD4",     "course_number": "Upper Division GE","title": "Upper Division GE (Area 4)",                       "units": 3, "category": "ge",            "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 7, "grid_row": 0},
+    {"id": "SPAN_FREE_SES1",  "course_number": "Free Elective",    "title": "Free Elective",                                    "units": 3, "category": "concentration", "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 7, "grid_row": 0},
+    {"id": "SPAN_FREE_SES2",  "course_number": "Free Elective",    "title": "Free Elective",                                    "units": 3, "category": "concentration", "is_placeholder": True,  "prerequisites": [],              "quarter_equivalents": [], "grid_col": 7, "grid_row": 0},
+]
+SPAN_FLOWCHART = _compact_rows_by_category(SPAN_FLOWCHART)
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# THEATRE ARTS — BA (120 units)
+# Source: catalog.calpoly.edu/liberal-arts/theatre-dance/theatre-arts-ba/
+# No concentrations.
+# ─────────────────────────────────────────────────────────────────────────────
+THEA_FLOWCHART: list[Course] = [
+    # ── FRESHMAN FALL (18 units) ──────────────────────────────────────────────
+    {"id": "THEA_1145",    "course_number": "TH 1145/1155",  "title": "Mainstage Rehearsal and Performance I or Mainstage Production I", "units": 3, "category": "major", "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 0, "grid_row": 0, "elective_key": "th_mainstage_choice"},
+    {"id": "THEA_2201",    "course_number": "TH 2201",       "title": "First Year Theatre Experience",                                   "units": 3, "category": "major", "is_placeholder": False, "prerequisites": [],            "quarter_equivalents": [], "grid_col": 0, "grid_row": 0},
+    {"id": "THEA_2227",    "course_number": "TH 2227/2228",  "title": "Theatre History I or Theatre History II",                         "units": 3, "category": "major", "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 0, "grid_row": 0, "elective_key": "th_history_choice"},
+    {"id": "THEA_2290",    "course_number": "TH 2290",       "title": "Dramaturgy and Playwriting",                                      "units": 3, "category": "major", "is_placeholder": False, "prerequisites": [],            "quarter_equivalents": [], "grid_col": 0, "grid_row": 0},
+    {"id": "THEA_GE1A",   "course_number": "GE 1A",          "title": "Written Communication",                                           "units": 3, "category": "ge",    "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 0, "grid_row": 0},
+    {"id": "THEA_GE1C",   "course_number": "GE 1C",          "title": "Oral Communication",                                              "units": 3, "category": "ge",    "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 0, "grid_row": 0},
+
+    # ── FRESHMAN SPRING (15 units) ────────────────────────────────────────────
+    {"id": "THEA_2220",   "course_number": "TH 2220",        "title": "Acting I",                                                        "units": 3, "category": "major", "is_placeholder": False, "prerequisites": ["TH 2201"],   "quarter_equivalents": [], "grid_col": 1, "grid_row": 0},
+    {"id": "THEA_2225",   "course_number": "TH 2225",        "title": "Costume Construction I",                                          "units": 3, "category": "major", "is_placeholder": False, "prerequisites": [],            "quarter_equivalents": [], "grid_col": 1, "grid_row": 0},
+    {"id": "THEA_2295",   "course_number": "TH 2295",        "title": "Foundations in Theatrical Design",                               "units": 3, "category": "major", "is_placeholder": False, "prerequisites": [],            "quarter_equivalents": [], "grid_col": 1, "grid_row": 0},
+    {"id": "THEA_GE1B",  "course_number": "GE 1B",           "title": "Critical Thinking",                                               "units": 3, "category": "ge",    "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 1, "grid_row": 0},
+    {"id": "THEA_GE2",   "course_number": "GE 2",            "title": "Mathematics and Quantitative Reasoning",                          "units": 3, "category": "ge",    "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 1, "grid_row": 0},
+
+    # ── SOPHOMORE FALL (16 units) ─────────────────────────────────────────────
+    {"id": "THEA_2230",   "course_number": "TH 2230",        "title": "Stagecraft I",                                                    "units": 3, "category": "major", "is_placeholder": False, "prerequisites": ["TH 2201"],   "quarter_equivalents": [], "grid_col": 2, "grid_row": 0},
+    {"id": "THEA_LD_EL1", "course_number": "TH LD Elective", "title": "Lower-Division Theatre Elective",                                "units": 3, "category": "major", "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 2, "grid_row": 0, "elective_key": "th_ld_elective"},
+    {"id": "THEA_GE3B",  "course_number": "GE 3B",           "title": "Humanities",                                                      "units": 3, "category": "ge",    "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 2, "grid_row": 0},
+    {"id": "THEA_GE4A",  "course_number": "GE 4A",           "title": "American Institutions",                                           "units": 3, "category": "ge",    "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 2, "grid_row": 0},
+    {"id": "THEA_GE4B",  "course_number": "GE 4B",           "title": "Social and Behavioral Sciences",                                  "units": 3, "category": "ge",    "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 2, "grid_row": 0},
+    {"id": "THEA_GE5C",  "course_number": "GE 5C",           "title": "Laboratory",                                                      "units": 1, "category": "ge",    "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 2, "grid_row": 0},
+
+    # ── SOPHOMORE SPRING (15 units) ───────────────────────────────────────────
+    {"id": "THEA_LD_EL2", "course_number": "TH LD Elective", "title": "Lower-Division Theatre Elective",                                "units": 3, "category": "major", "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 3, "grid_row": 0, "elective_key": "th_ld_elective"},
+    {"id": "THEA_LD_EL3", "course_number": "TH LD Elective", "title": "Lower-Division Theatre Elective",                                "units": 3, "category": "major", "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 3, "grid_row": 0, "elective_key": "th_ld_elective"},
+    {"id": "THEA_GE5A",  "course_number": "GE 5A",           "title": "Physical Sciences",                                               "units": 3, "category": "ge",    "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 3, "grid_row": 0},
+    {"id": "THEA_GE5B",  "course_number": "GE 5B",           "title": "Life Sciences",                                                   "units": 3, "category": "ge",    "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 3, "grid_row": 0},
+    {"id": "THEA_GE6",   "course_number": "GE 6",            "title": "Ethnic Studies",                                                  "units": 3, "category": "ge",    "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 3, "grid_row": 0},
+
+    # ── JUNIOR FALL (15 units) ────────────────────────────────────────────────
+    {"id": "THEA_3305",   "course_number": "TH 3305",        "title": "Diversity in U.S. Theatre",                                       "units": 3, "category": "major", "is_placeholder": False, "prerequisites": ["TH 2201"],   "quarter_equivalents": [], "grid_col": 4, "grid_row": 0},
+    {"id": "THEA_3325",   "course_number": "TH 3325/3330",   "title": "Costume Construction II or Stagecraft II",                        "units": 3, "category": "major", "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 4, "grid_row": 0, "elective_key": "th_construction_choice"},
+    {"id": "THEA_4430",   "course_number": "TH 4430/4432",   "title": "Scenic Design or Costume Design",                                 "units": 3, "category": "major", "is_placeholder": True,  "prerequisites": ["TH 2295"],   "quarter_equivalents": [], "grid_col": 4, "grid_row": 0, "elective_key": "th_design_choice"},
+    {"id": "THEA_UD_EL1", "course_number": "TH UD Elective", "title": "Upper-Division Theatre Elective",                                "units": 3, "category": "major", "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 4, "grid_row": 0, "elective_key": "th_ud_elective"},
+    {"id": "THEA_GE_UD25","course_number": "Upper Division GE","title": "Upper Division GE (Area 2/5)",                                  "units": 3, "category": "ge",    "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 4, "grid_row": 0},
+
+    # ── JUNIOR SPRING (14 units) ──────────────────────────────────────────────
+    {"id": "THEA_ENGL3339","course_number": "ENGL 3339",     "title": "Introduction to Shakespeare",                                     "units": 3, "category": "support","is_placeholder": False, "prerequisites": [],            "quarter_equivalents": [], "grid_col": 5, "grid_row": 0},
+    {"id": "THEA_UD_EL2", "course_number": "TH UD Elective", "title": "Upper-Division Theatre Elective",                                "units": 3, "category": "major", "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 5, "grid_row": 0, "elective_key": "th_ud_elective"},
+    {"id": "THEA_UD_EL3", "course_number": "TH UD Elective", "title": "Upper-Division Theatre Elective",                                "units": 3, "category": "major", "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 5, "grid_row": 0, "elective_key": "th_ud_elective"},
+    {"id": "THEA_GE_UD4", "course_number": "Upper Division GE","title": "Upper Division GE (Area 4)",                                    "units": 3, "category": "ge",    "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 5, "grid_row": 0},
+    {"id": "THEA_FREE1",  "course_number": "Free Elective",  "title": "Free Elective",                                                   "units": 2, "category": "concentration","is_placeholder": True, "prerequisites": [],         "quarter_equivalents": [], "grid_col": 5, "grid_row": 0},
+
+    # ── SENIOR FALL (18 units) ────────────────────────────────────────────────
+    {"id": "THEA_4450",   "course_number": "TH 4450",        "title": "Directing",                                                       "units": 3, "category": "major", "is_placeholder": False, "prerequisites": ["TH 3305"],   "quarter_equivalents": [], "grid_col": 6, "grid_row": 0},
+    {"id": "THEA_UD_EL4", "course_number": "TH UD Elective", "title": "Upper-Division Theatre Elective",                                "units": 3, "category": "major", "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 6, "grid_row": 0, "elective_key": "th_ud_elective"},
+    {"id": "THEA_UD_EL5", "course_number": "TH UD Elective", "title": "Upper-Division Theatre Elective",                                "units": 3, "category": "major", "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 6, "grid_row": 0, "elective_key": "th_ud_elective"},
+    {"id": "THEA_FREE2",  "course_number": "Free Elective",  "title": "Free Elective",                                                   "units": 3, "category": "concentration","is_placeholder": True, "prerequisites": [],         "quarter_equivalents": [], "grid_col": 6, "grid_row": 0},
+    {"id": "THEA_FREE3",  "course_number": "Free Elective",  "title": "Free Elective",                                                   "units": 3, "category": "concentration","is_placeholder": True, "prerequisites": [],         "quarter_equivalents": [], "grid_col": 6, "grid_row": 0},
+    {"id": "THEA_FREE4",  "course_number": "Free Elective",  "title": "Free Elective",                                                   "units": 3, "category": "concentration","is_placeholder": True, "prerequisites": [],         "quarter_equivalents": [], "grid_col": 6, "grid_row": 0},
+
+    # ── SENIOR SPRING (9 units) ───────────────────────────────────────────────
+    {"id": "THEA_4461",   "course_number": "TH 4461",        "title": "Senior Project Seminar",                                          "units": 3, "category": "major", "is_placeholder": False, "prerequisites": ["TH 4450"],   "quarter_equivalents": [], "grid_col": 7, "grid_row": 0},
+    {"id": "THEA_UD_EL6", "course_number": "TH UD Elective", "title": "Upper-Division Theatre Elective",                                "units": 3, "category": "major", "is_placeholder": True,  "prerequisites": [],            "quarter_equivalents": [], "grid_col": 7, "grid_row": 0, "elective_key": "th_ud_elective"},
+    {"id": "THEA_FREE5",  "course_number": "Free Elective",  "title": "Free Elective",                                                   "units": 3, "category": "concentration","is_placeholder": True, "prerequisites": [],         "quarter_equivalents": [], "grid_col": 7, "grid_row": 0},
+]
+THEA_FLOWCHART = _compact_rows_by_category(THEA_FLOWCHART)
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# LIBERAL STUDIES — BS (120 units)
+# Source: catalog.calpoly.edu/science-mathematics/liberal-studies/liberal-studies-bs/
+# 8 concentrations: Environmental Education, Human Development, Mathematics,
+# English, Science, Social Science, TESOL, Individualized Course of Study.
+# ─────────────────────────────────────────────────────────────────────────────
+LIBS_FLOWCHART: list[Course] = [
+    # ── FRESHMAN FALL (14 units) ──────────────────────────────────────────────
+    {"id": "LIBS_1201",      "course_number": "LS 1201",       "title": "Orientation to Liberal Studies",                         "units": 1, "category": "major",   "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 0, "grid_row": 0},
+    {"id": "LIBS_2370",      "course_number": "LS 2370",       "title": "Performing Arts for Children",                           "units": 3, "category": "major",   "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 0, "grid_row": 0},
+    {"id": "LIBS_HIST2201",  "course_number": "HIST 2201",     "title": "U.S. History to 1877",                                   "units": 3, "category": "support", "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 0, "grid_row": 0},
+    {"id": "LIBS_PSC1101",   "course_number": "PSC 1101",      "title": "Physical Science for Elementary Educators I",            "units": 4, "category": "support", "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 0, "grid_row": 0},
+    {"id": "LIBS_GE1A",      "course_number": "GE 1A",         "title": "Written Communication",                                  "units": 3, "category": "ge",      "is_placeholder": True,  "prerequisites": [],           "quarter_equivalents": [], "grid_col": 0, "grid_row": 0},
+
+    # ── FRESHMAN SPRING (15 units) ────────────────────────────────────────────
+    {"id": "LIBS_2230",      "course_number": "LS 2230",       "title": "Field Experience in Elementary Classroom I",             "units": 2, "category": "major",   "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 1, "grid_row": 0},
+    {"id": "LIBS_HIST2210",  "course_number": "HIST 2210",     "title": "World History to 1800",                                  "units": 3, "category": "support", "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 1, "grid_row": 0},
+    {"id": "LIBS_PSC1102",   "course_number": "PSC 1102",      "title": "Physical Science for Elementary Educators II",           "units": 4, "category": "support", "is_placeholder": False, "prerequisites": ["PSC 1101"], "quarter_equivalents": [], "grid_col": 1, "grid_row": 0},
+    {"id": "LIBS_STAT",      "course_number": "STAT 1000/1110","title": "Statistical and Data Literacy or Applied Statistical Concepts", "units": 3, "category": "support", "is_placeholder": True, "prerequisites": [], "quarter_equivalents": [], "grid_col": 1, "grid_row": 0, "elective_key": "libs_stat_choice"},
+    {"id": "LIBS_GE1C",      "course_number": "GE 1C",         "title": "Oral Communication",                                     "units": 3, "category": "ge",      "is_placeholder": True,  "prerequisites": [],           "quarter_equivalents": [], "grid_col": 1, "grid_row": 0},
+
+    # ── SOPHOMORE FALL (16 units) ─────────────────────────────────────────────
+    {"id": "LIBS_3211",      "course_number": "LS 3211",       "title": "Arts in Elementary Classroom",                           "units": 3, "category": "major",   "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 2, "grid_row": 0},
+    {"id": "LIBS_3214",      "course_number": "LS 3214",       "title": "Constitutional Issues and Education Foundations",        "units": 4, "category": "major",   "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 2, "grid_row": 0},
+    {"id": "LIBS_PSY2201",   "course_number": "PSY 2201",      "title": "Introductory Psychology",                                "units": 3, "category": "support", "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 2, "grid_row": 0},
+    {"id": "LIBS_GE1B",      "course_number": "GE 1B",         "title": "Critical Thinking",                                      "units": 3, "category": "ge",      "is_placeholder": True,  "prerequisites": [],           "quarter_equivalents": [], "grid_col": 2, "grid_row": 0},
+    {"id": "LIBS_GE5B",      "course_number": "GE 5B",         "title": "Life Sciences",                                          "units": 3, "category": "ge",      "is_placeholder": True,  "prerequisites": [],           "quarter_equivalents": [], "grid_col": 2, "grid_row": 0},
+
+    # ── SOPHOMORE SPRING (15 units) ───────────────────────────────────────────
+    {"id": "LIBS_2255",      "course_number": "LS 2255",       "title": "Children's Literature in Diverse Society",               "units": 3, "category": "major",   "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 3, "grid_row": 0},
+    {"id": "LIBS_3250",      "course_number": "LS 3250",       "title": "Field Experience in Elementary Classroom II",            "units": 2, "category": "major",   "is_placeholder": False, "prerequisites": ["LS 2230"],  "quarter_equivalents": [], "grid_col": 3, "grid_row": 0},
+    {"id": "LIBS_EDUC2207",  "course_number": "EDUC 2207",     "title": "Children's Learning and Development",                    "units": 3, "category": "support", "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 3, "grid_row": 0},
+    {"id": "LIBS_MATH3481",  "course_number": "MATH 3481",     "title": "Mathematics for Elementary Teaching I",                  "units": 4, "category": "support", "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 3, "grid_row": 0},
+    {"id": "LIBS_GE6",       "course_number": "GE 6",          "title": "Ethnic Studies",                                         "units": 3, "category": "ge",      "is_placeholder": True,  "prerequisites": [],           "quarter_equivalents": [], "grid_col": 3, "grid_row": 0},
+
+    # ── JUNIOR FALL (14 units) ────────────────────────────────────────────────
+    {"id": "LIBS_3301",      "course_number": "LS 3301",       "title": "Liberal Studies Career Preparation",                     "units": 1, "category": "major",   "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 4, "grid_row": 0},
+    {"id": "LIBS_KINE3310",  "course_number": "KINE 3310",     "title": "Elementary Physical Education",                          "units": 3, "category": "support", "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 4, "grid_row": 0},
+    {"id": "LIBS_MATH3482",  "course_number": "MATH 3482",     "title": "Mathematics for Elementary Teaching II",                 "units": 4, "category": "support", "is_placeholder": False, "prerequisites": ["MATH 3481"],"quarter_equivalents": [], "grid_col": 4, "grid_row": 0},
+    {"id": "LIBS_PHIL",      "course_number": "PHIL 2230/2231","title": "Philosophical Classics (Knowledge/Reality or Ethics/Political Philosophy)", "units": 3, "category": "support", "is_placeholder": True, "prerequisites": [], "quarter_equivalents": [], "grid_col": 4, "grid_row": 0, "elective_key": "libs_phil_choice"},
+    {"id": "LIBS_CON_EL1",   "course_number": "Concentration Elective","title": "Concentration Elective",                         "units": 3, "category": "concentration","is_placeholder": True, "prerequisites": [],          "quarter_equivalents": [], "grid_col": 4, "grid_row": 0},
+
+    # ── JUNIOR SPRING (16 units) ──────────────────────────────────────────────
+    {"id": "LIBS_3310",      "course_number": "LS 3310",       "title": "Storytelling: Modern Applications",                      "units": 3, "category": "major",   "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 5, "grid_row": 0},
+    {"id": "LIBS_BIO3210",   "course_number": "BIO 3210",      "title": "Biology of Plants and Animals for Future Teachers",      "units": 4, "category": "support", "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 5, "grid_row": 0},
+    {"id": "LIBS_ENGL3391",  "course_number": "ENGL 3391",     "title": "Applied Linguistics",                                    "units": 3, "category": "support", "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 5, "grid_row": 0},
+    {"id": "LIBS_MATH3483",  "course_number": "MATH 3483",     "title": "Mathematics for Elementary Teaching III",                "units": 3, "category": "support", "is_placeholder": False, "prerequisites": ["MATH 3482"],"quarter_equivalents": [], "grid_col": 5, "grid_row": 0},
+    {"id": "LIBS_CON_EL2",   "course_number": "Concentration Elective","title": "Concentration Elective",                         "units": 3, "category": "concentration","is_placeholder": True, "prerequisites": [],          "quarter_equivalents": [], "grid_col": 5, "grid_row": 0},
+
+    # ── SENIOR FALL (15 units) ────────────────────────────────────────────────
+    {"id": "LIBS_4411",      "course_number": "LS 4411/4412/4413","title": "Advanced History/Social Sciences, Arts, or Science/Engineering Integration", "units": 3, "category": "major", "is_placeholder": True, "prerequisites": [], "quarter_equivalents": [], "grid_col": 6, "grid_row": 0, "elective_key": "libs_advanced_integration"},
+    {"id": "LIBS_EDUC4427",  "course_number": "EDUC 4427",     "title": "Culturally Responsive Methods for Emergent Bilinguals", "units": 3, "category": "support", "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 6, "grid_row": 0},
+    {"id": "LIBS_CON_EL3",   "course_number": "Concentration Elective","title": "Concentration Elective",                         "units": 3, "category": "concentration","is_placeholder": True, "prerequisites": [],          "quarter_equivalents": [], "grid_col": 6, "grid_row": 0},
+    {"id": "LIBS_GE_UD3",    "course_number": "Upper Division GE","title": "Upper Division GE (Area 3)",                          "units": 3, "category": "ge",      "is_placeholder": True,  "prerequisites": [],           "quarter_equivalents": [], "grid_col": 6, "grid_row": 0},
+    {"id": "LIBS_GE_UD4",    "course_number": "Upper Division GE","title": "Upper Division GE (Area 4)",                          "units": 3, "category": "ge",      "is_placeholder": True,  "prerequisites": [],           "quarter_equivalents": [], "grid_col": 6, "grid_row": 0},
+
+    # ── SENIOR SPRING (15 units) ──────────────────────────────────────────────
+    {"id": "LIBS_4461",      "course_number": "LS 4461/4462",  "title": "Senior Project Seminar or Research",                     "units": 3, "category": "major",   "is_placeholder": True,  "prerequisites": [],           "quarter_equivalents": [], "grid_col": 7, "grid_row": 0, "elective_key": "libs_senior_project"},
+    {"id": "LIBS_EDUC4440",  "course_number": "EDUC 4440",     "title": "Educating Individuals with Exceptional Needs",           "units": 3, "category": "support", "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 7, "grid_row": 0},
+    {"id": "LIBS_CON_EL4",   "course_number": "Concentration Elective","title": "Concentration Elective",                         "units": 3, "category": "concentration","is_placeholder": True, "prerequisites": [],          "quarter_equivalents": [], "grid_col": 7, "grid_row": 0},
+    {"id": "LIBS_GE_UD25",   "course_number": "Upper Division GE","title": "Upper Division GE (Area 2/5)",                        "units": 3, "category": "ge",      "is_placeholder": True,  "prerequisites": [],           "quarter_equivalents": [], "grid_col": 7, "grid_row": 0},
+    {"id": "LIBS_FREE",      "course_number": "Free Elective", "title": "Free Elective",                                          "units": 3, "category": "concentration","is_placeholder": True, "prerequisites": [],          "quarter_equivalents": [], "grid_col": 7, "grid_row": 0},
+]
+LIBS_FLOWCHART = _compact_rows_by_category(LIBS_FLOWCHART)
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# DAIRY SCIENCE — BS (120 units)
+# Source: catalog.calpoly.edu/agriculture-food-environmental-sciences/animal-science/dairy-science-bs/
+# No concentrations. GE 2 satisfied by MATH 1006; GE 5A by CHEM 1120; GE 5B+5C by BIO 1151.
+# ─────────────────────────────────────────────────────────────────────────────
+DSCI_FLOWCHART: list[Course] = [
+    # ── FRESHMAN FALL (14 units) ──────────────────────────────────────────────
+    {"id": "DSCI_ASCI1100", "course_number": "ASCI 1100",  "title": "Introduction to the Animal Sciences",                 "units": 1, "category": "support", "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 0, "grid_row": 0},
+    {"id": "DSCI_ASCI1101", "course_number": "ASCI 1101",  "title": "Principles of Animal Physiology",                     "units": 3, "category": "support", "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 0, "grid_row": 0},
+    {"id": "DSCI_2230",     "course_number": "DSCI 2230",  "title": "General Dairy Husbandry",                             "units": 3, "category": "major",   "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 0, "grid_row": 0},
+    {"id": "DSCI_BIO1151",  "course_number": "BIO 1151",   "title": "Life: Molecules and Cells",                           "units": 4, "category": "support", "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 0, "grid_row": 0},
+    {"id": "DSCI_GE1A",     "course_number": "GE 1A",      "title": "Written Communication",                               "units": 3, "category": "ge",      "is_placeholder": True,  "prerequisites": [],           "quarter_equivalents": [], "grid_col": 0, "grid_row": 0},
+
+    # ── FRESHMAN SPRING (14 units) ────────────────────────────────────────────
+    {"id": "DSCI_2229",     "course_number": "DSCI 2229",  "title": "General Dairy Manufacturing",                         "units": 4, "category": "major",   "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 1, "grid_row": 0},
+    {"id": "DSCI_CHEM1120", "course_number": "CHEM 1120",  "title": "Fundamentals of Chemical Structure and Properties",   "units": 4, "category": "support", "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 1, "grid_row": 0},
+    {"id": "DSCI_MATH1006", "course_number": "MATH 1006",  "title": "College Algebra",                                     "units": 3, "category": "support", "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 1, "grid_row": 0},
+    {"id": "DSCI_GE1C",     "course_number": "GE 1C",      "title": "Oral Communication",                                  "units": 3, "category": "ge",      "is_placeholder": True,  "prerequisites": [],           "quarter_equivalents": [], "grid_col": 1, "grid_row": 0},
+
+    # ── SOPHOMORE FALL (15 units) ─────────────────────────────────────────────
+    {"id": "DSCI_2202",     "course_number": "DSCI 2202",  "title": "Dairy Promotion and Marketing",                       "units": 3, "category": "major",   "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 2, "grid_row": 0},
+    {"id": "DSCI_STAT1110", "course_number": "STAT 1110",  "title": "Applied Statistical Concepts and Methods",           "units": 3, "category": "support", "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 2, "grid_row": 0},
+    {"id": "DSCI_APR_EL1",  "course_number": "Approved Elective","title": "Approved Elective",                             "units": 3, "category": "concentration","is_placeholder": True, "prerequisites": [],        "quarter_equivalents": [], "grid_col": 2, "grid_row": 0, "elective_key": "dsci_approved_elective"},
+    {"id": "DSCI_GE1B",     "course_number": "GE 1B",      "title": "Critical Thinking",                                   "units": 3, "category": "ge",      "is_placeholder": True,  "prerequisites": [],           "quarter_equivalents": [], "grid_col": 2, "grid_row": 0},
+    {"id": "DSCI_GE3A",     "course_number": "GE 3A",      "title": "Arts",                                                "units": 3, "category": "ge",      "is_placeholder": True,  "prerequisites": [],           "quarter_equivalents": [], "grid_col": 2, "grid_row": 0},
+
+    # ── SOPHOMORE SPRING (15 units) ───────────────────────────────────────────
+    {"id": "DSCI_ASCI2220", "course_number": "ASCI 2220",  "title": "Animal Nutrition and Feeding",                       "units": 3, "category": "support", "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 3, "grid_row": 0},
+    {"id": "DSCI_3321",     "course_number": "DSCI 3321",  "title": "Lactation Physiology",                               "units": 3, "category": "major",   "is_placeholder": False, "prerequisites": ["DSCI 2230"],"quarter_equivalents": [], "grid_col": 3, "grid_row": 0},
+    {"id": "DSCI_GE3B",     "course_number": "GE 3B",      "title": "Humanities",                                          "units": 3, "category": "ge",      "is_placeholder": True,  "prerequisites": [],           "quarter_equivalents": [], "grid_col": 3, "grid_row": 0},
+    {"id": "DSCI_GE4A",     "course_number": "GE 4A",      "title": "American Institutions",                               "units": 3, "category": "ge",      "is_placeholder": True,  "prerequisites": [],           "quarter_equivalents": [], "grid_col": 3, "grid_row": 0},
+    {"id": "DSCI_GE4B",     "course_number": "GE 4B",      "title": "Social and Behavioral Sciences",                      "units": 3, "category": "ge",      "is_placeholder": True,  "prerequisites": [],           "quarter_equivalents": [], "grid_col": 3, "grid_row": 0},
+
+    # ── JUNIOR FALL (15 units) ────────────────────────────────────────────────
+    {"id": "DSCI_ASCI3340", "course_number": "ASCI 3340",  "title": "Animal Welfare and Ethics",                          "units": 3, "category": "support", "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 4, "grid_row": 0},
+    {"id": "DSCI_ASCI3355", "course_number": "ASCI 3355",  "title": "Ruminant Nutrition",                                  "units": 3, "category": "support", "is_placeholder": False, "prerequisites": ["ASCI 2220"],"quarter_equivalents": [], "grid_col": 4, "grid_row": 0},
+    {"id": "DSCI_APR_EL2",  "course_number": "Approved Elective","title": "Approved Elective",                             "units": 3, "category": "concentration","is_placeholder": True, "prerequisites": [],        "quarter_equivalents": [], "grid_col": 4, "grid_row": 0, "elective_key": "dsci_approved_elective"},
+    {"id": "DSCI_GE6",      "course_number": "GE 6",       "title": "Ethnic Studies",                                      "units": 3, "category": "ge",      "is_placeholder": True,  "prerequisites": [],           "quarter_equivalents": [], "grid_col": 4, "grid_row": 0},
+    {"id": "DSCI_GE_UD25",  "course_number": "Upper Division GE","title": "Upper Division GE (Area 2/5)",                  "units": 3, "category": "ge",      "is_placeholder": True,  "prerequisites": [],           "quarter_equivalents": [], "grid_col": 4, "grid_row": 0},
+
+    # ── JUNIOR SPRING (16 units) ──────────────────────────────────────────────
+    {"id": "DSCI_ASCI3302", "course_number": "ASCI 3302",  "title": "Animal Genetics",                                    "units": 3, "category": "support", "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 5, "grid_row": 0},
+    {"id": "DSCI_ASCI3363", "course_number": "ASCI 3363",  "title": "Professional Development in Animal Sciences",        "units": 1, "category": "support", "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 5, "grid_row": 0},
+    {"id": "DSCI_3330",     "course_number": "DSCI 3330",  "title": "Dairy Cattle Reproductive Management and AI",        "units": 3, "category": "major",   "is_placeholder": False, "prerequisites": ["DSCI 3321"],"quarter_equivalents": [], "grid_col": 5, "grid_row": 0},
+    {"id": "DSCI_3344",     "course_number": "DSCI 3344",  "title": "Dairy Microbiology",                                 "units": 3, "category": "major",   "is_placeholder": False, "prerequisites": [],           "quarter_equivalents": [], "grid_col": 5, "grid_row": 0},
+    {"id": "DSCI_APR_EL3",  "course_number": "Approved Elective","title": "Approved Elective",                             "units": 3, "category": "concentration","is_placeholder": True, "prerequisites": [],        "quarter_equivalents": [], "grid_col": 5, "grid_row": 0, "elective_key": "dsci_approved_elective"},
+    {"id": "DSCI_GE_UD3",   "course_number": "Upper Division GE","title": "Upper Division GE (Area 3)",                   "units": 3, "category": "ge",      "is_placeholder": True,  "prerequisites": [],           "quarter_equivalents": [], "grid_col": 5, "grid_row": 0},
+
+    # ── SENIOR FALL (17 units) ────────────────────────────────────────────────
+    {"id": "DSCI_4432",     "course_number": "DSCI 4432",  "title": "Advanced Dairy Herd Management",                     "units": 4, "category": "major",   "is_placeholder": False, "prerequisites": ["DSCI 3330"],"quarter_equivalents": [], "grid_col": 6, "grid_row": 0},
+    {"id": "DSCI_UD_EL1",   "course_number": "DSCI UD Elective","title": "Upper-Division Dairy Science Elective",          "units": 3, "category": "major",   "is_placeholder": True,  "prerequisites": [],           "quarter_equivalents": [], "grid_col": 6, "grid_row": 0, "elective_key": "dsci_ud_elective"},
+    {"id": "DSCI_APR_EL4",  "course_number": "Approved Elective","title": "Approved Elective",                             "units": 3, "category": "concentration","is_placeholder": True, "prerequisites": [],        "quarter_equivalents": [], "grid_col": 6, "grid_row": 0, "elective_key": "dsci_approved_elective"},
+    {"id": "DSCI_GE_UD4",   "course_number": "Upper Division GE","title": "Upper Division GE (Area 4)",                   "units": 3, "category": "ge",      "is_placeholder": True,  "prerequisites": [],           "quarter_equivalents": [], "grid_col": 6, "grid_row": 0},
+    {"id": "DSCI_FREE",     "course_number": "Free Elective","title": "Free Elective",                                     "units": 4, "category": "concentration","is_placeholder": True, "prerequisites": [],        "quarter_equivalents": [], "grid_col": 6, "grid_row": 0},
+
+    # ── SENIOR SPRING (14 units) ──────────────────────────────────────────────
+    {"id": "DSCI_4422",     "course_number": "DSCI 4422",  "title": "Breeding and Genetics of Dairy Cattle",               "units": 3, "category": "major",   "is_placeholder": False, "prerequisites": ["ASCI 3302"],"quarter_equivalents": [], "grid_col": 7, "grid_row": 0},
+    {"id": "DSCI_SP",       "course_number": "ASCI 4477/4478/4479","title": "Senior Project (Research Experience, Advanced Internship, or Current Issues)", "units": 2, "category": "support", "is_placeholder": True, "prerequisites": [], "quarter_equivalents": [], "grid_col": 7, "grid_row": 0, "elective_key": "dsci_senior_project"},
+    {"id": "DSCI_UD_EL2",   "course_number": "DSCI UD Elective","title": "Upper-Division Dairy Science Elective",          "units": 3, "category": "major",   "is_placeholder": True,  "prerequisites": [],           "quarter_equivalents": [], "grid_col": 7, "grid_row": 0, "elective_key": "dsci_ud_elective"},
+    {"id": "DSCI_APR_EL5",  "course_number": "Approved Elective","title": "Approved Elective",                             "units": 3, "category": "concentration","is_placeholder": True, "prerequisites": [],        "quarter_equivalents": [], "grid_col": 7, "grid_row": 0, "elective_key": "dsci_approved_elective"},
+    {"id": "DSCI_APR_EL6",  "course_number": "Approved Elective","title": "Approved Elective",                             "units": 3, "category": "concentration","is_placeholder": True, "prerequisites": [],        "quarter_equivalents": [], "grid_col": 7, "grid_row": 0, "elective_key": "dsci_approved_elective"},
+]
+DSCI_FLOWCHART = _compact_rows_by_category(DSCI_FLOWCHART)
 
 
 FLOWCHARTS = {
@@ -3088,6 +3562,20 @@ FLOWCHARTS = {
         "total_units": 120,
         "courses": CS_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "No Major or Support courses may be selected as credit/no credit. In addition, no more than 12 units of cooperative or internship courses can count towards your degree requirements.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "AERO": {
         "major": "Aerospace Engineering",
@@ -3095,6 +3583,14 @@ FLOWCHARTS = {
         "total_units": 128,
         "courses": AERO_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "SE": {
         "major": "Software Engineering",
@@ -3102,6 +3598,22 @@ FLOWCHARTS = {
         "total_units": 120,
         "courses": SE_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "CSC 3665 will satisfy this requirement and 2 units of Technical Electives.",
+                    "A combined maximum of 6 units may be taken from CPE 4491, CPE 4492, CPE 4493, CSC 4091, CSC 4092, CSC 4093, CSC 4191, CSC 4192, CSC 4193, CSC 4291, CSC 4292, CSC 4293, CSC 4400, CSC 4495, CSC 4691, CSC 4692, CSC 4693, CSC 4791, CSC 4792, CSC 4793, CSC 4891, CSC 4892, CSC 4893, CSC 4991, CSC 4992, CSC 4993, DATA 4720, ENGR 2995, and ENGR 4995; of which up to a combined 4 units may be taken from CPE 4491, CSC 4091, CSC 4191, CSC 4291, CSC 4400, CSC 4495, CSC 4691, CSC 4791, CSC 4891, CSC 4991, and DATA 4720.",
+                    "PSY 3350 will satisfy this requirement and 1 unit of Technical Electives.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "CPE": {
         "major": "Computer Engineering",
@@ -3109,6 +3621,23 @@ FLOWCHARTS = {
         "total_units": 127,
         "courses": CPE_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "Courses may need to be at the 3000-4000 level to ensure completion of the requirement minimum of 40 units of upper-division.",
+                    "Excess units at the 2000-5000 level may be applied toward technical electives.",
+                    "A combined maximum of 8 units may be taken from CPE 4491, CPE 4492, CPE 4493, CPE 4495, CSC 4091, CSC 4092, CSC 4093, CSC 4191, CSC 4192, CSC 4193, CSC 4291, CSC 4292, CSC 4293, CSC 4400, CSC 4495, CSC 4691, CSC 4692, CSC 4693, CSC 4791, CSC 4792, CSC 4793, CSC 4891, CSC 4892, CSC 4893, CSC 4991, CSC 4992, CSC 4993, DATA 4720, and ENGR 4995; of which up to a combined 4 units may be taken from CPE 4400 and CSC 4400.",
+                    "Excess units completed for senior project may be applied toward technical electives.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "CE": {
         "major": "Civil Engineering",
@@ -3116,6 +3645,14 @@ FLOWCHARTS = {
         "total_units": 132,
         "courses": CE_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "ME": {
         "major": "Mechanical Engineering",
@@ -3123,6 +3660,26 @@ FLOWCHARTS = {
         "total_units": 129,
         "courses": ME_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "Transfer students and change of major students take ME 2225 in lieu of ME 1125.",
+                    "ME 1148 and IME 1143 intended to be taken concurrently in the same term.",
+                    "ME 3341 and ME 3342 intended to be taken concurrently in the same term.",
+                    "ENGR 4460 and ENGR 4461 (4), or ENGR 4463 and ENGR 4464 (4) may substitute for ME 4460 and ME 4461 (4).",
+                    "Consultation with advisor is recommended prior to selecting Technical Electives. 3000 level Technical Electives cannot be used for graduate credit in the blended BS+MS Mechanical Engineering program.",
+                    "ME 4470, ME 4471, ME 5570, and ME 5571 are variable topic courses and may or may not count as ME Technical Electives. Contact the instructor for additional information. A course substitution form may be required.",
+                    "ME 4400 and ME 5500 are independent study courses and may be acceptable for Technical Elective credit. A course substitution form is required.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "AD": {
         "major": "Art and Design",
@@ -3130,6 +3687,22 @@ FLOWCHARTS = {
         "total_units": 120,
         "courses": AD_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "ART 1184 and ART 2282 are required in the major and the Studio Art concentration. The course taken to fulfill the major course requirement cannot be double-counted in the concentration.",
+                    "A maximum of 3 units from Art History courses.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "POLS": {
         "major": "Political Science",
@@ -3137,6 +3710,23 @@ FLOWCHARTS = {
         "total_units": 120,
         "courses": POLS_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "A maximum of 3 units of either POLS 3386 or POLS 3387 may count towards the Concentration. A maximum of 3 units of either POLS 3386 or POLS 3387 may count towards the Upper-Division Electives.",
+                    "If a course is taken to meet a Major or Support requirement, it cannot be double-counted in the concentration.",
+                    "Consultation with advisor is recommended prior to selecting Approved Electives; bear in mind that your selection may impact pursuit of post-baccalaureate studies and/or goals.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "PSY": {
         "major": "Psychology",
@@ -3144,6 +3734,21 @@ FLOWCHARTS = {
         "total_units": 120,
         "courses": PSY_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "No Major or Support courses may be selected as credit/no credit. In addition, no more than 12 units of cooperative or internship courses can count towards your degree requirements.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "ENGL": {
         "major": "English",
@@ -3151,6 +3756,21 @@ FLOWCHARTS = {
         "total_units": 120,
         "courses": ENGL_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "Students who demonstrate a comparable level of proficiency in a foreign language can substitute a 4-unit ENGL course for this requirement.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "MU": {
         "major": "Music",
@@ -3158,6 +3778,23 @@ FLOWCHARTS = {
         "total_units": 120,
         "courses": MU_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "At least two units must be upper-division to complete the Major Ensemble requirement.",
+                    "No more than 2 units of music electives may be satisfied by the following courses: MU 3368, MU 3370, MU 3371, MU 3372, MU 3373, MU 3374, MU 3375, MU 3377, MU 3378, MU 3380, MU 3381, MU 3382, MU 3383, MU 3384, MU 3387, MU 3388, or MU 3389.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                    "Free Electives may need to be at the 3000-4000 level to ensure completion of the required minimum of 40 units of upper-division courses.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "AGC": {
         "major": "Agricultural Communication",
@@ -3165,6 +3802,14 @@ FLOWCHARTS = {
         "total_units": 120,
         "courses": AGC_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "AGS": {
         "major": "Agricultural Science",
@@ -3172,6 +3817,20 @@ FLOWCHARTS = {
         "total_units": 120,
         "courses": AGS_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "ASCI": {
         "major": "Animal Science",
@@ -3179,6 +3838,24 @@ FLOWCHARTS = {
         "total_units": 120,
         "courses": ASCI_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "Repeatable courses can only be used once for Major degree credit.",
+                    "If a course is taken to meet a Major or Support requirement, it cannot be double-counted as an Approved Elective.",
+                    "A combined maximum of 3 units may count from ASCI 3339, ASCI 4001, ASCI 4002, ASCI 4003, ASCI 4004, ASCI 4005, ASCI 4006, ASCI 4007, ASCI 4008, ASCI 4009, ASCI 4010, ASCI 4011, ASCI 4012, ASCI 4013, ASCI 4014, and ASCI 4015 towards the Approved Electives requirement.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                    "Students should consult faculty advisor before electing Credit/No Credit grading for any course. Courses elected for Credit/No Credit grading may not be recognized by post-graduate academic programs. If a 5000-level course is used to satisfy free elective requirements it cannot be used towards a post-graduate academic program.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "AGB": {
         "major": "Agricultural Business",
@@ -3186,6 +3863,20 @@ FLOWCHARTS = {
         "total_units": 120,
         "courses": AGB_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "ARCE": {
         "major": "Architectural Engineering",
@@ -3193,6 +3884,14 @@ FLOWCHARTS = {
         "total_units": 128,
         "courses": ARCE_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "ANTGEOG": {
         "major": "Anthropology and Geography",
@@ -3200,6 +3899,23 @@ FLOWCHARTS = {
         "total_units": 120,
         "courses": ANTGEOG_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "Approved study abroad course may substitute for the designated field course requirement.",
+                    "Units in excess of total will be applied towards major's free electives.",
+                    "Credit for a comparable level of proficiency may be substituted up to 3 units max.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "ARCH": {
         "major": "Architecture",
@@ -3207,6 +3923,20 @@ FLOWCHARTS = {
         "total_units": 150,
         "courses": ARCH_FLOWCHART,
         "columns": BARCH_COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "A minimum of 9 units must be taken at the 3000-4000 level.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "BIO": {
         "major": "Biological Sciences",
@@ -3214,6 +3944,23 @@ FLOWCHARTS = {
         "total_units": 120,
         "courses": BIO_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "Courses taken to meet a Major or Support requirement cannot be double-counted in a concentration or the General curriculum.",
+                    "Students in the Molecular and Cellular Biology concentration should take CHEM 2242 to satisfy the general chemistry requirement.",
+                    "Consultation with an advisor is recommended prior to selecting electives; the best choice for an individual will depend on area of interest and career plans.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "BMED": {
         "major": "Biomedical Engineering",
@@ -3221,6 +3968,20 @@ FLOWCHARTS = {
         "total_units": 130,
         "courses": BMED_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "BMED majors may not count any internship or cooperative education (BMED 4495) units toward degree requirements.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "BIOC": {
         "major": "Biochemistry",
@@ -3228,14 +3989,74 @@ FLOWCHARTS = {
         "total_units": 120,
         "courses": BIOC_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "Courses taken to meet a Major requirement cannot be double-counted in the Advanced Electives.",
+                    "Consultation with advisor is recommended prior to selecting advanced electives; bear in mind your selections may impact pursuit of post-baccalaureate studies and/or goals.",
+                    "A minimum of 5 units must be taken at the 3000-4000 level.",
+                    "Maximum of 4 units may be applied toward Advanced Electives from CHEM 4401.",
+                    "Maximum of 2 units may be applied toward Advanced Electives from the following: CHEM 4404, CHEM 4485, CHEM 4495, or SCM/ENGR 3302.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
-    "CHEM": {"major": "Chemistry", "total_units": 120, "courses": CHEM_FLOWCHART, "columns": COLUMN_LABELS},
+    "CHEM": {
+        "major": "Chemistry",
+        "code": "CHEM",
+        "total_units": 120,
+        "courses": CHEM_FLOWCHART,
+        "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "No Major, Support or Concentration courses may be selected as credit/no credit. In addition, no more than 12 units of cooperative or internship courses can count towards your degree requirements.",
+                    "Courses taken to meet a Major requirement cannot be double-counted in the concentration or in the Advanced Electives.",
+                    "Consultation with advisor is recommended prior to selecting advanced electives; bear in mind your selections may impact pursuit of post-baccalaureate studies and/or goals.",
+                    "Maximum of 4 units may be applied toward Advanced Electives from CHEM 4401.",
+                    "Maximum of 2 units may be applied toward Advanced Electives from the following: CHEM 4404, CHEM 4485, CHEM 4495, or SCM/ENGR 3302.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                    "Free Electives may need to be at the 3000-4000 level to ensure completion of the required minimum of 40 units of upper-division courses.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
+    },
     "ASM": {
         "major": "Agricultural Systems Management",
         "code": "ASM",
         "total_units": 121,
         "courses": ASM_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "No Major or Support courses may be selected as credit/no credit. In addition, no more than 12 units of cooperative or internship courses can count towards your degree requirements.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "BRAE": {
         "major": "BioResource and Agricultural Engineering",
@@ -3243,6 +4064,22 @@ FLOWCHARTS = {
         "total_units": 128,
         "courses": BRAE_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "No Major or Support courses may be selected as credit/no credit. In addition, no more than 12 units of cooperative or internship courses can count towards your degree requirements.",
+                    "If a course is taken to meet a Major requirement, it cannot be double-counted as an Approved Elective.",
+                    "A grade of C- or better is required in one course in each of the following GE Areas: 1A (English Composition), 1B (Critical Thinking), 1C (Oral Communication), and 2 (Mathematics and Quantitative Reasoning).",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "BUS": {
         "major": "Business Administration",
@@ -3250,6 +4087,27 @@ FLOWCHARTS = {
         "total_units": 120,
         "courses": BUS_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "No Major, Support or Concentration courses may be selected as credit/no credit. In addition, no more than 12 units of cooperative or internship courses can count towards your degree requirements.",
+                    "BUS 3343 is a substitute for BUS 1342. Students interested in the Financial Management and/or Real Estate Finance concentrations are strongly recommended to take BUS 3343. Students interested in the Entrepreneurship concentration are recommended to take BUS 1342.",
+                    "Recommended for Entrepreneurship concentration students. For other concentration students, additional prerequisites may be needed to complete this requirement.",
+                    "Recommended for Accounting concentration students. For other concentration students, additional prerequisites may be needed to complete this requirement.",
+                    "MATH 1264 is recommended for those pursuing the Cross-Disciplinary Studies Data Science Minor or Actuarial Preparation Minor.",
+                    "CHEM 1120 is recommended for those pursuing the Consumer Packaging concentration to fulfill GE Area 5A & 5C.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                    "Students should consider taking BUS 1204 for free electives.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "STAT": {
         "major": "Statistics",
@@ -3257,6 +4115,21 @@ FLOWCHARTS = {
         "total_units": 120,
         "courses": STAT_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "No course with a STAT prefix may be selected as credit/no credit. In addition, no more than 12 units of cooperative or internship courses can count towards your degree requirements.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "CD": {
         "major": "Child Development",
@@ -3264,6 +4137,21 @@ FLOWCHARTS = {
         "total_units": 120,
         "courses": CD_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "No Major or Support courses may be selected as credit/no credit. In addition, no more than 12 units of cooperative or internship courses can count towards your degree requirements.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "CRP": {
         "major": "City and Regional Planning",
@@ -3271,6 +4159,22 @@ FLOWCHARTS = {
         "total_units": 120,
         "courses": CRP_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "No Major or Support courses may be selected as credit/no credit. In addition, no more than 12 units of cooperative or internship courses can count towards your degree requirements.",
+                    "Courses may need to be at the 3000-4000 level to ensure completion of the requirement minimum of 40 units of upper-division.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "MATE": {
         "major": "Materials Engineering",
@@ -3278,6 +4182,22 @@ FLOWCHARTS = {
         "total_units": 125,
         "courses": MATE_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "No Major or Support courses may be selected as credit/no credit. In addition, no more than 12 units of cooperative or internship courses can count towards your degree requirements.",
+                    "If a course is taken to meet this requirement, it cannot be double-counted to satisfy another Major or Support requirement.",
+                    "Maximum of 8 units of MATE 4400 may count towards Technical Electives or Professional Development Electives.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "IE": {
         "major": "Industrial Engineering",
@@ -3285,6 +4205,21 @@ FLOWCHARTS = {
         "total_units": 127,
         "courses": IE_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "No Major or Support courses may be selected as credit/no credit. In addition, no more than 12 units of cooperative or internship courses can count towards your degree requirements.",
+                    "Units in excess of total will be applied towards Technical Electives.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "EE": {
         "major": "Electrical Engineering",
@@ -3292,6 +4227,20 @@ FLOWCHARTS = {
         "total_units": 128,
         "courses": EE_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "No Major or Support courses may be selected as credit/no credit. In addition, no more than 12 units of cooperative or internship courses can count towards your degree requirements.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "KINE": {
         "major": "Kinesiology",
@@ -3299,6 +4248,21 @@ FLOWCHARTS = {
         "total_units": 120,
         "courses": KINE_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "KINE 3325 is required in the Sport Science concentration. A course taken to fulfill a major course requirement cannot be double-counted in the concentration.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "MATH": {
         "major": "Mathematics",
@@ -3306,6 +4270,24 @@ FLOWCHARTS = {
         "total_units": 120,
         "courses": MATH_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "A maximum of 14 units may be at the 1000-2000-3000 level.",
+                    "A maximum of 4 units may be at the 1000-2000 level.",
+                    "A maximum of 8 units may be from non-MATH prefix courses.",
+                    "Courses can only be used once for major degree credit.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "MFGE": {
         "major": "Manufacturing Engineering",
@@ -3313,6 +4295,14 @@ FLOWCHARTS = {
         "total_units": 128,
         "courses": MFGE_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "PHYS": {
         "major": "Physics",
@@ -3320,6 +4310,22 @@ FLOWCHARTS = {
         "total_units": 120,
         "courses": PHYS_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "Major courses with lab component may not be taken as CR/NC grading: PHYS 1143, PHYS 3316, PHYS 3323, PHYS 3340, PHYS 3341, PHYS 4428, ASTR 4444, or EE 4422.",
+                    "Total combined elective credit in PHYS 4400, PHYS 4404, ASTR 4400, ASTR 4404, GEOL 4400, and GEOL 4404 limited to 4 units.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "JOUR": {
         "major": "Journalism",
@@ -3327,6 +4333,21 @@ FLOWCHARTS = {
         "total_units": 120,
         "courses": JOUR_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "Courses can only be used once for major degree credit.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "FSN": {
         "major": "Food Science and Nutrition",
@@ -3334,6 +4355,20 @@ FLOWCHARTS = {
         "total_units": 120,
         "courses": FSN_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "No Major, Support or Concentration courses may be selected as credit/no credit. In addition, no more than 12 units of cooperative or internship courses can count towards your degree requirements.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "SOC": {
         "major": "Sociology",
@@ -3341,6 +4376,23 @@ FLOWCHARTS = {
         "total_units": 120,
         "courses": SOC_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "No Major, Support or Concentration courses may be selected as credit/no credit. In addition, no more than 12 units of cooperative or internship courses can count towards your degree requirements.",
+                    "12 units of Sociology Electives must be at the 3000-4000 level.",
+                    "Courses from the following disciplines will be acceptable towards the lower-division Social Sciences course: Anthropology, Ethnic Studies, Geography, Sociology, Political Science, Psychology, or Women's, Gender, and Queer Studies.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "CM": {
         "major": "Construction Management",
@@ -3348,6 +4400,20 @@ FLOWCHARTS = {
         "total_units": 123,
         "courses": CM_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "No Major or Support courses may be selected as credit/no credit. In addition, no more than 12 units of cooperative or internship courses can count towards your degree requirements.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "LA": {
         "major": "Landscape Architecture",
@@ -3355,6 +4421,21 @@ FLOWCHARTS = {
         "total_units": 146,
         "courses": LA_FLOWCHART,
         "columns": BARCH_COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "No Major or Support courses may be selected as credit/no credit. In addition, no more than 12 units of cooperative or internship courses can count towards your degree requirements.",
+                    "Suggested Five-Year Flowcharts are planning guides and do not represent a required course sequence. Courses may be completed in a different order, provided requisite requirements are satisfied.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "WVIT": {
         "major": "Wine and Viticulture",
@@ -3362,6 +4443,21 @@ FLOWCHARTS = {
         "total_units": 120,
         "courses": WVIT_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "No Major, Support or Concentration courses may be selected as credit/no credit. In addition, no more than 12 units of cooperative or internship courses can count towards your degree requirements.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "ENVE": {
         "major": "Environmental Engineering",
@@ -3369,6 +4465,20 @@ FLOWCHARTS = {
         "total_units": 132,
         "courses": ENVE_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "A combined maximum of 4 units from ENVE 4400, ENVE 4405, and ENVE 4407 may count towards technical electives.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "EIM": {
         "major": "Experience and Event Management",
@@ -3376,6 +4486,21 @@ FLOWCHARTS = {
         "total_units": 120,
         "courses": EIM_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "Choose either BUS or AGB route. BUS 2212 is a prerequisite for BUS 2215 and AGB 2214 is a prerequisite for AGB 3323.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "GRC": {
         "major": "Graphic Communication",
@@ -3383,6 +4508,20 @@ FLOWCHARTS = {
         "total_units": 120,
         "courses": GRC_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "COMS": {
         "major": "Communication Studies",
@@ -3390,6 +4529,48 @@ FLOWCHARTS = {
         "total_units": 120,
         "courses": COMS_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "Repeatable course; Major credit limited to 3 units.",
+                    "Repeatable course; Major credit limited to 6 units.",
+                    "Courses taken to meet the focus area requirement cannot be double-counted in the COMS Electives.",
+                    "A maximum of 3 units may be applied toward COMS electives: COMS 4400, COMS 4480, COMS 4485.",
+                    "Free electives may need to be at the 3000-4000 level to ensure completion of the required minimum of 40 units of upper-division.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
+    },
+    "ENVM": {
+        "major": "Environmental Management and Protection",
+        "code": "ENVM",
+        "total_units": 120,
+        "courses": ENVM_FLOWCHART,
+        "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "If a course is taken to meet a Major or Support requirement, it cannot be double-counted in a concentration.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                    "Free Electives may need to be at the 3000-4000 level to ensure completion of the required minimum of 40 units of upper-division courses.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "PLSC": {
         "major": "Plant Sciences",
@@ -3397,6 +4578,20 @@ FLOWCHARTS = {
         "total_units": 120,
         "courses": PLSC_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "MCRO": {
         "major": "Microbiology",
@@ -3404,6 +4599,27 @@ FLOWCHARTS = {
         "total_units": 120,
         "courses": MCRO_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "Excess units will be applied to Approved Electives.",
+                    "May be substituted with an advisor approved course.",
+                    "Consultation with advisor is recommended prior to selecting electives; bear in mind your selections may impact pursuit of post-baccalaureate studies and/or goals.",
+                    "Students planning to attend graduate or professional schools are strongly advised to meet with their advisors to ensure they meet the prerequisites for entry into these programs. Additional classes in math and chemistry may be necessary.",
+                    "Maximum of 6 units may be applied toward Approved Electives.",
+                    "If BIO 4462 or BIO 4463 is used to meet the senior project requirement, it cannot also be counted as an Approved Elective.",
+                    "CHEM 3352 is suggested for students who plan to pursue graduate school or a health professions career.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "HIST": {
         "major": "History",
@@ -3411,6 +4627,25 @@ FLOWCHARTS = {
         "total_units": 120,
         "courses": HIST_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "A minimum of two 4000-level courses is required across History electives and Global Histories electives.",
+                    "HIST 4400 and HIST 4467 may not count towards the History Electives.",
+                    "Choose two courses (8 units) that focus on regions and themes outside of the U.S. and Europe. This includes courses on Africa, Asia, Latin America, and the Middle East, as well as comparative or transregional courses that explore global themes such as urbanism, imperialism, or migration.",
+                    "Additional prerequisites may be needed to complete this requirement.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                    "Free Electives may need to be at the 3000-4000 level to ensure completion of the required minimum of 40 units of upper-division courses.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
     "ECON": {
         "major": "Economics",
@@ -3418,5 +4653,183 @@ FLOWCHARTS = {
         "total_units": 120,
         "courses": ECON_FLOWCHART,
         "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "Lecture and activity courses should be taken in the same term.",
+                    "BUS 2214 is required for Accounting, Management and Human Resources, and/or Information Systems Management concentrations or additional coursework might be needed to complete the concentration.",
+                    "Required course for students pursuing the Entrepreneurship concentration.",
+                    "Required course for students pursuing the Accounting concentration.",
+                    "Required course for students pursuing Financial Management and/or Real Estate Finance concentrations.",
+                    "Required course for students pursuing Marketing Management and/or Consumer Packaging concentrations.",
+                    "Required course for students pursuing Management and Human Resources concentration.",
+                    "Required course for students pursuing Information Systems and Analytics concentration.",
+                    "Option for students pursuing the General Curriculum in Economics or Economics in Data Science concentration.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
+    },
+    "PH": {
+        "major": "Public Health",
+        "code": "PH",
+        "total_units": 120,
+        "courses": PH_FLOWCHART,
+        "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                    "Units in excess of total will be applied towards major's free electives.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
+    },
+    "PHIL": {
+        "major": "Philosophy",
+        "code": "PHIL",
+        "total_units": 120,
+        "courses": PHIL_FLOWCHART,
+        "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "If a course is taken to meet a Major or Support requirement, it cannot be double-counted as an Elective for the concentration.",
+                    "If a Religious Studies (RELS) course is taken to meet the Arts and Humanities Breadth requirement, it cannot be double-counted in the Philosophy and Religion concentration.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
+    },
+    "NUT": {
+        "major": "Nutrition",
+        "code": "NUT",
+        "total_units": 120,
+        "courses": NUT_FLOWCHART,
+        "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
+    },
+    "SPAN": {
+        "major": "Spanish",
+        "code": "SPAN",
+        "total_units": 120,
+        "courses": SPAN_FLOWCHART,
+        "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "Credit may be earned more than once when course is taken with different subtitles or topics.",
+                    "Courses from this list may not be double-counted in the major. Repeatable courses may be applied when taken with different subtopics.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
+    },
+    "THEA": {
+        "major": "Theatre Arts",
+        "code": "THEA",
+        "total_units": 120,
+        "courses": THEA_FLOWCHART,
+        "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
+    },
+    "LIBS": {
+        "major": "Liberal Studies",
+        "code": "LIBS",
+        "total_units": 120,
+        "courses": LIBS_FLOWCHART,
+        "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "A minimum of 10 units must be taken at the 3000-4000 level.",
+                    "A list of Global Perspectives courses is provided on the LAES website. All Global Perspective courses are 3000-4000 level (upper-division).",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be required to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
+    },
+    "DSCI": {
+        "major": "Dairy Science",
+        "code": "DSCI",
+        "total_units": 120,
+        "courses": DSCI_FLOWCHART,
+        "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "If a course is taken to meet a Major or Support requirement, it cannot be double-counted as an Approved Elective.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
     },
 }

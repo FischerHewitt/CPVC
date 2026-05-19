@@ -7,10 +7,20 @@ CONCENTRATIONS: dict[str, list[dict]] = {
             "id": "none",
             "label": "General Curriculum",
             "slot_overrides": {},
+            "tips": [
+                "A minimum of 23 units is required to complete the concentration. Unit selection for requirements will vary based on students' selection of senior project, technical electives, and approved external electives.",
+                "A combined maximum of 6 units may be taken from CPE 4491, CPE 4492, CPE 4493, CSC 4091, CSC 4092, CSC 4093, CSC 4191, CSC 4192, CSC 4193, CSC 4291, CSC 4292, CSC 4293, CSC 4400, CSC 4495, CSC 4691, CSC 4692, CSC 4693, CSC 4791, CSC 4792, CSC 4793, CSC 4891, CSC 4892, CSC 4893, CSC 4991, CSC 4992, CSC 4993, DATA 4720, ENGR 2995, and ENGR 4995; of which up to a combined 4 units may be taken from CPE 4491, CSC 4091, CSC 4191, CSC 4291, CSC 4400, CSC 4495, CSC 4691, CSC 4791, CSC 4891, CSC 4991, and DATA 4720.",
+                "Courses used to satisfy any other Major or Support requirement are not allowed to count toward this electives requirement. Credit/No Credit grading is not allowed.",
+            ],
         },
         {
             "id": "ai_ml",
             "label": "AI & Machine Learning",
+            "tips": [
+                "If MATH 1262 was taken in the core requirements, then MATH 2263 needs to be taken from the External Electives to satisfy the prerequisites for MATH 2621.",
+                "A minimum of 23 units is required to complete the concentration. Unit selection for requirements will vary based on students' selection of concentration electives and external electives.",
+                "A combined maximum of 6 units may be taken from CSC 4495, CSC 4891, CSC 4892, and CSC 4893; of which up to a combined 4 units may be taken from CSC 4495 and CSC 4891.",
+            ],
             "slot_overrides": {
                 "CON_JRS1": {
                     "course_number": "DATA 3301",
@@ -49,6 +59,10 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "data_eng",
             "label": "Data Engineering",
+            "tips": [
+                "A minimum of 23 units is required to complete the concentration. Unit selection for requirements will vary based on students' selection in the notated requirement and technical electives.",
+                "A combined maximum of 6 units may be taken from CSC 4495, CSC 4691, CSC 4692, and CSC 4693; of which up to a combined 4 units may be taken from CSC 4495 and CSC 4691.",
+            ],
             "slot_overrides": {
                 "CON_JRS1": {
                     "course_number": "DATA 3301",
@@ -87,6 +101,10 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "game_dev",
             "label": "Game Development",
+            "tips": [
+                "A minimum of 23 units is required to complete the concentration. Unit selection for requirements will vary based on students' selection of computer science electives and external electives.",
+                "A combined maximum of 6 units may be taken from CSC 4495, CSC 4791, CSC 4792, CSC 4793, CSC 4991, CSC 4992, and CSC 4993; of which up to a combined 4 units may be taken from CSC 4495, CSC 4791, and CSC 4991.",
+            ],
             "slot_overrides": {
                 "CON_JRS1": {
                     "course_number": "CSC 3710",
@@ -125,6 +143,10 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "graphics",
             "label": "Graphics",
+            "tips": [
+                "A minimum of 23 units is required to complete the concentration. Unit selection for requirements will vary based on students' selection of concentration electives and external electives.",
+                "A combined maximum of 6 units may be taken from CSC 4495, CSC 4791, CSC 4792, CSC 4793, CSC 4991, CSC 4992, CSC 4993, ENGR 2995, and ENGR 4995; of which up to a combined 4 units may be taken from CSC 4495, CSC 4791, and CSC 4991.",
+            ],
             "slot_overrides": {
                 "CON_JRS1": {
                     "course_number": "CSC 4710",
@@ -163,6 +185,11 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "privacy_security",
             "label": "Privacy & Security",
+            "tips": [
+                "A minimum of 23 units is required to complete the concentration.",
+                "Unit selection for requirements will vary based on students' selection of concentration electives and external electives.",
+                "A combined maximum of 6 units may be taken from CSC 4495, CSC 4291, CSC 4292, CSC 4293, ENGR 2995, and ENGR 4995; of which up to a combined 4 units may be taken from CSC 4495 and CSC 4291.",
+            ],
             "slot_overrides": {
                 "CON_JRS1": {
                     "course_number": "CSC 3250",
@@ -375,6 +402,12 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "none",
             "label": "General Curriculum",
+            "tips": [
+                "Courses may need to be at the 3000-4000 level to ensure completion of the requirement minimum of 40 units of upper-division.",
+                "Excess units at the 2000-5000 level may be applied toward technical electives.",
+                "A combined maximum of 8 units may be taken from CPE 4491, CPE 4492, CPE 4493, CPE 4495, CSC 4091, CSC 4092, CSC 4093, CSC 4191, CSC 4192, CSC 4193, CSC 4291, CSC 4292, CSC 4293, CSC 4400, CSC 4495, CSC 4691, CSC 4692, CSC 4693, CSC 4791, CSC 4792, CSC 4793, CSC 4891, CSC 4892, CSC 4893, CSC 4991, CSC 4992, CSC 4993, DATA 4720, and ENGR 4995; of which up to a combined 4 units may be taken from CPE 4400 and CSC 4400.",
+                "Excess units completed for senior project may be applied toward technical electives.",
+            ],
             "slot_overrides": {},
         },
         {
@@ -418,6 +451,12 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "computer_hardware",
             "label": "Computer Hardware Engineering",
+            "tips": [
+                "Excess units may be applied toward technical electives.",
+                "A minimum of 3 units must be taken at the 3000-5000 level.",
+                "A combined maximum of 8 units may be taken from CPE 4491, CPE 4492, CPE 4493, CPE 4495, ENGR 2995, ENGR 4995, ENGR 5995; of which up to a combined 4 units may be taken from CPE 4495.",
+                "Excess units completed for senior project may be applied toward technical electives.",
+            ],
             "slot_overrides": {
                 # EE 3306 + 3306L replaces Circuits I in Sophomore Spring
                 "CPE_EE2211": {
@@ -1151,6 +1190,11 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "graphic_design",
             "label": "Graphic Design",
+            "tips": [
+                "ART 1184 and ART 2282 are required in the major and the Studio Art concentration. The course taken to fulfill the major course requirement cannot be double-counted in the concentration.",
+                "A maximum of 3 units from Art History courses.",
+                "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+            ],
             "slot_overrides": {
                 "AD_PORTFOLIO": {
                     "course_number": "ART 3359",
@@ -1269,6 +1313,11 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "photo_video",
             "label": "Photography and Video",
+            "tips": [
+                "ART 1184 and ART 2282 are required in the major and the Studio Art concentration. The course taken to fulfill the major course requirement cannot be double-counted in the concentration.",
+                "A maximum of 3 units from Art History courses.",
+                "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+            ],
             "slot_overrides": {
                 "AD_PORTFOLIO": {
                     "course_number": "ART 3379",
@@ -1387,6 +1436,11 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "studio_art",
             "label": "Studio Art",
+            "tips": [
+                "ART 1184 and ART 2282 are required in the major and the Studio Art concentration. The course taken to fulfill the major course requirement cannot be double-counted in the concentration.",
+                "A maximum of 3 units from Art History courses.",
+                "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+            ],
             "slot_overrides": {
                 "AD_PORTFOLIO": {
                     "course_number": "ART 3399",
@@ -1512,6 +1566,11 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "global_politics",
             "label": "Global Politics",
+            "tips": [
+                "If a course is taken to meet a Major or Support requirement, it cannot be double-counted in the concentration.",
+                "A maximum of 3 units of either POLS 3386 or POLS 3387 may count towards the concentration.",
+                "Consultation with advisor is recommended prior to selecting Approved Electives; bear in mind that your selection may impact pursuit of post-baccalaureate studies and/or goals.",
+            ],
             "slot_overrides": {
                 "POLS_CON_JRF1": {
                     "course_number": "POLS 3308/3381",
@@ -1574,6 +1633,11 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "pre_law",
             "label": "Pre-Law",
+            "tips": [
+                "If a course is taken to meet a Major or Support requirement, it cannot be double-counted in the concentration.",
+                "A maximum of 3 units of either POLS 3386 or POLS 3387 may count towards the concentration.",
+                "Consultation with advisor is recommended prior to selecting Approved Electives; bear in mind that your selection may impact pursuit of post-baccalaureate studies and/or goals.",
+            ],
             "slot_overrides": {
                 "POLS_CON_JRF1": {
                     "course_number": "POLS 2245",
@@ -1636,6 +1700,11 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "us_politics",
             "label": "U.S. Politics",
+            "tips": [
+                "If a course is taken to meet a Major or Support requirement, it cannot be double-counted in the concentration.",
+                "A maximum of 3 units of either POLS 3386 or POLS 3387 may count towards the concentration.",
+                "Consultation with advisor is recommended prior to selecting Approved Electives; bear in mind that your selection may impact pursuit of post-baccalaureate studies and/or goals.",
+            ],
             "slot_overrides": {
                 "POLS_CON_JRF1": {
                     "course_number": "U.S. Politics",
@@ -1853,6 +1922,9 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "environmental_sustainability",
             "label": "Environmental Studies and Sustainability",
+            "tips": [
+                "Course may be taken if not used to satisfy a requirement listed above.",
+            ],
             "slot_overrides": {
                 "ANTGEOG_CON_JRS1": {"course_number": "ERSC 3325 / ERSC 4414 / GEOG 4414 / ERSC 4415 / GEOG 4415", "title": "Earth Systems or Climate Change Course", "units": 3, "prerequisites": [], "quarter_equivalents": ["ERSC 325", "GEOG 325", "ERSC 414", "GEOG 414", "ERSC 415", "GEOG 415", "ERSC 3325", "ERSC 4414", "GEOG 4414", "ERSC 4415", "GEOG 4415"], "elective_key": "antgeog_env_climate", "is_placeholder": True},
                 "ANTGEOG_CON_JRS2": {"course_number": "GEOG 4435", "title": "Biodiversity and Biogeography Methods", "units": 3, "prerequisites": [], "quarter_equivalents": ["GEOG 435"], "is_placeholder": False},
@@ -1864,6 +1936,10 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "global_studies",
             "label": "Global Studies and International Development",
+            "tips": [
+                "Units in excess of total will be applied towards major's free electives.",
+                "Credit for a comparable level of proficiency may be substituted up to 3 units max.",
+            ],
             "slot_overrides": {
                 "ANTGEOG_CON_JRS1": {"course_number": "GEOG 4408", "title": "Geography of International Development", "units": 3, "prerequisites": [], "quarter_equivalents": ["GEOG 408"], "is_placeholder": False},
                 "ANTGEOG_CON_JRS2": {"course_number": "Global Studies Elective", "title": "Global Problems, Issues, and Methods Elective", "units": 3, "prerequisites": [], "quarter_equivalents": [], "elective_key": "antgeog_global_problems", "is_placeholder": True},
@@ -1875,6 +1951,9 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "human_ecology",
             "label": "Human Ecology",
+            "tips": [
+                "Units in excess of total will be applied towards major's free electives.",
+            ],
             "slot_overrides": {
                 "ANTGEOG_CON_JRS1": {"course_number": "ANT 3309 / ANT 3320", "title": "Elements of Archaeology or California's Indigenous Past", "units": 3, "prerequisites": [], "quarter_equivalents": ["ANT 309", "ANT 320", "ANT 3309", "ANT 3320"], "elective_key": "antgeog_human_ecology_foundation", "is_placeholder": True},
                 "ANTGEOG_CON_JRS2": {"course_number": "ANT 3345", "title": "Human Behavioral Ecology", "units": 3, "prerequisites": [], "quarter_equivalents": ["ANT 345"], "is_placeholder": False},
@@ -1899,11 +1978,27 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "none",
             "label": "General Curriculum in Biology",
+            "tips": [
+                "Consultation with advisor is recommended prior to selecting electives; bear in mind your selections may impact pursuit of post-baccalaureate studies and/or goals.",
+                "Excess units will be applied to Bioscience Electives or Approved Electives.",
+                "Courses taken to meet a Major or Support requirement cannot be double-counted in the General Curriculum.",
+                "Taking a General Education (GE) course that double-counts as an elective may cause an upper-division unit shortage.",
+                "If BIO 4461, BIO 4462, or BIO 4463 is used to meet the senior project requirement, it cannot also be counted as an elective.",
+                "Maximum of 6 units may be applied toward Approved Electives from the following: BIO 2200, BIO 3300, BIO 4400, BIO 4450, BIO 4466, BIO 4485, or BIO 4495.",
+                "Maximum of 2 units may be applied toward Approved Electives from ENGR/SCM 3302 or MSCI 4401.",
+            ],
             "slot_overrides": {},
         },
         {
             "id": "anatomy_physiology",
             "label": "Anatomy and Physiology",
+            "tips": [
+                "Excess Anatomy and Physiology Elective units will be applied to Approved Electives.",
+                "Courses taken to meet a Major or Support requirement cannot be double-counted in Approved Electives.",
+                "Maximum of 6 units may be applied toward Approved Electives from: BIO 3300, BIO 4400, BIO 4450, BIO 4466, BIO 4485, BIO 4495.",
+                "Maximum of 2 units may be applied toward Approved Electives from ENGR/SCM 3302 or MSCI 4401.",
+                "If BIO 4461, BIO 4462, or BIO 4463 is used to meet the senior project requirement, it cannot be double-counted as an approved elective.",
+            ],
             "slot_overrides": {
                 "BIO_CON_JRF1": {"course_number": "BIO 4431", "title": "Advanced Anatomy and Physiology I", "units": 4, "prerequisites": ["BIO 3352"], "quarter_equivalents": [], "is_placeholder": False},
                 "BIO_CON_JRF2": {"course_number": "Approved Elective", "title": "Approved Elective", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
@@ -1919,6 +2014,15 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "ecology_evolution_biodiversity_conservation",
             "label": "Ecology, Evolution, Biodiversity, and Conservation",
+            "tips": [
+                "Excess units will be applied to Approved Electives.",
+                "Students seeking certification (e.g., as an Associate Wildlife Biologist from the Wildlife Society) should see their faculty advisor for guidance.",
+                "Consultation with advisor is recommended prior to selecting courses; bear in mind your selections may impact pursuit of post-baccalaureate studies and/or goals.",
+                "Courses taken to meet a Major or Support requirement cannot be double-counted in the concentration.",
+                "Maximum of 6 units may be applied toward Approved Electives from the following: BIO 3300, BIO 4400, BIO 4450, BIO 4466, BIO 4485, or BIO 4495.",
+                "If BIO 4461, BIO 4462, or BIO 4463 is used to meet the senior project requirement, it cannot be double-counted as an approved elective.",
+                "Maximum of 2 units may be applied toward the Approved Electives from ENGR/SCM 3302 or MSCI 4401.",
+            ],
             "slot_overrides": {
                 "BIO_CON_JRF1": {"course_number": "Biodiversity Course", "title": "Biodiversity Course", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
                 "BIO_CON_JRF2": {"course_number": "Approved Elective", "title": "Approved Elective", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
@@ -1934,6 +2038,14 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "molecular_cellular",
             "label": "Molecular and Cellular Biology",
+            "tips": [
+                "Excess units from Advanced Electives applied to Approved Electives.",
+                "Consultation with advisor is recommended prior to selecting electives; bear in mind your selections may impact pursuit of post-baccalaureate studies and/or goals.",
+                "Courses taken to meet a Major or Support requirement cannot be double-counted in Advanced or Approved Electives.",
+                "Consult with your faculty advisor for approval to use other relevant upper-division coursework from other departments.",
+                "Maximum of 6 units may be applied toward Approved Electives from the following: BIO 3300, BIO 4400, BIO 4450, BIO 4466, BIO 4485, BIO 4495.",
+                "Maximum of 2 units may be applied toward Approved Electives from ENGR/SCM 3302 or MSCI 4401.",
+            ],
             "slot_overrides": {
                 "BIO_CON_JRF1": {"course_number": "BIO 4457", "title": "Molecular Biology Laboratory", "units": 3, "prerequisites": ["BIO 3351"], "quarter_equivalents": ["BIO/CHEM 475"], "is_placeholder": False},
                 "BIO_CON_JRF2": {"course_number": "Approved Elective", "title": "Approved Elective", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
@@ -2047,6 +2159,10 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "consumer_packaging",
             "label": "Consumer Packaging",
+            "tips": [
+                "CHEM 1120 is recommended for those pursuing the Consumer Packaging concentration to fulfill GE Area 5A & 5C.",
+                "Courses taken to meet a major course requirement cannot be double-counted in the concentration.",
+            ],
             "slot_overrides": {
                 "BUS_CON1": {"course_number": "BUS 3396",  "title": "Consumer Insights",                     "units": 3, "prerequisites": ["BUS 3346"], "quarter_equivalents": [], "is_placeholder": False},
                 "BUS_CON2": {"course_number": "ITP 3330",  "title": "Packaging Fundamentals",                "units": 3, "prerequisites": [],           "quarter_equivalents": [], "is_placeholder": False},
@@ -2060,6 +2176,10 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "entrepreneurship",
             "label": "Entrepreneurship",
+            "tips": [
+                "Units in excess of total will be applied towards major's free electives.",
+                "Courses taken to meet a major course requirement cannot be double-counted in the concentration.",
+            ],
             "slot_overrides": {
                 "BUS_CON1": {"course_number": "BUS 3310", "title": "Introduction to Entrepreneurship",          "units": 4, "prerequisites": [],           "quarter_equivalents": [], "is_placeholder": False},
                 "BUS_CON2": {"course_number": "Entr. Elective", "title": "Entrepreneurship Approved Elective",  "units": 3, "prerequisites": [],           "quarter_equivalents": [], "is_placeholder": True},
@@ -2073,6 +2193,10 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "financial_management",
             "label": "Financial Management",
+            "tips": [
+                "All students need an approval from the finance chair to enroll in the Financial Management concentration.",
+                "Courses taken to meet a major course requirement cannot be double-counted in the concentration. Units in excess of total will be applied towards major's free electives.",
+            ],
             "slot_overrides": {
                 "BUS_CON1": {"course_number": "BUS 3431",     "title": "Security Analysis and Portfolio Management", "units": 4, "prerequisites": [],                       "quarter_equivalents": [], "is_placeholder": False},
                 "BUS_CON2": {"course_number": "FM Elective",  "title": "Financial Management Track Elective",        "units": 3, "prerequisites": [],                       "quarter_equivalents": [], "is_placeholder": True},
@@ -2099,6 +2223,10 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "management_human_resources",
             "label": "Management and Human Resources",
+            "tips": [
+                "Courses taken to meet a major course requirement cannot be double-counted in the concentration.",
+                "Units in excess of total will be applied towards major's free electives.",
+            ],
             "slot_overrides": {
                 "BUS_CON1": {"course_number": "BUS 3384", "title": "Human Resources Management",                        "units": 3, "prerequisites": [],           "quarter_equivalents": [], "is_placeholder": False},
                 "BUS_CON2": {"course_number": "MHR Elective", "title": "Management and HR Approved Elective",           "units": 3, "prerequisites": [],           "quarter_equivalents": [], "is_placeholder": True},
@@ -2112,6 +2240,10 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "marketing_management",
             "label": "Marketing Management",
+            "tips": [
+                "Courses taken to meet a major course requirement cannot be double-counted in the concentration.",
+                "BUS 3396 & 3396A and BUS 4418 & 4418A do not have activities separately; Marketing requires these courses to be taken together for four units each.",
+            ],
             "slot_overrides": {
                 "BUS_CON1": {"course_number": "BUS 3396 & 3396A", "title": "Consumer Insights and Project",      "units": 4, "prerequisites": ["BUS 3346"], "quarter_equivalents": [], "is_placeholder": False},
                 "BUS_CON2": {"course_number": "Mktg. Elective",   "title": "Marketing Management Elective",      "units": 3, "prerequisites": [],           "quarter_equivalents": [], "is_placeholder": True},
@@ -2125,6 +2257,11 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "real_estate_finance",
             "label": "Real Estate Finance",
+            "tips": [
+                "All students need an approval from the finance department chair to enroll in the concentration.",
+                "All students enrolled in the concentration are recommended to pursue a minor with the CAED department. The most popular minor is the Real Estate Property Development minor.",
+                "Courses taken to meet a major course requirement cannot be double-counted in the concentration.",
+            ],
             "slot_overrides": {
                 "BUS_CON1": {"course_number": "BUS 3431",     "title": "Security Analysis and Portfolio Management","units": 4, "prerequisites": [],           "quarter_equivalents": [], "is_placeholder": False},
                 "BUS_CON2": {"course_number": "REF Elective", "title": "Real Estate Finance Approved Elective",    "units": 3, "prerequisites": [],           "quarter_equivalents": [], "is_placeholder": True},
@@ -2138,6 +2275,9 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "supply_chain_management",
             "label": "Supply Chain Management (Solano)",
+            "tips": [
+                "Courses taken to meet a major course requirement cannot be double-counted in the concentration.",
+            ],
             "slot_overrides": {
                 "BUS_TECH_ELEC": {"course_number": "ITP 3303/3371", "title": "SCM Required ITP Elective",                    "units": 3, "prerequisites": [],           "quarter_equivalents": [], "is_placeholder": True},
                 "BUS_CON1":      {"course_number": "BUS 2208",       "title": "Shipping and Port Management",                  "units": 3, "prerequisites": [],           "quarter_equivalents": [], "is_placeholder": False},
@@ -2155,10 +2295,18 @@ CONCENTRATIONS: dict[str, list[dict]] = {
             "id": "none",
             "label": "General Curriculum",
             "slot_overrides": {},
+            "tips": [
+                "A minimum of 8 units from the EE Technical Electives list is required.",
+                "A maximum of 4 units may come from either the Non-EE Technical Electives or the Lower-Division Electives list, with a combined maximum of 7 units allowed across both lists.",
+            ],
         },
         {
             "id": "ecc",
             "label": "Electronics, Controls, and Communications",
+            "tips": [
+                "A minimum of 11 units from the EE Technical Electives list is required.",
+                "A maximum of 4 units may come from the Lower-Division Electives list.",
+            ],
             "slot_overrides": {
                 "EE_TECH1": {"course_number": "EE Technical Elective", "title": "ECC Technical Elective", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ee_ecc_elective"},
                 "EE_TECH2": {"course_number": "EE Technical Elective", "title": "ECC Technical Elective", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ee_ecc_elective"},
@@ -2168,6 +2316,10 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "power",
             "label": "Power",
+            "tips": [
+                "A minimum of 8 units from the EE Technical Electives list is required.",
+                "A maximum of 4 units may come from the Lower-Division Electives list.",
+            ],
             "slot_overrides": {
                 "EE_TECH1": {"course_number": "EE 4406/4410",        "title": "Power System Analysis I or Fundamentals of Power Electronics", "units": 3, "prerequisites": ["EE 3255"], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ee_power_required"},
                 "EE_TECH2": {"course_number": "EE Power Elective 1", "title": "Power Technical Elective", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ee_power_elective"},
@@ -2392,8 +2544,6 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "culinology",
             "label": "Culinology",
-            # Culinology replaces the 4 concentration slots with 3 required courses + a 2u senior project.
-            # FSN 3323 (Culinary Internship, 1u) is a catalog ambiguity — not modeled here; degree shows 119u for this track.
             "slot_overrides": {
                 "FSN_CON1": {
                     "course_number": "FSN 1121",
@@ -2422,12 +2572,29 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "FSN_CON4": {
                     "course_number": "FDSC 4462",
                     "title": "Senior Project in Food Science II",
-                    "units": 2,
+                    "units": 3,
                     "prerequisites": [],
                     "quarter_equivalents": [],
                     "is_placeholder": False,
                 },
             },
+            # FSN 3323 is a 5th required course not representable as a slot_override
+            # (no base slot to replace). Appended via extra_courses; brings track to 121u.
+            "extra_courses": [
+                {
+                    "id": "FSN_CON5",
+                    "course_number": "FSN 3323",
+                    "title": "Culinary Internship",
+                    "units": 1,
+                    "category": "concentration",
+                    "grid_col": 7,
+                    "grid_row": 0,
+                    "prerequisites": [],
+                    "quarter_equivalents": [],
+                    "is_placeholder": False,
+                    "elective_key": None,
+                },
+            ],
         },
         {
             "id": "food_safety",
@@ -2545,6 +2712,9 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "criminal_justice",
             "label": "Criminal Justice",
+            "tips": [
+                "A maximum of 6 units may count towards approved electives.",
+            ],
             "slot_overrides": {
                 "SOC_CON1": {
                     "course_number": "SOC 3302",
@@ -2586,6 +2756,10 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "organizations",
             "label": "Organizations",
+            "tips": [
+                "At least one concentration course must be in Sociology. A minimum of 16 units is required for the concentration, at least 10 of which must be upper-division. Units in excess of total will be applied towards major's free electives.",
+                "A maximum of 6 units may count towards approved electives.",
+            ],
             "slot_overrides": {
                 "SOC_CON1": {
                     "course_number": "SOC 3395/4423",
@@ -2628,6 +2802,10 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "social_justice",
             "label": "Social Justice",
+            "tips": [
+                "A minimum of 16 units is required for the concentration. Any additional units may be applied towards major's free electives.",
+                "A maximum of 6 units may count towards approved electives.",
+            ],
             "slot_overrides": {
                 "SOC_CON1": {
                     "course_number": "SJ Required",
@@ -2670,6 +2848,9 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "social_services",
             "label": "Social Services",
+            "tips": [
+                "A maximum of 6 units may count towards approved electives.",
+            ],
             "slot_overrides": {
                 "SOC_CON1": {
                     "course_number": "SOC 3303",
@@ -3101,6 +3282,7 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "design_reproduction_technology",
             "label": "Design Reproduction Technology",
+            "tips": ["May be substituted with an advisor approved course."],
             "slot_overrides": {
                 "GRC_CON1": {"course_number": "ART 1101", "title": "Fundamentals of Drawing",                   "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "GRC_CON2": {"course_number": "ART 1102", "title": "2D Design",                                "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
@@ -3114,6 +3296,7 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "graphic_communication_management",
             "label": "Graphic Communication Management",
+            "tips": ["May be substituted with an advisor approved course."],
             "slot_overrides": {
                 "GRC_CON1": {"course_number": "BUS 2207",  "title": "Legal Responsibilities of Business",           "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "GRC_CON2": {"course_number": "BUS 2212",  "title": "Financial Accounting for Nonbusiness Majors",  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
@@ -3127,6 +3310,7 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "graphics_for_packaging",
             "label": "Graphics for Packaging",
+            "tips": ["May be substituted with an advisor approved course."],
             "slot_overrides": {
                 "GRC_CON1": {"course_number": "GRC 3080",  "title": "Product Development for Cross-Device Interaction", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "GRC_CON2": {"course_number": "ITP 2234",  "title": "Packaging Design Fundamentals",                   "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
@@ -3140,6 +3324,7 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "immersive_experience_design",
             "label": "Immersive Experience Design",
+            "tips": ["May be substituted with an advisor approved course."],
             "slot_overrides": {
                 "GRC_CON1": {"course_number": "GRC 3080",  "title": "Product Development for Cross-Device Interaction", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "GRC_CON2": {"course_number": "GRC 4290",  "title": "User Experience Research Methods",                "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
@@ -3153,6 +3338,7 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "user_experience_user_interface",
             "label": "User Experience/User Interface",
+            "tips": ["May be substituted with an advisor approved course."],
             "slot_overrides": {
                 "GRC_CON1": {"course_number": "CSC 1024",  "title": "Introduction to Computing",                       "units": 2, "prerequisites": [], "quarter_equivalents": ["CSC 101"], "is_placeholder": False, "elective_key": None},
                 "GRC_CON2": {"course_number": "GRC 3990",  "title": "Front-end Web Development",                       "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
@@ -3240,6 +3426,9 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "accounting",
             "label": "Accounting",
+            "tips": [
+                "Courses taken to meet a major course requirement cannot be double-counted in the concentration.",
+            ],
             "slot_overrides": {
                 "ECON_CON1": {"course_number": "BUS 3319", "title": "Data Analytics and Accounting Information Systems", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "ECON_CON2": {"course_number": "BUS 3320", "title": "Federal Income Taxation for Individuals",           "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
@@ -3253,6 +3442,10 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "consumer_packaging",
             "label": "Consumer Packaging",
+            "tips": [
+                "Courses taken to meet a major course requirement cannot be double-counted in the concentration.",
+                "CHEM 1120 is recommended for those pursuing the Consumer Packaging concentration to fulfill GE Area 5A & 5C.",
+            ],
             "slot_overrides": {
                 "ECON_CON1": {"course_number": "BUS 3396",  "title": "Consumer Insights",                  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "ECON_CON2": {"course_number": "ITP 2234",  "title": "Packaging Design Fundamentals",       "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
@@ -3266,6 +3459,9 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "econ_data_science",
             "label": "Economics for Data Science",
+            "tips": [
+                "If a course is taken to meet a Major or Support requirement, it cannot be double-counted as an Elective for the concentration.",
+            ],
             "slot_overrides": {
                 "ECON_CON1": {"course_number": "ECON DS Elec.", "title": "Economics for Data Science Elective", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": None},
                 "ECON_CON2": {"course_number": "ECON DS Elec.", "title": "Economics for Data Science Elective", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": None},
@@ -3279,6 +3475,10 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "entrepreneurship",
             "label": "Entrepreneurship",
+            "tips": [
+                "Units in excess of total will be applied towards major's free electives.",
+                "Courses taken to meet a major course requirement cannot be double-counted in the concentration.",
+            ],
             "slot_overrides": {
                 "ECON_CON1": {"course_number": "BUS 3310",     "title": "Introduction to Entrepreneurship",      "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "ECON_CON2": {"course_number": "BUS 3330",     "title": "Funding and Managing Startup Companies", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
@@ -3291,6 +3491,10 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "financial_management",
             "label": "Financial Management",
+            "tips": [
+                "All students need an approval from the finance chair to enroll in the Financial Management concentration.",
+                "Courses taken to meet a major course requirement cannot be double-counted in the concentration. Units in excess of total will be applied towards major's free electives.",
+            ],
             "slot_overrides": {
                 "ECON_CON1": {"course_number": "BUS 3431",    "title": "Security Analysis and Portfolio Management", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "ECON_CON2": {"course_number": "BUS 3438",    "title": "Corporate Finance",                         "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
@@ -3304,6 +3508,9 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "information_systems",
             "label": "Information Systems and Analytics",
+            "tips": [
+                "Courses taken to meet a major course requirement cannot be double-counted in the concentration.",
+            ],
             "slot_overrides": {
                 "ECON_CON1": {"course_number": "BUS 3392", "title": "Business Application Development",    "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "ECON_CON2": {"course_number": "BUS 3393", "title": "Database Systems in Business",        "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
@@ -3317,6 +3524,9 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "management_hr",
             "label": "Management and Human Resources",
+            "tips": [
+                "Courses taken to meet a major course requirement cannot be double-counted in the concentration.",
+            ],
             "slot_overrides": {
                 "ECON_CON1": {"course_number": "BUS 3384", "title": "Human Resources Management",                   "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "ECON_CON2": {"course_number": "BUS 3388", "title": "Training, Developing, and Managing Employees", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
@@ -3330,6 +3540,9 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "marketing",
             "label": "Marketing Management",
+            "tips": [
+                "Courses taken to meet a major course requirement cannot be double-counted in the concentration.",
+            ],
             "slot_overrides": {
                 "ECON_CON1": {"course_number": "BUS 3396",     "title": "Consumer Insights",          "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "ECON_CON2": {"course_number": "BUS 4418",     "title": "Marketing Research",         "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
@@ -3343,6 +3556,11 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "real_estate",
             "label": "Real Estate Finance",
+            "tips": [
+                "All students need an approval from the finance department chair to enroll in the concentration.",
+                "All students enrolled in the concentration are recommended to pursue a minor with the CAED department. The most popular minor is the Real Estate Property Development minor.",
+                "Courses taken to meet a major course requirement cannot be double-counted in the concentration.",
+            ],
             "slot_overrides": {
                 "ECON_CON1": {"course_number": "BUS 3431",    "title": "Security Analysis and Portfolio Management", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "ECON_CON2": {"course_number": "BUS 3440",    "title": "Financial Modeling and Visualization in Excel", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
@@ -3363,6 +3581,11 @@ CONCENTRATIONS["PLSC"] = [
     {
         "id": "fruit_crop_science",
         "label": "Fruit and Crop Science",
+        "tips": [
+            "A minimum of 9 units must be taken at the 3000-4000 level.",
+            "A maximum of 3 units may count towards Approved Electives.",
+            "A maximum of 4 units may count towards Approved Electives.",
+        ],
         "slot_overrides": {
             "PLSC_CON1":  {"course_number": "Concentration", "title": "Concentration Elective 1",  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "plsc_fruit_crop_elective"},
             "PLSC_CON2":  {"course_number": "Concentration", "title": "Concentration Elective 2",  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "plsc_fruit_crop_elective"},
@@ -3381,6 +3604,10 @@ CONCENTRATIONS["PLSC"] = [
     {
         "id": "environ_horticultural_science",
         "label": "Environmental Horticultural Science",
+        "tips": [
+            "A maximum of 3 units may count towards Approved Electives.",
+            "A maximum of 4 units may count towards Approved Electives.",
+        ],
         "slot_overrides": {
             "PLSC_CON1":  {"course_number": "Concentration", "title": "Concentration Elective 1",  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "plsc_environ_hort_elective"},
             "PLSC_CON2":  {"course_number": "Concentration", "title": "Concentration Elective 2",  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "plsc_environ_hort_elective"},
@@ -3399,6 +3626,10 @@ CONCENTRATIONS["PLSC"] = [
     {
         "id": "plant_protection_science",
         "label": "Plant Protection Science",
+        "tips": [
+            "A maximum of 3 units may count towards Approved Electives.",
+            "A maximum of 4 units may count towards Approved Electives.",
+        ],
         "slot_overrides": {
             "PLSC_CON1":  {"course_number": "Concentration", "title": "Concentration Elective 1",  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "plsc_plant_protection_elective"},
             "PLSC_CON2":  {"course_number": "Concentration", "title": "Concentration Elective 2",  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "plsc_plant_protection_elective"},
@@ -3412,6 +3643,250 @@ CONCENTRATIONS["PLSC"] = [
             "PLSC_CON10": {"course_number": "Concentration", "title": "Concentration Elective 10", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "plsc_plant_protection_elective"},
             "PLSC_CON11": {"course_number": "Concentration", "title": "Concentration Elective 11", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "plsc_plant_protection_elective"},
             "PLSC_CON12": {"course_number": "Concentration", "title": "Concentration Elective 12", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "plsc_plant_protection_elective"},
+        },
+    },
+]
+
+CONCENTRATIONS["PHIL"] = [
+    {"id": "none", "label": "No Concentration Selected", "slot_overrides": {}},
+    {
+        "id": "ethics_and_society",
+        "label": "Ethics and Society",
+        "tips": [
+            "If a course is taken to meet a Major or Support requirement, it cannot be double-counted as an Elective for the concentration.",
+        ],
+        "slot_overrides": {
+            "PHIL_CON1": {"course_number": "PHIL 4439",    "title": "Topics in Ethics and Political Philosophy", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "PHIL_CON2": {"course_number": "Concentration","title": "Ethics Elective 1",                         "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "phil_ethics_elective"},
+            "PHIL_CON3": {"course_number": "Concentration","title": "Ethics Elective 2",                         "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "phil_ethics_elective"},
+            "PHIL_CON4": {"course_number": "Concentration","title": "Ethics Elective 3",                         "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "phil_ethics_elective"},
+            "PHIL_CON5": {"course_number": "Concentration","title": "Technology Ethics Elective",                "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "phil_tech_ethics_elective"},
+        },
+    },
+    {
+        "id": "ethics_science_technology",
+        "label": "Ethics of Science and Technology",
+        "tips": [
+            "If a course is taken to meet a Major or Support requirement, it cannot be double-counted as an Elective for the concentration.",
+        ],
+        "slot_overrides": {
+            "PHIL_CON1": {"course_number": "PHIL 3323",    "title": "Ethics, Science, and Technology",               "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "PHIL_CON2": {"course_number": "Concentration","title": "Ethics and Philosophy of Science/Tech Elective 1","units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "phil_sci_tech_elective"},
+            "PHIL_CON3": {"course_number": "Concentration","title": "Ethics and Philosophy of Science/Tech Elective 2","units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "phil_sci_tech_elective"},
+            "PHIL_CON4": {"course_number": "Concentration","title": "Ethics Elective",                               "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "phil_ethics_elective"},
+            "PHIL_CON5": {"course_number": "Concentration","title": "Senior Seminar Elective",                       "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "phil_senior_sem_elective"},
+        },
+    },
+    {
+        "id": "philosophy_and_religion",
+        "label": "Philosophy and Religion",
+        "tips": [
+            "If a course is taken to meet a Major or Support requirement, it cannot be double-counted as an Elective for the concentration.",
+            "If a Religious Studies (RELS) course is taken to meet the Arts and Humanities Breadth requirement, it cannot be double-counted in the Philosophy and Religion concentration.",
+        ],
+        "slot_overrides": {
+            "PHIL_CON1": {"course_number": "PHIL 3342",    "title": "Philosophy of Religion",              "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "PHIL_CON2": {"course_number": "Concentration","title": "Asian Philosophy and Religion Elective","units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "phil_asian_rel_elective"},
+            "PHIL_CON3": {"course_number": "Concentration","title": "Religion Elective 1",                  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "phil_religion_elective"},
+            "PHIL_CON4": {"course_number": "Concentration","title": "Religion Elective 2",                  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "phil_religion_elective"},
+            "PHIL_CON5": {"course_number": "Concentration","title": "Senior Philosophy Elective",           "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "phil_senior_phil_elective"},
+        },
+    },
+]
+
+CONCENTRATIONS["NUT"] = [
+    {"id": "none", "label": "No Concentration Selected", "slot_overrides": {}},
+    {
+        "id": "dietetics",
+        "label": "Dietetics",
+        "slot_overrides": {
+            "NUT_CON1": {"course_number": "PSY 2201",     "title": "Introductory Psychology",                          "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "NUT_CON2": {"course_number": "NUTR 3321",    "title": "Experimental Foods",                               "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "NUT_CON3": {"course_number": "FSN 3346",     "title": "Institutional Food Service",                       "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "NUT_CON4": {"course_number": "NUTR 4426",    "title": "Nutrition and Foodservice Systems Management",     "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "NUT_CON5": {"course_number": "Concentration","title": "Dietetics Concentration Elective",                 "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "nut_dietetics_elective"},
+        },
+    },
+    {
+        "id": "nutrition_prehealth",
+        "label": "Nutrition and Pre-Health Sciences",
+        "tips": [
+            "If a course is taken to meet a Major or Support requirement, it cannot be double-counted as an Elective for the concentration.",
+        ],
+        "slot_overrides": {
+            "NUT_CON1": {"course_number": "FSN 3305",     "title": "Nutrition and Exercise for Health and Disease Prevention", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "NUT_CON2": {"course_number": "Concentration","title": "Pre-Health Sciences Elective 1",                  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "nut_prehealth_elective"},
+            "NUT_CON3": {"course_number": "Concentration","title": "Pre-Health Sciences Elective 2",                  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "nut_prehealth_elective"},
+            "NUT_CON4": {"course_number": "Concentration","title": "Pre-Health Sciences Elective 3",                  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "nut_prehealth_elective"},
+            "NUT_CON5": {"course_number": "Concentration","title": "Pre-Health Sciences Elective 4",                  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "nut_prehealth_elective"},
+        },
+    },
+]
+
+CONCENTRATIONS["PH"] = [
+    {"id": "none", "label": "No Concentration Selected", "slot_overrides": {}},
+    {
+        "id": "community_health_promotion",
+        "label": "Community Health Promotion",
+        "slot_overrides": {
+            "PH_CON1": {"course_number": "HLTH 3305",     "title": "Drugs in Society",                      "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "PH_CON2": {"course_number": "HLTH 3310",     "title": "Injury Prevention",                     "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "PH_CON3": {"course_number": "HLTH 3348",     "title": "Public Health and Mental Health",       "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "PH_CON4": {"course_number": "Concentration", "title": "Community Health Elective",             "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "ph_com_health_elective"},
+        },
+    },
+    {
+        "id": "health_equity_global_health",
+        "label": "Health Equity and Global Health",
+        "tips": [
+            "Units in excess of total will be applied towards major's free electives.",
+        ],
+        "slot_overrides": {
+            "PH_CON1": {"course_number": "HLTH 3348",     "title": "Public Health and Mental Health",                "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "PH_CON2": {"course_number": "HLTH 4413",     "title": "Health Promotion for Special Populations",      "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "PH_CON3": {"course_number": "HLTH 4444",     "title": "Comparative Health Care Systems",               "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "PH_CON4": {"course_number": "Concentration", "title": "Health Equity and Global Health Elective",      "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "ph_equity_global_elective"},
+        },
+    },
+    {
+        "id": "health_management_administration",
+        "label": "Health Management and Administration",
+        "tips": [
+            "Units in excess of total will be applied towards major's free electives.",
+        ],
+        "slot_overrides": {
+            "PH_CON1": {"course_number": "BUS 2212/ECON 2001", "title": "Financial Accounting or Survey of Economics",      "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "ph_bus_econ_elective"},
+            "PH_CON2": {"course_number": "KINE 4401",          "title": "Leadership in Health and Physical Activity Programs", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "PH_CON3": {"course_number": "HLTH 4444",          "title": "Comparative Health Care Systems",                  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "PH_CON4": {"course_number": "Concentration",      "title": "Health Management Elective",                       "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "ph_mgmt_admin_elective"},
+        },
+    },
+]
+
+_ENVM_CON_SLOTS_BASE = {
+    "ENVM_CON1": {"course_number": "Concentration", "title": "Concentration Elective 1", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    "ENVM_CON2": {"course_number": "Concentration", "title": "Concentration Elective 2", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    "ENVM_CON3": {"course_number": "Concentration", "title": "Concentration Elective 3", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    "ENVM_CON4": {"course_number": "Concentration", "title": "Concentration Elective 4", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+    "ENVM_CON5": {"course_number": "Concentration", "title": "Concentration Elective 5", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
+}
+
+def _envm_con(key: str) -> dict:
+    return {slot: {**data, "elective_key": key} for slot, data in _ENVM_CON_SLOTS_BASE.items()}
+
+CONCENTRATIONS["ENVM"] = [
+    {"id": "none", "label": "No Concentration Selected", "slot_overrides": {}},
+    {"id": "conservation_science",            "label": "Conservation Science and Management",         "slot_overrides": _envm_con("envm_conservation_elective")},
+    {"id": "corporate_environmental",         "label": "Corporate Environmental Management",           "slot_overrides": _envm_con("envm_corporate_elective")},
+    {"id": "environmental_data_science",      "label": "Environmental Data Science",                   "slot_overrides": _envm_con("envm_data_science_elective")},
+    {"id": "env_law_justice_policy",          "label": "Environmental Law, Justice and Policy",        "slot_overrides": _envm_con("envm_law_justice_elective")},
+    {"id": "sustainable_agriculture",         "label": "Sustainable Agriculture",                      "slot_overrides": _envm_con("envm_sust_ag_elective")},
+    {"id": "sustainable_urban_development",   "label": "Sustainable Urban Development and Planning",   "slot_overrides": _envm_con("envm_sust_urban_elective")},
+    {"id": "water_science_management",        "label": "Water Science and Management",                 "slot_overrides": _envm_con("envm_water_mgmt_elective")},
+]
+
+
+def _libs_slot(course_number: str, title: str, units: int, is_placeholder: bool,
+               elective_key, prerequisites: list = None, quarter_equivalents: list = None) -> dict:
+    return {
+        "course_number": course_number,
+        "title": title,
+        "units": units,
+        "prerequisites": prerequisites or [],
+        "quarter_equivalents": quarter_equivalents or [],
+        "is_placeholder": is_placeholder,
+        "elective_key": elective_key,
+    }
+
+
+def _libs_placeholder(course_number: str, title: str, units: int, key: str) -> dict:
+    return _libs_slot(course_number, title, units, True, key)
+
+
+def _libs_fixed(course_number: str, title: str, units: int, prereqs: list = None) -> dict:
+    return _libs_slot(course_number, title, units, False, None, prereqs)
+
+
+CONCENTRATIONS["LIBS"] = [
+    {"id": "none", "label": "No Concentration Selected", "slot_overrides": {}},
+    {
+        "id": "environmental_education",
+        "label": "Environmental Education",
+        "slot_overrides": {
+            "LIBS_CON_EL1": _libs_placeholder("Env. Cultural/Social", "Environmental Ed: Cultural and Social Component", 3, "libs_env_cultural"),
+            "LIBS_CON_EL2": _libs_placeholder("Env. Ecological",      "Environmental Ed: Ecological and Environmental Component", 3, "libs_env_ecological"),
+            "LIBS_CON_EL3": _libs_placeholder("Env. Education/Comm",  "Environmental Ed: Education and Communication Component", 3, "libs_env_education"),
+            "LIBS_CON_EL4": _libs_placeholder("Env. Capstone",        "Environmental Ed: Capstone", 3, "libs_env_capstone"),
+        },
+    },
+    {
+        "id": "human_development",
+        "label": "Human Development",
+        "slot_overrides": {
+            "LIBS_CON_EL1": _libs_placeholder("HD: Applications to Education", "Human Development: Applications to Education and Advocacy", 3, "libs_hd_apps_ed"),
+            "LIBS_CON_EL2": _libs_placeholder("HD: Child Dev. and Growth",     "Human Development: Child Development and Growth (4 units)", 4, "libs_hd_child_dev"),
+            "LIBS_CON_EL3": _libs_placeholder("HD: Social Context",            "Human Development: Social Context and Relationships", 3, "libs_hd_social_context"),
+            "LIBS_CON_EL4": _libs_placeholder("HD: Any CD Course (2 units)",   "Human Development: Any Child Development Course (2 units)", 2, "libs_hd_cd_course"),
+        },
+    },
+    {
+        "id": "mathematics",
+        "label": "Mathematics",
+        "slot_overrides": {
+            "LIBS_CON_EL1": _libs_fixed("MATH 1261", "Calculus I", 4),
+            "LIBS_CON_EL2": _libs_fixed("MATH 1262", "Calculus II", 4, ["MATH 1261"]),
+            "LIBS_CON_EL3": _libs_fixed("MATH 2031", "Transition to Advanced Mathematics", 3, ["MATH 1262"]),
+            "LIBS_CON_EL4": _libs_placeholder("Math Upper-Div Elective", "Upper-Division Mathematics Elective", 3, "libs_math_upper_div"),
+        },
+    },
+    {
+        "id": "english",
+        "label": "English",
+        "slot_overrides": {
+            "LIBS_CON_EL1": _libs_fixed("ENGL 3311", "Writing With Style", 3),
+            "LIBS_CON_EL2": _libs_fixed("ENGL 3392", "Reading Instruction for Young Adult Literature", 4),
+            "LIBS_CON_EL3": _libs_placeholder("ENGL 3393/4424", "Theory/Practice of Tutoring Writing or Teaching ELA in Secondary", 4, "libs_engl_3393_choice"),
+            "LIBS_CON_EL4": _libs_placeholder("Am. Literature Elective", "American Literature Elective", 3, "libs_am_lit_elective"),
+        },
+    },
+    {
+        "id": "science",
+        "label": "Science",
+        "slot_overrides": {
+            "LIBS_CON_EL1": _libs_placeholder("Sci. Core (CHEM/PHYS)", "Science Concentration: Core Science Course (include ≥3 units Chemistry)", 4, "libs_sci_core"),
+            "LIBS_CON_EL2": _libs_placeholder("Science Elective",       "Science Concentration: Approved Science Elective", 3, "libs_sci_approved"),
+            "LIBS_CON_EL3": _libs_placeholder("Science Elective",       "Science Concentration: Approved Science Elective", 3, "libs_sci_approved"),
+            "LIBS_CON_EL4": _libs_placeholder("Science Elective",       "Science Concentration: Approved Science Elective", 3, "libs_sci_approved"),
+        },
+    },
+    {
+        "id": "social_science",
+        "label": "Social Science",
+        "slot_overrides": {
+            "LIBS_CON_EL1": _libs_fixed("HIST 2208", "Survey of California History", 3),
+            "LIBS_CON_EL2": _libs_placeholder("U.S. Government Elective", "U.S. Government Elective", 3, "libs_pols_elective"),
+            "LIBS_CON_EL3": _libs_placeholder("Geography Elective",        "Geography Elective", 3, "libs_geog_elective"),
+            "LIBS_CON_EL4": _libs_placeholder("ES/Hist/Soc Elective",     "Ethnic Studies, History, Sociology, or Women/Gender Studies Elective", 3, "libs_soc_hist_elective"),
+        },
+    },
+    {
+        "id": "tesol",
+        "label": "Teaching English to Speakers of Other Languages (TESOL)",
+        "slot_overrides": {
+            "LIBS_CON_EL1": _libs_fixed("COMS 3316",  "Intercultural Communication", 3),
+            "LIBS_CON_EL2": _libs_placeholder("ENGL 2290/3390", "Introduction to Linguistics or Linguistic Structure of Modern English", 3, "libs_engl_ling_choice"),
+            "LIBS_CON_EL3": _libs_fixed("ENGL 4497",  "Theories of Language Learning and Teaching", 3),
+            "LIBS_CON_EL4": _libs_fixed("ENGL 4498",  "Approaches to Teaching English to Speakers of Other Languages", 3),
+        },
+    },
+    {
+        "id": "individualized",
+        "label": "Individualized Course of Study",
+        "slot_overrides": {
+            "LIBS_CON_EL1": _libs_placeholder("Individualized Elective", "Individualized Course of Study Elective", 3, None),
+            "LIBS_CON_EL2": _libs_placeholder("Individualized Elective", "Individualized Course of Study Elective", 3, None),
+            "LIBS_CON_EL3": _libs_placeholder("Individualized Elective", "Individualized Course of Study Elective", 3, None),
+            "LIBS_CON_EL4": _libs_placeholder("Individualized Elective", "Individualized Course of Study Elective", 3, None),
         },
     },
 ]

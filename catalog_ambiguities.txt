@@ -1,68 +1,10 @@
 Catalog Ambiguities & Known Limitations
 ========================================
 Generated: 2026-05-18
+Resolved items are in: completed_ambiguities.txt
 
 --------------------------------------------------------------------------------
-1. UNIT RANGE DISCREPANCIES
---------------------------------------------------------------------------------
-These slots model a fixed unit count but the catalog allows two options with
-different units. The flowchart total may be slightly off depending on which
-course a student takes.
-
-  WVIT | Math slot
-    Options: MATH 1261 (4u) vs MATH 1267 (3u)
-    Issue: Modeled as 3u; a student taking Calc I would have 1 extra unit.
-
-  KINE | Math slot
-    Options: MATH 1007 (3u) vs MATH 1261 (4u)
-    Issue: Same as WVIT — 1-unit variance depending on path.
-
-  EIM | Math slot
-    Options: MATH 1004 / MATH 1007
-    Issue: Unit range 3–5u depending on placement; modeled at 3u.
-
---------------------------------------------------------------------------------
-2. FSN CULINOLOGY — CONFIRMED UNIT GAP
---------------------------------------------------------------------------------
-The Culinology concentration lists FSN 3323 (Culinary Internship, 1u) in the
-catalog but it doesn't fit cleanly into the 8-semester grid without pushing the
-track to 121u. The concentration was modeled at 120u and this course is absent.
-This is the only major with an unresolved catalog-to-flowchart unit mismatch.
-
---------------------------------------------------------------------------------
-3. SLASH-CHOICE COURSES (Pick One of Two)
---------------------------------------------------------------------------------
-Tiles with a slash course_number (e.g., "CHEM 2240/2242") mean:
-  - Other tiles cannot list them as prerequisites by exact course_number.
-  - Affected downstream tiles have their prerequisites cleared to [].
-  - The prerequisite chain is broken at that point in the flowchart.
-
-  MCRO:
-    - CHEM 2240/2242 (Organic Chem)
-    - CHEM 3350/3352 (Biochemistry)
-    - BIO 4461/4462/4463 (Senior Project)
-    - BIO 1151/1153 (Intro Bio II)
-
-  PLSC:
-    - PLSC 1120/1120L (Principles of Plant Sciences with Lab)
-      -> PLSC 3321 lost its prereq link to this tile
-
-  CPE:
-    - MATH 1151/2341
-    - EE 3306/2328
-    - STAT 3210/3310
-    - WGQS 3350/3351
-
-  ME:
-    - IME 1141/1142/1149
-
-  AERO:
-    - IME 1143/1140
-
-  Others: PSY, ENGL, AD, POLS (various or-choice support courses)
-
---------------------------------------------------------------------------------
-4. DYNAMIC ELECTIVE BUCKETS (BROAD APPROXIMATIONS)
+1. DYNAMIC ELECTIVE BUCKETS (BROAD APPROXIMATIONS)
 --------------------------------------------------------------------------------
 These _DYNAMIC elective pickers filter by dept + level range but do not
 represent the exact approved course list from the catalog. Students should
@@ -97,20 +39,15 @@ verify with their advisor.
     Risk: Extremely broad; catalog has a specific approved list.
 
 --------------------------------------------------------------------------------
-5. HIST — LANGUAGE AND UPPER-DIVISION SUPPORT REQUIREMENTS
+3. HIST — LANGUAGE AND UPPER-DIVISION SUPPORT REQUIREMENTS
 --------------------------------------------------------------------------------
-  HIST_LANG: "World Language Requirement"
-    The catalog requires demonstrating proficiency in a foreign language but
-    doesn't prescribe specific courses. Modeled as a 1-tile placeholder with
-    no elective_key — the checklist shows no course options for this slot.
-
   HIST_GEUD4: "Non-History Social Science Upper Division"
     Catalog requires 3u UD Social Science from a non-HIST department. Modeled
     as a support-category placeholder with no elective_key; any qualifying UD
     social science course counts.
 
 --------------------------------------------------------------------------------
-6. MCRO — SENIOR PROJECT SLOT
+4. MCRO — SENIOR PROJECT SLOT
 --------------------------------------------------------------------------------
 BIO 4461/4462/4463 (Senior Project) is a slash-choice among three options.
 The elective picker (mcro_senior_project) lists all three as static options,
@@ -119,7 +56,7 @@ just one. The flowchart models this as a single 2u tile, which may undercount
 the actual senior project commitment by 2 units.
 
 --------------------------------------------------------------------------------
-7. PLSC — CONCENTRATION ELECTIVE UNIT MISMATCH WITHIN SLOTS
+5. PLSC — CONCENTRATION ELECTIVE UNIT MISMATCH WITHIN SLOTS
 --------------------------------------------------------------------------------
 CON10 is 4u while CON1–9, CON11, CON12 are all 3u. The concentration-specific
 pickers (plsc_fruit_crop_elective, plsc_environ_hort_elective,
@@ -128,7 +65,7 @@ picker does not enforce which unit-size course goes into the 4u slot — a
 student could put a 3u course into CON10 or a 4u course into a 3u slot.
 
 --------------------------------------------------------------------------------
-8. ECON — PROJECT LAB PAIRING
+6. ECON — PROJECT LAB PAIRING
 --------------------------------------------------------------------------------
 Many upper-division ECON electives come as a lecture+lab pair (e.g.,
 ECON 3001 + ECON 3001L). The flowchart models these as a combined unit count,
@@ -136,7 +73,7 @@ but the _DYNAMIC picker only surfaces the lecture course. Students may not
 realize they need to also register for the paired lab section.
 
 --------------------------------------------------------------------------------
-9. FREE / UNRESTRICTED ELECTIVE SLOTS (NO CATALOG BACKING)
+7. FREE / UNRESTRICTED ELECTIVE SLOTS (NO CATALOG BACKING)
 --------------------------------------------------------------------------------
 These placeholders have is_placeholder=True but no elective_key. The checklist
 shows them as empty slots with no course options. This is by design for
@@ -146,15 +83,423 @@ what courses qualify.
   POLS  : 6 free elective slots (POLS_FREE1–6)
   PSY   : 8 free elective slots
   ENGL  : 3 free elective slots
-  HIST  : Language requirement slot (HIST_LANG)
   CS/SE/CPE/CE/ME/EE: Various "External Elective" and concentration slots
 
 --------------------------------------------------------------------------------
 SUMMARY: MOST ACTIONABLE ISSUES
 --------------------------------------------------------------------------------
-1. FSN Culinology unit gap (1u unresolved) — only confirmed unit mismatch
-2. HIST global/UD elective pickers over-include (topic filtering not possible)
-3. Slash-choice prereq breaks — structural limitation affecting all majors
-   with paired lecture/lab or or-choice requirements
-4. MCRO senior project undercounts total project units by ~2u
-5. PLSC CON10 unit enforcement — picker doesn't constrain 3u vs 4u placement
+1. HIST global/UD elective pickers over-include (topic filtering not possible)
+2. MCRO senior project undercounts total project units by ~2u
+3. PLSC CON10 unit enforcement — picker doesn't constrain 3u vs 4u placement
+
+--------------------------------------------------------------------------------
+ENVM (Environmental Management and Protection, BS — added 2026-05-18)
+--------------------------------------------------------------------------------
+1. Slash-choice tiles (5 slots):
+   - BIO 1114 or BOT 1121 (4u each): Different departments; expandSlashCourseNumber
+     handles cross-dept splitting correctly. Units equal so no discrepancy.
+   - MATH 1264 or MATH 1267 (4u each): Same dept, straightforward slash.
+   - NR 2208 or BIO 2215 or BIO 2217 (4u each): Three-way cross-dept slash. All 4u.
+   - CHEM 1120 or CHEM 1122 (4u each): Same dept. No discrepancy.
+   - BIO 1111 or BIO 1150 or BIO 1151 (4u each): Same dept three-way slash.
+   All slash tiles modeled at 4u which matches catalog for all options.
+
+2. Required pick-one elective slots (12 slots):
+   These are catalog-backed static pickers. The catalog lists specific approved
+   courses for each slot but does not exhaustively constrain them (students may
+   petition for substitutions). The static lists reflect the 2025-26 catalog.
+   Keys: envm_soc_choice, envm_enviro_choice, envm_ecology_choice,
+   envm_water_choice, envm_quant_choice, envm_policy_choice, envm_senior_project
+
+3. Concentration electives (7 concentrations × 15u = 5 slots × 3u each):
+   Each concentration has a catalog-approved course list. Students must take
+   15u from that list. The picker shows all approved courses; no enforcement of
+   the 15u minimum is done at the UI level. Keys: envm_conservation_elective,
+   envm_corporate_elective, envm_data_science_elective, envm_law_justice_elective,
+   envm_sust_ag_elective, envm_sust_urban_elective, envm_water_mgmt_elective
+
+4. Free elective slots (6 slots, 3u each = 18u):
+   Completely unrestricted. No elective_key assigned — checklist shows as empty
+   slots without course options by design.
+
+5. Total units: 120 (matches catalog).
+
+--------------------------------------------------------------------------------
+PH (Public Health, BS — added 2026-05-18)
+--------------------------------------------------------------------------------
+1. Major unit count discrepancy:
+   The catalog summary page states "Major Courses: 41 units" but direct
+   course enumeration gives 38u (HLTH 1101–HLTH 4435 + HLTH 1155/1160 + Senior
+   Project). The flowchart uses the course-by-course count (38u). Difference
+   may reflect the catalog counting STAT 3520 (3u support) under major, or an
+   error in the catalog summary.
+
+2. NUTR 3310 department code:
+   The catalog lists "NUTR 3310 Maternal and Child Nutrition" as a Community
+   Health Promotion concentration elective. At Cal Poly, Nutrition courses may
+   use NUT (not NUTR) as the department prefix. If the course number is NUT
+   3310, the elective picker would need updating. Flagged but used NUTR as
+   listed.
+
+3. EDES 3350 department code:
+   The catalog lists "EDES 3350 The Global Environment" as a Health Equity and
+   Global Health concentration elective. EDES is an uncommon prefix at Cal Poly
+   (possibly Environmental Design, or an older code). May need verification.
+
+4. GEOG 3325 department:
+   Listed as "GEOG 3325 Climate and Humanity" — Geography courses at Cal Poly
+   are sometimes under the ANTGEOG combined department. Prefix may differ.
+
+5. Concentration elective unit ranges:
+   Several Health Equity and Health Management concentration electives are
+   listed as "3-4 units" in the catalog. The flowchart and picker use 3u as
+   the default. Students taking a 4u elective would have an extra free unit.
+
+6. Free elective units:
+   Two free elective slots (PH_FREE1, PH_FREE2) are modeled at 4u each = 8u
+   total. The catalog says "Free Electives: 8 units minimum." Students may
+   use 3u courses and carry the remaining unit elsewhere; the 4u modeling is
+   an approximation.
+
+7. No explicit prerequisites in catalog:
+   The Cal Poly PH catalog page does not state prerequisites for any course.
+   Prerequisite chains in the flowchart (e.g., HLTH 1101→2261→3318→...) are
+   inferred from the semester sequence, not explicitly listed.
+
+--------------------------------------------------------------------------------
+NUT (Nutrition, BS — added 2026-05-18)
+--------------------------------------------------------------------------------
+1. NUTR 3315 at 2 units:
+   "Nutrition in Aging" is listed at 2 units. This is an unusual unit count
+   for a standalone course. Modeled as-is per catalog.
+
+2. NUTR 3333 at 1 unit:
+   "Nutrient Metabolism Lab" is listed at 1 unit, co-requisite with NUTR 3332.
+   Modeled as a separate tile at 1u.
+
+3. FSN 2250 GE designation:
+   Listed as "Major/GE (USCP)" in the catalog. USCP was a quarter-system GE
+   requirement; in the semester catalog this course may satisfy Area 4B. The
+   flowchart counts it as a major course (3u). If it satisfies GE 4B, the
+   standalone GE 4B tile in FS is redundant — flagged as an ambiguity.
+
+4. Dietetics elective breadth:
+   The Dietetics concentration elective includes "any 3000-4000 level BIO,
+   CHEM, HLTH, MATH, PHYS, or PSY course" which is a very broad bucket.
+   Modeled as a dynamic picker across those departments.
+
+5. Pre-Health Sciences elective breadth:
+   12 of the 15 concentration units are open electives from BIO/CHEM/MATH/
+   PHYS/PSY/NUTR at 3000-4000 level. Four dynamic placeholder slots are used.
+
+6. MCRO 2224 vs 2221:
+   The catalog lists MCRO 2224 (General Microbiology I) first, then MCRO 2221
+   (Introduction to Microbiology) as the alternative. Both are 4u. Modeled
+   as slash-choice MCRO 2224/2221 with a static picker.
+
+7. Total units note:
+   Catalog summary gives "Major: 44u / Support: 28u / GE: 30u / Concentration:
+   15u (included in totals) / Free: 6-12u." Direct course-by-course count gives
+   major=38u, support=31u, GE=30u standalone, concentration=15u, free=6u = 120u.
+   Discrepancy in catalog summary attributable to STAT 1110 (3u) counted as GE
+   not support in their summary.
+
+--------------------------------------------------------------------------------
+PHIL (Philosophy, BA — added 2026-05-18)
+--------------------------------------------------------------------------------
+1. Major unit count discrepancy:
+   Catalog summary says "Major Courses: 48 units" but direct course enumeration
+   gives 45u (33u fixed required + 9u history electives + 3u general elective).
+   Flowchart uses 45u major. Discrepancy may reflect counting methodology.
+
+2. Free elective at 2 units (PHIL_FREE8):
+   To reach exactly 120u, one free elective slot is modeled at 2u. Philosophy
+   students commonly take 2u activity/seminar courses to fill this gap.
+
+3. GE 5B+5C combined as 4u tile:
+   Life Sciences + Lab (GE 5B and 5C) is modeled as a single 4u tile since
+   most lab science courses at Cal Poly are 4u. Students could split this into
+   a 3u lecture + 1u lab from different courses.
+
+4. RELS (Religion) course prefix:
+   Courses RELS 3301-3344 appear in the Philosophy and Religion concentration
+   elective lists. Whether RELS exists as a distinct department/prefix in the
+   Cal Poly semester catalog is unconfirmed — these may be cross-listed under
+   HIST or another department.
+
+5. Concentration course timing:
+   Some concentration courses (e.g., PHIL 3323 in Ethics of Science and
+   Technology) are Year 3 courses placed in Senior Fall (col 6) concentration
+   slots for simplicity. Students can take them earlier.
+
+6. Support course as dynamic picker:
+   "Upper Division Arts and Humanities (non-PHIL)" support course covering
+   GE UD3 is modeled as a broad dynamic picker across arts/humanities depts.
+   The exact approved departments are not exhaustively listed in the catalog.
+
+7. Philosophy and Religion total:
+   The catalog notes this concentration's flowchart totals 117u with 3
+   additional free elective units required. This is handled by the 8 free
+   elective slots (23u total) in the base flowchart.
+
+--------------------------------------------------------------------------------
+SPAN — Spanish
+--------------------------------------------------------------------------------
+1. Approved Language and Culture Electives (broad list):
+   The catalog notes 70+ approved courses across anthropology, history,
+   philosophy, literature, geography, ethnic studies, and world languages.
+   The full explicit list was not enumerated — modeled as a broad dynamic
+   picker across ANT, HIST, PHIL, ENGL, GEOG, SPAN, FR, GERM, ITAL, LAT,
+   CHIN, JAPN, PORT, ARAB, WLC, RELS at the 3000–4999 level.
+
+2. SPAN 2202 / SPAN 2206 units variance:
+   Catalog lists SPAN 2202 and SPAN 2206 as "3-4 units" each. The flowchart
+   tile uses 4 units to match the total program unit count of 120.
+
+3. No concentrations:
+   The Spanish BA has no formal concentrations, emphases, or tracks in the
+   2026-2028 catalog.
+
+4. Free elective distribution:
+   The program allows 27 units of free electives (9 tiles × 3u) with no
+   catalog-specified term placement. Terms were assumed based on natural
+   distribution across 7 semesters.
+
+5. Upper-Division GE assignment:
+   Three upper-division GE slots (Area 3, Area 2/5, Area 4) were placed in
+   Junior Spring, Senior Fall, and Senior Spring respectively. The catalog
+   does not mandate specific terms for upper-division GE.
+
+--------------------------------------------------------------------------------
+THEA — Theatre Arts
+--------------------------------------------------------------------------------
+1. Senior Spring light load (9 units):
+   The catalog plan of study places only TH 4461 (Senior Project) and one
+   UD elective in Senior Spring (9u total), with the bulk of free electives
+   in Senior Fall (18u). This asymmetry matches the official flowchart.
+
+2. Junior Spring free elective (2 units):
+   To reach exactly 120 total units, Junior Spring includes a 2-unit free
+   elective tile rather than a standard 3-unit slot. This reflects the
+   catalog's "14 units free elective" constraint with GE 5C (1u lab) consuming
+   the remainder.
+
+3. Slash-choice tile prerequisites:
+   TH 3325/3330 (Costume Construction II or Stagecraft II) logically requires
+   TH 2225 (Costume I) or TH 2230 (Stagecraft I) respectively, but the slash
+   tile cannot express conditional prerequisites. No prerequisite was set for
+   this tile.
+
+4. GE Upper-Division Area 3 satisfied by TH 3305:
+   TH 3305 (Diversity in U.S. Theatre) satisfies UD GE 3 (Arts) as a
+   double-counted major course. No standalone UD GE 3 tile is in the flowchart.
+
+5. No concentrations:
+   The Theatre Arts BA has no formal concentrations, emphases, or tracks
+   in the 2026-2028 catalog.
+
+6. TH 2285 and TH 4480 unit counts:
+   Internship courses (TH 2285, TH 4480) had unspecified units in the catalog
+   listing. Both were modeled at 3 units consistent with other TH electives.
+
+--------------------------------------------------------------------------------
+LIBS — Liberal Studies
+--------------------------------------------------------------------------------
+1. Mathematics and English concentrations are 14 units (vs 12u base):
+   Math concentration requires MATH 1261(4u)+MATH 1262(4u)+MATH 2031(3u)+upper_div(3u) = 14u.
+   English requires ENGL 3311(3u)+ENGL 3392(4u)+ENGL 3393/4424(4u)+am_lit(3u) = 14u.
+   Base concentration slots are 3u each (12u). When these concentrations are selected,
+   the flowchart tile unit changes create a 2u discrepancy vs the 120u base total.
+   Practically, the free elective in Senior Spring reduces from 3u to 1u for these
+   concentrations — not yet modeled in slot overrides.
+
+2. TESOL concentration has 5 courses (13u):
+   The TESOL concentration lists ENGL 4499 (Practicum, 1u) as a 5th course beyond
+   the 4 modeled slots. ENGL 4499 is not represented in the slot override model.
+   Students must take it separately. Noted as ambiguity.
+
+3. Human Development concentration unit variance:
+   CON_EL2 is 4u (child development course) and CON_EL4 is 2u (any CD course),
+   vs the base 3u+3u. Net concentration total remains 12u, but semester totals shift:
+   JS gains 1u, SeS loses 1u when HD concentration is selected.
+
+4. Science concentration unit range:
+   The Science concentration requires 7-8u minimum from chemistry/physics core courses
+   plus 4-6u approved science electives. Exact total is variable (11-14u). Modeled
+   as 4 slots (3+4+3+3 ≈ 13u) with the core slot at 4u and three 3u approved electives.
+
+5. Human Development "Any CD Course" is 2 units:
+   The catalog specifies "Any CD course (2 units)" for the last HD concentration slot.
+   Most CD courses are 3-4 units; the 2u constraint means students must find a 2-unit
+   activity or lab section. Modeled as a dynamic CD picker with the 2u unit constraint
+   noted in the title.
+
+6. Many GE areas satisfied by major/support courses:
+   LIBS has only 8 standalone GE tiles (24u) because GE areas 2, 3A, 3B, 4A, 4B,
+   5A, and 5C are satisfied by required support/major courses. This is unusual but
+   matches the catalog explicitly.
+
+7. Field Experience units (LS 2230 = 2u, LS 3250 = 2u):
+   Both field experience courses are 2-unit courses, creating non-standard semester
+   totals (FF=14u, SoS=15u with 2u tiles). These match the official catalog plan.
+
+8. Environmental Education concentration variable units:
+   The Cultural/Social and Ecological components each list "3-4 unit" courses. Modeled
+   as 3u placeholders; actual course choice may be 3 or 4 units.
+
+--------------------------------------------------------------------------------
+DSCI — Dairy Science
+--------------------------------------------------------------------------------
+- DSCI 2230 title in semester catalog: "General Dairy Husbandry" (3 units, FF). Confirms core intro course.
+- Approved elective slots (6 × 3u = 18u): catalog lists broad ASCI/DSCI category with advisor approval. Modeled as dynamic picker for all ASCI/DSCI levels 1000–4999.
+- Senior project slot (2u in SeS): three options — ASCI 4477 Research Experience, ASCI 4478 Advanced Internship, ASCI 4479 Current Issues. Modeled as static 3-option picker.
+- Upper-division DSCI elective slots (2 × 3u): four catalog options (DSCI 4401, 4402, 4410, 4412).
+- Free elective (4u in SeF): fully unrestricted, no picker.
+- GE 5A satisfied by CHEM 1120, GE 5B/5C satisfied by BIO 1151 — those courses are categorized as "support" not "ge".
+- GE 2 satisfied by MATH 1006 — MATH 1006 categorized as "support".
+- Term placements for some support courses (ASCI 3302, 3363, 3340) inferred from standard ASCI course sequencing; catalog flowchart plan confirmed.
+- No concentrations exist for this major.
+
+--------------------------------------------------------------------------------
+AGS — Agricultural Science (Agricultural Engineering Technology concentration): no concentration-specific footnotes found — tips pending review.
+AGS — Agricultural Science (Agribusiness concentration): no concentration-specific footnotes found — tips pending review.
+AGS — Agricultural Science (Animal Science concentration): no concentration-specific footnotes found — tips pending review.
+AGS — Agricultural Science (Plant, Crop, and Soil Science concentration): no concentration-specific footnotes found — tips pending review.
+AGS — Agricultural Science (Forestry and Natural Resources concentration): no concentration-specific footnotes found — tips pending review.
+AGS — Agricultural Science (Ornamental Horticulture concentration): no concentration-specific footnotes found — tips pending review.
+
+--------------------------------------------------------------------------------
+AD — Art and Design (Concentration Not Yet Declared): no concentration-specific footnotes found — tips pending review.
+POLS — Political Science (Concentration Not Yet Declared): no concentration-specific footnotes found — tips pending review.
+POLS — Political Science (Individualized Course of Study concentration): no concentration-specific footnotes found — tips pending review.
+PSY — Psychology (General Curriculum concentration): no concentration-specific footnotes found — tips pending review.
+
+--------------------------------------------------------------------------------
+KINE — Kinesiology (Exercise Science concentration): no concentration-specific footnotes found — tips pending review.
+KINE — Kinesiology (Health Promotion concentration): no concentration-specific footnotes found — tips pending review.
+KINE — Kinesiology (Sport Science concentration): no concentration-specific footnotes found — tips pending review.
+
+--------------------------------------------------------------------------------
+MATH — Mathematics (General Mathematics concentration): no concentration-specific footnotes found — tips pending review.
+MATH — Mathematics (Applied Mathematics concentration): no concentration-specific footnotes found — tips pending review.
+MATH — Mathematics (Teaching Mathematics concentration): no concentration-specific footnotes found — tips pending review.
+
+--------------------------------------------------------------------------------
+JOUR — Journalism (Undeclared / General): no concentration-specific footnotes found — tips pending review.
+JOUR — Journalism (Media Innovation concentration): no concentration-specific footnotes found — tips pending review.
+JOUR — Journalism (News concentration): no concentration-specific footnotes found — tips pending review.
+JOUR — Journalism (Public Relations concentration): no concentration-specific footnotes found — tips pending review.
+JOUR — Journalism (Individualized Course of Study concentration): no concentration-specific footnotes found — tips pending review.
+
+--------------------------------------------------------------------------------
+CHEM — Chemistry (Polymers and Coatings concentration): no concentration-specific footnotes found — all footnotes are general and already captured in the major-level notes.
+BUS — Business Administration (Accounting concentration): no concentration-specific footnotes found — tips pending review.
+BUS — Business Administration (Information Systems and Analytics concentration): no concentration-specific footnotes found — tips pending review.
+
+--------------------------------------------------------------------------------
+FSN — Food Science and Nutrition (General Food Science concentration): no concentration-specific footnotes found — tips pending review.
+FSN — Food Science and Nutrition (Culinology concentration): no concentration-specific footnotes found — tips pending review.
+FSN — Food Science and Nutrition (Food Safety concentration): no concentration-specific footnotes found — tips pending review.
+FSN — Food Science and Nutrition (Sustainable Food Technology concentration): no concentration-specific footnotes found — tips pending review.
+
+--------------------------------------------------------------------------------
+SOC — Sociology (Undeclared / General concentration): no concentration-specific footnotes found — tips pending review.
+SOC — Sociology (Individualized Course of Study concentration): no concentration-specific footnotes found — tips pending review.
+
+--------------------------------------------------------------------------------
+WVIT — Wine and Viticulture (Enology concentration): no concentration-specific footnotes found — tips pending review.
+WVIT — Wine and Viticulture (Viticulture concentration): no concentration-specific footnotes found — tips pending review.
+WVIT — Wine and Viticulture (Wine Business concentration): no concentration-specific footnotes found — tips pending review.
+
+--------------------------------------------------------------------------------
+EIM — Experience and Event Management (Event Planning and Management concentration): no concentration-specific footnotes found — all footnotes are program-wide and captured in major-level notes.
+EIM — Experience and Event Management (Sport and Recreation Management concentration): no concentration-specific footnotes found — all footnotes are program-wide and captured in major-level notes.
+EIM — Experience and Event Management (Tourism, Hospitality, and Destination Management concentration): no concentration-specific footnotes found — all footnotes are program-wide and captured in major-level notes.
+
+--------------------------------------------------------------------------------
+GRC — Graphic Communication (Individualized Course of Study concentration): no concentration-specific footnotes found — tips pending review.
+
+--------------------------------------------------------------------------------
+COMS — Communication Studies (Culture, Identity, and Power focus area): no concentration-specific footnotes found — all footnotes are program-wide and captured in major-level notes.
+COMS — Communication Studies (Media and Technology focus area): no concentration-specific footnotes found — all footnotes are program-wide and captured in major-level notes.
+COMS — Communication Studies (Persuasion and Social Influence focus area): no concentration-specific footnotes found — all footnotes are program-wide and captured in major-level notes.
+COMS — Communication Studies (Politics, Advocacy, and Civic Engagement focus area): no concentration-specific footnotes found — all footnotes are program-wide and captured in major-level notes.
+COMS — Communication Studies (Relationships, Organizations, and Socialization focus area): no concentration-specific footnotes found — all footnotes are program-wide and captured in major-level notes.
+
+--------------------------------------------------------------------------------
+ENVM — Environmental Management and Protection (Conservation Science and Management concentration): no concentration-specific footnotes found — all footnotes are program-wide and captured in major-level notes.
+ENVM — Environmental Management and Protection (Corporate Environmental Management concentration): no concentration-specific footnotes found — all footnotes are program-wide and captured in major-level notes.
+ENVM — Environmental Management and Protection (Environmental Data Science concentration): no concentration-specific footnotes found — all footnotes are program-wide and captured in major-level notes.
+ENVM — Environmental Management and Protection (Environmental Law, Justice and Policy concentration): no concentration-specific footnotes found — all footnotes are program-wide and captured in major-level notes.
+ENVM — Environmental Management and Protection (Sustainable Agriculture concentration): no concentration-specific footnotes found — all footnotes are program-wide and captured in major-level notes.
+ENVM — Environmental Management and Protection (Sustainable Urban Development and Planning concentration): no concentration-specific footnotes found — all footnotes are program-wide and captured in major-level notes.
+ENVM — Environmental Management and Protection (Water Science and Management concentration): no concentration-specific footnotes found — all footnotes are program-wide and captured in major-level notes.
+
+--------------------------------------------------------------------------------
+ANTGEOG — Anthropology and Geography (Individualized Course of Study concentration): no concentration-specific footnotes found — tips pending review.
+
+--------------------------------------------------------------------------------
+BMED — Biomedical Engineering (Concentration Not Yet Declared): no concentration-specific footnotes found — all footnotes are program-wide and captured in major-level notes.
+BMED — Biomedical Engineering (Bioinstrumentation concentration): no concentration-specific footnotes found — all footnotes are program-wide and captured in major-level notes.
+BMED — Biomedical Engineering (Cell and Tissue Engineering concentration): no concentration-specific footnotes found — all footnotes are program-wide and captured in major-level notes.
+BMED — Biomedical Engineering (Mechanical Design concentration): no concentration-specific footnotes found — all footnotes are program-wide and captured in major-level notes.
+BMED — Biomedical Engineering (Individualized Course of Study concentration): no concentration-specific footnotes found — all footnotes are program-wide and captured in major-level notes.
+
+--------------------------------------------------------------------------------
+BIOC — Biochemistry (General Biochemistry concentration): no concentration-specific footnotes found — all footnotes are program-wide and captured in major-level notes.
+BIOC — Biochemistry (Polymers and Coatings concentration): no concentration-specific footnotes found — all footnotes are program-wide and captured in major-level notes.
+
+--------------------------------------------------------------------------------
+AERO — Aerospace Engineering (Concentration Not Yet Declared): no concentration-specific footnotes found — tips pending review.
+AERO — Aerospace Engineering (Aeronautics concentration): no concentration-specific footnotes found — tips pending review.
+AERO — Aerospace Engineering (Astronautics concentration): no concentration-specific footnotes found — tips pending review.
+
+--------------------------------------------------------------------------------
+CE — Civil Engineering (General Civil Engineering concentration): no concentration-specific footnotes found — tips pending review.
+CE — Civil Engineering (Construction Engineering concentration): no concentration-specific footnotes found — tips pending review.
+CE — Civil Engineering (Geotechnical Engineering concentration): no concentration-specific footnotes found — tips pending review.
+CE — Civil Engineering (Structural Engineering concentration): no concentration-specific footnotes found — tips pending review.
+CE — Civil Engineering (Transportation Engineering concentration): no concentration-specific footnotes found — tips pending review.
+CE — Civil Engineering (Water Resources Engineering concentration): no concentration-specific footnotes found — tips pending review.
+
+--------------------------------------------------------------------------------
+CPE — Computer Engineering (Computer Architecture concentration): no concentration-specific footnotes found — tips pending review.
+CPE — Computer Engineering (Computer Systems concentration): no concentration-specific footnotes found — tips pending review.
+CPE — Computer Engineering (Embedded Systems concentration): no concentration-specific footnotes found — tips pending review.
+CPE — Computer Engineering (Robotics and Autonomous Systems concentration): no concentration-specific footnotes found — tips pending review.
+CPE — Computer Engineering (Privacy and Security concentration): no concentration-specific footnotes found — tips pending review.
+
+--------------------------------------------------------------------------------
+ME — Mechanical Engineering (General Curriculum concentration): no concentration-specific footnotes found — tips pending review.
+ME — Mechanical Engineering (Energy Resources concentration): no concentration-specific footnotes found — tips pending review.
+ME — Mechanical Engineering (Sustainable Technology for the Built Environment (HVAC&R) concentration): no concentration-specific footnotes found — tips pending review.
+ME — Mechanical Engineering (Mechatronics concentration): no concentration-specific footnotes found — tips pending review.
+ME — Mechanical Engineering (Manufacturing concentration): no concentration-specific footnotes found — tips pending review.
+
+--------------------------------------------------------------------------------
+ECON — Economics (General Curriculum concentration): no concentration-specific footnotes found — tips pending review.
+
+--------------------------------------------------------------------------------
+LIBS — Liberal Studies (No Concentration Selected): no concentration-specific footnotes found — tips pending review.
+LIBS — Liberal Studies (Environmental Education concentration): no concentration-specific footnotes found — tips pending review.
+LIBS — Liberal Studies (Human Development concentration): no concentration-specific footnotes found — tips pending review.
+LIBS — Liberal Studies (Mathematics concentration): no concentration-specific footnotes found — tips pending review.
+LIBS — Liberal Studies (English concentration): no concentration-specific footnotes found — tips pending review.
+LIBS — Liberal Studies (Science concentration): no concentration-specific footnotes found — tips pending review.
+LIBS — Liberal Studies (Social Science concentration): no concentration-specific footnotes found — tips pending review.
+LIBS — Liberal Studies (Teaching English to Speakers of Other Languages (TESOL) concentration): no concentration-specific footnotes found — tips pending review.
+LIBS — Liberal Studies (Individualized Course of Study concentration): no concentration-specific footnotes found — tips pending review.
+
+--------------------------------------------------------------------------------
+NUT — Nutrition (No Concentration Selected): no concentration-specific footnotes found — tips pending review.
+NUT — Nutrition (Dietetics concentration): no concentration-specific footnotes found — tips pending review.
+
+--------------------------------------------------------------------------------
+PH — Public Health (No Concentration Selected): no concentration-specific footnotes found — tips pending review.
+PH — Public Health (Community Health Promotion concentration): no concentration-specific footnotes found — tips pending review.
+
+--------------------------------------------------------------------------------
+PHIL — Philosophy (No Concentration Selected): no concentration-specific footnotes found — tips pending review.
+
+--------------------------------------------------------------------------------
+PLSC — Plant Sciences (No Concentration Selected): no concentration-specific footnotes found — tips pending review.
