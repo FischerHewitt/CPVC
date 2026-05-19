@@ -474,17 +474,15 @@ export default function FlowchartPage() {
           borderBottom: "2px solid rgba(255,255,255,0.18)",
         }}
       >
-        <button onClick={() => router.push("/")} className="text-white/60 hover:text-white text-sm font-mono">← Back</button>
-        <div className="text-white font-bold text-sm font-mono">{session.studentName}</div>
-        <div className="text-white/50 text-sm">·</div>
-        <div className="text-white/75 text-sm font-mono">{flowchart.major}</div>
+        <button onClick={() => router.push("/")} className="text-white/60 hover:text-white text-sm font-mono flex-shrink-0">← Back</button>
+        <div className="text-white font-bold text-sm font-mono truncate">{flowchart.major}</div>
         {concentrations.length > 0 && (
           <>
-            <div className="text-white/35 text-sm">·</div>
+            <div className="text-white/35 text-sm flex-shrink-0">·</div>
             <select
               value={session.concentration ?? "none"}
               onChange={(e) => changeConcentration(e.target.value)}
-              className="text-sm rounded px-2 py-0.5 font-mono"
+              className="text-sm rounded px-2 py-0.5 font-mono min-w-0 max-w-[180px] sm:max-w-none"
               style={{ background: "rgba(255,255,255,0.12)", color: "white", border: "1px solid rgba(255,255,255,0.25)" }}
             >
               {concentrations.map((c) => (
@@ -495,57 +493,57 @@ export default function FlowchartPage() {
             </select>
           </>
         )}
-        <div className="ml-auto flex items-center gap-4">
-          <Link href="/support" className="text-white/60 hover:text-white text-sm transition-colors font-mono">Support</Link>
+        <div className="ml-auto flex items-center gap-3 flex-shrink-0">
+          <Link href="/support" className="text-white/60 hover:text-white text-sm transition-colors font-mono hidden sm:inline">Support</Link>
           <div className="flex items-center gap-2">
             <Image src="/mb-logo.png" alt="Mustang Blueprints" width={28} height={28} className="rounded flex-shrink-0" style={{ border: "2px solid rgba(255,255,255,0.85)" }} />
-            <span className="text-white font-bold text-xs font-mono tracking-widest uppercase">Mustang Blueprints</span>
+            <span className="text-white font-bold text-xs font-mono tracking-widest uppercase hidden md:inline">Mustang Blueprints</span>
           </div>
         </div>
       </header>
 
-      <main className="flex-1 p-6">
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-5">
-          <div className="mb-5 grid grid-cols-3 items-center gap-2">
-            <div className="flex items-baseline gap-3">
-              <h1 className="text-lg font-bold" style={{ color: "var(--cp-green)" }}>
+      <main className="flex-1 p-2 sm:p-6">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-3 sm:p-5">
+          <div className="mb-4 flex flex-wrap items-center gap-2">
+            <div className="flex items-baseline gap-2 mr-auto">
+              <h1 className="text-base sm:text-lg font-bold" style={{ color: "var(--cp-green)" }}>
                 {flowchart.major}
               </h1>
-              <span className="text-gray-400 text-sm hidden sm:inline">4-Year Semester Flowchart</span>
+              <span className="text-gray-400 text-xs hidden sm:inline">4-Year Semester Flowchart</span>
             </div>
-            <div className="flex justify-center gap-2">
+            <div className="flex gap-1.5 sm:gap-2">
               <button
                 onClick={() => setChecklistOpen(true)}
-                className="rounded-lg px-5 py-2 text-sm font-bold text-white shadow-sm transition-colors hover:opacity-90 active:scale-[0.98]"
+                className="rounded-lg px-3 sm:px-5 py-1.5 sm:py-2 text-xs sm:text-sm font-bold text-white shadow-sm transition-colors hover:opacity-90 active:scale-[0.98]"
                 style={{ background: "var(--cp-green)" }}
               >
                 Course Checklist
               </button>
               <button
                 onClick={() => setTipsOpen((o) => !o)}
-                className="rounded-lg px-5 py-2 text-sm font-bold shadow-sm transition-colors hover:opacity-90 active:scale-[0.98]"
+                className="rounded-lg px-3 sm:px-5 py-1.5 sm:py-2 text-xs sm:text-sm font-bold shadow-sm transition-colors hover:opacity-90 active:scale-[0.98]"
                 style={{ background: tipsOpen ? "#005fa3" : "var(--cp-green)", color: "white" }}
               >
                 Tips
               </button>
               <button
                 onClick={() => setMyNotesOpen((o) => !o)}
-                className="rounded-lg px-5 py-2 text-sm font-bold shadow-sm transition-colors hover:opacity-90 active:scale-[0.98]"
+                className="rounded-lg px-3 sm:px-5 py-1.5 sm:py-2 text-xs sm:text-sm font-bold shadow-sm transition-colors hover:opacity-90 active:scale-[0.98]"
                 style={{ background: myNotesOpen ? "#005fa3" : "var(--cp-green)", color: "white" }}
               >
                 My Notes
               </button>
             </div>
-            <div className="flex justify-end gap-2">
+            <div className="flex gap-1.5 sm:gap-2">
               <button
                 onClick={downloadSession}
-                className="rounded border border-gray-200 px-2.5 py-1 text-xs text-gray-400 transition-colors hover:border-gray-300 hover:text-gray-600"
+                className="rounded border border-gray-200 px-2 sm:px-2.5 py-1 text-xs text-gray-400 transition-colors hover:border-gray-300 hover:text-gray-600"
               >
                 Download
               </button>
               <button
                 onClick={resetCourseLayout}
-                className="rounded border border-gray-200 px-2.5 py-1 text-xs text-gray-400 transition-colors hover:border-gray-300 hover:text-gray-600"
+                className="rounded border border-gray-200 px-2 sm:px-2.5 py-1 text-xs text-gray-400 transition-colors hover:border-gray-300 hover:text-gray-600 hidden sm:inline"
               >
                 Reset Layout
               </button>

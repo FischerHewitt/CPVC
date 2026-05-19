@@ -337,6 +337,24 @@ export default function HomePage() {
             requirements you&apos;ve already satisfied — and who&apos;s teaching what&apos;s left.
           </p>
 
+          {/* How it works */}
+          <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            {[
+              { icon: "📄", step: "1", title: "Upload your file", desc: "Drop your unofficial transcript, CSV course list, or a saved .mbp flowchart." },
+              { icon: "✅", step: "2", title: "See your progress", desc: "Completed courses light up automatically. Prerequisites unlock as you go." },
+              { icon: "🗺️", step: "3", title: "Plan ahead", desc: "Check off in-progress classes, explore concentrations, and map out remaining GEs." },
+            ].map(({ icon, step, title, desc }) => (
+              <div key={step} className="flex-1 bg-white rounded-xl border border-gray-200 shadow-sm px-4 py-3 flex gap-3 items-start">
+                <span className="text-2xl leading-none mt-0.5">{icon}</span>
+                <div>
+                  <div className="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-0.5">Step {step}</div>
+                  <div className="text-sm font-semibold text-gray-800 mb-0.5">{title}</div>
+                  <div className="text-xs text-gray-500 leading-relaxed">{desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
           <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 flex flex-col gap-5">
             {/* Drop zone */}
             <div
@@ -503,9 +521,15 @@ export default function HomePage() {
       </main>
 
       {/* Disclaimer */}
-      <footer className="px-6 py-4 text-center text-xs text-gray-400 border-t border-gray-100">
-        Mustang Blueprints is an independent student project and is <strong>not affiliated with or endorsed by Cal Poly San Luis Obispo</strong>.
-        Course requirements change — always verify your plan with your academic advisor.
+      <footer className="px-6 py-4 text-center text-xs text-gray-400 border-t border-gray-100 space-y-1">
+        <p>
+          Mustang Blueprints is an independent student project and is{" "}
+          <strong>not affiliated with or endorsed by Cal Poly San Luis Obispo</strong>.
+          Course requirements change — always verify your plan with your academic advisor.
+        </p>
+        <p>
+          <Link href="/legal" className="underline hover:text-gray-600 transition-colors">Privacy &amp; Legal</Link>
+        </p>
       </footer>
     </div>
   );

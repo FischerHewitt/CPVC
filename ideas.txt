@@ -1,0 +1,26 @@
+IDEAS
+=====
+
+Compare Major
+-------------
+Allow users to view two majors side-by-side on the same screen. Could show
+overlapping courses (e.g. shared GEs or support courses), unit differences,
+and which completed courses count toward each major. Useful for students
+deciding between majors or considering a double major.
+
+Concentration Visual Differentiation
+-------------------------------------
+When a student selects a concentration for majors that use elective pools
+(e.g. ENVM, KINE, MATH), the flowchart grid tiles currently do not change
+visually — only the Course Checklist elective options update. A future
+improvement could show the concentration name on the tile header, use a
+distinct tile color or badge, or display a "N courses from [concentration]
+list" summary directly on the placeholder tile so the selected concentration
+is more obviously reflected in the grid.
+
+Minor
+-----
+Add support for minors alongside a primary major. A minor would show up as
+an additional set of course tiles (possibly a separate row group or overlay)
+and track completion independently. Would need minor data added to the
+backend similar to how concentrations work.
