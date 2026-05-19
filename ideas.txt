@@ -1,6 +1,16 @@
 IDEAS
 =====
 
+Home Page Redesign
+------------------
+The current landing page is functional but minimal — it goes straight to the
+upload form. A proper marketing/home page would include a hero section with
+a product screenshot or demo animation, a feature highlights section, a
+"who this is for" blurb (incoming Cal Poly students, current students mapping
+out remaining requirements, students considering a major change), and social
+proof (e.g. number of majors supported). The upload form could live below the
+fold or on a separate /start route. Needs design mockup before implementation.
+
 Compare Major
 -------------
 Allow users to view two majors side-by-side on the same screen. Could show

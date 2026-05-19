@@ -338,21 +338,22 @@ export default function HomePage() {
           </p>
 
           {/* How it works */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-8">
-            {[
-              { icon: "📄", step: "1", title: "Upload your file", desc: "Drop your unofficial transcript, CSV course list, or a saved .mbp flowchart." },
-              { icon: "✅", step: "2", title: "See your progress", desc: "Completed courses light up automatically. Prerequisites unlock as you go." },
-              { icon: "🗺️", step: "3", title: "Plan ahead", desc: "Check off in-progress classes, explore concentrations, and map out remaining GEs." },
-            ].map(({ icon, step, title, desc }) => (
-              <div key={step} className="flex-1 bg-white rounded-xl border border-gray-200 shadow-sm px-4 py-3 flex gap-3 items-start">
-                <span className="text-2xl leading-none mt-0.5">{icon}</span>
-                <div>
-                  <div className="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-0.5">Step {step}</div>
-                  <div className="text-sm font-semibold text-gray-800 mb-0.5">{title}</div>
-                  <div className="text-xs text-gray-500 leading-relaxed">{desc}</div>
-                </div>
-              </div>
-            ))}
+          <div className="bg-white rounded-2xl border border-gray-200 shadow-sm px-6 py-4 mb-6">
+            <p className="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-3">How it works</p>
+            <ul className="flex flex-col gap-3">
+              {[
+                { icon: "📄", title: "Upload your file", desc: "Drop your unofficial transcript, CSV course list, or a saved .mbp flowchart." },
+                { icon: "✅", title: "See your progress", desc: "Completed courses light up automatically. Prerequisites unlock as you go." },
+                { icon: "🗺️", title: "Plan ahead", desc: "Check off in-progress classes, explore concentrations, and map out remaining GEs." },
+              ].map(({ icon, title, desc }) => (
+                <li key={title} className="flex items-start gap-3">
+                  <span className="text-lg leading-none mt-0.5 flex-shrink-0">{icon}</span>
+                  <span className="text-sm text-gray-600 leading-relaxed">
+                    <span className="font-semibold text-gray-800">{title} — </span>{desc}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 flex flex-col gap-5">
