@@ -20,12 +20,18 @@ export interface ColumnLabel {
   term: string;
 }
 
+export interface FlowchartTipSection {
+  title: string;
+  items: string[];
+}
+
 export interface Flowchart {
   major: string;
   code: string;
   total_units: number;
   courses: Course[];
   columns: ColumnLabel[];
+  notes?: FlowchartTipSection[];
 }
 
 export interface MajorOption {
@@ -43,6 +49,7 @@ export interface TranscriptSession {
   plannedGECourses?: Record<string, string>;
   plannedGEUnits?: Record<string, number>;
   concentration?: string;
+  notes?: string;
 }
 
 export interface ConcentrationSlotOverride {
@@ -58,6 +65,8 @@ export interface Concentration {
   id: string;
   label: string;
   slot_overrides: Record<string, ConcentrationSlotOverride>;
+  extra_courses?: Course[];
+  tips?: string[];
 }
 
 export interface Professor {

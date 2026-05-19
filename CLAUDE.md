@@ -43,6 +43,28 @@ Claude will follow this checklist:
    Never leave this step unresolved. A major is not complete until
    concentrations are either added or confirmed absent.
 
+5a. **REQUIRED — add catalog tips to the flowchart entry:**
+    While on the catalog page, look for footnotes or numbered notes that
+    appear below the course requirements table or the Plan of Study Grid.
+    These are the superscript-referenced footnotes (¹²³…) explaining rules
+    about the flowchart (e.g. unit minimums, course restrictions, GE overlaps,
+    upper-division requirements).
+    - Organize them into named sections in the `"notes"` field of the major's
+      `FLOWCHARTS` entry. Each section is `{"title": "...", "items": [...]}`.
+    - Use `"Flowchart Tips"` for structural rules about the flowchart layout
+      (term placement, elective restrictions, prerequisite notes, unit floors).
+    - Use `"GE Tips"` for notes about courses that satisfy both a major/support
+      requirement and a GE area simultaneously.
+    - Add other section titles if the catalog groups notes differently.
+    - If there are no catalog footnotes, omit the `"notes"` key entirely.
+    - **Also look for concentration-specific footnotes or notes** (often on the
+      concentration detail page or a sub-table). If found, add a `"tips"`
+      key (list of strings) directly to the matching concentration entry in
+      `concentrations.py`. These tips will automatically appear under a
+      "[Concentration Name] Tips" headline in the Tips panel only when that
+      concentration is selected — do not duplicate them in the main flowchart
+      notes.
+
 6. **REQUIRED — wire checklist/sidebar course options for every selectable
    placeholder:**
    - Any slash-choice, support elective, technical elective, concentration

@@ -1,11 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { loadSession, saveSession, persistSession } from "@/lib/session";
 import { getFlowchart, inferPrerequisites, getSession, getGEAreaMap, getConcentrations, syncSession } from "@/lib/api";
+import { mbpFilename } from "@/lib/mbp";
 import type { Course, CourseStatus, Flowchart, GEAreaMap, TranscriptSession, Concentration } from "@/lib/types";
 import FlowchartGrid from "@/components/FlowchartGrid";
 import CourseDetailPanel from "@/components/CourseDetailPanel";
@@ -26,6 +27,13 @@ export default function FlowchartPage() {
   const [selectedElectiveCourse, setSelectedElectiveCourse] = useState<Course | null>(null);
   const [geAreaMap, setGEAreaMap] = useState<GEAreaMap>({});
   const [checklistOpen, setChecklistOpen] = useState(false);
+  const [tipsOpen, setTipsOpen] = useState(false);
+  const [tipsPos, setTipsPos] = useState({ x: 32, y: 120 });
+  const tipsDrag = useRef<{ startX: number; startY: number; panelX: number; panelY: number } | null>(null);
+  const [myNotesOpen, setMyNotesOpen] = useState(false);
+  const [myNotesPos, setMyNotesPos] = useState({ x: 80, y: 160 });
+  const myNotesDrag = useRef<{ startX: number; startY: number; panelX: number; panelY: number } | null>(null);
+  const [myNotesText, setMyNotesText] = useState("");
   const [concentrations, setConcentrations] = useState<Concentration[]>([]);
   const [error, setError] = useState<string | null>(null);
 
@@ -40,13 +48,18 @@ export default function FlowchartPage() {
       return flowchart;
     }
 
+    const overriddenCourses = flowchart.courses.map((course) => {
+      const override = activeConcentration.slot_overrides[course.id];
+      if (!override) return course;
+      return { ...course, ...override };
+    });
+    const extraCourses = (activeConcentration.extra_courses ?? []).map((c) => ({
+      elective_key: undefined,
+      ...c,
+    }));
     return {
       ...flowchart,
-      courses: flowchart.courses.map((course) => {
-        const override = activeConcentration.slot_overrides[course.id];
-        if (!override) return course;
-        return { ...course, ...override };
-      }),
+      courses: [...overriddenCourses, ...extraCourses],
     };
   }, [activeConcentration, flowchart]);
 
@@ -67,6 +80,7 @@ export default function FlowchartPage() {
       if (s && localSession) {
         s = {
           ...s,
+          concentration: s.concentration ?? localSession.concentration,
           coursePositions: Object.keys(s.coursePositions ?? {}).length > 0
             ? s.coursePositions
             : localSession.coursePositions,
@@ -80,7 +94,10 @@ export default function FlowchartPage() {
 
       // Write backend data into localStorage so it's available offline
       saveSession(s);
-      if (!cancelled) setSession(s);
+      if (!cancelled) {
+        setSession(s);
+        setMyNotesText(s.notes ?? "");
+      }
 
       // Fire all background fetches in parallel
       getGEAreaMap().then((map) => { if (!cancelled) setGEAreaMap(map); });
@@ -418,6 +435,16 @@ export default function FlowchartPage() {
     persistSession(nextSession, { course_positions: {} });
   };
 
+  const downloadSession = () => {
+    const blob = new Blob([JSON.stringify(session, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = mbpFilename(session);
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
   const changeConcentration = (newId: string) => {
     const nextSession = { ...session, concentration: newId === "none" ? undefined : newId };
     setSession(nextSession);
@@ -486,7 +513,7 @@ export default function FlowchartPage() {
               </h1>
               <span className="text-gray-400 text-sm hidden sm:inline">4-Year Semester Flowchart</span>
             </div>
-            <div className="flex justify-center">
+            <div className="flex justify-center gap-2">
               <button
                 onClick={() => setChecklistOpen(true)}
                 className="rounded-lg px-5 py-2 text-sm font-bold text-white shadow-sm transition-colors hover:opacity-90 active:scale-[0.98]"
@@ -494,8 +521,28 @@ export default function FlowchartPage() {
               >
                 Course Checklist
               </button>
+              <button
+                onClick={() => setTipsOpen((o) => !o)}
+                className="rounded-lg px-5 py-2 text-sm font-bold shadow-sm transition-colors hover:opacity-90 active:scale-[0.98]"
+                style={{ background: tipsOpen ? "#005fa3" : "var(--cp-green)", color: "white" }}
+              >
+                Tips
+              </button>
+              <button
+                onClick={() => setMyNotesOpen((o) => !o)}
+                className="rounded-lg px-5 py-2 text-sm font-bold shadow-sm transition-colors hover:opacity-90 active:scale-[0.98]"
+                style={{ background: myNotesOpen ? "#005fa3" : "var(--cp-green)", color: "white" }}
+              >
+                My Notes
+              </button>
             </div>
-            <div className="flex justify-end">
+            <div className="flex justify-end gap-2">
+              <button
+                onClick={downloadSession}
+                className="rounded border border-gray-200 px-2.5 py-1 text-xs text-gray-400 transition-colors hover:border-gray-300 hover:text-gray-600"
+              >
+                Download
+              </button>
               <button
                 onClick={resetCourseLayout}
                 className="rounded border border-gray-200 px-2.5 py-1 text-xs text-gray-400 transition-colors hover:border-gray-300 hover:text-gray-600"
@@ -570,6 +617,104 @@ export default function FlowchartPage() {
       <footer className="px-6 py-3 text-center text-xs text-gray-400 border-t border-gray-100 bg-white">
         Mustang Blueprints is an independent student project — <strong>not affiliated with Cal Poly</strong>. Always verify your plan with your academic advisor.
       </footer>
+
+      {tipsOpen && (
+        <div
+          className="fixed z-50 flex flex-col rounded-lg border border-gray-200 bg-white shadow-2xl"
+          style={{ left: tipsPos.x, top: tipsPos.y, width: "min(400px, calc(100vw - 2rem))", height: "min(70vh, 480px)", minWidth: "240px", minHeight: "120px", resize: "both", overflow: "hidden" }}
+        >
+          <div
+            className="flex flex-shrink-0 items-center justify-between border-b border-gray-100 px-4 py-3 cursor-grab select-none"
+            onMouseDown={(e) => {
+              tipsDrag.current = { startX: e.clientX, startY: e.clientY, panelX: tipsPos.x, panelY: tipsPos.y };
+              const onMove = (ev: MouseEvent) => {
+                if (!tipsDrag.current) return;
+                setTipsPos({ x: tipsDrag.current.panelX + ev.clientX - tipsDrag.current.startX, y: tipsDrag.current.panelY + ev.clientY - tipsDrag.current.startY });
+              };
+              const onUp = () => { tipsDrag.current = null; window.removeEventListener("mousemove", onMove); window.removeEventListener("mouseup", onUp); };
+              window.addEventListener("mousemove", onMove);
+              window.addEventListener("mouseup", onUp);
+            }}
+          >
+            <h2 className="text-sm font-bold" style={{ color: "var(--cp-green)" }}>Flowchart Tips</h2>
+            <button onClick={() => setTipsOpen(false)} className="text-gray-400 hover:text-gray-600 leading-none ml-4">✕</button>
+          </div>
+          <div className="flex-1 overflow-y-auto px-5 py-4 space-y-5">
+            {(!resolvedFlowchart.notes || resolvedFlowchart.notes.length === 0) && !activeConcentration?.tips?.length ? (
+              <p className="text-sm text-gray-400 italic">No catalog tips available yet.</p>
+            ) : (
+              <>
+                {(resolvedFlowchart.notes ?? []).filter((s) => s.title !== "GE Tips").map((section, si) => (
+                  <div key={si}>
+                    <h3 className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: "var(--cp-green)" }}>{section.title}</h3>
+                    <ol className="space-y-2 list-decimal list-outside pl-4">
+                      {section.items.map((item, i) => (
+                        <li key={i} className="text-sm text-gray-700 leading-relaxed">{item}</li>
+                      ))}
+                    </ol>
+                  </div>
+                ))}
+                {activeConcentration && activeConcentration.tips && activeConcentration.tips.length > 0 && (
+                  <div>
+                    <h3 className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: "var(--cp-green)" }}>{activeConcentration.label} Tips</h3>
+                    <ol className="space-y-2 list-decimal list-outside pl-4">
+                      {activeConcentration.tips.map((item, i) => (
+                        <li key={i} className="text-sm text-gray-700 leading-relaxed">{item}</li>
+                      ))}
+                    </ol>
+                  </div>
+                )}
+                {(resolvedFlowchart.notes ?? []).filter((s) => s.title === "GE Tips").map((section, si) => (
+                  <div key={si}>
+                    <h3 className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: "var(--cp-green)" }}>{section.title}</h3>
+                    <ol className="space-y-2 list-decimal list-outside pl-4">
+                      {section.items.map((item, i) => (
+                        <li key={i} className="text-sm text-gray-700 leading-relaxed">{item}</li>
+                      ))}
+                    </ol>
+                  </div>
+                ))}
+              </>
+            )}
+          </div>
+        </div>
+      )}
+
+      {myNotesOpen && (
+        <div
+          className="fixed z-50 flex flex-col rounded-lg border border-gray-200 bg-white shadow-2xl"
+          style={{ left: myNotesPos.x, top: myNotesPos.y, width: "min(380px, calc(100vw - 2rem))", height: "min(60vh, 440px)", minWidth: "240px", minHeight: "160px", resize: "both", overflow: "hidden" }}
+        >
+          <div
+            className="flex flex-shrink-0 items-center justify-between border-b border-gray-100 px-4 py-3 cursor-grab select-none"
+            onMouseDown={(e) => {
+              myNotesDrag.current = { startX: e.clientX, startY: e.clientY, panelX: myNotesPos.x, panelY: myNotesPos.y };
+              const onMove = (ev: MouseEvent) => {
+                if (!myNotesDrag.current) return;
+                setMyNotesPos({ x: myNotesDrag.current.panelX + ev.clientX - myNotesDrag.current.startX, y: myNotesDrag.current.panelY + ev.clientY - myNotesDrag.current.startY });
+              };
+              const onUp = () => { myNotesDrag.current = null; window.removeEventListener("mousemove", onMove); window.removeEventListener("mouseup", onUp); };
+              window.addEventListener("mousemove", onMove);
+              window.addEventListener("mouseup", onUp);
+            }}
+          >
+            <h2 className="text-sm font-bold" style={{ color: "var(--cp-green)" }}>My Notes</h2>
+            <button onClick={() => setMyNotesOpen(false)} className="text-gray-400 hover:text-gray-600 leading-none ml-4">✕</button>
+          </div>
+          <textarea
+            className="flex-1 w-full resize-none px-4 py-3 text-sm text-gray-700 placeholder-gray-300 focus:outline-none"
+            placeholder="Write anything here — course notes, reminders, questions for your advisor…"
+            value={myNotesText}
+            onChange={(e) => {
+              const text = e.target.value;
+              setMyNotesText(text);
+              const nextSession = { ...session, notes: text };
+              setSession(nextSession);
+              saveSession(nextSession);
+            }}
+          />
+        </div>
+      )}
 
       <ManualCourseChecklist
         open={checklistOpen}
