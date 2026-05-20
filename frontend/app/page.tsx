@@ -231,7 +231,7 @@ export default function HomePage() {
             </div>
             <div className="meta">
               <div><span>Project</span><b>MB-001</b></div>
-              <div><span>Majors</span><b>57 Total</b></div>
+              <div><span>Majors</span><b>65 Total</b></div>
               <div><span>Status</span><b>Live</b></div>
             </div>
           </div>
@@ -252,7 +252,7 @@ export default function HomePage() {
               </div>
               <div style={{ marginTop: "24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px 28px", maxWidth: "560px" }}>
                 <div className="label-strong">✓ No account · No storage</div>
-                <div className="label-strong">✓ Works for all 57 majors</div>
+                <div className="label-strong">✓ Works for all 65 majors</div>
                 <div className="label-strong">✓ PDF or CSV upload</div>
                 <div className="label-strong">✓ Tracks GE + concentrations</div>
               </div>
@@ -428,7 +428,7 @@ export default function HomePage() {
 
               <div className="feat size-md">
                 <div className="feat-label"><span>02 · Coverage</span><span>Scope</span></div>
-                <div className="stat">57</div>
+                <div className="stat">65</div>
                 <div className="stat-sub">Majors supported</div>
                 <p style={{ marginTop: "18px" }}>
                   From Aerospace to Wine &amp; Viticulture. Concentrations, emphases, and tracks all included.
