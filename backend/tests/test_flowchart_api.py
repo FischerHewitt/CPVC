@@ -343,3 +343,41 @@ def test_infer_flowchart_prerequisites_from_completed_course():
     assert "MATH 1262" in inferred
     assert "MATH 142" in inferred
     assert "CSC 3449" not in inferred
+
+
+def test_infer_uses_pre_built_lookup():
+    """infer_from_lookup with the module-level pre-built lookup must produce
+    the same result as infer_completed, which builds the lookup on each call."""
+    from services.inference import build_lookup, infer_completed, infer_from_lookup
+    from routers.flowchart import _ALL_COURSES, _ALL_COURSES_LOOKUP
+
+    completed = {"CSC 3449"}
+    via_list = infer_completed(completed, _ALL_COURSES)
+    via_lookup = infer_from_lookup(completed, _ALL_COURSES_LOOKUP)
+    assert via_list == via_lookup
+
+
+def test_all_courses_lookup_covers_quarter_equivalents():
+    """Every quarter equivalent listed on a tile must appear as a key in the
+    pre-built lookup so transcript course numbers resolve correctly."""
+    from routers.flowchart import _ALL_COURSES, _ALL_COURSES_LOOKUP
+
+    for course in _ALL_COURSES:
+        assert course["course_number"] in _ALL_COURSES_LOOKUP
+        for q in course["quarter_equivalents"]:
+            assert q in _ALL_COURSES_LOOKUP
+
+
+def test_build_courses_cache_is_populated_on_first_call_and_returns_same_object():
+    from routers.electives import _build_courses, _build_courses_cache, _DYNAMIC
+
+    key = next(iter(_DYNAMIC))
+    cfg = _DYNAMIC[key]
+    cache_key = (tuple(cfg["depts"]), cfg["min_level"], cfg["max_level"])
+
+    # Ensure cache is warm from previous test module import; result should be cached
+    first = _build_courses(cfg["depts"], cfg["min_level"], cfg["max_level"])
+    second = _build_courses(cfg["depts"], cfg["min_level"], cfg["max_level"])
+
+    assert first is second  # same list object — cache hit, not rebuilt
+    assert cache_key in _build_courses_cache

@@ -31,8 +31,36 @@ Claude will:
 
 4. Add an entry to the FLOWCHARTS dict at the bottom of flowcharts.py.
 
-5. If the major has concentrations/emphases/tracks, add them to
-   backend/data/concentrations.py following the existing pattern.
+5. REQUIRED -- do not skip or defer: While on the catalog page, look
+   for any concentrations, emphases, tracks, or specializations.
+   - If concentrations exist: add them to backend/data/concentrations.py
+     following the existing pattern before moving on.
+   - If no concentrations exist: confirm this explicitly (note it in your
+     report) and write the test assertion `assert "CODE" not in CONCENTRATIONS`.
+   Never leave this step unresolved. A major is not complete until
+   concentrations are either added or confirmed absent.
+
+5a. REQUIRED -- add catalog tips to the flowchart entry:
+    While on the catalog page, look for footnotes or numbered notes that
+    appear below the course requirements table or the Plan of Study Grid.
+    These are the superscript-referenced footnotes (123...) explaining rules
+    about the flowchart (e.g. unit minimums, course restrictions, GE overlaps,
+    upper-division requirements).
+    - Organize them into named sections in the "notes" field of the major's
+      FLOWCHARTS entry. Each section is {"title": "...", "items": [...]}.
+    - Use "Flowchart Tips" for structural rules about the flowchart layout
+      (term placement, elective restrictions, prerequisite notes, unit floors).
+    - Use "GE Tips" for notes about courses that satisfy both a major/support
+      requirement and a GE area simultaneously.
+    - Add other section titles if the catalog groups notes differently.
+    - If there are no catalog footnotes, omit the "notes" key entirely.
+    - Also look for concentration-specific footnotes or notes (often on the
+      concentration detail page or a sub-table). If found, add a "tips"
+      key (list of strings) directly to the matching concentration entry in
+      concentrations.py. These tips will automatically appear under a
+      "[Concentration Name] Tips" headline in the Tips panel only when that
+      concentration is selected -- do not duplicate them in the main flowchart
+      notes.
 
 6. Wire checklist/sidebar course options for every selectable placeholder:
    - Any slash-choice, support elective, technical elective, concentration
@@ -74,9 +102,24 @@ Claude will:
     The Manual Course Checklist should display rows in this order: Major,
     Support, GE, then Concentration/free-elective items.
 
-11. Do not commit or push when done.
+11. REQUIRED -- log all ambiguities to catalog_ambiguities.txt in the
+    repo root. Append a section for the new major using this format:
 
-12. Report any catalog ambiguities or elective buckets represented as
+        --------------------------------------------------------------------------------
+        [CODE] -- [MAJOR NAME]
+        --------------------------------------------------------------------------------
+        - [Description of ambiguity, e.g. slash-choice tile, unit range variance,
+          broad dynamic bucket, missing catalog info, assumed term placement, etc.]
+        - ...
+
+    If the major has zero ambiguities, append:
+        [CODE] -- [MAJOR NAME]: no ambiguities.
+
+    Do not overwrite existing entries. Always append.
+
+12. Do not commit or push when done.
+
+13. Report any catalog ambiguities or elective buckets represented as
    placeholders.
 
 

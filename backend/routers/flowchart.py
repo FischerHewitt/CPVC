@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from data.flowcharts import FLOWCHARTS
 from data.concentrations import CONCENTRATIONS
-from services.inference import infer_completed
+from services.inference import build_lookup, infer_from_lookup
 from services.layout import sort_course_rows_by_category, align_prereq_chains
 
 router = APIRouter()
@@ -32,6 +32,7 @@ _ALIGNED_FLOWCHARTS = {
 
 # Pre-built once at import time; used by /infer for cross-major prereq chains
 _ALL_COURSES = [c for v in _ALIGNED_FLOWCHARTS.values() for c in v["courses"]]
+_ALL_COURSES_LOOKUP = build_lookup(_ALL_COURSES)
 
 
 @router.get("/majors")
@@ -63,6 +64,6 @@ def infer(major: str, body: dict):
         raise HTTPException(status_code=404, detail=f"No flowchart for major: {major}")
 
     completed: set[str] = set(body.get("completed", []))
-    inferred = infer_completed(completed, _ALL_COURSES)
+    inferred = infer_from_lookup(completed, _ALL_COURSES_LOOKUP)
 
     return {"inferred": sorted(inferred)}

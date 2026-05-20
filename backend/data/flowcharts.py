@@ -3555,6 +3555,418 @@ DSCI_FLOWCHART: list[Course] = [
 DSCI_FLOWCHART = _compact_rows_by_category(DSCI_FLOWCHART)
 
 
+# ─────────────────────────────────────────────────────────────────────────────
+# INDUSTRIAL TECHNOLOGY AND PACKAGING — BS (120 units)
+# Source: catalog.calpoly.edu/business/undergraduate/industrial-technology-packaging-bs/
+# 2 concentrations: Industrial Technology (30u), Packaging (30u).
+# PHYS 1121 satisfies GE 5A/5C; CHEM 1120 satisfies GE (footnote 1).
+# STAT satisfies GE 2; ECON 2001 satisfies GE 4B; ITP 3330 satisfies GE UD2/5.
+# ─────────────────────────────────────────────────────────────────────────────
+ITP_FLOWCHART: list[Course] = [
+    # ── Freshman Fall (col 0, 13u) ─────────────────────────────────────────────
+    {"id": "ITP_1100",      "course_number": "ITP 1100",         "title": "Student Orientation, College Success, and Career Readiness", "units": 1, "category": "major",         "grid_col": 0, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": ["ITP 100"],  "is_placeholder": False},
+    {"id": "ITP_1125",      "course_number": "ITP 1125",         "title": "Introduction to Industrial Technology and Packaging",        "units": 1, "category": "major",         "grid_col": 0, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": ["ITP 125"],  "is_placeholder": False},
+    {"id": "ITP_MATH",      "course_number": "MATH 1261/1267",   "title": "Calculus I or Business Calculus",                            "units": 4, "category": "support",        "grid_col": 0, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": ["MATH 141"], "is_placeholder": True,  "elective_key": "itp_math_choice"},
+    {"id": "ITP_PHYS1121",  "course_number": "PHYS 1121",        "title": "College Physics I (GE 5A/5C)",                               "units": 4, "category": "support",        "grid_col": 0, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": ["PHYS 121"], "is_placeholder": False},
+    {"id": "ITP_GE1A",      "course_number": "GE 1A",            "title": "Written Communication",                                      "units": 3, "category": "ge",            "grid_col": 0, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": [],           "is_placeholder": True},
+    # ── Freshman Spring (col 1, 16u) ──────────────────────────────────────────
+    {"id": "ITP_1150",      "course_number": "ITP 1150",         "title": "Power Systems and Renewable Energy",                         "units": 3, "category": "major",         "grid_col": 1, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": ["ITP 150"],  "is_placeholder": False},
+    {"id": "ITP_2233",      "course_number": "ITP 2233",         "title": "Product Modeling and Communication",                         "units": 3, "category": "major",         "grid_col": 1, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": ["ITP 233"],  "is_placeholder": False},
+    {"id": "ITP_CHEM1120",  "course_number": "CHEM 1120",        "title": "Fundamentals of Chemical Structure and Properties (GE 5A/5C)", "units": 4, "category": "support",      "grid_col": 1, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": ["CHEM 124"], "is_placeholder": False},
+    {"id": "ITP_STAT",      "course_number": "STAT 1110/1210",   "title": "Statistics (GE 2)",                                          "units": 3, "category": "support",        "grid_col": 1, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": ["STAT 130"], "is_placeholder": True,  "elective_key": "itp_stat_choice"},
+    {"id": "ITP_GE1C",      "course_number": "GE 1C",            "title": "Oral Communication",                                         "units": 3, "category": "ge",            "grid_col": 1, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": ["COMS 101"], "is_placeholder": True},
+    # ── Sophomore Fall (col 2, 15u) ───────────────────────────────────────────
+    {"id": "ITP_3330",      "course_number": "ITP 3330",         "title": "Packaging Fundamentals (GE UD2/5)",                          "units": 3, "category": "major",         "grid_col": 2, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": ["ITP 330"],  "is_placeholder": False},
+    {"id": "ITP_3371",      "course_number": "ITP 3371",         "title": "Supply Chain Management in Manufacturing and Services",       "units": 3, "category": "major",         "grid_col": 2, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": ["ITP 371"],  "is_placeholder": False},
+    {"id": "ITP_ECON2001",  "course_number": "ECON 2001",        "title": "Survey of Economics (GE 4B)",                                "units": 3, "category": "support",        "grid_col": 2, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": ["ECON 201"], "is_placeholder": False},
+    {"id": "ITP_CON_SOF1",  "course_number": "Conc.",            "title": "Concentration Course 1",                                     "units": 3, "category": "concentration", "grid_col": 2, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": [],           "is_placeholder": True,  "elective_key": "itp_concentration_elective"},
+    {"id": "ITP_GE1B",      "course_number": "GE 1B",            "title": "Critical Thinking",                                          "units": 3, "category": "ge",            "grid_col": 2, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": [],           "is_placeholder": True},
+    # ── Sophomore Spring (col 3, 15u) ─────────────────────────────────────────
+    {"id": "ITP_3303",      "course_number": "ITP 3303",         "title": "Lean Six Sigma Green Belt",                                  "units": 3, "category": "major",         "grid_col": 3, "grid_row": 0, "prerequisites": ["ITP 3330"],  "quarter_equivalents": ["ITP 303"],  "is_placeholder": False},
+    {"id": "ITP_3326",      "course_number": "ITP 3326",         "title": "Product Design and Development",                             "units": 3, "category": "major",         "grid_col": 3, "grid_row": 0, "prerequisites": ["ITP 2233"],  "quarter_equivalents": ["ITP 326"],  "is_placeholder": False},
+    {"id": "ITP_BUS3391",   "course_number": "BUS 3391",         "title": "Information Systems",                                        "units": 3, "category": "support",        "grid_col": 3, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": ["BUS 391"],  "is_placeholder": False},
+    {"id": "ITP_CON_SOS1",  "course_number": "Conc.",            "title": "Concentration Course 2",                                     "units": 3, "category": "concentration", "grid_col": 3, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": [],           "is_placeholder": True,  "elective_key": "itp_concentration_elective"},
+    {"id": "ITP_GE3A",      "course_number": "GE 3A",            "title": "Arts",                                                       "units": 3, "category": "ge",            "grid_col": 3, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": [],           "is_placeholder": True},
+    # ── Junior Fall (col 4, 17u) ──────────────────────────────────────────────
+    {"id": "ITP_4409",      "course_number": "ITP 4409",         "title": "Packaging Machinery and Processes",                          "units": 3, "category": "major",         "grid_col": 4, "grid_row": 0, "prerequisites": ["ITP 3330"],  "quarter_equivalents": ["ITP 409"],  "is_placeholder": False},
+    {"id": "ITP_BUS3346",   "course_number": "BUS 3346",         "title": "Principles of Marketing",                                    "units": 3, "category": "support",        "grid_col": 4, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": ["BUS 346"],  "is_placeholder": False},
+    {"id": "ITP_CON_JRF1",  "course_number": "Conc.",            "title": "Concentration Course 3",                                     "units": 3, "category": "concentration", "grid_col": 4, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": [],           "is_placeholder": True,  "elective_key": "itp_concentration_elective"},
+    {"id": "ITP_GE4A",      "course_number": "GE 4A",            "title": "American Institutions",                                      "units": 3, "category": "ge",            "grid_col": 4, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": [],           "is_placeholder": True},
+    {"id": "ITP_GE6",       "course_number": "GE 6",             "title": "Ethnic Studies",                                             "units": 3, "category": "ge",            "grid_col": 4, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": [],           "is_placeholder": True},
+    {"id": "ITP_FREE1",     "course_number": "Free Elective",    "title": "Free Elective",                                              "units": 2, "category": "concentration", "grid_col": 4, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": [],           "is_placeholder": True},
+    # ── Junior Spring (col 5, 15u) ────────────────────────────────────────────
+    {"id": "ITP_3341",      "course_number": "ITP 3341",         "title": "Packaging Polymers and Processing",                          "units": 3, "category": "major",         "grid_col": 5, "grid_row": 0, "prerequisites": ["ITP 3330"],  "quarter_equivalents": ["ITP 341"],  "is_placeholder": False},
+    {"id": "ITP_CON_JRS1",  "course_number": "Conc.",            "title": "Concentration Course 4",                                     "units": 3, "category": "concentration", "grid_col": 5, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": [],           "is_placeholder": True,  "elective_key": "itp_concentration_elective"},
+    {"id": "ITP_CON_JRS2",  "course_number": "Conc.",            "title": "Concentration Course 5",                                     "units": 3, "category": "concentration", "grid_col": 5, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": [],           "is_placeholder": True,  "elective_key": "itp_concentration_elective"},
+    {"id": "ITP_GE3B",      "course_number": "GE 3B",            "title": "Humanities",                                                 "units": 3, "category": "ge",            "grid_col": 5, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": [],           "is_placeholder": True},
+    {"id": "ITP_GE5B",      "course_number": "GE 5B",            "title": "Life Sciences",                                              "units": 3, "category": "ge",            "grid_col": 5, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": [],           "is_placeholder": True},
+    # ── Senior Fall (col 6, 15u) ──────────────────────────────────────────────
+    {"id": "ITP_4411",      "course_number": "ITP 4411",         "title": "Packaging Sustainability",                                   "units": 3, "category": "major",         "grid_col": 6, "grid_row": 0, "prerequisites": ["ITP 3341"],  "quarter_equivalents": ["ITP 411"],  "is_placeholder": False},
+    {"id": "ITP_CON_SRF1",  "course_number": "Conc.",            "title": "Concentration Course 6",                                     "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": [],           "is_placeholder": True,  "elective_key": "itp_concentration_elective"},
+    {"id": "ITP_CON_SRF2",  "course_number": "Conc.",            "title": "Concentration Course 7",                                     "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": [],           "is_placeholder": True,  "elective_key": "itp_concentration_elective"},
+    {"id": "ITP_CON_SRF3",  "course_number": "Conc.",            "title": "Concentration Course 8",                                     "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": [],           "is_placeholder": True,  "elective_key": "itp_concentration_elective"},
+    {"id": "ITP_GEUD3",     "course_number": "GE UD3",           "title": "Upper Division Arts and Humanities",                         "units": 3, "category": "ge",            "grid_col": 6, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": [],           "is_placeholder": True},
+    # ── Senior Spring (col 7, 14u) ────────────────────────────────────────────
+    {"id": "ITP_4464",      "course_number": "ITP 4464",         "title": "Senior Project",                                             "units": 3, "category": "major",         "grid_col": 7, "grid_row": 0, "prerequisites": ["ITP 4411"],  "quarter_equivalents": ["ITP 464"],  "is_placeholder": False},
+    {"id": "ITP_CON_SRS1",  "course_number": "Conc.",            "title": "Concentration Course 9",                                     "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": [],           "is_placeholder": True,  "elective_key": "itp_concentration_elective"},
+    {"id": "ITP_CON_SRS2",  "course_number": "Conc.",            "title": "Concentration Course 10",                                    "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": [],           "is_placeholder": True,  "elective_key": "itp_concentration_elective"},
+    {"id": "ITP_GEUD4",     "course_number": "GE UD4",           "title": "Upper Division Social and Behavioral Sciences",              "units": 3, "category": "ge",            "grid_col": 7, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": [],           "is_placeholder": True},
+    {"id": "ITP_FREE2",     "course_number": "Free Elective",    "title": "Free Elective",                                              "units": 2, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],           "quarter_equivalents": [],           "is_placeholder": True},
+]
+ITP_FLOWCHART = _compact_rows_by_category(ITP_FLOWCHART)
+
+NR_FLOWCHART: list[Course] = [
+    # Y1F (col 0, 14u)
+    {"id": "NR_1141",           "course_number": "NR 1141",          "title": "Introduction to Forest Ecosystem Management",                    "units": 4, "category": "major",        "grid_col": 0, "grid_row": 0, "prerequisites": [],                     "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "NR_BIO_BOT",        "course_number": "BIO 1114/BOT 1121","title": "Plant Diversity and Ecology or General Botany (GE 5B/5C)",     "units": 4, "category": "support",       "grid_col": 0, "grid_row": 0, "prerequisites": [],                     "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "nr_bio_bot_choice"},
+    {"id": "NR_ECON2001",       "course_number": "ECON 2001",        "title": "Survey of Economics (GE 4B)",                                    "units": 3, "category": "support",       "grid_col": 0, "grid_row": 0, "prerequisites": [],                     "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "NR_GE1A",           "course_number": "GE 1A",            "title": "Written Communication",                                          "units": 3, "category": "ge",           "grid_col": 0, "grid_row": 0, "prerequisites": [],                     "quarter_equivalents": [], "is_placeholder": True},
+    # Y1S (col 1, 16u)
+    {"id": "NR_SS1120",         "course_number": "SS 1120",          "title": "Introductory Soil Science",                                      "units": 4, "category": "support",       "grid_col": 1, "grid_row": 0, "prerequisites": [],                     "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "NR_STAT1110",       "course_number": "STAT 1110",        "title": "Applied Statistical Concepts and Methods (GE 2)",               "units": 3, "category": "support",       "grid_col": 1, "grid_row": 0, "prerequisites": [],                     "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "NR_GE1B",           "course_number": "GE 1B",            "title": "Critical Thinking",                                              "units": 3, "category": "ge",           "grid_col": 1, "grid_row": 0, "prerequisites": [],                     "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "NR_GE1C",           "course_number": "GE 1C",            "title": "Oral Communication",                                             "units": 3, "category": "ge",           "grid_col": 1, "grid_row": 0, "prerequisites": [],                     "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "NR_GE3A",           "course_number": "GE 3A",            "title": "Arts",                                                           "units": 3, "category": "ge",           "grid_col": 1, "grid_row": 0, "prerequisites": [],                     "quarter_equivalents": [], "is_placeholder": True},
+    # Y2F (col 2, 15u)
+    {"id": "NR_2208",           "course_number": "NR 2208",          "title": "Dendrology",                                                     "units": 3, "category": "major",        "grid_col": 2, "grid_row": 0, "prerequisites": ["NR 1141"],            "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "NR_BRAE2237",       "course_number": "BRAE 2237",        "title": "Introduction to Engineering Surveying",                          "units": 2, "category": "support",       "grid_col": 2, "grid_row": 0, "prerequisites": [],                     "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "NR_MATH1264",       "course_number": "MATH 1264",        "title": "Calculus for Data Science I",                                    "units": 4, "category": "support",       "grid_col": 2, "grid_row": 0, "prerequisites": [],                     "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "NR_GE3B",           "course_number": "GE 3B",            "title": "Humanities and Cultural Inquiry",                                "units": 3, "category": "ge",           "grid_col": 2, "grid_row": 0, "prerequisites": [],                     "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "NR_GE4A",           "course_number": "GE 4A",            "title": "American Institutions",                                          "units": 3, "category": "ge",           "grid_col": 2, "grid_row": 0, "prerequisites": [],                     "quarter_equivalents": [], "is_placeholder": True},
+    # Y2S (col 3, 16u)
+    {"id": "NR_2218",           "course_number": "NR/LA 2218",       "title": "Introduction to Geographic Information Systems (GIS)",           "units": 3, "category": "major",        "grid_col": 3, "grid_row": 0, "prerequisites": [],                     "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "NR_CHEM1120",       "course_number": "CHEM 1120",        "title": "Fundamentals of Chemical Structure and Properties (GE 5A)",     "units": 4, "category": "support",       "grid_col": 3, "grid_row": 0, "prerequisites": [],                     "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "NR_GE6",            "course_number": "GE 6",             "title": "Ethnic Studies",                                                 "units": 3, "category": "ge",           "grid_col": 3, "grid_row": 0, "prerequisites": [],                     "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "NR_CON_SOS1",       "course_number": "Free Elective",    "title": "Free or Concentration Elective",                                 "units": 3, "category": "concentration", "grid_col": 3, "grid_row": 0, "prerequisites": [],                     "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "NR_FREE1",          "course_number": "Free Elective",    "title": "Free Elective",                                                  "units": 3, "category": "concentration", "grid_col": 3, "grid_row": 0, "prerequisites": [],                     "quarter_equivalents": [], "is_placeholder": True},
+    # Y3F (col 4, 16u)
+    {"id": "NR_3305",           "course_number": "NR 3305",          "title": "Forest and Fire Ecology",                                        "units": 4, "category": "major",        "grid_col": 4, "grid_row": 0, "prerequisites": ["NR 2208"],            "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "NR_3308",           "course_number": "NR 3308",          "title": "Fire and Society (GE UD4)",                                      "units": 3, "category": "major",        "grid_col": 4, "grid_row": 0, "prerequisites": [],                     "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "NR_CON_JRF1",       "course_number": "Conc.",            "title": "Concentration Course 1",                                         "units": 3, "category": "concentration", "grid_col": 4, "grid_row": 0, "prerequisites": [],                     "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "NR_CON_JRF2",       "course_number": "Conc.",            "title": "Concentration Course 2",                                         "units": 3, "category": "concentration", "grid_col": 4, "grid_row": 0, "prerequisites": [],                     "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "NR_CON_JRF3",       "course_number": "Conc.",            "title": "Concentration Course 3",                                         "units": 3, "category": "concentration", "grid_col": 4, "grid_row": 0, "prerequisites": [],                     "quarter_equivalents": [], "is_placeholder": True},
+    # Y3S (col 5, 16u)
+    {"id": "NR_3315",           "course_number": "NR 3315",          "title": "Forest Mensuration",                                             "units": 4, "category": "major",        "grid_col": 5, "grid_row": 0, "prerequisites": ["NR 2208"],            "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "NR_3319_3320",      "course_number": "NR 3319/3320",     "title": "Watershed Processes and Management and Laboratory",              "units": 3, "category": "major",        "grid_col": 5, "grid_row": 0, "prerequisites": ["NR 3305"],            "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "NR_CON_JRS1",       "course_number": "Conc.",            "title": "Concentration Course 4",                                         "units": 3, "category": "concentration", "grid_col": 5, "grid_row": 0, "prerequisites": [],                     "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "NR_GE_UD2_5",       "course_number": "GE UD2/5",        "title": "Upper-Division GE Area 2 or 5",                                  "units": 3, "category": "ge",           "grid_col": 5, "grid_row": 0, "prerequisites": [],                     "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "NR_GE_UD3",         "course_number": "GE UD3",          "title": "Upper-Division GE Area 3",                                       "units": 3, "category": "ge",           "grid_col": 5, "grid_row": 0, "prerequisites": [],                     "quarter_equivalents": [], "is_placeholder": True},
+    # Y4F (col 6, 13u)
+    {"id": "NR_4365",           "course_number": "NR 4365",          "title": "Silviculture and Fuels Management",                              "units": 4, "category": "major",        "grid_col": 6, "grid_row": 0, "prerequisites": ["NR 3305"],            "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "NR_4414",           "course_number": "NR 4414",          "title": "Sustainable Forest Management and Forest Operations",            "units": 2, "category": "major",        "grid_col": 6, "grid_row": 0, "prerequisites": ["NR 4365"],            "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "NR_4417",           "course_number": "NR 4417",          "title": "Natural Resource Protection and Policy",                         "units": 3, "category": "major",        "grid_col": 6, "grid_row": 0, "prerequisites": [],                     "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "NR_CON_SRF1",       "course_number": "Conc.",            "title": "Concentration Course 5",                                         "units": 4, "category": "concentration", "grid_col": 6, "grid_row": 0, "prerequisites": [],                     "quarter_equivalents": [], "is_placeholder": True},
+    # Y4S (col 7, 14u)
+    {"id": "NR_4402",           "course_number": "NR 4402",          "title": "Forest Health and Disturbance Ecology",                          "units": 3, "category": "major",        "grid_col": 7, "grid_row": 0, "prerequisites": ["NR 4365"],            "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "NR_SENIOR_PROJECT", "course_number": "NR 4460/4466/4475","title": "Natural Resources Senior Project",                               "units": 3, "category": "major",        "grid_col": 7, "grid_row": 0, "prerequisites": [],                     "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "nr_senior_project"},
+    {"id": "NR_CON_SRS1",       "course_number": "Conc.",            "title": "Concentration Course 6",                                         "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],                     "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "NR_CON_SRS2",       "course_number": "Conc.",            "title": "Concentration Course 7",                                         "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],                     "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "NR_FREE2",          "course_number": "Free Elective",    "title": "Free Elective",                                                  "units": 2, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],                     "quarter_equivalents": [], "is_placeholder": True},
+]
+NR_FLOWCHART = _compact_rows_by_category(NR_FLOWCHART)
+
+CES_FLOWCHART: list[Course] = [
+    # Y1F (col 0, 12u): ES 1112, ES 1134, GE 1C, GE 2
+    {"id": "CES_ES1112",        "course_number": "ES 1112",          "title": "Race, Culture, and Politics in the United States (GE 4A)",         "units": 3, "category": "major",        "grid_col": 0, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "CES_ES1134",        "course_number": "ES 1134",          "title": "Writing and Rhetoric (GE 1A)",                                      "units": 3, "category": "major",        "grid_col": 0, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "CES_GE1C",          "course_number": "GE 1C",            "title": "Oral Communication",                                                "units": 3, "category": "ge",           "grid_col": 0, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "CES_GE2",           "course_number": "GE 2",             "title": "Mathematics and Quantitative Reasoning",                            "units": 3, "category": "ge",           "grid_col": 0, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y1S (col 1, 16u): ES 1114, ES 1145, Area6 Course 1, GE 3B, Free
+    {"id": "CES_ES1114",        "course_number": "ES 1114",          "title": "Introduction to Ethnic Studies",                                    "units": 4, "category": "major",        "grid_col": 1, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "CES_ES1145",        "course_number": "ES 1145",          "title": "Writing, Reasoning, and Argumentation (GE 1B)",                     "units": 3, "category": "major",        "grid_col": 1, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "CES_AREA6_1",       "course_number": "Area 6",           "title": "Foundational Area Studies Elective (GE 6)",                        "units": 3, "category": "major",        "grid_col": 1, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ces_area6_course"},
+    {"id": "CES_GE3B",          "course_number": "GE 3B",            "title": "Humanities and Cultural Inquiry",                                   "units": 3, "category": "ge",           "grid_col": 1, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "CES_FREE1",         "course_number": "Free Elective",    "title": "Free Elective",                                                     "units": 3, "category": "concentration", "grid_col": 1, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y2F (col 2, 16u): Popular Culture 1 (3A), Area6 Course 2, GE 5A, GE 5B, GE 5C (1u), Free
+    {"id": "CES_POP1",          "course_number": "ES Pop Culture",   "title": "Popular Culture Elective (GE 3A)",                                  "units": 3, "category": "major",        "grid_col": 2, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ces_popular_culture"},
+    {"id": "CES_AREA6_2",       "course_number": "Area 6",           "title": "Foundational Area Studies Elective (GE 6)",                        "units": 3, "category": "major",        "grid_col": 2, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ces_area6_course"},
+    {"id": "CES_GE5A",          "course_number": "GE 5A",            "title": "Physical Sciences",                                                 "units": 3, "category": "ge",           "grid_col": 2, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "CES_GE5B",          "course_number": "GE 5B",            "title": "Life Sciences",                                                     "units": 3, "category": "ge",           "grid_col": 2, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "CES_GE5C",          "course_number": "GE 5C",            "title": "Laboratory Activity",                                               "units": 1, "category": "ge",           "grid_col": 2, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "CES_FREE2",         "course_number": "Free Elective",    "title": "Free Elective",                                                     "units": 3, "category": "concentration", "grid_col": 2, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y2S (col 3, 15u): Popular Culture 2 (3A), Popular Culture 3 (3A), Area6 Course 3, GE 4B, Free
+    {"id": "CES_POP2",          "course_number": "ES Pop Culture",   "title": "Popular Culture Elective (GE 3A)",                                  "units": 3, "category": "major",        "grid_col": 3, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ces_popular_culture"},
+    {"id": "CES_POP3",          "course_number": "ES Pop Culture",   "title": "Popular Culture Elective (GE 3A)",                                  "units": 3, "category": "major",        "grid_col": 3, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ces_popular_culture"},
+    {"id": "CES_AREA6_3",       "course_number": "Area 6",           "title": "Foundational Area Studies Elective (GE 6)",                        "units": 3, "category": "major",        "grid_col": 3, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ces_area6_course"},
+    {"id": "CES_GE4B",          "course_number": "GE 4B",            "title": "Social and Behavioral Sciences",                                    "units": 3, "category": "ge",           "grid_col": 3, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "CES_FREE3",         "course_number": "Free Elective",    "title": "Free Elective",                                                     "units": 3, "category": "concentration", "grid_col": 3, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y3F (col 4, 15u): ES/WGQS 3345, ES/WGQS 3350, ES 3380, Free
+    {"id": "CES_ES3345",        "course_number": "ES/WGQS 3345",     "title": "Queer Ethnic Studies (GE UD4, USCP)",                               "units": 4, "category": "major",        "grid_col": 4, "grid_row": 0, "prerequisites": ["ES 1114"],       "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "CES_ES3350",        "course_number": "ES/WGQS 3350",     "title": "Gender, Race, Culture, Science, and Technology (GE UD2/5)",         "units": 4, "category": "major",        "grid_col": 4, "grid_row": 0, "prerequisites": ["ES 1114"],       "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "CES_ES3380",        "course_number": "ES 3380",          "title": "Critical Race Theory",                                              "units": 4, "category": "major",        "grid_col": 4, "grid_row": 0, "prerequisites": ["ES 1114"],       "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "CES_FREE4",         "course_number": "Free Elective",    "title": "Free Elective",                                                     "units": 3, "category": "concentration", "grid_col": 4, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y3S (col 5, 16u): ES 3382, ES Theory 1, Literature UD3, UD Elective 1
+    {"id": "CES_ES3382",        "course_number": "ES 3382",          "title": "Racial Capitalism",                                                 "units": 4, "category": "major",        "grid_col": 5, "grid_row": 0, "prerequisites": ["ES 1114"],       "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "CES_THEORY1",       "course_number": "ES 4401/4402/4403","title": "Ethnic Studies Theory I",                                           "units": 4, "category": "major",        "grid_col": 5, "grid_row": 0, "prerequisites": ["ES 3380"],       "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ces_theory"},
+    {"id": "CES_LIT_UD3",       "course_number": "ES Lit./Culture",  "title": "Literature and Cultural Production (GE UD3)",                       "units": 4, "category": "major",        "grid_col": 5, "grid_row": 0, "prerequisites": ["ES 1114"],       "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ces_lit_ud3"},
+    {"id": "CES_UDEL1",         "course_number": "ES Elective",      "title": "Upper-Division ES Elective",                                        "units": 4, "category": "major",        "grid_col": 5, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ces_ud_elective"},
+    # Y4F (col 6, 15u): ES 3390, ES Theory 2, UD Elective 2, Free
+    {"id": "CES_ES3390",        "course_number": "ES 3390",          "title": "Research Methodology in Comparative Ethnic Studies",                "units": 4, "category": "major",        "grid_col": 6, "grid_row": 0, "prerequisites": ["ES 3380"],       "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "CES_THEORY2",       "course_number": "ES 4401/4402/4403","title": "Ethnic Studies Theory II",                                          "units": 4, "category": "major",        "grid_col": 6, "grid_row": 0, "prerequisites": ["ES 3380"],       "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ces_theory"},
+    {"id": "CES_UDEL2",         "course_number": "ES Elective",      "title": "Upper-Division ES Elective",                                        "units": 4, "category": "major",        "grid_col": 6, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ces_ud_elective"},
+    {"id": "CES_FREE5",         "course_number": "Free Elective",    "title": "Free Elective",                                                     "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y4S (col 7, 15u): ES Theory 3, ES 4461, UD Elective 3, Free
+    {"id": "CES_THEORY3",       "course_number": "ES 4401/4402/4403","title": "Ethnic Studies Theory III",                                         "units": 4, "category": "major",        "grid_col": 7, "grid_row": 0, "prerequisites": ["ES 3390"],       "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ces_theory"},
+    {"id": "CES_ES4461",        "course_number": "ES 4461",          "title": "Senior Project",                                                    "units": 4, "category": "major",        "grid_col": 7, "grid_row": 0, "prerequisites": ["ES 3390"],       "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "CES_UDEL3",         "course_number": "ES Elective",      "title": "Upper-Division ES Elective",                                        "units": 4, "category": "major",        "grid_col": 7, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ces_ud_elective"},
+    {"id": "CES_FREE6",         "course_number": "Free Elective",    "title": "Free Elective",                                                     "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+]
+CES_FLOWCHART = _compact_rows_by_category(CES_FLOWCHART)
+
+GEN_FLOWCHART: list[Course] = [
+    # Y1F (col 0, 15u): ENGR 1110, IME 1140+1143, MATH 1261, PHYS 1141, GE 1A
+    {"id": "GEN_ENGR1110",      "course_number": "ENGR 1110",        "title": "Introduction to Engineering",                                       "units": 1, "category": "major",        "grid_col": 0, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "GEN_IME1140",       "course_number": "IME 1140/1143",    "title": "Technical Graphics and Introduction to Design and Manufacturing",   "units": 3, "category": "major",        "grid_col": 0, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "GEN_MATH1261",      "course_number": "MATH 1261",        "title": "Calculus I (GE 2)",                                                 "units": 4, "category": "support",       "grid_col": 0, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": ["MATH 141"], "is_placeholder": False},
+    {"id": "GEN_PHYS1141",      "course_number": "PHYS 1141",        "title": "General Physics I (GE 5A)",                                         "units": 4, "category": "support",       "grid_col": 0, "grid_row": 0, "prerequisites": ["MATH 1261"],     "quarter_equivalents": ["PHYS 141"], "is_placeholder": False},
+    {"id": "GEN_GE1A",          "course_number": "GE 1A",            "title": "Written Communication",                                             "units": 3, "category": "ge",           "grid_col": 0, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y1S (col 1, 18u): CSC 1032, CHEM 1120, MATH 1262, PHYS 1143, GE 1B
+    {"id": "GEN_CSC1032",       "course_number": "CSC 1032",         "title": "Programming for Scientists and Engineers",                          "units": 3, "category": "major",        "grid_col": 1, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": ["CSC 232"], "is_placeholder": False},
+    {"id": "GEN_CHEM1120",      "course_number": "CHEM 1120",        "title": "Fundamentals of Chemical Structure and Properties",                 "units": 4, "category": "support",       "grid_col": 1, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": ["CHEM 125"], "is_placeholder": False},
+    {"id": "GEN_MATH1262",      "course_number": "MATH 1262",        "title": "Calculus II",                                                       "units": 4, "category": "support",       "grid_col": 1, "grid_row": 0, "prerequisites": ["MATH 1261"],     "quarter_equivalents": ["MATH 142"], "is_placeholder": False},
+    {"id": "GEN_PHYS1143",      "course_number": "PHYS 1143",        "title": "General Physics II",                                                "units": 4, "category": "support",       "grid_col": 1, "grid_row": 0, "prerequisites": ["PHYS 1141"],     "quarter_equivalents": ["PHYS 143"], "is_placeholder": False},
+    {"id": "GEN_GE1B",          "course_number": "GE 1B",            "title": "Critical Thinking",                                                 "units": 3, "category": "ge",           "grid_col": 1, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y2F (col 2, 15u): ENGR 2211, IME 2315, MATE 1220+1215, MATH 2263, GE 1C
+    {"id": "GEN_ENGR2211",      "course_number": "ENGR 2211",        "title": "Introduction to Mechanics",                                         "units": 4, "category": "major",        "grid_col": 2, "grid_row": 0, "prerequisites": ["PHYS 1141"],     "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "GEN_IME2315",       "course_number": "IME 2315",         "title": "Financial Decision Making for Engineers",                           "units": 2, "category": "major",        "grid_col": 2, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "GEN_MATE1220",      "course_number": "MATE 1220/1215",   "title": "Materials Engineering and Lab",                                     "units": 3, "category": "major",        "grid_col": 2, "grid_row": 0, "prerequisites": ["CHEM 1120"],     "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "GEN_MATH2263",      "course_number": "MATH 2263",        "title": "Calculus III",                                                      "units": 3, "category": "support",       "grid_col": 2, "grid_row": 0, "prerequisites": ["MATH 1262"],     "quarter_equivalents": ["MATH 143"], "is_placeholder": False},
+    {"id": "GEN_GE1C",          "course_number": "GE 1C",            "title": "Oral Communication",                                                "units": 3, "category": "ge",           "grid_col": 2, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y2S (col 3, 15u): EE 2115+2115L, ENGR 2212, GE 3A, GE 4A, GE 5B
+    {"id": "GEN_EE2115",        "course_number": "EE 2115/2115L",    "title": "Circuits and Electronics Lab",                                      "units": 4, "category": "major",        "grid_col": 3, "grid_row": 0, "prerequisites": ["PHYS 1143"],     "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "GEN_ENGR2212",      "course_number": "ENGR 2212",        "title": "Introduction to Engineering Dynamics",                              "units": 2, "category": "major",        "grid_col": 3, "grid_row": 0, "prerequisites": ["ENGR 2211"],     "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "GEN_GE3A",          "course_number": "GE 3A",            "title": "Arts",                                                              "units": 3, "category": "ge",           "grid_col": 3, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "GEN_GE4A",          "course_number": "GE 4A",            "title": "American Institutions",                                             "units": 3, "category": "ge",           "grid_col": 3, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "GEN_GE5B",          "course_number": "GE 5B",            "title": "Life Sciences",                                                     "units": 3, "category": "ge",           "grid_col": 3, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y3F (col 4, 14u): STAT 3210, ICS Elective (2u), GE 3B, GE 4B, GE 6
+    {"id": "GEN_STAT3210",      "course_number": "STAT 3210",        "title": "Engineering Statistics",                                            "units": 3, "category": "support",       "grid_col": 4, "grid_row": 0, "prerequisites": ["MATH 1261"],     "quarter_equivalents": ["STAT 321"], "is_placeholder": False},
+    {"id": "GEN_ICS1",          "course_number": "ICS Elective",     "title": "Individualized Course of Study Elective",                           "units": 2, "category": "concentration", "grid_col": 4, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "GEN_GE3B",          "course_number": "GE 3B",            "title": "Humanities and Cultural Inquiry",                                   "units": 3, "category": "ge",           "grid_col": 4, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "GEN_GE4B",          "course_number": "GE 4B",            "title": "Social and Behavioral Sciences",                                    "units": 3, "category": "ge",           "grid_col": 4, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "GEN_GE6",           "course_number": "GE 6",             "title": "Ethnic Studies",                                                    "units": 3, "category": "ge",           "grid_col": 4, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y3S (col 5, 15u): ENGR 3310, ME 3302, WGQS 3350/3351, ICS Elective (3u), GE UD3
+    {"id": "GEN_ENGR3310",      "course_number": "ENGR 3310",        "title": "Ethical Engineering",                                               "units": 2, "category": "major",        "grid_col": 5, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "GEN_ME3302",        "course_number": "ME 3302",          "title": "Thermodynamics",                                                    "units": 3, "category": "major",        "grid_col": 5, "grid_row": 0, "prerequisites": ["PHYS 1143"],     "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "GEN_WGQS",          "course_number": "WGQS 3350/3351",   "title": "Gender, Race, Culture in Science/Engineering and Technology (USCP)","units": 4, "category": "support",       "grid_col": 5, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True, "elective_key": "gen_gender_sci_choice"},
+    {"id": "GEN_ICS2",          "course_number": "ICS Elective",     "title": "Individualized Course of Study Elective",                           "units": 3, "category": "concentration", "grid_col": 5, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "GEN_GEUD3",         "course_number": "GE UD3",           "title": "Upper-Division Arts and Humanities",                                "units": 3, "category": "ge",           "grid_col": 5, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y4F (col 6, 14u): ENGR 4460, ICS Electives ×3 (9u), GE UD4
+    {"id": "GEN_ENGR4460",      "course_number": "ENGR 4460",        "title": "Senior Project I",                                                  "units": 2, "category": "major",        "grid_col": 6, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "GEN_ICS3",          "course_number": "ICS Elective",     "title": "Individualized Course of Study Elective",                           "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "GEN_ICS4",          "course_number": "ICS Elective",     "title": "Individualized Course of Study Elective",                           "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "GEN_ICS5",          "course_number": "ICS Elective",     "title": "Individualized Course of Study Elective",                           "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "GEN_GEUD4",         "course_number": "GE UD4",           "title": "Upper-Division Social and Behavioral Sciences",                     "units": 3, "category": "ge",           "grid_col": 6, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y4S (col 7, 14u): ENGR 4461, ICS Electives ×4 (12u)
+    {"id": "GEN_ENGR4461",      "course_number": "ENGR 4461",        "title": "Senior Project II",                                                 "units": 2, "category": "major",        "grid_col": 7, "grid_row": 0, "prerequisites": ["ENGR 4460"],     "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "GEN_ICS6",          "course_number": "ICS Elective",     "title": "Individualized Course of Study Elective",                           "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "GEN_ICS7",          "course_number": "ICS Elective",     "title": "Individualized Course of Study Elective",                           "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "GEN_ICS8",          "course_number": "ICS Elective",     "title": "Individualized Course of Study Elective",                           "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "GEN_ICS9",          "course_number": "ICS Elective",     "title": "Individualized Course of Study Elective",                           "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+]
+GEN_FLOWCHART = _compact_rows_by_category(GEN_FLOWCHART)
+
+MSCI_FLOWCHART: list[Course] = [
+    # Y1F (col 0, 15u): MSCI 1100, BIO 1150, CHEM 1120, STAT 1110, GE 1A
+    {"id": "MSCI_1100",         "course_number": "MSCI 1100",        "title": "Orientation to Marine Sciences",                                    "units": 1, "category": "major",        "grid_col": 0, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "MSCI_BIO1150",      "course_number": "BIO 1150",         "title": "Life: History and Diversity (GE 5C)",                               "units": 4, "category": "support",       "grid_col": 0, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": ["BIO 161"], "is_placeholder": False},
+    {"id": "MSCI_CHEM1120",     "course_number": "CHEM 1120",        "title": "Fundamentals of Chemical Structure and Properties",                 "units": 4, "category": "support",       "grid_col": 0, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": ["CHEM 125"], "is_placeholder": False},
+    {"id": "MSCI_STAT1110",     "course_number": "STAT 1110",        "title": "Applied Statistical Concepts and Methods",                          "units": 3, "category": "support",       "grid_col": 0, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": ["STAT 130"], "is_placeholder": False},
+    {"id": "MSCI_GE1A",         "course_number": "GE 1A",            "title": "Written Communication",                                             "units": 3, "category": "ge",           "grid_col": 0, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y1S (col 1, 15u): MSCI 1111, MSCI 1112, BIO 1151, CHEM 1122, GE 1C
+    {"id": "MSCI_1111",         "course_number": "MSCI 1111",        "title": "The Oceans (GE 5B)",                                                "units": 3, "category": "major",        "grid_col": 1, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "MSCI_1112",         "course_number": "MSCI 1112",        "title": "The Oceans Laboratory",                                             "units": 1, "category": "major",        "grid_col": 1, "grid_row": 0, "prerequisites": ["MSCI 1111"],     "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "MSCI_BIO1151",      "course_number": "BIO 1151",         "title": "Life: Molecules and Cells",                                         "units": 4, "category": "support",       "grid_col": 1, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": ["BIO 162"], "is_placeholder": False},
+    {"id": "MSCI_CHEM1122",     "course_number": "CHEM 1122",        "title": "Fundamentals of Chemical Reactivity",                               "units": 4, "category": "support",       "grid_col": 1, "grid_row": 0, "prerequisites": ["CHEM 1120"],     "quarter_equivalents": ["CHEM 127"], "is_placeholder": False},
+    {"id": "MSCI_GE1C",         "course_number": "GE 1C",            "title": "Oral Communication",                                                "units": 3, "category": "ge",           "grid_col": 1, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y2F (col 2, 17u): PSC 2201, PHYS 1121/1141, MATH 1261/1264, GE 1B, GE
+    {"id": "MSCI_PSC2201",      "course_number": "PSC 2201",         "title": "Physical Oceanography (GE 5A)",                                     "units": 3, "category": "major",        "grid_col": 2, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "MSCI_PHYS1",        "course_number": "PHYS 1121/1141",   "title": "College Physics I or General Physics I",                            "units": 4, "category": "support",       "grid_col": 2, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": ["PHYS 121", "PHYS 141"], "is_placeholder": True, "elective_key": "msci_phys1_choice"},
+    {"id": "MSCI_MATH",         "course_number": "MATH 1261/1264",   "title": "Calculus I or Calculus for Data Science I (GE 2)",                  "units": 4, "category": "support",       "grid_col": 2, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": ["MATH 141", "MATH 161"], "is_placeholder": True, "elective_key": "msci_math_choice"},
+    {"id": "MSCI_GE1B",         "course_number": "GE 1B",            "title": "Critical Thinking",                                                 "units": 3, "category": "ge",           "grid_col": 2, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "MSCI_GE_SOF2",      "course_number": "GE 3A",            "title": "Arts",                                                              "units": 3, "category": "ge",           "grid_col": 2, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y2S (col 3, 14u): MSCI 3300, PHYS 1123/1143, GE, GE
+    {"id": "MSCI_3300",         "course_number": "MSCI 3300",        "title": "Marine Ecology",                                                    "units": 4, "category": "major",        "grid_col": 3, "grid_row": 0, "prerequisites": ["MSCI 1111", "BIO 1150"], "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "MSCI_PHYS2",        "course_number": "PHYS 1123/1143",   "title": "College Physics II or General Physics II",                          "units": 4, "category": "support",       "grid_col": 3, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": ["PHYS 123", "PHYS 143"], "is_placeholder": True, "elective_key": "msci_phys2_choice"},
+    {"id": "MSCI_GE_SOS1",      "course_number": "GE 3B",            "title": "Humanities and Cultural Inquiry",                                   "units": 3, "category": "ge",           "grid_col": 3, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "MSCI_GE_SOS2",      "course_number": "GE 4A",            "title": "American Institutions",                                             "units": 3, "category": "ge",           "grid_col": 3, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y3F (col 4, 14u): MSCI 3301, CHEM 2240/2242, Marine Elective (4u), GE
+    {"id": "MSCI_3301",         "course_number": "MSCI 3301",        "title": "Biological Oceanography",                                           "units": 3, "category": "major",        "grid_col": 4, "grid_row": 0, "prerequisites": ["MSCI 3300"],     "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "MSCI_CHEM_ORG",     "course_number": "CHEM 2240/2242",   "title": "Organic Chemistry: Fundamentals or Organic Chemistry I",           "units": 4, "category": "support",       "grid_col": 4, "grid_row": 0, "prerequisites": ["CHEM 1122"],     "quarter_equivalents": ["CHEM 216"], "is_placeholder": True, "elective_key": "msci_chem_choice"},
+    {"id": "MSCI_MAR_EL1",      "course_number": "MSCI Elective",    "title": "Marine Science Elective",                                           "units": 4, "category": "major",        "grid_col": 4, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True, "elective_key": "msci_marine_elective"},
+    {"id": "MSCI_GE_JRF",       "course_number": "GE 4B",            "title": "Social and Behavioral Sciences",                                    "units": 3, "category": "ge",           "grid_col": 4, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y3S (col 5, 15u): CHEM 3370, Marine Elective (3u), Approved Elective (4u), GE, Free (2u)
+    {"id": "MSCI_3370",         "course_number": "CHEM 3370",        "title": "Marine Chemistry",                                                  "units": 3, "category": "major",        "grid_col": 5, "grid_row": 0, "prerequisites": ["CHEM 2240/2242", "MSCI 3300"], "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "MSCI_MAR_EL2",      "course_number": "MSCI Elective",    "title": "Marine Science Elective",                                           "units": 3, "category": "major",        "grid_col": 5, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True, "elective_key": "msci_marine_elective"},
+    {"id": "MSCI_APP_EL1",      "course_number": "Approved Elective","title": "Approved Elective",                                                 "units": 4, "category": "concentration", "grid_col": 5, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True, "elective_key": "msci_approved_elective"},
+    {"id": "MSCI_GE_JRS",       "course_number": "GE 6",             "title": "Ethnic Studies",                                                    "units": 3, "category": "ge",           "grid_col": 5, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "MSCI_FREE1",        "course_number": "Free Elective",    "title": "Free Elective",                                                     "units": 2, "category": "concentration", "grid_col": 5, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y4F (col 6, 14u): Marine Elective (4u), Approved Elective (4u), GE, GE
+    {"id": "MSCI_MAR_EL3",      "course_number": "MSCI Elective",    "title": "Marine Science Elective",                                           "units": 4, "category": "major",        "grid_col": 6, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True, "elective_key": "msci_marine_elective"},
+    {"id": "MSCI_APP_EL2",      "course_number": "Approved Elective","title": "Approved Elective",                                                 "units": 4, "category": "concentration", "grid_col": 6, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True, "elective_key": "msci_approved_elective"},
+    {"id": "MSCI_GEUD3",        "course_number": "GE UD3",           "title": "Upper-Division Arts and Humanities",                                "units": 3, "category": "ge",           "grid_col": 6, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "MSCI_GEUD4",        "course_number": "GE UD4",           "title": "Upper-Division Social and Behavioral Sciences",                     "units": 3, "category": "ge",           "grid_col": 6, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y4S (col 7, 16u): BIO Senior Project (2u), Marine Elective (4u), Approved Elective (4u), GE, Free (3u)
+    {"id": "MSCI_SENIOR",       "course_number": "BIO 4461/4462/4463","title": "Senior Project",                                                   "units": 2, "category": "major",        "grid_col": 7, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True, "elective_key": "msci_senior_project"},
+    {"id": "MSCI_MAR_EL4",      "course_number": "MSCI Elective",    "title": "Marine Science Elective",                                           "units": 4, "category": "major",        "grid_col": 7, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True, "elective_key": "msci_marine_elective"},
+    {"id": "MSCI_APP_EL3",      "course_number": "Approved Elective","title": "Approved Elective",                                                 "units": 4, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True, "elective_key": "msci_approved_elective"},
+    {"id": "MSCI_GEUD25",       "course_number": "GE UD2/5",         "title": "Upper-Division GE Area 2 or 5",                                     "units": 3, "category": "ge",           "grid_col": 7, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "MSCI_FREE2",        "course_number": "Free Elective",    "title": "Free Elective",                                                     "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+]
+MSCI_FLOWCHART = _compact_rows_by_category(MSCI_FLOWCHART)
+
+EESS_FLOWCHART: list[Course] = [
+    # Y1F (col 0, 16u): ERSC 1144, GEOL 2240, BOT 1121, GE 1A, GE 1C
+    {"id": "EESS_ERSC1144",     "course_number": "ERSC 1144",        "title": "Introduction to Earth Science",                                     "units": 3, "category": "major",        "grid_col": 0, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "EESS_GEOL2240",     "course_number": "GEOL 2240",        "title": "Physical Geology",                                                  "units": 3, "category": "major",        "grid_col": 0, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "EESS_BOT1121",      "course_number": "BOT 1121",         "title": "General Botany (GE 5B/5C)",                                         "units": 4, "category": "support",       "grid_col": 0, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": ["BOT 121"], "is_placeholder": False},
+    {"id": "EESS_GE1A",         "course_number": "GE 1A",            "title": "Written Communication",                                             "units": 3, "category": "ge",           "grid_col": 0, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "EESS_GE1C",         "course_number": "GE 1C",            "title": "Oral Communication",                                                "units": 3, "category": "ge",           "grid_col": 0, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y1S (col 1, 15u): SS 1120, GEOL 2241, MATH 1261/1264, GE 1B, GE
+    {"id": "EESS_SS1120",       "course_number": "SS 1120",          "title": "Introductory Soil Science",                                         "units": 4, "category": "major",        "grid_col": 1, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "EESS_GEOL2241",     "course_number": "GEOL 2241",        "title": "Physical Geology Laboratory",                                       "units": 1, "category": "major",        "grid_col": 1, "grid_row": 0, "prerequisites": ["GEOL 2240"],     "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "EESS_MATH",         "course_number": "MATH 1261/1264",   "title": "Calculus I or Calculus for Data Science I (GE 2)",                  "units": 4, "category": "support",       "grid_col": 1, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": ["MATH 141", "MATH 161"], "is_placeholder": True, "elective_key": "eess_math_choice"},
+    {"id": "EESS_GE1B",         "course_number": "GE 1B",            "title": "Critical Thinking",                                                 "units": 3, "category": "ge",           "grid_col": 1, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "EESS_GE_FS2",       "course_number": "GE 3A",            "title": "Arts",                                                              "units": 3, "category": "ge",           "grid_col": 1, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y2F (col 2, 15u): SS 3321, CHEM 1120, PHYS 1121/1141, GE
+    {"id": "EESS_SS3321",       "course_number": "SS 3321",          "title": "Soil Morphology",                                                   "units": 4, "category": "major",        "grid_col": 2, "grid_row": 0, "prerequisites": ["SS 1120"],        "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "EESS_CHEM1120",     "course_number": "CHEM 1120",        "title": "Fundamentals of Chemical Structure and Properties (GE 5A)",         "units": 4, "category": "support",       "grid_col": 2, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": ["CHEM 125"], "is_placeholder": False},
+    {"id": "EESS_PHYS",         "course_number": "PHYS 1121/1141",   "title": "College Physics I or General Physics I",                            "units": 4, "category": "support",       "grid_col": 2, "grid_row": 0, "prerequisites": ["MATH 1261/1264"], "quarter_equivalents": ["PHYS 121", "PHYS 141"], "is_placeholder": True, "elective_key": "eess_phys_choice"},
+    {"id": "EESS_GE_SOF",       "course_number": "GE 4A",            "title": "American Institutions",                                             "units": 3, "category": "ge",           "grid_col": 2, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y2S (col 3, 15u): NR/LA 2218, STAT 1110, Approved Elective, GE×2
+    {"id": "EESS_NR2218",       "course_number": "NR/LA 2218",       "title": "Introduction to Geographic Information Systems (GIS)",              "units": 3, "category": "major",        "grid_col": 3, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "EESS_STAT1110",     "course_number": "STAT 1110",        "title": "Applied Statistical Concepts and Methods",                          "units": 3, "category": "support",       "grid_col": 3, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": ["STAT 130"], "is_placeholder": False},
+    {"id": "EESS_CON1",         "course_number": "Approved Elective","title": "Approved Elective",                                                 "units": 3, "category": "concentration", "grid_col": 3, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True, "elective_key": "eess_approved_elective"},
+    {"id": "EESS_GE_SOS1",      "course_number": "GE 3B",            "title": "Humanities and Cultural Inquiry",                                   "units": 3, "category": "ge",           "grid_col": 3, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "EESS_GE_SOS2",      "course_number": "GE 4B",            "title": "Social and Behavioral Sciences",                                    "units": 3, "category": "ge",           "grid_col": 3, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y3F (col 4, 16u): GEOL/SS/SS pick-one (3u), CHEM 2240, Approved Elective×2, GE
+    {"id": "EESS_STRAT_SOIL",   "course_number": "GEOL 3330/SS 2221/SS 3444","title": "Stratigraphy, Soil Health, or Climate Smart Agriculture",  "units": 3, "category": "major",        "grid_col": 4, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True, "elective_key": "eess_strat_or_soil"},
+    {"id": "EESS_CHEM2240",     "course_number": "CHEM 2240",        "title": "Organic Chemistry: Fundamentals and Applications",                  "units": 4, "category": "support",       "grid_col": 4, "grid_row": 0, "prerequisites": ["CHEM 1120"],     "quarter_equivalents": ["CHEM 216"], "is_placeholder": False},
+    {"id": "EESS_CON2",         "course_number": "Approved Elective","title": "Approved Elective",                                                 "units": 3, "category": "concentration", "grid_col": 4, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True, "elective_key": "eess_approved_elective"},
+    {"id": "EESS_CON3",         "course_number": "Approved Elective","title": "Approved Elective",                                                 "units": 3, "category": "concentration", "grid_col": 4, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True, "elective_key": "eess_approved_elective"},
+    {"id": "EESS_GE_JRF",       "course_number": "GE 6",             "title": "Ethnic Studies",                                                    "units": 3, "category": "ge",           "grid_col": 4, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y3S (col 5, 15u): NR 3310, NR 3363, SS 4422/ERSC 4450, Approved Elective, GE
+    {"id": "EESS_NR3310",       "course_number": "NR 3310",          "title": "Global Climate Change",                                             "units": 3, "category": "major",        "grid_col": 5, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "EESS_NR3363",       "course_number": "NR 3363",          "title": "Career Preparation and Practices in Natural Resources Fields",      "units": 2, "category": "major",        "grid_col": 5, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "EESS_SOIL_GEO",     "course_number": "SS 4422/ERSC 4450","title": "Soil Ecology or Geomorphology",                                     "units": 4, "category": "major",        "grid_col": 5, "grid_row": 0, "prerequisites": ["SS 3321"],        "quarter_equivalents": [], "is_placeholder": True, "elective_key": "eess_soil_or_geomorph"},
+    {"id": "EESS_CON4",         "course_number": "Approved Elective","title": "Approved Elective",                                                 "units": 3, "category": "concentration", "grid_col": 5, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True, "elective_key": "eess_approved_elective"},
+    {"id": "EESS_GE_JRS",       "course_number": "GE UD2/5",         "title": "Upper-Division GE Area 2 or 5",                                     "units": 3, "category": "ge",           "grid_col": 5, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y4F (col 6, 13u): SS 4423, GIS pick-one (3u), Approved Elective, GE
+    {"id": "EESS_SS4423",       "course_number": "SS 4423",          "title": "Environmental Soil and Water Chemistry",                            "units": 4, "category": "major",        "grid_col": 6, "grid_row": 0, "prerequisites": ["SS 3321"],        "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "EESS_GIS_CHOICE",   "course_number": "BRAE 3345/NR 4418","title": "GIS or Remote Sensing Applications",                               "units": 3, "category": "major",        "grid_col": 6, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True, "elective_key": "eess_gis_choice"},
+    {"id": "EESS_CON5",         "course_number": "Approved Elective","title": "Approved Elective",                                                 "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True, "elective_key": "eess_approved_elective"},
+    {"id": "EESS_GE_SRF",       "course_number": "GE UD3",           "title": "Upper-Division Arts and Humanities",                                "units": 3, "category": "ge",           "grid_col": 6, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y4S (col 7, 15u): SS 4424/ERSC 4442/4443, Senior Project (2u), NR/SS Elective, Approved Elective, Free
+    {"id": "EESS_PHYS_CHEM",    "course_number": "SS 4424/ERSC 4442/4443","title": "Soil Physics, Applied Groundwater, or Applied Contaminant Transport","units": 4, "category": "major",  "grid_col": 7, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True, "elective_key": "eess_env_physics_choice"},
+    {"id": "EESS_SENIOR",       "course_number": "ERSC/NR 4478/4479","title": "Senior Project",                                                    "units": 2, "category": "major",        "grid_col": 7, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True, "elective_key": "eess_senior_project"},
+    {"id": "EESS_CON6",         "course_number": "NR/SS Elective",   "title": "Major NR/SS/ERSC Elective",                                         "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True, "elective_key": "eess_nr_elective"},
+    {"id": "EESS_FREE1",        "course_number": "Approved Elective","title": "Approved Elective",                                                 "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True, "elective_key": "eess_approved_elective"},
+    {"id": "EESS_FREE2",        "course_number": "Free Elective",    "title": "Free Elective",                                                     "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+]
+EESS_FLOWCHART = _compact_rows_by_category(EESS_FLOWCHART)
+
+INTS_FLOWCHART: list[Course] = [
+    # Y1F (col 0, 13u): ISLA 1101, Intro Course, GE 1A, GE 1C, GE 2
+    {"id": "INTS_ISLA1101",     "course_number": "ISLA 1101",        "title": "Interdisciplinary Studies Major First Year Seminar",                "units": 1, "category": "major",        "grid_col": 0, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "INTS_INTRO",        "course_number": "INTS Intro",       "title": "Introductory Course (see approved list)",                           "units": 3, "category": "major",        "grid_col": 0, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_intro_course"},
+    {"id": "INTS_GE1A",         "course_number": "GE 1A",            "title": "Written Communication",                                             "units": 3, "category": "ge",           "grid_col": 0, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "INTS_GE1C",         "course_number": "GE 1C",            "title": "Oral Communication",                                                "units": 3, "category": "ge",           "grid_col": 0, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "INTS_GE2",          "course_number": "GE 2",             "title": "Mathematics and Quantitative Reasoning",                            "units": 3, "category": "ge",           "grid_col": 0, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y1S (col 1, 15u): ISLA 2201, GE 1B, GE 3A, GE 5A, Free
+    {"id": "INTS_ISLA2201",     "course_number": "ISLA 2201",        "title": "Introduction to Interdisciplinary Studies",                         "units": 3, "category": "major",        "grid_col": 1, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "INTS_GE1B",         "course_number": "GE 1B",            "title": "Critical Thinking",                                                 "units": 3, "category": "ge",           "grid_col": 1, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "INTS_GE3A",         "course_number": "GE 3A",            "title": "Arts",                                                              "units": 3, "category": "ge",           "grid_col": 1, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "INTS_GE5A",         "course_number": "GE 5A",            "title": "Physical Sciences",                                                 "units": 3, "category": "ge",           "grid_col": 1, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "INTS_FREE1",        "course_number": "Free Elective",    "title": "Free Elective",                                                     "units": 3, "category": "concentration", "grid_col": 1, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y2F (col 2, 16u): ISLA 2255, GE 3B, GE 4A, GE 5B, GE 5C (1u), Free
+    {"id": "INTS_ISLA2255",     "course_number": "ISLA 2255",        "title": "Introduction to Interdisciplinary Theory and Methods",              "units": 3, "category": "major",        "grid_col": 2, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "INTS_GE3B",         "course_number": "GE 3B",            "title": "Humanities and Cultural Inquiry",                                   "units": 3, "category": "ge",           "grid_col": 2, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "INTS_GE4A",         "course_number": "GE 4A",            "title": "American Institutions",                                             "units": 3, "category": "ge",           "grid_col": 2, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "INTS_GE5B",         "course_number": "GE 5B",            "title": "Life Sciences",                                                     "units": 3, "category": "ge",           "grid_col": 2, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "INTS_GE5C",         "course_number": "GE 5C",            "title": "Laboratory Activity",                                               "units": 1, "category": "ge",           "grid_col": 2, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "INTS_FREE2",        "course_number": "Free Elective",    "title": "Free Elective",                                                     "units": 3, "category": "concentration", "grid_col": 2, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y2S (col 3, 16u): Concentration Course (3u), GE 4B, GE 6, Free×2
+    {"id": "INTS_CON1",         "course_number": "Conc.",            "title": "Concentration Course 1",                                            "units": 3, "category": "concentration", "grid_col": 3, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "INTS_GE4B",         "course_number": "GE 4B",            "title": "Social and Behavioral Sciences",                                    "units": 3, "category": "ge",           "grid_col": 3, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "INTS_GE6",          "course_number": "GE 6",             "title": "Ethnic Studies",                                                    "units": 3, "category": "ge",           "grid_col": 3, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "INTS_FREE3",        "course_number": "Free Elective",    "title": "Free Elective",                                                     "units": 4, "category": "concentration", "grid_col": 3, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "INTS_FREE4",        "course_number": "Free Elective",    "title": "Free Elective",                                                     "units": 3, "category": "concentration", "grid_col": 3, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y3F (col 4, 15u): UD ISLA Elective, Concentration×2, GE UD4, Free
+    {"id": "INTS_UD_ISLA1",     "course_number": "ISLA Elective",    "title": "Upper-Division ISLA Elective",                                      "units": 3, "category": "major",        "grid_col": 4, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_ud_isla_elective"},
+    {"id": "INTS_CON2",         "course_number": "Conc.",            "title": "Concentration Course 2",                                            "units": 3, "category": "concentration", "grid_col": 4, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "INTS_CON3",         "course_number": "Conc.",            "title": "Concentration Course 3",                                            "units": 3, "category": "concentration", "grid_col": 4, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "INTS_GEUD4",        "course_number": "GE UD4",           "title": "Upper-Division Social and Behavioral Sciences",                     "units": 3, "category": "ge",           "grid_col": 4, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "INTS_FREE5",        "course_number": "Free Elective",    "title": "Free Elective",                                                     "units": 3, "category": "concentration", "grid_col": 4, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y3S (col 5, 16u): ISLA 3355, UD ISLA Elective, Concentration, GE UD2/5, Free
+    {"id": "INTS_ISLA3355",     "course_number": "ISLA 3355",        "title": "Interdisciplinary Research Methods",                                "units": 4, "category": "major",        "grid_col": 5, "grid_row": 0, "prerequisites": ["ISLA 2255"],     "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "INTS_UD_ISLA2",     "course_number": "ISLA Elective",    "title": "Upper-Division ISLA Elective",                                      "units": 3, "category": "major",        "grid_col": 5, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_ud_isla_elective"},
+    {"id": "INTS_CON4",         "course_number": "Conc.",            "title": "Concentration Course 4",                                            "units": 3, "category": "concentration", "grid_col": 5, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "INTS_GEUD25",       "course_number": "GE UD2/5",         "title": "Upper-Division GE Area 2 or 5",                                     "units": 3, "category": "ge",           "grid_col": 5, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "INTS_FREE6",        "course_number": "Free Elective",    "title": "Free Elective",                                                     "units": 3, "category": "concentration", "grid_col": 5, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y4F (col 6, 14u): ISLA 4440, ISLA 4480, Concentration, GE UD3, Free
+    {"id": "INTS_ISLA4440",     "course_number": "ISLA 4440",        "title": "Advanced Interdisciplinary Studies Seminar",                        "units": 3, "category": "major",        "grid_col": 6, "grid_row": 0, "prerequisites": ["ISLA 3355"],     "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "INTS_ISLA4480",     "course_number": "ISLA 4480",        "title": "Career Preparation for Interdisciplinary Studies Majors",          "units": 1, "category": "major",        "grid_col": 6, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "INTS_CON5",         "course_number": "Conc.",            "title": "Concentration Course 5",                                            "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "INTS_GEUD3",        "course_number": "GE UD3",           "title": "Upper-Division Arts and Humanities",                                "units": 3, "category": "ge",           "grid_col": 6, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "INTS_FREE7",        "course_number": "Free Elective",    "title": "Free Elective",                                                     "units": 4, "category": "concentration", "grid_col": 6, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y4S (col 7, 15u): ISLA 4460+4461, Concentration, Free×3
+    {"id": "INTS_ISLA4460",     "course_number": "ISLA 4460/4461",   "title": "Senior Project Seminar and Senior Project",                         "units": 4, "category": "major",        "grid_col": 7, "grid_row": 0, "prerequisites": ["ISLA 3355"],     "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "INTS_CON6",         "course_number": "Conc.",            "title": "Concentration Course 6",                                            "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "INTS_FREE8",        "course_number": "Free Elective",    "title": "Free Elective",                                                     "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "INTS_FREE9",        "course_number": "Free Elective",    "title": "Free Elective",                                                     "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "INTS_FREE10",       "course_number": "Free Elective",    "title": "Free Elective",                                                     "units": 2, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+]
+INTS_FLOWCHART = _compact_rows_by_category(INTS_FLOWCHART)
+
+LAES_FLOWCHART: list[Course] = [
+    # Y1F (col 0, 14u): CHEM 1120, MATH 1261, GE 1A, GE 1C
+    {"id": "LAES_CHEM1120",     "course_number": "CHEM 1120",        "title": "Fundamentals of Chemical Structure and Properties",                 "units": 4, "category": "support",       "grid_col": 0, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": ["CHEM 125"], "is_placeholder": False},
+    {"id": "LAES_MATH1261",     "course_number": "MATH 1261",        "title": "Calculus I (GE 2)",                                                 "units": 4, "category": "support",       "grid_col": 0, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": ["MATH 141"], "is_placeholder": False},
+    {"id": "LAES_GE1A",         "course_number": "GE 1A",            "title": "Written Communication",                                             "units": 3, "category": "ge",           "grid_col": 0, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "LAES_GE1C",         "course_number": "GE 1C",            "title": "Oral Communication",                                                "units": 3, "category": "ge",           "grid_col": 0, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y1S (col 1, 14u): MATH 1262, PHYS 1141, GE 1B, GE 3A
+    {"id": "LAES_MATH1262",     "course_number": "MATH 1262",        "title": "Calculus II",                                                       "units": 4, "category": "support",       "grid_col": 1, "grid_row": 0, "prerequisites": ["MATH 1261"],     "quarter_equivalents": ["MATH 142"], "is_placeholder": False},
+    {"id": "LAES_PHYS1141",     "course_number": "PHYS 1141",        "title": "General Physics I (GE 5A)",                                         "units": 4, "category": "support",       "grid_col": 1, "grid_row": 0, "prerequisites": ["MATH 1261"],     "quarter_equivalents": ["PHYS 141"], "is_placeholder": False},
+    {"id": "LAES_GE1B",         "course_number": "GE 1B",            "title": "Critical Thinking",                                                 "units": 3, "category": "ge",           "grid_col": 1, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "LAES_GE3A",         "course_number": "GE 3A",            "title": "Arts",                                                              "units": 3, "category": "ge",           "grid_col": 1, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y2F (col 2, 16u): MATH 2263, PHYS 1143, GE×3
+    {"id": "LAES_MATH2263",     "course_number": "MATH 2263",        "title": "Calculus III",                                                      "units": 3, "category": "support",       "grid_col": 2, "grid_row": 0, "prerequisites": ["MATH 1262"],     "quarter_equivalents": ["MATH 143"], "is_placeholder": False},
+    {"id": "LAES_PHYS1143",     "course_number": "PHYS 1143",        "title": "General Physics II",                                                "units": 4, "category": "support",       "grid_col": 2, "grid_row": 0, "prerequisites": ["PHYS 1141"],     "quarter_equivalents": ["PHYS 143"], "is_placeholder": False},
+    {"id": "LAES_GE3B",         "course_number": "GE 3B",            "title": "Humanities and Cultural Inquiry",                                   "units": 3, "category": "ge",           "grid_col": 2, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "LAES_GE4A",         "course_number": "GE 4A",            "title": "American Institutions",                                             "units": 3, "category": "ge",           "grid_col": 2, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "LAES_GE5B",         "course_number": "GE 5B",            "title": "Life Sciences",                                                     "units": 3, "category": "ge",           "grid_col": 2, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y2S (col 3, 15u): Eng Conc×2, LA Conc, GE×2
+    {"id": "LAES_ENG_CON1",     "course_number": "Eng. Conc.",       "title": "Engineering Concentration Course 1",                                "units": 3, "category": "concentration", "grid_col": 3, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "LAES_ENG_CON2",     "course_number": "Eng. Conc.",       "title": "Engineering Concentration Course 2",                                "units": 3, "category": "concentration", "grid_col": 3, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "LAES_LA_CON1",      "course_number": "LA Conc.",         "title": "Liberal Arts Concentration Course 1",                               "units": 3, "category": "concentration", "grid_col": 3, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "LAES_GE4B",         "course_number": "GE 4B",            "title": "Social and Behavioral Sciences",                                    "units": 3, "category": "ge",           "grid_col": 3, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "LAES_GE6",          "course_number": "GE 6",             "title": "Ethnic Studies",                                                    "units": 3, "category": "ge",           "grid_col": 3, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y3F (col 4, 16u): LAES 4301, STAT 3210, Eng Conc×2, LA Conc
+    {"id": "LAES_4301",         "course_number": "LAES 4301",        "title": "Liberal Arts and Engineering Studies Capstone I",                   "units": 4, "category": "major",        "grid_col": 4, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "LAES_STAT3210",     "course_number": "STAT 3210",        "title": "Engineering Statistics",                                            "units": 3, "category": "support",       "grid_col": 4, "grid_row": 0, "prerequisites": ["MATH 1261"],     "quarter_equivalents": ["STAT 321"], "is_placeholder": False},
+    {"id": "LAES_ENG_CON3",     "course_number": "Eng. Conc.",       "title": "Engineering Concentration Course 3",                                "units": 3, "category": "concentration", "grid_col": 4, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "LAES_ENG_CON4",     "course_number": "Eng. Conc.",       "title": "Engineering Concentration Course 4",                                "units": 3, "category": "concentration", "grid_col": 4, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "LAES_LA_CON2",      "course_number": "LA Conc.",         "title": "Liberal Arts Concentration Course 2",                               "units": 3, "category": "concentration", "grid_col": 4, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y3S (col 5, 15u): LAES 4302, Eng Conc, Global/Study Abroad (5u), GE UD3
+    {"id": "LAES_4302",         "course_number": "LAES 4302",        "title": "Liberal Arts and Engineering Studies Capstone II",                  "units": 4, "category": "major",        "grid_col": 5, "grid_row": 0, "prerequisites": ["LAES 4301"],     "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "LAES_ENG_CON5",     "course_number": "Eng. Conc.",       "title": "Engineering Concentration Course 5",                                "units": 3, "category": "concentration", "grid_col": 5, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "LAES_GLOBAL",       "course_number": "Global Perspectives","title": "Study Abroad or Upper-Division Global Perspectives",              "units": 5, "category": "support",       "grid_col": 5, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "LAES_GEUD3",        "course_number": "GE UD3",           "title": "Upper-Division Arts and Humanities",                                "units": 3, "category": "ge",           "grid_col": 5, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y4F (col 6, 14u): LAES 4461, Eng Conc×2, LA Conc×2
+    {"id": "LAES_4461",         "course_number": "LAES 4461",        "title": "Senior Project I in Liberal Arts and Engineering Studies",          "units": 3, "category": "major",        "grid_col": 6, "grid_row": 0, "prerequisites": ["LAES 4302"],     "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "LAES_ENG_CON6",     "course_number": "Eng. Conc.",       "title": "Engineering Concentration Course 6",                                "units": 2, "category": "concentration", "grid_col": 6, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "LAES_ENG_CON7",     "course_number": "Eng. Conc.",       "title": "Engineering Concentration Course 7",                                "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "LAES_LA_CON3",      "course_number": "LA Conc.",         "title": "Liberal Arts Concentration Course 3",                               "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "LAES_LA_CON4",      "course_number": "LA Conc.",         "title": "Liberal Arts Concentration Course 4",                               "units": 3, "category": "concentration", "grid_col": 6, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    # Y4S (col 7, 16u): LAES 4462, Eng Conc×2, LA Conc, GE UD4
+    {"id": "LAES_4462",         "course_number": "LAES 4462",        "title": "Senior Project II in Liberal Arts and Engineering Studies",         "units": 3, "category": "major",        "grid_col": 7, "grid_row": 0, "prerequisites": ["LAES 4461"],     "quarter_equivalents": [], "is_placeholder": False},
+    {"id": "LAES_ENG_CON8",     "course_number": "Eng. Conc.",       "title": "Engineering Concentration Course 8",                                "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "LAES_ENG_CON9",     "course_number": "Eng. Conc.",       "title": "Engineering Concentration Course 9",                                "units": 3, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "LAES_LA_CON5",      "course_number": "LA Conc.",         "title": "Liberal Arts Concentration Course 5",                               "units": 4, "category": "concentration", "grid_col": 7, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+    {"id": "LAES_GEUD4",        "course_number": "GE UD4",           "title": "Upper-Division Social and Behavioral Sciences",                     "units": 3, "category": "ge",           "grid_col": 7, "grid_row": 0, "prerequisites": [],                "quarter_equivalents": [], "is_placeholder": True},
+]
+LAES_FLOWCHART = _compact_rows_by_category(LAES_FLOWCHART)
+
+
 FLOWCHARTS = {
     "CS": {
         "major": "Computer Science",
@@ -4822,6 +5234,193 @@ FLOWCHARTS = {
                 "items": [
                     "If a course is taken to meet a Major or Support requirement, it cannot be double-counted as an Approved Elective.",
                     "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
+    },
+    "ITP": {
+        "major": "Industrial Technology and Packaging",
+        "code": "ITP",
+        "total_units": 120,
+        "courses": ITP_FLOWCHART,
+        "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "Units in excess of concentration total will be applied towards major's free electives.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
+    },
+    "NR": {
+        "major": "Forest and Fire Sciences",
+        "code": "NR",
+        "total_units": 120,
+        "courses": NR_FLOWCHART,
+        "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "Courses may need to be at the 3000-4000 level to ensure completion of the requirement minimum of 40 units of upper-division.",
+                    "Courses taken to meet a major course requirement cannot be double-counted in the concentration.",
+                    "No Major, Support, or Concentration courses may be taken Credit/No Credit.",
+                    "No more than 12 units of cooperative or internship courses can count towards degree requirements.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
+    },
+    "CES": {
+        "major": "Comparative Ethnic Studies",
+        "code": "CES",
+        "total_units": 120,
+        "courses": CES_FLOWCHART,
+        "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
+    },
+    "GEN": {
+        "major": "General Engineering",
+        "code": "GEN",
+        "total_units": 120,
+        "courses": GEN_FLOWCHART,
+        "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "The Individualized Course of Study (ICS) consists of 26 units of technical electives with a minimum of 18 units at the 3000-4000 level.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
+    },
+    "MSCI": {
+        "major": "Marine Sciences",
+        "code": "MSCI",
+        "total_units": 120,
+        "courses": MSCI_FLOWCHART,
+        "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "Only one of BIO 4461, BIO 4462, or BIO 4463 may satisfy the senior project requirement; additional units from these courses may be applied to Approved Electives.",
+                    "Marine Science Electives cannot overlap with courses already counted toward major or support requirements.",
+                    "Excess elective units may be applied toward Approved Electives.",
+                    "Students emphasizing Chemistry, Engineering, or Physics should take MATH 1261 (Calculus I).",
+                    "Students emphasizing Physics should enroll in PHYS 1141 (General Physics I) and PHYS 1143 (General Physics II); MATH 1261 is required for PHYS 1141.",
+                    "Maximum of 6 units from BIO 2200, BIO 3300, or BIO 4400 may be applied toward Approved Electives.",
+                    "Maximum of 3 units from COMS 3390, COMS 3395, MSCI 4401, or SCM/ENGR 3302 may be applied toward Approved Electives.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
+    },
+    "EESS": {
+        "major": "Environmental Earth and Soil Sciences",
+        "code": "EESS",
+        "total_units": 120,
+        "courses": EESS_FLOWCHART,
+        "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "Courses taken to meet a Major or Support requirement cannot be double-counted in the concentration or the Approved Electives.",
+                    "ERSC 4450 (Geomorphology), GEOL 3330 (Principles of Stratigraphy), MATH 1261 (Calculus I), and PHYS 1141 (General Physics I) are prerequisite courses for students pursuing the Geology concentration.",
+                    "Courses may need to be at the 3000-4000 level to ensure completion of the minimum 40 units of upper-division required.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
+    },
+    "INTS": {
+        "major": "Interdisciplinary Studies",
+        "code": "INTS",
+        "total_units": 120,
+        "courses": INTS_FLOWCHART,
+        "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "If a course is taken to meet a Major or Support requirement, it cannot be double-counted as an Elective for the concentration.",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
+                ],
+            },
+            {
+                "title": "GE Tips",
+                "items": [
+                    "Required in Major or Support; also satisfies General Education (GE) requirement.",
+                ],
+            },
+        ],
+    },
+    "LAES": {
+        "major": "Liberal Arts and Engineering Studies",
+        "code": "LAES",
+        "total_units": 120,
+        "courses": LAES_FLOWCHART,
+        "columns": COLUMN_LABELS,
+        "notes": [
+            {
+                "title": "Flowchart Tips",
+                "items": [
+                    "A minimum of 10 units must be taken at the 3000-4000 level within both the Engineering and Liberal Arts concentrations.",
+                    "A list of Global Perspectives courses is provided on the LAES website. All Global Perspectives courses are 3000-4000 level (upper-division).",
+                    "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be required to complete the total units required for the degree.",
                 ],
             },
             {

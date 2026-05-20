@@ -17,23 +17,13 @@ def build_lookup(courses: list[Course]) -> dict[str, Course]:
     return lookup
 
 
-def infer_completed(
+def infer_from_lookup(
     explicitly_completed: set[str],
-    courses: list[Course],
+    lookup: dict[str, Course],
 ) -> set[str]:
-    """
-    Return the set of course numbers (semester + quarter) that can be
-    inferred as completed because they are prerequisites of explicitly
-    completed courses.
-
-    e.g. If the student completed MATH 2263 (Calc III), and MATH 2263
-    requires MATH 1262 (Calc II) which requires MATH 1261 (Calc I),
-    then MATH 1261 and MATH 1262 are both returned as inferred.
-    """
-    lookup = build_lookup(courses)
+    """BFS prereq walk using a pre-built lookup. Called by infer_completed and
+    the /infer endpoint (which passes a module-level pre-built lookup)."""
     inferred: set[str] = set()
-
-    # BFS from each explicitly completed course, walking prereqs backwards
     queue = list(explicitly_completed)
     visited: set[str] = set(explicitly_completed)
 
@@ -48,17 +38,29 @@ def infer_completed(
             if not prereq:
                 continue
 
-            # Collect all numbers for this prereq course
             all_nums = {prereq["course_number"]} | set(prereq["quarter_equivalents"])
-
-            # Only infer if not already explicitly known
             already_known = all_nums & explicitly_completed
             if not already_known:
                 new_nums = all_nums - visited
                 if new_nums:
                     inferred |= new_nums
                     visited |= new_nums
-                    # Keep traversing upward through this prereq's own prereqs
                     queue.append(prereq["course_number"])
 
     return inferred
+
+
+def infer_completed(
+    explicitly_completed: set[str],
+    courses: list[Course],
+) -> set[str]:
+    """
+    Return the set of course numbers (semester + quarter) that can be
+    inferred as completed because they are prerequisites of explicitly
+    completed courses.
+
+    e.g. If the student completed MATH 2263 (Calc III), and MATH 2263
+    requires MATH 1262 (Calc II) which requires MATH 1261 (Calc I),
+    then MATH 1261 and MATH 1262 are both returned as inferred.
+    """
+    return infer_from_lookup(explicitly_completed, build_lookup(courses))

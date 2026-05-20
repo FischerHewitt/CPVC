@@ -4401,3 +4401,604 @@ def test_dairy_science_flowchart():
 
     # No concentrations
     assert "DSCI" not in CONCENTRATIONS
+
+
+def test_itp_flowchart():
+    assert "ITP" in FLOWCHARTS
+    fc = FLOWCHARTS["ITP"]
+    courses = fc["courses"]
+    by_id = {c["id"]: c for c in courses}
+
+    # Total units = 120
+    assert fc["total_units"] == 120
+    total = sum(c["units"] for c in courses)
+    assert total == 120, f"Expected 120 units, got {total}"
+
+    # Column unit checks
+    col_units = {}
+    for c in courses:
+        col_units[c["grid_col"]] = col_units.get(c["grid_col"], 0) + c["units"]
+    assert col_units[0] == 13, f"FF should be 13u, got {col_units[0]}"
+    assert col_units[1] == 16, f"FS should be 16u, got {col_units[1]}"
+    assert col_units[2] == 15, f"SoF should be 15u, got {col_units[2]}"
+    assert col_units[3] == 15, f"SoS should be 15u, got {col_units[3]}"
+    assert col_units[4] == 17, f"JF should be 17u, got {col_units[4]}"
+    assert col_units[5] == 15, f"JS should be 15u, got {col_units[5]}"
+    assert col_units[6] == 15, f"SeF should be 15u, got {col_units[6]}"
+    assert col_units[7] == 14, f"SeS should be 14u, got {col_units[7]}"
+
+    # Key course titles
+    assert by_id["ITP_1100"]["title"] == "Student Orientation, College Success, and Career Readiness"
+    assert by_id["ITP_3330"]["title"] == "Packaging Fundamentals (GE UD2/5)"
+    assert by_id["ITP_3303"]["title"] == "Lean Six Sigma Green Belt"
+    assert by_id["ITP_4464"]["title"] == "Senior Project"
+    assert by_id["ITP_PHYS1121"]["title"] == "College Physics I (GE 5A/5C)"
+
+    # Categories
+    assert by_id["ITP_1100"]["category"] == "major"
+    assert by_id["ITP_3330"]["category"] == "major"
+    assert by_id["ITP_MATH"]["category"] == "support"
+    assert by_id["ITP_BUS3346"]["category"] == "support"
+    assert by_id["ITP_GE1A"]["category"] == "ge"
+
+    # Prerequisites
+    assert "ITP 3330" in by_id["ITP_3303"]["prerequisites"]
+    assert "ITP 2233" in by_id["ITP_3326"]["prerequisites"]
+    assert "ITP 3330" in by_id["ITP_4409"]["prerequisites"]
+    assert "ITP 3330" in by_id["ITP_3341"]["prerequisites"]
+    assert "ITP 3341" in by_id["ITP_4411"]["prerequisites"]
+    assert "ITP 4411" in by_id["ITP_4464"]["prerequisites"]
+
+    # GE placeholders
+    for gid in ["ITP_GE1A", "ITP_GE1B", "ITP_GE1C", "ITP_GE3A",
+                "ITP_GE3B", "ITP_GE4A", "ITP_GE5B", "ITP_GE6",
+                "ITP_GEUD3", "ITP_GEUD4"]:
+        assert by_id[gid]["is_placeholder"] is True
+        assert by_id[gid]["category"] == "ge"
+
+    # Slash-choice elective keys
+    assert by_id["ITP_MATH"]["elective_key"] == "itp_math_choice"
+    assert by_id["ITP_STAT"]["elective_key"] == "itp_stat_choice"
+
+    # Concentration slots
+    for slot_id in ["ITP_CON_SOF1", "ITP_CON_SOS1", "ITP_CON_JRF1",
+                    "ITP_CON_JRS1", "ITP_CON_JRS2",
+                    "ITP_CON_SRF1", "ITP_CON_SRF2", "ITP_CON_SRF3",
+                    "ITP_CON_SRS1", "ITP_CON_SRS2"]:
+        slot = by_id[slot_id]
+        assert slot["category"] == "concentration"
+        assert slot["is_placeholder"] is True
+        assert slot["elective_key"] == "itp_concentration_elective"
+
+    # Free electives
+    assert by_id["ITP_FREE1"]["units"] == 2
+    assert by_id["ITP_FREE1"]["is_placeholder"] is True
+    assert by_id["ITP_FREE2"]["units"] == 2
+    assert by_id["ITP_FREE2"]["is_placeholder"] is True
+
+    # Concentrations exist
+    assert "ITP" in CONCENTRATIONS
+    tracks = [t["id"] for t in CONCENTRATIONS["ITP"]]
+    assert "none" in tracks
+    assert "industrial_technology" in tracks
+    assert "packaging" in tracks
+
+    # Notes present
+    assert fc["notes"]
+    titles = [n["title"] for n in fc["notes"]]
+    assert "Flowchart Tips" in titles
+    assert "GE Tips" in titles
+
+
+def test_itp_concentration_overrides():
+    itp_concs = CONCENTRATIONS["ITP"]
+    by_id_map = {t["id"]: t for t in itp_concs}
+
+    # Industrial Technology: 8 fixed courses + 2 elective slots
+    it = by_id_map["industrial_technology"]
+    assert it["slot_overrides"]["ITP_CON_SOF1"]["course_number"] == "ITP 2260"
+    assert it["slot_overrides"]["ITP_CON_SOF1"]["is_placeholder"] is False
+    assert it["slot_overrides"]["ITP_CON_SOF1"]["elective_key"] is None
+    assert it["slot_overrides"]["ITP_CON_SRF2"]["course_number"] == "ITP 4496"
+    assert it["slot_overrides"]["ITP_CON_SRF3"]["elective_key"] == "itp_it_approved_elective"
+    assert it["slot_overrides"]["ITP_CON_SRS1"]["course_number"] == "ITP 4497"
+    assert it["slot_overrides"]["ITP_CON_SRS2"]["elective_key"] == "itp_it_approved_elective"
+
+    # Packaging: 7 fixed courses + 3 elective slots
+    pkg = by_id_map["packaging"]
+    assert pkg["slot_overrides"]["ITP_CON_SOF1"]["course_number"] == "ITP 2234"
+    assert pkg["slot_overrides"]["ITP_CON_SOF1"]["is_placeholder"] is False
+    assert pkg["slot_overrides"]["ITP_CON_SOF1"]["elective_key"] is None
+    assert pkg["slot_overrides"]["ITP_CON_SOS1"]["course_number"] == "ITP 3334"
+    assert pkg["slot_overrides"]["ITP_CON_SRF1"]["course_number"] == "ITP 4498"
+    assert pkg["slot_overrides"]["ITP_CON_SRF2"]["elective_key"] == "itp_pkg_approved_elective"
+    assert pkg["slot_overrides"]["ITP_CON_SRS1"]["course_number"] == "ITP 4430"
+    assert pkg["slot_overrides"]["ITP_CON_SRS2"]["elective_key"] == "itp_pkg_approved_elective"
+
+
+def test_nr_flowchart():
+    fc = FLOWCHARTS["NR"]
+    courses = fc["courses"]
+    by_id = {c["id"]: c for c in courses}
+
+    # Total units
+    assert fc["total_units"] == 120
+    total = sum(c["units"] for c in courses)
+    assert total == 120, f"NR unit sum = {total}, expected 120"
+
+    # Column-by-column unit sums
+    col_sums = {}
+    for c in courses:
+        col_sums[c["grid_col"]] = col_sums.get(c["grid_col"], 0) + c["units"]
+    assert col_sums[0] == 14, f"Y1F = {col_sums[0]}"
+    assert col_sums[1] == 16, f"Y1S = {col_sums[1]}"
+    assert col_sums[2] == 15, f"Y2F = {col_sums[2]}"
+    assert col_sums[3] == 16, f"Y2S = {col_sums[3]}"
+    assert col_sums[4] == 16, f"Y3F = {col_sums[4]}"
+    assert col_sums[5] == 16, f"Y3S = {col_sums[5]}"
+    assert col_sums[6] == 13, f"Y4F = {col_sums[6]}"
+    assert col_sums[7] == 14, f"Y4S = {col_sums[7]}"
+
+    # Key course titles
+    assert by_id["NR_1141"]["title"] == "Introduction to Forest Ecosystem Management"
+    assert by_id["NR_3305"]["title"] == "Forest and Fire Ecology"
+    assert by_id["NR_4365"]["title"] == "Silviculture and Fuels Management"
+    assert by_id["NR_4402"]["title"] == "Forest Health and Disturbance Ecology"
+    assert by_id["NR_3308"]["title"] == "Fire and Society (GE UD4)"
+
+    # Categories
+    assert by_id["NR_1141"]["category"] == "major"
+    assert by_id["NR_SS1120"]["category"] == "support"
+    assert by_id["NR_GE1A"]["category"] == "ge"
+    assert by_id["NR_CON_SOS1"]["category"] == "concentration"
+    assert by_id["NR_FREE1"]["category"] == "concentration"
+
+    # Prerequisites (at least 2 prerequisite chains)
+    assert by_id["NR_2208"]["prerequisites"] == ["NR 1141"]
+    assert by_id["NR_3305"]["prerequisites"] == ["NR 2208"]
+    assert by_id["NR_4365"]["prerequisites"] == ["NR 3305"]
+    assert by_id["NR_4414"]["prerequisites"] == ["NR 4365"]
+    assert by_id["NR_4402"]["prerequisites"] == ["NR 4365"]
+
+    # GE placeholders
+    ge_tiles = [c for c in courses if c["category"] == "ge"]
+    assert len(ge_tiles) == 9, f"Expected 9 GE tiles, got {len(ge_tiles)}"
+    for t in ge_tiles:
+        assert t["is_placeholder"] is True
+
+    # Elective keys on slash-choice tiles
+    assert by_id["NR_BIO_BOT"]["elective_key"] == "nr_bio_bot_choice"
+    assert by_id["NR_SENIOR_PROJECT"]["elective_key"] == "nr_senior_project"
+
+    # Catalog notes present
+    assert fc["notes"]
+    titles = [n["title"] for n in fc["notes"]]
+    assert "Flowchart Tips" in titles
+    assert "GE Tips" in titles
+
+    # Concentrations present
+    assert "NR" in CONCENTRATIONS
+
+
+def test_nr_concentration_overrides():
+    nr_concs = CONCENTRATIONS["NR"]
+    by_id = {c["id"]: c for c in nr_concs}
+
+    # Forest Resources: NR 2204 and NR 2350 required, 5 elective slots, NR 4403 (1u)
+    fr = by_id["forest_resources"]
+    assert fr["slot_overrides"]["NR_CON_SOS1"]["course_number"] == "NR 2204"
+    assert fr["slot_overrides"]["NR_CON_SOS1"]["is_placeholder"] is False
+    assert fr["slot_overrides"]["NR_CON_SOS1"]["elective_key"] is None
+    assert fr["slot_overrides"]["NR_CON_JRF1"]["course_number"] == "NR 2350"
+    assert fr["slot_overrides"]["NR_CON_JRF1"]["is_placeholder"] is False
+    assert fr["slot_overrides"]["NR_CON_JRF2"]["elective_key"] == "nr_fr_approved_elective"
+    assert fr["slot_overrides"]["NR_CON_SRS2"]["course_number"] == "NR 4403"
+    assert fr["slot_overrides"]["NR_CON_SRS2"]["units"] == 1
+    assert fr["slot_overrides"]["NR_CON_SRS2"]["elective_key"] is None
+
+    # Water Science: ERSC 3303, SS 3321/4431 (4u), NR 4418 (2u)
+    ws = by_id["water_science"]
+    assert ws["slot_overrides"]["NR_CON_JRS1"]["course_number"] == "ERSC 3303"
+    assert ws["slot_overrides"]["NR_CON_JRS1"]["is_placeholder"] is False
+    assert ws["slot_overrides"]["NR_CON_SRF1"]["units"] == 4
+    assert ws["slot_overrides"]["NR_CON_SRF1"]["elective_key"] == "nr_ws_soil_choice"
+    assert ws["slot_overrides"]["NR_CON_SRS1"]["course_number"] == "NR 4418"
+    assert ws["slot_overrides"]["NR_CON_SRS1"]["units"] == 2
+    assert ws["slot_overrides"]["NR_CON_SRS1"]["elective_key"] is None
+
+    # Wildland Fire: NR 2204, NR 2350, NR 3340 (2u), 5 elective slots
+    wf = by_id["wildland_fire"]
+    assert wf["slot_overrides"]["NR_CON_SOS1"]["course_number"] == "NR 2204"
+    assert wf["slot_overrides"]["NR_CON_JRF1"]["course_number"] == "NR 2350"
+    assert wf["slot_overrides"]["NR_CON_JRF2"]["course_number"] == "NR 3340"
+    assert wf["slot_overrides"]["NR_CON_JRF2"]["units"] == 2
+    assert wf["slot_overrides"]["NR_CON_JRF2"]["is_placeholder"] is False
+    assert wf["slot_overrides"]["NR_CON_JRF3"]["elective_key"] == "nr_wf_approved_elective"
+
+
+# ---------------------------------------------------------------------------
+# CES — Comparative Ethnic Studies, BA (120u, no concentrations)
+# ---------------------------------------------------------------------------
+
+def test_ces_flowchart():
+    fc = FLOWCHARTS["CES"]
+    courses = fc["courses"]
+    by_id = {c["id"]: c for c in courses}
+
+    assert fc["total_units"] == 120
+    total = sum(c["units"] for c in courses)
+    assert total == 120, f"CES total {total} != 120"
+
+    assert by_id["CES_ES1112"]["title"] == "Race, Culture, and Politics in the United States (GE 4A)"
+    assert by_id["CES_ES1114"]["title"] == "Introduction to Ethnic Studies"
+    assert by_id["CES_ES3380"]["title"] == "Critical Race Theory"
+    assert by_id["CES_ES3390"]["title"] == "Research Methodology in Comparative Ethnic Studies"
+    assert by_id["CES_ES4461"]["title"] == "Senior Project"
+
+    assert by_id["CES_ES1112"]["category"] == "major"
+    assert by_id["CES_ES3345"]["category"] == "major"
+    assert by_id["CES_GE1C"]["category"] == "ge"
+    assert by_id["CES_FREE1"]["category"] == "concentration"
+
+    assert "ES 1114" in by_id["CES_ES3345"]["prerequisites"]
+    assert "ES 1114" in by_id["CES_ES3380"]["prerequisites"]
+    assert "ES 3380" in by_id["CES_ES3390"]["prerequisites"]
+    assert "ES 3390" in by_id["CES_ES4461"]["prerequisites"]
+
+    for gid in ["CES_GE1C", "CES_GE2", "CES_GE3B", "CES_GE4B",
+                "CES_GE5A", "CES_GE5B", "CES_GE5C",
+                "CES_GEUD25", "CES_GEUD3", "CES_GEUD4"]:
+        # GE UD placeholders use names from the flowchart; only check GE tiles we defined
+        if gid in by_id:
+            assert by_id[gid]["is_placeholder"] is True
+            assert by_id[gid]["category"] == "ge"
+
+    assert by_id["CES_AREA6_1"]["is_placeholder"] is True
+    assert by_id["CES_AREA6_1"]["elective_key"] == "ces_area6_course"
+    assert by_id["CES_POP1"]["elective_key"] == "ces_popular_culture"
+    assert by_id["CES_LIT_UD3"]["elective_key"] == "ces_lit_ud3"
+    assert by_id["CES_THEORY1"]["elective_key"] == "ces_theory"
+    assert by_id["CES_UDEL1"]["elective_key"] == "ces_ud_elective"
+
+    assert "CES" not in CONCENTRATIONS
+
+    assert fc["notes"]
+    titles = [n["title"] for n in fc["notes"]]
+    assert "Flowchart Tips" in titles
+    assert "GE Tips" in titles
+
+
+# ---------------------------------------------------------------------------
+# GEN — General Engineering, BS (120u, no concentrations)
+# ---------------------------------------------------------------------------
+
+def test_gen_flowchart():
+    fc = FLOWCHARTS["GEN"]
+    courses = fc["courses"]
+    by_id = {c["id"]: c for c in courses}
+
+    assert fc["total_units"] == 120
+    total = sum(c["units"] for c in courses)
+    assert total == 120, f"GEN total {total} != 120"
+
+    assert by_id["GEN_MATH1261"]["title"] == "Calculus I (GE 2)"
+    assert by_id["GEN_PHYS1141"]["title"] == "General Physics I (GE 5A)"
+    assert by_id["GEN_ENGR3310"]["title"] == "Ethical Engineering"
+    assert by_id["GEN_ENGR4460"]["title"] == "Senior Project I"
+    assert by_id["GEN_ENGR4461"]["title"] == "Senior Project II"
+
+    assert by_id["GEN_MATH1261"]["category"] == "support"
+    assert by_id["GEN_PHYS1141"]["category"] == "support"
+    assert by_id["GEN_ENGR1110"]["category"] == "major"
+    assert by_id["GEN_GE1A"]["category"] == "ge"
+    assert by_id["GEN_ICS1"]["category"] == "concentration"
+
+    assert "MATH 1261" in by_id["GEN_PHYS1141"]["prerequisites"]
+    assert "PHYS 1141" in by_id["GEN_ENGR2211"]["prerequisites"]
+    assert "ENGR 4460" in by_id["GEN_ENGR4461"]["prerequisites"]
+
+    for gid in ["GEN_GE1A", "GEN_GE1B", "GEN_GE1C",
+                "GEN_GE3A", "GEN_GE3B", "GEN_GE4A", "GEN_GE4B",
+                "GEN_GE5B", "GEN_GE6", "GEN_GEUD3", "GEN_GEUD4"]:
+        assert by_id[gid]["is_placeholder"] is True
+        assert by_id[gid]["category"] == "ge"
+
+    assert by_id["GEN_WGQS"]["is_placeholder"] is True
+    assert by_id["GEN_WGQS"]["elective_key"] == "gen_gender_sci_choice"
+
+    for ics_id in ["GEN_ICS1", "GEN_ICS2", "GEN_ICS3", "GEN_ICS4",
+                   "GEN_ICS5", "GEN_ICS6", "GEN_ICS7", "GEN_ICS8", "GEN_ICS9"]:
+        assert by_id[ics_id]["is_placeholder"] is True
+        assert by_id[ics_id]["category"] == "concentration"
+
+    assert "GEN" not in CONCENTRATIONS
+
+    assert fc["notes"]
+    tips_section = next(n for n in fc["notes"] if n["title"] == "Flowchart Tips")
+    assert any("26 units" in item for item in tips_section["items"])
+
+
+# ---------------------------------------------------------------------------
+# MSCI — Marine Sciences, BS (120u, no concentrations)
+# ---------------------------------------------------------------------------
+
+def test_msci_flowchart():
+    fc = FLOWCHARTS["MSCI"]
+    courses = fc["courses"]
+    by_id = {c["id"]: c for c in courses}
+
+    assert fc["total_units"] == 120
+    total = sum(c["units"] for c in courses)
+    assert total == 120, f"MSCI total {total} != 120"
+
+    assert by_id["MSCI_1111"]["title"] == "The Oceans (GE 5B)"
+    assert by_id["MSCI_3300"]["title"] == "Marine Ecology"
+    assert by_id["MSCI_3301"]["title"] == "Biological Oceanography"
+    assert by_id["MSCI_3370"]["title"] == "Marine Chemistry"
+    assert by_id["MSCI_BIO1150"]["title"] == "Life: History and Diversity (GE 5C)"
+
+    assert by_id["MSCI_1100"]["category"] == "major"
+    assert by_id["MSCI_BIO1150"]["category"] == "support"
+    assert by_id["MSCI_CHEM1120"]["category"] == "support"
+    assert by_id["MSCI_GE1A"]["category"] == "ge"
+
+    assert "MSCI 1111" in by_id["MSCI_1112"]["prerequisites"]
+    assert "MSCI 1111" in by_id["MSCI_3300"]["prerequisites"]
+    assert "MSCI 3300" in by_id["MSCI_3301"]["prerequisites"]
+    assert "CHEM 1122" in by_id["MSCI_CHEM_ORG"]["prerequisites"]
+
+    for gid in ["MSCI_GE1A", "MSCI_GE1C", "MSCI_GE1B",
+                "MSCI_GE_SOF2", "MSCI_GE_SOS1", "MSCI_GE_SOS2",
+                "MSCI_GE_JRF", "MSCI_GE_JRS", "MSCI_GEUD3",
+                "MSCI_GEUD4", "MSCI_GEUD25"]:
+        assert by_id[gid]["is_placeholder"] is True
+        assert by_id[gid]["category"] == "ge"
+
+    assert by_id["MSCI_PHYS1"]["elective_key"] == "msci_phys1_choice"
+    assert by_id["MSCI_PHYS2"]["elective_key"] == "msci_phys2_choice"
+    assert by_id["MSCI_MATH"]["elective_key"] == "msci_math_choice"
+    assert by_id["MSCI_CHEM_ORG"]["elective_key"] == "msci_chem_choice"
+    assert by_id["MSCI_MAR_EL1"]["elective_key"] == "msci_marine_elective"
+    assert by_id["MSCI_APP_EL1"]["elective_key"] == "msci_approved_elective"
+    assert by_id["MSCI_SENIOR"]["elective_key"] == "msci_senior_project"
+
+    assert "MSCI" not in CONCENTRATIONS
+
+    assert fc["notes"]
+    tips_section = next(n for n in fc["notes"] if n["title"] == "Flowchart Tips")
+    assert any("senior project" in item.lower() for item in tips_section["items"])
+
+
+# ---------------------------------------------------------------------------
+# EESS — Environmental Earth and Soil Sciences, BS (120u, Geology concentration)
+# ---------------------------------------------------------------------------
+
+def test_eess_flowchart():
+    fc = FLOWCHARTS["EESS"]
+    courses = fc["courses"]
+    by_id = {c["id"]: c for c in courses}
+
+    assert fc["total_units"] == 120
+    total = sum(c["units"] for c in courses)
+    assert total == 120, f"EESS total {total} != 120"
+
+    assert by_id["EESS_ERSC1144"]["title"] == "Introduction to Earth Science"
+    assert by_id["EESS_SS1120"]["title"] == "Introductory Soil Science"
+    assert by_id["EESS_SS4423"]["title"] == "Environmental Soil and Water Chemistry"
+    assert by_id["EESS_NR3310"]["title"] == "Global Climate Change"
+    assert by_id["EESS_CHEM1120"]["title"] == "Fundamentals of Chemical Structure and Properties (GE 5A)"
+
+    assert by_id["EESS_ERSC1144"]["category"] == "major"
+    assert by_id["EESS_BOT1121"]["category"] == "support"
+    assert by_id["EESS_CHEM1120"]["category"] == "support"
+    assert by_id["EESS_GE1A"]["category"] == "ge"
+    assert by_id["EESS_CON1"]["category"] == "concentration"
+
+    assert "SS 1120" in by_id["EESS_SS3321"]["prerequisites"]
+    assert "GEOL 2240" in by_id["EESS_GEOL2241"]["prerequisites"]
+    assert "CHEM 1120" in by_id["EESS_CHEM2240"]["prerequisites"]
+    assert "SS 3321" in by_id["EESS_SS4423"]["prerequisites"]
+
+    for gid in ["EESS_GE1A", "EESS_GE1B", "EESS_GE1C",
+                "EESS_GE_FS2", "EESS_GE_SOF", "EESS_GE_SOS1",
+                "EESS_GE_SOS2", "EESS_GE_JRF", "EESS_GE_JRS",
+                "EESS_GE_SRF"]:
+        assert by_id[gid]["is_placeholder"] is True
+        assert by_id[gid]["category"] == "ge"
+
+    assert by_id["EESS_MATH"]["elective_key"] == "eess_math_choice"
+    assert by_id["EESS_PHYS"]["elective_key"] == "eess_phys_choice"
+    assert by_id["EESS_STRAT_SOIL"]["elective_key"] == "eess_strat_or_soil"
+    assert by_id["EESS_SOIL_GEO"]["elective_key"] == "eess_soil_or_geomorph"
+    assert by_id["EESS_GIS_CHOICE"]["elective_key"] == "eess_gis_choice"
+    assert by_id["EESS_PHYS_CHEM"]["elective_key"] == "eess_env_physics_choice"
+    assert by_id["EESS_SENIOR"]["elective_key"] == "eess_senior_project"
+    assert by_id["EESS_CON1"]["elective_key"] == "eess_approved_elective"
+    assert by_id["EESS_CON6"]["elective_key"] == "eess_nr_elective"
+
+    assert "EESS" in CONCENTRATIONS
+    conc_ids = [c["id"] for c in CONCENTRATIONS["EESS"]]
+    assert "geology" in conc_ids
+
+    assert fc["notes"]
+    tips_section = next(n for n in fc["notes"] if n["title"] == "Flowchart Tips")
+    assert any("Geology" in item for item in tips_section["items"])
+
+
+def test_eess_geology_concentration():
+    geo = next(c for c in CONCENTRATIONS["EESS"] if c["id"] == "geology")
+    overrides = geo["slot_overrides"]
+
+    assert overrides["EESS_CON1"]["course_number"] == "NR 3318"
+    assert overrides["EESS_CON1"]["is_placeholder"] is False
+    assert overrides["EESS_CON1"]["elective_key"] is None
+
+    assert overrides["EESS_CON2"]["course_number"] == "GEOL 3310"
+    assert overrides["EESS_CON2"]["units"] == 4
+    assert overrides["EESS_CON2"]["is_placeholder"] is False
+    assert overrides["EESS_CON2"]["elective_key"] is None
+
+    assert overrides["EESS_CON3"]["course_number"] == "GEOL 4415"
+    assert overrides["EESS_CON4"]["course_number"] == "GEOL 4417"
+    assert overrides["EESS_CON4"]["units"] == 5
+    assert overrides["EESS_CON5"]["course_number"] == "GEOL 4420"
+    assert overrides["EESS_CON6"]["is_placeholder"] is True
+    assert overrides["EESS_CON6"]["elective_key"] == "eess_env_physics_choice"
+
+
+# ---------------------------------------------------------------------------
+# INTS — Interdisciplinary Studies, BA (120u, 5 concentrations)
+# ---------------------------------------------------------------------------
+
+def test_ints_flowchart():
+    fc = FLOWCHARTS["INTS"]
+    courses = fc["courses"]
+    by_id = {c["id"]: c for c in courses}
+
+    assert fc["total_units"] == 120
+    total = sum(c["units"] for c in courses)
+    assert total == 120, f"INTS total {total} != 120"
+
+    assert by_id["INTS_ISLA1101"]["title"] == "Interdisciplinary Studies Major First Year Seminar"
+    assert by_id["INTS_ISLA2201"]["title"] == "Introduction to Interdisciplinary Studies"
+    assert by_id["INTS_ISLA2255"]["title"] == "Introduction to Interdisciplinary Theory and Methods"
+    assert by_id["INTS_ISLA3355"]["title"] == "Interdisciplinary Research Methods"
+    assert by_id["INTS_ISLA4440"]["title"] == "Advanced Interdisciplinary Studies Seminar"
+    assert by_id["INTS_ISLA4460"]["title"] == "Senior Project Seminar and Senior Project"
+
+    assert by_id["INTS_ISLA1101"]["category"] == "major"
+    assert by_id["INTS_INTRO"]["category"] == "major"
+    assert by_id["INTS_GE1A"]["category"] == "ge"
+    assert by_id["INTS_CON1"]["category"] == "concentration"
+
+    assert "ISLA 2255" in by_id["INTS_ISLA3355"]["prerequisites"]
+    assert "ISLA 3355" in by_id["INTS_ISLA4440"]["prerequisites"]
+    assert "ISLA 3355" in by_id["INTS_ISLA4460"]["prerequisites"]
+
+    for gid in ["INTS_GE1A", "INTS_GE1B", "INTS_GE1C", "INTS_GE2",
+                "INTS_GE3A", "INTS_GE3B", "INTS_GE4A", "INTS_GE4B",
+                "INTS_GE5A", "INTS_GE5B", "INTS_GE5C",
+                "INTS_GE6", "INTS_GEUD4", "INTS_GEUD25", "INTS_GEUD3"]:
+        assert by_id[gid]["is_placeholder"] is True
+        assert by_id[gid]["category"] == "ge"
+
+    assert by_id["INTS_INTRO"]["is_placeholder"] is True
+    assert by_id["INTS_INTRO"]["elective_key"] == "ints_intro_course"
+    assert by_id["INTS_UD_ISLA1"]["elective_key"] == "ints_ud_isla_elective"
+    assert by_id["INTS_UD_ISLA2"]["elective_key"] == "ints_ud_isla_elective"
+
+    assert "INTS" in CONCENTRATIONS
+    conc_ids = [c["id"] for c in CONCENTRATIONS["INTS"]]
+    assert "none" in conc_ids
+    assert "ethics_law_social_justice" in conc_ids
+    assert "global_citizenship_social_sustainability" in conc_ids
+    assert "health_and_society" in conc_ids
+    assert "science_technology_society" in conc_ids
+    assert "visual_media_cultural_studies" in conc_ids
+
+    assert fc["notes"]
+    titles = [n["title"] for n in fc["notes"]]
+    assert "Flowchart Tips" in titles
+
+
+def test_ints_concentration_overrides():
+    by_id = {c["id"]: c for c in CONCENTRATIONS["INTS"]}
+
+    eljs = by_id["ethics_law_social_justice"]
+    assert eljs["slot_overrides"]["INTS_CON1"]["is_placeholder"] is True
+    assert eljs["slot_overrides"]["INTS_CON1"]["elective_key"] == "ints_eljs_concentration"
+    assert eljs["slot_overrides"]["INTS_CON6"]["elective_key"] == "ints_eljs_concentration"
+
+    sts = by_id["science_technology_society"]
+    assert sts["slot_overrides"]["INTS_CON1"]["elective_key"] == "ints_sts_concentration"
+
+    vmcs = by_id["visual_media_cultural_studies"]
+    assert vmcs["slot_overrides"]["INTS_CON1"]["elective_key"] == "ints_vmcs_concentration"
+
+
+# ---------------------------------------------------------------------------
+# LAES — Liberal Arts and Engineering Studies, BS (120u, 4 Eng concentrations)
+# ---------------------------------------------------------------------------
+
+def test_laes_flowchart():
+    fc = FLOWCHARTS["LAES"]
+    courses = fc["courses"]
+    by_id = {c["id"]: c for c in courses}
+
+    assert fc["total_units"] == 120
+    total = sum(c["units"] for c in courses)
+    assert total == 120, f"LAES total {total} != 120"
+
+    assert by_id["LAES_MATH1261"]["title"] == "Calculus I (GE 2)"
+    assert by_id["LAES_PHYS1141"]["title"] == "General Physics I (GE 5A)"
+    assert by_id["LAES_4301"]["title"] == "Liberal Arts and Engineering Studies Capstone I"
+    assert by_id["LAES_4461"]["title"] == "Senior Project I in Liberal Arts and Engineering Studies"
+    assert by_id["LAES_4462"]["title"] == "Senior Project II in Liberal Arts and Engineering Studies"
+
+    assert by_id["LAES_CHEM1120"]["category"] == "support"
+    assert by_id["LAES_MATH1261"]["category"] == "support"
+    assert by_id["LAES_4301"]["category"] == "major"
+    assert by_id["LAES_GE1A"]["category"] == "ge"
+    assert by_id["LAES_ENG_CON1"]["category"] == "concentration"
+    assert by_id["LAES_LA_CON1"]["category"] == "concentration"
+
+    assert "MATH 1261" in by_id["LAES_MATH1262"]["prerequisites"]
+    assert "MATH 1261" in by_id["LAES_PHYS1141"]["prerequisites"]
+    assert "PHYS 1141" in by_id["LAES_PHYS1143"]["prerequisites"]
+    assert "LAES 4301" in by_id["LAES_4302"]["prerequisites"]
+    assert "LAES 4461" in by_id["LAES_4462"]["prerequisites"]
+
+    for gid in ["LAES_GE1A", "LAES_GE1B", "LAES_GE1C",
+                "LAES_GE3A", "LAES_GE3B", "LAES_GE4A", "LAES_GE4B",
+                "LAES_GE6", "LAES_GEUD3", "LAES_GEUD4"]:
+        assert by_id[gid]["is_placeholder"] is True
+        assert by_id[gid]["category"] == "ge"
+
+    for eng_id in ["LAES_ENG_CON1", "LAES_ENG_CON2", "LAES_ENG_CON3"]:
+        assert by_id[eng_id]["is_placeholder"] is True
+        assert by_id[eng_id]["category"] == "concentration"
+
+    assert "LAES" in CONCENTRATIONS
+    conc_ids = [c["id"] for c in CONCENTRATIONS["LAES"]]
+    assert "none" in conc_ids
+    assert "computer_science" in conc_ids
+    assert "electrical_engineering" in conc_ids
+    assert "industrial_engineering" in conc_ids
+    assert "engineering_ics" in conc_ids
+
+    assert fc["notes"]
+    tips_section = next(n for n in fc["notes"] if n["title"] == "Flowchart Tips")
+    assert any("Global Perspectives" in item for item in tips_section["items"])
+
+
+def test_laes_concentration_overrides():
+    by_id = {c["id"]: c for c in CONCENTRATIONS["LAES"]}
+
+    cs = by_id["computer_science"]
+    assert cs["slot_overrides"]["LAES_ENG_CON1"]["course_number"] == "CSC 1001"
+    assert cs["slot_overrides"]["LAES_ENG_CON1"]["is_placeholder"] is False
+    assert cs["slot_overrides"]["LAES_ENG_CON1"]["elective_key"] is None
+    assert cs["slot_overrides"]["LAES_ENG_CON2"]["course_number"] == "CSC 2001"
+    assert cs["slot_overrides"]["LAES_ENG_CON3"]["is_placeholder"] is True
+    assert cs["slot_overrides"]["LAES_ENG_CON3"]["elective_key"] == "laes_eng_elective"
+    assert cs["slot_overrides"]["LAES_ENG_CON9"]["elective_key"] == "laes_eng_elective"
+
+    ee = by_id["electrical_engineering"]
+    assert ee["slot_overrides"]["LAES_ENG_CON1"]["course_number"] == "EE 2211"
+    assert ee["slot_overrides"]["LAES_ENG_CON3"]["course_number"] == "EE 2241"
+    assert ee["slot_overrides"]["LAES_ENG_CON3"]["units"] == 1
+    assert ee["slot_overrides"]["LAES_ENG_CON3"]["is_placeholder"] is False
+    assert ee["slot_overrides"]["LAES_ENG_CON3"]["elective_key"] is None
+
+    ie = by_id["industrial_engineering"]
+    assert ie["slot_overrides"]["LAES_ENG_CON1"]["course_number"] == "CSC 1032"
+    assert ie["slot_overrides"]["LAES_ENG_CON3"]["course_number"] == "IME 1223"
+    assert ie["slot_overrides"]["LAES_ENG_CON3"]["units"] == 4
+    assert ie["slot_overrides"]["LAES_ENG_CON5"]["course_number"] == "IME 2315"
+    assert ie["slot_overrides"]["LAES_ENG_CON5"]["units"] == 2
+    assert ie["slot_overrides"]["LAES_ENG_CON6"]["is_placeholder"] is True
+    assert ie["slot_overrides"]["LAES_ENG_CON6"]["elective_key"] == "laes_eng_elective"
+
+    ics = by_id["engineering_ics"]
+    assert ics["slot_overrides"]["LAES_ENG_CON1"]["is_placeholder"] is True
+    assert ics["slot_overrides"]["LAES_ENG_CON1"]["elective_key"] == "laes_eng_elective"

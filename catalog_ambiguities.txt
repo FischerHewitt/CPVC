@@ -503,3 +503,176 @@ PHIL — Philosophy (No Concentration Selected): no concentration-specific footn
 
 --------------------------------------------------------------------------------
 PLSC — Plant Sciences (No Concentration Selected): no concentration-specific footnotes found — tips pending review.
+
+--------------------------------------------------------------------------------
+ITP — Industrial Technology and Packaging
+--------------------------------------------------------------------------------
+- MATH slash-choice: MATH 1261 (Calculus I, 4u) vs. MATH 1267 (Business Calculus, 4u). Note: MATH 1267 may also require corequisite MATH 1277 Business Calculus Workshop (1 unit), but catalog support-unit total suggests MATH is counted at 4u. MATH 1277 omitted from picker; recommend advisor verification.
+- PHYS 1121 and CHEM 1120 both carry footnote 1 (satisfies GE), but both are required support courses. PHYS 1121 is modeled as satisfying GE 5A/5C; CHEM 1120 is also flagged with the same GE notation — exact GE area for CHEM is ambiguous. Both are titled with "(GE 5A/5C)" for student clarity.
+- Junior Fall free elective modeled at 2 units (catalog states 2–3u). Senior Spring free elective modeled at 2 units (catalog states 0–2u). Both are category="concentration" (unrestricted).
+- IT concentration approved elective total is 6–8 units across 2 slots; each slot modeled at 3u. If a student selects a 4-unit elective (BUS 3310 or BUS 3313), the extra unit applies toward free electives per catalog footnote 3.
+- Packaging concentration approved elective total is 9–11 units across 3 slots; each slot modeled at 3u. Same 4-unit elective caveat applies.
+- BUS 3384 & BUS 3384A (3+1=4u) and BUS 4489 & BUS 4489A (3+1=4u) are listed as paired course-lab offerings in the approved elective tables. Only the 3-unit lecture course is included in the static pickers; the 1-unit project lab (3384A/4489A) is omitted — recommend advisor verification if students want full 4-unit pair.
+- Variable-unit courses ITP 2270 (1–4u), ITP 4400 (1–4u), and ITP 4419 (1–3u) appear in the approved elective lists but are omitted from the static pickers due to indeterminate unit counts.
+- ITP 4498 former quarter number is ITP 485 (not ITP 498 as the pattern would suggest). Noted in quarter_equivalents.
+
+--------------------------------------------------------------------------------
+NR — Forest and Fire Sciences
+--------------------------------------------------------------------------------
+- BIO 1114/BOT 1121 slash-choice (Y1F): BIO 1114 (Plant Diversity and Ecology)
+  and BOT 1121 (General Botany) are both listed as equivalent support options.
+  Both satisfy GE 5B and 5C. Modeled as 4u placeholder with elective_key
+  "nr_bio_bot_choice". Unit counts assumed equal at 4u each; verify in catalog.
+- STAT 1110 and MATH 1264 both carry footnote 1 (satisfies GE requirement).
+  STAT 1110 satisfies GE 2; MATH 1264 may also satisfy GE 2 per the catalog
+  footnote. Only STAT 1110 is labeled "(GE 2)" in the flowchart since no
+  separate GE 2 standalone tile is needed. Verify MATH 1264 GE area with advisor.
+- NR 3319 & NR 3320 are a paired lecture+lab (3u combined). Modeled as a single
+  tile "NR 3319/3320" with 3u. Individual course unit split (e.g., 2u+1u) not
+  tracked in the flowchart.
+- Senior project options NR 4460, NR 4466, NR 4475 have full titles not
+  confirmed from catalog source; modeled generically as "Natural Resources
+  Senior Project" (3u each). Verify exact titles and which option applies to
+  each concentration.
+- Concentration unit-count discrepancies: Forest Resources concentration places
+  NR 4403 (1u lab) in a slot modeled as 3u in the base flowchart; this causes
+  the FR concentration to sum to approximately 117u instead of 120u in the
+  flowchart display. NR_CON_SRF1 (Y4F, base 4u) is overridden to 3u for FR,
+  reducing Y4F by 1u. Students should verify total with advisor.
+- Water Science: NR 4418 (Applied GIS, 2u) is placed in a 3u base slot
+  (NR_CON_SRS1), causing a 1u discrepancy. SS 3321/SS 4431 slash-choice units
+  assumed as 4u/3u respectively based on catalog context; verify SS 4431 units.
+- Wildland Fire: NR 3340 (Wildland Fire Management, 2u) is placed in a 3u base
+  slot (NR_CON_JRF2), causing a 1u discrepancy per concentration slot.
+- Approved elective unit counts for several courses (BIO 3321, BIO 3323,
+  BIO 3327, BIO 4446, BOT 3313, EIM 4480, NR 2200, NR 3339, NR 4400, AG 4452,
+  KINE 1181) are estimates based on typical Cal Poly course offerings; verify
+  against current catalog before advising.
+- NR 3349 is listed as "BRAE/NR 3349" in the catalog (cross-listed). Modeled
+  under "NR 3349" in the FR and WS approved elective lists.
+- NR 4404 is listed as "NR/CRP 4404" in the catalog (cross-listed). Modeled
+  under "NR 4404" in the FR and WF approved elective lists.
+- NR 4408 is listed as "NR/CRP 4408" in the catalog (cross-listed). Modeled
+  under "NR 4408" in the WS and WF approved elective lists.
+- MATH 1264 has no quarter equivalent since the semester Calculus for Data
+  Science sequence is a new semester-only offering.
+
+--------------------------------------------------------------------------------
+CES -- Comparative Ethnic Studies, BA
+--------------------------------------------------------------------------------
+- CES Area 6 ("Foundational Area Studies Elective, GE 6") placeholders use a
+  dynamic bucket (ES 2000-4999). The catalog does not provide an explicit
+  per-slot approved list for GE Area 6 within the major. Students should verify
+  GE Area 6 approval with their academic advisor.
+- CES Popular Culture placeholders (GE 3A) use a dynamic ES 2000-3999 bucket.
+  The catalog groups these as "Popular Culture" courses but does not enumerate
+  a fixed list of GE 3A-satisfying ES courses in the Plan of Study Grid.
+- CES Literature/Cultural Production (GE UD3) uses a dynamic ES 3000-4999
+  bucket. Exact approved courses for UD3 not explicitly listed in the flowchart
+  footnotes.
+- CES_GE5C is modeled as a 1-unit standalone GE 5C lab tile in SoF to balance
+  the 16-unit term total (POP1+AREA6_2+GE5A+GE5B+GE5C+FREE = 3+3+3+3+1+3=16).
+  This is an unusual layout; verify whether a separate 1-unit lab is actually
+  required or if GE 5B satisfies the lab requirement.
+- Free Elective totals across 8 terms (6 x 3u = 18u of FREE tiles) were
+  inferred from unit balance; actual free elective count depends on specific
+  GE/major double-count rules.
+
+--------------------------------------------------------------------------------
+GEN -- General Engineering, BS
+--------------------------------------------------------------------------------
+- Individualized Course of Study (ICS) consists of 26 units with a minimum of
+  18 units at the 3000-4000 level. Modeled as 9 generic ICS Elective tiles with
+  no catalog-restricted course list; any approved upper-division College of
+  Engineering course is eligible per the catalog.
+- WGQS 3350/3351 slash-choice tile: both courses are listed as equivalent
+  options with the same USCP designation. Modeled as a static 2-option picker.
+- IME 1140 + IME 1143 are modeled as a single 3u paired tile (1u+2u); catalog
+  lists them as separate 1-unit and 2-unit courses.
+
+--------------------------------------------------------------------------------
+MSCI -- Marine Sciences, BS
+--------------------------------------------------------------------------------
+- Physics pathway choice (PHYS 1121/1141 and PHYS 1123/1143) and math choice
+  (MATH 1261/1264) are slash-choice tiles. Students emphasizing Physics should
+  take PHYS 1141; others may take PHYS 1121. The flowchart models a single slot
+  for each pair; actual term placement may vary by choice.
+- CHEM 2240/2242 slash choice: CHEM 2242 (Organic Chemistry I) is 5u while
+  CHEM 2240 (Organic Chemistry: Fundamentals) is 4u. The tile is modeled at 4u;
+  a student choosing CHEM 2242 would have 1 extra unit. Flag this discrepancy
+  with advisor.
+- Marine Science Elective list (msci_marine_elective) includes courses of
+  varying unit counts (3u and 4u). Elective slots are modeled at fixed units
+  (4u or 3u). Students selecting a differently-sized elective may need to adjust
+  their schedule to maintain 120u total.
+- Approved Elective bucket (msci_approved_elective) is a broad dynamic filter
+  across BIO/MSCI/CHEM/PHYS/STAT 3000-4999; the catalog does not enumerate an
+  exact approved elective list. Verify selections with advisor.
+- Senior project assumed as 2u for each BIO 4461/4462/4463 option.
+- The flowchart's SoF term total is 17u (unusual); verify balance with advisor.
+
+--------------------------------------------------------------------------------
+EESS -- Environmental Earth and Soil Sciences, BS
+--------------------------------------------------------------------------------
+- EESS_STRAT_SOIL (Y3F) is a 3u slash-choice tile (GEOL 3330/SS 2221/SS 3444).
+  SS 2221 (Soil Health and Plant Nutrition) is 4u while GEOL 3330 and SS 3444
+  are 3u. Student choosing SS 2221 would gain 1 extra unit; Y3F would total 17u
+  instead of 16u.
+- EESS_SOIL_GEO (Y3S) is a 4u slash-choice tile (SS 4422/ERSC 4450). ERSC 4450
+  (Geomorphology) is 3u while SS 4422 (Soil Ecology) is 4u. Student choosing
+  ERSC 4450 would lose 1u; Y3S would total 14u instead of 15u.
+- EESS_GIS_CHOICE (Y4F) is a 3u slash-choice tile (BRAE 3345/NR 4418). NR 4418
+  (Applied GIS) is 2u while BRAE 3345 is 3u. Student choosing NR 4418 would
+  lose 1u; Y4F would total 12u instead of 13u.
+- Geology concentration requires 22 units total (NR 3318: 3u, GEOL 3310: 4u,
+  GEOL 4415: 3u, GEOL 4417: 5u, GEOL 4420: 3u, plus 4u choice). This replaces
+  18u of base CON slots (CON1-CON6 each 3u). The Geology concentration path
+  results in approximately 124u instead of 120u due to the 4u overage. Students
+  pursuing Geology should verify total units with their advisor.
+- Approved Elective bucket (eess_approved_elective) and NR elective
+  (eess_nr_elective) are broad dynamic filters; the catalog does not enumerate
+  the exact approved elective list for this program.
+- The EESS_SENIOR tile course_number "ERSC/NR 4478/4479" is crosslisted;
+  both ERSC 4478 and ERSC 4479 exist in catalog (confirmed).
+
+--------------------------------------------------------------------------------
+INTS -- Interdisciplinary Studies, BA
+--------------------------------------------------------------------------------
+- Each of the 5 INTS concentrations (Ethics/Law/Social Justice; Global
+  Citizenship/Social Sustainability; Health and Society; Science/Technology/
+  Society; Visual/Media/Cultural Studies) is 18 units with 3-5 sub-areas.
+  The flowchart models each concentration with 6 generic slots (CON1-CON6) each
+  using a broad dynamic elective bucket for the relevant departments. Sub-area
+  enrollment requirements (e.g., "must take at least one Ethics course") are not
+  enforced by the flowchart; students must consult the catalog for sub-area rules.
+- INTS_GE5C is modeled as a 1-unit standalone GE 5C lab tile in SoF to balance
+  the 16-unit term total. Same caveat as CES GE5C above.
+- Introductory course list (ints_intro_course) is based on catalog data and
+  may not be exhaustive; the full approved list may change each year.
+- Upper-division ISLA elective list (ints_ud_isla_elective) may be incomplete;
+  verify current approved ISLA UD elective list with academic advisor.
+
+--------------------------------------------------------------------------------
+LAES -- Liberal Arts and Engineering Studies, BS
+--------------------------------------------------------------------------------
+- LAES requires students to select BOTH an Engineering concentration (26u) and
+  a Liberal Arts concentration (16u). The current flowchart system supports only
+  one active concentration at a time. Engineering concentrations override the
+  9 Eng. Conc. slots (ENG_CON1-9, 26u total); the 5 Liberal Arts Conc. slots
+  (LA_CON1-5, 16u total) remain as generic open placeholders regardless of
+  selected Engineering concentration.
+- Liberal Arts concentrations (Focused Course of Study, Technical and
+  Professional Communication, LA ICS) are not modeled as separate concentration
+  entries; LA_CON slots require manual selection. Students must consult the
+  catalog for their LA concentration requirements.
+- EE concentration: EE 2241 (Electric Circuit Analysis Lab I) is 1u but
+  overrides a 3u base slot (LAES_ENG_CON3), creating a 2u shortfall. MATH 2341
+  (Linear Analysis, 4u) vs MATH 2343 (Differential Equations, 3u) is a slash-
+  choice in ENG_CON4; modeled as a placeholder.
+- IE concentration: IME 1223 (4u) replaces a 3u slot (LAES_ENG_CON3), and IME
+  2212 (4u) replaces a 3u slot (LAES_ENG_CON4), IME 2315 (2u) replaces 3u slot
+  (LAES_ENG_CON5). These unit variances mean the IE concentration path totals
+  differ from 120u. Verify with advisor.
+- Global Perspectives requirement (5u) for JS term (LAES_GLOBAL) may be
+  satisfied by Study Abroad or approved upper-division Global Perspectives
+  courses. No elective_key assigned (not a catalog-restricted course list).

@@ -20,7 +20,26 @@
       "Bash(cd /Users/fischerhewitt/Documents/CPVC/frontend && npx tsc --noEmit *)",
       "Bash(source .venv/bin/activate && python3 -m pytest tests/ *)",
       "Bash(source .venv/bin/activate && python3 -m pytest tests/test_flowchart_data.py *)",
-      "Bash(cd /Users/fischerhewitt/Documents/CPVC/backend && source .venv/bin/activate && python3 -m pytest *)"
+      "Bash(cd /Users/fischerhewitt/Documents/CPVC/backend && source .venv/bin/activate && python3 -m pytest *)",
+      "Bash(git -C /Users/fischerhewitt/Documents/CPVC log --oneline -- frontend/lib/checklist-utils.ts)",
+      "Bash(git -C /Users/fischerhewitt/Documents/CPVC show bb6d836 -- frontend/lib/checklist-utils.ts)",
+      "mcp__claude_ai_Vercel__list_teams",
+      "mcp__claude_ai_Vercel__list_projects",
+      "mcp__claude_ai_Vercel__list_deployments",
+      "mcp__claude_ai_Vercel__get_deployment_build_logs",
+      "Bash(git -C /Users/fischerhewitt/Documents/CPVC log --oneline -5)",
+      "Bash(git -C /Users/fischerhewitt/Documents/CPVC show --stat HEAD)",
+      "Bash(git -C /Users/fischerhewitt/Documents/CPVC show --stat 45876c3)",
+      "Bash(git -C /Users/fischerhewitt/Documents/CPVC show 4b4f975:frontend/components/FlowchartGrid.tsx)",
+      "Bash(git -C /Users/fischerhewitt/Documents/CPVC log --all --oneline -- frontend/lib/course-status.ts)",
+      "Bash(git -C /Users/fischerhewitt/Documents/CPVC show 45876c3:frontend/components/FlowchartGrid.tsx)",
+      "Bash(.venv/bin/pytest --tb=short -q)",
+      "Bash(.venv/bin/python3 -c ' *)",
+      "Bash(.venv/bin/pytest tests/test_flowchart_data.py -k \"math\" --tb=short -q)",
+      "Bash(.venv/bin/pytest tests/test_flowchart_data.py::test_fsn_flowchart tests/test_flowchart_data.py::test_fsn_placeholders_have_elective_keys -v)",
+      "Bash(.venv/bin/pytest tests/test_flowchart_data.py::test_food_science_flowchart tests/test_flowchart_data.py::test_fsn_placeholders_have_elective_keys -v)",
+      "Bash(.venv/bin/pytest tests/test_flowchart_data.py::test_history_flowchart tests/test_electives_api.py::test_elective_endpoint_returns_hist_options -v)",
+      "Bash(.venv/bin/pytest tests/test_flowchart_data.py::test_history_flowchart tests/test_electives_api.py::test_elective_endpoint_returns_hist_options -q)"
     ]
   }
 }

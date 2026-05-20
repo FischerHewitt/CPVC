@@ -3890,3 +3890,304 @@ CONCENTRATIONS["LIBS"] = [
         },
     },
 ]
+
+CONCENTRATIONS["ITP"] = [
+    {
+        "id": "none",
+        "label": "No Concentration Selected",
+        "slot_overrides": {},
+    },
+    {
+        "id": "industrial_technology",
+        "label": "Industrial Technology",
+        "tips": [
+            "Units in excess of the concentration total will be applied towards major's free electives.",
+        ],
+        "slot_overrides": {
+            "ITP_CON_SOF1": {"course_number": "ITP 2260", "title": "Materials and Manufacturing Technology",    "units": 3, "prerequisites": [],             "quarter_equivalents": ["ITP 260"], "is_placeholder": False, "elective_key": None},
+            "ITP_CON_SOS1": {"course_number": "ITP 3390", "title": "Industrial Automation",                    "units": 3, "prerequisites": [],             "quarter_equivalents": ["ITP 390"], "is_placeholder": False, "elective_key": None},
+            "ITP_CON_JRF1": {"course_number": "ITP 4403", "title": "Lean and Quality Systems Management",     "units": 3, "prerequisites": ["ITP 3303"],    "quarter_equivalents": ["ITP 403"], "is_placeholder": False, "elective_key": None},
+            "ITP_CON_JRS1": {"course_number": "ITP 4410", "title": "Operations Planning and Control",         "units": 3, "prerequisites": [],             "quarter_equivalents": ["ITP 410"], "is_placeholder": False, "elective_key": None},
+            "ITP_CON_JRS2": {"course_number": "ITP 4428", "title": "Commercialization of Innovation",         "units": 3, "prerequisites": [],             "quarter_equivalents": ["ITP 428"], "is_placeholder": False, "elective_key": None},
+            "ITP_CON_SRF1": {"course_number": "ITP 4415", "title": "Supply Chain and Logistics",              "units": 3, "prerequisites": [],             "quarter_equivalents": ["ITP 415"], "is_placeholder": False, "elective_key": None},
+            "ITP_CON_SRF2": {"course_number": "ITP 4496", "title": "Product Development and Manufacturing I", "units": 3, "prerequisites": [],             "quarter_equivalents": [],           "is_placeholder": False, "elective_key": None},
+            "ITP_CON_SRF3": {"course_number": "IT Elec.", "title": "IT Approved Elective",                    "units": 3, "prerequisites": [],             "quarter_equivalents": [],           "is_placeholder": True,  "elective_key": "itp_it_approved_elective"},
+            "ITP_CON_SRS1": {"course_number": "ITP 4497", "title": "Product Development and Manufacturing II","units": 3, "prerequisites": ["ITP 4496"],    "quarter_equivalents": [],           "is_placeholder": False, "elective_key": None},
+            "ITP_CON_SRS2": {"course_number": "IT Elec.", "title": "IT Approved Elective",                    "units": 3, "prerequisites": [],             "quarter_equivalents": [],           "is_placeholder": True,  "elective_key": "itp_it_approved_elective"},
+        },
+    },
+    {
+        "id": "packaging",
+        "label": "Packaging",
+        "tips": [
+            "Units in excess of the concentration total will be applied towards major's free electives.",
+        ],
+        "slot_overrides": {
+            "ITP_CON_SOF1": {"course_number": "ITP 2234", "title": "Packaging Design Fundamentals",           "units": 3, "prerequisites": [],             "quarter_equivalents": ["ITP 234"], "is_placeholder": False, "elective_key": None},
+            "ITP_CON_SOS1": {"course_number": "ITP 3334", "title": "Structural Packaging Design",            "units": 3, "prerequisites": ["ITP 2234"],    "quarter_equivalents": [],           "is_placeholder": False, "elective_key": None},
+            "ITP_CON_JRF1": {"course_number": "ITP 2241", "title": "Industrial and Packaging Materials",     "units": 3, "prerequisites": [],             "quarter_equivalents": [],           "is_placeholder": False, "elective_key": None},
+            "ITP_CON_JRS1": {"course_number": "ITP 4408", "title": "Fiber-Based Packaging",                  "units": 3, "prerequisites": ["ITP 3330"],    "quarter_equivalents": [],           "is_placeholder": False, "elective_key": None},
+            "ITP_CON_JRS2": {"course_number": "ITP 4475", "title": "Distribution Packaging Dynamics",        "units": 3, "prerequisites": [],             "quarter_equivalents": ["ITP 475"], "is_placeholder": False, "elective_key": None},
+            "ITP_CON_SRF1": {"course_number": "ITP 4498", "title": "Packaging Development",                  "units": 3, "prerequisites": [],             "quarter_equivalents": ["ITP 485"], "is_placeholder": False, "elective_key": None},
+            "ITP_CON_SRF2": {"course_number": "Pkg Elec.","title": "Packaging Approved Elective",            "units": 3, "prerequisites": [],             "quarter_equivalents": [],           "is_placeholder": True,  "elective_key": "itp_pkg_approved_elective"},
+            "ITP_CON_SRF3": {"course_number": "Pkg Elec.","title": "Packaging Approved Elective",            "units": 3, "prerequisites": [],             "quarter_equivalents": [],           "is_placeholder": True,  "elective_key": "itp_pkg_approved_elective"},
+            "ITP_CON_SRS1": {"course_number": "ITP 4430", "title": "Healthcare Packaging",                   "units": 3, "prerequisites": [],             "quarter_equivalents": ["ITP 430"], "is_placeholder": False, "elective_key": None},
+            "ITP_CON_SRS2": {"course_number": "Pkg Elec.","title": "Packaging Approved Elective",            "units": 3, "prerequisites": [],             "quarter_equivalents": [],           "is_placeholder": True,  "elective_key": "itp_pkg_approved_elective"},
+        },
+    },
+]
+
+CONCENTRATIONS["NR"] = [
+    {
+        "id": "none",
+        "label": "No Concentration Selected",
+        "slot_overrides": {},
+    },
+    {
+        "id": "forest_resources",
+        "label": "Forest Resources",
+        "tips": [
+            "Courses taken to meet major requirements cannot be double-counted as concentration electives.",
+            "NR 4403 (1 unit) is the Forest Health lab paired with the required NR 4402; it counts toward concentration units.",
+        ],
+        "slot_overrides": {
+            "NR_CON_SOS1": {"course_number": "NR 2204",  "title": "Wildland Fire Control",                              "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "NR_CON_JRF1": {"course_number": "NR 2350",  "title": "Urban Forestry",                                     "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "NR_CON_JRF2": {"course_number": "FR Elec.", "title": "Forest Resources Approved Elective",                 "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "nr_fr_approved_elective"},
+            "NR_CON_JRF3": {"course_number": "FR Elec.", "title": "Forest Resources Approved Elective",                 "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "nr_fr_approved_elective"},
+            "NR_CON_JRS1": {"course_number": "FR Elec.", "title": "Forest Resources Approved Elective",                 "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "nr_fr_approved_elective"},
+            "NR_CON_SRF1": {"course_number": "FR Elec.", "title": "Forest Resources Approved Elective",                 "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "nr_fr_approved_elective"},
+            "NR_CON_SRS1": {"course_number": "FR Elec.", "title": "Forest Resources Approved Elective",                 "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "nr_fr_approved_elective"},
+            "NR_CON_SRS2": {"course_number": "NR 4403",  "title": "Forest Health and Disturbance Ecology Laboratory",   "units": 1, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+        },
+    },
+    {
+        "id": "water_science",
+        "label": "Water Science",
+        "tips": [
+            "Courses taken to meet major requirements cannot be double-counted as concentration electives.",
+        ],
+        "slot_overrides": {
+            "NR_CON_SOS1": {"course_number": "WS Elec.", "title": "Water Science Approved Elective",                    "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "nr_ws_approved_elective"},
+            "NR_CON_JRF1": {"course_number": "WS Elec.", "title": "Water Science Approved Elective",                    "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "nr_ws_approved_elective"},
+            "NR_CON_JRF2": {"course_number": "WS Elec.", "title": "Water Science Approved Elective",                    "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "nr_ws_approved_elective"},
+            "NR_CON_JRF3": {"course_number": "WS Elec.", "title": "Water Science Approved Elective",                    "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "nr_ws_approved_elective"},
+            "NR_CON_JRS1": {"course_number": "ERSC 3303","title": "Soil Erosion and Water Conservation",                "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "NR_CON_SRF1": {"course_number": "SS 3321/4431","title": "Soil Morphology or Spatial Data Analysis and Environmental Mapping", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "nr_ws_soil_choice"},
+            "NR_CON_SRS1": {"course_number": "NR 4418",  "title": "Applied Geographic Information System",              "units": 2, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "NR_CON_SRS2": {"course_number": "WS Elec.", "title": "Water Science Approved Elective",                    "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "nr_ws_approved_elective"},
+        },
+    },
+    {
+        "id": "wildland_fire",
+        "label": "Wildland Fire",
+        "tips": [
+            "Courses taken to meet major requirements cannot be double-counted as concentration electives.",
+        ],
+        "slot_overrides": {
+            "NR_CON_SOS1": {"course_number": "NR 2204",  "title": "Wildland Fire Control",                              "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "NR_CON_JRF1": {"course_number": "NR 2350",  "title": "Urban Forestry",                                     "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "NR_CON_JRF2": {"course_number": "NR 3340",  "title": "Wildland Fire Management",                           "units": 2, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "NR_CON_JRF3": {"course_number": "WF Elec.", "title": "Wildland Fire Approved Elective",                    "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "nr_wf_approved_elective"},
+            "NR_CON_JRS1": {"course_number": "WF Elec.", "title": "Wildland Fire Approved Elective",                    "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "nr_wf_approved_elective"},
+            "NR_CON_SRF1": {"course_number": "WF Elec.", "title": "Wildland Fire Approved Elective",                    "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "nr_wf_approved_elective"},
+            "NR_CON_SRS1": {"course_number": "WF Elec.", "title": "Wildland Fire Approved Elective",                    "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "nr_wf_approved_elective"},
+            "NR_CON_SRS2": {"course_number": "WF Elec.", "title": "Wildland Fire Approved Elective",                    "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "nr_wf_approved_elective"},
+        },
+    },
+]
+
+CONCENTRATIONS["EESS"] = [
+    {
+        "id": "geology",
+        "label": "Geology",
+        "tips": [
+            "Courses taken to meet major or support requirements cannot be double-counted in the concentration.",
+            "ERSC 4450, GEOL 3330, MATH 1261, and PHYS 1141 are prerequisites for the Geology concentration and appear as slash-choice tiles in the base flowchart.",
+        ],
+        "slot_overrides": {
+            "EESS_CON1": {"course_number": "NR 3318",   "title": "Introduction to Environmental Data Science",  "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "EESS_CON2": {"course_number": "GEOL 3310", "title": "Igneous and Metamorphic Petrology",           "units": 4, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "EESS_CON3": {"course_number": "GEOL 4415", "title": "Structural Geology",                          "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "EESS_CON4": {"course_number": "GEOL 4417", "title": "Field Geology Methods and Mapping",           "units": 5, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "EESS_CON5": {"course_number": "GEOL 4420", "title": "Field Geophysics",                            "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "EESS_CON6": {"course_number": "ERSC/SS",   "title": "Applied Groundwater, Contaminant Transport, or Soil Physics", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "eess_env_physics_choice"},
+        },
+    },
+]
+
+CONCENTRATIONS["INTS"] = [
+    {
+        "id": "none",
+        "label": "No Concentration",
+        "tips": [],
+        "slot_overrides": {},
+    },
+    {
+        "id": "ethics_law_social_justice",
+        "label": "Ethics, Law, and Social Justice",
+        "tips": [
+            "The concentration consists of three sub-areas: Ethics (6 units), Law (6-8 units), and Social Justice (6-8 units). Consult the catalog for the approved course list for each sub-area.",
+            "Courses taken to meet a Major requirement may not be double-counted in the concentration.",
+        ],
+        "slot_overrides": {
+            "INTS_CON1": {"course_number": "ELJS Conc.", "title": "Ethics, Law, and Social Justice Concentration Course 1", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_eljs_concentration"},
+            "INTS_CON2": {"course_number": "ELJS Conc.", "title": "Ethics, Law, and Social Justice Concentration Course 2", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_eljs_concentration"},
+            "INTS_CON3": {"course_number": "ELJS Conc.", "title": "Ethics, Law, and Social Justice Concentration Course 3", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_eljs_concentration"},
+            "INTS_CON4": {"course_number": "ELJS Conc.", "title": "Ethics, Law, and Social Justice Concentration Course 4", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_eljs_concentration"},
+            "INTS_CON5": {"course_number": "ELJS Conc.", "title": "Ethics, Law, and Social Justice Concentration Course 5", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_eljs_concentration"},
+            "INTS_CON6": {"course_number": "ELJS Conc.", "title": "Ethics, Law, and Social Justice Concentration Course 6", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_eljs_concentration"},
+        },
+    },
+    {
+        "id": "global_citizenship_social_sustainability",
+        "label": "Global Citizenship and Social Sustainability",
+        "tips": [
+            "The concentration consists of sub-areas: Ethnicity and Culture, Global and Cross-Cultural Communication, Global Political Economy, Sustainability and Global Environment, and Electives. Consult the catalog for the approved course list for each sub-area.",
+            "Courses taken to meet a Major requirement may not be double-counted in the concentration.",
+        ],
+        "slot_overrides": {
+            "INTS_CON1": {"course_number": "GCSS Conc.", "title": "Global Citizenship and Social Sustainability Concentration Course 1", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_gcss_concentration"},
+            "INTS_CON2": {"course_number": "GCSS Conc.", "title": "Global Citizenship and Social Sustainability Concentration Course 2", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_gcss_concentration"},
+            "INTS_CON3": {"course_number": "GCSS Conc.", "title": "Global Citizenship and Social Sustainability Concentration Course 3", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_gcss_concentration"},
+            "INTS_CON4": {"course_number": "GCSS Conc.", "title": "Global Citizenship and Social Sustainability Concentration Course 4", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_gcss_concentration"},
+            "INTS_CON5": {"course_number": "GCSS Conc.", "title": "Global Citizenship and Social Sustainability Concentration Course 5", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_gcss_concentration"},
+            "INTS_CON6": {"course_number": "GCSS Conc.", "title": "Global Citizenship and Social Sustainability Concentration Course 6", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_gcss_concentration"},
+        },
+    },
+    {
+        "id": "health_and_society",
+        "label": "Health and Society",
+        "tips": [
+            "The concentration consists of sub-areas: Environmental Health, Gender/Race/Culture and Health, Health Systems, Medical Anthropology, and Electives. Consult the catalog for the approved course list for each sub-area.",
+            "Courses taken to meet a Major requirement may not be double-counted in the concentration.",
+        ],
+        "slot_overrides": {
+            "INTS_CON1": {"course_number": "HS Conc.",   "title": "Health and Society Concentration Course 1", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_hs_concentration"},
+            "INTS_CON2": {"course_number": "HS Conc.",   "title": "Health and Society Concentration Course 2", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_hs_concentration"},
+            "INTS_CON3": {"course_number": "HS Conc.",   "title": "Health and Society Concentration Course 3", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_hs_concentration"},
+            "INTS_CON4": {"course_number": "HS Conc.",   "title": "Health and Society Concentration Course 4", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_hs_concentration"},
+            "INTS_CON5": {"course_number": "HS Conc.",   "title": "Health and Society Concentration Course 5", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_hs_concentration"},
+            "INTS_CON6": {"course_number": "HS Conc.",   "title": "Health and Society Concentration Course 6", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_hs_concentration"},
+        },
+    },
+    {
+        "id": "science_technology_society",
+        "label": "Science, Technology, and Society",
+        "tips": [
+            "The concentration consists of sub-areas: Gender/Race/Culture/Science/Technology, Philosophy of Science and Technology, Science Communication, and Electives. Consult the catalog for the approved course list for each sub-area.",
+            "Courses taken to meet a Major requirement may not be double-counted in the concentration.",
+        ],
+        "slot_overrides": {
+            "INTS_CON1": {"course_number": "STS Conc.",  "title": "Science, Technology, and Society Concentration Course 1", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_sts_concentration"},
+            "INTS_CON2": {"course_number": "STS Conc.",  "title": "Science, Technology, and Society Concentration Course 2", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_sts_concentration"},
+            "INTS_CON3": {"course_number": "STS Conc.",  "title": "Science, Technology, and Society Concentration Course 3", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_sts_concentration"},
+            "INTS_CON4": {"course_number": "STS Conc.",  "title": "Science, Technology, and Society Concentration Course 4", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_sts_concentration"},
+            "INTS_CON5": {"course_number": "STS Conc.",  "title": "Science, Technology, and Society Concentration Course 5", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_sts_concentration"},
+            "INTS_CON6": {"course_number": "STS Conc.",  "title": "Science, Technology, and Society Concentration Course 6", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_sts_concentration"},
+        },
+    },
+    {
+        "id": "visual_media_cultural_studies",
+        "label": "Visual, Media, and Cultural Studies",
+        "tips": [
+            "The concentration consists of sub-areas: Art/Dance/Music/Theatre, Literature, Popular Culture, Technology and Human Expression, and Electives. Consult the catalog for the approved course list for each sub-area.",
+            "Courses taken to meet a Major requirement may not be double-counted in the concentration.",
+        ],
+        "slot_overrides": {
+            "INTS_CON1": {"course_number": "VMCS Conc.", "title": "Visual, Media, and Cultural Studies Concentration Course 1", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_vmcs_concentration"},
+            "INTS_CON2": {"course_number": "VMCS Conc.", "title": "Visual, Media, and Cultural Studies Concentration Course 2", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_vmcs_concentration"},
+            "INTS_CON3": {"course_number": "VMCS Conc.", "title": "Visual, Media, and Cultural Studies Concentration Course 3", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_vmcs_concentration"},
+            "INTS_CON4": {"course_number": "VMCS Conc.", "title": "Visual, Media, and Cultural Studies Concentration Course 4", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_vmcs_concentration"},
+            "INTS_CON5": {"course_number": "VMCS Conc.", "title": "Visual, Media, and Cultural Studies Concentration Course 5", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_vmcs_concentration"},
+            "INTS_CON6": {"course_number": "VMCS Conc.", "title": "Visual, Media, and Cultural Studies Concentration Course 6", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_vmcs_concentration"},
+        },
+    },
+]
+
+CONCENTRATIONS["LAES"] = [
+    {
+        "id": "none",
+        "label": "No Engineering Concentration Selected",
+        "tips": [
+            "LAES students must select both an Engineering concentration (26 units) and a Liberal Arts concentration (16 units). The Engineering concentration overrides the Eng. Conc. slots; the Liberal Arts concentration fills the LA Conc. slots.",
+        ],
+        "slot_overrides": {},
+    },
+    {
+        "id": "computer_science",
+        "label": "Computer Science (Engineering)",
+        "tips": [
+            "The CS engineering concentration requires CSC 1001 (Fundamentals of Computer Science, 3u), CSC 2001 (Data Structures, 3u), and 20 units of director-approved CSC/CPE/SE electives with a minimum of 10 upper-division units.",
+            "Must also select a Liberal Arts concentration (16 units) to fill the LA Conc. slots.",
+        ],
+        "slot_overrides": {
+            "LAES_ENG_CON1": {"course_number": "CSC 1001",  "title": "Fundamentals of Computer Science",                  "units": 3, "prerequisites": [],               "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "LAES_ENG_CON2": {"course_number": "CSC 2001",  "title": "Data Structures",                                   "units": 3, "prerequisites": ["CSC 1001"],      "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "LAES_ENG_CON3": {"course_number": "CSC Elec.", "title": "CS/CPE/SE Engineering Elective",                    "units": 3, "prerequisites": [],               "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "laes_eng_elective"},
+            "LAES_ENG_CON4": {"course_number": "CSC Elec.", "title": "CS/CPE/SE Engineering Elective",                    "units": 3, "prerequisites": [],               "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "laes_eng_elective"},
+            "LAES_ENG_CON5": {"course_number": "CSC Elec.", "title": "CS/CPE/SE Engineering Elective",                    "units": 3, "prerequisites": [],               "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "laes_eng_elective"},
+            "LAES_ENG_CON6": {"course_number": "CSC Elec.", "title": "CS/CPE/SE Engineering Elective",                    "units": 2, "prerequisites": [],               "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "laes_eng_elective"},
+            "LAES_ENG_CON7": {"course_number": "CSC Elec.", "title": "CS/CPE/SE Engineering Elective",                    "units": 3, "prerequisites": [],               "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "laes_eng_elective"},
+            "LAES_ENG_CON8": {"course_number": "CSC Elec.", "title": "CS/CPE/SE Engineering Elective",                    "units": 3, "prerequisites": [],               "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "laes_eng_elective"},
+            "LAES_ENG_CON9": {"course_number": "CSC Elec.", "title": "CS/CPE/SE Engineering Elective",                    "units": 3, "prerequisites": [],               "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "laes_eng_elective"},
+        },
+    },
+    {
+        "id": "electrical_engineering",
+        "label": "Electrical Engineering (Engineering)",
+        "tips": [
+            "The EE engineering concentration requires EE 2211 (Electric Circuit Analysis I, 3u), EE 2212 (Electric Circuit Analysis II, 3u), EE 2241 (Electric Circuit Analysis Lab I, 1u), MATH 2341 or MATH 2343 (Linear Analysis or Differential Equations, 3-4u), and 15-16 units of director-approved CPE/EE electives with a minimum of 10 upper-division units.",
+            "Must also select a Liberal Arts concentration (16 units) to fill the LA Conc. slots.",
+        ],
+        "slot_overrides": {
+            "LAES_ENG_CON1": {"course_number": "EE 2211",   "title": "Electric Circuit Analysis I",                       "units": 3, "prerequisites": [],               "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "LAES_ENG_CON2": {"course_number": "EE 2212",   "title": "Electric Circuit Analysis II",                      "units": 3, "prerequisites": ["EE 2211"],      "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "LAES_ENG_CON3": {"course_number": "EE 2241",   "title": "Electric Circuit Analysis Laboratory I",            "units": 1, "prerequisites": ["EE 2211"],      "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "LAES_ENG_CON4": {"course_number": "MATH 2341/2343", "title": "Linear Analysis or Differential Equations",   "units": 3, "prerequisites": ["MATH 1262"],    "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "laes_eng_elective"},
+            "LAES_ENG_CON5": {"course_number": "CPE/EE Elec.", "title": "CPE/EE Engineering Elective",                   "units": 3, "prerequisites": [],               "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "laes_eng_elective"},
+            "LAES_ENG_CON6": {"course_number": "CPE/EE Elec.", "title": "CPE/EE Engineering Elective",                   "units": 2, "prerequisites": [],               "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "laes_eng_elective"},
+            "LAES_ENG_CON7": {"course_number": "CPE/EE Elec.", "title": "CPE/EE Engineering Elective",                   "units": 3, "prerequisites": [],               "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "laes_eng_elective"},
+            "LAES_ENG_CON8": {"course_number": "CPE/EE Elec.", "title": "CPE/EE Engineering Elective",                   "units": 3, "prerequisites": [],               "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "laes_eng_elective"},
+            "LAES_ENG_CON9": {"course_number": "CPE/EE Elec.", "title": "CPE/EE Engineering Elective",                   "units": 3, "prerequisites": [],               "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "laes_eng_elective"},
+        },
+    },
+    {
+        "id": "industrial_engineering",
+        "label": "Industrial Engineering (Engineering)",
+        "tips": [
+            "The IE engineering concentration requires CSC 1032 (3u), IME 1140 & 1143 (3u combined), IME 1223 (4u), IME 2212 (4u), IME 2315 (2u), and 10 units of director-approved upper-division IE electives.",
+            "Must also select a Liberal Arts concentration (16 units) to fill the LA Conc. slots.",
+        ],
+        "slot_overrides": {
+            "LAES_ENG_CON1": {"course_number": "CSC 1032",      "title": "Programming for Scientists and Engineers",     "units": 3, "prerequisites": [],               "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "LAES_ENG_CON2": {"course_number": "IME 1140/1143", "title": "Technical Graphics and Introduction to Design and Manufacturing", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "LAES_ENG_CON3": {"course_number": "IME 1223",      "title": "Process Improvement Fundamentals",             "units": 4, "prerequisites": [],               "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "LAES_ENG_CON4": {"course_number": "IME 2212",      "title": "Introduction to Enterprise Analytics and Database Systems", "units": 4, "prerequisites": [],  "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "LAES_ENG_CON5": {"course_number": "IME 2315",      "title": "Financial Decision Making for Engineers",      "units": 2, "prerequisites": [],               "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
+            "LAES_ENG_CON6": {"course_number": "IE Elec.",      "title": "IE Upper-Division Engineering Elective",      "units": 2, "prerequisites": [],               "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "laes_eng_elective"},
+            "LAES_ENG_CON7": {"course_number": "IE Elec.",      "title": "IE Upper-Division Engineering Elective",      "units": 3, "prerequisites": [],               "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "laes_eng_elective"},
+            "LAES_ENG_CON8": {"course_number": "IE Elec.",      "title": "IE Upper-Division Engineering Elective",      "units": 3, "prerequisites": [],               "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "laes_eng_elective"},
+            "LAES_ENG_CON9": {"course_number": "IE Elec.",      "title": "IE Upper-Division Engineering Elective",      "units": 2, "prerequisites": [],               "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "laes_eng_elective"},
+        },
+    },
+    {
+        "id": "engineering_ics",
+        "label": "Engineering Individualized Course of Study",
+        "tips": [
+            "The Engineering ICS concentration requires 26 units of director-approved electives from the College of Engineering, with a minimum of 10 upper-division units. A written justification demonstrating cohesive hybrid integration with the Liberal Arts concentration is required.",
+            "Must also select a Liberal Arts concentration (16 units) to fill the LA Conc. slots.",
+        ],
+        "slot_overrides": {
+            "LAES_ENG_CON1": {"course_number": "CoE Elec.", "title": "Engineering ICS Elective",  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "laes_eng_elective"},
+            "LAES_ENG_CON2": {"course_number": "CoE Elec.", "title": "Engineering ICS Elective",  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "laes_eng_elective"},
+            "LAES_ENG_CON3": {"course_number": "CoE Elec.", "title": "Engineering ICS Elective",  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "laes_eng_elective"},
+            "LAES_ENG_CON4": {"course_number": "CoE Elec.", "title": "Engineering ICS Elective",  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "laes_eng_elective"},
+            "LAES_ENG_CON5": {"course_number": "CoE Elec.", "title": "Engineering ICS Elective",  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "laes_eng_elective"},
+            "LAES_ENG_CON6": {"course_number": "CoE Elec.", "title": "Engineering ICS Elective",  "units": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "laes_eng_elective"},
+            "LAES_ENG_CON7": {"course_number": "CoE Elec.", "title": "Engineering ICS Elective",  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "laes_eng_elective"},
+            "LAES_ENG_CON8": {"course_number": "CoE Elec.", "title": "Engineering ICS Elective",  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "laes_eng_elective"},
+            "LAES_ENG_CON9": {"course_number": "CoE Elec.", "title": "Engineering ICS Elective",  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "laes_eng_elective"},
+        },
+    },
+]

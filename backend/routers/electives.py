@@ -3154,6 +3154,351 @@ _STATIC: dict[str, dict] = {
             {"course_number": "WLC 2201",  "title": "Intermediate World Language and Culture I",    "units": 4},
         ],
     },
+    "itp_math_choice": {
+        "title": "Calculus I or Business Calculus",
+        "description": "ITP students take Calculus I (MATH 1261) or Business Calculus (MATH 1267). Note: MATH 1267 may also require the corequisite MATH 1277 Business Calculus Workshop (1 unit).",
+        "courses": [
+            {"course_number": "MATH 1261", "title": "Calculus I",          "units": 4},
+            {"course_number": "MATH 1267", "title": "Business Calculus",   "units": 4},
+        ],
+    },
+    "itp_stat_choice": {
+        "title": "Statistics",
+        "description": "ITP students take Applied Statistical Concepts and Methods (STAT 1110) or Business Statistics I (STAT 1210). Either course also satisfies GE Area 2.",
+        "courses": [
+            {"course_number": "STAT 1110", "title": "Applied Statistical Concepts and Methods", "units": 3},
+            {"course_number": "STAT 1210", "title": "Business Statistics I",                    "units": 3},
+        ],
+    },
+    "itp_it_approved_elective": {
+        "title": "IT Concentration Approved Elective",
+        "description": "Select an approved elective from the Industrial Technology concentration list. Verify selection with your academic advisor.",
+        "courses": [
+            {"course_number": "ITP 2203",  "title": "Personal Leadership - 7 Habits",                   "units": 3},
+            {"course_number": "ITP 2211",  "title": "Industrial Safety and Maintenance",                  "units": 3},
+            {"course_number": "ITP 2234",  "title": "Packaging Design Fundamentals",                      "units": 3},
+            {"course_number": "ITP 2241",  "title": "Industrial and Packaging Materials",                 "units": 3},
+            {"course_number": "ITP 2275",  "title": "Industrial Facilities Management",                   "units": 3},
+            {"course_number": "ITP 3304",  "title": "International Supply Chains",                        "units": 3},
+            {"course_number": "ITP 4404",  "title": "Lean Six Sigma Green Belt Certification Project",    "units": 3},
+            {"course_number": "ITP 4406",  "title": "Business-to-Business Complex Solutions Selling",     "units": 3},
+            {"course_number": "ITP 4412",  "title": "Instrumental Analysis of Packaging Polymers",        "units": 3},
+            {"course_number": "ITP 4413",  "title": "Quality Evaluation of Packaged Products",            "units": 3},
+            {"course_number": "ITP 4414",  "title": "Packaging Laws and Regulations",                     "units": 3},
+            {"course_number": "ITP 4430",  "title": "Healthcare Packaging",                               "units": 3},
+            {"course_number": "ITP 4475",  "title": "Distribution Packaging Dynamics",                    "units": 3},
+            {"course_number": "ITP 4498",  "title": "Packaging Development",                              "units": 3},
+            {"course_number": "BUS 2212",  "title": "Financial Accounting for Nonbusiness Majors",        "units": 3},
+            {"course_number": "BUS 2214",  "title": "Financial Accounting",                               "units": 3},
+            {"course_number": "BUS 2215",  "title": "Managerial Accounting",                              "units": 3},
+            {"course_number": "BUS 3384",  "title": "Human Resources Management",                         "units": 3},
+            {"course_number": "BUS 3387",  "title": "Organizational Behavior",                            "units": 3},
+            {"course_number": "BUS 3392",  "title": "Business Application Development",                   "units": 3},
+            {"course_number": "BUS 3393",  "title": "Database Systems in Business",                       "units": 3},
+            {"course_number": "BUS 4489",  "title": "Negotiation",                                        "units": 3},
+            {"course_number": "BUS 3310",  "title": "Introduction to Entrepreneurship",                   "units": 4},
+            {"course_number": "BUS 3313",  "title": "Customer Development",                               "units": 4},
+        ],
+    },
+    "itp_pkg_approved_elective": {
+        "title": "Packaging Concentration Approved Elective",
+        "description": "Select an approved elective from the Packaging concentration list. Verify selection with your academic advisor.",
+        "courses": [
+            {"course_number": "ITP 2211",  "title": "Industrial Safety and Maintenance",                  "units": 3},
+            {"course_number": "ITP 2260",  "title": "Materials and Manufacturing Technology",              "units": 3},
+            {"course_number": "ITP 3304",  "title": "International Supply Chains",                        "units": 3},
+            {"course_number": "ITP 3390",  "title": "Industrial Automation",                              "units": 3},
+            {"course_number": "ITP 4403",  "title": "Lean and Quality Systems Management",                "units": 3},
+            {"course_number": "ITP 4404",  "title": "Lean Six Sigma Green Belt Certification Project",    "units": 3},
+            {"course_number": "ITP 4406",  "title": "Business-to-Business Complex Solutions Selling",     "units": 3},
+            {"course_number": "ITP 4410",  "title": "Operations Planning and Control",                    "units": 3},
+            {"course_number": "ITP 4412",  "title": "Instrumental Analysis of Packaging Polymers",        "units": 3},
+            {"course_number": "ITP 4413",  "title": "Quality Evaluation of Packaged Products",            "units": 3},
+            {"course_number": "ITP 4414",  "title": "Packaging Laws and Regulations",                     "units": 3},
+            {"course_number": "ITP 4415",  "title": "Supply Chain and Logistics",                         "units": 3},
+            {"course_number": "ITP 4428",  "title": "Commercialization of Innovation",                    "units": 3},
+            {"course_number": "FSN 3319",  "title": "The Science of Food for the Consumer",               "units": 3},
+            {"course_number": "BUS 2212",  "title": "Financial Accounting for Nonbusiness Majors",        "units": 3},
+            {"course_number": "BUS 2214",  "title": "Financial Accounting",                               "units": 3},
+            {"course_number": "BUS 2215",  "title": "Managerial Accounting",                              "units": 3},
+            {"course_number": "BUS 3384",  "title": "Human Resources Management",                         "units": 3},
+            {"course_number": "BUS 3387",  "title": "Organizational Behavior",                            "units": 3},
+            {"course_number": "BUS 3392",  "title": "Business Application Development",                   "units": 3},
+            {"course_number": "BUS 3393",  "title": "Database Systems in Business",                       "units": 3},
+            {"course_number": "BUS 4489",  "title": "Negotiation",                                        "units": 3},
+            {"course_number": "BUS 3310",  "title": "Introduction to Entrepreneurship",                   "units": 4},
+            {"course_number": "BUS 3313",  "title": "Customer Development",                               "units": 4},
+        ],
+    },
+    "nr_bio_bot_choice": {
+        "title": "Plant Biology (GE 5B/5C)",
+        "description": "Select one: BIO 1114 (Plant Diversity and Ecology) or BOT 1121 (General Botany). Both satisfy GE 5B and 5C.",
+        "courses": [
+            {"course_number": "BIO 1114", "title": "Plant Diversity and Ecology", "units": 4},
+            {"course_number": "BOT 1121", "title": "General Botany",              "units": 4},
+        ],
+    },
+    "nr_senior_project": {
+        "title": "Natural Resources Senior Project",
+        "description": "Select one senior project option. Consult your advisor for which option aligns with your concentration.",
+        "courses": [
+            {"course_number": "NR 4460", "title": "Natural Resources Senior Project", "units": 3},
+            {"course_number": "NR 4466", "title": "Natural Resources Senior Project", "units": 3},
+            {"course_number": "NR 4475", "title": "Natural Resources Senior Project", "units": 3},
+        ],
+    },
+    "nr_ws_soil_choice": {
+        "title": "Water Science Soil Course",
+        "description": "Select one: SS 3321 (Soil Morphology) or SS 4431 (Spatial Data Analysis and Environmental Mapping).",
+        "courses": [
+            {"course_number": "SS 3321",  "title": "Soil Morphology",                                         "units": 4},
+            {"course_number": "SS 4431",  "title": "Spatial Data Analysis and Environmental Mapping",         "units": 3},
+        ],
+    },
+    "nr_fr_approved_elective": {
+        "title": "Forest Resources Approved Elective",
+        "description": "Select an approved elective from the Forest Resources concentration list. Verify selection with your academic advisor.",
+        "courses": [
+            {"course_number": "BIO 3321",   "title": "Mammalogy",                                             "units": 4},
+            {"course_number": "BIO 3323",   "title": "Ornithology",                                           "units": 4},
+            {"course_number": "BIO 3327",   "title": "Wildlife Ecology",                                      "units": 4},
+            {"course_number": "BIO 4446",   "title": "Ecosystem Ecology",                                     "units": 4},
+            {"course_number": "BIO 4448",   "title": "Geoecology",                                            "units": 3},
+            {"course_number": "BOT 3313",   "title": "Plant Taxonomy",                                        "units": 4},
+            {"course_number": "BOT 4433",   "title": "Field Botany: California Plant Diversity",              "units": 3},
+            {"course_number": "BRAE 3345",  "title": "Photogrammetry and Remote Sensing with GIS Applications","units": 3},
+            {"course_number": "NR 3349",    "title": "Water for a Sustainable Society",                       "units": 3},
+            {"course_number": "BRAE 4447",  "title": "Advanced Surveying with GIS Applications",              "units": 3},
+            {"course_number": "EIM 4480",   "title": "Leadership Practice",                                   "units": 2},
+            {"course_number": "NR 2203",    "title": "Resource Law Enforcement",                              "units": 3},
+            {"course_number": "NR 3306",    "title": "Natural Resource Ecology and Habitat Management",       "units": 3},
+            {"course_number": "NR 3312",    "title": "Technology of Wildland Fire Management",                "units": 2},
+            {"course_number": "NR 3340",    "title": "Wildland Fire Management",                              "units": 2},
+            {"course_number": "NR 4404",    "title": "Environmental Law",                                     "units": 3},
+            {"course_number": "NR 4418",    "title": "Applied Geographic Information System",                 "units": 2},
+            {"course_number": "SS 2221",    "title": "Soil Health and Plant Nutrition",                       "units": 3},
+            {"course_number": "SS 3321",    "title": "Soil Morphology",                                       "units": 4},
+            {"course_number": "SS 4431",    "title": "Spatial Data Analysis and Environmental Mapping",       "units": 3},
+            {"course_number": "SS 4440",    "title": "Forest and Range Soils",                                "units": 3},
+            {"course_number": "SS 4444",    "title": "Soil Judging",                                          "units": 1},
+        ],
+    },
+    "nr_ws_approved_elective": {
+        "title": "Water Science Approved Elective",
+        "description": "Select an approved elective from the Water Science concentration list. Verify selection with your academic advisor.",
+        "courses": [
+            {"course_number": "AG 4452",    "title": "Leadership Seminar on Issues Affecting California Agriculture, Food Systems, and Natural Resources", "units": 1},
+            {"course_number": "BRAE 3340",  "title": "Irrigation Water Management",                          "units": 3},
+            {"course_number": "BRAE 3345",  "title": "Photogrammetry and Remote Sensing with GIS Applications","units": 3},
+            {"course_number": "NR 3349",    "title": "Water for a Sustainable Society",                       "units": 3},
+            {"course_number": "CHEM 1122",  "title": "Fundamentals of Chemical Reactivity",                  "units": 4},
+            {"course_number": "EIM 4480",   "title": "Leadership Practice",                                   "units": 2},
+            {"course_number": "MATH 1265",  "title": "Calculus for Data Science II",                         "units": 4},
+            {"course_number": "NR 4400",    "title": "Special Problems for Advanced Undergraduates",          "units": 2},
+            {"course_number": "NR 4408",    "title": "Water Resource Law and Policy",                         "units": 3},
+            {"course_number": "NR 4422",    "title": "Stream Measurements and Water Quality Monitoring",      "units": 3},
+            {"course_number": "PHYS 1121",  "title": "College Physics I",                                    "units": 4},
+            {"course_number": "PHYS 1123",  "title": "College Physics II",                                   "units": 4},
+            {"course_number": "SS 4421",    "title": "Wetlands",                                              "units": 3},
+            {"course_number": "SS 4431",    "title": "Spatial Data Analysis and Environmental Mapping",       "units": 3},
+            {"course_number": "SS 4440",    "title": "Forest and Range Soils",                                "units": 3},
+            {"course_number": "STAT 3520",  "title": "Statistics II",                                        "units": 3},
+        ],
+    },
+    "nr_wf_approved_elective": {
+        "title": "Wildland Fire Approved Elective",
+        "description": "Select an approved elective from the Wildland Fire concentration list. Verify selection with your academic advisor.",
+        "courses": [
+            {"course_number": "BOT 3326",   "title": "Plant Ecology",                                        "units": 3},
+            {"course_number": "CRP 1212",   "title": "Introduction to City Planning",                        "units": 3},
+            {"course_number": "CRP 4458",   "title": "Hazard Mitigation Planning and Resilient Design",      "units": 3},
+            {"course_number": "ES 4406",    "title": "Indigenous Peoples, International Law, and Policy",    "units": 3},
+            {"course_number": "KINE 1181",  "title": "Responding to Emergencies: Comprehensive First Aid, CPR, AED", "units": 2},
+            {"course_number": "NR 2200",    "title": "Special Problems for Undergraduates",                  "units": 2},
+            {"course_number": "NR 2203",    "title": "Resource Law Enforcement",                             "units": 3},
+            {"course_number": "NR 3312",    "title": "Technology of Wildland Fire Management",               "units": 2},
+            {"course_number": "NR 3339",    "title": "Internship in Natural Resources and Environmental Sciences", "units": 2},
+            {"course_number": "NR 4400",    "title": "Special Problems for Advanced Undergraduates",         "units": 2},
+            {"course_number": "NR 4404",    "title": "Environmental Law",                                    "units": 3},
+            {"course_number": "NR 4408",    "title": "Water Resource Law and Policy",                        "units": 3},
+            {"course_number": "NR 4418",    "title": "Applied Geographic Information System",                "units": 2},
+            {"course_number": "SS 3321",    "title": "Soil Morphology",                                      "units": 4},
+            {"course_number": "SS 4440",    "title": "Forest and Range Soils",                               "units": 3},
+        ],
+    },
+    # CES — Comparative Ethnic Studies
+    "ces_theory": {
+        "title": "Ethnic Studies Theory Course",
+        "description": "Select one: ES 4401 (Ethnic Studies: Theoretical Foundations), ES 4402 (Decolonial Theory), or ES 4403 (Feminist and Queer/Trans of Color Theories). Three theory courses are required across Junior and Senior years.",
+        "courses": [
+            {"course_number": "ES 4401", "title": "Ethnic Studies: Theoretical Foundations",          "units": 4},
+            {"course_number": "ES 4402", "title": "Decolonial Theory",                                 "units": 4},
+            {"course_number": "ES 4403", "title": "Feminist and Queer/Trans of Color Theories",       "units": 4},
+        ],
+    },
+    "ints_intro_course": {
+        "title": "INTS Introductory Course",
+        "description": "Select one approved introductory course from the list. Consult your advisor for the current catalog-approved list.",
+        "courses": [
+            {"course_number": "ES 1112",    "title": "Race, Culture, and Politics in the United States", "units": 3},
+            {"course_number": "HIST 2206",  "title": "United States Cultures",                           "units": 3},
+            {"course_number": "HIST 2216",  "title": "Comparative Social Movements",                    "units": 3},
+            {"course_number": "ISLA 1123",  "title": "Introduction to Science, Technology, and Society", "units": 3},
+            {"course_number": "ISLA 2240",  "title": "Introduction to Media Arts and Technologies",     "units": 3},
+            {"course_number": "JOUR 2219",  "title": "Mass Media in a Cross-Cultural Society",          "units": 3},
+            {"course_number": "JOUR 2228",  "title": "Media, Self and Society",                         "units": 3},
+            {"course_number": "RELS 2201",  "title": "Religion, Dialogue, and Society",                 "units": 3},
+            {"course_number": "WGQS 2201",  "title": "Gender and Sexuality in US Society and Politics", "units": 3},
+            {"course_number": "WGQS 2301",  "title": "Gender and Sexuality in Visual and Popular Culture", "units": 3},
+        ],
+    },
+    "ints_ud_isla_elective": {
+        "title": "Upper-Division ISLA Elective",
+        "description": "Select an upper-division ISLA or crosslisted Science Communication course approved for the Interdisciplinary Studies major.",
+        "courses": [
+            {"course_number": "COMS 3395",  "title": "Science Communication",                                        "units": 3},
+            {"course_number": "ISLA 3303",  "title": "Values and Technology",                                        "units": 3},
+            {"course_number": "ISLA 3305",  "title": "Public Engagements with STEM",                                 "units": 3},
+            {"course_number": "ISLA 3320",  "title": "Issues in Values, Media and Culture",                          "units": 3},
+            {"course_number": "ISLA 3330",  "title": "Cal Poly Land: Nature, Technology, and Society",               "units": 3},
+            {"course_number": "ISLA 3335",  "title": "Feminist Studies of Popular Culture and Whiteness",            "units": 3},
+            {"course_number": "ISLA 3340",  "title": "Media Arts and Technologies: Storytelling",                    "units": 3},
+            {"course_number": "ISLA 3341",  "title": "Media Arts and Technologies: Cinematic Process",               "units": 4},
+            {"course_number": "ISLA 3345",  "title": "Independent Cinema and Film Festivals",                        "units": 3},
+            {"course_number": "ISLA 3350",  "title": "The Global Environment",                                       "units": 3},
+            {"course_number": "ISLA 3393",  "title": "Action-oriented Ethnography",                                  "units": 3},
+            {"course_number": "ISLA 3395",  "title": "Science Communication",                                        "units": 3},
+            {"course_number": "ISLA 4411",  "title": "Community and Meaning-Filled Design",                          "units": 3},
+            {"course_number": "ISLA 4440",  "title": "Advanced Interdisciplinary Studies Seminar",                   "units": 3},
+            {"course_number": "ISLA 4456",  "title": "Advanced Project-Based Learning in Science, Technology & Society", "units": 4},
+        ],
+    },
+    # GEN — General Engineering
+    "gen_gender_sci_choice": {
+        "title": "Gender, Race, Culture in Science/Engineering and Technology (USCP)",
+        "description": "Select one: WGQS 3350 (Gender, Race, Culture, Science, and Technology) or WGQS 3351 (Gender, Race, Class, Nation: Critical Computing and Engineering Studies). Both satisfy USCP requirement.",
+        "courses": [
+            {"course_number": "WGQS 3350", "title": "Gender, Race, Culture, Science, and Technology",                            "units": 4},
+            {"course_number": "WGQS 3351", "title": "Gender, Race, Class, Nation: Critical Computing and Engineering Studies",   "units": 4},
+        ],
+    },
+    # MSCI — Marine Sciences
+    "msci_phys1_choice": {
+        "title": "Physics I",
+        "description": "Select one: PHYS 1121 (College Physics I) or PHYS 1141 (General Physics I). Students emphasizing Physics should take PHYS 1141; MATH 1261 is required for PHYS 1141.",
+        "courses": [
+            {"course_number": "PHYS 1121", "title": "College Physics I",  "units": 4},
+            {"course_number": "PHYS 1141", "title": "General Physics I",  "units": 4},
+        ],
+    },
+    "msci_phys2_choice": {
+        "title": "Physics II",
+        "description": "Select one: PHYS 1123 (College Physics II) or PHYS 1143 (General Physics II). Must match the Physics I selection.",
+        "courses": [
+            {"course_number": "PHYS 1123", "title": "College Physics II", "units": 4},
+            {"course_number": "PHYS 1143", "title": "General Physics II", "units": 4},
+        ],
+    },
+    "msci_math_choice": {
+        "title": "Calculus I (GE 2)",
+        "description": "Select one: MATH 1261 (Calculus I) or MATH 1264 (Calculus for Data Science I). Students emphasizing Chemistry, Engineering, or Physics should take MATH 1261.",
+        "courses": [
+            {"course_number": "MATH 1261", "title": "Calculus I",                    "units": 4},
+            {"course_number": "MATH 1264", "title": "Calculus for Data Science I",   "units": 4},
+        ],
+    },
+    "msci_chem_choice": {
+        "title": "Organic Chemistry",
+        "description": "Select one: CHEM 2240 (Organic Chemistry: Fundamentals and Applications, 4 units) or CHEM 2242 (Organic Chemistry I, 5 units).",
+        "courses": [
+            {"course_number": "CHEM 2240", "title": "Organic Chemistry: Fundamentals and Applications", "units": 4},
+            {"course_number": "CHEM 2242", "title": "Organic Chemistry I",                               "units": 5},
+        ],
+    },
+    "msci_marine_elective": {
+        "title": "Marine Science Elective",
+        "description": "Select from the approved Marine Science Elective list. Electives may not overlap with courses already counted toward major or support requirements.",
+        "courses": [
+            {"course_number": "BIO 3322",   "title": "Ichthyology",                                          "units": 4},
+            {"course_number": "BIO 3326",   "title": "Invertebrate Zoology",                                 "units": 4},
+            {"course_number": "BIO 4443",   "title": "Climate Change Biology",                               "units": 4},
+            {"course_number": "MSCI 3303",  "title": "Ocean Technologies and Data",                         "units": 3},
+            {"course_number": "MSCI 3324",  "title": "Marine Mammals, Birds, and Reptiles",                 "units": 4},
+            {"course_number": "MSCI 4403",  "title": "Field Oceanography",                                   "units": 4},
+            {"course_number": "MSCI 4437",  "title": "Marine Botany",                                        "units": 4},
+            {"course_number": "MSCI 4438",  "title": "Aquaculture",                                          "units": 4},
+            {"course_number": "MSCI 4439",  "title": "Marine Fisheries and Conservation",                   "units": 4},
+            {"course_number": "MSCI 4440",  "title": "Communicating Ocean Sciences to Informal Audiences",  "units": 3},
+        ],
+    },
+    "msci_senior_project": {
+        "title": "Marine Sciences Senior Project",
+        "description": "Select one senior project option. Only one may be used to satisfy the senior project requirement; additional units may be applied to Approved Electives.",
+        "courses": [
+            {"course_number": "BIO 4461", "title": "Senior Project - Research Proposal",     "units": 2},
+            {"course_number": "BIO 4462", "title": "Senior Project - Research Experience",   "units": 2},
+            {"course_number": "BIO 4463", "title": "Senior Project - Meta-analysis in Biology", "units": 2},
+        ],
+    },
+    # EESS — Environmental Earth and Soil Sciences
+    "eess_math_choice": {
+        "title": "Calculus I (GE 2)",
+        "description": "Select one: MATH 1261 (Calculus I) or MATH 1264 (Calculus for Data Science I). MATH 1261 is required for students pursuing the Geology concentration.",
+        "courses": [
+            {"course_number": "MATH 1261", "title": "Calculus I",                    "units": 4},
+            {"course_number": "MATH 1264", "title": "Calculus for Data Science I",   "units": 4},
+        ],
+    },
+    "eess_phys_choice": {
+        "title": "Physics I",
+        "description": "Select one: PHYS 1121 (College Physics I) or PHYS 1141 (General Physics I). PHYS 1141 is required for students pursuing the Geology concentration.",
+        "courses": [
+            {"course_number": "PHYS 1121", "title": "College Physics I",  "units": 4},
+            {"course_number": "PHYS 1141", "title": "General Physics I",  "units": 4},
+        ],
+    },
+    "eess_strat_or_soil": {
+        "title": "Stratigraphy, Soil Health, or Climate Smart Agriculture",
+        "description": "Select one: GEOL 3330 (Principles of Stratigraphy, 3 units), SS 2221 (Soil Health and Plant Nutrition, 4 units), or SS 3444 (Climate Smart Agriculture, 3 units).",
+        "courses": [
+            {"course_number": "GEOL 3330", "title": "Principles of Stratigraphy",         "units": 3},
+            {"course_number": "SS 2221",   "title": "Soil Health and Plant Nutrition",     "units": 4},
+            {"course_number": "SS 3444",   "title": "Climate Smart Agriculture",           "units": 3},
+        ],
+    },
+    "eess_soil_or_geomorph": {
+        "title": "Soil Ecology or Geomorphology",
+        "description": "Select one: SS 4422 (Soil Ecology, 4 units) or ERSC 4450 (Geomorphology, 3 units). ERSC 4450 is a prerequisite for the Geology concentration.",
+        "courses": [
+            {"course_number": "SS 4422",   "title": "Soil Ecology",     "units": 4},
+            {"course_number": "ERSC 4450", "title": "Geomorphology",    "units": 3},
+        ],
+    },
+    "eess_gis_choice": {
+        "title": "GIS or Remote Sensing Applications",
+        "description": "Select one: BRAE 3345 (Photogrammetry and Remote Sensing with GIS Applications, 3 units) or NR 4418 (Applied Geographic Information System, 2 units).",
+        "courses": [
+            {"course_number": "BRAE 3345", "title": "Photogrammetry and Remote Sensing with GIS Applications", "units": 3},
+            {"course_number": "NR 4418",   "title": "Applied Geographic Information System",                   "units": 2},
+        ],
+    },
+    "eess_env_physics_choice": {
+        "title": "Soil Physics or Applied Groundwater/Contaminant Transport",
+        "description": "Select one: SS 4424 (Environmental Soil Physics), ERSC 4442 (Applied Groundwater Hydrology), or ERSC 4443 (Applied Environmental Contaminant Transport).",
+        "courses": [
+            {"course_number": "SS 4424",   "title": "Environmental Soil Physics",                        "units": 4},
+            {"course_number": "ERSC 4442", "title": "Applied Groundwater Hydrology",                     "units": 4},
+            {"course_number": "ERSC 4443", "title": "Applied Environmental Contaminant Transport",       "units": 4},
+        ],
+    },
+    "eess_senior_project": {
+        "title": "Environmental Earth and Soil Sciences Senior Project",
+        "description": "Select one senior project option. Crosslisted as ERSC/NR.",
+        "courses": [
+            {"course_number": "ERSC 4478", "title": "Senior Project - Current Topics in Environmental Science", "units": 2},
+            {"course_number": "ERSC 4479", "title": "Senior Project - Independent Study",                       "units": 2},
+        ],
+    },
 }
 
 # Dynamic elective configs: fetch all courses from listed depts, filter by level range
@@ -3599,10 +3944,119 @@ _DYNAMIC: dict[str, dict] = {
         "min_level": 1000,
         "max_level": 4999,
     },
+    "itp_concentration_elective": {
+        "title": "Concentration Course",
+        "description": "Any ITP course. When a concentration is selected, specific required courses replace this slot.",
+        "depts": ["itp"],
+        "min_level": 1000,
+        "max_level": 4999,
+    },
+    # CES — Comparative Ethnic Studies
+    "ces_area6_course": {
+        "title": "Foundational Area Studies Elective (GE 6)",
+        "description": "Select an Ethnic Studies (ES) course satisfying GE Area 6 (Ethnic Studies). Three courses are required across the first two years.",
+        "depts": ["es"],
+        "min_level": 2000,
+        "max_level": 4999,
+    },
+    "ces_popular_culture": {
+        "title": "Popular Culture Elective (GE 3A)",
+        "description": "Select an ES popular culture or related course satisfying GE Area 3A (Arts). Three courses are required across Sophomore year.",
+        "depts": ["es"],
+        "min_level": 2000,
+        "max_level": 3999,
+    },
+    "ces_lit_ud3": {
+        "title": "Literature and Cultural Production (GE UD3)",
+        "description": "Select one upper-division ES course covering literature or cultural production to satisfy GE Upper-Division Area 3 (Arts and Humanities).",
+        "depts": ["es"],
+        "min_level": 3000,
+        "max_level": 4999,
+    },
+    "ces_ud_elective": {
+        "title": "Upper-Division ES Elective",
+        "description": "Select any upper-division ES or WGQS course. Three elective slots are distributed across Junior and Senior years.",
+        "depts": ["es", "wgqs"],
+        "min_level": 3000,
+        "max_level": 4999,
+    },
+    # MSCI — Marine Sciences
+    "msci_approved_elective": {
+        "title": "Approved Elective",
+        "description": "Select an approved elective in biology, marine sciences, chemistry, physics, or statistics. Courses may not overlap with major or support requirements. Verify selection with your academic advisor.",
+        "depts": ["bio", "msci", "chem", "phys", "stat"],
+        "min_level": 3000,
+        "max_level": 4999,
+    },
+    # EESS — Environmental Earth and Soil Sciences
+    "eess_approved_elective": {
+        "title": "Approved Elective",
+        "description": "Select an approved elective in natural resources, soil science, earth science, geology, or botany. Courses used for Major or Support requirements may not be double-counted. Verify with your academic advisor.",
+        "depts": ["nr", "ss", "ersc", "geol", "bot"],
+        "min_level": 2000,
+        "max_level": 4999,
+    },
+    "eess_nr_elective": {
+        "title": "Major NR/SS/ERSC Elective",
+        "description": "Select an upper-division natural resources, soil science, or earth science elective. Courses used for Major or Support requirements may not be double-counted.",
+        "depts": ["nr", "ss", "ersc"],
+        "min_level": 3000,
+        "max_level": 4999,
+    },
+    # INTS — Interdisciplinary Studies concentration electives
+    "ints_eljs_concentration": {
+        "title": "Ethics, Law, and Social Justice Concentration Course",
+        "description": "Select from approved courses in the Ethics, Law, and Social Justice concentration sub-areas (Ethics, Law, and Social Justice). Consult the catalog for the full approved course list by sub-area.",
+        "depts": ["phil", "es", "jour", "pols", "psy", "rels", "soc", "wgqs"],
+        "min_level": 3000,
+        "max_level": 4999,
+    },
+    "ints_gcss_concentration": {
+        "title": "Global Citizenship and Social Sustainability Concentration Course",
+        "description": "Select from approved courses in the Global Citizenship and Social Sustainability concentration sub-areas. Consult the catalog for the full approved course list by sub-area.",
+        "depts": ["es", "hist", "soc", "wlc", "coms", "engl", "jour", "pols", "brae", "isla", "nr", "phil", "psc", "psy", "rels", "wgqs"],
+        "min_level": 3000,
+        "max_level": 4999,
+    },
+    "ints_hs_concentration": {
+        "title": "Health and Society Concentration Course",
+        "description": "Select from approved courses in the Health and Society concentration sub-areas. Consult the catalog for the full approved course list by sub-area.",
+        "depts": ["isla", "phil", "es", "nr", "psy", "soc", "wgqs", "ant", "pols", "bio", "coms", "engl", "rels"],
+        "min_level": 3000,
+        "max_level": 4999,
+    },
+    "ints_sts_concentration": {
+        "title": "Science, Technology, and Society Concentration Course",
+        "description": "Select from approved courses in the Science, Technology, and Society concentration sub-areas. Consult the catalog for the full approved course list by sub-area.",
+        "depts": ["ant", "es", "isla", "soc", "wgqs", "phil", "coms", "engl", "brae", "ersc", "hist", "pols", "psc", "wlc"],
+        "min_level": 3000,
+        "max_level": 4999,
+    },
+    "ints_vmcs_concentration": {
+        "title": "Visual, Media, and Cultural Studies Concentration Course",
+        "description": "Select from approved courses in the Visual, Media, and Cultural Studies concentration sub-areas. Consult the catalog for the full approved course list by sub-area.",
+        "depts": ["art", "danc", "mu", "th", "engl", "fr", "ger", "span", "wlc", "coms", "es", "isla", "kine", "wgqs"],
+        "min_level": 3000,
+        "max_level": 4999,
+    },
+    # LAES — Liberal Arts and Engineering Studies engineering concentration electives
+    "laes_eng_elective": {
+        "title": "Engineering Concentration Elective",
+        "description": "Select a director-approved upper-division course from the College of Engineering. A minimum of 10 units must be at the 3000-4000 level.",
+        "depts": ["csc", "cpe", "se", "ee", "me", "aero", "bmed", "brae", "ce", "enve", "ime", "mate", "engr"],
+        "min_level": 3000,
+        "max_level": 4999,
+    },
 }
 
 
+_build_courses_cache: dict[tuple, list[dict]] = {}
+
+
 def _build_courses(depts: list[str], min_level: int, max_level: int) -> list[dict]:
+    cache_key = (tuple(depts), min_level, max_level)
+    if cache_key in _build_courses_cache:
+        return _build_courses_cache[cache_key]
     courses = []
     for dept in depts:
         dept_courses = get_dept_courses(dept)
@@ -3627,6 +4081,7 @@ def _build_courses(depts: list[str], min_level: int, max_level: int) -> list[dic
                 "title": info.get("title", ""),
                 "units": units,
             })
+    _build_courses_cache[cache_key] = courses
     return courses
 
 

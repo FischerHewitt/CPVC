@@ -1513,3 +1513,158 @@ def test_elective_endpoint_returns_dsci_options():
     nums = [c["course_number"] for c in r.json()["courses"]]
     assert any(n.startswith("ASCI ") or n.startswith("DSCI ") for n in nums), \
         "No ASCI/DSCI course in dsci_approved_elective"
+
+
+def test_elective_endpoint_returns_itp_options():
+    # Static pickers
+    for key, expected in [
+        ("itp_math_choice",           "MATH 1261"),
+        ("itp_math_choice",           "MATH 1267"),
+        ("itp_stat_choice",           "STAT 1110"),
+        ("itp_stat_choice",           "STAT 1210"),
+        ("itp_it_approved_elective",  "ITP 4404"),
+        ("itp_it_approved_elective",  "BUS 3310"),
+        ("itp_pkg_approved_elective", "ITP 4410"),
+        ("itp_pkg_approved_elective", "FSN 3319"),
+    ]:
+        r = client.get(f"/api/electives/{key}")
+        assert r.status_code == 200, f"Failed for {key}"
+        nums = [c["course_number"] for c in r.json()["courses"]]
+        assert expected in nums, f"{expected} not in {key} results"
+
+    # Dynamic picker: itp_concentration_elective should return ITP courses
+    r = client.get("/api/electives/itp_concentration_elective")
+    assert r.status_code == 200
+    nums = [c["course_number"] for c in r.json()["courses"]]
+    assert any(n.startswith("ITP ") for n in nums), "No ITP course in itp_concentration_elective"
+
+
+def test_elective_endpoint_returns_nr_options():
+    # Static pickers
+    for key, expected in [
+        ("nr_bio_bot_choice",         "BIO 1114"),
+        ("nr_bio_bot_choice",         "BOT 1121"),
+        ("nr_senior_project",         "NR 4460"),
+        ("nr_senior_project",         "NR 4466"),
+        ("nr_senior_project",         "NR 4475"),
+        ("nr_ws_soil_choice",         "SS 3321"),
+        ("nr_ws_soil_choice",         "SS 4431"),
+        ("nr_fr_approved_elective",   "NR 3306"),
+        ("nr_fr_approved_elective",   "SS 4440"),
+        ("nr_ws_approved_elective",   "NR 4422"),
+        ("nr_ws_approved_elective",   "STAT 3520"),
+        ("nr_wf_approved_elective",   "NR 3312"),
+        ("nr_wf_approved_elective",   "CRP 4458"),
+    ]:
+        r = client.get(f"/api/electives/{key}")
+        assert r.status_code == 200, f"Failed for {key}"
+        nums = [c["course_number"] for c in r.json()["courses"]]
+        assert expected in nums, f"{expected} not in {key} results"
+
+
+def test_ces_elective_keys():
+    # CES theory courses (static)
+    r = client.get("/api/electives/ces_theory")
+    assert r.status_code == 200
+    nums = [c["course_number"] for c in r.json()["courses"]]
+    assert "ES 4401" in nums
+    assert "ES 4402" in nums
+    assert "ES 4403" in nums
+
+    # CES dynamic buckets return results
+    for key in ["ces_area6_course", "ces_popular_culture", "ces_lit_ud3", "ces_ud_elective"]:
+        r = client.get(f"/api/electives/{key}")
+        assert r.status_code == 200, f"Failed for {key}"
+        assert len(r.json()["courses"]) > 0, f"No courses for {key}"
+
+
+def test_gen_elective_keys():
+    r = client.get("/api/electives/gen_gender_sci_choice")
+    assert r.status_code == 200
+    nums = [c["course_number"] for c in r.json()["courses"]]
+    assert "WGQS 3350" in nums
+    assert "WGQS 3351" in nums
+
+
+def test_msci_elective_keys():
+    for key, expected in [
+        ("msci_phys1_choice",     "PHYS 1121"),
+        ("msci_phys1_choice",     "PHYS 1141"),
+        ("msci_phys2_choice",     "PHYS 1123"),
+        ("msci_phys2_choice",     "PHYS 1143"),
+        ("msci_math_choice",      "MATH 1261"),
+        ("msci_math_choice",      "MATH 1264"),
+        ("msci_chem_choice",      "CHEM 2240"),
+        ("msci_chem_choice",      "CHEM 2242"),
+        ("msci_marine_elective",  "MSCI 4403"),
+        ("msci_marine_elective",  "BIO 3322"),
+        ("msci_senior_project",   "BIO 4461"),
+        ("msci_senior_project",   "BIO 4463"),
+    ]:
+        r = client.get(f"/api/electives/{key}")
+        assert r.status_code == 200, f"Failed for {key}"
+        nums = [c["course_number"] for c in r.json()["courses"]]
+        assert expected in nums, f"{expected} not in {key}"
+
+    r = client.get("/api/electives/msci_approved_elective")
+    assert r.status_code == 200
+    assert len(r.json()["courses"]) > 0
+
+
+def test_eess_elective_keys():
+    for key, expected in [
+        ("eess_math_choice",          "MATH 1261"),
+        ("eess_math_choice",          "MATH 1264"),
+        ("eess_phys_choice",          "PHYS 1121"),
+        ("eess_phys_choice",          "PHYS 1141"),
+        ("eess_strat_or_soil",        "GEOL 3330"),
+        ("eess_strat_or_soil",        "SS 2221"),
+        ("eess_strat_or_soil",        "SS 3444"),
+        ("eess_soil_or_geomorph",     "SS 4422"),
+        ("eess_soil_or_geomorph",     "ERSC 4450"),
+        ("eess_gis_choice",           "BRAE 3345"),
+        ("eess_gis_choice",           "NR 4418"),
+        ("eess_env_physics_choice",   "SS 4424"),
+        ("eess_env_physics_choice",   "ERSC 4442"),
+        ("eess_env_physics_choice",   "ERSC 4443"),
+        ("eess_senior_project",       "ERSC 4478"),
+        ("eess_senior_project",       "ERSC 4479"),
+    ]:
+        r = client.get(f"/api/electives/{key}")
+        assert r.status_code == 200, f"Failed for {key}"
+        nums = [c["course_number"] for c in r.json()["courses"]]
+        assert expected in nums, f"{expected} not in {key}"
+
+    for key in ["eess_approved_elective", "eess_nr_elective"]:
+        r = client.get(f"/api/electives/{key}")
+        assert r.status_code == 200, f"Failed for {key}"
+        assert len(r.json()["courses"]) > 0, f"No courses for {key}"
+
+
+def test_ints_elective_keys():
+    for key, expected in [
+        ("ints_intro_course",       "ES 1112"),
+        ("ints_intro_course",       "HIST 2206"),
+        ("ints_intro_course",       "ISLA 1123"),
+        ("ints_intro_course",       "WGQS 2301"),
+        ("ints_ud_isla_elective",   "ISLA 3303"),
+        ("ints_ud_isla_elective",   "ISLA 4440"),
+        ("ints_ud_isla_elective",   "COMS 3395"),
+    ]:
+        r = client.get(f"/api/electives/{key}")
+        assert r.status_code == 200, f"Failed for {key}"
+        nums = [c["course_number"] for c in r.json()["courses"]]
+        assert expected in nums, f"{expected} not in {key}"
+
+    for key in ["ints_eljs_concentration", "ints_gcss_concentration",
+                "ints_hs_concentration", "ints_sts_concentration",
+                "ints_vmcs_concentration"]:
+        r = client.get(f"/api/electives/{key}")
+        assert r.status_code == 200, f"Failed for {key}"
+        assert len(r.json()["courses"]) > 0, f"No courses for {key}"
+
+
+def test_laes_elective_keys():
+    r = client.get("/api/electives/laes_eng_elective")
+    assert r.status_code == 200
+    assert len(r.json()["courses"]) > 0
