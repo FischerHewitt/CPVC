@@ -474,7 +474,7 @@ export default function FlowchartPage() {
           borderBottom: "2px solid rgba(255,255,255,0.18)",
         }}
       >
-        <button onClick={() => router.push("/")} className="text-white/60 hover:text-white text-sm font-mono flex-shrink-0">← Back</button>
+        <button onClick={() => router.push("/upload")} className="text-white/60 hover:text-white text-sm font-mono flex-shrink-0">← Back</button>
         <div className="text-white font-bold text-sm font-mono truncate">{flowchart.major}</div>
         {concentrations.length > 0 && (
           <>
