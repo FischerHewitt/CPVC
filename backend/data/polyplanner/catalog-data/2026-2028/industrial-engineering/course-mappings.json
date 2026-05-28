@@ -1,0 +1,427 @@
+[
+  {
+    "id": 3175,
+    "sourceCourse": "IME1101",
+    "equivalentTo": "IME101"
+  },
+  {
+    "id": 3176,
+    "sourceCourse": "IME1140 and IME1143",
+    "equivalentTo": "IME144"
+  },
+  {
+    "id": 3191,
+    "sourceCourse": "IME4417",
+    "equivalentTo": "IME417"
+  },
+  {
+    "id": 3192,
+    "sourceCourse": "IME4461 and IME4462",
+    "equivalentTo": "IME481 and IME482 and IME483"
+  },
+  {
+    "id": 3198,
+    "sourceCourse": "MATH1261 and MATH1262",
+    "equivalentTo": "MATH141 and MATH141B and MATH1262"
+  },
+  {
+    "id": 3199,
+    "sourceCourse": "MATH1261 and MATH1262",
+    "equivalentTo": "MATH141 and MATH142 and MATH1262"
+  },
+  {
+    "id": 3200,
+    "sourceCourse": "MATH1261 and MATH1262",
+    "equivalentTo": "MATH141 and MATH142 and MATH143"
+  },
+  {
+    "id": 3201,
+    "sourceCourse": "MATH2263",
+    "equivalentTo": "MATH241"
+  },
+  {
+    "id": 3202,
+    "sourceCourse": "MATH1151 or MATH2341",
+    "equivalentTo": "MATH206 and MATH244"
+  },
+  {
+    "id": 3208,
+    "sourceCourse": "STAT3210",
+    "equivalentTo": "STAT321"
+  },
+  {
+    "id": 3177,
+    "sourceCourse": "IME1141 or IME1142 or IME1156",
+    "equivalentTo": "IME141 or IME156"
+  },
+  {
+    "id": 3178,
+    "sourceCourse": "IME1223",
+    "equivalentTo": "IME223"
+  },
+  {
+    "id": 3179,
+    "sourceCourse": "IME2315",
+    "equivalentTo": "IME315"
+  },
+  {
+    "id": 3180,
+    "sourceCourse": "IME2212",
+    "equivalentTo": "IME212 and IME312"
+  },
+  {
+    "id": 3181,
+    "sourceCourse": "IME2212",
+    "equivalentTo": "IME212 and CAP COURSE"
+  },
+  {
+    "id": 3182,
+    "sourceCourse": "IME3302",
+    "equivalentTo": "IME301 and IME305"
+  },
+  {
+    "id": 3183,
+    "sourceCourse": "IME3302",
+    "equivalentTo": "IME301 and CAP COURSE"
+  },
+  {
+    "id": 3193,
+    "sourceCourse": "EE2215 and EE2145 or EE2201 and EE2241",
+    "equivalentTo": "EE201 and EE 251"
+  },
+  {
+    "id": 3194,
+    "sourceCourse": "ENGR2211",
+    "equivalentTo": "ME211 and CE204"
+  },
+  {
+    "id": 3195,
+    "sourceCourse": "MATE1210 and MATE1215",
+    "equivalentTo": "MATE210 and MATE215"
+  },
+  {
+    "id": 3203,
+    "sourceCourse": "PSY2201",
+    "equivalentTo": "PSY201 or PSY202"
+  },
+  {
+    "id": 3209,
+    "sourceCourse": "GE5B",
+    "equivalentTo": "BIO213 and BMED213 or ANY GE B2"
+  },
+  {
+    "id": 3210,
+    "sourceCourse": "GE1B",
+    "equivalentTo": "ENGL147"
+  },
+  {
+    "id": 2794,
+    "sourceCourse": "IME101",
+    "equivalentTo": "IME1101"
+  },
+  {
+    "id": 2795,
+    "sourceCourse": "IME144",
+    "equivalentTo": "IME1140 and IME1143"
+  },
+  {
+    "id": 2796,
+    "sourceCourse": "IME141 or IME156",
+    "equivalentTo": "IME1141 or IME1142 or IME1156"
+  },
+  {
+    "id": 2797,
+    "sourceCourse": "IME223",
+    "equivalentTo": "IME1223"
+  },
+  {
+    "id": 2798,
+    "sourceCourse": "IME315",
+    "equivalentTo": "IME2315"
+  },
+  {
+    "id": 2799,
+    "sourceCourse": "IME212 and IME312",
+    "equivalentTo": "IME2212"
+  },
+  {
+    "id": 2800,
+    "sourceCourse": "IME212 and CAP COURSE",
+    "equivalentTo": "IME2212"
+  },
+  {
+    "id": 2801,
+    "sourceCourse": "IME301 and IME305",
+    "equivalentTo": "IME3302"
+  },
+  {
+    "id": 2802,
+    "sourceCourse": "IME301 and CAP COURSE",
+    "equivalentTo": "IME3302"
+  },
+  {
+    "id": 2803,
+    "sourceCourse": "IME326 and IME430",
+    "equivalentTo": "IME3326"
+  },
+  {
+    "id": 2804,
+    "sourceCourse": "IME326 and IME3327",
+    "equivalentTo": "IME3326"
+  },
+  {
+    "id": 2805,
+    "sourceCourse": "IME420",
+    "equivalentTo": "IME3420"
+  },
+  {
+    "id": 2806,
+    "sourceCourse": "IME372",
+    "equivalentTo": "IME4372"
+  },
+  {
+    "id": 2807,
+    "sourceCourse": "IME410",
+    "equivalentTo": "IME3410"
+  },
+  {
+    "id": 2808,
+    "sourceCourse": "IME443",
+    "equivalentTo": "IME3443"
+  },
+  {
+    "id": 2809,
+    "sourceCourse": "IME319",
+    "equivalentTo": "IME4319"
+  },
+  {
+    "id": 2810,
+    "sourceCourse": "IME417",
+    "equivalentTo": "IME4417"
+  },
+  {
+    "id": 2811,
+    "sourceCourse": "IME481 and IME482 and IME483",
+    "equivalentTo": "IME4461 and IME4462"
+  },
+  {
+    "id": 2812,
+    "sourceCourse": "ME212",
+    "equivalentTo": "TECH ELECTIVE"
+  },
+  {
+    "id": 2813,
+    "sourceCourse": "EE321",
+    "equivalentTo": "TECH ELECTIVE"
+  },
+  {
+    "id": 2814,
+    "sourceCourse": "IME429",
+    "equivalentTo": "TECH ELECTIVE"
+  },
+  {
+    "id": 2815,
+    "sourceCourse": "IME416",
+    "equivalentTo": "TECH ELECTIVE"
+  },
+  {
+    "id": 2816,
+    "sourceCourse": "MATH344",
+    "equivalentTo": "TECH ELECTIVE"
+  },
+  {
+    "id": 2817,
+    "sourceCourse": "ME341",
+    "equivalentTo": "TECH ELECTIVE"
+  },
+  {
+    "id": 2818,
+    "sourceCourse": "STAT331",
+    "equivalentTo": "TECH ELECTIVE"
+  },
+  {
+    "id": 2819,
+    "sourceCourse": "ME305",
+    "equivalentTo": "TECH ELECTIVE"
+  },
+  {
+    "id": 2820,
+    "sourceCourse": "STAT415",
+    "equivalentTo": "TECH ELECTIVE"
+  },
+  {
+    "id": 2821,
+    "sourceCourse": "STAT431",
+    "equivalentTo": "TECH ELECTIVE"
+  },
+  {
+    "id": 2822,
+    "sourceCourse": "DATA301",
+    "equivalentTo": "TECH ELECTIVE"
+  },
+  {
+    "id": 2823,
+    "sourceCourse": "EE361",
+    "equivalentTo": "TECH ELECTIVE"
+  },
+  {
+    "id": 2824,
+    "sourceCourse": "EE434",
+    "equivalentTo": "TECH ELECTIVE"
+  },
+  {
+    "id": 2825,
+    "sourceCourse": "EE201 and EE251",
+    "equivalentTo": "EE2215 and EE2145 or EE2201 and EE2241"
+  },
+  {
+    "id": 2826,
+    "sourceCourse": "ME211 and CE204",
+    "equivalentTo": "ENGR2211"
+  },
+  {
+    "id": 2827,
+    "sourceCourse": "MATE210 and MATE215",
+    "equivalentTo": "MATE1210 and MATE1215"
+  },
+  {
+    "id": 2828,
+    "sourceCourse": "CHEM124",
+    "equivalentTo": "CHEM1120"
+  },
+  {
+    "id": 2829,
+    "sourceCourse": "CSC232 or CSC101",
+    "equivalentTo": "CSC1032"
+  },
+  {
+    "id": 2830,
+    "sourceCourse": "MATH141 and MATH141B and MATH1262",
+    "equivalentTo": "MATH1261 and MATH1262"
+  },
+  {
+    "id": 2831,
+    "sourceCourse": "MATH141 and MATH142 and MATH1262",
+    "equivalentTo": "MATH1261 and MATH1262"
+  },
+  {
+    "id": 2832,
+    "sourceCourse": "MATH141 and MATH142 and MATH143",
+    "equivalentTo": "MATH1261 and MATH1262"
+  },
+  {
+    "id": 2833,
+    "sourceCourse": "MATH241",
+    "equivalentTo": "MATH2263"
+  },
+  {
+    "id": 2834,
+    "sourceCourse": "MATH206 or MATH244",
+    "equivalentTo": "MATH1151 or MATH2341"
+  },
+  {
+    "id": 2835,
+    "sourceCourse": "PSY201 or PSY202",
+    "equivalentTo": "PSY2201"
+  },
+  {
+    "id": 2836,
+    "sourceCourse": "PHYS141 and PHYS142C and PHYS1143",
+    "equivalentTo": "PHYS1141 and PHYS1143"
+  },
+  {
+    "id": 2837,
+    "sourceCourse": "PHYS141 and PHYS143 and PHYS142C",
+    "equivalentTo": "PHYS1141 and PHYS1143"
+  },
+  {
+    "id": 2838,
+    "sourceCourse": "PHYS141 and PHYS142 and PHYS143C",
+    "equivalentTo": "PHYS1141 and PHYS1143"
+  },
+  {
+    "id": 2839,
+    "sourceCourse": "PHYS141 and PHYS142 and PHYS143",
+    "equivalentTo": "PHYS1141 and PHYS1143"
+  },
+  {
+    "id": 2840,
+    "sourceCourse": "STAT321",
+    "equivalentTo": "STAT3210"
+  },
+  {
+    "id": 2841,
+    "sourceCourse": "BIO213 and BMED213 or ANY GE B2",
+    "equivalentTo": "GE5B"
+  },
+  {
+    "id": 2842,
+    "sourceCourse": "ENGL147",
+    "equivalentTo": "GE1B"
+  },
+  {
+    "id": 3184,
+    "sourceCourse": "IME3326",
+    "equivalentTo": "IME326 and IME430"
+  },
+  {
+    "id": 3185,
+    "sourceCourse": "IME3326",
+    "equivalentTo": "IME326 and IME3327"
+  },
+  {
+    "id": 3186,
+    "sourceCourse": "IME3420",
+    "equivalentTo": "IME420"
+  },
+  {
+    "id": 3187,
+    "sourceCourse": "IME4372",
+    "equivalentTo": "IME372"
+  },
+  {
+    "id": 3188,
+    "sourceCourse": "IME3410",
+    "equivalentTo": "IME410"
+  },
+  {
+    "id": 3189,
+    "sourceCourse": "IME3443",
+    "equivalentTo": "IME443"
+  },
+  {
+    "id": 3190,
+    "sourceCourse": "IME4319",
+    "equivalentTo": "IME319"
+  },
+  {
+    "id": 3196,
+    "sourceCourse": "CHEM1120",
+    "equivalentTo": "CHEM124"
+  },
+  {
+    "id": 3197,
+    "sourceCourse": "CSC1032",
+    "equivalentTo": "CSC232 or CSC101"
+  },
+  {
+    "id": 3204,
+    "sourceCourse": "PHYS1142 and PHYS1143",
+    "equivalentTo": "PHYS141 and PHYS142C and PHYS1143"
+  },
+  {
+    "id": 3205,
+    "sourceCourse": "PHYS1141 and PHYS1143",
+    "equivalentTo": "PHYS141 and PHYS143 and PHYS142C"
+  },
+  {
+    "id": 3206,
+    "sourceCourse": "PHYS1141 and PHYS1143",
+    "equivalentTo": "PHYS141 and PHYS142 and PHYS143C"
+  },
+  {
+    "id": 3207,
+    "sourceCourse": "PHYS1141 and PHYS1143",
+    "equivalentTo": "PHYS141 and PHYS142 and PHYS143"
+  }
+]

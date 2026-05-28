@@ -163,7 +163,7 @@ def test_flowcharts_have_valid_course_shape_and_unique_ids():
             assert REQUIRED_COURSE_KEYS <= course.keys(), f"{major_code} {course.get('id')} is missing keys"
             assert course["course_number"]
             assert course["title"]
-            assert course["units"] > 0
+            assert course["units"] >= 0  # 0 is allowed for variable-unit slots (units_display set)
             assert course["category"] in VALID_CATEGORIES
             assert 0 <= course["grid_col"] < len(flowchart["columns"])
             assert course["grid_row"] >= 0
@@ -237,33 +237,48 @@ def test_aerospace_engineering_concentrations_cover_catalog_options():
     assert {"none", "aeronautics", "astronautics"} <= concentration_ids
 
     aeronautics = next(c for c in aero_concentrations if c["id"] == "aeronautics")
-    assert aeronautics["slot_overrides"]["CON_JRS1"]["course_number"] == "AERO 3305"
-    assert aeronautics["slot_overrides"]["CON_SRF1"]["units"] == 3
-    assert aeronautics["slot_overrides"]["CON_SRS1"]["course_number"] == "AERO 4462"
+    assert aeronautics["full_flowchart_key"] == "AERO_AERONAUTICS"
+    aer_by_id = {c["id"]: c for c in FLOWCHARTS["AERO_AERONAUTICS"]["courses"]}
+    assert aer_by_id["AER_3305"]["course_number"] == "AERO 3305"
+    assert aer_by_id["AER_4462"]["course_number"] == "AERO 4462"
+    assert aer_by_id["AER_4462"]["grid_col"] == 7
 
     astronautics = next(c for c in aero_concentrations if c["id"] == "astronautics")
-    assert astronautics["slot_overrides"]["CON_JRS1"]["course_number"] == "AERO 3351"
-    assert astronautics["slot_overrides"]["CON_SRF4"]["course_number"] == "AERO 4455/4456"
-    assert astronautics["slot_overrides"]["CON_SRS1"]["course_number"] == "AERO 4464"
+    assert astronautics["full_flowchart_key"] == "AERO_ASTRONAUTICS"
+    ast_by_id = {c["id"]: c for c in FLOWCHARTS["AERO_ASTRONAUTICS"]["courses"]}
+    assert ast_by_id["AST_3351"]["course_number"] == "AERO 3351"
+    assert ast_by_id["AST_4455"]["course_number"] == "AERO 4455/4456"
+    assert ast_by_id["AST_4464"]["course_number"] == "AERO 4464"
 
 
 def test_computer_science_layout_groups_early_major_and_support_rows():
-    cs_courses = {course["course_number"]: course for course in FLOWCHARTS["CS"]["courses"]}
+    cs_courses = {course["id"]: course for course in FLOWCHARTS["CS"]["courses"]}
 
-    assert cs_courses["CSC 1024"]["grid_row"] == 0
-    assert cs_courses["CSC 1001"]["grid_row"] == 0
-    assert cs_courses["CSC 2001"]["grid_row"] == 0
+    assert cs_courses["CSC1024"]["grid_row"] == 0
+    assert cs_courses["CSC1001"]["grid_row"] == 0
+    assert cs_courses["CSC2001"]["grid_row"] == 0
 
-    assert cs_courses["MATH 1261"]["grid_row"] == 1
-    assert cs_courses["MATH 1262"]["grid_row"] == 1
-    assert cs_courses["MATH 1151"]["grid_row"] == 1
+    assert cs_courses["MATH1261"]["grid_row"] == 1
+    assert cs_courses["MATH1262"]["grid_row"] == 1
+    assert cs_courses["MATH1151"]["grid_row"] == 1
 
-    assert cs_courses["CSC 1000"]["grid_row"] == 3
-    assert cs_courses["PHYS 1141"]["grid_row"] == 2
-    assert cs_courses["GE 1C"]["grid_row"] == 2
-    assert cs_courses["BIO/BOT"]["grid_row"] == 2
-    assert cs_courses["GE 1A"]["grid_row"] > cs_courses["CSC 1000"]["grid_row"]
-    assert cs_courses["GE 1B"]["grid_row"] > cs_courses["PHYS 1141"]["grid_row"]
+    assert cs_courses["CSC1000"]["grid_row"] == 3
+    assert cs_courses["PHYS1141"]["grid_row"] == 2
+    assert cs_courses["GE1C"]["grid_row"] == 2
+    assert cs_courses["LIFESCI"]["grid_row"] == 2
+    assert cs_courses["GE1A"]["grid_row"] > cs_courses["CSC1000"]["grid_row"]
+    assert cs_courses["GE1B"]["grid_row"] > cs_courses["PHYS1141"]["grid_row"]
+
+
+def test_computing_majors_orientation_is_satisfied_by_quarter_csc_101():
+    for key in ["CS", "CS_AIML", "CS_DATA_ENG", "CS_GAME_DEV", "CS_GRAPHICS", "CS_PRIVACY"]:
+        by_id = {course["id"]: course for course in FLOWCHARTS[key]["courses"]}
+        assert by_id["CSC1000"]["auto_satisfied_by"] == ["CSC 101"]
+
+    se_by_id = {course["id"]: course for course in FLOWCHARTS["SE"]["courses"]}
+    cpe_by_id = {course["id"]: course for course in FLOWCHARTS["CPE"]["courses"]}
+    assert se_by_id["SE_CSC1000"]["auto_satisfied_by"] == ["CSC 101"]
+    assert cpe_by_id["CPE1000"]["auto_satisfied_by"] == ["CSC 101"]
 
 
 def test_civil_engineering_flowchart_contains_expected_core_sequence():
@@ -303,28 +318,8 @@ def test_civil_engineering_technical_elective_placeholders_are_unique():
     assert len(ce_te_courses) == len(set(ce_te_courses))
 
 
-def test_civil_engineering_concentrations_replace_only_technical_electives():
-    ce_concentrations = CONCENTRATIONS["CE"]
-    focus_area_ids = {concentration["id"] for concentration in ce_concentrations}
-
-    assert {
-        "none",
-        "construction",
-        "geotechnical",
-        "structural",
-        "transportation",
-        "water_resources",
-    } <= focus_area_ids
-
-    for concentration in ce_concentrations:
-        for slot_id in concentration["slot_overrides"]:
-            assert slot_id.startswith("CE_TE_")
-
-    structural = next(c for c in ce_concentrations if c["id"] == "structural")
-    assert structural["slot_overrides"]["CE_TE_SRF1"]["course_number"] == "CE 4356"
-
-    water_resources = next(c for c in ce_concentrations if c["id"] == "water_resources")
-    assert water_resources["slot_overrides"]["CE_TE_SRF2"]["prerequisites"] == ["CE 3337"]
+def test_civil_engineering_has_no_concentrations():
+    assert "CE" not in CONCENTRATIONS
 
 
 def test_mechanical_engineering_flowchart_contains_core_and_double_counted_ge():
@@ -366,11 +361,13 @@ def test_mechanical_engineering_concentrations_cover_catalog_options():
     mechatronics = next(c for c in me_concentrations if c["id"] == "mechatronics")
     assert mechatronics["slot_overrides"]["ME3317"]["course_number"] == "ME 3305"
     assert mechatronics["slot_overrides"]["ME3317"]["prerequisites"] == ["EE 2115 & EE 2115L", "ME 2240"]
-    assert mechatronics["slot_overrides"]["ME_TE_SRS1"]["elective_key"] == "me_mechatronics_technical_elective"
+    assert mechatronics["slot_overrides"]["ME_TE_SRS1"]["course_number"] == "ME 4419"
+    assert mechatronics["slot_overrides"]["ME_TE_SRS2"]["elective_key"] == "me_mechatronics_technical_elective"
 
     manufacturing = next(c for c in me_concentrations if c["id"] == "manufacturing")
     assert manufacturing["slot_overrides"]["ME_TE_SRF1"]["course_number"] == "IME 3327"
-    assert manufacturing["slot_overrides"]["ME_TE_SRS1"]["elective_key"] == "me_manufacturing_elective"
+    assert manufacturing["slot_overrides"]["ME_TE_SRS1"]["course_number"] == "IME 3330"
+    assert manufacturing["slot_overrides"]["ME_TE_SRS2"]["elective_key"] == "me_manufacturing_elective"
 
 
 def test_art_and_design_flowchart_contains_expected_core_and_ge_sequence():
@@ -1111,10 +1108,14 @@ def test_biochemistry_concentrations_cover_catalog_options():
     assert {"none", "polymers_coatings"} <= concentration_ids
 
     polymers = next(c for c in bioc_concentrations if c["id"] == "polymers_coatings")
-    assert polymers["slot_overrides"]["BIOC_CON_JRF"]["course_number"] == "CHEM 3380"
-    assert polymers["slot_overrides"]["BIOC_CON_JRS"]["course_number"] == "CHEM 4480/4481"
-    assert polymers["slot_overrides"]["BIOC_CON_SRF"]["course_number"] == "CHEM 4482/4483"
-    assert polymers["slot_overrides"]["BIOC_CON_SRS"]["course_number"] == "CHEM 4486"
+    assert polymers["full_flowchart_key"] == "BIOC_POLYMERS_COATINGS"
+    assert polymers["slot_overrides"] == {}
+    bioc_pc = {c["id"]: c for c in FLOWCHARTS["BIOC_POLYMERS_COATINGS"]["courses"]}
+    assert bioc_pc["BP_CHEM3380"]["course_number"] == "CHEM 3380"   # added in col 3
+    assert bioc_pc["BIOC_CON_JRF"]["course_number"] == "CHEM 4480"  # JRF → CHEM 4480
+    assert bioc_pc["BIOC_CON_JRS"]["course_number"] == "CHEM 4482"  # JRS → CHEM 4482
+    assert "BIOC_CON_SRF" not in bioc_pc                            # SRF removed
+    assert bioc_pc["BIOC_CON_SRS"]["course_number"] == "CHEM 4486"
 
 
 def test_biochemistry_or_choice_placeholders_have_elective_keys():
@@ -1538,18 +1539,19 @@ def test_chemistry_concentrations():
     assert "polymers_coatings" in concentration_ids
 
     polymers = next(c for c in chem_concentrations if c["id"] == "polymers_coatings")
-    overrides = polymers["slot_overrides"]
+    assert polymers["full_flowchart_key"] == "CHEM_POLYMERS_COATINGS"
+    assert polymers["slot_overrides"] == {}
+    chem_pc = {c["id"]: c for c in FLOWCHARTS["CHEM_POLYMERS_COATINGS"]["courses"]}
 
-    assert "CHEM_SUBDISC2" in overrides
-    assert overrides["CHEM_SUBDISC2"]["course_number"] == "CHEM 4486"
-    assert overrides["CHEM_SUBDISC2"]["elective_key"] is None
+    # SUBDISC2 stays as a placeholder (CHEM 4486 is a separate new tile)
+    assert chem_pc["CHEM_SUBDISC2"]["is_placeholder"] is True
+    assert chem_pc["CP_CHEM4486"]["course_number"] == "CHEM 4486"
+    assert chem_pc["CP_CHEM4486"]["grid_col"] == 5
 
-    assert "CHEM_ADV1" in overrides
-    assert overrides["CHEM_ADV1"]["course_number"] == "CHEM 4480"
-    assert overrides["CHEM_ADV1"]["elective_key"] is None
+    assert chem_pc["CHEM_ADV1"]["course_number"] == "CHEM 4480"
+    assert chem_pc["CHEM_ADV1"].get("elective_key") is None
 
-    assert "CHEM_ADV3" in overrides
-    assert overrides["CHEM_ADV3"]["course_number"] == "CHEM 4482"
+    assert chem_pc["CHEM_ADV3"]["course_number"] == "CHEM 4482"
 
 
 def test_software_engineering_flowchart_unit_count():
@@ -1560,12 +1562,16 @@ def test_software_engineering_flowchart_unit_count():
     assert se["total_units"] == 120
     assert sum(course["units"] for course in se["courses"]) == 120
     assert se_courses["CSC 1001"]["title"] == "Fundamentals of Computer Science"
-    assert se_courses["CSC 1001"]["units"] == 3
+    assert se_courses["CSC 1001"]["units"] == 4  # lecture + CSC 1001L lab bundled
     assert se_courses["CSC 2001"]["title"] == "Data Structures"
-    assert se_courses["CSC 2001"]["units"] == 3
-    assert se_courses["CSC 3660"]["title"] == "Database Modeling, Design and Implementation"
-    assert se_courses["CSC 3660"]["units"] == 2
-    assert se_courses["CSC 3660"]["prerequisites"] == ["CSC 2001"]
+    assert se_courses["CSC 2001"]["units"] == 4  # lecture + CSC 2001L lab bundled
+    # Database slot is a slash-choice placeholder (CSC 3660/3665)
+    db_slot = se_by_id["SE_CSC3660"]
+    assert db_slot["course_number"] == "CSC 3660/3665"
+    assert db_slot["units"] == 2
+    assert db_slot["is_placeholder"] is True
+    assert db_slot["elective_key"] == "se_database_elective"
+    assert "CSC 2001" in db_slot["prerequisites"]
     assert se_courses["CSC 4160"]["prerequisites"] == ["CSC 3100"]
     assert se_courses["GE UD-4"]["category"] == "ge"
     assert se_by_id["SE_CON_JRS1"]["is_placeholder"] is True
@@ -2045,12 +2051,7 @@ def test_mathematics_flowchart():
     assert sum(by_col[6]) == 13   # SrF
     assert sum(by_col[7]) == 16   # SrS
 
-    assert "MATH" in CONCENTRATIONS
-    math_concs = CONCENTRATIONS["MATH"]
-    track_ids = [t["id"] for t in math_concs]
-    assert "none" in track_ids
-    assert "applied" in track_ids
-    assert "teaching" in track_ids
+    assert "MATH" not in CONCENTRATIONS
 
 
 def test_math_placeholders_have_elective_keys():
@@ -2061,11 +2062,6 @@ def test_math_placeholders_have_elective_keys():
     assert math_by_id["MATH_SENIOR"]["elective_key"] == "math_senior_project"
     for i in range(1, 8):
         assert math_by_id[f"MATH_TRACK{i}"]["elective_key"] == "math_track_elective"
-
-    # Teaching concentration overrides all track slots to math_track_teaching
-    teaching = next(t for t in CONCENTRATIONS["MATH"] if t["id"] == "teaching")
-    for i in range(1, 8):
-        assert teaching["slot_overrides"][f"MATH_TRACK{i}"]["elective_key"] == "math_track_teaching"
 
     # Free electives have no elective_key
     assert math_by_id["MATH_FREE1"].get("elective_key") is None
@@ -3425,27 +3421,32 @@ def test_eim_concentration_overrides():
     eim_concs = CONCENTRATIONS["EIM"]
     by_id_map = {t["id"]: t for t in eim_concs}
 
-    # Event Planning: EIM 1114, 3317, 3320, 4420 fixed + 2 electives
+    # Event Planning uses independent flowchart
     event = by_id_map["event_planning"]
-    assert event["slot_overrides"]["EIM_CON1"]["course_number"] == "EIM 1114"
-    assert event["slot_overrides"]["EIM_CON1"]["is_placeholder"] is False
-    assert event["slot_overrides"]["EIM_CON1"]["elective_key"] is None
-    assert event["slot_overrides"]["EIM_CON4"]["course_number"] == "EIM 4420"
-    assert event["slot_overrides"]["EIM_CON5"]["elective_key"] == "eim_event_elective"
-    assert event["slot_overrides"]["EIM_CON6"]["elective_key"] == "eim_event_elective"
+    assert event["full_flowchart_key"] == "EIM_EVENT_PLANNING"
+    evtp = {c["id"]: c for c in FLOWCHARTS["EIM_EVENT_PLANNING"]["courses"]}
+    assert evtp["EVTP_1114"]["course_number"] == "EIM 1114"
+    assert evtp["EVTP_1114"]["is_placeholder"] is False
+    assert evtp["EVTP_4420"]["course_number"] == "EIM 4420"
+    assert evtp["EVTP_ELEC1"]["elective_key"] == "eim_event_elective"
+    assert evtp["EVTP_ELEC2"]["elective_key"] == "eim_event_elective"
 
-    # Sport/Recreation: 3 slash-choice fixed + 3 electives
+    # Sport/Recreation: slash-choice tiles + electives
     sport = by_id_map["sport_recreation"]
-    assert sport["slot_overrides"]["EIM_CON1"]["elective_key"] == "eim_sport_intro_choice"
-    assert sport["slot_overrides"]["EIM_CON2"]["elective_key"] == "eim_sport_second_choice"
-    assert sport["slot_overrides"]["EIM_CON3"]["elective_key"] == "eim_sport_third_choice"
-    assert sport["slot_overrides"]["EIM_CON4"]["elective_key"] == "eim_sport_elective"
+    assert sport["full_flowchart_key"] == "EIM_SPORT_RECREATION"
+    sprt = {c["id"]: c for c in FLOWCHARTS["EIM_SPORT_RECREATION"]["courses"]}
+    assert sprt["SPRT_1112"]["elective_key"] == "eim_sport_intro_choice"
+    assert sprt["SPRT_2260"]["elective_key"] == "eim_sport_second_choice"
+    assert sprt["SPRT_3323"]["elective_key"] == "eim_sport_third_choice"
+    assert sprt["SPRT_ELEC1"]["elective_key"] == "eim_sport_elective"
 
-    # Tourism/Hospitality: EIM 1114, 2216, 3317, 3318 fixed + 2 electives
+    # Tourism/Hospitality: fixed courses + 2 electives
     tourism = by_id_map["tourism_hospitality"]
-    assert tourism["slot_overrides"]["EIM_CON2"]["course_number"] == "EIM 2216"
-    assert tourism["slot_overrides"]["EIM_CON4"]["course_number"] == "EIM 3318"
-    assert tourism["slot_overrides"]["EIM_CON5"]["elective_key"] == "eim_tourism_elective"
+    assert tourism["full_flowchart_key"] == "EIM_TOURISM_HOSPITALITY"
+    tour = {c["id"]: c for c in FLOWCHARTS["EIM_TOURISM_HOSPITALITY"]["courses"]}
+    assert tour["TOUR_2216"]["course_number"] == "EIM 2216"
+    assert tour["TOUR_3318"]["course_number"] == "EIM 3318"
+    assert tour["TOUR_ELEC1"]["elective_key"] == "eim_tourism_elective"
 
 
 def test_history_flowchart():
@@ -3606,9 +3607,9 @@ def test_plant_sciences_flowchart():
     courses = fc["courses"]
     by_id = {c["id"]: c for c in courses}
 
-    # Total units = 120
+    # Total units = 119
     total = sum(c["units"] for c in courses)
-    assert total == 120, f"Expected 120 units, got {total}"
+    assert total == 119, f"Expected 119 units, got {total}"
 
     # Column unit checks
     col_units = {}
@@ -3621,7 +3622,7 @@ def test_plant_sciences_flowchart():
     assert col_units[4] == 12, f"JF should be 12u, got {col_units[4]}"
     assert col_units[5] == 15, f"JS should be 15u, got {col_units[5]}"
     assert col_units[6] == 16, f"SeF should be 16u, got {col_units[6]}"
-    assert col_units[7] == 17, f"SeS should be 17u, got {col_units[7]}"
+    assert col_units[7] == 16, f"SeS should be 16u, got {col_units[7]}"
 
     # Key course titles
     assert by_id["PLSC_1101"]["title"] == "Orientation to Plant Sciences"
@@ -3659,9 +3660,8 @@ def test_plant_sciences_flowchart():
         assert slot["is_placeholder"] is True
         assert slot["elective_key"] == "plsc_concentration_elective"
 
-    # CON10 is 4u, others are 3u
-    assert by_id["PLSC_CON10"]["units"] == 4
-    for i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12]:
+    # All concentration elective slots are 3u
+    for i in range(1, 13):
         assert by_id[f"PLSC_CON{i}"]["units"] == 3
 
     # Concentrations exist
@@ -3835,6 +3835,8 @@ def test_philosophy_flowchart():
     # Concentration slots
     for slot in ["PHIL_CON1", "PHIL_CON2", "PHIL_CON3", "PHIL_CON4", "PHIL_CON5"]:
         assert by_id[slot]["is_placeholder"] is True
+    assert by_id["PHIL_FREE8"]["units"] == 2
+    assert by_id["PHIL_FREE8"]["grid_col"] == 7
 
     # Concentrations
     assert "PHIL" in CONCENTRATIONS
@@ -3879,7 +3881,7 @@ def test_nutrition_flowchart():
     fc = FLOWCHARTS["NUT"]
     assert fc["total_units"] == 120
     courses = fc["courses"]
-    total = sum(c["units"] for c in courses)
+    total = sum(c["units"] for c in courses if c.get("is_required", True))
     assert total == 120
 
     by_id = {c["id"]: c for c in courses}
@@ -3907,9 +3909,13 @@ def test_nutrition_flowchart():
     assert len(ge_tiles) == 10
     assert all(c["is_placeholder"] for c in ge_tiles)
 
-    # Slash-choice support
-    assert by_id["NUT_MCRO"]["is_placeholder"] is True
-    assert by_id["NUT_MCRO"]["elective_key"] == "nut_mcro_choice"
+    # Microbiology support
+    assert by_id["NUT_MCRO2224"]["course_number"] == "MCRO 2224"
+    assert by_id["NUT_MCRO2224"]["is_placeholder"] is False
+    assert by_id["NUT_MCRO2221"]["course_number"] == "MCRO 2221"
+    assert by_id["NUT_MCRO2221"]["is_required"] is False
+    assert by_id["NUT_MCRO2221"]["grid_col"] == 0
+    assert by_id["NUT_MCRO2221"]["auto_satisfied_by"] == ["MCRO 2224"]
 
     # Senior project
     assert by_id["NUT_NUTR_SP"]["is_placeholder"] is True
@@ -4131,6 +4137,8 @@ def test_spanish_flowchart():
     assert len(free_tiles) == 9
     assert all(c["category"] == "concentration" for c in free_tiles)
     assert all(c["is_placeholder"] for c in free_tiles)
+    free_by_col = {col: sum(1 for c in free_tiles if c["grid_col"] == col) for col in range(8)}
+    assert free_by_col == {0: 0, 1: 2, 2: 1, 3: 1, 4: 1, 5: 1, 6: 1, 7: 2}
 
     # No concentrations for Spanish
     assert "SPAN" not in CONCENTRATIONS
@@ -4290,11 +4298,16 @@ def test_liberal_studies_flowchart():
 def test_liberal_studies_concentration_overrides():
     by_id = {c["id"]: c for c in CONCENTRATIONS["LIBS"]}
 
-    # Every non-none concentration must have 4 slot_overrides with required fields
+    # Every non-none concentration must have slot_overrides with required fields
+    # mathematics and english have 5 overrides (4 CON slots + LIBS_FREE unit fix)
+    expected_override_counts = {
+        "mathematics": 5, "english": 5,
+    }
     for con_id in ["environmental_education", "human_development", "mathematics",
                    "english", "science", "social_science", "tesol", "individualized"]:
         overrides = by_id[con_id]["slot_overrides"]
-        assert len(overrides) == 4, f"{con_id} should have 4 slot overrides"
+        expected = expected_override_counts.get(con_id, 4)
+        assert len(overrides) == expected, f"{con_id} should have {expected} slot overrides"
         for slot_key, slot in overrides.items():
             for field in ["course_number", "title", "units", "prerequisites",
                           "quarter_equivalents", "is_placeholder", "elective_key"]:
@@ -4313,6 +4326,9 @@ def test_liberal_studies_concentration_overrides():
     assert math["LIBS_CON_EL2"]["course_number"] == "MATH 1262"
     assert math["LIBS_CON_EL3"]["course_number"] == "MATH 2031"
     assert math["LIBS_CON_EL4"]["elective_key"] == "libs_math_upper_div"
+    # Math concentration is 14u; LIBS_FREE shrinks 3u→1u to keep total at 120u
+    assert math["LIBS_FREE"]["units"] == 1
+    assert math["LIBS_FREE"]["elective_key"] is None
 
     # English: CON_EL1 fixed 3u, CON_EL2 fixed 4u, CON_EL3 placeholder 4u, CON_EL4 elective
     engl = by_id["english"]["slot_overrides"]
@@ -4322,6 +4338,9 @@ def test_liberal_studies_concentration_overrides():
     assert engl["LIBS_CON_EL2"]["units"] == 4
     assert engl["LIBS_CON_EL3"]["elective_key"] == "libs_engl_3393_choice"
     assert engl["LIBS_CON_EL4"]["elective_key"] == "libs_am_lit_elective"
+    # English concentration is 14u; LIBS_FREE shrinks 3u→1u to keep total at 120u
+    assert engl["LIBS_FREE"]["units"] == 1
+    assert engl["LIBS_FREE"]["elective_key"] is None
 
     # Social Science: HIST 2208 is fixed CON_EL1
     soc = by_id["social_science"]["slot_overrides"]
@@ -4331,13 +4350,18 @@ def test_liberal_studies_concentration_overrides():
     assert soc["LIBS_CON_EL3"]["elective_key"] == "libs_geog_elective"
     assert soc["LIBS_CON_EL4"]["elective_key"] == "libs_soc_hist_elective"
 
-    # TESOL: COMS 3316 and ENGL 4497/4498 are fixed
+    # TESOL: COMS 3316 and ENGL 4497/4498 are fixed; ENGL 4499 practicum is extra_courses
     tesol = by_id["tesol"]["slot_overrides"]
     assert tesol["LIBS_CON_EL1"]["course_number"] == "COMS 3316"
     assert tesol["LIBS_CON_EL1"]["elective_key"] is None
     assert tesol["LIBS_CON_EL2"]["elective_key"] == "libs_engl_ling_choice"
     assert tesol["LIBS_CON_EL3"]["course_number"] == "ENGL 4497"
     assert tesol["LIBS_CON_EL4"]["course_number"] == "ENGL 4498"
+    tesol_extra = by_id["tesol"]["extra_courses"]
+    assert len(tesol_extra) == 1
+    assert tesol_extra[0]["course_number"] == "ENGL 4499"
+    assert tesol_extra[0]["units"] == 1
+    assert tesol_extra[0]["grid_col"] == 5
 
     # Human Development: CON_EL2 is 4u, CON_EL4 is 2u
     hd = by_id["human_development"]["slot_overrides"]
@@ -4711,7 +4735,10 @@ def test_gen_flowchart():
         assert by_id[ics_id]["is_placeholder"] is True
         assert by_id[ics_id]["category"] == "concentration"
 
-    assert "GEN" not in CONCENTRATIONS
+    assert "GEN" in CONCENTRATIONS
+    gen_concs = {c["id"]: c for c in CONCENTRATIONS["GEN"]}
+    assert gen_concs["none"]["full_flowchart_key"] == "GEN"
+    assert gen_concs["individualized"]["full_flowchart_key"] == "GEN_INDIVIDUALIZED_COURSE_OF_STUDY"
 
     assert fc["notes"]
     tips_section = next(n for n in fc["notes"] if n["title"] == "Flowchart Tips")
@@ -5002,3 +5029,275 @@ def test_laes_concentration_overrides():
     ics = by_id["engineering_ics"]
     assert ics["slot_overrides"]["LAES_ENG_CON1"]["is_placeholder"] is True
     assert ics["slot_overrides"]["LAES_ENG_CON1"]["elective_key"] == "laes_eng_elective"
+
+
+def test_cs_concentration_flowcharts_registered_and_total_120():
+    for key in ["CS_AIML", "CS_DATA_ENG", "CS_GAME_DEV", "CS_GRAPHICS", "CS_PRIVACY"]:
+        assert key in FLOWCHARTS, f"{key} not found in FLOWCHARTS"
+        fc = FLOWCHARTS[key]
+        assert fc["total_units"] == 120
+        assert sum(c["units"] for c in fc["courses"]) == 120, f"{key} unit sum mismatch"
+
+
+def test_cs_aiml_concentration_flowchart_key_courses():
+    fc = FLOWCHARTS["CS_AIML"]
+    by_id = {c["id"]: c for c in fc["courses"]}
+    assert by_id["AIML_MATH2621"]["course_number"] == "MATH 2621"
+    assert by_id["AIML_MATH2621"]["grid_col"] == 4  # Y3F
+    assert by_id["AIML_DATA3301"]["course_number"] == "DATA 3301"
+    assert by_id["AIML_DATA3301"]["grid_col"] == 5  # Y3S
+    assert by_id["AIML_ML_REQ"]["is_placeholder"] is True
+    assert by_id["AIML_ML_REQ"]["elective_key"] == "cs_aiml_ml_required"
+    assert by_id["AIML_CSC4460"]["units"] == 2
+
+
+def test_cs_data_eng_concentration_flowchart_key_courses():
+    fc = FLOWCHARTS["CS_DATA_ENG"]
+    by_id = {c["id"]: c for c in fc["courses"]}
+    assert by_id["DE_CSC3665"]["course_number"] == "CSC 3665"
+    assert by_id["DE_CSC3665"]["grid_col"] == 5  # Y3S
+    assert by_id["DE_CSC4665"]["course_number"] == "CSC 4665"
+    assert by_id["DE_CSC4665"]["grid_col"] == 7  # Y4S
+    assert by_id["DE_DATA3301"]["course_number"] == "DATA 3301"
+    assert by_id["DE_DATA3301"]["grid_col"] == 6  # Y4F
+
+
+def test_cs_game_dev_concentration_flowchart_key_courses():
+    fc = FLOWCHARTS["CS_GAME_DEV"]
+    by_id = {c["id"]: c for c in fc["courses"]}
+    assert by_id["GAME_CSC3710"]["course_number"] == "CSC 3710"
+    assert by_id["GAME_CSC3710"]["grid_col"] == 5  # Y3S
+    assert by_id["GAME_CSC3780"]["course_number"] == "CSC 3780"
+    assert by_id["GAME_CSC3780"]["grid_col"] == 6  # Y4F
+    assert by_id["GAME_COMS4404"]["course_number"] == "COMS 4404"
+    assert by_id["GAME_COMS4404"]["units"] == 3
+    assert by_id["GAME_CS_ELEC1"]["units"] == 4  # PDF: "CS Elective 4"
+
+
+def test_cs_graphics_concentration_flowchart_key_courses():
+    fc = FLOWCHARTS["CS_GRAPHICS"]
+    by_id = {c["id"]: c for c in fc["courses"]}
+    assert by_id["GRAPH_CSC4710"]["course_number"] == "CSC 4710"
+    assert by_id["GRAPH_CSC4710"]["units"] == 3  # catalog: 3 units (was incorrectly 4)
+    assert by_id["GRAPH_CSC4710"]["grid_col"] == 5  # Y3S
+    assert by_id["GRAPH_CSC4460"]["units"] == 2
+    assert by_id["GRAPH_GE_UD4"]["grid_col"] == 6  # Senior Fall (was incorrectly Y3S)
+    assert by_id["GRAPH_EXT1"]["grid_col"] == 5    # Junior Spring (replaced vacated GE UD-4 slot)
+    assert by_id["GRAPH_EXT1"]["units"] == 2
+
+
+def test_cs_privacy_concentration_flowchart_key_courses():
+    fc = FLOWCHARTS["CS_PRIVACY"]
+    by_id = {c["id"]: c for c in fc["courses"]}
+    assert by_id["PRIV_CSC3250"]["course_number"] == "CSC 3250"
+    assert by_id["PRIV_CSC3250"]["units"] == 3  # catalog: 3 units (was incorrectly 4)
+    assert by_id["PRIV_CSC4260"]["course_number"] == "CSC 4260"
+    assert by_id["PRIV_CSC4260"]["units"] == 3  # catalog: 3 units (was incorrectly 4)
+    assert by_id["PRIV_CSC4261"]["course_number"] == "CSC 4261"
+    assert by_id["PRIV_CSC4261"]["units"] == 3
+    assert by_id["PRIV_CONC3"]["units"] == 2    # optional concentration elective in Y4S
+    assert by_id["PRIV_CONC3"]["grid_col"] == 7
+    assert "CSC4460" not in by_id  # no senior project in privacy — has capstone instead
+
+
+def test_cs_concentrations_use_full_flowchart_key():
+    cs_concs = {c["id"]: c for c in CONCENTRATIONS["CS"]}
+    assert cs_concs["ai_ml"]["full_flowchart_key"] == "CS_AIML"
+    assert cs_concs["data_eng"]["full_flowchart_key"] == "CS_DATA_ENG"
+    assert cs_concs["game_dev"]["full_flowchart_key"] == "CS_GAME_DEV"
+    assert cs_concs["graphics"]["full_flowchart_key"] == "CS_GRAPHICS"
+    assert cs_concs["privacy_security"]["full_flowchart_key"] == "CS_PRIVACY"
+    assert cs_concs["ai_ml"]["slot_overrides"] == {}
+    assert cs_concs["none"]["full_flowchart_key"] == "CS"  # base major key for general curriculum
+
+
+def test_concentration_tips_remain_concentration_specific():
+    data_eng_tips = next(c for c in CONCENTRATIONS["CS"] if c["id"] == "data_eng")["tips"]
+
+    assert any(
+        "A minimum of 23 units is required to complete the concentration" in tip
+        for tip in data_eng_tips
+    )
+    assert not any(
+        "No Major or Support courses may be selected as credit/no credit" in tip
+        for tip in data_eng_tips
+    )
+    assert not any(
+        tip.startswith("GE Tips:")
+        for tip in data_eng_tips
+    )
+
+
+# ---------------------------------------------------------------------------
+# Batch 1: Pattern B concentration flowchart tests
+# ---------------------------------------------------------------------------
+
+def test_ee_concentrations_use_full_flowchart_key():
+    ee_concs = {c["id"]: c for c in CONCENTRATIONS["EE"]}
+    assert ee_concs["ecc"]["full_flowchart_key"] == "EE_ECC"
+    assert ee_concs["ecc"]["slot_overrides"] == {}
+    assert ee_concs["power"]["full_flowchart_key"] == "EE_POWER"
+    assert ee_concs["power"]["slot_overrides"] == {}
+    assert ee_concs["none"]["full_flowchart_key"] == "EE"  # base major key
+
+
+def test_ee_ecc_concentration_flowchart():
+    assert "EE_ECC" in FLOWCHARTS
+    fc = FLOWCHARTS["EE_ECC"]
+    assert fc["total_units"] == 128
+    assert sum(c["units"] for c in fc["courses"]) == 128
+
+    by_id = {c["id"]: c for c in fc["courses"]}
+
+    # ECC-specific slots (col 6-7 tech/elective tiles all use ee_ecc_elective)
+    assert by_id["EE_TECH1"]["elective_key"] == "ee_ecc_elective"
+    assert by_id["EE_TECH1"]["is_placeholder"] is True
+    assert by_id["EE_TECH2"]["elective_key"] == "ee_ecc_elective"
+    assert by_id["ECC_TECH3"]["elective_key"] == "ee_ecc_elective"
+    assert by_id["ECC_ELEC4"]["elective_key"] == "ee_ecc_elective"
+
+    # Base EE tile present and unchanged
+    assert by_id["EE_1111"]["course_number"] == "EE 1111"
+    assert by_id["EE_1111"]["units"] == 2
+
+
+def test_ee_power_concentration_flowchart():
+    assert "EE_POWER" in FLOWCHARTS
+    fc = FLOWCHARTS["EE_POWER"]
+    assert fc["total_units"] == 128
+    assert sum(c["units"] for c in fc["courses"]) == 128
+
+    by_id = {c["id"]: c for c in fc["courses"]}
+
+    # Power-specific required slot (EE 4406/4410)
+    assert by_id["POW_4406"]["course_number"] == "EE 4406/4410"
+    assert by_id["POW_4406"]["units"] == 3
+    assert by_id["POW_4406"]["elective_key"] == "ee_power_required"
+    assert "EE 3255" in by_id["POW_4406"]["prerequisites"]
+
+    # Power elective slots
+    assert by_id["EE_TECH2"]["elective_key"] == "ee_power_elective"
+    assert by_id["EE_TECH2"]["is_placeholder"] is True
+    assert by_id["POW_TECH3"]["elective_key"] == "ee_power_elective"
+    assert by_id["POW_ELEC4"]["elective_key"] == "ee_power_elective"
+
+
+def test_chem_polymers_coatings_concentration_flowchart():
+    assert "CHEM_POLYMERS_COATINGS" in FLOWCHARTS
+    fc = FLOWCHARTS["CHEM_POLYMERS_COATINGS"]
+    assert fc["total_units"] == 120
+    assert sum(c["units"] for c in fc["courses"]) == 120
+
+    by_id = {c["id"]: c for c in fc["courses"]}
+    by_col = {}
+    for c in fc["courses"]:
+        by_col.setdefault(c["grid_col"], []).append(c["units"])
+
+    # Term unit sums per HTML source
+    assert sum(by_col[3]) == 16   # SoS: CHEM 3380 added, GE 3B moved to SrF
+    assert sum(by_col[5]) == 14   # JS: CHEM 3380 gone, CHEM 4486 in
+    assert sum(by_col[6]) == 14   # SrF: GE 3B moved in, ADV1+2 → CHEM 4480+4481
+    assert sum(by_col[7]) == 12   # SrS: ADV3+4 → CHEM 4482+4483+Free
+
+    # CHEM 3380 moved to col 3 (SoS)
+    assert by_id["CHEM_CHEM3380"]["grid_col"] == 3
+
+    # GE 3B moved to col 6 (SrF)
+    assert by_id["CHEM_GE3B"]["grid_col"] == 6
+
+    # CHEM 4486 new tile in col 5
+    assert by_id["CP_CHEM4486"]["course_number"] == "CHEM 4486"
+    assert by_id["CP_CHEM4486"]["units"] == 3
+    assert by_id["CP_CHEM4486"]["grid_col"] == 5
+
+    # SUBDISC2 stays as placeholder (not replaced)
+    assert by_id["CHEM_SUBDISC2"]["is_placeholder"] is True
+
+    # ADV slots become specific polymer courses
+    assert by_id["CHEM_ADV1"]["course_number"] == "CHEM 4480"
+    assert by_id["CHEM_ADV1"]["units"] == 3
+    assert by_id["CHEM_ADV2"]["course_number"] == "CHEM 4481"
+    assert by_id["CHEM_ADV2"]["units"] == 2
+    assert by_id["CHEM_ADV3"]["course_number"] == "CHEM 4482"
+    assert by_id["CHEM_ADV3"]["units"] == 3
+    assert by_id["CHEM_ADV4"]["course_number"] == "CHEM 4483"
+    assert by_id["CHEM_ADV4"]["units"] == 2
+
+    # Free elective added in col 7
+    assert by_id["CP_FREE_SRS"]["grid_col"] == 7
+    assert by_id["CP_FREE_SRS"]["units"] == 3
+
+
+def test_bioc_polymers_coatings_concentration_flowchart():
+    assert "BIOC_POLYMERS_COATINGS" in FLOWCHARTS
+    fc = FLOWCHARTS["BIOC_POLYMERS_COATINGS"]
+    assert fc["total_units"] == 120
+    assert sum(c["units"] for c in fc["courses"]) == 120
+
+    by_id = {c["id"]: c for c in fc["courses"]}
+    by_col = {}
+    for c in fc["courses"]:
+        by_col.setdefault(c["grid_col"], []).append(c["units"])
+
+    # Term unit sums per HTML source
+    assert sum(by_col[2]) == 16   # SoF: MCRO 2224 out, CHEM 3390+3391 in
+    assert sum(by_col[4]) == 17   # JF: MCRO 2224 in, CHEM 4480+4481 replace CON_JRF
+    assert sum(by_col[5]) == 15   # JS: CHEM 3330 in, CHEM 4482+4483 replace CON_JRS
+    assert sum(by_col[6]) == 11   # SrF: CON_SRF removed, CHEM 4453/4454 + GE UD-4 added
+    assert sum(by_col[7]) == 14   # SrS: CHEM 4486 replaces CON_SRS, FREE2 3u
+
+    # MCRO 2224 moved to col 4 (JF)
+    assert by_id["BIOC_MCRO2224"]["grid_col"] == 4
+    # CHEM 3390/3391 moved to col 2 (SoF)
+    assert by_id["BIOC_CHEM3390"]["grid_col"] == 2
+    assert by_id["BIOC_CHEM3391"]["grid_col"] == 2
+    # CHEM 3330 moved to col 5 (JS)
+    assert by_id["BIOC_CHEM3330"]["grid_col"] == 5
+    # CHEM 3380 added in col 3 (SoS)
+    assert by_id["BP_CHEM3380"]["course_number"] == "CHEM 3380"
+    assert by_id["BP_CHEM3380"]["grid_col"] == 3
+    # CON_JRF → CHEM 4480
+    assert by_id["BIOC_CON_JRF"]["course_number"] == "CHEM 4480"
+    assert by_id["BIOC_CON_JRF"]["units"] == 3
+    # CHEM 4481 new tile in col 4
+    assert by_id["BP_CHEM4481"]["course_number"] == "CHEM 4481"
+    assert by_id["BP_CHEM4481"]["grid_col"] == 4
+    # CHEM 4453/4454 moved to col 6
+    assert by_id["BIOC_CHEM4453_4454"]["grid_col"] == 6
+    # CON_JRS → CHEM 4482
+    assert by_id["BIOC_CON_JRS"]["course_number"] == "CHEM 4482"
+    assert by_id["BIOC_CON_JRS"]["units"] == 3
+    # CHEM 4483 new tile in col 5
+    assert by_id["BP_CHEM4483"]["course_number"] == "CHEM 4483"
+    assert by_id["BP_CHEM4483"]["grid_col"] == 5
+    # GE UD-4 moved to col 6
+    assert by_id["BIOC_GE_UD4"]["grid_col"] == 6
+    # CON_SRF removed
+    assert "BIOC_CON_SRF" not in by_id
+    # CON_SRS → CHEM 4486
+    assert by_id["BIOC_CON_SRS"]["course_number"] == "CHEM 4486"
+    assert by_id["BIOC_CON_SRS"]["units"] == 3
+
+
+
+def test_non_ge_non_concentration_placeholders_have_explicit_elective_key():
+    """Every major/support placeholder must declare elective_key (string or None) or have a slash-choice course_number.
+    This ensures no placeholder silently returns empty courses at runtime.
+    """
+    violations = []
+    for fc_key, fc in FLOWCHARTS.items():
+        for c in fc["courses"]:
+            if not c.get("is_placeholder"):
+                continue
+            cat = c.get("category", "")
+            if cat in ("ge", "concentration"):
+                continue
+            cn = c.get("course_number", "")
+            if "/" in cn:
+                continue
+            if "elective_key" not in c:
+                violations.append(f"{fc_key} / {c['id']} ({cn!r}): missing elective_key")
+    assert not violations, (
+        f"{len(violations)} major/support placeholder(s) missing elective_key:\n"
+        + "\n".join(violations[:20])
+    )

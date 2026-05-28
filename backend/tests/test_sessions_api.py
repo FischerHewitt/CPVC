@@ -19,6 +19,14 @@ def test_get_session_returns_backend_session(monkeypatch):
             "course_positions": {},
             "planned_ge_courses": {"GE 3B": "ENGL 2230"},
             "planned_ge_units": {"GE 3B": 3},
+            "planned_free_elective_courses": {
+                "FREE1": {
+                    "course_number": "MU 1010",
+                    "title": "Introduction to Music",
+                    "units": 3,
+                    "status": "planned",
+                },
+            },
             "concentration": "ai_ml",
         }
 
@@ -29,6 +37,7 @@ def test_get_session_returns_backend_session(monkeypatch):
     assert response.status_code == 200
     assert response.json()["student_name"] == "Ada Lovelace"
     assert response.json()["planned_ge_courses"] == {"GE 3B": "ENGL 2230"}
+    assert response.json()["planned_free_elective_courses"]["FREE1"]["course_number"] == "MU 1010"
     assert response.json()["concentration"] == "ai_ml"
 
 
@@ -59,6 +68,14 @@ def test_patch_session_filters_to_allowed_fields(monkeypatch):
             "course_positions": {"CSC1001": {"grid_col": 1, "grid_row": 0}},
             "planned_ge_courses": {"GE 3B": "ENGL 2230"},
             "planned_ge_units": {"GE 3B": 3},
+            "planned_free_elective_courses": {
+                "FREE1": {
+                    "course_number": "MU 1010",
+                    "title": "Introduction to Music",
+                    "units": 3,
+                    "status": "completed",
+                },
+            },
             "concentration": "ai_ml",
             "student_name": "Should Not Be Updated",
         },
@@ -73,6 +90,14 @@ def test_patch_session_filters_to_allowed_fields(monkeypatch):
             "course_positions": {"CSC1001": {"grid_col": 1, "grid_row": 0}},
             "planned_ge_courses": {"GE 3B": "ENGL 2230"},
             "planned_ge_units": {"GE 3B": 3},
+            "planned_free_elective_courses": {
+                "FREE1": {
+                    "course_number": "MU 1010",
+                    "title": "Introduction to Music",
+                    "units": 3,
+                    "status": "completed",
+                },
+            },
             "concentration": "ai_ml",
         },
     }

@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import type { Course, CourseStatus } from "@/lib/types";
+import type { Course, CourseStatus, FreeElectiveSelection } from "@/lib/types";
 
 interface Props {
   course: Course;
@@ -12,6 +11,8 @@ interface Props {
   plannedCourseNumber?: string;
   activeCourseNumber?: string;
   plannedUnits?: number;
+  freeElectiveSelection?: FreeElectiveSelection;
+  searchHighlighted?: boolean;
   onToggleCompleted: () => void;
   onToggleInProgress: () => void;
 }
@@ -20,6 +21,7 @@ export const CATEGORY_STYLES: Record<string, { bg: string; border: string; text:
   major:         { bg: "#bae6fd", border: "#0284c7", text: "#0c4a6e" },
   support:       { bg: "#ede9fe", border: "#7c3aed", text: "#4c1d95" },
   concentration: { bg: "#fce7f3", border: "#be185d", text: "#831843" },
+  free:          { bg: "#e5e7eb", border: "#6b7280", text: "#374151" },
   ge:            { bg: "#dcfce7", border: "#15803d", text: "#14532d" },
 };
 
@@ -32,26 +34,28 @@ export default function CourseCard({
   plannedCourseNumber,
   activeCourseNumber,
   plannedUnits,
+  freeElectiveSelection,
+  searchHighlighted,
   onToggleCompleted,
   onToggleInProgress,
 }: Props) {
-  const style = CATEGORY_STYLES[course.category] ?? CATEGORY_STYLES.ge;
   const isFreeElective = course.title.toLowerCase().includes("free elective") || course.course_number.toLowerCase().startsWith("free");
+  const style = isFreeElective ? CATEGORY_STYLES.free : (CATEGORY_STYLES[course.category] ?? CATEGORY_STYLES.ge);
   const hasElectiveOptions = Boolean(course.elective_key);
-  const isClickable = !course.is_placeholder || hasElectiveOptions || (course.is_placeholder && !isFreeElective);
+  const isClickable = !course.is_placeholder || hasElectiveOptions || (course.is_placeholder && !isFreeElective) || isFreeElective;
+  const isNotRequired = course.is_required === false;
 
   const opacity =
-    status === "completed"      ? 0.55 :
-    status === "inferred"       ? 0.65 :
-    status === "locked"         ? 0.75 :
-    status === "prereq_warning" ? 0.90 :
+    status === "completed" ? 0.55 :
+    status === "inferred"  ? 0.65 :
+    status === "locked"    ? 0.75 :
     1.0;
 
   const grayscale = status === "locked" ? "grayscale(30%)" : "none";
 
   if (course.is_placeholder) {
     const isGE = course.category === "ge" || course.course_number.startsWith("ART 3000+");
-    const canOpenOptions = isGE || hasElectiveOptions || !isFreeElective;
+    const canOpenOptions = isGE || hasElectiveOptions || !isFreeElective || isFreeElective;
     const geCompleted    = isGE  && status === "completed";
     const geInProgress   = isGE  && status === "in_progress";
     const geLocked       = isGE  && status === "locked";
@@ -67,6 +71,7 @@ export default function CourseCard({
           borderWidth: (geCompleted || nonGECompleted) ? 2 : 1,
           color: style.text,
           opacity: canOpenOptions ? ((geCompleted || nonGECompleted) ? 0.6 : 0.75) : (nonGECompleted ? 0.55 : 0.5),
+          boxShadow: searchHighlighted ? "0 0 0 3px rgba(250, 204, 21, 0.9), 0 8px 18px rgba(15, 23, 42, 0.18)" : undefined,
         }}
         onClick={canOpenOptions ? onClick : undefined}
       >
@@ -109,7 +114,6 @@ export default function CourseCard({
           {(geCompleted || nonGECompleted)   && <span className="text-green-800 text-[10px] font-bold">✓</span>}
           {(geInProgress || nonGEInProgress) && <span className="text-amber-600 text-[10px] font-bold">IP</span>}
           {geLocked                          && <span className="text-[10px]">🔒</span>}
-          {status === "prereq_warning"       && <span className="text-amber-500 text-[10px]">⚠️</span>}
         </div>
         <div className={isGE ? "font-semibold not-italic" : ""}>{course.title} ({plannedUnits ?? course.units})</div>
         {canOpenOptions && (status === "completed" || status === "in_progress") && activeCourseNumber && (
@@ -135,6 +139,12 @@ export default function CourseCard({
         {hasElectiveOptions && !isGE && (status === "completed" || status === "in_progress") && (
           <div className="text-[9px] mt-0.5 opacity-70">tap to change →</div>
         )}
+        {isFreeElective && !freeElectiveSelection && (
+          <div className="text-[9px] mt-0.5 opacity-70">tap to choose course →</div>
+        )}
+        {isFreeElective && freeElectiveSelection && (
+          <div className="text-[9px] mt-0.5 opacity-70">tap to change →</div>
+        )}
       </div>
     );
   }
@@ -150,6 +160,7 @@ export default function CourseCard({
         borderWidth: 1.5,
         opacity,
         filter: grayscale,
+        boxShadow: searchHighlighted ? "0 0 0 3px rgba(250, 204, 21, 0.9), 0 8px 18px rgba(15, 23, 42, 0.18)" : undefined,
       }}
       onClick={isClickable ? onClick : undefined}
     >
@@ -197,17 +208,15 @@ export default function CourseCard({
           {status === "inferred"       && <span className="text-green-700 text-[10px] font-semibold">~✓</span>}
           {status === "in_progress"    && <span className="text-amber-600 text-[10px] font-bold">IP</span>}
           {status === "locked"         && <span className="text-gray-500 text-[10px]">🔒</span>}
-          {status === "prereq_warning" && <span className="text-amber-500 text-[10px]">⚠️</span>}
         </div>
 
         <div className="text-[11px] font-bold leading-tight">{course.title}</div>
+        {isNotRequired && (
+          <div className="text-[9px] mt-0.5 font-bold opacity-80">NR (not required)</div>
+        )}
         <div className="text-[10px] mt-0.5 font-medium opacity-75">
           {course.course_number} ({course.units})
         </div>
-        {status === "prereq_warning" && (
-          <div className="text-[9px] mt-0.5 text-amber-600 font-medium">check prereqs</div>
-        )}
-
       </div>
     </div>
   );

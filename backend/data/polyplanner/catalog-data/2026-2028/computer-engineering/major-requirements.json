@@ -1,0 +1,127 @@
+[
+  {
+    "id": 2136,
+    "name": "Computing Majors Orientation",
+    "courseToMeet": "CPE1000 or CSC1000"
+  },
+  {
+    "id": 2137,
+    "name": "Fundamentals of Computer Science + Lab",
+    "courseToMeet": "CSC1001 and CSC1001L"
+  },
+  {
+    "id": 2138,
+    "name": "Introduction to Computing",
+    "courseToMeet": "CPE1024 or CSC1024"
+  },
+  {
+    "id": 2139,
+    "name": "Data Structures + Lab",
+    "courseToMeet": "CSC2001 and CSC2001L"
+  },
+  {
+    "id": 2140,
+    "name": "System Software Mechanics",
+    "courseToMeet": "CPE2050 or CSC2050"
+  },
+  {
+    "id": 2141,
+    "name": "Introduction to Computer Systems",
+    "courseToMeet": "CPE2300"
+  },
+  {
+    "id": 2142,
+    "name": "Introduction to HDL and Digital Design Laboratory",
+    "courseToMeet": "CPE2301"
+  },
+  {
+    "id": 2143,
+    "name": "Microcontrollers and Embedded Applications",
+    "courseToMeet": "CPE3160"
+  },
+  {
+    "id": 2144,
+    "name": "Introduction to Computer Security",
+    "courseToMeet": "CPE3201 or CSC3201"
+  },
+  {
+    "id": 2145,
+    "name": "Computer Architecture",
+    "courseToMeet": "CPE3300"
+  },
+  {
+    "id": 2146,
+    "name": "Introduction to Computer Networks",
+    "courseToMeet": "CPE4464"
+  },
+  {
+    "id": 2147,
+    "name": "Introduction to Operating Systems",
+    "courseToMeet": "CPE4553 or CSC4553"
+  },
+  {
+    "id": 2148,
+    "name": "Electric Circuit Analysis I with Lab",
+    "courseToMeet": "EE2211 and EE2241"
+  },
+  {
+    "id": 2149,
+    "name": "Life Science Support Course",
+    "courseToMeet": "BIO1111 or BIO2213 or BOT1121 or MCRO2221"
+  },
+  {
+    "id": 2150,
+    "name": "Calculus I",
+    "courseToMeet": "MATH1261"
+  },
+  {
+    "id": 2151,
+    "name": "Calculus II",
+    "courseToMeet": "MATH1262"
+  },
+  {
+    "id": 2152,
+    "name": "Transition to Advanced Mathematics",
+    "courseToMeet": "MATH2031"
+  },
+  {
+    "id": 2153,
+    "name": "Ethics, Science, and Technology",
+    "courseToMeet": "PHIL3323"
+  },
+  {
+    "id": 2154,
+    "name": "General Physics I",
+    "courseToMeet": "PHYS1141"
+  },
+  {
+    "id": 2155,
+    "name": "General Physics II",
+    "courseToMeet": "PHYS1143"
+  },
+  {
+    "id": 2156,
+    "name": "Upper-Division Statistics Requirement",
+    "courseToMeet": "STAT3210 or STAT3310"
+  },
+  {
+    "id": 2157,
+    "name": "Gender, Race, Culture Requirement",
+    "courseToMeet": "WGQS3350 or WGQS3351"
+  },
+  {
+    "id": 2158,
+    "name": "Linear Algebra Requirement (General Curriculum)",
+    "courseToMeet": "MATH1151 or MATH2341"
+  },
+  {
+    "id": 2159,
+    "name": "Electronics or Signals Requirement",
+    "courseToMeet": "(EE3306 and EE3306L) or EE2328"
+  },
+  {
+    "id": 2160,
+    "name": "Senior Project Requirement",
+    "courseToMeet": "(CPE4460 and CPE4461) or (CSC4260 and CSC4261) or (ENGR4460 and ENGR4461)"
+  }
+]

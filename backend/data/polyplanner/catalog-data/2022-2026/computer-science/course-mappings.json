@@ -1,0 +1,212 @@
+[
+  {
+    "id": 1763,
+    "sourceCourse": "CSC1024",
+    "equivalentTo": "CSC123"
+  },
+  {
+    "id": 1764,
+    "sourceCourse": "CSC1001 and CSC1001L",
+    "equivalentTo": "CSC101"
+  },
+  {
+    "id": 1765,
+    "sourceCourse": "CSC2001 and CSC2001L",
+    "equivalentTo": "CSC202"
+  },
+  {
+    "id": 1766,
+    "sourceCourse": "CSC1001 and CSC1001L and CSC2001 and CSC2001L",
+    "equivalentTo": "CSC101 and CSC202 and CSC203"
+  },
+  {
+    "id": 1767,
+    "sourceCourse": "CPE2300",
+    "equivalentTo": "CSC225"
+  },
+  {
+    "id": 1768,
+    "sourceCourse": "MATH2031",
+    "equivalentTo": "CSC248"
+  },
+  {
+    "id": 1769,
+    "sourceCourse": "PHIL3323",
+    "equivalentTo": "CSC300"
+  },
+  {
+    "id": 1770,
+    "sourceCourse": "PHIL3323",
+    "equivalentTo": "PHIL323"
+  },
+  {
+    "id": 1771,
+    "sourceCourse": "CSC3100",
+    "equivalentTo": "CSC203 and CSC307"
+  },
+  {
+    "id": 1772,
+    "sourceCourse": "CSC203 and CSC3100",
+    "equivalentTo": "CSC308 and CSC309"
+  },
+  {
+    "id": 1773,
+    "sourceCourse": "CSC3201",
+    "equivalentTo": "CSC321"
+  },
+  {
+    "id": 1774,
+    "sourceCourse": "CSC3203",
+    "equivalentTo": "CSC323"
+  },
+  {
+    "id": 1775,
+    "sourceCourse": "CSC3250",
+    "equivalentTo": "CSC325"
+  },
+  {
+    "id": 1776,
+    "sourceCourse": "CSC3449",
+    "equivalentTo": "CSC349"
+  },
+  {
+    "id": 1777,
+    "sourceCourse": "CSC2050",
+    "equivalentTo": "CSC357"
+  },
+  {
+    "id": 1778,
+    "sourceCourse": "CSC3001",
+    "equivalentTo": "CSC364"
+  },
+  {
+    "id": 1779,
+    "sourceCourse": "CPE4464 and CPE4669",
+    "equivalentTo": "CPE464 and CPE469"
+  },
+  {
+    "id": 1780,
+    "sourceCourse": "CSC3665",
+    "equivalentTo": "CSC365"
+  },
+  {
+    "id": 1781,
+    "sourceCourse": "CSC3300",
+    "equivalentTo": "CSC430"
+  },
+  {
+    "id": 1782,
+    "sourceCourse": "CSC3445",
+    "equivalentTo": "CSC445"
+  },
+  {
+    "id": 1783,
+    "sourceCourse": "CSC4553",
+    "equivalentTo": "CSC453"
+  },
+  {
+    "id": 1784,
+    "sourceCourse": "CSC4161",
+    "equivalentTo": "CSC491 and CSC492"
+  },
+  {
+    "id": 1785,
+    "sourceCourse": "CSC4261",
+    "equivalentTo": "CSC491 and CSC492"
+  },
+  {
+    "id": 1786,
+    "sourceCourse": "CSC4460",
+    "equivalentTo": "CSC491 and CSC492"
+  },
+  {
+    "id": 1787,
+    "sourceCourse": "CSC4461",
+    "equivalentTo": "CSC491 and CSC492"
+  },
+  {
+    "id": 1788,
+    "sourceCourse": "DATA4460",
+    "equivalentTo": "CSC491 and CSC492"
+  },
+  {
+    "id": 1789,
+    "sourceCourse": "ENGR4461",
+    "equivalentTo": "CSC491 and CSC492"
+  },
+  {
+    "id": 1790,
+    "sourceCourse": "ENGR4464",
+    "equivalentTo": "CSC491 and CSC492"
+  },
+  {
+    "id": 1791,
+    "sourceCourse": "WGQS3350",
+    "equivalentTo": "WGQS350"
+  },
+  {
+    "id": 1792,
+    "sourceCourse": "WGQS3350",
+    "equivalentTo": "ES350"
+  },
+  {
+    "id": 1793,
+    "sourceCourse": "WGQS3351",
+    "equivalentTo": "WGQS351"
+  },
+  {
+    "id": 1794,
+    "sourceCourse": "WGQS3351",
+    "equivalentTo": "ES351"
+  },
+  {
+    "id": 1795,
+    "sourceCourse": "MATH1261 and MATH1262",
+    "equivalentTo": "MATH141 and MATH142 and MATH143"
+  },
+  {
+    "id": 1796,
+    "sourceCourse": "MATH1264 and MATH1265",
+    "equivalentTo": "MATH141 and MATH142 and MATH143"
+  },
+  {
+    "id": 1797,
+    "sourceCourse": "MATH1151",
+    "equivalentTo": "MATH206"
+  },
+  {
+    "id": 1798,
+    "sourceCourse": "MATH2341",
+    "equivalentTo": "MATH244"
+  },
+  {
+    "id": 1799,
+    "sourceCourse": "STAT3210",
+    "equivalentTo": "STAT312"
+  },
+  {
+    "id": 1800,
+    "sourceCourse": "PHYS1141",
+    "equivalentTo": "PHYS141"
+  },
+  {
+    "id": 1801,
+    "sourceCourse": "PHYS1143",
+    "equivalentTo": "PHYS143"
+  },
+  {
+    "id": 1802,
+    "sourceCourse": "PHYS1141 and PHYS1143",
+    "equivalentTo": "PHYS141 and PHYS142 and PHYS143"
+  },
+  {
+    "id": 1803,
+    "sourceCourse": "CHEM1120",
+    "equivalentTo": "CHEM124"
+  },
+  {
+    "id": 1804,
+    "sourceCourse": "CHEM1122",
+    "equivalentTo": "CHEM125 and CHEM126"
+  }
+]

@@ -1,463 +1,88 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { loadSession, saveSession, persistSession } from "@/lib/session";
-import { getFlowchart, inferPrerequisites, getSession, getGEAreaMap, getConcentrations, syncSession } from "@/lib/api";
-import { mbpFilename } from "@/lib/mbp";
-import type { Course, CourseStatus, Flowchart, GEAreaMap, TranscriptSession, Concentration } from "@/lib/types";
+import type { Course, CourseStatus, FreeElectiveStatus } from "@/lib/types";
+import { expandSlashCourseNumber } from "@/lib/course-status";
+import { useFlowchartSession } from "@/lib/useFlowchartSession";
+import { usePanelState } from "@/lib/usePanelState";
 import FlowchartGrid from "@/components/FlowchartGrid";
 import CourseDetailPanel from "@/components/CourseDetailPanel";
 import GEDetailPanel from "@/components/GEDetailPanel";
 import ElectiveDetailPanel from "@/components/ElectiveDetailPanel";
+import FreeElectivePickerPanel from "@/components/FreeElectivePickerPanel";
 import ManualCourseChecklist from "@/components/ManualCourseChecklist";
 
 export default function FlowchartPage() {
   const { sessionId } = useParams<{ sessionId: string }>();
   const router = useRouter();
+  const fs = useFlowchartSession(sessionId);
+  const panel = usePanelState();
 
-  const [session, setSession] = useState<TranscriptSession | null>(null);
-  const [flowchart, setFlowchart] = useState<Flowchart | null>(null);
-  const [inferred, setInferred] = useState<string[]>([]);
-  const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
-  const [selectedStatus, setSelectedStatus] = useState<CourseStatus | null>(null);
-  const [selectedGECourse, setSelectedGECourse] = useState<Course | null>(null);
-  const [selectedElectiveCourse, setSelectedElectiveCourse] = useState<Course | null>(null);
-  const [geAreaMap, setGEAreaMap] = useState<GEAreaMap>({});
-  const [checklistOpen, setChecklistOpen] = useState(false);
-  const [tipsOpen, setTipsOpen] = useState(false);
-  const [tipsPos, setTipsPos] = useState({ x: 32, y: 120 });
-  const tipsDrag = useRef<{ startX: number; startY: number; panelX: number; panelY: number } | null>(null);
-  const [myNotesOpen, setMyNotesOpen] = useState(false);
-  const [myNotesPos, setMyNotesPos] = useState({ x: 80, y: 160 });
-  const myNotesDrag = useRef<{ startX: number; startY: number; panelX: number; panelY: number } | null>(null);
-  const [myNotesText, setMyNotesText] = useState("");
-  const [concentrations, setConcentrations] = useState<Concentration[]>([]);
-  const [error, setError] = useState<string | null>(null);
+  // Wire session mutations that require panel side-effects
+  const toggleCourseCompleted = useCallback((course: Course) => {
+    const { newStatus, openPicker } = fs.toggleCourseCompleted(course, panel.selectedCourse?.id);
+    if (openPicker) panel.setSelectedFreeElectiveCourse(course);
+    if (newStatus) panel.setSelectedStatus(newStatus);
+  }, [fs, panel]);
 
-  const activeConcentration = useMemo(
-    () => concentrations.find((c) => c.id === (session?.concentration ?? "none")),
-    [concentrations, session?.concentration],
-  );
+  const toggleCourseInProgress = useCallback((course: Course) => {
+    const { newStatus, openPicker } = fs.toggleCourseInProgress(course, panel.selectedCourse?.id);
+    if (openPicker) panel.setSelectedFreeElectiveCourse(course);
+    if (newStatus) panel.setSelectedStatus(newStatus);
+  }, [fs, panel]);
 
-  const resolvedFlowchart: Flowchart | null = useMemo(() => {
-    if (!flowchart) return null;
-    if (!activeConcentration || Object.keys(activeConcentration.slot_overrides).length === 0) {
-      return flowchart;
+  const setFreeElectiveStatus = useCallback((placeholder: Course, status: FreeElectiveStatus) => {
+    const { openPicker } = fs.setFreeElectiveStatus(placeholder, status);
+    if (openPicker) panel.setSelectedFreeElectiveCourse(placeholder);
+  }, [fs, panel]);
+
+  // Course search — depends on both resolvedFlowchart (session hook) and courseSearch (panel hook)
+  const { searchTerms, courseSearchMatches, allMatchCount, highlightedCourseIds } = useMemo(() => {
+    const terms = panel.courseSearch.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    if (!fs.resolvedFlowchart || terms.length === 0) {
+      return { searchTerms: terms, courseSearchMatches: [], allMatchCount: 0, highlightedCourseIds: new Set<string>() };
     }
-
-    const overriddenCourses = flowchart.courses.map((course) => {
-      const override = activeConcentration.slot_overrides[course.id];
-      if (!override) return course;
-      return { ...course, ...override };
+    const compact = (v: string) => v.toLowerCase().replace(/[^a-z0-9]/g, "");
+    const all = fs.resolvedFlowchart.courses.filter((course) => {
+      const col = fs.resolvedFlowchart!.columns[course.grid_col];
+      const vals = [
+        course.id, course.course_number, course.title, course.category,
+        col?.year, col?.term, ...course.quarter_equivalents,
+        ...expandSlashCourseNumber(course.course_number),
+      ].filter(Boolean) as string[];
+      const hay = vals.join(" ").toLowerCase();
+      const compactHay = vals.map(compact).join(" ");
+      return terms.every((t) => hay.includes(t) || compactHay.includes(compact(t)));
     });
-    const extraCourses = (activeConcentration.extra_courses ?? []).map((c) => ({
-      elective_key: undefined,
-      ...c,
-    }));
     return {
-      ...flowchart,
-      courses: [...overriddenCourses, ...extraCourses],
+      searchTerms: terms,
+      courseSearchMatches: all.slice(0, 8),
+      allMatchCount: all.length,
+      highlightedCourseIds: panel.courseLookupOpen ? new Set(all.map((c) => c.id)) : new Set<string>(),
     };
-  }, [activeConcentration, flowchart]);
+  }, [panel.courseSearch, panel.courseLookupOpen, fs.resolvedFlowchart]);
 
-  const rememberGEAreaCourses = useCallback((areaId: string, courseNumbers: string[]) => {
-    setGEAreaMap((current) => ({
-      ...current,
-      [areaId]: courseNumbers,
-    }));
-  }, []);
-
-  useEffect(() => {
-    let cancelled = false;
-
-    async function load() {
-      // Try backend first, fall back to localStorage
-      const localSession = loadSession(sessionId);
-      let s = await getSession(sessionId);
-      if (s && localSession) {
-        s = {
-          ...s,
-          concentration: s.concentration ?? localSession.concentration,
-          coursePositions: Object.keys(s.coursePositions ?? {}).length > 0
-            ? s.coursePositions
-            : localSession.coursePositions,
-          plannedGECourses: Object.keys(s.plannedGECourses ?? {}).length > 0
-            ? s.plannedGECourses
-            : localSession.plannedGECourses,
-        };
-      }
-      if (!s) s = localSession;
-      if (!s) { router.replace("/"); return; }
-
-      // Write backend data into localStorage so it's available offline
-      saveSession(s);
-      if (!cancelled) {
-        setSession(s);
-        setMyNotesText(s.notes ?? "");
-      }
-
-      // Fire all background fetches in parallel
-      getGEAreaMap().then((map) => { if (!cancelled) setGEAreaMap(map); });
-      getConcentrations(s.major).then((list) => { if (!cancelled) setConcentrations(list); });
-      inferPrerequisites(s.major, s.completed).then((inf) => { if (!cancelled) setInferred(inf); });
-
-      getFlowchart(s.major)
-        .then((fc) => {
-          if (!cancelled) setFlowchart(fc);
-        })
-        .catch((e) => {
-          console.error(e);
-          if (!cancelled) {
-            setError("Could not load flowchart from the deployed backend. Check the API deployment and NEXT_PUBLIC_API_URL.");
-          }
-        });
-    }
-
-    void load();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [sessionId, router]);
-
-  if (error) {
+  if (fs.error) {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ background: "var(--cp-bg)" }}>
         <div className="text-center">
-          <div className="text-red-500 font-semibold mb-2">{error}</div>
+          <div className="text-red-500 font-semibold mb-2">{fs.error}</div>
           <button onClick={() => router.push("/")} className="text-sm text-gray-500 underline">← Start over</button>
         </div>
       </div>
     );
   }
 
-  if (!session || !flowchart || !resolvedFlowchart) {
+  if (!fs.session || !fs.flowchart || !fs.resolvedFlowchart) {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ background: "var(--cp-bg)" }}>
         <div className="text-gray-400 text-sm">Loading flowchart…</div>
       </div>
     );
   }
-
-  const refreshInferred = async (nextSession: TranscriptSession) => {
-    const inf = await inferPrerequisites(nextSession.major, nextSession.completed);
-    setInferred(inf);
-  };
-
-  const normalizeCourseNumber = (courseNumber: string) => courseNumber.toUpperCase().trim().replace(/\s+/g, " ");
-
-  const isFreeElective = (course: Course) =>
-    course.title.toLowerCase().includes("free elective") || course.course_number.toLowerCase().startsWith("free");
-
-  const courseCandidateSet = (course: Course) => {
-    return new Set([course.course_number, ...course.quarter_equivalents].map(normalizeCourseNumber));
-  };
-
-  const geAreaCandidateSet = (course: Course) => {
-    return new Set([
-      course.course_number,
-      ...course.quarter_equivalents,
-      ...(geAreaMap[course.course_number] ?? []),
-    ].map(normalizeCourseNumber));
-  };
-
-  const courseNumberCandidateSet = (courseNumber: string) => {
-    const [dept, code] = courseNumber.split(/\s+/);
-    const quarterEquivalent = dept && /^\d{4}$/.test(code ?? "")
-      ? `${dept} ${Number(code.slice(1))}`
-      : null;
-    return new Set([courseNumber, quarterEquivalent].filter(Boolean).map((num) => normalizeCourseNumber(num as string)));
-  };
-
-  const toggleGECourse = (areaId: string, courseNumber: string) => {
-    const candidateSet = courseNumberCandidateSet(courseNumber);
-    const areaCandidate = normalizeCourseNumber(areaId);
-    const removeSet = new Set(candidateSet);
-    removeSet.add(areaCandidate);
-
-    const isCompleted = session.completed.some((num) => removeSet.has(normalizeCourseNumber(num)));
-    const completed = isCompleted
-      ? session.completed.filter((num) => !removeSet.has(normalizeCourseNumber(num)))
-      : [
-          ...session.completed.filter((num) => !removeSet.has(normalizeCourseNumber(num))),
-          courseNumber,
-          areaId,
-        ];
-    const inProgress = isCompleted
-      ? session.inProgress
-      : session.inProgress.filter((num) => !removeSet.has(normalizeCourseNumber(num)));
-    const nextSession = { ...session, completed, inProgress };
-    setSession(nextSession);
-    persistSession(nextSession, { completed, in_progress: inProgress });
-    void refreshInferred(nextSession);
-  };
-
-  const toggleGECourseInProgress = (areaId: string, courseNumber: string) => {
-    const candidateSet = courseNumberCandidateSet(courseNumber);
-    const areaCandidate = normalizeCourseNumber(areaId);
-    const removeSet = new Set(candidateSet);
-    removeSet.add(areaCandidate);
-
-    const isInProgress = session.inProgress.some((num) => removeSet.has(normalizeCourseNumber(num)));
-
-    const inProgress = isInProgress
-      ? session.inProgress.filter((num) => !removeSet.has(normalizeCourseNumber(num)))
-      : [
-          ...session.inProgress.filter((num) => !removeSet.has(normalizeCourseNumber(num))),
-          courseNumber,
-          areaId,
-        ];
-    const completed = isInProgress
-      ? session.completed
-      : session.completed.filter((num) => !removeSet.has(normalizeCourseNumber(num)));
-    const nextSession = { ...session, completed, inProgress };
-    setSession(nextSession);
-    persistSession(nextSession, { completed, in_progress: inProgress });
-    void refreshInferred(nextSession);
-  };
-
-  const toggleGEArea = (course: Course) => {
-    const candidateSet = geAreaCandidateSet(course);
-    const isCompleted = session.completed.some((courseNumber) => candidateSet.has(normalizeCourseNumber(courseNumber)));
-
-    const completed = isCompleted
-      ? session.completed.filter((courseNumber) => !candidateSet.has(normalizeCourseNumber(courseNumber)))
-      : [...session.completed, course.course_number];
-    const inProgress = isCompleted
-      ? session.inProgress
-      : session.inProgress.filter((courseNumber) => !candidateSet.has(normalizeCourseNumber(courseNumber)));
-
-    const nextSession = { ...session, completed, inProgress };
-    setSession(nextSession);
-    persistSession(nextSession, { completed, in_progress: inProgress });
-    void refreshInferred(nextSession);
-  };
-
-  const toggleGEAreaInProgress = (course: Course) => {
-    const candidateSet = geAreaCandidateSet(course);
-    const isInProgress = session.inProgress.some((courseNumber) => candidateSet.has(normalizeCourseNumber(courseNumber)));
-
-    const inProgress = isInProgress
-      ? session.inProgress.filter((courseNumber) => !candidateSet.has(normalizeCourseNumber(courseNumber)))
-      : [
-          ...session.inProgress.filter((courseNumber) => !candidateSet.has(normalizeCourseNumber(courseNumber))),
-          course.course_number,
-        ];
-    const completed = isInProgress
-      ? session.completed
-      : session.completed.filter((courseNumber) => !candidateSet.has(normalizeCourseNumber(courseNumber)));
-
-    const nextSession = { ...session, completed, inProgress };
-    setSession(nextSession);
-    persistSession(nextSession, { completed, in_progress: inProgress });
-    void refreshInferred(nextSession);
-  };
-
-  const planGECourse = (areaId: string, courseNumber: string, units: number) => {
-    const plannedGECourses = { ...(session.plannedGECourses ?? {}) };
-    const plannedGEUnits   = { ...(session.plannedGEUnits   ?? {}) };
-
-    if (plannedGECourses[areaId] === courseNumber) {
-      delete plannedGECourses[areaId];
-      delete plannedGEUnits[areaId];
-    } else {
-      plannedGECourses[areaId] = courseNumber;
-      plannedGEUnits[areaId]   = units;
-    }
-
-    const nextSession = { ...session, plannedGECourses, plannedGEUnits };
-    setSession(nextSession);
-    persistSession(nextSession, { planned_ge_courses: plannedGECourses, planned_ge_units: plannedGEUnits });
-  };
-
-  const electiveRemoveSet = (placeholder: Course, courseNumber: string) => {
-    const removeSet = courseCandidateSet(placeholder);
-    for (const candidate of courseNumberCandidateSet(courseNumber)) {
-      removeSet.add(candidate);
-    }
-    return removeSet;
-  };
-
-  const toggleElectiveCourse = (placeholder: Course, courseNumber: string) => {
-    const removeSet = electiveRemoveSet(placeholder, courseNumber);
-    const placeholderCandidate = normalizeCourseNumber(placeholder.course_number);
-    const isCompleted = session.completed.some((num) => removeSet.has(normalizeCourseNumber(num)));
-    const completed = isCompleted
-      ? session.completed.filter((num) => !removeSet.has(normalizeCourseNumber(num)))
-      : [
-          ...session.completed.filter((num) => !removeSet.has(normalizeCourseNumber(num))),
-          courseNumber,
-          placeholder.course_number,
-        ];
-    const inProgress = isCompleted
-      ? session.inProgress
-      : session.inProgress.filter((num) => !removeSet.has(normalizeCourseNumber(num)));
-    const plannedGECourses = {
-      ...(session.plannedGECourses ?? {}),
-      [placeholder.course_number]: courseNumber,
-    };
-    if (isCompleted && !session.inProgress.some((num) => normalizeCourseNumber(num) === placeholderCandidate)) {
-      delete plannedGECourses[placeholder.course_number];
-    }
-    const nextSession = { ...session, completed, inProgress, plannedGECourses };
-    setSession(nextSession);
-    persistSession(nextSession, { completed, in_progress: inProgress, planned_ge_courses: plannedGECourses });
-    void refreshInferred(nextSession);
-  };
-
-  const toggleElectiveCourseInProgress = (placeholder: Course, courseNumber: string) => {
-    const removeSet = electiveRemoveSet(placeholder, courseNumber);
-    const placeholderCandidate = normalizeCourseNumber(placeholder.course_number);
-    const isInProgress = session.inProgress.some((num) => removeSet.has(normalizeCourseNumber(num)));
-    const inProgress = isInProgress
-      ? session.inProgress.filter((num) => !removeSet.has(normalizeCourseNumber(num)))
-      : [
-          ...session.inProgress.filter((num) => !removeSet.has(normalizeCourseNumber(num))),
-          courseNumber,
-          placeholder.course_number,
-        ];
-    const completed = isInProgress
-      ? session.completed
-      : session.completed.filter((num) => !removeSet.has(normalizeCourseNumber(num)));
-    const plannedGECourses = {
-      ...(session.plannedGECourses ?? {}),
-      [placeholder.course_number]: courseNumber,
-    };
-    if (isInProgress && !session.completed.some((num) => normalizeCourseNumber(num) === placeholderCandidate)) {
-      delete plannedGECourses[placeholder.course_number];
-    }
-    const nextSession = { ...session, completed, inProgress, plannedGECourses };
-    setSession(nextSession);
-    persistSession(nextSession, { completed, in_progress: inProgress, planned_ge_courses: plannedGECourses });
-    void refreshInferred(nextSession);
-  };
-
-  const planElectiveCourse = (placeholder: Course, courseNumber: string, units: number) => {
-    planGECourse(placeholder.course_number, courseNumber, units);
-  };
-
-  // When a non-GE elective placeholder has a specific course elected (e.g. "MATH 2341"
-  // for the "MATH 1151/2341" slot), both the placeholder AND the elected course were
-  // added to completed by toggleElectiveCourse. The quick-toggle needs to remove both
-  // on uncheck, while leaving the planned selection (plannedGECourses) intact.
-  const expandWithElectedCourse = (baseCourseNums: Set<string>, course: Course): Set<string> => {
-    if (!course.is_placeholder || course.category === "ge") return baseCourseNums;
-    const electedNum = (session.plannedGECourses ?? {})[course.course_number];
-    if (!electedNum) return baseCourseNums;
-    const expanded = new Set(baseCourseNums);
-    for (const candidate of courseNumberCandidateSet(electedNum)) expanded.add(candidate);
-    return expanded;
-  };
-
-  const toggleCourseCompleted = (course: Course) => {
-    const baseCourseNums = course.is_placeholder && course.category === "ge"
-      ? geAreaCandidateSet(course)
-      : courseCandidateSet(course);
-    const isCompleted = session.completed.some((courseNum) => baseCourseNums.has(normalizeCourseNumber(courseNum)));
-    // On uncheck: expand the remove set to include the elected course so it is fully cleared.
-    // On check: use only the base set so we don't accidentally treat a transcript course as "completed".
-    const removeNums = isCompleted ? expandWithElectedCourse(baseCourseNums, course) : baseCourseNums;
-    const completed = isCompleted
-      ? session.completed.filter((courseNum) => !removeNums.has(normalizeCourseNumber(courseNum)))
-      : [...session.completed.filter((courseNum) => !removeNums.has(normalizeCourseNumber(courseNum))), course.course_number];
-    const inProgress = isCompleted
-      ? session.inProgress
-      : session.inProgress.filter((courseNum) => !removeNums.has(normalizeCourseNumber(courseNum)));
-
-    const nextSession = { ...session, completed, inProgress };
-    setSession(nextSession);
-    persistSession(nextSession, { completed, in_progress: inProgress });
-    void refreshInferred(nextSession);
-
-    if (selectedCourse?.id === course.id) {
-      setSelectedStatus(isCompleted ? "incomplete" : "completed");
-    }
-  };
-
-  const toggleCourseInProgress = (course: Course) => {
-    const baseCourseNums = course.is_placeholder && course.category === "ge"
-      ? geAreaCandidateSet(course)
-      : courseCandidateSet(course);
-    const isInProgress = session.inProgress.some((courseNum) => baseCourseNums.has(normalizeCourseNumber(courseNum)));
-    const removeNums = isInProgress ? expandWithElectedCourse(baseCourseNums, course) : baseCourseNums;
-    const inProgress = isInProgress
-      ? session.inProgress.filter((courseNum) => !removeNums.has(normalizeCourseNumber(courseNum)))
-      : [
-          ...session.inProgress.filter((courseNum) => !removeNums.has(normalizeCourseNumber(courseNum))),
-          course.course_number,
-        ];
-    const completed = isInProgress
-      ? session.completed
-      : session.completed.filter((courseNum) => !removeNums.has(normalizeCourseNumber(courseNum)));
-
-    const nextSession = { ...session, completed, inProgress };
-    setSession(nextSession);
-    persistSession(nextSession, { completed, in_progress: inProgress });
-    void refreshInferred(nextSession);
-
-    if (selectedCourse?.id === course.id) {
-      setSelectedStatus(isInProgress ? "incomplete" : "in_progress");
-    }
-  };
-
-  const moveCourse = (
-    courseId: string,
-    targetCol: number,
-    targetRow: number,
-    targetCourseId?: string,
-  ) => {
-    const draggedCourse = resolvedFlowchart.courses.find((course) => course.id === courseId);
-    if (!draggedCourse) return;
-
-    const positions = { ...(session.coursePositions ?? {}) };
-    const draggedPosition = positions[courseId] ?? {
-      grid_col: draggedCourse.grid_col,
-      grid_row: draggedCourse.grid_row,
-    };
-
-    positions[courseId] = { grid_col: targetCol, grid_row: targetRow };
-
-    if (targetCourseId) {
-      positions[targetCourseId] = draggedPosition;
-    }
-
-    const nextSession = { ...session, coursePositions: positions };
-    setSession(nextSession);
-    persistSession(nextSession, { course_positions: positions as Record<string, unknown> });
-  };
-
-  const resetCourseLayout = () => {
-    const nextSession = { ...session, coursePositions: {} };
-    setSession(nextSession);
-    persistSession(nextSession, { course_positions: {} });
-  };
-
-  const downloadSession = () => {
-    const blob = new Blob([JSON.stringify(session, null, 2)], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = mbpFilename(session);
-    a.click();
-    URL.revokeObjectURL(url);
-  };
-
-  const changeConcentration = (newId: string) => {
-    const nextSession = { ...session, concentration: newId === "none" ? undefined : newId };
-    setSession(nextSession);
-    saveSession(nextSession);
-    void syncSession(session.sessionId, { concentration: newId === "none" ? undefined : newId });
-  };
-
-  const importCSV = (csvCompleted: string[], csvInProgress: string[]) => {
-    const nextSession = { ...session, completed: csvCompleted, inProgress: csvInProgress };
-    setSession(nextSession);
-    persistSession(nextSession, { completed: csvCompleted, in_progress: csvInProgress });
-    void refreshInferred(nextSession);
-  };
 
   return (
     <div className="min-h-screen flex flex-col" style={{ background: "var(--cp-bg)" }}>
@@ -475,20 +100,18 @@ export default function FlowchartPage() {
         }}
       >
         <button onClick={() => router.push("/upload")} className="text-white/60 hover:text-white text-sm font-mono flex-shrink-0">← Back</button>
-        <div className="text-white font-bold text-sm font-mono truncate">{flowchart.major}</div>
-        {concentrations.length > 0 && (
+        <div className="text-white font-bold text-sm font-mono truncate">{fs.flowchart.major}</div>
+        {fs.concentrations.length > 0 && (
           <>
             <div className="text-white/35 text-sm flex-shrink-0">·</div>
             <select
-              value={session.concentration ?? "none"}
-              onChange={(e) => changeConcentration(e.target.value)}
+              value={fs.session.concentration ?? "none"}
+              onChange={(e) => fs.changeConcentration(e.target.value)}
               className="text-sm rounded px-2 py-0.5 font-mono min-w-0 max-w-[180px] sm:max-w-none"
               style={{ background: "rgba(255,255,255,0.12)", color: "white", border: "1px solid rgba(255,255,255,0.25)" }}
             >
-              {concentrations.map((c) => (
-                <option key={c.id} value={c.id} style={{ background: "#002D72", color: "white" }}>
-                  {c.label}
-                </option>
+              {fs.concentrations.map((c) => (
+                <option key={c.id} value={c.id} style={{ background: "#002D72", color: "white" }}>{c.label}</option>
               ))}
             </select>
           </>
@@ -507,42 +130,56 @@ export default function FlowchartPage() {
           <div className="mb-4 flex flex-wrap items-center gap-2">
             <div className="flex items-baseline gap-2 mr-auto">
               <h1 className="text-base sm:text-lg font-bold" style={{ color: "var(--cp-green)" }}>
-                {flowchart.major}
+                {fs.flowchart.major}
               </h1>
               <span className="text-gray-400 text-xs hidden sm:inline">4-Year Semester Flowchart</span>
             </div>
             <div className="flex gap-1.5 sm:gap-2">
               <button
-                onClick={() => setChecklistOpen(true)}
+                onClick={() => panel.setChecklistOpen(true)}
                 className="rounded-lg px-3 sm:px-5 py-1.5 sm:py-2 text-xs sm:text-sm font-bold text-white shadow-sm transition-colors hover:opacity-90 active:scale-[0.98]"
                 style={{ background: "var(--cp-green)" }}
               >
                 Course Checklist
               </button>
               <button
-                onClick={() => setTipsOpen((o) => !o)}
+                onClick={() => panel.setTipsOpen((o) => !o)}
                 className="rounded-lg px-3 sm:px-5 py-1.5 sm:py-2 text-xs sm:text-sm font-bold shadow-sm transition-colors hover:opacity-90 active:scale-[0.98]"
-                style={{ background: tipsOpen ? "#005fa3" : "var(--cp-green)", color: "white" }}
+                style={{ background: panel.tipsOpen ? "#005fa3" : "var(--cp-green)", color: "white" }}
               >
                 Tips
               </button>
               <button
-                onClick={() => setMyNotesOpen((o) => !o)}
+                onClick={() => panel.setMyNotesOpen((o) => !o)}
                 className="rounded-lg px-3 sm:px-5 py-1.5 sm:py-2 text-xs sm:text-sm font-bold shadow-sm transition-colors hover:opacity-90 active:scale-[0.98]"
-                style={{ background: myNotesOpen ? "#005fa3" : "var(--cp-green)", color: "white" }}
+                style={{ background: panel.myNotesOpen ? "#005fa3" : "var(--cp-green)", color: "white" }}
               >
                 My Notes
+              </button>
+              <button
+                onClick={() => panel.setOtherCreditsOpen((o) => !o)}
+                className="rounded-lg px-3 sm:px-5 py-1.5 sm:py-2 text-xs sm:text-sm font-bold shadow-sm transition-colors hover:opacity-90 active:scale-[0.98]"
+                style={{ background: panel.otherCreditsOpen ? "#005fa3" : "var(--cp-green)", color: "white" }}
+              >
+                Other Credits
+              </button>
+              <button
+                onClick={() => panel.setCourseLookupOpen((o) => !o)}
+                className="rounded-lg px-3 sm:px-5 py-1.5 sm:py-2 text-xs sm:text-sm font-bold shadow-sm transition-colors hover:opacity-90 active:scale-[0.98]"
+                style={{ background: panel.courseLookupOpen ? "#005fa3" : "var(--cp-green)", color: "white" }}
+              >
+                Course Lookup
               </button>
             </div>
             <div className="flex gap-1.5 sm:gap-2">
               <button
-                onClick={downloadSession}
+                onClick={fs.downloadSession}
                 className="rounded border border-gray-200 px-2 sm:px-2.5 py-1 text-xs text-gray-400 transition-colors hover:border-gray-300 hover:text-gray-600"
               >
                 Download
               </button>
               <button
-                onClick={resetCourseLayout}
+                onClick={fs.resetCourseLayout}
                 className="rounded border border-gray-200 px-2 sm:px-2.5 py-1 text-xs text-gray-400 transition-colors hover:border-gray-300 hover:text-gray-600 hidden sm:inline"
               >
                 Reset Layout
@@ -551,64 +188,63 @@ export default function FlowchartPage() {
           </div>
 
           <FlowchartGrid
-            flowchart={resolvedFlowchart}
-            session={session}
-            inferred={inferred}
-            geAreaMap={geAreaMap}
+            flowchart={fs.resolvedFlowchart}
+            session={fs.session}
+            inferred={fs.inferred}
+            geAreaMap={fs.geAreaMap}
+            highlightedCourseIds={highlightedCourseIds}
             onToggleCourseCompleted={toggleCourseCompleted}
             onToggleCourseInProgress={toggleCourseInProgress}
-            onMoveCourse={moveCourse}
-            onCourseClick={(course, status) => {
-              if (course.is_placeholder && (course.category === "ge" || course.course_number.startsWith("ART 3000+"))) {
-                setSelectedGECourse(course);
-                setSelectedCourse(null);
-                setSelectedElectiveCourse(null);
-              } else if (course.is_placeholder && !isFreeElective(course)) {
-                setSelectedElectiveCourse(course);
-                setSelectedCourse(null);
-                setSelectedGECourse(null);
-              } else {
-                setSelectedCourse(course);
-                setSelectedStatus(status);
-                setSelectedGECourse(null);
-                setSelectedElectiveCourse(null);
-              }
-            }}
+            onMoveCourse={fs.moveCourse}
+            onCourseClick={panel.openCoursePanel}
           />
         </div>
       </main>
 
       <CourseDetailPanel
-        course={selectedCourse}
-        status={selectedStatus}
-        allCourses={resolvedFlowchart.courses}
-        completed={session.completed}
-        inProgress={session.inProgress}
-        inferred={inferred}
-        onClose={() => { setSelectedCourse(null); setSelectedStatus(null); }}
+        course={panel.selectedCourse}
+        status={panel.selectedStatus}
+        allCourses={fs.resolvedFlowchart.courses}
+        completed={fs.session.completed}
+        inProgress={fs.session.inProgress}
+        inferred={fs.inferred}
+        onClose={() => { panel.setSelectedCourse(null); panel.setSelectedStatus(null); }}
       />
 
       <GEDetailPanel
-        course={selectedGECourse}
-        completedSet={new Set(session.completed)}
-        inProgressSet={new Set(session.inProgress)}
-        plannedGECourses={session.plannedGECourses ?? {}}
-        onToggleGECourse={toggleGECourse}
-        onToggleGECourseInProgress={toggleGECourseInProgress}
-        onPlanGECourse={planGECourse}
-        onAreaLoaded={rememberGEAreaCourses}
-        onClose={() => setSelectedGECourse(null)}
+        course={panel.selectedGECourse}
+        completedSet={new Set(fs.session.completed)}
+        inProgressSet={new Set(fs.session.inProgress)}
+        plannedGECourses={fs.session.plannedGECourses ?? {}}
+        onToggleGECourse={fs.toggleGECourse}
+        onToggleGECourseInProgress={fs.toggleGECourseInProgress}
+        onPlanGECourse={fs.planGECourse}
+        onAreaLoaded={fs.rememberGEAreaCourses}
+        onClose={() => panel.setSelectedGECourse(null)}
       />
 
       <ElectiveDetailPanel
-        course={selectedElectiveCourse}
-        completedSet={new Set(session.completed)}
-        inProgressSet={new Set(session.inProgress)}
-        plannedElectiveCourses={session.plannedGECourses ?? {}}
-        onToggleElectiveCourse={toggleElectiveCourse}
-        onToggleElectiveCourseInProgress={toggleElectiveCourseInProgress}
-        onPlanElectiveCourse={planElectiveCourse}
-        onClose={() => setSelectedElectiveCourse(null)}
+        course={panel.selectedElectiveCourse}
+        completedSet={new Set(fs.session.completed)}
+        inProgressSet={new Set(fs.session.inProgress)}
+        plannedElectiveCourses={fs.session.plannedGECourses ?? {}}
+        currentSlotId={panel.selectedElectiveCourse?.id}
+        plannedSlotUnits={panel.selectedElectiveCourse ? (fs.session.plannedCourseUnits ?? {})[panel.selectedElectiveCourse.id] : undefined}
+        cappedCourseConfig={fs.getCappedCourseConfig(panel.selectedElectiveCourse)}
+        onToggleElectiveCourse={fs.toggleElectiveCourse}
+        onToggleElectiveCourseInProgress={fs.toggleElectiveCourseInProgress}
+        onPlanElectiveCourse={fs.planElectiveCourse}
+        onSetSlotUnits={fs.setSlotUnits}
+        onClose={() => panel.setSelectedElectiveCourse(null)}
+      />
+
+      <FreeElectivePickerPanel
+        course={panel.selectedFreeElectiveCourse}
+        selection={panel.selectedFreeElectiveCourse ? (fs.session.plannedFreeElectiveCourses ?? {})[panel.selectedFreeElectiveCourse.id] : undefined}
+        onChoose={fs.chooseFreeElectiveCourse}
+        onSetStatus={setFreeElectiveStatus}
+        onClear={fs.clearFreeElectiveCourse}
+        onClose={() => panel.setSelectedFreeElectiveCourse(null)}
       />
 
       {/* Disclaimer */}
@@ -616,59 +252,53 @@ export default function FlowchartPage() {
         Mustang Blueprints is an independent student project — <strong>not affiliated with Cal Poly</strong>. Always verify your plan with your academic advisor.
       </footer>
 
-      {tipsOpen && (
+      {panel.tipsOpen && (
         <div
           className="fixed z-50 flex flex-col rounded-lg border border-gray-200 bg-white shadow-2xl"
-          style={{ left: tipsPos.x, top: tipsPos.y, width: "min(400px, calc(100vw - 2rem))", height: "min(70vh, 480px)", minWidth: "240px", minHeight: "120px", resize: "both", overflow: "hidden" }}
+          style={{ left: panel.tipsPos.x, top: panel.tipsPos.y, width: "min(400px, calc(100vw - 2rem))", height: "min(70vh, 480px)", minWidth: "240px", minHeight: "120px", resize: "both", overflow: "hidden" }}
         >
           <div
             className="flex flex-shrink-0 items-center justify-between border-b border-gray-100 px-4 py-3 cursor-grab select-none"
             onMouseDown={(e) => {
-              tipsDrag.current = { startX: e.clientX, startY: e.clientY, panelX: tipsPos.x, panelY: tipsPos.y };
+              panel.tipsDrag.current = { startX: e.clientX, startY: e.clientY, panelX: panel.tipsPos.x, panelY: panel.tipsPos.y };
               const onMove = (ev: MouseEvent) => {
-                if (!tipsDrag.current) return;
-                setTipsPos({ x: tipsDrag.current.panelX + ev.clientX - tipsDrag.current.startX, y: tipsDrag.current.panelY + ev.clientY - tipsDrag.current.startY });
+                if (!panel.tipsDrag.current) return;
+                panel.setTipsPos({ x: panel.tipsDrag.current.panelX + ev.clientX - panel.tipsDrag.current.startX, y: panel.tipsDrag.current.panelY + ev.clientY - panel.tipsDrag.current.startY });
               };
-              const onUp = () => { tipsDrag.current = null; window.removeEventListener("mousemove", onMove); window.removeEventListener("mouseup", onUp); };
+              const onUp = () => { panel.tipsDrag.current = null; window.removeEventListener("mousemove", onMove); window.removeEventListener("mouseup", onUp); };
               window.addEventListener("mousemove", onMove);
               window.addEventListener("mouseup", onUp);
             }}
           >
             <h2 className="text-sm font-bold" style={{ color: "var(--cp-green)" }}>Flowchart Tips</h2>
-            <button onClick={() => setTipsOpen(false)} className="text-gray-400 hover:text-gray-600 leading-none ml-4">✕</button>
+            <button onClick={() => panel.setTipsOpen(false)} className="text-gray-400 hover:text-gray-600 leading-none ml-4">✕</button>
           </div>
           <div className="flex-1 overflow-y-auto px-5 py-4 space-y-5">
-            {(!resolvedFlowchart.notes || resolvedFlowchart.notes.length === 0) && !activeConcentration?.tips?.length ? (
+            {(!fs.resolvedFlowchart.notes || fs.resolvedFlowchart.notes.length === 0) && !fs.activeConcentration?.tips?.length ? (
               <p className="text-sm text-gray-400 italic">No catalog tips available yet.</p>
             ) : (
               <>
-                {(resolvedFlowchart.notes ?? []).filter((s) => s.title !== "GE Tips").map((section, si) => (
+                {(fs.resolvedFlowchart.notes ?? []).filter((s) => s.title !== "GE Tips").map((section, si) => (
                   <div key={si}>
                     <h3 className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: "var(--cp-green)" }}>{section.title}</h3>
                     <ol className="space-y-2 list-decimal list-outside pl-4">
-                      {section.items.map((item, i) => (
-                        <li key={i} className="text-sm text-gray-700 leading-relaxed">{item}</li>
-                      ))}
+                      {section.items.map((item, i) => <li key={i} className="text-sm text-gray-700 leading-relaxed">{item}</li>)}
                     </ol>
                   </div>
                 ))}
-                {activeConcentration && activeConcentration.tips && activeConcentration.tips.length > 0 && (
+                {fs.activeConcentration?.tips && fs.activeConcentration.tips.length > 0 && (
                   <div>
-                    <h3 className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: "var(--cp-green)" }}>{activeConcentration.label} Tips</h3>
+                    <h3 className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: "var(--cp-green)" }}>{fs.activeConcentration.label} Tips</h3>
                     <ol className="space-y-2 list-decimal list-outside pl-4">
-                      {activeConcentration.tips.map((item, i) => (
-                        <li key={i} className="text-sm text-gray-700 leading-relaxed">{item}</li>
-                      ))}
+                      {fs.activeConcentration.tips.map((item, i) => <li key={i} className="text-sm text-gray-700 leading-relaxed">{item}</li>)}
                     </ol>
                   </div>
                 )}
-                {(resolvedFlowchart.notes ?? []).filter((s) => s.title === "GE Tips").map((section, si) => (
+                {(fs.resolvedFlowchart.notes ?? []).filter((s) => s.title === "GE Tips").map((section, si) => (
                   <div key={si}>
                     <h3 className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: "var(--cp-green)" }}>{section.title}</h3>
                     <ol className="space-y-2 list-decimal list-outside pl-4">
-                      {section.items.map((item, i) => (
-                        <li key={i} className="text-sm text-gray-700 leading-relaxed">{item}</li>
-                      ))}
+                      {section.items.map((item, i) => <li key={i} className="text-sm text-gray-700 leading-relaxed">{item}</li>)}
                     </ol>
                   </div>
                 ))}
@@ -678,76 +308,174 @@ export default function FlowchartPage() {
         </div>
       )}
 
-      {myNotesOpen && (
+      {panel.myNotesOpen && (
         <div
           className="fixed z-50 flex flex-col rounded-lg border border-gray-200 bg-white shadow-2xl"
-          style={{ left: myNotesPos.x, top: myNotesPos.y, width: "min(380px, calc(100vw - 2rem))", height: "min(60vh, 440px)", minWidth: "240px", minHeight: "160px", resize: "both", overflow: "hidden" }}
+          style={{ left: panel.myNotesPos.x, top: panel.myNotesPos.y, width: "min(380px, calc(100vw - 2rem))", height: "min(60vh, 440px)", minWidth: "240px", minHeight: "160px", resize: "both", overflow: "hidden" }}
         >
           <div
             className="flex flex-shrink-0 items-center justify-between border-b border-gray-100 px-4 py-3 cursor-grab select-none"
             onMouseDown={(e) => {
-              myNotesDrag.current = { startX: e.clientX, startY: e.clientY, panelX: myNotesPos.x, panelY: myNotesPos.y };
+              panel.myNotesDrag.current = { startX: e.clientX, startY: e.clientY, panelX: panel.myNotesPos.x, panelY: panel.myNotesPos.y };
               const onMove = (ev: MouseEvent) => {
-                if (!myNotesDrag.current) return;
-                setMyNotesPos({ x: myNotesDrag.current.panelX + ev.clientX - myNotesDrag.current.startX, y: myNotesDrag.current.panelY + ev.clientY - myNotesDrag.current.startY });
+                if (!panel.myNotesDrag.current) return;
+                panel.setMyNotesPos({ x: panel.myNotesDrag.current.panelX + ev.clientX - panel.myNotesDrag.current.startX, y: panel.myNotesDrag.current.panelY + ev.clientY - panel.myNotesDrag.current.startY });
               };
-              const onUp = () => { myNotesDrag.current = null; window.removeEventListener("mousemove", onMove); window.removeEventListener("mouseup", onUp); };
+              const onUp = () => { panel.myNotesDrag.current = null; window.removeEventListener("mousemove", onMove); window.removeEventListener("mouseup", onUp); };
               window.addEventListener("mousemove", onMove);
               window.addEventListener("mouseup", onUp);
             }}
           >
             <h2 className="text-sm font-bold" style={{ color: "var(--cp-green)" }}>My Notes</h2>
-            <button onClick={() => setMyNotesOpen(false)} className="text-gray-400 hover:text-gray-600 leading-none ml-4">✕</button>
+            <button onClick={() => panel.setMyNotesOpen(false)} className="text-gray-400 hover:text-gray-600 leading-none ml-4">✕</button>
           </div>
           <textarea
             className="flex-1 w-full resize-none px-4 py-3 text-sm text-gray-700 placeholder-gray-300 focus:outline-none"
             placeholder="Write anything here — course notes, reminders, questions for your advisor…"
-            value={myNotesText}
-            onChange={(e) => {
-              const text = e.target.value;
-              setMyNotesText(text);
-              const nextSession = { ...session, notes: text };
-              setSession(nextSession);
-              saveSession(nextSession);
-            }}
+            value={fs.myNotesText}
+            onChange={(e) => fs.updateMyNotes(e.target.value)}
           />
         </div>
       )}
 
+      {panel.otherCreditsOpen && (
+        <div
+          className="fixed z-50 flex flex-col rounded-lg border border-gray-200 bg-white shadow-2xl"
+          style={{ left: panel.otherCreditsPos.x, top: panel.otherCreditsPos.y, width: "min(380px, calc(100vw - 2rem))", maxHeight: "min(60vh, 440px)", minWidth: "260px", overflow: "hidden" }}
+        >
+          <div
+            className="flex flex-shrink-0 items-center justify-between border-b border-gray-100 px-4 py-3 cursor-grab select-none"
+            onMouseDown={(e) => {
+              panel.otherCreditsDrag.current = { startX: e.clientX, startY: e.clientY, panelX: panel.otherCreditsPos.x, panelY: panel.otherCreditsPos.y };
+              const onMove = (ev: MouseEvent) => {
+                if (!panel.otherCreditsDrag.current) return;
+                panel.setOtherCreditsPos({ x: panel.otherCreditsDrag.current.panelX + ev.clientX - panel.otherCreditsDrag.current.startX, y: panel.otherCreditsDrag.current.panelY + ev.clientY - panel.otherCreditsDrag.current.startY });
+              };
+              const onUp = () => { panel.otherCreditsDrag.current = null; window.removeEventListener("mousemove", onMove); window.removeEventListener("mouseup", onUp); };
+              window.addEventListener("mousemove", onMove);
+              window.addEventListener("mouseup", onUp);
+            }}
+          >
+            <div>
+              <h2 className="text-sm font-bold" style={{ color: "var(--cp-green)" }}>Other Credits</h2>
+              <div className="mt-0.5 text-[11px] text-gray-400">{fs.otherCredits.length} imported</div>
+            </div>
+            <button onClick={() => panel.setOtherCreditsOpen(false)} className="text-gray-400 hover:text-gray-600 leading-none ml-4">✕</button>
+          </div>
+          <div className="overflow-y-auto px-4 py-3">
+            {fs.otherCredits.length === 0 ? (
+              <div className="py-6 text-center text-sm text-gray-400">No other credits found.</div>
+            ) : (
+              <div className="divide-y divide-gray-100">
+                {fs.otherCredits.map((credit) => (
+                  <div key={`${credit.status}-${credit.courseNumber}`} className="flex items-center justify-between gap-3 py-2.5">
+                    <span className="font-mono text-sm font-semibold text-gray-800">{credit.courseNumber}</span>
+                    <span className={`rounded px-2 py-0.5 text-[10px] font-bold uppercase ${credit.status === "completed" ? "bg-green-50 text-green-700" : "bg-amber-50 text-amber-700"}`}>
+                      {credit.status === "completed" ? "Done" : "IP"}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {panel.courseLookupOpen && (
+        <div
+          className="fixed z-50 flex flex-col rounded-lg border border-gray-200 bg-white shadow-2xl"
+          style={{ left: panel.courseLookupPos.x, top: panel.courseLookupPos.y, width: "min(520px, calc(100vw - 2rem))", maxHeight: "min(70vh, 520px)", minWidth: "280px", overflow: "hidden" }}
+        >
+          <div
+            className="flex flex-shrink-0 items-center justify-between border-b border-gray-100 px-4 py-3 cursor-grab select-none"
+            onMouseDown={(e) => {
+              panel.courseLookupDrag.current = { startX: e.clientX, startY: e.clientY, panelX: panel.courseLookupPos.x, panelY: panel.courseLookupPos.y };
+              const onMove = (ev: MouseEvent) => {
+                if (!panel.courseLookupDrag.current) return;
+                panel.setCourseLookupPos({ x: panel.courseLookupDrag.current.panelX + ev.clientX - panel.courseLookupDrag.current.startX, y: panel.courseLookupDrag.current.panelY + ev.clientY - panel.courseLookupDrag.current.startY });
+              };
+              const onUp = () => { panel.courseLookupDrag.current = null; window.removeEventListener("mousemove", onMove); window.removeEventListener("mouseup", onUp); };
+              window.addEventListener("mousemove", onMove);
+              window.addEventListener("mouseup", onUp);
+            }}
+          >
+            <div>
+              <h2 className="text-sm font-bold" style={{ color: "var(--cp-green)" }}>Course Lookup</h2>
+              <div className="mt-0.5 text-[11px] text-gray-400">
+                {searchTerms.length === 0 ? "Search this flowchart" : `${allMatchCount} matches`}
+              </div>
+            </div>
+            <button onClick={() => panel.setCourseLookupOpen(false)} className="text-gray-400 hover:text-gray-600 leading-none ml-4">✕</button>
+          </div>
+          <div className="overflow-y-auto px-4 py-3">
+            <div className="flex gap-2">
+              <input
+                value={panel.courseSearch}
+                onChange={(e) => panel.setCourseSearch(e.target.value)}
+                placeholder="Course number, title, keyword, or term"
+                className="min-w-0 flex-1 rounded border border-gray-300 bg-white px-3 py-2 text-sm outline-none transition-colors focus:border-blue-700"
+                autoFocus
+              />
+              {panel.courseSearch && (
+                <button onClick={() => panel.setCourseSearch("")} className="rounded border border-gray-200 px-2.5 py-2 text-xs font-semibold text-gray-500 hover:bg-gray-50">
+                  Clear
+                </button>
+              )}
+            </div>
+            {searchTerms.length > 0 && (
+              <div className="mt-3">
+                {courseSearchMatches.length === 0 ? (
+                  <div className="py-6 text-center text-sm text-gray-400">No matching courses in this flowchart.</div>
+                ) : (
+                  <div className="flex flex-col divide-y divide-gray-100">
+                    {courseSearchMatches.map((course) => {
+                      const col = fs.resolvedFlowchart!.columns[course.grid_col];
+                      const status = fs.statusForCourse(course);
+                      return (
+                        <button
+                          key={course.id}
+                          onClick={() => panel.openCoursePanel(course, status)}
+                          className="flex items-start justify-between gap-3 py-2.5 text-left text-sm hover:bg-yellow-50"
+                        >
+                          <div>
+                            <div className="font-mono font-bold text-gray-900">{course.course_number}</div>
+                            <div className="text-xs text-gray-600">{course.title}</div>
+                          </div>
+                          {col && <span className="mt-0.5 whitespace-nowrap text-[11px] font-semibold text-gray-400">{col.year} {col.term}</span>}
+                        </button>
+                      );
+                    })}
+                    {allMatchCount > courseSearchMatches.length && (
+                      <div className="py-2 text-xs text-gray-400">
+                        +{allMatchCount - courseSearchMatches.length} more highlighted on the flowchart.
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
       <ManualCourseChecklist
-        open={checklistOpen}
-        courses={resolvedFlowchart.courses}
-        completed={session.completed}
-        inProgress={session.inProgress}
-        geAreaMap={geAreaMap}
-        plannedGECourses={session.plannedGECourses ?? {}}
+        open={panel.checklistOpen}
+        courses={fs.resolvedFlowchart.courses}
+        completed={fs.session.completed}
+        inProgress={fs.session.inProgress}
+        geAreaMap={fs.statusGEAreaMap}
+        plannedGECourses={fs.session.plannedGECourses ?? {}}
+        plannedFreeElectiveCourses={fs.session.plannedFreeElectiveCourses ?? {}}
         onToggleCourse={toggleCourseCompleted}
         onToggleCourseInProgress={toggleCourseInProgress}
-        onToggleGEArea={toggleGEArea}
-        onToggleGEAreaInProgress={toggleGEAreaInProgress}
-        onTogglePickedCourse={(courseNumber) => {
-          const n = normalizeCourseNumber(courseNumber);
-          const isIn = session.completed.some((c) => normalizeCourseNumber(c) === n);
-          const nextCompleted = isIn
-            ? session.completed.filter((c) => normalizeCourseNumber(c) !== n)
-            : [...session.completed, courseNumber];
-          const nextSession = { ...session, completed: nextCompleted };
-          setSession(nextSession);
-          persistSession(nextSession, { completed: nextCompleted });
-          void refreshInferred(nextSession);
-        }}
-        onTogglePickedCourseInProgress={(courseNumber) => {
-          const n = normalizeCourseNumber(courseNumber);
-          const isIn = session.inProgress.some((c) => normalizeCourseNumber(c) === n);
-          const nextInProgress = isIn
-            ? session.inProgress.filter((c) => normalizeCourseNumber(c) !== n)
-            : [...session.inProgress, courseNumber];
-          const nextSession = { ...session, inProgress: nextInProgress };
-          setSession(nextSession);
-          persistSession(nextSession, { in_progress: nextInProgress });
-        }}
-        onImportCSV={importCSV}
-        onClose={() => setChecklistOpen(false)}
+        onToggleGEArea={fs.toggleGEArea}
+        onToggleGEAreaInProgress={fs.toggleGEAreaInProgress}
+        onTogglePickedCourse={fs.togglePickedCourse}
+        onTogglePickedCourseInProgress={fs.togglePickedCourseInProgress}
+        onToggleFreeElectiveStatus={setFreeElectiveStatus}
+        onOpenFreeElectivePicker={panel.setSelectedFreeElectiveCourse}
+        onImportCSV={fs.importCSV}
+        onClose={() => panel.setChecklistOpen(false)}
       />
     </div>
   );

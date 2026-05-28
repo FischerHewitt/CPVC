@@ -1,0 +1,167 @@
+[
+  {
+    "id": 702,
+    "name": "Technical Electives",
+    "units": 12,
+    "catalogName": "2022-2026",
+    "degreeName": "Mechanical Engineering",
+    "linkedTechnicalElectiveAreas": [],
+    "sections": [
+      {
+        "id": 252,
+        "name": "ME Technical Electives",
+        "requiredCount": null,
+        "minUnits": 8,
+        "maxUnits": 12,
+        "restriction": null,
+        "technicalElectives": [
+          {
+            "id": 4702,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ME305",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4703,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ME359",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4704,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ME361",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4705,
+            "type": "Range",
+            "courseSubject": "ME",
+            "courseRule": null,
+            "minLevel": 400,
+            "maxLevel": 599,
+            "unitsAllowed": null
+          }
+        ]
+      },
+      {
+        "id": 253,
+        "name": "College of Engineering Electives",
+        "requiredCount": null,
+        "minUnits": 0,
+        "maxUnits": 4,
+        "restriction": null,
+        "technicalElectives": [
+          {
+            "id": 4706,
+            "type": "Range",
+            "courseSubject": "AERO",
+            "courseRule": null,
+            "minLevel": 300,
+            "maxLevel": 599,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4707,
+            "type": "Range",
+            "courseSubject": "BMED",
+            "courseRule": null,
+            "minLevel": 300,
+            "maxLevel": 599,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4708,
+            "type": "Range",
+            "courseSubject": "CE",
+            "courseRule": null,
+            "minLevel": 300,
+            "maxLevel": 599,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4709,
+            "type": "Range",
+            "courseSubject": "CPE",
+            "courseRule": null,
+            "minLevel": 300,
+            "maxLevel": 599,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4710,
+            "type": "Range",
+            "courseSubject": "CSC",
+            "courseRule": null,
+            "minLevel": 300,
+            "maxLevel": 599,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4711,
+            "type": "Range",
+            "courseSubject": "EE",
+            "courseRule": null,
+            "minLevel": 300,
+            "maxLevel": 599,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4712,
+            "type": "Range",
+            "courseSubject": "ENGR",
+            "courseRule": null,
+            "minLevel": 300,
+            "maxLevel": 599,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4713,
+            "type": "Range",
+            "courseSubject": "ENVE",
+            "courseRule": null,
+            "minLevel": 300,
+            "maxLevel": 599,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4714,
+            "type": "Range",
+            "courseSubject": "IME",
+            "courseRule": null,
+            "minLevel": 300,
+            "maxLevel": 599,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4715,
+            "type": "Range",
+            "courseSubject": "MATE",
+            "courseRule": null,
+            "minLevel": 300,
+            "maxLevel": 599,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4716,
+            "type": "Range",
+            "courseSubject": "ME",
+            "courseRule": null,
+            "minLevel": 300,
+            "maxLevel": 599,
+            "unitsAllowed": null
+          }
+        ]
+      }
+    ]
+  }
+]

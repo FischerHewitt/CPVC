@@ -1,0 +1,157 @@
+[
+  {
+    "id": 502,
+    "name": "Fundamentals of Computer Science",
+    "courseToMeet": "CSC101 or CPE101"
+  },
+  {
+    "id": 503,
+    "name": "Data Structures",
+    "courseToMeet": "CSC202 or CPE202"
+  },
+  {
+    "id": 504,
+    "name": "Introduction to Computing",
+    "courseToMeet": "CSC123 or CPE123"
+  },
+  {
+    "id": 505,
+    "name": "Project-Based Object-Oriented Programming and Design",
+    "courseToMeet": "CSC203 or CPE203"
+  },
+  {
+    "id": 506,
+    "name": "Introduction to Computer Organization",
+    "courseToMeet": "CSC225"
+  },
+  {
+    "id": 507,
+    "name": "Discrete Structures",
+    "courseToMeet": "CSC248"
+  },
+  {
+    "id": 508,
+    "name": "Professional Responsibilities / Ethics, Science and Technology",
+    "courseToMeet": "CSC300 or PHIL323"
+  },
+  {
+    "id": 509,
+    "name": "Individual Software Design and Development",
+    "courseToMeet": "CSC305"
+  },
+  {
+    "id": 510,
+    "name": "Software Engineering I",
+    "courseToMeet": "CSC308"
+  },
+  {
+    "id": 511,
+    "name": "Software Engineering II",
+    "courseToMeet": "CSC309"
+  },
+  {
+    "id": 512,
+    "name": "Design and Analysis of Algorithms",
+    "courseToMeet": "CSC349"
+  },
+  {
+    "id": 513,
+    "name": "Systems Programming",
+    "courseToMeet": "CSC357 or CPE357"
+  },
+  {
+    "id": 514,
+    "name": "Introduction to Database Systems",
+    "courseToMeet": "CSC365"
+  },
+  {
+    "id": 515,
+    "name": "Software Requirements Engineering",
+    "courseToMeet": "CSC402"
+  },
+  {
+    "id": 516,
+    "name": "Software Construction",
+    "courseToMeet": "CSC405"
+  },
+  {
+    "id": 517,
+    "name": "Senior Project - Software Deployment",
+    "courseToMeet": "CSC406"
+  },
+  {
+    "id": 518,
+    "name": "Programming Languages",
+    "courseToMeet": "CSC430"
+  },
+  {
+    "id": 519,
+    "name": "User-Centered Interface Design and Development",
+    "courseToMeet": "CSC484"
+  },
+  {
+    "id": 520,
+    "name": "Engineering Economics",
+    "courseToMeet": "IME314 or IME315"
+  },
+  {
+    "id": 521,
+    "name": "Calculus I",
+    "courseToMeet": "MATH141"
+  },
+  {
+    "id": 522,
+    "name": "Calculus II",
+    "courseToMeet": "MATH142"
+  },
+  {
+    "id": 523,
+    "name": "Calculus III",
+    "courseToMeet": "MATH143"
+  },
+  {
+    "id": 524,
+    "name": "Calculus IV",
+    "courseToMeet": "MATH241"
+  },
+  {
+    "id": 525,
+    "name": "Linear Analysis I",
+    "courseToMeet": "MATH244"
+  },
+  {
+    "id": 526,
+    "name": "Philosophical Classics Requirement",
+    "courseToMeet": "PHIL230 or PHIL231"
+  },
+  {
+    "id": 527,
+    "name": "General Psychology Requirement",
+    "courseToMeet": "PSY201 or PSY202"
+  },
+  {
+    "id": 528,
+    "name": "Teamwork or Small Group Communication",
+    "courseToMeet": "PSY350 or COMS217"
+  },
+  {
+    "id": 529,
+    "name": "Statistical Methods for Engineers",
+    "courseToMeet": "STAT312"
+  },
+  {
+    "id": 530,
+    "name": "Life Science Support Elective",
+    "courseToMeet": "BIO111 or BIO161 or BOT121 or BIO213 or (BIO213 and BMED213) or MCRO221 or MCRO224"
+  },
+  {
+    "id": 531,
+    "name": "Mathematics Support Elective",
+    "courseToMeet": "MATH248 or MATH334 or MATH335 or MATH451"
+  },
+  {
+    "id": 532,
+    "name": "Physical Science Support Elective Sequence",
+    "courseToMeet": "(CHEM124 and CHEM125 and CHEM126) or (PHYS141 and PHYS142 and PHYS143)"
+  }
+]

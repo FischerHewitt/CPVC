@@ -1,0 +1,372 @@
+[
+  {
+    "id": 2178,
+    "sourceCourse": "AERO1121",
+    "equivalentTo": "AERO121"
+  },
+  {
+    "id": 2179,
+    "sourceCourse": "AERO3300",
+    "equivalentTo": "AERO300"
+  },
+  {
+    "id": 2180,
+    "sourceCourse": "AERO3303",
+    "equivalentTo": "AERO303"
+  },
+  {
+    "id": 2181,
+    "sourceCourse": "AERO3301 and AERO3302",
+    "equivalentTo": "AERO299 and AERO302"
+  },
+  {
+    "id": 2182,
+    "sourceCourse": "AERO3320",
+    "equivalentTo": "AERO320 and AERO321"
+  },
+  {
+    "id": 2183,
+    "sourceCourse": "AERO3331",
+    "equivalentTo": "AERO331 and CE207"
+  },
+  {
+    "id": 2184,
+    "sourceCourse": "AERO4431",
+    "equivalentTo": "AERO431"
+  },
+  {
+    "id": 2185,
+    "sourceCourse": "AERO4433",
+    "equivalentTo": "AERO433"
+  },
+  {
+    "id": 2186,
+    "sourceCourse": "AERO3460",
+    "equivalentTo": "AERO460"
+  },
+  {
+    "id": 2187,
+    "sourceCourse": "ENGR2211",
+    "equivalentTo": "ME211 and CE204"
+  },
+  {
+    "id": 2188,
+    "sourceCourse": "CHEM1120",
+    "equivalentTo": "CHEM124"
+  },
+  {
+    "id": 2189,
+    "sourceCourse": "IME1143 and IME1140",
+    "equivalentTo": "IME144"
+  },
+  {
+    "id": 2190,
+    "sourceCourse": "MATE1220",
+    "equivalentTo": "MATE210"
+  },
+  {
+    "id": 2191,
+    "sourceCourse": "ME2212",
+    "equivalentTo": "ME212"
+  },
+  {
+    "id": 2192,
+    "sourceCourse": "MATH1261 and MATH1262",
+    "equivalentTo": "MATH141 and MATH142 and MATH143"
+  },
+  {
+    "id": 2193,
+    "sourceCourse": "MATH2263",
+    "equivalentTo": "MATH241"
+  },
+  {
+    "id": 2194,
+    "sourceCourse": "MATH2341",
+    "equivalentTo": "MATH244"
+  },
+  {
+    "id": 2195,
+    "sourceCourse": "PHYS1141",
+    "equivalentTo": "PHYS141"
+  },
+  {
+    "id": 2196,
+    "sourceCourse": "PHYS1143",
+    "equivalentTo": "PHYS143"
+  },
+  {
+    "id": 2197,
+    "sourceCourse": "PHYS1141 and PHYS1143",
+    "equivalentTo": "PHYS141 and PHYS142 and PHYS143"
+  },
+  {
+    "id": 2198,
+    "sourceCourse": "AERO3351",
+    "equivalentTo": "AERO351"
+  },
+  {
+    "id": 2199,
+    "sourceCourse": "AERO4455 and AERO4456",
+    "equivalentTo": "AERO355 and AERO356"
+  },
+  {
+    "id": 2201,
+    "sourceCourse": "AERO4421",
+    "equivalentTo": "AERO421"
+  },
+  {
+    "id": 2202,
+    "sourceCourse": "AERO4446",
+    "equivalentTo": "AERO446"
+  },
+  {
+    "id": 2203,
+    "sourceCourse": "AERO4463 and AERO4464",
+    "equivalentTo": "AERO447 and AERO448 and AERO449"
+  },
+  {
+    "id": 3496,
+    "sourceCourse": "AERO121",
+    "equivalentTo": "AERO1121"
+  },
+  {
+    "id": 3497,
+    "sourceCourse": "AERO215",
+    "equivalentTo": "FREE ELECTIVES"
+  },
+  {
+    "id": 3498,
+    "sourceCourse": "FREE ELECTIVES",
+    "equivalentTo": "AERO215"
+  },
+  {
+    "id": 3499,
+    "sourceCourse": "AERO220",
+    "equivalentTo": "FREE ELECTIVES"
+  },
+  {
+    "id": 3500,
+    "sourceCourse": "FREE ELECTIVES",
+    "equivalentTo": "AERO220"
+  },
+  {
+    "id": 3501,
+    "sourceCourse": "AERO299 and AERO302",
+    "equivalentTo": "AERO3301 and AERO3302"
+  },
+  {
+    "id": 3502,
+    "sourceCourse": "AERO300",
+    "equivalentTo": "AERO3300"
+  },
+  {
+    "id": 3503,
+    "sourceCourse": "AERO303",
+    "equivalentTo": "AERO3303"
+  },
+  {
+    "id": 3504,
+    "sourceCourse": "AERO320 and AERO321",
+    "equivalentTo": "AERO3320"
+  },
+  {
+    "id": 3505,
+    "sourceCourse": "AERO331 and CE207",
+    "equivalentTo": "AERO3331"
+  },
+  {
+    "id": 3506,
+    "sourceCourse": "FREE ELECTIVES",
+    "equivalentTo": "AERO350"
+  },
+  {
+    "id": 3507,
+    "sourceCourse": "AERO350",
+    "equivalentTo": "FREE ELECTIVES"
+  },
+  {
+    "id": 3508,
+    "sourceCourse": "AERO431",
+    "equivalentTo": "AERO4431"
+  },
+  {
+    "id": 3509,
+    "sourceCourse": "AERO433",
+    "equivalentTo": "AERO4433"
+  },
+  {
+    "id": 3510,
+    "sourceCourse": "AERO460",
+    "equivalentTo": "AERO3460"
+  },
+  {
+    "id": 3511,
+    "sourceCourse": "FREE ELECTIVES",
+    "equivalentTo": "AERO465"
+  },
+  {
+    "id": 3512,
+    "sourceCourse": "AERO465",
+    "equivalentTo": "FREE ELECTIVES"
+  },
+  {
+    "id": 3513,
+    "sourceCourse": "ME211 and CE204",
+    "equivalentTo": "ENGR2211"
+  },
+  {
+    "id": 3514,
+    "sourceCourse": "FREE ELECTIVES",
+    "equivalentTo": "EE201/251"
+  },
+  {
+    "id": 3515,
+    "sourceCourse": "EE201/251",
+    "equivalentTo": "FREE ELECTIVES"
+  },
+  {
+    "id": 3516,
+    "sourceCourse": "AERO351",
+    "equivalentTo": "AERO3351"
+  },
+  {
+    "id": 3517,
+    "sourceCourse": "AERO355 and AERO356",
+    "equivalentTo": "AERO4455 and AERO4456"
+  },
+  {
+    "id": 2200,
+    "sourceCourse": "AERO 3304 and AERO4403 and AERO4402",
+    "equivalentTo": "AERO402"
+  },
+  {
+    "id": 3518,
+    "sourceCourse": "AERO402",
+    "equivalentTo": "AERO 3304 and AERO4403 and AERO4402"
+  },
+  {
+    "id": 3519,
+    "sourceCourse": "AERO421",
+    "equivalentTo": "AERO4421"
+  },
+  {
+    "id": 3520,
+    "sourceCourse": "AERO446",
+    "equivalentTo": "AERO4446"
+  },
+  {
+    "id": 3521,
+    "sourceCourse": "AERO447 and AERO448 and AERO449",
+    "equivalentTo": "AERO4463 and AERO4464"
+  },
+  {
+    "id": 3522,
+    "sourceCourse": "CHEM124",
+    "equivalentTo": "CHEM1120"
+  },
+  {
+    "id": 3523,
+    "sourceCourse": "IME144",
+    "equivalentTo": "IME1143 and IME1140"
+  },
+  {
+    "id": 3524,
+    "sourceCourse": "MATE210",
+    "equivalentTo": "MATE1220"
+  },
+  {
+    "id": 3525,
+    "sourceCourse": "ME212",
+    "equivalentTo": "ME2212"
+  },
+  {
+    "id": 3526,
+    "sourceCourse": "MATH141 and MATH142 and MATH143",
+    "equivalentTo": "MATH1261 and MATH1262"
+  },
+  {
+    "id": 3527,
+    "sourceCourse": "MATH241",
+    "equivalentTo": "MATH2263"
+  },
+  {
+    "id": 3528,
+    "sourceCourse": "MATH244",
+    "equivalentTo": "MATH2341"
+  },
+  {
+    "id": 3529,
+    "sourceCourse": "ANY UD B GE",
+    "equivalentTo": "STAT 312"
+  },
+  {
+    "id": 3530,
+    "sourceCourse": "STAT312",
+    "equivalentTo": "ANY UD B GE"
+  },
+  {
+    "id": 3531,
+    "sourceCourse": "PHYS141",
+    "equivalentTo": "PHYS1141"
+  },
+  {
+    "id": 3532,
+    "sourceCourse": "PHYS143",
+    "equivalentTo": "PHYS1143"
+  },
+  {
+    "id": 3533,
+    "sourceCourse": "PHYS141 and PHYS142 and PHYS143",
+    "equivalentTo": "PHYS1141 and PHYS1143"
+  },
+  {
+    "id": 3559,
+    "sourceCourse": "MATH141 and MATH142 and MATH1262",
+    "equivalentTo": "MATH141 and MATH142 and MATH143"
+  },
+  {
+    "id": 3560,
+    "sourceCourse": "MATH141 and MATH142 and MATH143",
+    "equivalentTo": "MATH141 and MATH142 and MATH1262"
+  },
+  {
+    "id": 3561,
+    "sourceCourse": "MATH141 and MATH141B and MATH1262",
+    "equivalentTo": "MATH141 and MATH142 and MATH143"
+  },
+  {
+    "id": 3562,
+    "sourceCourse": "MATH141 and MATH142 and MATH143",
+    "equivalentTo": "MATH141 and MATH141B and MATH1262"
+  },
+  {
+    "id": 3563,
+    "sourceCourse": "PHYS141 and PHYS142 and PHYS143C",
+    "equivalentTo": "PHYS141 and PHYS142 and PHYS143"
+  },
+  {
+    "id": 3564,
+    "sourceCourse": "PHYS141 and PHYS142 and PHYS143",
+    "equivalentTo": "PHYS141 and PHYS142 and PHYS143C"
+  },
+  {
+    "id": 3565,
+    "sourceCourse": "PHYS141 and PHYS142C and PHYS143C",
+    "equivalentTo": "PHYS141 and PHYS142 and PHYS143"
+  },
+  {
+    "id": 3566,
+    "sourceCourse": "PHYS141 and PHYS142 and PHYS143",
+    "equivalentTo": "PHYS141 and PHYS142C and PHYS143C"
+  },
+  {
+    "id": 3567,
+    "sourceCourse": "PHYS141 and PHYS143 and PHYS142C",
+    "equivalentTo": "PHYS141 and PHYS142 and PHYS143"
+  },
+  {
+    "id": 3568,
+    "sourceCourse": "PHYS141 and PHYS142 and PHYS143",
+    "equivalentTo": "PHYS141 and PHYS143 and PHYS142C"
+  }
+]

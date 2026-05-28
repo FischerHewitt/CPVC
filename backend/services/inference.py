@@ -8,12 +8,27 @@ from data.flowcharts import Course
 
 
 def build_lookup(courses: list[Course]) -> dict[str, Course]:
-    """Map every known number (semester + quarter equivalents) → course."""
+    """Map every known number (semester + quarter equivalents) → course.
+
+    When the same course_number appears in multiple flowcharts, merge their
+    quarter_equivalents so concentration-specific copies don't silently lose
+    the quarter mappings established in the base major flowchart.
+    """
     lookup: dict[str, Course] = {}
     for c in courses:
-        lookup[c["course_number"]] = c
-        for q in c["quarter_equivalents"]:
-            lookup[q] = c
+        cn = c["course_number"]
+        if cn in lookup:
+            existing = lookup[cn]
+            merged_qe = list(dict.fromkeys(existing["quarter_equivalents"] + c["quarter_equivalents"]))
+            if merged_qe != existing["quarter_equivalents"]:
+                merged = {**existing, "quarter_equivalents": merged_qe}
+                lookup[cn] = merged
+                for q in merged_qe:
+                    lookup[q] = merged
+        else:
+            lookup[cn] = c
+            for q in c["quarter_equivalents"]:
+                lookup[q] = c
     return lookup
 
 

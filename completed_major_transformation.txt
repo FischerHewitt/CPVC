@@ -1,0 +1,85 @@
+Pattern A → Pattern B Conversion Tracker
+(full_flowchart_key = independent flowchart per concentration)
+
+Legend:
+  [B] = converted to Pattern B (full_flowchart_key, independent flowchart)
+  [base] = stays as base flowchart (empty slot_overrides — no conversion needed)
+  [ ] = not yet converted (pending)
+
+--------------------------------------------------------------------------------
+BATCH 1 — Complete (2026-05-21)
+--------------------------------------------------------------------------------
+
+EE — Electrical Engineering (128u)
+  [base]  none          General Curriculum
+  [B]     ecc           Electronics, Controls, and Communications  → EE_ECC
+  [B]     power         Power                                       → EE_POWER
+
+CHEM — Chemistry (120u)
+  [base]  none          No Concentration Declared
+  [B]     polymers_coatings  Polymers and Coatings                  → CHEM_POLYMERS_COATINGS (112u)
+
+BIOC — Biochemistry (120u)
+  [base]  none          General Biochemistry
+  [B]     polymers_coatings  Polymers and Coatings                  → BIOC_POLYMERS_COATINGS (121u)
+
+MATH — Mathematics (120u)
+  [base]  none          General Mathematics
+  [base]  applied       Applied Mathematics     (empty slot_overrides — no conversion needed)
+  [B]     teaching      Teaching Mathematics                        → MATH_TEACHING
+
+PSY — Psychology (120u)
+  [base]  none          (only concentration; no overrides needed)
+
+--------------------------------------------------------------------------------
+BATCH 2 — Pending (AERO, CE, CPE, ME, EIM)
+--------------------------------------------------------------------------------
+
+AERO — Aeronautical Engineering
+  [ ]     aeronautics   Aeronautics
+  [ ]     astronautics  Astronautics
+  [ ]     structural    Structural
+
+CE — Civil Engineering
+  [ ]     environmental Environmental
+  [ ]     geotechnical  Geotechnical
+  [ ]     structural    Structural
+  [ ]     transportation Transportation
+  [ ]     water_resources Water Resources
+  [ ]     construction  Construction Engineering
+
+CPE — Computer Engineering
+  [ ]     (7 concentrations — see concentrations.py)
+
+ME — Mechanical Engineering
+  [ ]     hvac          HVAC
+  [ ]     mechatronics  Mechatronics
+  [ ]     manufacturing Manufacturing
+  [ ]     (+ 2 more)
+
+EIM — Engineering Management
+  [ ]     (4 concentrations)
+
+--------------------------------------------------------------------------------
+BATCH 3 — Pending (BIO, BMED, FSN, KINE)
+--------------------------------------------------------------------------------
+
+BIO, BMED, FSN, KINE — (18 concentrations total)
+
+--------------------------------------------------------------------------------
+BATCH 4 — Pending (COMS, JOUR, ANTGEOG, POLS, SOC)
+--------------------------------------------------------------------------------
+
+COMS, JOUR, ANTGEOG, POLS, SOC — (27 concentrations total)
+
+--------------------------------------------------------------------------------
+BATCH 5 — Pending (BUS, ECON, GRC)
+--------------------------------------------------------------------------------
+
+BUS, ECON, GRC — (25 concentrations total)
+
+--------------------------------------------------------------------------------
+BATCH 6 — Pending (AD, WVIT, AGS)
+--------------------------------------------------------------------------------
+
+AD, WVIT, AGS — (14 concentrations total)

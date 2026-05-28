@@ -61,6 +61,41 @@ def test_get_flowchart_is_case_insensitive_and_has_expected_shape():
     assert {"year": "Freshman", "term": "Fall"} in body["columns"]
 
 
+def test_full_flowchart_concentration_inherits_base_major_notes():
+    response = client.get("/api/flowchart/CS_DATA_ENG")
+
+    assert response.status_code == 200
+    notes_by_title = {
+        section["title"]: section["items"]
+        for section in response.json()["notes"]
+    }
+    assert notes_by_title["Flowchart Tips"] == [
+        "No Major or Support courses may be selected as credit/no credit. In addition, no more than 12 units of cooperative or internship courses can count towards your degree requirements.",
+    ]
+    assert notes_by_title["GE Tips"] == [
+        "Required in Major or Support; also satisfies General Education (GE) requirement.",
+    ]
+
+
+def test_all_full_flowchart_concentrations_inherit_base_notes_when_available():
+    from data.concentrations import CONCENTRATIONS
+    from data.flowcharts import FLOWCHARTS
+
+    for base_major, concentrations in CONCENTRATIONS.items():
+        base_notes = FLOWCHARTS.get(base_major, {}).get("notes")
+        if not base_notes:
+            continue
+
+        for concentration in concentrations:
+            full_key = concentration.get("full_flowchart_key")
+            if not full_key:
+                continue
+
+            response = client.get(f"/api/flowchart/{full_key}")
+            assert response.status_code == 200
+            assert response.json().get("notes") == base_notes
+
+
 def test_new_engineering_flowcharts_are_available():
     se_response = client.get("/api/flowchart/SE")
     cpe_response = client.get("/api/flowchart/CPE")
@@ -215,18 +250,6 @@ def test_get_art_and_design_concentrations_for_major():
     assert any(c["id"] == "studio_art" for c in concentrations)
 
 
-def test_get_civil_engineering_concentrations_for_major():
-    response = client.get("/api/flowchart/CE/concentrations")
-
-    assert response.status_code == 200
-    concentrations = response.json()["concentrations"]
-    assert concentrations[0]["id"] == "none"
-    assert any(c["id"] == "construction" for c in concentrations)
-    assert any(c["id"] == "geotechnical" for c in concentrations)
-    assert any(c["id"] == "structural" for c in concentrations)
-    assert any(c["id"] == "transportation" for c in concentrations)
-    assert any(c["id"] == "water_resources" for c in concentrations)
-
 
 def test_get_mechanical_engineering_concentrations_for_major():
     response = client.get("/api/flowchart/ME/concentrations")
@@ -308,6 +331,8 @@ def test_get_concentrations_returns_empty_list_for_major_without_overrides():
     agc_response = client.get("/api/flowchart/AGC/concentrations")
     animal_science_response = client.get("/api/flowchart/ASCI/concentrations")
     architecture_response = client.get("/api/flowchart/ARCH/concentrations")
+    ce_response = client.get("/api/flowchart/CE/concentrations")
+    math_response = client.get("/api/flowchart/MATH/concentrations")
 
     assert response.status_code == 200
     assert response.json() == {"concentrations": []}
@@ -321,6 +346,10 @@ def test_get_concentrations_returns_empty_list_for_major_without_overrides():
     assert animal_science_response.json() == {"concentrations": []}
     assert architecture_response.status_code == 200
     assert architecture_response.json() == {"concentrations": []}
+    assert ce_response.status_code == 200
+    assert ce_response.json() == {"concentrations": []}
+    assert math_response.status_code == 200
+    assert math_response.json() == {"concentrations": []}
 
 
 def test_get_flowchart_returns_404_for_unknown_major():
@@ -340,7 +369,7 @@ def test_infer_flowchart_prerequisites_from_completed_course():
     assert "CSC 1001" in inferred
     assert "CSC 101" in inferred
     assert "MATH 2031" in inferred
-    assert "MATH 1262" in inferred
+    assert "MATH 1262/1265" in inferred  # CS uses slash-choice, not bare MATH 1262
     assert "MATH 142" in inferred
     assert "CSC 3449" not in inferred
 
@@ -369,10 +398,11 @@ def test_all_courses_lookup_covers_quarter_equivalents():
 
 
 def test_build_courses_cache_is_populated_on_first_call_and_returns_same_object():
-    from routers.electives import _build_courses, _build_courses_cache, _DYNAMIC
+    import services.elective_catalog as ec
+    from routers.electives import _build_courses, _build_courses_cache
 
-    key = next(iter(_DYNAMIC))
-    cfg = _DYNAMIC[key]
+    key = next(iter(ec.get_dynamic_configs()))
+    cfg = ec.get_dynamic_config(key)
     cache_key = (tuple(cfg["depts"]), cfg["min_level"], cfg["max_level"])
 
     # Ensure cache is warm from previous test module import; result should be cached

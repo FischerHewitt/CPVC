@@ -1,0 +1,62 @@
+{
+  "id": 1102,
+  "startingYear": 2026,
+  "terms": [
+    {
+      "id": 7102,
+      "termIndex": 0,
+      "termName": "Fall 2026",
+      "termType": null,
+      "flowchartCourses": []
+    },
+    {
+      "id": 7103,
+      "termIndex": 0,
+      "termName": "Spring 2027",
+      "termType": null,
+      "flowchartCourses": []
+    },
+    {
+      "id": 7104,
+      "termIndex": 0,
+      "termName": "Fall 2027",
+      "termType": null,
+      "flowchartCourses": []
+    },
+    {
+      "id": 7105,
+      "termIndex": 0,
+      "termName": "Spring 2028",
+      "termType": null,
+      "flowchartCourses": []
+    },
+    {
+      "id": 7106,
+      "termIndex": 0,
+      "termName": "Fall 2028",
+      "termType": null,
+      "flowchartCourses": []
+    },
+    {
+      "id": 7107,
+      "termIndex": 0,
+      "termName": "Spring 2029",
+      "termType": null,
+      "flowchartCourses": []
+    },
+    {
+      "id": 7108,
+      "termIndex": 0,
+      "termName": "Fall 2029",
+      "termType": null,
+      "flowchartCourses": []
+    },
+    {
+      "id": 7109,
+      "termIndex": 0,
+      "termName": "Spring 2030",
+      "termType": null,
+      "flowchartCourses": []
+    }
+  ]
+}

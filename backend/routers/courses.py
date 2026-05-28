@@ -1,7 +1,16 @@
-from fastapi import APIRouter, HTTPException
-from services.catalog import get_course_info
+from fastapi import APIRouter, HTTPException, Query
+from services.catalog import get_course_info, search_catalog_courses
 
 router = APIRouter()
+
+
+@router.get("/search")
+def course_search(
+    q: str = Query("", max_length=80),
+    limit: int = Query(20, ge=1, le=50),
+    offset: int = Query(0, ge=0),
+):
+    return {"courses": search_catalog_courses(q, limit, offset)}
 
 
 @router.get("/{course_number:path}")

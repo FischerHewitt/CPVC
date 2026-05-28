@@ -1,0 +1,3422 @@
+{
+  "AERO 1121": {
+    "title": "Aerospace Fundamentals",
+    "units": 2
+  },
+  "AERO 2220": {
+    "title": "Aerospace Engineering Dynamics",
+    "units": 3
+  },
+  "AERO 3300": {
+    "title": "Engineering Numerical Analysis",
+    "units": 4
+  },
+  "AERO 3301": {
+    "title": "Thermo Fluid Dynamics",
+    "units": 4
+  },
+  "AERO 3302": {
+    "title": "Thermo Fluids Laboratory",
+    "units": 1
+  },
+  "AERO 3303": {
+    "title": "Heat and Mass Transfer",
+    "units": 2
+  },
+  "AERO 3304": {
+    "title": "Aerospace Propulsion Systems",
+    "units": 3
+  },
+  "AERO 3305": {
+    "title": "Introduction to Aerodynamics",
+    "units": 3
+  },
+  "AERO 3320": {
+    "title": "System Dynamics",
+    "units": 3
+  },
+  "AERO 3331": {
+    "title": "Aerospace Structural Analysis I",
+    "units": 4
+  },
+  "AERO 3351": {
+    "title": "Introduction to Orbital Mechanics",
+    "units": 3
+  },
+  "AERO 3460": {
+    "title": "Aerospace Engineering Professional Preparation",
+    "units": 1
+  },
+  "AERO 4402": {
+    "title": "Spaceflight Propulsion",
+    "units": 2
+  },
+  "AERO 4403": {
+    "title": "Propulsion Laboratory",
+    "units": 1
+  },
+  "AERO 4405": {
+    "title": "Advanced Aerodynamics",
+    "units": 3
+  },
+  "AERO 4420": {
+    "title": "Aircraft Dynamics and Control",
+    "units": 3
+  },
+  "AERO 4421": {
+    "title": "Spacecraft Attitude Dynamics and Control",
+    "units": 3
+  },
+  "AERO 4431": {
+    "title": "Aerospace Structural Analysis II",
+    "units": 3
+  },
+  "AERO 4433": {
+    "title": "Experimental Stress Analysis",
+    "units": 1
+  },
+  "AERO 4446": {
+    "title": "Spacecraft Electrical and Electric Systems",
+    "units": 3
+  },
+  "AERO 4461": {
+    "title": "Aircraft Design Senior Project I",
+    "units": 3
+  },
+  "AERO 4462": {
+    "title": "Aircraft Design Senior Project II",
+    "units": 3
+  },
+  "AERO 4463": {
+    "title": "Spacecraft Design Senior Project I",
+    "units": 3
+  },
+  "AERO 4464": {
+    "title": "Spacecraft Design Senior Project II",
+    "units": 3
+  },
+  "AGB 1101": {
+    "title": "Introduction to Agribusiness",
+    "units": 3
+  },
+  "AGB 2202": {
+    "title": "Introduction to Sales",
+    "units": 3
+  },
+  "AGB 2212": {
+    "title": "Agricultural Economics",
+    "units": 3
+  },
+  "AGB 2214": {
+    "title": "Agribusiness Financial Accounting",
+    "units": 3
+  },
+  "AGB 2260": {
+    "title": "Agribusiness Data Literacy",
+    "units": 3
+  },
+  "AGB 3301": {
+    "title": "Food Marketing",
+    "units": 3
+  },
+  "AGB 3308": {
+    "title": "Introduction to Agribusiness Finance",
+    "units": 3
+  },
+  "AGB 3312": {
+    "title": "Agricultural Policy",
+    "units": 3
+  },
+  "AGB 3322": {
+    "title": "Principles of Agribusiness Management",
+    "units": 3
+  },
+  "AGB 3327": {
+    "title": "Agribusiness Data Analysis",
+    "units": 3
+  },
+  "AGB 3328": {
+    "title": "Decision Tools for Agribusiness",
+    "units": 3
+  },
+  "AGB 3369": {
+    "title": "Agricultural Personnel Management",
+    "units": 3
+  },
+  "AGC 1102": {
+    "title": "Orientation to Agricultural Communication & Agricultural Science",
+    "units": 1
+  },
+  "AGC 2205": {
+    "title": "Agricultural Communications",
+    "units": 3
+  },
+  "AGC 2207": {
+    "title": "Software Applications for Agricultural Publications",
+    "units": 2
+  },
+  "AGC 2225": {
+    "title": "Digital Communication in Agriculture and Science",
+    "units": 3
+  },
+  "AGC 3301": {
+    "title": "New Media Communication Strategies in Agriculture",
+    "units": 3
+  },
+  "AGC 3339": {
+    "title": "Internship in Agricultural Communications",
+    "units": 3
+  },
+  "AGC 4404": {
+    "title": "Applications of Agricultural Leadership",
+    "units": 3
+  },
+  "AGC 4407": {
+    "title": "Agricultural Publications",
+    "units": 3
+  },
+  "AGC 4425": {
+    "title": "Multimedia Storytelling in Agriculture and Science",
+    "units": 3
+  },
+  "AGC 4426": {
+    "title": "Presentation Methods in Agricultural Communication",
+    "units": 3
+  },
+  "AGC 4452": {
+    "title": "Current Trends and Issues in Agricultural Communication",
+    "units": 3
+  },
+  "AGC 4463": {
+    "title": "Senior Project",
+    "units": 3
+  },
+  "AGC 4475": {
+    "title": "Crisis Communication in Food and Agriculture",
+    "units": 3
+  },
+  "AGED 4421": {
+    "title": "Agricultural Mechanics",
+    "units": 3
+  },
+  "ANT 2201": {
+    "title": "Cultural Anthropology",
+    "units": 3
+  },
+  "ANT 2202": {
+    "title": "World History Before Writing",
+    "units": 3
+  },
+  "ANT 2250": {
+    "title": "Biological Anthropology",
+    "units": 3
+  },
+  "ANT 3360": {
+    "title": "Human Cultural Adaptations",
+    "units": 3
+  },
+  "ARCE 1110": {
+    "title": "Introduction to Architectural Engineering",
+    "units": 2
+  },
+  "ARCE 1121": {
+    "title": "Structural Principles I",
+    "units": 3
+  },
+  "ARCE 2211": {
+    "title": "Structural Principles II",
+    "units": 3
+  },
+  "ARCE 2212": {
+    "title": "Structural Principles II Laboratory",
+    "units": 1
+  },
+  "ARCE 2222": {
+    "title": "Structural Systems Laboratory",
+    "units": 2
+  },
+  "ARCE 2223": {
+    "title": "Structural Drawings",
+    "units": 2
+  },
+  "ARCE 3301": {
+    "title": "Introduction to Structural Systems",
+    "units": 4
+  },
+  "ARCE 3311": {
+    "title": "Structural Analysis",
+    "units": 3
+  },
+  "ARCE 3312": {
+    "title": "Structural Analysis Laboratory",
+    "units": 1
+  },
+  "ARCE 3331": {
+    "title": "Timber Design",
+    "units": 2
+  },
+  "ARCE 3332": {
+    "title": "Timber Design and Constructability Laboratory",
+    "units": 2
+  },
+  "ARCE 3341": {
+    "title": "Steel Design",
+    "units": 2
+  },
+  "ARCE 3353": {
+    "title": "Soil Mechanics and Foundation Design",
+    "units": 4
+  },
+  "ARCE 4411": {
+    "title": "Structural Dynamics",
+    "units": 3
+  },
+  "ARCE 4412": {
+    "title": "Structural Dynamics Computing Laboratory",
+    "units": 1
+  },
+  "ARCE 4413": {
+    "title": "Seismic Analysis and Design",
+    "units": 3
+  },
+  "ARCE 4421": {
+    "title": "Architectural Engineering Building Systems",
+    "units": 2
+  },
+  "ARCE 4442": {
+    "title": "Steel Structures Design Laboratory",
+    "units": 2
+  },
+  "ARCE 4461": {
+    "title": "Reinforced Concrete and Masonry Design",
+    "units": 4
+  },
+  "ARCE 4462": {
+    "title": "Senior Project - Reinforced Concrete and Masonry Laboratory",
+    "units": 2
+  },
+  "ARCH 1101": {
+    "title": "Architectural Design I",
+    "units": 4
+  },
+  "ARCH 1102": {
+    "title": "Architectural Design II",
+    "units": 4
+  },
+  "ARCH 1121": {
+    "title": "Equity, Social Justice, and Architecture",
+    "units": 3
+  },
+  "ARCH 1131": {
+    "title": "Architectural Representation I",
+    "units": 2
+  },
+  "ARCH 1132": {
+    "title": "Architectural Representation II",
+    "units": 2
+  },
+  "ARCH 2201": {
+    "title": "Architectural Design III",
+    "units": 5
+  },
+  "ARCH 2202": {
+    "title": "Architectural Design IV",
+    "units": 5
+  },
+  "ARCH 2221": {
+    "title": "History of World Architecture I: Prehistory to 17th Century",
+    "units": 3
+  },
+  "ARCH 2222": {
+    "title": "History of World Architecture II: 17th Century to the Present",
+    "units": 3
+  },
+  "ARCH 2231": {
+    "title": "Architectural Representation III",
+    "units": 1
+  },
+  "ARCH 2232": {
+    "title": "Architectural Representation IV",
+    "units": 1
+  },
+  "ARCH 2241": {
+    "title": "Architectural Technology Fundamentals I",
+    "units": 4
+  },
+  "ARCH 2242": {
+    "title": "Architectural Technology Fundamentals II",
+    "units": 4
+  },
+  "ARCH 3301": {
+    "title": "Integrated Architectural Design",
+    "units": 5
+  },
+  "ARCH 3331": {
+    "title": "Building Information Modeling",
+    "units": 2
+  },
+  "ARCH 3341": {
+    "title": "Architectural Systems Integration I",
+    "units": 4
+  },
+  "ARCH 3342": {
+    "title": "Architectural Systems Integration II",
+    "units": 5
+  },
+  "ARCH 4401": {
+    "title": "Advanced Architectural Design",
+    "units": 5
+  },
+  "ARCH 4401 (2)": {
+    "title": "Advanced Architectural Design",
+    "units": 5
+  },
+  "ARCH 4401 (3)": {
+    "title": "Advanced Architectural Design",
+    "units": 5
+  },
+  "ARCH 4425": {
+    "title": "Seminar in Architectural History, Theory and Criticism",
+    "units": 3
+  },
+  "ARCH 4441": {
+    "title": "Issues in Contemporary Professional Practice",
+    "units": 4
+  },
+  "ARCH 4460": {
+    "title": "Senior Architectural Thesis Theory and Research Seminar",
+    "units": 3
+  },
+  "ARCH 4461": {
+    "title": "Senior Project: Architectural Thesis I",
+    "units": 5
+  },
+  "ARCH 4462": {
+    "title": "Senior Project: Architectural Thesis II",
+    "units": 5
+  },
+  "ART 1101": {
+    "title": "Fundamentals of Drawing",
+    "units": 3
+  },
+  "ART 1102": {
+    "title": "2D Design",
+    "units": 3
+  },
+  "ART 1103": {
+    "title": "3D Design",
+    "units": 3
+  },
+  "ART 1104": {
+    "title": "4D Design",
+    "units": 3
+  },
+  "ART 1141": {
+    "title": "Design Thinking and Methods",
+    "units": 3
+  },
+  "ART 2201": {
+    "title": "Visual Culture and Society: Analysis and Practice",
+    "units": 3
+  },
+  "ART 2212": {
+    "title": "Renaissance to Modern Art",
+    "units": 3
+  },
+  "ART 2215": {
+    "title": "Global Contemporary Art",
+    "units": 3
+  },
+  "ART 2260": {
+    "title": "Camera and Light",
+    "units": 3
+  },
+  "ASCI 1100": {
+    "title": "Introduction to the Animal Sciences",
+    "units": 1
+  },
+  "ASCI 1101": {
+    "title": "Principles of Animal Physiology",
+    "units": 3
+  },
+  "ASCI 1102": {
+    "title": "Animal Management Systems",
+    "units": 3
+  },
+  "ASCI 1103": {
+    "title": "Animal Science Laboratory",
+    "units": 1
+  },
+  "ASCI 2220": {
+    "title": "Animal Nutrition and Feeding",
+    "units": 3
+  },
+  "ASCI 2229": {
+    "title": "Anatomy and Physiology of Farm Animals",
+    "units": 3
+  },
+  "ASCI 3302": {
+    "title": "Animal Genetics",
+    "units": 3
+  },
+  "ASCI 3304": {
+    "title": "Animal Genomics",
+    "units": 2
+  },
+  "ASCI 3340": {
+    "title": "Animal Welfare and Ethics",
+    "units": 3
+  },
+  "ASCI 3351": {
+    "title": "Mechanisms of Hormone Action and Reproductive Physiology",
+    "units": 3
+  },
+  "ASCI 3355": {
+    "title": "Ruminant Nutrition",
+    "units": 3
+  },
+  "ASCI 3363": {
+    "title": "Professional Development in the Animal Sciences",
+    "units": 1
+  },
+  "BIO 1111": {
+    "title": "General Biology",
+    "units": 3
+  },
+  "BIO 1150": {
+    "title": "Life: History and Diversity",
+    "units": 4
+  },
+  "BIO 1151": {
+    "title": "Life: Molecules and Cells",
+    "units": 4
+  },
+  "BIO 2213": {
+    "title": "Life Science for Engineers",
+    "units": 3
+  },
+  "BIO 2231": {
+    "title": "Human Anatomy and Physiology I",
+    "units": 4
+  },
+  "BIO 2232": {
+    "title": "Human Anatomy and Physiology II",
+    "units": 4
+  },
+  "BIO 2253": {
+    "title": "Principles of Ecology and Evolution",
+    "units": 4
+  },
+  "BIO 3210": {
+    "title": "Biology of Plants and Animals for Future Teachers",
+    "units": 4
+  },
+  "BIO 3351": {
+    "title": "Principles of Genetics",
+    "units": 3
+  },
+  "BIO 3352": {
+    "title": "Principles of Animal Physiology",
+    "units": 4
+  },
+  "BMED 1101": {
+    "title": "Introduction to Biomedical Engineering",
+    "units": 1
+  },
+  "BMED 2212": {
+    "title": "Introduction to Mechanical Design in Biomedical Engineering",
+    "units": 3
+  },
+  "BMED 2310": {
+    "title": "Introduction to Electrical Design in Biomedical Engineering",
+    "units": 2
+  },
+  "BMED 2311": {
+    "title": "Introduction to Electrical Design in Biomedical Engineering Lab",
+    "units": 1
+  },
+  "BMED 2420": {
+    "title": "Principles and Applications of Biomaterials",
+    "units": 4
+  },
+  "BMED 3102": {
+    "title": "Biomedical Engineering Professional Development",
+    "units": 1
+  },
+  "BMED 3410": {
+    "title": "Biomechanics",
+    "units": 3
+  },
+  "BMED 3425": {
+    "title": "Biomedical Engineering Transport",
+    "units": 4
+  },
+  "BMED 3430": {
+    "title": "Biomedical Modeling and Simulation",
+    "units": 2
+  },
+  "BMED 4440": {
+    "title": "Bioelectronics and Instrumentation",
+    "units": 3
+  },
+  "BMED 4460": {
+    "title": "Medical Physiology for Engineers",
+    "units": 3
+  },
+  "BMED 4465": {
+    "title": "Senior Project: Design I",
+    "units": 2
+  },
+  "BMED 4466": {
+    "title": "Senior Project: Design II",
+    "units": 2
+  },
+  "BOT 1121": {
+    "title": "General Botany",
+    "units": 4
+  },
+  "BRAE 1128": {
+    "title": "Careers in BioResource and Agricultural Engineering",
+    "units": 2
+  },
+  "BRAE 1141": {
+    "title": "Agricultural Machinery Safety",
+    "units": 2
+  },
+  "BRAE 1150": {
+    "title": "Design Graphics and CAD for Agricultural Engineering",
+    "units": 2
+  },
+  "BRAE 1239": {
+    "title": "Engineering Surveying",
+    "units": 3
+  },
+  "BRAE 2142": {
+    "title": "Agricultural Power and Machinery Management",
+    "units": 3
+  },
+  "BRAE 2203": {
+    "title": "Systems Management I",
+    "units": 4
+  },
+  "BRAE 2216": {
+    "title": "Fundamentals of Electricity",
+    "units": 4
+  },
+  "BRAE 2220": {
+    "title": "Introduction to Biological Systems",
+    "units": 4
+  },
+  "BRAE 2221": {
+    "title": "Engineering Mechanics with Agricultural Applications I",
+    "units": 4
+  },
+  "BRAE 2222": {
+    "title": "Engineering Mechanics with Agricultural Applications II",
+    "units": 4
+  },
+  "BRAE 2236": {
+    "title": "Principles of Irrigation",
+    "units": 4
+  },
+  "BRAE 2237": {
+    "title": "Introduction to Engineering Surveying",
+    "units": 2
+  },
+  "BRAE 3234": {
+    "title": "Equipment Engineering I",
+    "units": 4
+  },
+  "BRAE 3301": {
+    "title": "Hydraulic and Mechanical Power Systems",
+    "units": 3
+  },
+  "BRAE 3312": {
+    "title": "Hydraulics",
+    "units": 3
+  },
+  "BRAE 3317": {
+    "title": "Systems Management II",
+    "units": 4
+  },
+  "BRAE 3320": {
+    "title": "Bioresource Engineering",
+    "units": 3
+  },
+  "BRAE 3332": {
+    "title": "Environmental Controls for Agricultural Structures",
+    "units": 3
+  },
+  "BRAE 3340": {
+    "title": "Irrigation Water Management",
+    "units": 3
+  },
+  "BRAE 3343": {
+    "title": "Mechanical Systems Analysis",
+    "units": 4
+  },
+  "BRAE 3348": {
+    "title": "Energy for a Sustainable Society",
+    "units": 3
+  },
+  "BRAE 4403": {
+    "title": "Agricultural Engineering Ethics, Economics, and Optimization",
+    "units": 3
+  },
+  "BRAE 4414": {
+    "title": "Irrigation Engineering",
+    "units": 3
+  },
+  "BRAE 4419": {
+    "title": "Systems Management III",
+    "units": 3
+  },
+  "BRAE 4422": {
+    "title": "Equipment Engineering II",
+    "units": 3
+  },
+  "BRAE 4425": {
+    "title": "Agricultural Mechatronics",
+    "units": 5
+  },
+  "BRAE 4428": {
+    "title": "Agricultural Robotics and Automation",
+    "units": 4
+  },
+  "BRAE 4432": {
+    "title": "Agricultural Buildings",
+    "units": 4
+  },
+  "BRAE 4433": {
+    "title": "Agricultural Structures Design",
+    "units": 4
+  },
+  "BRAE 4440": {
+    "title": "Agricultural Irrigation Systems",
+    "units": 4
+  },
+  "BRAE 4460": {
+    "title": "Senior Project I",
+    "units": 1
+  },
+  "BRAE 4461": {
+    "title": "Senior Project II",
+    "units": 2
+  },
+  "BUS 1100": {
+    "title": "Career Readiness I",
+    "units": 1
+  },
+  "BUS 2206": {
+    "title": "Career Readiness II",
+    "units": 1
+  },
+  "BUS 2207": {
+    "title": "Legal Responsibilities of Business",
+    "units": 3
+  },
+  "BUS 2214": {
+    "title": "Financial Accounting",
+    "units": 3
+  },
+  "BUS 2215": {
+    "title": "Managerial Accounting",
+    "units": 3
+  },
+  "BUS 3306": {
+    "title": "Career Readiness III",
+    "units": 1
+  },
+  "BUS 3346": {
+    "title": "Principles of Marketing",
+    "units": 3
+  },
+  "BUS 3387": {
+    "title": "Organizational Behavior",
+    "units": 3
+  },
+  "BUS 3391": {
+    "title": "Information Systems",
+    "units": 3
+  },
+  "BUS 4401 & 4411": {
+    "title": "Strategic Management and Assessment",
+    "units": 3
+  },
+  "BUS 4404": {
+    "title": "Law, Governmental, and Social Influences on Business",
+    "units": 3
+  },
+  "CD 1102": {
+    "title": "Orientation to the Child Development Major",
+    "units": 2
+  },
+  "CD 2229": {
+    "title": "Research Methods in Psychology",
+    "units": 3
+  },
+  "CD 2230": {
+    "title": "Preschool Laboratory",
+    "units": 3
+  },
+  "CD 2256": {
+    "title": "Developmental Psychology",
+    "units": 3
+  },
+  "CD 3329": {
+    "title": "Advanced Research Methods in Developmental Science",
+    "units": 4
+  },
+  "CD 4424": {
+    "title": "Children's Development in Diverse Cultures",
+    "units": 4
+  },
+  "CD 4461": {
+    "title": "Senior Project Seminar",
+    "units": 2
+  },
+  "CD 4462": {
+    "title": "Senior Project",
+    "units": 2
+  },
+  "CE 1111": {
+    "title": "Introduction to Civil Engineering",
+    "units": 1
+  },
+  "CE 1112": {
+    "title": "Spatial Visualization and Drawing",
+    "units": 3
+  },
+  "CE 2251": {
+    "title": "Computational Applications in Civil and Environmental Engineering",
+    "units": 2
+  },
+  "CE 2259": {
+    "title": "Civil Engineering Materials",
+    "units": 3
+  },
+  "CE 3321": {
+    "title": "Fundamentals of Transportation Engineering",
+    "units": 4
+  },
+  "CE 3336": {
+    "title": "Environmental Fluid Mechanics and Hydraulic Systems",
+    "units": 4
+  },
+  "CE 3337": {
+    "title": "Water Resources & Environmental Engineering",
+    "units": 4
+  },
+  "CE 3352": {
+    "title": "Structural Analysis",
+    "units": 4
+  },
+  "CE 3355": {
+    "title": "Reinforced Concrete Design",
+    "units": 3
+  },
+  "CE 3375": {
+    "title": "Fundamentals of Construction Engineering and Management",
+    "units": 4
+  },
+  "CE 3381": {
+    "title": "Geotechnical Engineering",
+    "units": 4
+  },
+  "CE 3465": {
+    "title": "Infrastructure Systems",
+    "units": 2
+  },
+  "CE 4356": {
+    "title": "Structural Steel Design",
+    "units": 4
+  },
+  "CE 4404": {
+    "title": "Applied Finite Element Analysis",
+    "units": 3
+  },
+  "CE 4407": {
+    "title": "Structural Dynamics",
+    "units": 4
+  },
+  "CE 4413": {
+    "title": "Advanced Civil Computer-Aided Site Design",
+    "units": 2
+  },
+  "CE 4415": {
+    "title": "Advanced Building Information Modeling for Civil Engineering",
+    "units": 4
+  },
+  "CE 4421": {
+    "title": "Traffic Engineering",
+    "units": 3
+  },
+  "CE 4422": {
+    "title": "Highway Geometrics and Design",
+    "units": 3
+  },
+  "CE 4423": {
+    "title": "Intelligent Transportation Systems",
+    "units": 3
+  },
+  "CE 4424": {
+    "title": "Public Transportation",
+    "units": 3
+  },
+  "CE 4425": {
+    "title": "Introduction to Railway Engineering",
+    "units": 3
+  },
+  "CE 4431": {
+    "title": "Introduction to Coastal Engineering",
+    "units": 4
+  },
+  "CE 4433": {
+    "title": "Open Channel Hydraulics",
+    "units": 4
+  },
+  "CE 4434": {
+    "title": "Groundwater Hydraulics and Hydrology",
+    "units": 3
+  },
+  "CE 4435": {
+    "title": "Engineering Hydrology and Stormwater Management",
+    "units": 4
+  },
+  "CE 4436": {
+    "title": "Heavy Civil Temporary Structures and Shoring",
+    "units": 3
+  },
+  "CE 4437": {
+    "title": "Heavy Civil Projects and Equipment",
+    "units": 3
+  },
+  "CE 4440": {
+    "title": "Hydraulic Systems Engineering",
+    "units": 4
+  },
+  "CE 4446": {
+    "title": "Seismic Principles for Civil Engineering",
+    "units": 1
+  },
+  "CE 4455": {
+    "title": "Design of Timber Structures",
+    "units": 4
+  },
+  "CE 4459": {
+    "title": "FRP Strengthening of Reinforced Concrete Structures",
+    "units": 4
+  },
+  "CE 4466": {
+    "title": "Senior Design Project I",
+    "units": 1
+  },
+  "CE 4467": {
+    "title": "Senior Design Project II",
+    "units": 3
+  },
+  "CE 4474": {
+    "title": "Environmental Compliance and Permitting",
+    "units": 2
+  },
+  "CE 4481": {
+    "title": "Foundation Design and Construction",
+    "units": 4
+  },
+  "CE 4482": {
+    "title": "Earth Fills and Embankments",
+    "units": 3
+  },
+  "CE 4483": {
+    "title": "Geotechnical Testing and Modeling",
+    "units": 2
+  },
+  "CE 4484": {
+    "title": "Earth Retention, Excavations, and Tunnels",
+    "units": 3
+  },
+  "CE 4486": {
+    "title": "Introduction to Geological Engineering",
+    "units": 4
+  },
+  "CE 5488": {
+    "title": "Engineering Risk Analysis",
+    "units": 4
+  },
+  "CE 5523": {
+    "title": "Transportation Systems Planning",
+    "units": 4
+  },
+  "CE 5539": {
+    "title": "Environmental Hydraulics",
+    "units": 4
+  },
+  "CHEM 1103": {
+    "title": "Research Methods I",
+    "units": 1
+  },
+  "CHEM 1110": {
+    "title": "World of Chemistry",
+    "units": 4
+  },
+  "CHEM 1120": {
+    "title": "Fundamentals of Chemical Structure and Properties",
+    "units": 4
+  },
+  "CHEM 1122": {
+    "title": "Fundamentals of Chemical Reactivity",
+    "units": 4
+  },
+  "CHEM 2220": {
+    "title": "Inorganic Chemistry I: D-Block Chemistry",
+    "units": 3
+  },
+  "CHEM 2221": {
+    "title": "Inorganic Chemistry I Laboratory",
+    "units": 1
+  },
+  "CHEM 2240": {
+    "title": "Organic Chemistry: Fundamentals and Applications",
+    "units": 4
+  },
+  "CHEM 2242": {
+    "title": "Organic Chemistry I",
+    "units": 5
+  },
+  "CHEM 3302": {
+    "title": "Undergraduate Seminar II",
+    "units": 1
+  },
+  "CHEM 3330": {
+    "title": "Foundations of Chemical Analysis",
+    "units": 4
+  },
+  "CHEM 3350": {
+    "title": "Biochemistry: Fundamentals and Applications",
+    "units": 4
+  },
+  "CHEM 3352": {
+    "title": "Biochemistry",
+    "units": 4
+  },
+  "CHEM 3354": {
+    "title": "Metabolism",
+    "units": 3
+  },
+  "CHEM 3356": {
+    "title": "Genetic Information Processing",
+    "units": 4
+  },
+  "CHEM 3370": {
+    "title": "Marine Chemistry",
+    "units": 3
+  },
+  "CHEM 3380": {
+    "title": "Foundations of Macromolecular Chemistry",
+    "units": 4
+  },
+  "CHEM 3390": {
+    "title": "Physical Chemistry for Life Sciences",
+    "units": 3
+  },
+  "CHEM 3391": {
+    "title": "Physical Chemistry for Life Sciences Laboratory",
+    "units": 1
+  },
+  "CHEM 3392": {
+    "title": "Physical Chemistry I",
+    "units": 3
+  },
+  "CHEM 3393": {
+    "title": "Physical Chemistry Laboratory I",
+    "units": 1
+  },
+  "CHEM 4461": {
+    "title": "Senior Project I",
+    "units": 1
+  },
+  "CHEM 4462": {
+    "title": "Senior Project II",
+    "units": 1
+  },
+  "CHEM 4480": {
+    "title": "Polymer Synthesis and Characterization",
+    "units": 3
+  },
+  "CHEM 4481": {
+    "title": "Polymer Synthesis and Characterization Laboratory",
+    "units": 2
+  },
+  "CHEM 4482": {
+    "title": "Coatings and Formulations",
+    "units": 3
+  },
+  "CHEM 4483": {
+    "title": "Coatings and Formulations Laboratory",
+    "units": 2
+  },
+  "CHEM 4486": {
+    "title": "Surface Chemistry of Materials",
+    "units": 3
+  },
+  "CM 1113": {
+    "title": "Construction Materials and Assemblies",
+    "units": 2
+  },
+  "CM 1114": {
+    "title": "Mechanical, Electrical, and Plumbing Construction Materials and Assemblies",
+    "units": 2
+  },
+  "CM 1115": {
+    "title": "Fundamentals of Construction Management",
+    "units": 4
+  },
+  "CM 1280": {
+    "title": "Fundamentals of Virtual Design and Construction Management",
+    "units": 3
+  },
+  "CM 1413": {
+    "title": "Jobsite Construction Management",
+    "units": 3
+  },
+  "CM 2113": {
+    "title": "Soil Analysis and Construction of Foundations and Temporary Structures",
+    "units": 2
+  },
+  "CM 2114": {
+    "title": "Principles of Mechanical, Electrical, and Plumbing Building Systems",
+    "units": 2
+  },
+  "CM 2239": {
+    "title": "Construction Surveying",
+    "units": 3
+  },
+  "CM 3214": {
+    "title": "Residential Construction Management",
+    "units": 4
+  },
+  "CM 3313": {
+    "title": "Commercial Construction Management",
+    "units": 4
+  },
+  "CM 3314": {
+    "title": "Heavy Civil Construction Management",
+    "units": 4
+  },
+  "CM 3317": {
+    "title": "Sustainability and the Built Environment",
+    "units": 3
+  },
+  "CM 3318": {
+    "title": "Housing and Communities",
+    "units": 3
+  },
+  "CM 3334": {
+    "title": "Construction Law",
+    "units": 2
+  },
+  "CM 3335": {
+    "title": "Construction Economics, Finance, and Accounting",
+    "units": 3
+  },
+  "CM 4411": {
+    "title": "Specialty Contracting Construction Management",
+    "units": 4
+  },
+  "CM 4420": {
+    "title": "Professional Preparation",
+    "units": 4
+  },
+  "CM 4443": {
+    "title": "Management of the Construction Firm",
+    "units": 2
+  },
+  "CM 4450": {
+    "title": "Integrated Facility Development, Design, Construction, and Operations",
+    "units": 3
+  },
+  "CM 4461": {
+    "title": "Senior Project I",
+    "units": 3
+  },
+  "CM 4462": {
+    "title": "Senior Project II",
+    "units": 3
+  },
+  "COMS 1100": {
+    "title": "Introduction to the Communication Studies Major",
+    "units": 2
+  },
+  "COMS 2205": {
+    "title": "Rhetorical Studies",
+    "units": 3
+  },
+  "COMS 2206": {
+    "title": "Communication Theory",
+    "units": 3
+  },
+  "COMS 2217": {
+    "title": "Small Group Collaboration and Creativity",
+    "units": 3
+  },
+  "COMS 3316": {
+    "title": "Intercultural Communication",
+    "units": 3
+  },
+  "COMS 4404": {
+    "title": "Video Games and Society",
+    "units": 3
+  },
+  "COMS 4460": {
+    "title": "Undergraduate Seminar",
+    "units": 1
+  },
+  "COMS 4461": {
+    "title": "Senior Project",
+    "units": 2
+  },
+  "CPE 1000": {
+    "title": "Computing Majors Orientation",
+    "units": 1
+  },
+  "CPE 1024": {
+    "title": "Introduction to Computing",
+    "units": 2
+  },
+  "CPE 2050": {
+    "title": "System Software Mechanics",
+    "units": 3
+  },
+  "CPE 2300": {
+    "title": "Introduction to Computer Systems",
+    "units": 3
+  },
+  "CPE 2301": {
+    "title": "Introduction to HDL and Digital Design Laboratory",
+    "units": 1
+  },
+  "CPE 3160": {
+    "title": "Microcontrollers and Embedded Applications",
+    "units": 3
+  },
+  "CPE 3201": {
+    "title": "Introduction to Computer Security",
+    "units": 3
+  },
+  "CPE 3300": {
+    "title": "Computer Architecture",
+    "units": 4
+  },
+  "CPE 4180": {
+    "title": "Advanced Microcontrollers",
+    "units": 3
+  },
+  "CPE 4300": {
+    "title": "Advanced Computer Architecture",
+    "units": 4
+  },
+  "CPE 4390": {
+    "title": "Real-Time Operating Systems",
+    "units": 3
+  },
+  "CPE 4420": {
+    "title": "High-Performance Embedded Systems",
+    "units": 3
+  },
+  "CPE 4455": {
+    "title": "Design of Fault-Tolerant Systems",
+    "units": 4
+  },
+  "CPE 4460": {
+    "title": "Capstone Senior Project I",
+    "units": 3
+  },
+  "CPE 4461": {
+    "title": "Capstone Senior Project II",
+    "units": 3
+  },
+  "CPE 4464": {
+    "title": "Introduction to Computer Networks",
+    "units": 3
+  },
+  "CPE 4553": {
+    "title": "Introduction to Operating Systems",
+    "units": 3
+  },
+  "CPE 4650": {
+    "title": "Scalable Server Implementation",
+    "units": 3
+  },
+  "CPE 4669": {
+    "title": "Distributed Systems",
+    "units": 4
+  },
+  "CRP 1211": {
+    "title": "Urban Planning History",
+    "units": 4
+  },
+  "CRP 1212": {
+    "title": "Introduction to City Planning",
+    "units": 4
+  },
+  "CRP 1213": {
+    "title": "Methods of Population and Housing Analysis",
+    "units": 4
+  },
+  "CRP 1215": {
+    "title": "Planning Approaches to a Just City",
+    "units": 4
+  },
+  "CRP 2214": {
+    "title": "Methods in Land Use and Transportation",
+    "units": 4
+  },
+  "CRP 2216": {
+    "title": "Representing the Built Environment",
+    "units": 3
+  },
+  "CRP 2457": {
+    "title": "GIS Applications in Planning",
+    "units": 2
+  },
+  "CRP 3202": {
+    "title": "Urban Design Studio",
+    "units": 4
+  },
+  "CRP 3315": {
+    "title": "Public and Private Real Estate Development",
+    "units": 4
+  },
+  "CRP 3336": {
+    "title": "Introduction to Environmental Planning",
+    "units": 4
+  },
+  "CRP 3341": {
+    "title": "Urban Development Studio",
+    "units": 4
+  },
+  "CRP 4410": {
+    "title": "Urban Planning Studio",
+    "units": 4
+  },
+  "CRP 4420": {
+    "title": "Land Use Law",
+    "units": 4
+  },
+  "CSC 1000": {
+    "title": "Computing Majors Orientation",
+    "units": 1
+  },
+  "CSC 1001": {
+    "title": "Fundamentals of Computer Science",
+    "units": 4
+  },
+  "CSC 1001L": {
+    "title": "Fundamentals of Computer Science Laboratory",
+    "units": 1
+  },
+  "CSC 1024": {
+    "title": "Introduction to Computing",
+    "units": 2
+  },
+  "CSC 1031": {
+    "title": "Programming for Engineers",
+    "units": 2
+  },
+  "CSC 1032": {
+    "title": "Programming for Scientists and Engineers",
+    "units": 3
+  },
+  "CSC 2001": {
+    "title": "Data Structures",
+    "units": 4
+  },
+  "CSC 2001L": {
+    "title": "Data Structures Laboratory",
+    "units": 1
+  },
+  "CSC 2050": {
+    "title": "System Software Mechanics",
+    "units": 3
+  },
+  "CSC 3001": {
+    "title": "Modern Application Development",
+    "units": 4
+  },
+  "CSC 3100": {
+    "title": "Software Engineering",
+    "units": 4
+  },
+  "CSC 3201": {
+    "title": "Introduction to Computer Security",
+    "units": 3
+  },
+  "CSC 3250": {
+    "title": "Introduction to Privacy: Policy and Technology",
+    "units": 3
+  },
+  "CSC 3300": {
+    "title": "Programming Languages",
+    "units": 3
+  },
+  "CSC 3449": {
+    "title": "Algorithms and Complexity",
+    "units": 4
+  },
+  "CSC 3665": {
+    "title": "Introduction to Database Management Systems",
+    "units": 4
+  },
+  "CSC 3710": {
+    "title": "Game Design and Development",
+    "units": 4
+  },
+  "CSC 3780": {
+    "title": "Game Engineering and Critical Analysis",
+    "units": 4
+  },
+  "CSC 4160": {
+    "title": "Software Requirements Engineering",
+    "units": 4
+  },
+  "CSC 4161": {
+    "title": "Software Deployment and Operations",
+    "units": 4
+  },
+  "CSC 4260": {
+    "title": "Privacy & Security Capstone I",
+    "units": 3
+  },
+  "CSC 4261": {
+    "title": "Privacy & Security Capstone II",
+    "units": 3
+  },
+  "CSC 4665": {
+    "title": "Database Management Systems Organization",
+    "units": 4
+  },
+  "CSC 4710": {
+    "title": "Introduction to Computer Graphics",
+    "units": 3
+  },
+  "DATA 3301": {
+    "title": "Introduction to Data Science",
+    "units": 4
+  },
+  "DSCI 2202": {
+    "title": "Dairy Promotion and Marketing",
+    "units": 3
+  },
+  "DSCI 2229": {
+    "title": "General Dairy Manufacturing",
+    "units": 4
+  },
+  "DSCI 2230": {
+    "title": "General Dairy Husbandry",
+    "units": 3
+  },
+  "DSCI 3321": {
+    "title": "Lactation Physiology",
+    "units": 3
+  },
+  "DSCI 3330": {
+    "title": "Dairy Cattle Reproductive Management and AI",
+    "units": 3
+  },
+  "DSCI 3344": {
+    "title": "Dairy Microbiology",
+    "units": 3
+  },
+  "DSCI 4422": {
+    "title": "Breeding and Genetics of Dairy Cattle",
+    "units": 3
+  },
+  "DSCI 4432": {
+    "title": "Advanced Dairy Herd Management",
+    "units": 4
+  },
+  "ECON 2001": {
+    "title": "Survey of Economics",
+    "units": 3
+  },
+  "ECON 2040": {
+    "title": "Macroeconomics",
+    "units": 3
+  },
+  "ECON 3015": {
+    "title": "Programming for Economics and Analytics",
+    "units": 4
+  },
+  "ECON 3021": {
+    "title": "Econometrics",
+    "units": 4
+  },
+  "ECON 3030": {
+    "title": "Intermediate Microeconomics",
+    "units": 4
+  },
+  "ECON 3040": {
+    "title": "Intermediate Macroeconomics",
+    "units": 4
+  },
+  "ECON 3050": {
+    "title": "The Economics of Equity and Social Welfare",
+    "units": 4
+  },
+  "ECON 4460": {
+    "title": "Applied Senior Project",
+    "units": 4
+  },
+  "EDES 1123": {
+    "title": "Place, People, and the Built Environment",
+    "units": 3
+  },
+  "EDUC 2207": {
+    "title": "Children's Learning and Development",
+    "units": 3
+  },
+  "EDUC 4427": {
+    "title": "Culturally Responsive Methods for Emergent Bilinguals",
+    "units": 3
+  },
+  "EDUC 4440": {
+    "title": "Educating Individuals with Exceptional Needs",
+    "units": 3
+  },
+  "EE 1111": {
+    "title": "Introduction to Electrical Engineering and Lab",
+    "units": 2
+  },
+  "EE 2115": {
+    "title": "Circuits and Electronics for Non-Majors",
+    "units": 4
+  },
+  "EE 2115 & EE 2115L": {
+    "title": "Circuits & Electronics for Non-Majors with Laboratory",
+    "units": 4
+  },
+  "EE 2115/2115L": {
+    "title": "Circuits and Electronics Lab",
+    "units": 4
+  },
+  "EE 2201": {
+    "title": "Electric Circuits for Non-Majors and Lab",
+    "units": 3
+  },
+  "EE 2211": {
+    "title": "Electric Circuit Analysis I",
+    "units": 3
+  },
+  "EE 2212": {
+    "title": "Electric Circuit Analysis II",
+    "units": 3
+  },
+  "EE 2241": {
+    "title": "Electric Circuit Analysis Laboratory I",
+    "units": 1
+  },
+  "EE 2328": {
+    "title": "Signals and Systems",
+    "units": 4
+  },
+  "EE 3255": {
+    "title": "Electric Machines and Power Systems and Lab",
+    "units": 4
+  },
+  "EE 3302": {
+    "title": "Classical Control Systems and Lab",
+    "units": 4
+  },
+  "EE 3306": {
+    "title": "Electronics I and Electronics Laboratory I",
+    "units": 4
+  },
+  "EE 3308": {
+    "title": "Electronics II and Electronics Laboratory II",
+    "units": 4
+  },
+  "EE 3329": {
+    "title": "Cyber-Physical Systems",
+    "units": 4
+  },
+  "EE 3335": {
+    "title": "Electromagnetic Fields and Transmission and Lab",
+    "units": 4
+  },
+  "EE 4314": {
+    "title": "Communication Systems and Communication Systems Laboratory",
+    "units": 4
+  },
+  "EE 4431": {
+    "title": "Computer-Aided Design of VLSI Devices",
+    "units": 3
+  },
+  "EE 4459": {
+    "title": "Electrical Engineering Fundamentals of Engineering Exam",
+    "units": 1
+  },
+  "EE 4461": {
+    "title": "Senior Project I",
+    "units": 1
+  },
+  "EE 4462": {
+    "title": "Senior Project II",
+    "units": 1
+  },
+  "EIM 1101": {
+    "title": "Introduction to the Experience Industry",
+    "units": 3
+  },
+  "EIM 1114": {
+    "title": "Introduction to Hospitality and Travel",
+    "units": 3
+  },
+  "EIM 2210": {
+    "title": "Experience Design: Theories and Applications",
+    "units": 4
+  },
+  "EIM 2216": {
+    "title": "Resort and Lodging Operations",
+    "units": 3
+  },
+  "EIM 2255": {
+    "title": "Leadership and Diverse Groups",
+    "units": 3
+  },
+  "EIM 3313": {
+    "title": "Sustainability in the Experience Industry",
+    "units": 3
+  },
+  "EIM 3317": {
+    "title": "Hospitality, Convention and Meeting Management",
+    "units": 3
+  },
+  "EIM 3318": {
+    "title": "Destination and Hospitality Marketing and Management",
+    "units": 3
+  },
+  "EIM 3320": {
+    "title": "Strategic Event Planning",
+    "units": 3
+  },
+  "EIM 3360": {
+    "title": "Assessment and Evaluation",
+    "units": 3
+  },
+  "EIM 3370": {
+    "title": "Experiential Marketing Strategies",
+    "units": 3
+  },
+  "EIM 4405": {
+    "title": "Principles of Experience Industry Management",
+    "units": 3
+  },
+  "EIM 4416": {
+    "title": "Interpreting Experience Industry Data Analytics",
+    "units": 3
+  },
+  "EIM 4420": {
+    "title": "Strategic Event Implementation",
+    "units": 3
+  },
+  "EIM 4424": {
+    "title": "Financial Management in the Experience Industry",
+    "units": 3
+  },
+  "EIM 4463": {
+    "title": "Pre-Internship Seminar",
+    "units": 1
+  },
+  "EIM 4465": {
+    "title": "Internship",
+    "units": 12
+  },
+  "ENGL 1101": {
+    "title": "Introduction to English Studies",
+    "units": 4
+  },
+  "ENGL 1148": {
+    "title": "Critical Thinking for Technical Writers",
+    "units": 3
+  },
+  "ENGL 3310": {
+    "title": "Corporate Communication",
+    "units": 3
+  },
+  "ENGL 3339": {
+    "title": "Introduction to Shakespeare",
+    "units": 3
+  },
+  "ENGL 3391": {
+    "title": "Applied Linguistics",
+    "units": 3
+  },
+  "ENGL 4461": {
+    "title": "Senior Project",
+    "units": 4
+  },
+  "ENGR 1110": {
+    "title": "Introduction to Engineering",
+    "units": 1
+  },
+  "ENGR 2211": {
+    "title": "Introduction to Mechanics",
+    "units": 4
+  },
+  "ENGR 2212": {
+    "title": "Introduction to Engineering Dynamics",
+    "units": 2
+  },
+  "ENGR 3310": {
+    "title": "Ethical Engineering",
+    "units": 2
+  },
+  "ENGR 4460": {
+    "title": "Senior Project I",
+    "units": 2
+  },
+  "ENGR 4461": {
+    "title": "Senior Project II",
+    "units": 2
+  },
+  "ENVE 1111": {
+    "title": "Introduction to Environmental Engineering",
+    "units": 1
+  },
+  "ENVE 1112": {
+    "title": "Spatial Visualization and Drawing",
+    "units": 3
+  },
+  "ENVE 2251": {
+    "title": "Computational Applications in Civil and Environmental Engineering",
+    "units": 2
+  },
+  "ENVE 2325": {
+    "title": "Air Quality Engineering and Measurements",
+    "units": 4
+  },
+  "ENVE 2331": {
+    "title": "Fundamentals of Environmental Engineering",
+    "units": 2
+  },
+  "ENVE 3309": {
+    "title": "Noise Control and Occupational Safety and Health",
+    "units": 3
+  },
+  "ENVE 3336": {
+    "title": "Environmental Fluid Mechanics and Hydraulic Systems",
+    "units": 4
+  },
+  "ENVE 3337": {
+    "title": "Water Resources and Environmental Engineering",
+    "units": 4
+  },
+  "ENVE 3421": {
+    "title": "Transfer Phenomena and Process Thermodynamics",
+    "units": 4
+  },
+  "ENVE 3434": {
+    "title": "Chemistry of Environmental Systems",
+    "units": 4
+  },
+  "ENVE 3438": {
+    "title": "Water and Wastewater Treatment Design",
+    "units": 4
+  },
+  "ENVE 3450": {
+    "title": "Sustainable Systems Engineering",
+    "units": 3
+  },
+  "ENVE 3465": {
+    "title": "Infrastructure Systems",
+    "units": 2
+  },
+  "ENVE 4437": {
+    "title": "Fate, Transport and Control of Environmental Pollutants",
+    "units": 3
+  },
+  "ENVE 4439": {
+    "title": "Solid and Hazardous Waste Management",
+    "units": 3
+  },
+  "ENVE 4466": {
+    "title": "Senior Project Design I",
+    "units": 2
+  },
+  "ENVE 4467": {
+    "title": "Senior Project Design II",
+    "units": 2
+  },
+  "ERSC 1144": {
+    "title": "Introduction to Earth Science",
+    "units": 3
+  },
+  "ES 1112": {
+    "title": "Race, Culture, and Politics in the United States",
+    "units": 3
+  },
+  "ES 1114": {
+    "title": "Introduction to Ethnic Studies",
+    "units": 4
+  },
+  "ES 1134": {
+    "title": "Writing and Rhetoric",
+    "units": 3
+  },
+  "ES 1145": {
+    "title": "Writing, Reasoning, and Argumentation",
+    "units": 3
+  },
+  "ES 3380": {
+    "title": "Critical Race Theory",
+    "units": 4
+  },
+  "ES 3382": {
+    "title": "Racial Capitalism",
+    "units": 4
+  },
+  "ES 3390": {
+    "title": "Research Methodology in Comparative Ethnic Studies",
+    "units": 4
+  },
+  "ES 4461": {
+    "title": "Senior Project",
+    "units": 4
+  },
+  "ES/WGQS 3345": {
+    "title": "Queer Ethnic Studies",
+    "units": 4
+  },
+  "ES/WGQS 3350": {
+    "title": "Gender, Race, Culture, Science, and Technology",
+    "units": 4
+  },
+  "FDSC 1101": {
+    "title": "Orientation to the Food Science Major",
+    "units": 1
+  },
+  "FDSC 1110": {
+    "title": "Introduction to Food Science and Sustainability",
+    "units": 3
+  },
+  "FDSC 3310": {
+    "title": "Food Laws and Regulations",
+    "units": 3
+  },
+  "FDSC 3330": {
+    "title": "Food Processing and Engineering I",
+    "units": 4
+  },
+  "FDSC 3340": {
+    "title": "Food Quality Assurance and Prerequisite Programs",
+    "units": 4
+  },
+  "FDSC 3345": {
+    "title": "Food Safety and Sanitation",
+    "units": 4
+  },
+  "FDSC 3350": {
+    "title": "Food Chemistry",
+    "units": 4
+  },
+  "FDSC 3355": {
+    "title": "Food Analysis",
+    "units": 3
+  },
+  "FDSC 4420": {
+    "title": "Sensory Evaluation of Food",
+    "units": 3
+  },
+  "FDSC 4425": {
+    "title": "Food Product Development",
+    "units": 3
+  },
+  "FSN 1121": {
+    "title": "Fundamentals of Food",
+    "units": 3
+  },
+  "FSN 2202": {
+    "title": "Introduction to Human Nutrition",
+    "units": 3
+  },
+  "FSN 2250": {
+    "title": "Food and Nutrition: Culture and Customs",
+    "units": 3
+  },
+  "GEOG 1150": {
+    "title": "Human Geography",
+    "units": 3
+  },
+  "GEOG 2218": {
+    "title": "Applications in GIS",
+    "units": 3
+  },
+  "GEOG 3308": {
+    "title": "Global Geography",
+    "units": 3
+  },
+  "GEOG 3350": {
+    "title": "The Global Environment",
+    "units": 3
+  },
+  "GEOL 2240": {
+    "title": "Physical Geology",
+    "units": 3
+  },
+  "GEOL 2241": {
+    "title": "Physical Geology Laboratory",
+    "units": 1
+  },
+  "GRC 1000": {
+    "title": "Introduction to Graphic Communication",
+    "units": 3
+  },
+  "GRC 1020": {
+    "title": "Introduction to Digital Applications",
+    "units": 3
+  },
+  "GRC 1030": {
+    "title": "GRC Management, Manufacturing, and Strategy",
+    "units": 3
+  },
+  "GRC 1040": {
+    "title": "Materials for Graphic Communication Applications",
+    "units": 3
+  },
+  "GRC 1090": {
+    "title": "Web Development and Design Principles",
+    "units": 3
+  },
+  "GRC 1100": {
+    "title": "Visual Literacy and Communication",
+    "units": 3
+  },
+  "GRC 2000": {
+    "title": "Applied Graphic Communication Practices",
+    "units": 1
+  },
+  "GRC 2020": {
+    "title": "Digital File Preparation and Workflow",
+    "units": 3
+  },
+  "GRC 2040": {
+    "title": "Print and Production Technology",
+    "units": 3
+  },
+  "GRC 2050": {
+    "title": "Digital Typography",
+    "units": 3
+  },
+  "GRC 2070": {
+    "title": "Consumer Packaging",
+    "units": 3
+  },
+  "GRC 3000": {
+    "title": "Experience Design",
+    "units": 3
+  },
+  "GRC 3020": {
+    "title": "Digital Photography and Motion Graphics",
+    "units": 3
+  },
+  "GRC 3030": {
+    "title": "Marketing and Sales Management for Graphic Communication",
+    "units": 3
+  },
+  "GRC 3035": {
+    "title": "Operations and Project Management for Graphic Communication",
+    "units": 3
+  },
+  "GRC 3060": {
+    "title": "Data-Driven Graphics",
+    "units": 3
+  },
+  "GRC 3100": {
+    "title": "Introduction to Applied Social Media in Graphic Communication",
+    "units": 1
+  },
+  "GRC 3200": {
+    "title": "Color Management",
+    "units": 3
+  },
+  "GRC 3280": {
+    "title": "Specialty Graphics and Printing",
+    "units": 3
+  },
+  "GRC 4060": {
+    "title": "Human Resource Management for Graphic Communication",
+    "units": 3
+  },
+  "HIST 1100": {
+    "title": "World History",
+    "units": 4
+  },
+  "HIST 1101": {
+    "title": "History Colloquium",
+    "units": 1
+  },
+  "HIST 2201": {
+    "title": "United States History I",
+    "units": 3
+  },
+  "HIST 2202": {
+    "title": "United States History II",
+    "units": 3
+  },
+  "HIST 2210": {
+    "title": "World History to 1800",
+    "units": 3
+  },
+  "HIST 2222": {
+    "title": "History of the Americas I",
+    "units": 3
+  },
+  "HIST 2223": {
+    "title": "History of the Americas II",
+    "units": 3
+  },
+  "HIST 3303": {
+    "title": "Historical Methods and Writing I",
+    "units": 4
+  },
+  "HIST 3304": {
+    "title": "Historical Methods and Writing II",
+    "units": 4
+  },
+  "HIST 4460": {
+    "title": "Senior Thesis I",
+    "units": 2
+  },
+  "HIST 4461": {
+    "title": "Senior Thesis II",
+    "units": 2
+  },
+  "HLTH 1101": {
+    "title": "Introduction to Public Health",
+    "units": 3
+  },
+  "HLTH 2261": {
+    "title": "Social Determinants of Health",
+    "units": 3
+  },
+  "HLTH 3316": {
+    "title": "Environmental Health",
+    "units": 3
+  },
+  "HLTH 3318": {
+    "title": "Applied Epidemiology",
+    "units": 4
+  },
+  "HLTH 3322": {
+    "title": "Public Health Policy and Advocacy",
+    "units": 3
+  },
+  "HLTH 3344": {
+    "title": "Health Care Systems",
+    "units": 3
+  },
+  "HLTH 4402": {
+    "title": "Research Methods in Public Health Settings",
+    "units": 4
+  },
+  "HLTH 4410": {
+    "title": "Global Health",
+    "units": 3
+  },
+  "HLTH 4434": {
+    "title": "Health Promotion Program Planning",
+    "units": 4
+  },
+  "HLTH 4435": {
+    "title": "Health Promotion Program Implementation and Evaluation",
+    "units": 3
+  },
+  "IME 1101": {
+    "title": "Introduction to Industrial and Manufacturing Engineering",
+    "units": 1
+  },
+  "IME 1140": {
+    "title": "Technical Graphics Communication for Design and Manufacturing",
+    "units": 1
+  },
+  "IME 1140/1143": {
+    "title": "Technical Graphics and Introduction to Design and Manufacturing",
+    "units": 3
+  },
+  "IME 1141": {
+    "title": "Introduction to Metal Casting and Prototyping",
+    "units": 1
+  },
+  "IME 1142": {
+    "title": "Materials Joining",
+    "units": 1
+  },
+  "IME 1143": {
+    "title": "Introduction to Design and Manufacturing",
+    "units": 2
+  },
+  "IME 1143 / IME 1140": {
+    "title": "Intro to Design and Manufacturing with Technical Graphics",
+    "units": 3
+  },
+  "IME 1156": {
+    "title": "Introduction to Modern Electronics Manufacturing",
+    "units": 2
+  },
+  "IME 1223": {
+    "title": "Process Improvement Fundamentals",
+    "units": 4
+  },
+  "IME 2212": {
+    "title": "Introduction to Enterprise Analytics and Database Systems",
+    "units": 4
+  },
+  "IME 2243": {
+    "title": "Intermediate Design and Manufacturing",
+    "units": 2
+  },
+  "IME 2315": {
+    "title": "Financial Decision Making for Engineers",
+    "units": 2
+  },
+  "IME 3302": {
+    "title": "Operations Research and Management",
+    "units": 4
+  },
+  "IME 3326": {
+    "title": "Statistical Decision-Making and Quality Control",
+    "units": 4
+  },
+  "IME 3327": {
+    "title": "Test Design and Analysis in Manufacturing Engineering",
+    "units": 4
+  },
+  "IME 3330": {
+    "title": "Fundamentals of Manufacturing Engineering",
+    "units": 4
+  },
+  "IME 3356": {
+    "title": "Manufacturing and Process Automation",
+    "units": 4
+  },
+  "IME 3410": {
+    "title": "Production Planning and Control Systems",
+    "units": 4
+  },
+  "IME 3420": {
+    "title": "Process and System Simulation",
+    "units": 4
+  },
+  "IME 3443": {
+    "title": "Facilities Design and Warehousing",
+    "units": 4
+  },
+  "IME 4319": {
+    "title": "Human Factors and Ergonomics in Engineering and Systems Design",
+    "units": 3
+  },
+  "IME 4372": {
+    "title": "Applications of Enterprise Analytics",
+    "units": 4
+  },
+  "IME 4417": {
+    "title": "Supply Chain and Logistics Management",
+    "units": 4
+  },
+  "IME 4418": {
+    "title": "Product and Process Development",
+    "units": 4
+  },
+  "IME 4450": {
+    "title": "Computer-Aided Manufacturing and Process Analysis",
+    "units": 4
+  },
+  "IME 4461": {
+    "title": "Senior Project - Design I",
+    "units": 2
+  },
+  "IME 4462": {
+    "title": "Senior Project - Design II",
+    "units": 2
+  },
+  "ISLA 1101": {
+    "title": "Interdisciplinary Studies Major First Year Seminar",
+    "units": 1
+  },
+  "ISLA 2201": {
+    "title": "Introduction to Interdisciplinary Studies",
+    "units": 3
+  },
+  "ISLA 2255": {
+    "title": "Introduction to Interdisciplinary Theory and Methods",
+    "units": 3
+  },
+  "ISLA 3355": {
+    "title": "Interdisciplinary Research Methods",
+    "units": 4
+  },
+  "ISLA 4440": {
+    "title": "Advanced Interdisciplinary Studies Seminar",
+    "units": 3
+  },
+  "ISLA 4460/4461": {
+    "title": "Senior Project Seminar and Senior Project",
+    "units": 4
+  },
+  "ISLA 4480": {
+    "title": "Career Preparation for Interdisciplinary Studies Majors",
+    "units": 1
+  },
+  "ITP 1100": {
+    "title": "Student Orientation, College Success, and Career Readiness",
+    "units": 1
+  },
+  "ITP 1125": {
+    "title": "Introduction to Industrial Technology and Packaging",
+    "units": 1
+  },
+  "ITP 1150": {
+    "title": "Power Systems and Renewable Energy",
+    "units": 3
+  },
+  "ITP 2233": {
+    "title": "Product Modeling and Communication",
+    "units": 3
+  },
+  "ITP 3303": {
+    "title": "Lean Six Sigma Green Belt",
+    "units": 3
+  },
+  "ITP 3326": {
+    "title": "Product Design and Development",
+    "units": 3
+  },
+  "ITP 3330": {
+    "title": "Packaging Fundamentals",
+    "units": 3
+  },
+  "ITP 3341": {
+    "title": "Packaging Polymers and Processing",
+    "units": 3
+  },
+  "ITP 3371": {
+    "title": "Supply Chain Management in Manufacturing and Services",
+    "units": 3
+  },
+  "ITP 4409": {
+    "title": "Packaging Machinery and Processes",
+    "units": 3
+  },
+  "ITP 4411": {
+    "title": "Packaging Sustainability",
+    "units": 3
+  },
+  "ITP 4464": {
+    "title": "Senior Project",
+    "units": 3
+  },
+  "JOUR 1102": {
+    "title": "Introduction to Journalism",
+    "units": 1
+  },
+  "JOUR 2203": {
+    "title": "News Reporting and Writing",
+    "units": 3
+  },
+  "JOUR 2228": {
+    "title": "Media, Self and Society",
+    "units": 3
+  },
+  "JOUR 2285": {
+    "title": "Introduction to Multimedia Journalism",
+    "units": 3
+  },
+  "JOUR 3300": {
+    "title": "Public Relations",
+    "units": 3
+  },
+  "JOUR 3302": {
+    "title": "Mass Media Law",
+    "units": 3
+  },
+  "JOUR 3303": {
+    "title": "Video Storytelling",
+    "units": 3
+  },
+  "JOUR 3305": {
+    "title": "Journalism Ethics",
+    "units": 3
+  },
+  "JOUR 3334": {
+    "title": "Editing for Online and Print Publication",
+    "units": 3
+  },
+  "JOUR 3390": {
+    "title": "Visual Communication for the Mass Media",
+    "units": 3
+  },
+  "JOUR 4444": {
+    "title": "Media Internship",
+    "units": 2
+  },
+  "KINE 1180": {
+    "title": "Introduction to Kinesiology",
+    "units": 1
+  },
+  "KINE 2266": {
+    "title": "Sport and Performance Psychology",
+    "units": 3
+  },
+  "KINE 3303": {
+    "title": "Physiology of Exercise",
+    "units": 4
+  },
+  "KINE 3307": {
+    "title": "Adapted Physical Activity",
+    "units": 3
+  },
+  "KINE 3310": {
+    "title": "Elementary Physical Education",
+    "units": 3
+  },
+  "KINE 3312": {
+    "title": "Motor Learning",
+    "units": 3
+  },
+  "KINE 3319": {
+    "title": "Introduction to Research Methods in Kinesiology",
+    "units": 4
+  },
+  "KINE 4403": {
+    "title": "Biomechanics",
+    "units": 4
+  },
+  "KINE 4412": {
+    "title": "Physical Activity and Public Health",
+    "units": 3
+  },
+  "KINE 4451": {
+    "title": "Nutrition for Fitness and Sport",
+    "units": 4
+  },
+  "LA 1104": {
+    "title": "History of Landscape Architecture",
+    "units": 3
+  },
+  "LA 1110": {
+    "title": "Landscape Representation I",
+    "units": 3
+  },
+  "LA 1112": {
+    "title": "Landscape Representation II",
+    "units": 4
+  },
+  "LA 1120": {
+    "title": "Studio I - Beginning Design",
+    "units": 3
+  },
+  "LA 2203": {
+    "title": "Landscape Ecology: Concepts, Issues, and Interrelationships",
+    "units": 3
+  },
+  "LA 2210": {
+    "title": "Materials and Techniques of Landscape Construction",
+    "units": 4
+  },
+  "LA 2212": {
+    "title": "Introduction to Planting Design",
+    "units": 3
+  },
+  "LA 2214": {
+    "title": "Site Engineering Techniques and Applications",
+    "units": 4
+  },
+  "LA 2220": {
+    "title": "Studio II - Site Based Design",
+    "units": 3
+  },
+  "LA 2222": {
+    "title": "Studio III - Design for Implementation",
+    "units": 3
+  },
+  "LA 3303": {
+    "title": "Theory for Landscape Architects",
+    "units": 3
+  },
+  "LA 3304": {
+    "title": "Contemporary Issues in Cultural Landscapes",
+    "units": 3
+  },
+  "LA 3306": {
+    "title": "Professional Practice of Landscape Architecture",
+    "units": 3
+  },
+  "LA 3310": {
+    "title": "Landscape Representation III",
+    "units": 3
+  },
+  "LA 3312": {
+    "title": "Geographic Information Systems Applications for Design Projects",
+    "units": 3
+  },
+  "LA 3320": {
+    "title": "Studio IV - Landscape Performance and Design",
+    "units": 4
+  },
+  "LA 3322": {
+    "title": "Studio V - Environmental Planning and Design",
+    "units": 4
+  },
+  "LA 4371": {
+    "title": "Landscape Architecture Internship",
+    "units": 4
+  },
+  "LA 4410": {
+    "title": "Sustainability, Resilience, and Climate Ecology in Design",
+    "units": 3
+  },
+  "LA 4413": {
+    "title": "Social Equity and Design",
+    "units": 3
+  },
+  "LA 4420": {
+    "title": "Studio VI - Community and Social Design",
+    "units": 4
+  },
+  "LA 4461": {
+    "title": "Senior Project Design Studio I",
+    "units": 4
+  },
+  "LA 4462": {
+    "title": "Senior Project Design Studio II",
+    "units": 4
+  },
+  "LAES 4301": {
+    "title": "Liberal Arts and Engineering Studies Capstone I",
+    "units": 4
+  },
+  "LAES 4302": {
+    "title": "Liberal Arts and Engineering Studies Capstone II",
+    "units": 4
+  },
+  "LAES 4461": {
+    "title": "Senior Project I in Liberal Arts and Engineering Studies",
+    "units": 3
+  },
+  "LAES 4462": {
+    "title": "Senior Project II in Liberal Arts and Engineering Studies",
+    "units": 3
+  },
+  "LS 1201": {
+    "title": "Orientation to Liberal Studies",
+    "units": 1
+  },
+  "LS 2230": {
+    "title": "Field Experience in Elementary Classroom I",
+    "units": 2
+  },
+  "LS 2255": {
+    "title": "Children's Literature in Diverse Society",
+    "units": 3
+  },
+  "LS 2370": {
+    "title": "Performing Arts for Children",
+    "units": 3
+  },
+  "LS 3211": {
+    "title": "Arts in Elementary Classroom",
+    "units": 3
+  },
+  "LS 3214": {
+    "title": "Constitutional Issues and Education Foundations",
+    "units": 4
+  },
+  "LS 3250": {
+    "title": "Field Experience in Elementary Classroom II",
+    "units": 2
+  },
+  "LS 3301": {
+    "title": "Liberal Studies Career Preparation",
+    "units": 1
+  },
+  "LS 3310": {
+    "title": "Storytelling: Modern Applications",
+    "units": 3
+  },
+  "MATE 1110": {
+    "title": "Introduction to Materials Engineering",
+    "units": 1
+  },
+  "MATE 1210": {
+    "title": "Principles of Materials Engineering for Majors",
+    "units": 3
+  },
+  "MATE 1215": {
+    "title": "Materials Laboratory I",
+    "units": 1
+  },
+  "MATE 1220": {
+    "title": "Principles of Materials Engineering for Non-Majors",
+    "units": 2
+  },
+  "MATE 1220 & MATE 1215": {
+    "title": "Materials Engineering for Non-Majors with Laboratory",
+    "units": 3
+  },
+  "MATE 1220/1215": {
+    "title": "Materials Engineering and Lab",
+    "units": 3
+  },
+  "MATE 2225": {
+    "title": "Materials Microscopy Laboratory",
+    "units": 1
+  },
+  "MATE 2235": {
+    "title": "Materials Spectroscopy Laboratory",
+    "units": 1
+  },
+  "MATE 2245": {
+    "title": "Engineering Analysis and Technical Communication",
+    "units": 1
+  },
+  "MATE 2280": {
+    "title": "Materials Thermodynamics and Kinetics",
+    "units": 4
+  },
+  "MATE 3232": {
+    "title": "Materials Ethics, Diversity, and Society",
+    "units": 3
+  },
+  "MATE 3310": {
+    "title": "Polymeric Material Systems",
+    "units": 4
+  },
+  "MATE 3340": {
+    "title": "Electronic Materials Systems",
+    "units": 4
+  },
+  "MATE 3360": {
+    "title": "Metallurgical Materials Systems",
+    "units": 4
+  },
+  "MATE 3401": {
+    "title": "Advanced Materials Characterization",
+    "units": 1
+  },
+  "MATE 3403": {
+    "title": "Computational Materials Engineering",
+    "units": 2
+  },
+  "MATE 3480": {
+    "title": "Composite Material Systems",
+    "units": 4
+  },
+  "MATE 4300": {
+    "title": "Materials Selection for the Life Cycle",
+    "units": 3
+  },
+  "MATE 4422": {
+    "title": "Ceramic and Glass Materials Systems",
+    "units": 3
+  },
+  "MATE 4461": {
+    "title": "Senior Project I",
+    "units": 1
+  },
+  "MATE 4462": {
+    "title": "Senior Project II",
+    "units": 2
+  },
+  "MATH 1006": {
+    "title": "College Algebra",
+    "units": 3
+  },
+  "MATH 1007": {
+    "title": "Precalculus",
+    "units": 3
+  },
+  "MATH 1151": {
+    "title": "Linear Algebra",
+    "units": 3
+  },
+  "MATH 1261": {
+    "title": "Calculus I",
+    "units": 4
+  },
+  "MATH 1262": {
+    "title": "Calculus II",
+    "units": 4
+  },
+  "MATH 1264": {
+    "title": "Calculus for Data Science I",
+    "units": 4
+  },
+  "MATH 1265": {
+    "title": "Calculus for Data Science II",
+    "units": 4
+  },
+  "MATH 1267": {
+    "title": "Business Calculus",
+    "units": 3
+  },
+  "MATH 2001": {
+    "title": "Mathematics Orientation",
+    "units": 1
+  },
+  "MATH 2031": {
+    "title": "Transition to Advanced Mathematics",
+    "units": 3
+  },
+  "MATH 2263": {
+    "title": "Calculus III",
+    "units": 3
+  },
+  "MATH 2341": {
+    "title": "Linear Analysis",
+    "units": 4
+  },
+  "MATH 2343": {
+    "title": "Differential Equations",
+    "units": 3
+  },
+  "MATH 2621": {
+    "title": "Introduction to Mathematical Optimization",
+    "units": 3
+  },
+  "MATH 3152": {
+    "title": "Advanced Linear Algebra",
+    "units": 4
+  },
+  "MATH 3481": {
+    "title": "Mathematics for Elementary Teaching I",
+    "units": 4
+  },
+  "MATH 3482": {
+    "title": "Mathematics for Elementary Teaching II",
+    "units": 4
+  },
+  "MATH 3483": {
+    "title": "Mathematics for Elementary Teaching III",
+    "units": 3
+  },
+  "MATH 4201": {
+    "title": "Abstract Algebra I",
+    "units": 4
+  },
+  "MATH 4202": {
+    "title": "Abstract Algebra II",
+    "units": 3
+  },
+  "MATH 4264": {
+    "title": "Real Analysis I",
+    "units": 4
+  },
+  "MCRO 1100": {
+    "title": "Introduction to Microbiology Research",
+    "units": 2
+  },
+  "MCRO 2221": {
+    "title": "Introduction to Microbiology",
+    "units": 4
+  },
+  "MCRO 2224": {
+    "title": "General Microbiology I",
+    "units": 4
+  },
+  "MCRO 2227": {
+    "title": "General Microbiology II",
+    "units": 4
+  },
+  "MCRO 3351": {
+    "title": "Microbial Genetics",
+    "units": 3
+  },
+  "MCRO 3352": {
+    "title": "Microbial Genetics Laboratory",
+    "units": 2
+  },
+  "MCRO 4421": {
+    "title": "Food Microbiology",
+    "units": 3
+  },
+  "ME 1125": {
+    "title": "Introduction to Mechanical Engineering",
+    "units": 1
+  },
+  "ME 1148": {
+    "title": "Engineering Design Communication",
+    "units": 2
+  },
+  "ME 2212": {
+    "title": "Engineering Dynamics",
+    "units": 3
+  },
+  "ME 2240": {
+    "title": "Applied Programming for Mechanical Engineering",
+    "units": 1
+  },
+  "ME 2248": {
+    "title": "Design Using Solid Modeling",
+    "units": 1
+  },
+  "ME 3234": {
+    "title": "Design Thinking and Creativity",
+    "units": 3
+  },
+  "ME 3236": {
+    "title": "Engineering Measurement and Data Analysis",
+    "units": 3
+  },
+  "ME 3302": {
+    "title": "Thermodynamics",
+    "units": 3
+  },
+  "ME 3305": {
+    "title": "Mechatronics I",
+    "units": 4
+  },
+  "ME 3315": {
+    "title": "Energy Conversion",
+    "units": 3
+  },
+  "ME 3317": {
+    "title": "Vibrations and System Modeling",
+    "units": 4
+  },
+  "ME 3319": {
+    "title": "Introduction to System Dynamics",
+    "units": 4
+  },
+  "ME 3328": {
+    "title": "Design for Strength and Stiffness",
+    "units": 4
+  },
+  "ME 3329": {
+    "title": "Mechanical Systems Design",
+    "units": 3
+  },
+  "ME 3341": {
+    "title": "Fluid Mechanics",
+    "units": 3
+  },
+  "ME 3341 & ME 3342": {
+    "title": "Fluid Mechanics with Laboratory",
+    "units": 4
+  },
+  "ME 3343": {
+    "title": "Heat Transfer",
+    "units": 4
+  },
+  "ME 3355": {
+    "title": "Introduction to Sustainable Energy Usage in Buildings",
+    "units": 3
+  },
+  "ME 4305": {
+    "title": "Mechatronics II",
+    "units": 3
+  },
+  "ME 4417": {
+    "title": "Mechanical Controls and Implementations",
+    "units": 3
+  },
+  "ME 4419": {
+    "title": "Advanced Control Systems",
+    "units": 3
+  },
+  "ME 4440": {
+    "title": "Thermal System Design",
+    "units": 3
+  },
+  "ME 4455": {
+    "title": "Building Energy Performance and Modeling",
+    "units": 3
+  },
+  "ME 4456": {
+    "title": "HVAC&R Air and Water Distribution for Sustainable Building Environments",
+    "units": 3
+  },
+  "ME 4457": {
+    "title": "Environmentally Efficient and Sustainable Refrigeration Systems",
+    "units": 3
+  },
+  "ME 4460": {
+    "title": "Senior Design Project I",
+    "units": 2
+  },
+  "ME 4461": {
+    "title": "Senior Design Project II",
+    "units": 2
+  },
+  "ME 4465": {
+    "title": "HVAC&R Senior Design Project I",
+    "units": 2
+  },
+  "ME 4466": {
+    "title": "HVAC&R Senior Design Project II",
+    "units": 2
+  },
+  "MSCI 1100": {
+    "title": "Orientation to Marine Sciences",
+    "units": 1
+  },
+  "MSCI 1111": {
+    "title": "The Oceans",
+    "units": 3
+  },
+  "MSCI 1112": {
+    "title": "The Oceans Laboratory",
+    "units": 1
+  },
+  "MSCI 3300": {
+    "title": "Marine Ecology",
+    "units": 4
+  },
+  "MSCI 3301": {
+    "title": "Biological Oceanography",
+    "units": 3
+  },
+  "MU 1100": {
+    "title": "Introduction to Music Studies",
+    "units": 1
+  },
+  "MU 1104": {
+    "title": "Musicianship I",
+    "units": 2
+  },
+  "MU 1106": {
+    "title": "Musicianship II",
+    "units": 2
+  },
+  "MU 1122": {
+    "title": "Ethnomusicology and World Music I",
+    "units": 4
+  },
+  "MU 1150": {
+    "title": "Applied Music I",
+    "units": 1
+  },
+  "MU 1150 (2)": {
+    "title": "Applied Music I",
+    "units": 1
+  },
+  "MU 2203": {
+    "title": "Materials and Structures of Music II",
+    "units": 4
+  },
+  "MU 2222": {
+    "title": "Ethnomusicology and World Music II",
+    "units": 4
+  },
+  "MU 2250": {
+    "title": "Applied Music II",
+    "units": 1
+  },
+  "MU 2250 (2)": {
+    "title": "Applied Music II",
+    "units": 1
+  },
+  "MU 3311": {
+    "title": "Introduction to Music Technology and Composition",
+    "units": 4
+  },
+  "MU 3331": {
+    "title": "Historical Musicology I",
+    "units": 4
+  },
+  "MU 3350": {
+    "title": "Applied Music III",
+    "units": 1
+  },
+  "MU 3350 (2)": {
+    "title": "Applied Music III",
+    "units": 1
+  },
+  "MU 4431": {
+    "title": "Historical Musicology II",
+    "units": 4
+  },
+  "MU 4461": {
+    "title": "Senior Project",
+    "units": 2
+  },
+  "NR 1141": {
+    "title": "Introduction to Forest Ecosystem Management",
+    "units": 4
+  },
+  "NR 1142": {
+    "title": "Environmental Management",
+    "units": 4
+  },
+  "NR 2208": {
+    "title": "Dendrology",
+    "units": 3
+  },
+  "NR 2218": {
+    "title": "Introduction to GIS",
+    "units": 3
+  },
+  "NR 3305": {
+    "title": "Forest and Fire Ecology",
+    "units": 4
+  },
+  "NR 3308": {
+    "title": "Fire and Society",
+    "units": 3
+  },
+  "NR 3310": {
+    "title": "Global Climate Change",
+    "units": 3
+  },
+  "NR 3315": {
+    "title": "Forest Mensuration",
+    "units": 4
+  },
+  "NR 3319/3320": {
+    "title": "Watershed Processes and Management and Laboratory",
+    "units": 3
+  },
+  "NR 3363": {
+    "title": "Career Preparation in Natural Resources",
+    "units": 2
+  },
+  "NR 4365": {
+    "title": "Silviculture and Fuels Management",
+    "units": 4
+  },
+  "NR 4402": {
+    "title": "Forest Health and Disturbance Ecology",
+    "units": 3
+  },
+  "NR 4414": {
+    "title": "Sustainable Forest Management and Forest Operations",
+    "units": 2
+  },
+  "NR 4417": {
+    "title": "Natural Resource Protection and Policy",
+    "units": 3
+  },
+  "NR/LA 2218": {
+    "title": "Introduction to Geographic Information Systems",
+    "units": 3
+  },
+  "NUTR 1101": {
+    "title": "Orientation to the Nutrition Major",
+    "units": 1
+  },
+  "NUTR 3310": {
+    "title": "Maternal and Child Nutrition",
+    "units": 3
+  },
+  "NUTR 3315": {
+    "title": "Nutrition in Aging",
+    "units": 2
+  },
+  "NUTR 3331": {
+    "title": "Macronutrient Metabolism",
+    "units": 3
+  },
+  "NUTR 3332": {
+    "title": "Micronutrient Metabolism",
+    "units": 3
+  },
+  "NUTR 3333": {
+    "title": "Nutrient Metabolism Lab",
+    "units": 1
+  },
+  "NUTR 4415": {
+    "title": "Nutrition Counseling and Education",
+    "units": 3
+  },
+  "NUTR 4416": {
+    "title": "Community Nutrition",
+    "units": 3
+  },
+  "NUTR 4431": {
+    "title": "Medical Nutrition Therapy I",
+    "units": 4
+  },
+  "NUTR 4432": {
+    "title": "Medical Nutrition Therapy II",
+    "units": 4
+  },
+  "PHIL 1101": {
+    "title": "Introduction to Philosophy",
+    "units": 3
+  },
+  "PHIL 1126": {
+    "title": "Logic and Argumentative Writing",
+    "units": 3
+  },
+  "PHIL 2230": {
+    "title": "Philosophical Classics: Knowledge and Reality",
+    "units": 3
+  },
+  "PHIL 2231": {
+    "title": "Philosophical Classics: Ethics and Political Philosophy",
+    "units": 3
+  },
+  "PHIL 2241": {
+    "title": "Symbolic Logic",
+    "units": 3
+  },
+  "PHIL 3300": {
+    "title": "Philosophical Writing and Research",
+    "units": 3
+  },
+  "PHIL 3321": {
+    "title": "Philosophy of Science",
+    "units": 3
+  },
+  "PHIL 3323": {
+    "title": "Ethics, Science, and Technology",
+    "units": 3
+  },
+  "PHIL 3331": {
+    "title": "Ethics",
+    "units": 3
+  },
+  "PHIL 4411": {
+    "title": "Metaphysics",
+    "units": 3
+  },
+  "PHIL 4412": {
+    "title": "Epistemology",
+    "units": 3
+  },
+  "PHIL 4459": {
+    "title": "Senior Project Preparation",
+    "units": 1
+  },
+  "PHIL 4460": {
+    "title": "Senior Project",
+    "units": 2
+  },
+  "PHYS 1100": {
+    "title": "Introduction to the Physics Major",
+    "units": 1
+  },
+  "PHYS 1121": {
+    "title": "College Physics I",
+    "units": 4
+  },
+  "PHYS 1141": {
+    "title": "General Physics I",
+    "units": 4
+  },
+  "PHYS 1143": {
+    "title": "General Physics II",
+    "units": 4
+  },
+  "PHYS 2211": {
+    "title": "General Physics III: Modern Physics",
+    "units": 4
+  },
+  "PHYS 3301": {
+    "title": "Statistical Mechanics",
+    "units": 3
+  },
+  "PHYS 3305": {
+    "title": "Classical Mechanics I",
+    "units": 3
+  },
+  "PHYS 3316": {
+    "title": "Instrumentation and Techniques of Experimental Physics",
+    "units": 4
+  },
+  "PHYS 3320": {
+    "title": "Methods of Theoretical Physics",
+    "units": 4
+  },
+  "PHYS 3339": {
+    "title": "Communicating Physics",
+    "units": 1
+  },
+  "PHYS 3340": {
+    "title": "Quantum Physics Laboratory I",
+    "units": 1
+  },
+  "PHYS 3341": {
+    "title": "Quantum Physics Laboratory II",
+    "units": 1
+  },
+  "PHYS 4405": {
+    "title": "Quantum Mechanics I",
+    "units": 3
+  },
+  "PHYS 4408": {
+    "title": "Electromagnetic Fields and Waves I",
+    "units": 3
+  },
+  "PHYS 4461": {
+    "title": "Senior Project I",
+    "units": 2
+  },
+  "PLSC 1101": {
+    "title": "Orientation to Plant Sciences",
+    "units": 1
+  },
+  "PLSC 1124": {
+    "title": "Plant Propagation",
+    "units": 3
+  },
+  "PLSC 2234": {
+    "title": "Introduction to Plant Materials",
+    "units": 3
+  },
+  "PLSC 3301": {
+    "title": "Horticultural Production Techniques",
+    "units": 3
+  },
+  "PLSC 3304": {
+    "title": "Introduction to Plant Breeding",
+    "units": 3
+  },
+  "PLSC 3313": {
+    "title": "Agricultural Entomology",
+    "units": 3
+  },
+  "PLSC 3321": {
+    "title": "Weed Biology and Management",
+    "units": 4
+  },
+  "PLSC 3323": {
+    "title": "Plant Pathology",
+    "units": 3
+  },
+  "PLSC 3351": {
+    "title": "Experimental Techniques and Analysis",
+    "units": 3
+  },
+  "PLSC 4410": {
+    "title": "Crop Physiology",
+    "units": 3
+  },
+  "PLSC 4461": {
+    "title": "Senior Project I",
+    "units": 1
+  },
+  "PLSC 4462": {
+    "title": "Senior Project II",
+    "units": 1
+  },
+  "POLS 1112": {
+    "title": "U.S. and California Government",
+    "units": 3
+  },
+  "POLS 1180": {
+    "title": "Political Inquiry",
+    "units": 3
+  },
+  "POLS 2225": {
+    "title": "Introduction to International Relations",
+    "units": 3
+  },
+  "POLS 2229": {
+    "title": "Introduction to Comparative Politics",
+    "units": 3
+  },
+  "POLS 2230": {
+    "title": "Basic Concepts of Political Thought",
+    "units": 3
+  },
+  "POLS 3359": {
+    "title": "Research Design",
+    "units": 3
+  },
+  "POLS 3361": {
+    "title": "Data Analysis in Political Science",
+    "units": 3
+  },
+  "POLS 4461": {
+    "title": "Senior Project I",
+    "units": 2
+  },
+  "POLS 4462": {
+    "title": "Senior Project II",
+    "units": 2
+  },
+  "PSC 1101": {
+    "title": "Physical Science for Elementary Educators I",
+    "units": 4
+  },
+  "PSC 1102": {
+    "title": "Physical Science for Elementary Educators II",
+    "units": 4
+  },
+  "PSC 2201": {
+    "title": "Physical Oceanography",
+    "units": 3
+  },
+  "PSY 1102": {
+    "title": "Orientation to the Psychology Major",
+    "units": 2
+  },
+  "PSY 2201": {
+    "title": "Introductory Psychology",
+    "units": 3
+  },
+  "PSY 2229": {
+    "title": "Research Methods in Psychology",
+    "units": 3
+  },
+  "PSY 2240": {
+    "title": "Biopsychology",
+    "units": 3
+  },
+  "PSY 3333": {
+    "title": "Advanced Research Methods",
+    "units": 4
+  },
+  "PSY 3372": {
+    "title": "Multicultural Psychology",
+    "units": 4
+  },
+  "PSY 4461": {
+    "title": "Senior Project Seminar",
+    "units": 2
+  },
+  "PSY 4462": {
+    "title": "Senior Project",
+    "units": 2
+  },
+  "SOC 1101": {
+    "title": "Orientation to the Sociology Major",
+    "units": 1
+  },
+  "SOC 1110": {
+    "title": "Comparative Societies",
+    "units": 3
+  },
+  "SOC 1111": {
+    "title": "Social Problems",
+    "units": 3
+  },
+  "SOC 2216": {
+    "title": "U.S. Race and Ethnic Relations",
+    "units": 3
+  },
+  "SOC 2218": {
+    "title": "International Political Economy",
+    "units": 3
+  },
+  "SOC 2222": {
+    "title": "Classical Social Theory",
+    "units": 3
+  },
+  "SOC 3311": {
+    "title": "Sociology of Gender and Sexuality",
+    "units": 4
+  },
+  "SOC 3353": {
+    "title": "Research Methods for Sociology",
+    "units": 4
+  },
+  "SOC 4461": {
+    "title": "Senior Project I",
+    "units": 2
+  },
+  "SOC 4462": {
+    "title": "Senior Project II",
+    "units": 1
+  },
+  "SOC 4464": {
+    "title": "Professional Development for Sociologists",
+    "units": 1
+  },
+  "SPAN 2201": {
+    "title": "Intermediate Spanish I",
+    "units": 4
+  },
+  "SPAN 2207": {
+    "title": "Introduction to Spanish Linguistics",
+    "units": 3
+  },
+  "SPAN 2233": {
+    "title": "Introduction to Hispanic Literature",
+    "units": 3
+  },
+  "SPAN 3301": {
+    "title": "Advanced Writing in Spanish",
+    "units": 3
+  },
+  "SPAN 3302": {
+    "title": "Spanish Conversation, Composition, Advocacy",
+    "units": 3
+  },
+  "SS 1120": {
+    "title": "Introductory Soil Science",
+    "units": 4
+  },
+  "SS 2221": {
+    "title": "Soil Health and Plant Nutrition",
+    "units": 4
+  },
+  "SS 3321": {
+    "title": "Soil Morphology",
+    "units": 4
+  },
+  "SS 4423": {
+    "title": "Environmental Soil and Water Chemistry",
+    "units": 4
+  },
+  "STAT 1000": {
+    "title": "Statistical and Data Literacy",
+    "units": 3
+  },
+  "STAT 1110": {
+    "title": "Applied Statistical Concepts and Methods",
+    "units": 3
+  },
+  "STAT 1210": {
+    "title": "Business Statistics I",
+    "units": 3
+  },
+  "STAT 1220": {
+    "title": "Business Statistics II",
+    "units": 3
+  },
+  "STAT 1510": {
+    "title": "Statistics I",
+    "units": 3
+  },
+  "STAT 1810": {
+    "title": "Introduction to Statistical Computing with R",
+    "units": 3
+  },
+  "STAT 2610": {
+    "title": "Introduction to Probability and Simulation",
+    "units": 3
+  },
+  "STAT 3210": {
+    "title": "Engineering Statistics",
+    "units": 3
+  },
+  "STAT 3310": {
+    "title": "Probability and Random Processes for Engineers",
+    "units": 3
+  },
+  "STAT 3320": {
+    "title": "Statistical Methods for Food Science",
+    "units": 3
+  },
+  "STAT 3520": {
+    "title": "Statistics II",
+    "units": 3
+  },
+  "STAT 3530": {
+    "title": "Applied Linear Models",
+    "units": 4
+  },
+  "STAT 3540": {
+    "title": "Statistical Methods for Study Design and Analysis",
+    "units": 4
+  },
+  "STAT 3800": {
+    "title": "Intro to Statistical Computing with SAS and SQL",
+    "units": 3
+  },
+  "STAT 3820": {
+    "title": "Intermediate Statistical Computing with R",
+    "units": 3
+  },
+  "STAT 4366": {
+    "title": "Statistical Communication, Collaboration, and Consulting",
+    "units": 5
+  },
+  "STAT 4460": {
+    "title": "Senior Project: Statistics Capstone",
+    "units": 2
+  },
+  "STAT 4610": {
+    "title": "Probability Theory",
+    "units": 3
+  },
+  "STAT 4620": {
+    "title": "Statistical Theory",
+    "units": 3
+  },
+  "TH 2201": {
+    "title": "First Year Theatre Experience",
+    "units": 3
+  },
+  "TH 2220": {
+    "title": "Acting I",
+    "units": 3
+  },
+  "TH 2225": {
+    "title": "Costume Construction I",
+    "units": 3
+  },
+  "TH 2230": {
+    "title": "Stagecraft I",
+    "units": 3
+  },
+  "TH 2290": {
+    "title": "Dramaturgy and Playwriting",
+    "units": 3
+  },
+  "TH 2295": {
+    "title": "Foundations in Theatrical Design",
+    "units": 3
+  },
+  "TH 3305": {
+    "title": "Diversity in U.S. Theatre",
+    "units": 3
+  },
+  "TH 4450": {
+    "title": "Directing",
+    "units": 3
+  },
+  "TH 4461": {
+    "title": "Senior Project Seminar",
+    "units": 3
+  },
+  "WGQS 3350": {
+    "title": "Gender, Race, Culture, Science & Technology",
+    "units": 4
+  },
+  "WLC 3360": {
+    "title": "Research Methods in World Languages and Cultures",
+    "units": 3
+  },
+  "WLC 4460": {
+    "title": "Senior Project",
+    "units": 3
+  },
+  "WVIT 1102": {
+    "title": "Global Wine and Viticulture",
+    "units": 3
+  },
+  "WVIT 2202": {
+    "title": "Fundamentals of Enology",
+    "units": 3
+  },
+  "WVIT 2233": {
+    "title": "Basic Viticulture",
+    "units": 3
+  },
+  "WVIT 3331": {
+    "title": "Advanced Viticulture - Fall",
+    "units": 4
+  },
+  "WVIT 3339": {
+    "title": "Internship in Wine and Viticulture",
+    "units": 3
+  },
+  "WVIT 3343": {
+    "title": "Branded Wine Marketing",
+    "units": 3
+  },
+  "WVIT 4423": {
+    "title": "Wine Law and Compliance",
+    "units": 3
+  },
+  "WVIT 4442": {
+    "title": "Sensory Evaluation of Wine",
+    "units": 3
+  },
+  "WVIT 4463": {
+    "title": "Issues, Trends, and Careers in the Grape and Wine Industry",
+    "units": 2
+  }
+}

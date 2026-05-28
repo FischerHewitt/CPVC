@@ -1,0 +1,117 @@
+[
+  {
+    "id": 645,
+    "name": "Computing Majors Orientation",
+    "courseToMeet": "CSC1000 or CPE1000"
+  },
+  {
+    "id": 646,
+    "name": "Fundamentals of Computer Science + Lab",
+    "courseToMeet": "CSC1001 and CSC1001L"
+  },
+  {
+    "id": 647,
+    "name": "Introduction to Computing",
+    "courseToMeet": "CSC1024 or CPE1024"
+  },
+  {
+    "id": 648,
+    "name": "Data Structures + Lab",
+    "courseToMeet": "CSC2001 and CSC2001L"
+  },
+  {
+    "id": 649,
+    "name": "System Software Mechanics",
+    "courseToMeet": "CSC2050 or CPE2050"
+  },
+  {
+    "id": 650,
+    "name": "Modern Application Development",
+    "courseToMeet": "CSC3001"
+  },
+  {
+    "id": 651,
+    "name": "Software Engineering",
+    "courseToMeet": "CSC3100"
+  },
+  {
+    "id": 652,
+    "name": "Introduction to Computer Security",
+    "courseToMeet": "CSC3201 or CPE3201"
+  },
+  {
+    "id": 653,
+    "name": "Programming Languages",
+    "courseToMeet": "CSC3300"
+  },
+  {
+    "id": 654,
+    "name": "Algorithms and Complexity",
+    "courseToMeet": "CSC3449"
+  },
+  {
+    "id": 655,
+    "name": "Databases Requirement",
+    "courseToMeet": "CSC3660 or CSC3665"
+  },
+  {
+    "id": 656,
+    "name": "Software Engineering Capstone",
+    "courseToMeet": "CSC4160 and CSC4161"
+  },
+  {
+    "id": 657,
+    "name": "Chemistry or Physics Foundation",
+    "courseToMeet": "CHEM1120 or PHYS1141"
+  },
+  {
+    "id": 658,
+    "name": "Linear Algebra",
+    "courseToMeet": "MATH1151"
+  },
+  {
+    "id": 659,
+    "name": "Calculus Sequence",
+    "courseToMeet": "(MATH1261 and MATH1262) or (MATH1264 and MATH1265)"
+  },
+  {
+    "id": 660,
+    "name": "Transition to Advanced Mathematics",
+    "courseToMeet": "MATH2031"
+  },
+  {
+    "id": 661,
+    "name": "Ethics, Science, and Technology",
+    "courseToMeet": "PHIL3323"
+  },
+  {
+    "id": 662,
+    "name": "Introductory Psychology",
+    "courseToMeet": "PSY2201"
+  },
+  {
+    "id": 663,
+    "name": "Teamwork / Communication",
+    "courseToMeet": "COMS2217 or PSY3350"
+  },
+  {
+    "id": 664,
+    "name": "Engineering Statistics",
+    "courseToMeet": "STAT3210"
+  },
+  {
+    "id": 665,
+    "name": "Gender/Race/Culture in Tech",
+    "courseToMeet": "WGQS3350 or ES3350 or WGQS3351"
+  },
+  {
+    "id": 667,
+    "name": "Software Engineering Elective (pick 1)",
+    "courseToMeet": "CSC4100 or CSC4170 or CSC4184 or CSC4186 or CSC4191 or CSC4192 or CSC4193 or CSC4210 or CSC4471 or CSC4472 or CSC5100 or CSC5170 or CSC5571 or CSC5572"
+  },
+  {
+    "id": 666,
+    "name": "Life Science Support Elective",
+    "courseToMeet": "(BIO1111 and BIO1112) or BIO1150 or BIO1151 or BOT1121 or MCRO2221"
+  }
+]

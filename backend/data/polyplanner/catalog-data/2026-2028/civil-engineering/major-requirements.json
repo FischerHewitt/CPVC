@@ -1,0 +1,127 @@
+[
+  {
+    "id": 787,
+    "name": "Introduction to Civil Engineering",
+    "courseToMeet": "CE1111"
+  },
+  {
+    "id": 788,
+    "name": "Spatial Visualization and Drawing",
+    "courseToMeet": "CE1112 or ENVE1112"
+  },
+  {
+    "id": 789,
+    "name": "Computational Applications in Civil and Environmental Engineering",
+    "courseToMeet": "CE2251"
+  },
+  {
+    "id": 790,
+    "name": "Civil Engineering Materials",
+    "courseToMeet": "CE2259"
+  },
+  {
+    "id": 791,
+    "name": "Fundamentals of Transportation Engineering",
+    "courseToMeet": "CE3321"
+  },
+  {
+    "id": 792,
+    "name": "Environmental Fluid Mechanics and Hydraulic Systems",
+    "courseToMeet": "CE3336 or ENVE3336"
+  },
+  {
+    "id": 793,
+    "name": "Water Resources and Environmental Engineering",
+    "courseToMeet": "CE3337 or ENVE3337"
+  },
+  {
+    "id": 794,
+    "name": "Structural Analysis",
+    "courseToMeet": "CE3352"
+  },
+  {
+    "id": 795,
+    "name": "Reinforced Concrete Design",
+    "courseToMeet": "CE3355"
+  },
+  {
+    "id": 796,
+    "name": "Construction Engineering and Management",
+    "courseToMeet": "CE3375"
+  },
+  {
+    "id": 797,
+    "name": "Geotechnical Engineering",
+    "courseToMeet": "CE3381"
+  },
+  {
+    "id": 798,
+    "name": "Infrastructure Systems",
+    "courseToMeet": "CE3465 or ENVE3465"
+  },
+  {
+    "id": 799,
+    "name": "Senior Design Project I",
+    "courseToMeet": "CE4466"
+  },
+  {
+    "id": 800,
+    "name": "Senior Design Project II",
+    "courseToMeet": "CE4467"
+  },
+  {
+    "id": 802,
+    "name": "Fundamentals of Chemical Structure and Properties",
+    "courseToMeet": "CHEM1120"
+  },
+  {
+    "id": 803,
+    "name": "Introduction to Mechanics",
+    "courseToMeet": "ENGR2211"
+  },
+  {
+    "id": 804,
+    "name": "Introduction to Engineering Dynamics",
+    "courseToMeet": "ENGR2212"
+  },
+  {
+    "id": 805,
+    "name": "Physical Geology",
+    "courseToMeet": "GEOL2240"
+  },
+  {
+    "id": 806,
+    "name": "Calculus I",
+    "courseToMeet": "MATH1261"
+  },
+  {
+    "id": 807,
+    "name": "Calculus II",
+    "courseToMeet": "MATH1262"
+  },
+  {
+    "id": 808,
+    "name": "Calculus III",
+    "courseToMeet": "MATH2263"
+  },
+  {
+    "id": 809,
+    "name": "Linear Analysis",
+    "courseToMeet": "MATH2341"
+  },
+  {
+    "id": 810,
+    "name": "General Physics I",
+    "courseToMeet": "PHYS1141"
+  },
+  {
+    "id": 811,
+    "name": "General Physics II",
+    "courseToMeet": "PHYS1143"
+  },
+  {
+    "id": 812,
+    "name": "Engineering Statistics",
+    "courseToMeet": "STAT3210"
+  }
+]

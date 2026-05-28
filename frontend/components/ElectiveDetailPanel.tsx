@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Course, ElectiveArea, GECourse, Professor, CourseInfo } from "@/lib/types";
 import { getElectiveCourses, getPlaceholderElectiveCourses, getProfessors, getCourseInfo } from "@/lib/api";
 
@@ -103,8 +103,10 @@ interface ElectiveCourseRowProps {
   completed: boolean;
   inProgress: boolean;
   planned: boolean;
-  onToggle: (courseNumber: string) => void;
-  onToggleInProgress: (courseNumber: string) => void;
+  isCapped?: boolean;
+  plannedSlotUnits?: number;
+  onToggle: (courseNumber: string, units: number) => void;
+  onToggleInProgress: (courseNumber: string, units: number) => void;
   onPlan: (courseNumber: string, units: number) => void;
   onSelect: (c: GECourse) => void;
 }
@@ -114,6 +116,8 @@ function ElectiveCourseRow({
   completed,
   inProgress,
   planned,
+  isCapped,
+  plannedSlotUnits,
   onToggle,
   onToggleInProgress,
   onPlan,
@@ -122,6 +126,14 @@ function ElectiveCourseRow({
   const [expanded, setExpanded]     = useState(false);
   const [professors, setProfessors] = useState<Professor[]>([]);
   const [loading, setLoading]       = useState(false);
+  const [chosenUnits, setChosenUnits] = useState(plannedSlotUnits ?? 1);
+  const prevPlannedSlotUnits = useRef(plannedSlotUnits);
+  useEffect(() => {
+    if (prevPlannedSlotUnits.current !== plannedSlotUnits) {
+      prevPlannedSlotUnits.current = plannedSlotUnits;
+      setChosenUnits(plannedSlotUnits ?? 1);
+    }
+  }, [plannedSlotUnits]);
 
   function toggleProfs(e: React.MouseEvent) {
     e.stopPropagation();
@@ -148,7 +160,7 @@ function ElectiveCourseRow({
             <input
               type="checkbox"
               checked={completed}
-              onChange={() => onToggle(course.course_number)}
+              onChange={() => onToggle(course.course_number, course.units)}
               className="h-3.5 w-3.5 accent-green-700 cursor-pointer"
               onClick={(e) => e.stopPropagation()}
             />
@@ -158,7 +170,7 @@ function ElectiveCourseRow({
             <input
               type="checkbox"
               checked={inProgress && !completed}
-              onChange={() => onToggleInProgress(course.course_number)}
+              onChange={() => onToggleInProgress(course.course_number, course.units)}
               className="h-3.5 w-3.5 accent-amber-600 cursor-pointer"
               onClick={(e) => e.stopPropagation()}
             />
@@ -180,8 +192,25 @@ function ElectiveCourseRow({
               IP
             </span>
           )}
+          {isCapped && (
+            <div className="flex gap-0.5" title="Units to count toward requirement">
+              {[1, 2, 3].map((u) => (
+                <button
+                  key={u}
+                  onClick={(e) => { e.stopPropagation(); setChosenUnits(u); }}
+                  className={`text-[9px] w-5 h-5 rounded border font-bold transition-colors ${
+                    chosenUnits === u
+                      ? "bg-blue-600 border-blue-600 text-white"
+                      : "border-gray-300 text-gray-400 hover:border-blue-400 hover:text-blue-600"
+                  }`}
+                >
+                  {u}
+                </button>
+              ))}
+            </div>
+          )}
           <button
-            onClick={(e) => { e.stopPropagation(); onPlan(course.course_number, course.units); }}
+            onClick={(e) => { e.stopPropagation(); onPlan(course.course_number, isCapped ? chosenUnits : course.units); }}
             className={`text-[10px] px-1.5 py-0.5 rounded border transition-colors ${
               planned
                 ? "border-blue-300 bg-blue-100 text-blue-800"
@@ -191,7 +220,7 @@ function ElectiveCourseRow({
           >
             {planned ? "Selected" : "Select"}
           </button>
-          <span className="text-xs text-gray-400">{course.units}u</span>
+          <span className="text-xs text-gray-400">{isCapped ? chosenUnits : course.units}u</span>
           <button onClick={toggleProfs}
                   className="text-[10px] text-gray-400 hover:text-gray-600 px-1.5 py-0.5 rounded border border-gray-200 hover:border-gray-300 transition-colors"
                   title="Show professors">
@@ -212,14 +241,25 @@ function ElectiveCourseRow({
 
 // ── Main panel ────────────────────────────────────────────────────────────────
 
+interface CappedCourseConfig {
+  numbers: Set<string>;
+  cap: number;
+  label: string;
+  totalAcrossSlots: number;
+}
+
 interface Props {
   course: Course | null;
   completedSet: Set<string>;
   inProgressSet: Set<string>;
   plannedElectiveCourses: Record<string, string>;
-  onToggleElectiveCourse: (placeholder: Course, courseNumber: string) => void;
-  onToggleElectiveCourseInProgress: (placeholder: Course, courseNumber: string) => void;
+  currentSlotId?: string;
+  plannedSlotUnits?: number;
+  cappedCourseConfig?: CappedCourseConfig;
+  onToggleElectiveCourse: (placeholder: Course, courseNumber: string, units: number) => void;
+  onToggleElectiveCourseInProgress: (placeholder: Course, courseNumber: string, units: number) => void;
   onPlanElectiveCourse: (placeholder: Course, courseNumber: string, units: number) => void;
+  onSetSlotUnits?: (courseId: string, units: number | null) => void;
   onClose: () => void;
 }
 
@@ -244,9 +284,13 @@ export default function ElectiveDetailPanel({
   completedSet,
   inProgressSet,
   plannedElectiveCourses,
+  currentSlotId,
+  plannedSlotUnits,
+  cappedCourseConfig,
   onToggleElectiveCourse,
   onToggleElectiveCourseInProgress,
   onPlanElectiveCourse,
+  onSetSlotUnits,
   onClose,
 }: Props) {
   const [area, setArea]         = useState<ElectiveArea | null>(null);
@@ -300,6 +344,22 @@ export default function ElectiveDetailPanel({
             <div className="flex-1 overflow-y-auto px-5 py-4">
               {area && <p className="text-xs text-gray-500 mb-3">{area.description}</p>}
 
+              {cappedCourseConfig && cappedCourseConfig.totalAcrossSlots > 0 && (
+                <div className={`mb-3 rounded px-3 py-2 text-xs border ${
+                  cappedCourseConfig.totalAcrossSlots > cappedCourseConfig.cap
+                    ? "bg-red-50 border-red-200 text-red-800"
+                    : "bg-amber-50 border-amber-200 text-amber-800"
+                }`}>
+                  {cappedCourseConfig.totalAcrossSlots > cappedCourseConfig.cap ? "⚠️" : "ℹ️"}{" "}
+                  <strong>{cappedCourseConfig.label}</strong> are limited to{" "}
+                  <strong>{cappedCourseConfig.cap} units</strong> combined toward Major Electives.
+                  {" "}Currently planned: <strong>{cappedCourseConfig.totalAcrossSlots}u</strong>.
+                  {cappedCourseConfig.totalAcrossSlots > cappedCourseConfig.cap && (
+                    <span> You may not be able to count all of these units — check with your advisor.</span>
+                  )}
+                </div>
+              )}
+
               <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">
                 Eligible Courses
                 {area && (
@@ -313,19 +373,31 @@ export default function ElectiveDetailPanel({
               {!loading && !area && (
                 <div className="text-xs text-gray-400">No course list available for this elective yet.</div>
               )}
-              {area?.courses.map((c) => (
-                <ElectiveCourseRow
-                  key={c.course_number}
-                  course={c}
-                  completed={hasElectiveStatus(c, completedSet)}
-                  inProgress={hasElectiveStatus(c, inProgressSet)}
-                  planned={plannedElectiveCourses[course.course_number] === c.course_number}
-                  onToggle={(courseNumber) => onToggleElectiveCourse(course, courseNumber)}
-                  onToggleInProgress={(courseNumber) => onToggleElectiveCourseInProgress(course, courseNumber)}
-                  onPlan={(courseNumber, units) => onPlanElectiveCourse(course, courseNumber, units)}
-                  onSelect={setSelected}
-                />
-              ))}
+              {area?.courses.map((c) => {
+                const isCapped = cappedCourseConfig?.numbers.has(c.course_number) ?? false;
+                const isPlanned = plannedElectiveCourses[course.course_number] === c.course_number;
+                return (
+                  <ElectiveCourseRow
+                    key={c.course_number}
+                    course={c}
+                    completed={hasElectiveStatus(c, completedSet)}
+                    inProgress={hasElectiveStatus(c, inProgressSet)}
+                    planned={isPlanned}
+                    isCapped={isCapped}
+                    plannedSlotUnits={isCapped && isPlanned ? plannedSlotUnits : undefined}
+                    onToggle={(courseNumber, units) => onToggleElectiveCourse(course, courseNumber, units)}
+                    onToggleInProgress={(courseNumber, units) => onToggleElectiveCourseInProgress(course, courseNumber, units)}
+                    onPlan={(courseNumber, units) => {
+                      const deselecting = plannedElectiveCourses[course.course_number] === courseNumber;
+                      onPlanElectiveCourse(course, courseNumber, units);
+                      if (isCapped && onSetSlotUnits && currentSlotId) {
+                        onSetSlotUnits(currentSlotId, deselecting ? null : units);
+                      }
+                    }}
+                    onSelect={setSelected}
+                  />
+                );
+              })}
             </div>
           )}
         </div>

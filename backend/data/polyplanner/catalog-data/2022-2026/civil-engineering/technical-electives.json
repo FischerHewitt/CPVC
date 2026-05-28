@@ -1,0 +1,320 @@
+[
+  {
+    "id": 604,
+    "name": "Approved Technical and Engineering Science Electives",
+    "units": 26,
+    "catalogName": "2022-2026",
+    "degreeName": "Civil Engineering",
+    "linkedTechnicalElectiveAreas": [],
+    "sections": [
+      {
+        "id": 109,
+        "name": "Approved Engineering Science Elective",
+        "requiredCount": null,
+        "minUnits": 2,
+        "maxUnits": 4,
+        "restriction": "",
+        "technicalElectives": [
+          {
+            "id": 1854,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CM280",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1855,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC231",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1856,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC234",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1857,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "EE201",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1858,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "IME314",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1859,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "IME315",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1860,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATH304",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1861,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATH344",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1862,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ME302",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          }
+        ]
+      },
+      {
+        "id": 108,
+        "name": "Approved Technical Electives",
+        "requiredCount": null,
+        "minUnits": 24,
+        "maxUnits": 24,
+        "restriction": "",
+        "technicalElectives": [
+          {
+            "id": 1831,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ARCE305",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1832,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ARCE372",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1833,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BIO421 or NR421 or SS421",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1834,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BMED404 or CE404 or ME404",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1835,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BRAE345",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1836,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BRAE447",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1837,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BRAE532",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1838,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CHEM341",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1839,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CM310",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1840,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CM334",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1841,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CRP420",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1842,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CRP435",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1843,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CRP404 or NR404",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1844,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CRP408 or NR408",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1845,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ERSC442",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1846,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ERSC416 or GEOL416",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1847,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ERSC417 or GEOL417",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1848,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "GEOL415",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1849,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "IME314 or IME315",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1850,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATE425",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1851,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATE450",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1852,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATH344",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1853,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "SS423",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          }
+        ]
+      }
+    ]
+  }
+]

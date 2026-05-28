@@ -1,0 +1,142 @@
+[
+  {
+    "id": 2390,
+    "sourceCourse": "ENGR2211",
+    "equivalentTo": "ME211 and CE204"
+  },
+  {
+    "id": 2391,
+    "sourceCourse": "CSC1032 or CSC1001 and CSC1001L",
+    "equivalentTo": "CSC101"
+  },
+  {
+    "id": 2392,
+    "sourceCourse": "EE2115 and EE2115L",
+    "equivalentTo": "EE201 and EE251"
+  },
+  {
+    "id": 2393,
+    "sourceCourse": "ENGR1110",
+    "equivalentTo": "ENGR110"
+  },
+  {
+    "id": 2394,
+    "sourceCourse": "IME1143 and IME1140",
+    "equivalentTo": "IME144"
+  },
+  {
+    "id": 2395,
+    "sourceCourse": "IME2315",
+    "equivalentTo": "IME314 or IME315"
+  },
+  {
+    "id": 2396,
+    "sourceCourse": "MATE1220",
+    "equivalentTo": "MATE210"
+  },
+  {
+    "id": 2397,
+    "sourceCourse": "MATE1215",
+    "equivalentTo": "MATE215"
+  },
+  {
+    "id": 2398,
+    "sourceCourse": "ENGR2212",
+    "equivalentTo": "ME212"
+  },
+  {
+    "id": 2399,
+    "sourceCourse": "ME3302",
+    "equivalentTo": "ME302"
+  },
+  {
+    "id": 2400,
+    "sourceCourse": "ME3341",
+    "equivalentTo": "ME341"
+  },
+  {
+    "id": 2401,
+    "sourceCourse": "ME3343",
+    "equivalentTo": "ME343"
+  },
+  {
+    "id": 2402,
+    "sourceCourse": "ENGR4460 and ENGR4461",
+    "equivalentTo": "ENGR459 and ENGR460 and ENGR461"
+  },
+  {
+    "id": 2403,
+    "sourceCourse": "GEOL2240",
+    "equivalentTo": "GEOL201"
+  },
+  {
+    "id": 2404,
+    "sourceCourse": "GEOL2241",
+    "equivalentTo": "GEOL241"
+  },
+  {
+    "id": 2405,
+    "sourceCourse": "GEOL3305",
+    "equivalentTo": "GEOL305"
+  },
+  {
+    "id": 2406,
+    "sourceCourse": "PHYS2211",
+    "equivalentTo": "PHYS211"
+  },
+  {
+    "id": 2407,
+    "sourceCourse": "PHYS3323",
+    "equivalentTo": "PHYS323"
+  },
+  {
+    "id": 2408,
+    "sourceCourse": "CHEM1120",
+    "equivalentTo": "CHEM124"
+  },
+  {
+    "id": 2409,
+    "sourceCourse": "CHEM1122",
+    "equivalentTo": "CHEM125"
+  },
+  {
+    "id": 2410,
+    "sourceCourse": "WGQS3350 or WGQS3351",
+    "equivalentTo": "ES350 or ES351"
+  },
+  {
+    "id": 2411,
+    "sourceCourse": "MATH1261 and MATH1262",
+    "equivalentTo": "MATH141 and MATH142 and MATH143"
+  },
+  {
+    "id": 2412,
+    "sourceCourse": "MATH2263",
+    "equivalentTo": "MATH241"
+  },
+  {
+    "id": 2413,
+    "sourceCourse": "MATH2341",
+    "equivalentTo": "MATH244"
+  },
+  {
+    "id": 2414,
+    "sourceCourse": "PHYS1141",
+    "equivalentTo": "PHYS141"
+  },
+  {
+    "id": 2415,
+    "sourceCourse": "PHYS1143",
+    "equivalentTo": "PHYS143"
+  },
+  {
+    "id": 2416,
+    "sourceCourse": "PHYS1141 and PHYS1143",
+    "equivalentTo": "PHYS141 and PHYS142 and PHYS143"
+  },
+  {
+    "id": 2417,
+    "sourceCourse": "STAT3210 or MATH3351 or STAT3310",
+    "equivalentTo": "STAT312 or MATH334 or STAT350"
+  }
+]

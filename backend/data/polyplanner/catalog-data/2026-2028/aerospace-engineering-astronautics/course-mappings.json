@@ -1,0 +1,292 @@
+[
+  {
+    "id": 2255,
+    "sourceCourse": "AERO121",
+    "equivalentTo": "AERO1121"
+  },
+  {
+    "id": 2256,
+    "sourceCourse": "ME212",
+    "equivalentTo": "AERO2220"
+  },
+  {
+    "id": 2257,
+    "sourceCourse": "AERO300",
+    "equivalentTo": "AERO3300"
+  },
+  {
+    "id": 2258,
+    "sourceCourse": "AERO320",
+    "equivalentTo": "AERO3320"
+  },
+  {
+    "id": 2259,
+    "sourceCourse": "AERO331",
+    "equivalentTo": "AERO3331"
+  },
+  {
+    "id": 2260,
+    "sourceCourse": "AERO431",
+    "equivalentTo": "AERO4431"
+  },
+  {
+    "id": 2261,
+    "sourceCourse": "AERO433",
+    "equivalentTo": "AERO4433"
+  },
+  {
+    "id": 2262,
+    "sourceCourse": "AERO460",
+    "equivalentTo": "AERO3460"
+  },
+  {
+    "id": 2263,
+    "sourceCourse": "AERO299 and AERO302 and AERO303",
+    "equivalentTo": "AERO3301 and AERO3302 and AERO3303"
+  },
+  {
+    "id": 2264,
+    "sourceCourse": "AERO299 and AERO302 and AERO3303",
+    "equivalentTo": "AERO3301 and AERO3302 and AERO3303"
+  },
+  {
+    "id": 2265,
+    "sourceCourse": "CHEM124",
+    "equivalentTo": "CHEM1120"
+  },
+  {
+    "id": 2266,
+    "sourceCourse": "IME144",
+    "equivalentTo": "IME1143 and IME1140"
+  },
+  {
+    "id": 2267,
+    "sourceCourse": "MATE210",
+    "equivalentTo": "MATE1220"
+  },
+  {
+    "id": 2268,
+    "sourceCourse": "MATH141 and MATH142 and MATH143",
+    "equivalentTo": "MATH1261 and MATH1262"
+  },
+  {
+    "id": 2269,
+    "sourceCourse": "MATH141 and MATH142 and MATH1262",
+    "equivalentTo": "MATH1261 and MATH1262"
+  },
+  {
+    "id": 2270,
+    "sourceCourse": "MATH141 and MATH141B and MATH1262",
+    "equivalentTo": "MATH1261 and MATH1262"
+  },
+  {
+    "id": 2271,
+    "sourceCourse": "MATH241",
+    "equivalentTo": "MATH2263"
+  },
+  {
+    "id": 2272,
+    "sourceCourse": "MATH244",
+    "equivalentTo": "MATH2341"
+  },
+  {
+    "id": 2273,
+    "sourceCourse": "ME211 and CE204",
+    "equivalentTo": "ENGR2211"
+  },
+  {
+    "id": 2274,
+    "sourceCourse": "PHYS141 and PHYS142 and PHYS143",
+    "equivalentTo": "PHYS1141 and PHYS1143"
+  },
+  {
+    "id": 2275,
+    "sourceCourse": "PHYS141 and PHYS142 and PHYS143C",
+    "equivalentTo": "PHYS1141 and PHYS1143"
+  },
+  {
+    "id": 2276,
+    "sourceCourse": "PHYS141 and PHYS143 and PHYS142C",
+    "equivalentTo": "PHYS1141 and PHYS1143"
+  },
+  {
+    "id": 2277,
+    "sourceCourse": "PHYS141 and PHYS142C and PHYS1143",
+    "equivalentTo": "PHYS1141 and PHYS1143"
+  },
+  {
+    "id": 2278,
+    "sourceCourse": "AERO402",
+    "equivalentTo": "AERO3304 and AERO4403 and AERO4402"
+  },
+  {
+    "id": 2279,
+    "sourceCourse": "AERO446",
+    "equivalentTo": "AERO4446"
+  },
+  {
+    "id": 2280,
+    "sourceCourse": "AERO447 and AERO448 and AERO449",
+    "equivalentTo": "AERO4463 and AERO4464"
+  },
+  {
+    "id": 2281,
+    "sourceCourse": "AERO351",
+    "equivalentTo": "AERO3351"
+  },
+  {
+    "id": 2282,
+    "sourceCourse": "AERO355 and AERO356",
+    "equivalentTo": "AERO4455 and AERO4456"
+  },
+  {
+    "id": 2283,
+    "sourceCourse": "AERO421",
+    "equivalentTo": "AERO4421"
+  },
+  {
+    "id": 2919,
+    "sourceCourse": "AERO1121",
+    "equivalentTo": "AERO121"
+  },
+  {
+    "id": 2920,
+    "sourceCourse": "AERO2220",
+    "equivalentTo": "ME212"
+  },
+  {
+    "id": 2921,
+    "sourceCourse": "AERO3300",
+    "equivalentTo": "AERO300"
+  },
+  {
+    "id": 2922,
+    "sourceCourse": "AERO3301 and AERO3302 and AERO3303",
+    "equivalentTo": "AERO299 and AERO302 and AERO303"
+  },
+  {
+    "id": 2923,
+    "sourceCourse": "AERO3301 and AERO3302 and AERO3303",
+    "equivalentTo": "AERO299 and AERO302 and AERO3303"
+  },
+  {
+    "id": 2924,
+    "sourceCourse": "AERO3304 and AERO4403 and AERO4402",
+    "equivalentTo": "AERO402"
+  },
+  {
+    "id": 2925,
+    "sourceCourse": "AERO3320",
+    "equivalentTo": "AERO320"
+  },
+  {
+    "id": 2926,
+    "sourceCourse": "AERO3331",
+    "equivalentTo": "AERO331"
+  },
+  {
+    "id": 2927,
+    "sourceCourse": "AERO3351",
+    "equivalentTo": "AERO351"
+  },
+  {
+    "id": 2928,
+    "sourceCourse": "AERO3460",
+    "equivalentTo": "AERO460"
+  },
+  {
+    "id": 2929,
+    "sourceCourse": "AERO4421",
+    "equivalentTo": "AERO421"
+  },
+  {
+    "id": 2930,
+    "sourceCourse": "AERO4431",
+    "equivalentTo": "AERO431"
+  },
+  {
+    "id": 2931,
+    "sourceCourse": "AERO4433",
+    "equivalentTo": "AERO433"
+  },
+  {
+    "id": 2932,
+    "sourceCourse": "AERO4446",
+    "equivalentTo": "AERO446"
+  },
+  {
+    "id": 2933,
+    "sourceCourse": "AERO4455 and AERO4456",
+    "equivalentTo": "AERO355 and AERO356"
+  },
+  {
+    "id": 2934,
+    "sourceCourse": "AERO4463 and AERO4464",
+    "equivalentTo": "AERO447 and AERO448 and AERO449"
+  },
+  {
+    "id": 2935,
+    "sourceCourse": "CHEM1120",
+    "equivalentTo": "CHEM124"
+  },
+  {
+    "id": 2936,
+    "sourceCourse": "ENGR2211",
+    "equivalentTo": "ME211 and CE204"
+  },
+  {
+    "id": 2937,
+    "sourceCourse": "IME1143 and IME1140",
+    "equivalentTo": "IME144"
+  },
+  {
+    "id": 2938,
+    "sourceCourse": "MATE1220",
+    "equivalentTo": "MATE210"
+  },
+  {
+    "id": 2939,
+    "sourceCourse": "MATH1261 and MATH1262",
+    "equivalentTo": "MATH141 and MATH142 and MATH143"
+  },
+  {
+    "id": 2940,
+    "sourceCourse": "MATH1261 and MATH1262",
+    "equivalentTo": "MATH141 and MATH142 and MATH1262"
+  },
+  {
+    "id": 2941,
+    "sourceCourse": "MATH1261 and MATH1262",
+    "equivalentTo": "MATH141 and MATH141B and MATH1262"
+  },
+  {
+    "id": 2942,
+    "sourceCourse": "MATH2263",
+    "equivalentTo": "MATH241"
+  },
+  {
+    "id": 2943,
+    "sourceCourse": "MATH2341",
+    "equivalentTo": "MATH244"
+  },
+  {
+    "id": 2944,
+    "sourceCourse": "PHYS1141 and PHYS1143",
+    "equivalentTo": "PHYS141 and PHYS142 and PHYS143"
+  },
+  {
+    "id": 2945,
+    "sourceCourse": "PHYS1141 and PHYS1143",
+    "equivalentTo": "PHYS141 and PHYS142 and PHYS143C"
+  },
+  {
+    "id": 2946,
+    "sourceCourse": "PHYS1141 and PHYS1143",
+    "equivalentTo": "PHYS141 and PHYS143 and PHYS142C"
+  },
+  {
+    "id": 2947,
+    "sourceCourse": "PHYS1141 and PHYS1143",
+    "equivalentTo": "PHYS141 and PHYS142C and PHYS1143"
+  }
+]

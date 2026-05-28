@@ -1,0 +1,167 @@
+[
+  {
+    "id": 2202,
+    "name": "Introduction to Materials Engineering",
+    "courseToMeet": "MATE1110"
+  },
+  {
+    "id": 2203,
+    "name": "Principles of Materials Engineering for Majors",
+    "courseToMeet": "MATE1210"
+  },
+  {
+    "id": 2204,
+    "name": "Materials Laboratory I",
+    "courseToMeet": "MATE1215"
+  },
+  {
+    "id": 2205,
+    "name": "Materials Microscopy Laboratory",
+    "courseToMeet": "MATE2225"
+  },
+  {
+    "id": 2206,
+    "name": "Materials Spectroscopy Laboratory",
+    "courseToMeet": "MATE2235"
+  },
+  {
+    "id": 2207,
+    "name": "Engineering Analysis and Technical Communication",
+    "courseToMeet": "MATE2245"
+  },
+  {
+    "id": 2208,
+    "name": "Materials Thermodynamics and Kinetics",
+    "courseToMeet": "MATE2280"
+  },
+  {
+    "id": 2209,
+    "name": "Materials Ethics, Diversity, and Society",
+    "courseToMeet": "MATE3232"
+  },
+  {
+    "id": 2210,
+    "name": "Polymeric Material Systems",
+    "courseToMeet": "MATE3310"
+  },
+  {
+    "id": 2211,
+    "name": "Electronic Materials Systems",
+    "courseToMeet": "MATE3340"
+  },
+  {
+    "id": 2212,
+    "name": "Metallurgical Materials Systems",
+    "courseToMeet": "MATE3360"
+  },
+  {
+    "id": 2213,
+    "name": "Advanced Materials Characterization",
+    "courseToMeet": "MATE3401"
+  },
+  {
+    "id": 2214,
+    "name": "Computational Materials Engineering",
+    "courseToMeet": "MATE3403"
+  },
+  {
+    "id": 2215,
+    "name": "Composite Material Systems",
+    "courseToMeet": "MATE3480"
+  },
+  {
+    "id": 2216,
+    "name": "Materials Selection for the Life Cycle",
+    "courseToMeet": "MATE4300"
+  },
+  {
+    "id": 2217,
+    "name": "Ceramic and Glass Materials Systems",
+    "courseToMeet": "MATE4422"
+  },
+  {
+    "id": 2218,
+    "name": "Senior Project I",
+    "courseToMeet": "MATE4461"
+  },
+  {
+    "id": 2219,
+    "name": "Senior Project II",
+    "courseToMeet": "MATE4462"
+  },
+  {
+    "id": 2220,
+    "name": "Design Elective",
+    "courseToMeet": "IME3326 or ME3234"
+  },
+  {
+    "id": 2787,
+    "name": "Fundamentals of Chemical Structure and Properties",
+    "courseToMeet": "CHEM 1120"
+  },
+  {
+    "id": 2788,
+    "name": "Fundamentals of Chemical Reactivity 4 or Organic Chemistry: Fundamentals and Applications",
+    "courseToMeet": "CHEM1122 or CHEM2240 "
+  },
+  {
+    "id": 2791,
+    "name": "Critical Thinking for Technical Writers",
+    "courseToMeet": "ENGL1148"
+  },
+  {
+    "id": 2792,
+    "name": "Introduction to Mechanics",
+    "courseToMeet": "ENGR2211"
+  },
+  {
+    "id": 2793,
+    "name": "Technical Graphics Communication for Design and Manufacturing",
+    "courseToMeet": "IME1140"
+  },
+  {
+    "id": 2794,
+    "name": "Materials Joining",
+    "courseToMeet": "IME1142"
+  },
+  {
+    "id": 2795,
+    "name": "Calculus I",
+    "courseToMeet": "MATH1261"
+  },
+  {
+    "id": 2796,
+    "name": "Calculus II",
+    "courseToMeet": "MATH1262"
+  },
+  {
+    "id": 2797,
+    "name": "Linear Analysis",
+    "courseToMeet": "MATH2341"
+  },
+  {
+    "id": 2798,
+    "name": "General Physics I",
+    "courseToMeet": "PHYS1141"
+  },
+  {
+    "id": 2799,
+    "name": "General Physics II",
+    "courseToMeet": "PHYS1143"
+  },
+  {
+    "id": 2800,
+    "name": "Engineering Statistics",
+    "courseToMeet": "STAT3210"
+  },
+  {
+    "id": 2789,
+    "name": "Electric Circuits for Non-Majors",
+    "courseToMeet": "EE2201"
+  },
+  {
+    "id": 2790,
+    "name": "Electric Circuit Analysis Laboratory I",
+    "courseToMeet": "EE2241"
+  }
+]

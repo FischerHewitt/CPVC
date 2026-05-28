@@ -1,0 +1,172 @@
+[
+  {
+    "id": 2102,
+    "name": "Computer Engineering Orientation",
+    "courseToMeet": "CPE100"
+  },
+  {
+    "id": 2103,
+    "name": "Fundamentals of Computer Science",
+    "courseToMeet": "CSC101 or CPE101"
+  },
+  {
+    "id": 2104,
+    "name": "Introduction to Computing",
+    "courseToMeet": "CSC123 or CPE123"
+  },
+  {
+    "id": 2105,
+    "name": "Digital Design",
+    "courseToMeet": "CPE133 or EE133"
+  },
+  {
+    "id": 2106,
+    "name": "Data Structures",
+    "courseToMeet": "CSC202 or CPE202"
+  },
+  {
+    "id": 2107,
+    "name": "Project-Based Object-Oriented Programming and Design",
+    "courseToMeet": "CSC203 or CPE203"
+  },
+  {
+    "id": 2108,
+    "name": "Computer Design and Assembly Language Programming",
+    "courseToMeet": "CPE233 or EE233"
+  },
+  {
+    "id": 2109,
+    "name": "Computer Architecture Requirement",
+    "courseToMeet": "CPE315 or CPE333"
+  },
+  {
+    "id": 2110,
+    "name": "Microcontroller Systems Requirement",
+    "courseToMeet": "CPE329 or CPE316"
+  },
+  {
+    "id": 2111,
+    "name": "Systems Programming",
+    "courseToMeet": "CSC357 or CPE357"
+  },
+  {
+    "id": 2112,
+    "name": "Capstone I",
+    "courseToMeet": "CPE350"
+  },
+  {
+    "id": 2113,
+    "name": "Capstone II",
+    "courseToMeet": "CPE450"
+  },
+  {
+    "id": 2114,
+    "name": "Introduction to Operating Systems",
+    "courseToMeet": "CSC453 or CPE453"
+  },
+  {
+    "id": 2115,
+    "name": "Senior Project Requirement",
+    "courseToMeet": "(CPE461 and CPE462) or (CSC497 and CSC498)"
+  },
+  {
+    "id": 2116,
+    "name": "Introduction to Computer Networks",
+    "courseToMeet": "CPE464"
+  },
+  {
+    "id": 2117,
+    "name": "Discrete Structures",
+    "courseToMeet": "CSC248"
+  },
+  {
+    "id": 2118,
+    "name": "Signals and Systems Requirement",
+    "courseToMeet": "(CPE327 and CPE367) or EE228"
+  },
+  {
+    "id": 2119,
+    "name": "Computer Security Requirement",
+    "courseToMeet": "CPE321 or CPE422 or CPE426"
+  },
+  {
+    "id": 2120,
+    "name": "Electrical and Electronic Circuits I with Lab",
+    "courseToMeet": "EE115 and EE145"
+  },
+  {
+    "id": 2121,
+    "name": "Electrical and Electronic Circuits II with Lab",
+    "courseToMeet": "EE215 and EE245"
+  },
+  {
+    "id": 2122,
+    "name": "Electrical and Electronic Circuits III",
+    "courseToMeet": "EE315"
+  },
+  {
+    "id": 2123,
+    "name": "General Chemistry I",
+    "courseToMeet": "CHEM124"
+  },
+  {
+    "id": 2124,
+    "name": "Philosophical Classics Requirement",
+    "courseToMeet": "PHIL230 or PHIL231"
+  },
+  {
+    "id": 2125,
+    "name": "Upper-Division Ethics Requirement",
+    "courseToMeet": "PHIL323 or PHIL327 or PHIL328 or PHIL339 or PHIL340"
+  },
+  {
+    "id": 2126,
+    "name": "Gender, Race, Culture Requirement",
+    "courseToMeet": "ES350 or ES351"
+  },
+  {
+    "id": 2127,
+    "name": "Calculus I",
+    "courseToMeet": "MATH141"
+  },
+  {
+    "id": 2128,
+    "name": "Calculus II",
+    "courseToMeet": "MATH142"
+  },
+  {
+    "id": 2129,
+    "name": "Calculus III",
+    "courseToMeet": "MATH143"
+  },
+  {
+    "id": 2130,
+    "name": "Calculus IV",
+    "courseToMeet": "MATH241"
+  },
+  {
+    "id": 2131,
+    "name": "Linear Analysis I",
+    "courseToMeet": "MATH244"
+  },
+  {
+    "id": 2132,
+    "name": "General Physics I",
+    "courseToMeet": "PHYS141"
+  },
+  {
+    "id": 2133,
+    "name": "General Physics II",
+    "courseToMeet": "PHYS142"
+  },
+  {
+    "id": 2134,
+    "name": "General Physics III",
+    "courseToMeet": "PHYS143"
+  },
+  {
+    "id": 2135,
+    "name": "Probability and Random Processes for Engineers",
+    "courseToMeet": "STAT350"
+  }
+]

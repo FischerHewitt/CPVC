@@ -1,15 +1,5 @@
-IDEAS
+IDEAS. Plan. Build. Learn.
 =====
-
-Home Page Redesign
-------------------
-The current landing page is functional but minimal — it goes straight to the
-upload form. A proper marketing/home page would include a hero section with
-a product screenshot or demo animation, a feature highlights section, a
-"who this is for" blurb (incoming Cal Poly students, current students mapping
-out remaining requirements, students considering a major change), and social
-proof (e.g. number of majors supported). The upload form could live below the
-fold or on a separate /start route. Needs design mockup before implementation.
 
 Compare Major
 -------------
@@ -28,9 +18,148 @@ distinct tile color or badge, or display a "N courses from [concentration]
 list" summary directly on the placeholder tile so the selected concentration
 is more obviously reflected in the grid.
 
+Tile Redesign
+--------------
+Maybe redesign the course tiles a little so planned, completed, in-progress,
+GE, elective, and free-elective states are easier to scan at a glance. Ideas:
+keep the requirement name prominent, show selected/planned courses as a
+secondary line, use consistent status color accents (blue planned, green done,
+orange in progress), and reduce visual clutter from small badges/checkboxes
+without losing quick controls.
+
 Minor
 -----
 Add support for minors alongside a primary major. A minor would show up as
 an additional set of course tiles (possibly a separate row group or overlay)
 and track completion independently. Would need minor data added to the
 backend similar to how concentrations work.
+
+Free Elective Course Picker
+----------------------------
+Currently free/unrestricted elective tiles have no elective_key and show no
+course options in the Manual Course Checklist — students can check them off
+but can't record which specific course they took or plan to take. A future
+improvement would let students search and attach any catalog course to a free
+elective slot (not restricted to a predefined list). The attached course would
+show its number, title, and units on the tile, and count toward the unit total.
+This is distinct from the existing elective picker which draws from a fixed
+catalog-backed list.
+
+Manual Tile / Custom Course Override
+--------------------------------------
+Let students add a course to any slot manually, and let them override the
+course shown on any elective or GE tile if the right class doesn't appear in
+the picker. Three related sub-features:
+
+  1. Manual tile: a button to add a custom tile to the flowchart (any term,
+     any category). The student types the course number, title, and units.
+     Useful for transfer credit, AP/IB credit, or courses the catalog parser
+     missed. The tile would show a small "custom" badge and count toward the
+     unit total.
+
+  2. Elective override: if a student's course doesn't appear in the elective
+     picker list (e.g. a newer course not yet in the static list, or a
+     department-approved substitution), they can type in a course number and
+     attach it to that slot directly instead of scrolling through options.
+     The override behaves like a normal selection — marks the slot done and
+     shows the course number on the tile.
+
+  3. In-picker search: a search/filter box inside the elective and GE picker
+     panels so students can type a course number or keyword and jump to the
+     matching option rather than scrolling a long list. Would also help on
+     large dynamic buckets (e.g. SPAN language/culture electives with 70+
+     options). Implementation: client-side filter over the already-loaded
+     picker options — no additional API call needed.
+
+
+Graduation Requirements Checker
+---------------------------------
+When a student has planned or completed courses, validate that all graduation
+requirements are satisfied — not just unit counts, but structural rules like
+"at least X upper-division units," "minimum Y units in the major department,"
+"upper-division GE completed," etc. Could surface as a checklist panel or
+warning banner on the flowchart page. The flowchart already tracks categories
+(major/support/GE/concentration) and completion status, so many checks could
+be done client-side. Would need catalog-specific thresholds stored per major
+(e.g. "60 units minimum in upper-division courses for graduation").
+
+Notes-Based Warnings
+----------------------
+Some catalog footnotes describe hard unit caps that affect multiple courses
+simultaneously — e.g. "Total combined elective credit in PHYS 4400, PHYS 4404,
+ASTR 4400, ASTR 4404, GEOL 4400, and GEOL 4404 limited to 4 units." Currently
+these are surfaced only as static Tips panel text. A future improvement would
+parse the notes for machine-readable rules (list of course numbers + unit cap)
+and actively warn the student when their checked/planned courses would exceed
+the cap. Warnings could appear as a banner on the flowchart page or an inline
+alert in the Tips panel when the relevant courses are marked complete.
+Implementation would require a structured "warnings" field on flowchart notes
+entries (alongside the existing title/items format) that the frontend can
+evaluate against the current courseStatuses map.
+
+Quarter-to-Semester Course Mapping View
+-----------------------------------------
+Students who took classes under the old quarter system (pre-2026) think in
+quarter course numbers (e.g. CSC 101, MATH 141). This idea would let a user
+stay in the quarter catalog mentally — enter a quarter course number and see
+which semester course(s) it maps to, or browse the flowchart with quarter
+numbers shown alongside semester numbers on each tile. Essentially a
+reverse-lookup mode: "I took CSC 101 — what does that count as now?"
+The backend already stores quarter_equivalents on every course tile, so the
+mapping data exists. Implementation could be a toggle on the flowchart page
+that swaps the displayed course number to its quarter equivalent, or a
+standalone lookup tool where you paste a quarter transcript and it shows the
+semester equivalents side by side.
+
+AI Agents
+----------
+A suite of conversational agents that guide students through planning. Each agent
+has a focused role and they can hand off context to each other.
+
+  Schedule Builder Agent
+  A student tells the agent their major, minor (if any), and how many units they
+  want per quarter. The agent generates a term-by-term schedule that satisfies
+  prerequisites, respects unit load preferences, and flags conflicts (e.g. a
+  course with a prereq not yet completed by the proposed term). It could output
+  a drag-and-drop-ready schedule or patch the flowchart grid directly. Would
+  consume the existing flowchart + concentration data and prereq graph.
+
+  Intake / Advising Agent
+  A conversational agent that asks the student a short series of questions (year,
+  completed courses, intended graduation quarter, part-time vs. full-time, any
+  holds or constraints) and builds a structured profile. That profile feeds into
+  the Schedule Builder Agent and the Interest Recommender Agent below so they
+  have context without the student having to repeat themselves. Think of it as
+  the "onboarding" layer before any planning starts.
+
+  PolyRatings Scraper Agent
+  Scrapes PolyRatings (or a similar source) to surface the highest-rated
+  instructors for each course in a student's planned schedule. For elective
+  slots it could go further — compare all eligible courses in the elective pool
+  and rank them by average instructor rating, workload, and grade distribution
+  so the student can pick the best fit for their schedule and study style.
+  Useful both for confirming a planned course and for choosing between elective
+  options.
+
+  Interest-Based Course Recommender Agent
+  The student describes what they enjoy ("I liked my stats class, I'm into
+  sustainability, I want something hands-on") and the agent recommends 3–5
+  elective or GE courses from the catalog that match those interests. Each
+  recommendation includes a short plain-English description of what the course
+  covers, how much work it typically is, and why it fits the stated interests.
+  Could pull descriptions from the catalog and workload signals from PolyRatings.
+  Helps students fill free elective and GE slots with courses they'll actually
+  care about rather than picking blindly.
+
+done
+======
+- Home Page Redesign
+- Better Search / Course Lookup
+------------------------------
+The current UI has no global search. A search tool would let students type a
+course number or keyword (e.g. "CSC 3", "algorithms", "writing") and see
+matching tiles highlighted or listed — useful for quickly locating a specific
+course across the full flowchart or checking whether a course appears anywhere
+in the plan. Could also power the free elective picker above. Implementation
+options: client-side fuzzy search over the loaded flowchart JSON, or a
+lightweight backend endpoint that searches across all majors.

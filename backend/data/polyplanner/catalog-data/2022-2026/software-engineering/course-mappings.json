@@ -1,0 +1,252 @@
+[
+  {
+    "id": 1834,
+    "sourceCourse": "CSC1001 and CSC1001L",
+    "equivalentTo": "CSC101"
+  },
+  {
+    "id": 1835,
+    "sourceCourse": "CSC2001 and CSC2001L",
+    "equivalentTo": "CSC202"
+  },
+  {
+    "id": 1836,
+    "sourceCourse": "CPE2300",
+    "equivalentTo": "CSC225"
+  },
+  {
+    "id": 1837,
+    "sourceCourse": "MATH2031",
+    "equivalentTo": "CSC248"
+  },
+  {
+    "id": 1838,
+    "sourceCourse": "PHIL3323",
+    "equivalentTo": "CSC300"
+  },
+  {
+    "id": 1839,
+    "sourceCourse": "PHIL3323",
+    "equivalentTo": "PHIL323"
+  },
+  {
+    "id": 1840,
+    "sourceCourse": "CSC3001",
+    "equivalentTo": "CSC203 and CSC305"
+  },
+  {
+    "id": 1841,
+    "sourceCourse": "CSC3100",
+    "equivalentTo": "CSC308 and CSC309"
+  },
+  {
+    "id": 1842,
+    "sourceCourse": "CSC308 and CSC3100",
+    "equivalentTo": "CSC308 and CSC309"
+  },
+  {
+    "id": 1843,
+    "sourceCourse": "CSC2050",
+    "equivalentTo": "CSC357"
+  },
+  {
+    "id": 1844,
+    "sourceCourse": "CSC3660",
+    "equivalentTo": "CSC365"
+  },
+  {
+    "id": 1845,
+    "sourceCourse": "CSC3665",
+    "equivalentTo": "CSC365"
+  },
+  {
+    "id": 1846,
+    "sourceCourse": "CSC3300",
+    "equivalentTo": "CSC430"
+  },
+  {
+    "id": 1847,
+    "sourceCourse": "CSC4184",
+    "equivalentTo": "CSC484"
+  },
+  {
+    "id": 1848,
+    "sourceCourse": "CSC4160 and CSC4161",
+    "equivalentTo": "CSC402 and CSC405 and CSC406"
+  },
+  {
+    "id": 1849,
+    "sourceCourse": "CSC402 and CSC4160 and CSC4161",
+    "equivalentTo": "CSC402 and CSC405 and CSC406"
+  },
+  {
+    "id": 1850,
+    "sourceCourse": "CSC402 and CSC405 and CSC4161",
+    "equivalentTo": "CSC402 and CSC405 and CSC406"
+  },
+  {
+    "id": 1851,
+    "sourceCourse": "CSC3449",
+    "equivalentTo": "CSC349"
+  },
+  {
+    "id": 1852,
+    "sourceCourse": "IME2315",
+    "equivalentTo": "IME314"
+  },
+  {
+    "id": 1853,
+    "sourceCourse": "IME2315",
+    "equivalentTo": "IME315"
+  },
+  {
+    "id": 1854,
+    "sourceCourse": "MATH1261 and MATH1262",
+    "equivalentTo": "MATH141 and MATH142 and MATH143"
+  },
+  {
+    "id": 1855,
+    "sourceCourse": "MATH1264 and MATH1265",
+    "equivalentTo": "MATH141 and MATH142 and MATH143"
+  },
+  {
+    "id": 1856,
+    "sourceCourse": "MATH2263",
+    "equivalentTo": "MATH241"
+  },
+  {
+    "id": 1857,
+    "sourceCourse": "MATH2341",
+    "equivalentTo": "MATH244"
+  },
+  {
+    "id": 1858,
+    "sourceCourse": "MATH1151",
+    "equivalentTo": "MATH244"
+  },
+  {
+    "id": 1859,
+    "sourceCourse": "COMS2217",
+    "equivalentTo": "COMS217"
+  },
+  {
+    "id": 1860,
+    "sourceCourse": "COMS2217",
+    "equivalentTo": "PSY350"
+  },
+  {
+    "id": 1861,
+    "sourceCourse": "PSY3350",
+    "equivalentTo": "COMS217"
+  },
+  {
+    "id": 1862,
+    "sourceCourse": "PSY3350",
+    "equivalentTo": "PSY350"
+  },
+  {
+    "id": 1863,
+    "sourceCourse": "STAT3210",
+    "equivalentTo": "STAT312"
+  },
+  {
+    "id": 1864,
+    "sourceCourse": "PHYS1141",
+    "equivalentTo": "PHYS141"
+  },
+  {
+    "id": 1865,
+    "sourceCourse": "PHYS1143",
+    "equivalentTo": "PHYS143"
+  },
+  {
+    "id": 1866,
+    "sourceCourse": "PHYS1141 and PHYS1143",
+    "equivalentTo": "PHYS141 and PHYS142 and PHYS143"
+  },
+  {
+    "id": 1867,
+    "sourceCourse": "CHEM1120",
+    "equivalentTo": "CHEM124"
+  },
+  {
+    "id": 1868,
+    "sourceCourse": "CHEM1122",
+    "equivalentTo": "CHEM125"
+  },
+  {
+    "id": 1869,
+    "sourceCourse": "CHEM1120 and CHEM1122",
+    "equivalentTo": "CHEM124 and CHEM125 and CHEM126"
+  },
+  {
+    "id": 1870,
+    "sourceCourse": "MATH3051",
+    "equivalentTo": "MATH248"
+  },
+  {
+    "id": 1871,
+    "sourceCourse": "MATH3051",
+    "equivalentTo": "MATH334"
+  },
+  {
+    "id": 1872,
+    "sourceCourse": "MATH3051",
+    "equivalentTo": "MATH335"
+  },
+  {
+    "id": 1873,
+    "sourceCourse": "MATH3051",
+    "equivalentTo": "MATH451"
+  },
+  {
+    "id": 1874,
+    "sourceCourse": "MATH3055",
+    "equivalentTo": "MATH248"
+  },
+  {
+    "id": 1875,
+    "sourceCourse": "MATH3055",
+    "equivalentTo": "MATH334"
+  },
+  {
+    "id": 1876,
+    "sourceCourse": "MATH3055",
+    "equivalentTo": "MATH335"
+  },
+  {
+    "id": 1877,
+    "sourceCourse": "MATH3055",
+    "equivalentTo": "MATH451"
+  },
+  {
+    "id": 1878,
+    "sourceCourse": "MATH3651",
+    "equivalentTo": "MATH248"
+  },
+  {
+    "id": 1879,
+    "sourceCourse": "MATH3651",
+    "equivalentTo": "MATH334"
+  },
+  {
+    "id": 1880,
+    "sourceCourse": "MATH3651",
+    "equivalentTo": "MATH335"
+  },
+  {
+    "id": 1881,
+    "sourceCourse": "MATH3651",
+    "equivalentTo": "MATH451"
+  },
+  {
+    "id": 1882,
+    "sourceCourse": "PSY2201",
+    "equivalentTo": "PSY201"
+  },
+  {
+    "id": 1883,
+    "sourceCourse": "PSY2201",
+    "equivalentTo": "PSY202"
+  }
+]

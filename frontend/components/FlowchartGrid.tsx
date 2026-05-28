@@ -2,7 +2,8 @@
 
 import { useMemo, useState } from "react";
 import type { Course, CourseStatus, Flowchart, GEAreaMap, TranscriptSession } from "@/lib/types";
-import { norm, toNormalizedSet, hasAnyCourseNumber, isFreeElective, getCourseStatus, expandSlashCourseNumber } from "@/lib/course-status";
+import { norm, toNormalizedSet, hasAnyCourseNumber, isFreeElective, getCourseStatus, expandSlashCourseNumber, courseCompletionCandidates } from "@/lib/course-status";
+import { gePlaceholderDisplayData, withPlannedGECourses } from "@/lib/ge-placeholder";
 import CourseCard, { CATEGORY_STYLES } from "./CourseCard";
 
 interface Props {
@@ -10,6 +11,7 @@ interface Props {
   session: TranscriptSession;
   inferred: string[];
   geAreaMap: GEAreaMap;
+  highlightedCourseIds?: Set<string>;
   onCourseClick: (course: Course, status: CourseStatus) => void;
   onToggleCourseCompleted: (course: Course) => void;
   onToggleCourseInProgress: (course: Course) => void;
@@ -46,14 +48,70 @@ const CATEGORY_LEGEND = [
   { label: "Major",         ...CATEGORY_STYLES.major },
   { label: "Support",       ...CATEGORY_STYLES.support },
   { label: "Concentration", ...CATEGORY_STYLES.concentration },
+  { label: "Free Elective", ...CATEGORY_STYLES.free },
   { label: "Gen Ed",        ...CATEGORY_STYLES.ge },
 ];
+
+type ProgressCounts = {
+  completed: number;
+  inferred: number;
+  inProgress: number;
+  total: number;
+};
+
+function progressWidth(count: number, total: number) {
+  return total > 0 ? `${(count / total) * 100}%` : "0%";
+}
+
+function ProgressBar({
+  label,
+  counts,
+  colors,
+}: {
+  label: string;
+  counts: ProgressCounts;
+  colors: { label: string; completed: string; inferred: string; inProgress: string };
+}) {
+  const earned = counts.completed + counts.inferred;
+  return (
+    <div>
+      <div className="flex justify-between text-xs mb-1">
+        <span className="font-semibold" style={{ color: colors.label }}>{label}</span>
+        <span className="flex items-center gap-1.5 text-gray-500">
+          <span>{earned}/{counts.total}</span>
+          {counts.inProgress > 0 && (
+            <span className="font-semibold opacity-80" style={{ color: colors.inProgress }}>+{counts.inProgress} IP</span>
+          )}
+        </span>
+      </div>
+      <div className="bg-gray-200 rounded-full h-2 overflow-hidden flex">
+        <div className="h-full transition-all" style={{ width: progressWidth(counts.completed, counts.total), background: colors.completed }} />
+        <div className="h-full transition-all" style={{ width: progressWidth(counts.inferred, counts.total), background: colors.inferred }} />
+        <div className="h-full transition-all" style={{ width: progressWidth(counts.inProgress, counts.total), background: colors.inProgress }} />
+      </div>
+    </div>
+  );
+}
+
+export function countCourseProgress(courses: Course[], statuses: Map<string, CourseStatus>): ProgressCounts {
+  let completed = 0;
+  let inferred = 0;
+  let inProgress = 0;
+  for (const course of courses) {
+    const status = statuses.get(course.id);
+    if (status === "completed") completed++;
+    else if (status === "inferred") inferred++;
+    else if (status === "in_progress") inProgress++;
+  }
+  return { completed, inferred, inProgress, total: courses.length };
+}
 
 export default function FlowchartGrid({
   flowchart,
   session,
   inferred,
   geAreaMap,
+  highlightedCourseIds,
   onCourseClick,
   onToggleCourseCompleted,
   onToggleCourseInProgress,
@@ -64,6 +122,9 @@ export default function FlowchartGrid({
   const inferredNums   = useMemo(() => toNormalizedSet(inferred), [inferred]);
   const knownNums      = useMemo(() => new Set([...completedNums, ...inferredNums, ...inProgressNums]), [completedNums, inferredNums, inProgressNums]);
   const positions = useMemo(() => session.coursePositions ?? {}, [session.coursePositions]);
+  const plannedGECourses = useMemo(() => session.plannedGECourses ?? {}, [session.plannedGECourses]);
+  const plannedFreeElectiveCourses = useMemo(() => session.plannedFreeElectiveCourses ?? {}, [session.plannedFreeElectiveCourses]);
+  const effectiveGEAreaMap = useMemo(() => withPlannedGECourses(geAreaMap, plannedGECourses), [geAreaMap, plannedGECourses]);
   const grid = useMemo(() => buildGrid(flowchart.courses, positions), [flowchart.courses, positions]);
   const courseLookup = useMemo(() => {
     const lookup = new Map<string, Course>();
@@ -83,16 +144,20 @@ export default function FlowchartGrid({
   const courseStatuses = useMemo(
     () =>
       new Map(
-        flowchart.courses.map((course) => [
-          course.id,
-          getCourseStatus(course, completedNums, inProgressNums, inferredNums, knownNums, courseLookup, geAreaMap),
-        ])
+        flowchart.courses.map((course) => {
+          const freeSelection = isFreeElective(course) ? plannedFreeElectiveCourses[course.id] : undefined;
+          const status = freeSelection?.status === "completed"
+            ? "completed"
+            : freeSelection?.status === "in_progress"
+              ? "in_progress"
+              : getCourseStatus(course, completedNums, inProgressNums, inferredNums, knownNums, courseLookup, effectiveGEAreaMap);
+          return [course.id, status];
+        })
       ),
-    [flowchart.courses, completedNums, inProgressNums, inferredNums, knownNums, courseLookup, geAreaMap]
+    [flowchart.courses, completedNums, inProgressNums, inferredNums, knownNums, courseLookup, effectiveGEAreaMap, plannedFreeElectiveCourses]
   );
 
   // ── Memoized per-course display data (checked, plannedCourseNumber, etc.) ──
-  const plannedGECourses = useMemo(() => session.plannedGECourses ?? {}, [session.plannedGECourses]);
   const courseDisplayData = useMemo(() => {
     const map = new Map<string, {
       checked: boolean;
@@ -101,61 +166,53 @@ export default function FlowchartGrid({
       activeCourseNumber: string | undefined;
     }>();
     for (const course of flowchart.courses) {
-      const allNums = [course.course_number, ...course.quarter_equivalents];
       if (course.is_placeholder && course.category === "ge") {
-        const approved = [
-          course.course_number,
-          ...course.quarter_equivalents,
-          ...(geAreaMap[course.course_number] ?? []),
-        ];
+        map.set(course.id, gePlaceholderDisplayData(course, completedNums, inProgressNums, effectiveGEAreaMap, plannedGECourses));
+      } else if (course.is_placeholder && isFreeElective(course)) {
+        const freeSelection = plannedFreeElectiveCourses[course.id];
         map.set(course.id, {
-          checked: hasAnyCourseNumber(completedNums, approved),
-          inProgressChecked: hasAnyCourseNumber(inProgressNums, approved),
-          plannedCourseNumber: plannedGECourses[course.course_number],
-          activeCourseNumber:
-            (geAreaMap[course.course_number] ?? []).find((c) => completedNums.has(norm(c)) || inProgressNums.has(norm(c)))
-            ?? course.quarter_equivalents.find((c) => completedNums.has(norm(c)) || inProgressNums.has(norm(c))),
+          checked: freeSelection?.status === "completed",
+          inProgressChecked: freeSelection?.status === "in_progress",
+          plannedCourseNumber: freeSelection?.status === "planned" ? freeSelection.course_number : undefined,
+          activeCourseNumber: freeSelection?.status !== "planned" ? freeSelection?.course_number : undefined,
         });
       } else if (course.is_placeholder && !isFreeElective(course)) {
         const active = course.quarter_equivalents.find((c) => completedNums.has(norm(c)) || inProgressNums.has(norm(c)));
         map.set(course.id, {
-          checked: hasAnyCourseNumber(completedNums, allNums),
-          inProgressChecked: hasAnyCourseNumber(inProgressNums, allNums),
+          checked: hasAnyCourseNumber(completedNums, courseCompletionCandidates(course)),
+          inProgressChecked: hasAnyCourseNumber(inProgressNums, courseCompletionCandidates(course)),
           plannedCourseNumber: plannedGECourses[course.course_number],
           activeCourseNumber: plannedGECourses[course.course_number] ?? active,
         });
       } else {
         map.set(course.id, {
-          checked: hasAnyCourseNumber(completedNums, allNums),
-          inProgressChecked: hasAnyCourseNumber(inProgressNums, allNums),
+          checked: hasAnyCourseNumber(completedNums, courseCompletionCandidates(course)),
+          inProgressChecked: hasAnyCourseNumber(inProgressNums, courseCompletionCandidates(course)),
           plannedCourseNumber: undefined,
           activeCourseNumber: undefined,
         });
       }
     }
     return map;
-  }, [flowchart.courses, completedNums, inProgressNums, geAreaMap, plannedGECourses]);
+  }, [flowchart.courses, completedNums, inProgressNums, effectiveGEAreaMap, plannedGECourses, plannedFreeElectiveCourses]);
 
-  // ── Per-category progress ──────────────────────────────────────────────────
-  function isCompletedOrInferred(c: Course) {
-    const nums = [c.course_number, ...c.quarter_equivalents];
-    return nums.some((n) => completedNums.has(norm(n)) || inferredNums.has(norm(n)));
-  }
-  function isDone(c: Course) {
-    const nums = [c.course_number, ...c.quarter_equivalents];
-    return nums.some((n) => completedNums.has(norm(n)));
-  }
-
-  const majorCourses   = useMemo(() => flowchart.courses.filter((c) => c.category === "major"),   [flowchart.courses]);
-  const supportCourses = useMemo(() => flowchart.courses.filter((c) => c.category === "support"), [flowchart.courses]);
-  const gePlaceholders = useMemo(() => flowchart.courses.filter((c) => c.category === "ge" && c.is_placeholder), [flowchart.courses]);
+  const requiredCourses = useMemo(() => flowchart.courses.filter((c) => c.is_required !== false), [flowchart.courses]);
+  const majorCourses   = useMemo(() => requiredCourses.filter((c) => c.category === "major"),   [requiredCourses]);
+  const supportCourses = useMemo(() => requiredCourses.filter((c) => c.category === "support"), [requiredCourses]);
+  const gePlaceholders = useMemo(() => requiredCourses.filter((c) => c.category === "ge" && c.is_placeholder), [requiredCourses]);
 
   // ── Total units ────────────────────────────────────────────────────────────
-  const plannedGEUnits = useMemo(() => session.plannedGEUnits ?? {}, [session.plannedGEUnits]);
+  const plannedGEUnits    = useMemo(() => session.plannedGEUnits    ?? {}, [session.plannedGEUnits]);
+  const plannedCourseUnits = useMemo(() => session.plannedCourseUnits ?? {}, [session.plannedCourseUnits]);
 
   function effectiveUnits(course: Course): number {
+    if (course.is_required === false) return 0;
+    if (course.is_placeholder && isFreeElective(course)) {
+      return plannedFreeElectiveCourses[course.id]?.units ?? course.units;
+    }
     if (course.is_placeholder && !isFreeElective(course)) {
-      return plannedGEUnits[course.course_number] ?? course.units;
+      // Per-slot unit override (e.g. variable-unit elective choices) takes priority
+      return plannedCourseUnits[course.id] ?? plannedGEUnits[course.course_number] ?? course.units;
     }
     return course.units;
   }
@@ -171,7 +228,7 @@ export default function FlowchartGrid({
     }
     return { earnedUnits, inProgressUnits };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [flowchart.courses, courseStatuses, plannedGEUnits]);
+  }, [flowchart.courses, courseStatuses, plannedGEUnits, plannedFreeElectiveCourses]);
 
   const totalUnits = flowchart.total_units;
 
@@ -188,7 +245,7 @@ export default function FlowchartGrid({
     }
     return { recommendedUnitsPerCol: recommended, currentUnitsPerCol: current };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [flowchart.courses, positions, plannedGEUnits, numCols]);
+  }, [flowchart.courses, positions, plannedGEUnits, plannedFreeElectiveCourses, numCols]);
 
   const yearGroups = useMemo(() => {
     const groups: Array<{ label: string; count: number }> = [];
@@ -202,19 +259,9 @@ export default function FlowchartGrid({
     return groups;
   }, [flowchart.columns]);
 
-  const majorDone     = majorCourses.filter(isDone).length;
-  const majorInferred = majorCourses.filter((c) => !isDone(c) && isCompletedOrInferred(c)).length;
-  const supportDone     = supportCourses.filter(isDone).length;
-  const supportInferred = supportCourses.filter((c) => !isDone(c) && isCompletedOrInferred(c)).length;
-
-  const geDone = gePlaceholders.filter((c) => {
-    const approved = [
-      c.course_number,
-      ...c.quarter_equivalents,
-      ...(geAreaMap[c.course_number] ?? []),
-    ];
-    return hasAnyCourseNumber(completedNums, approved);
-  }).length;
+  const majorProgress = useMemo(() => countCourseProgress(majorCourses, courseStatuses), [majorCourses, courseStatuses]);
+  const supportProgress = useMemo(() => countCourseProgress(supportCourses, courseStatuses), [supportCourses, courseStatuses]);
+  const geProgress = useMemo(() => countCourseProgress(gePlaceholders, courseStatuses), [gePlaceholders, courseStatuses]);
 
   const maxRows = useMemo(
     () => Math.max(...flowchart.courses.map((c) => getCoursePosition(c, positions).grid_row + 1), 1),
@@ -231,38 +278,21 @@ export default function FlowchartGrid({
     <div className="flex flex-col gap-4">
       {/* Per-category progress bars */}
       <div className="grid grid-cols-3 gap-3 px-1">
-        {/* Major */}
-        <div>
-          <div className="flex justify-between text-xs mb-1">
-            <span className="font-semibold" style={{ color: "#0369a1" }}>Major</span>
-            <span className="text-gray-500">{majorDone + majorInferred}/{majorCourses.length}</span>
-          </div>
-          <div className="bg-gray-200 rounded-full h-2 overflow-hidden flex">
-            <div className="h-full transition-all" style={{ width: `${(majorDone / majorCourses.length) * 100}%`, background: "#0284c7" }} />
-            <div className="h-full transition-all" style={{ width: `${(majorInferred / majorCourses.length) * 100}%`, background: "#7dd3fc" }} />
-          </div>
-        </div>
-        {/* Support */}
-        <div>
-          <div className="flex justify-between text-xs mb-1">
-            <span className="font-semibold" style={{ color: "#6d28d9" }}>Support</span>
-            <span className="text-gray-500">{supportDone + supportInferred}/{supportCourses.length}</span>
-          </div>
-          <div className="bg-gray-200 rounded-full h-2 overflow-hidden flex">
-            <div className="h-full transition-all" style={{ width: `${(supportDone / supportCourses.length) * 100}%`, background: "#7c3aed" }} />
-            <div className="h-full transition-all" style={{ width: `${(supportInferred / supportCourses.length) * 100}%`, background: "#c4b5fd" }} />
-          </div>
-        </div>
-        {/* GE */}
-        <div>
-          <div className="flex justify-between text-xs mb-1">
-            <span className="font-semibold" style={{ color: "#166534" }}>Gen Ed</span>
-            <span className="text-gray-500">{geDone}/{gePlaceholders.length}</span>
-          </div>
-          <div className="bg-gray-200 rounded-full h-2 overflow-hidden">
-            <div className="h-full transition-all" style={{ width: `${(geDone / gePlaceholders.length) * 100}%`, background: "#15803d" }} />
-          </div>
-        </div>
+        <ProgressBar
+          label="Major"
+          counts={majorProgress}
+          colors={{ label: "#0369a1", completed: "#0284c7", inferred: "#7dd3fc", inProgress: "#bae6fd" }}
+        />
+        <ProgressBar
+          label="Support"
+          counts={supportProgress}
+          colors={{ label: "#6d28d9", completed: "#7c3aed", inferred: "#c4b5fd", inProgress: "#ddd6fe" }}
+        />
+        <ProgressBar
+          label="Gen Ed"
+          counts={geProgress}
+          colors={{ label: "#166534", completed: "#15803d", inferred: "#86efac", inProgress: "#bbf7d0" }}
+        />
       </div>
 
       {/* Total units summary */}
@@ -361,6 +391,8 @@ export default function FlowchartGrid({
                       plannedCourseNumber={display.plannedCourseNumber}
                       activeCourseNumber={display.activeCourseNumber}
                       plannedUnits={course.is_placeholder ? effectiveUnits(course) : undefined}
+                      freeElectiveSelection={plannedFreeElectiveCourses[course.id]}
+                      searchHighlighted={highlightedCourseIds?.has(course.id)}
                       onToggleCompleted={() => onToggleCourseCompleted(course)}
                       onToggleInProgress={() => onToggleCourseInProgress(course)}
                       onClick={() => onCourseClick(course, status)}
@@ -394,7 +426,7 @@ export default function FlowchartGrid({
           <span>🔒</span> Prereqs needed
         </div>
         <div className="flex items-center gap-1.5">
-          <span className="text-amber-500">⚠️</span> Prereq warning
+          <span className="font-bold text-gray-500">NR</span> Not required
         </div>
       </div>
     </div>

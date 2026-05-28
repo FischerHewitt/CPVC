@@ -1,0 +1,137 @@
+[
+  {
+    "id": 463,
+    "name": "Networks or Advanced Software Requirement",
+    "courseToMeet": "CSC364 or (CSC464 and CSC469) or (CPE464 and CPE469)"
+  },
+  {
+    "id": 452,
+    "name": "Fundamentals of Computer Science",
+    "courseToMeet": "CSC101 or CPE101"
+  },
+  {
+    "id": 453,
+    "name": "Introduction to Computing",
+    "courseToMeet": "CSC123 or CPE123"
+  },
+  {
+    "id": 454,
+    "name": "Data Structures",
+    "courseToMeet": "CSC202 or CPE202"
+  },
+  {
+    "id": 455,
+    "name": "Project-Based Object-Oriented Programming and Design",
+    "courseToMeet": "CSC203 or CPE203"
+  },
+  {
+    "id": 457,
+    "name": "Discrete Structures",
+    "courseToMeet": "CSC248"
+  },
+  {
+    "id": 458,
+    "name": "Professional Responsibilities / Ethics, Science and Technology",
+    "courseToMeet": "CSC300 or PHIL323"
+  },
+  {
+    "id": 459,
+    "name": "Software Engineering Requirement",
+    "courseToMeet": "CSC307 or (CSC308 and CSC309)"
+  },
+  {
+    "id": 460,
+    "name": "Security or Privacy Requirement",
+    "courseToMeet": "CSC321 or CSC323 or CSC325"
+  },
+  {
+    "id": 461,
+    "name": "Design and Analysis of Algorithms",
+    "courseToMeet": "CSC349"
+  },
+  {
+    "id": 462,
+    "name": "Systems Programming",
+    "courseToMeet": "CSC357 or CPE357"
+  },
+  {
+    "id": 464,
+    "name": "Introduction to Database Systems",
+    "courseToMeet": "CSC365"
+  },
+  {
+    "id": 465,
+    "name": "Programming Languages",
+    "courseToMeet": "CSC430"
+  },
+  {
+    "id": 466,
+    "name": "Theory of Computation I",
+    "courseToMeet": "CSC445"
+  },
+  {
+    "id": 467,
+    "name": "Introduction to Operating Systems",
+    "courseToMeet": "CSC453 or CPE453"
+  },
+  {
+    "id": 468,
+    "name": "Senior Project Requirement",
+    "courseToMeet": "(CSC491 and CSC492) or (CSC497 and CSC498)"
+  },
+  {
+    "id": 469,
+    "name": "Gender, Race, and Culture Requirement",
+    "courseToMeet": "ES350 or WGQS350 or ES351"
+  },
+  {
+    "id": 470,
+    "name": "Calculus I",
+    "courseToMeet": "MATH141"
+  },
+  {
+    "id": 471,
+    "name": "Calculus II",
+    "courseToMeet": "MATH142"
+  },
+  {
+    "id": 472,
+    "name": "Calculus III",
+    "courseToMeet": "MATH143"
+  },
+  {
+    "id": 473,
+    "name": "Linear Algebra or Linear Analysis",
+    "courseToMeet": "MATH206 or MATH244"
+  },
+  {
+    "id": 474,
+    "name": "Philosophical Classics Requirement",
+    "courseToMeet": "PHIL230 or PHIL231"
+  },
+  {
+    "id": 475,
+    "name": "Statistical Methods for Engineers",
+    "courseToMeet": "STAT312"
+  },
+  {
+    "id": 476,
+    "name": "Life Science Support Elective",
+    "courseToMeet": "BIO111 or BIO161 or BOT121 or BIO213 or (BIO213 and BMED213) or MCRO221"
+  },
+  {
+    "id": 477,
+    "name": "Physical Science Support Elective Sequence",
+    "courseToMeet": "(CHEM124 and CHEM125 and CHEM126) or (PHYS141 and PHYS142 and PHYS143)"
+  },
+  {
+    "id": 478,
+    "name": "Additional Science Support Elective",
+    "courseToMeet": "BIO111 or BIO161 or BOT121 or MCRO221 or CHEM124 or PHYS141"
+  },
+  {
+    "id": 456,
+    "name": "Introduction to Computer Organization",
+    "courseToMeet": "CSC225 or CPE225"
+  }
+]

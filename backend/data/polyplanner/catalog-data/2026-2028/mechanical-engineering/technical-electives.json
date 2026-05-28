@@ -1,0 +1,176 @@
+[
+  {
+    "id": 703,
+    "name": "Technical Electives",
+    "units": 12,
+    "catalogName": "2026-2028",
+    "degreeName": "Mechanical Engineering",
+    "linkedTechnicalElectiveAreas": [],
+    "sections": [
+      {
+        "id": 254,
+        "name": "ME Technical Electives",
+        "requiredCount": null,
+        "minUnits": 8,
+        "maxUnits": 12,
+        "restriction": null,
+        "technicalElectives": [
+          {
+            "id": 4717,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ME3305",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4718,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ME3313",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4719,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ME3315",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4720,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ME3355",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4721,
+            "type": "Range",
+            "courseSubject": "ME",
+            "courseRule": null,
+            "minLevel": 4000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          }
+        ]
+      },
+      {
+        "id": 255,
+        "name": "College of Engineering Electives",
+        "requiredCount": null,
+        "minUnits": 0,
+        "maxUnits": 4,
+        "restriction": "Any 3000-4000 level or 5000 level course in the College of Engineering with the exception of GE Upper-Division 2 or 5, ENGR3301, senior project, thesis, special problems, and co-op courses.",
+        "technicalElectives": [
+          {
+            "id": 4722,
+            "type": "Range",
+            "courseSubject": "AERO",
+            "courseRule": null,
+            "minLevel": 3000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4723,
+            "type": "Range",
+            "courseSubject": "BMED",
+            "courseRule": null,
+            "minLevel": 3000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4724,
+            "type": "Range",
+            "courseSubject": "CE",
+            "courseRule": null,
+            "minLevel": 3000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4725,
+            "type": "Range",
+            "courseSubject": "CPE",
+            "courseRule": null,
+            "minLevel": 3000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4726,
+            "type": "Range",
+            "courseSubject": "CSC",
+            "courseRule": null,
+            "minLevel": 3000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4727,
+            "type": "Range",
+            "courseSubject": "EE",
+            "courseRule": null,
+            "minLevel": 3000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4728,
+            "type": "Range",
+            "courseSubject": "ENGR",
+            "courseRule": null,
+            "minLevel": 3000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4729,
+            "type": "Range",
+            "courseSubject": "ENVE",
+            "courseRule": null,
+            "minLevel": 3000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4730,
+            "type": "Range",
+            "courseSubject": "IME",
+            "courseRule": null,
+            "minLevel": 3000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4731,
+            "type": "Range",
+            "courseSubject": "MATE",
+            "courseRule": null,
+            "minLevel": 3000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4732,
+            "type": "Range",
+            "courseSubject": "ME",
+            "courseRule": null,
+            "minLevel": 3000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          }
+        ]
+      }
+    ]
+  }
+]

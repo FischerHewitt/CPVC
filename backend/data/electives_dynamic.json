@@ -1,0 +1,898 @@
+{
+  "ad_art_advanced_elective": {
+    "depts": [
+      "art"
+    ],
+    "description": "Art and Design students select an upper-division ART studio or design course (3000\u20134000 level).",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "3000-4000 Level Art Course"
+  },
+  "agb_4000_elective": {
+    "depts": [
+      "agb"
+    ],
+    "description": "Select any 4000-level AGB course for the final Agribusiness General Elective requirement.",
+    "max_level": 4999,
+    "min_level": 4000,
+    "title": "4000-Level Agribusiness Elective"
+  },
+  "agb_cafes_prefix_elective": {
+    "depts": [
+      "ag",
+      "agc",
+      "aged",
+      "asci",
+      "brae",
+      "dsci",
+      "eim",
+      "ersc",
+      "esci",
+      "fsn",
+      "nr",
+      "plsc",
+      "ss",
+      "wvit"
+    ],
+    "description": "Select any course with one of the catalog-approved CAFES prefixes: AG, AGC, AGED, ASCI, BRAE, DSCI, EIM, ERSC, ESCI, FSN, NR, PLSC, SS, or WVIT.",
+    "max_level": 4999,
+    "min_level": 1000,
+    "title": "CAFES Prefix Elective"
+  },
+  "agb_general_elective": {
+    "depts": [
+      "agb"
+    ],
+    "description": "Select any 3000-4000 level AGB course for the Agribusiness General Electives requirement.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Agribusiness General Elective"
+  },
+  "antgeog_ant_elective": {
+    "depts": [
+      "ant"
+    ],
+    "description": "Select an upper-division ANT course approved for the Anthropology and Geography major.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Upper-Division Anthropology Elective"
+  },
+  "antgeog_ant_geog_soc_elective": {
+    "depts": [
+      "ant",
+      "geog",
+      "soc"
+    ],
+    "description": "Select an upper-division ANT, GEOG, or SOC elective.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "ANT, GEOG, or SOC Elective"
+  },
+  "antgeog_concentration_elective": {
+    "depts": [
+      "ant",
+      "geog",
+      "ersc",
+      "soc"
+    ],
+    "description": "Select an upper-division course that fits the chosen concentration or advisor-approved elective plan.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Concentration Course or Elective"
+  },
+  "antgeog_environmental_problems": {
+    "depts": [
+      "ant",
+      "geog",
+      "ersc",
+      "soc"
+    ],
+    "description": "Select an upper-division environmental course approved for the Environmental Studies and Sustainability concentration.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Environmental Problems, Issues, and Methods Elective"
+  },
+  "antgeog_geog_elective": {
+    "depts": [
+      "geog"
+    ],
+    "description": "Select an upper-division GEOG course approved for the Anthropology and Geography major.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Upper-Division Geography Elective"
+  },
+  "antgeog_global_problems": {
+    "depts": [
+      "ant",
+      "geog",
+      "soc"
+    ],
+    "description": "Select an upper-division global studies course approved for the Global Studies and International Development concentration.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Global Problems, Issues, and Methods Elective"
+  },
+  "antgeog_human_ecology_elective": {
+    "depts": [
+      "ant",
+      "geog",
+      "ersc",
+      "soc"
+    ],
+    "description": "Select an upper-division ANT, GEOG, ERSC, or SOC course approved for the Human Ecology concentration.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Approved Human Ecology Elective"
+  },
+  "arce_upper_division_elective": {
+    "depts": [
+      "arce"
+    ],
+    "description": "Select any 3000-5000 level ARCE course approved for the ARCE elective requirement.",
+    "max_level": 5999,
+    "min_level": 3000,
+    "title": "ARCE Upper-Division Elective"
+  },
+  "arch_professional_elective": {
+    "depts": [
+      "arch",
+      "arce",
+      "art",
+      "cm",
+      "crp",
+      "edes",
+      "la"
+    ],
+    "description": "Select from ARCH, ARCE, ART, CM, CRP, EDES, or LA courses. At least 9 units must be 3000-4000 level.",
+    "max_level": 4999,
+    "min_level": 1000,
+    "title": "Professional Elective"
+  },
+  "asci_approved_elective": {
+    "depts": [
+      "asci",
+      "dsci"
+    ],
+    "description": "Select any 3000-5000 level ASCI or DSCI course. The catalog limits ASCI 3339 and ASCI 4001-4015 to a combined maximum of 3 approved-elective units.",
+    "max_level": 5999,
+    "min_level": 3000,
+    "title": "Approved ASCI/DSCI Elective"
+  },
+  "bio_4000_level": {
+    "depts": [
+      "bio"
+    ],
+    "description": "Any 4000-level BIO course.",
+    "max_level": 4999,
+    "min_level": 4000,
+    "title": "4000-Level Biology Elective"
+  },
+  "bio_approved": {
+    "depts": [
+      "bio",
+      "mcro"
+    ],
+    "description": "Approved BIO or MCRO upper-division elective. Consult your advisor for specific requirements.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Approved Elective"
+  },
+  "bio_bioscience": {
+    "depts": [
+      "bio"
+    ],
+    "description": "Any upper-division BIO course (3000\u20134000 level).",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Bioscience Elective"
+  },
+  "bus_tech_elective": {
+    "depts": [
+      "bus",
+      "itp"
+    ],
+    "description": "BUS students select one technology or information systems elective from approved BUS or ITP courses (3000\u20134000 level).",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Technology Management Elective"
+  },
+  "cd_upper_div_elective": {
+    "depts": [
+      "cd"
+    ],
+    "description": "CD students select from all 3000\u20134000 level Child Development courses for their upper-division elective slots.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "CD Upper-Division Elective"
+  },
+  "ce_tech_elective": {
+    "depts": [
+      "ce"
+    ],
+    "description": "Upper-division CE course for Civil Engineering technical elective credit.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Technical Elective"
+  },
+  "ces_area6_course": {
+    "depts": [
+      "es"
+    ],
+    "description": "Select an Ethnic Studies (ES) course satisfying GE Area 6 (Ethnic Studies). Three courses are required across the first two years.",
+    "max_level": 4999,
+    "min_level": 2000,
+    "title": "Foundational Area Studies Elective (GE 6)"
+  },
+  "ces_lit_ud3": {
+    "depts": [
+      "es"
+    ],
+    "description": "Select one upper-division ES course covering literature or cultural production to satisfy GE Upper-Division Area 3 (Arts and Humanities).",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Literature and Cultural Production (GE UD3)"
+  },
+  "ces_popular_culture": {
+    "depts": [
+      "es"
+    ],
+    "description": "Select an ES popular culture or related course satisfying GE Area 3A (Arts). Three courses are required across Sophomore year.",
+    "max_level": 3999,
+    "min_level": 2000,
+    "title": "Popular Culture Elective (GE 3A)"
+  },
+  "ces_ud_elective": {
+    "depts": [
+      "es",
+      "wgqs"
+    ],
+    "description": "Select any upper-division ES or WGQS course. Three elective slots are distributed across Junior and Senior years.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Upper-Division ES Elective"
+  },
+  "chem_advanced_elective": {
+    "depts": [
+      "chem"
+    ],
+    "description": "CHEM students select from all 4000-level Chemistry courses for their advanced elective slots.",
+    "max_level": 4999,
+    "min_level": 4000,
+    "title": "Advanced Chemistry Elective"
+  },
+  "cm_bus_elective": {
+    "depts": [
+      "bus"
+    ],
+    "description": "BUS 2215 (Managerial Accounting) or any 3000\u20134000 level BUS course.",
+    "max_level": 4999,
+    "min_level": 2215,
+    "title": "Construction Management Business Elective"
+  },
+  "coms_focus_elective": {
+    "depts": [
+      "coms"
+    ],
+    "description": "Any upper-division Communication Studies course (3000\u20134000 level). When a focus area is selected, this shows the approved course list for that focus area.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Focus Area Course"
+  },
+  "coms_upper_div_elective": {
+    "depts": [
+      "coms"
+    ],
+    "description": "Any upper-division Communication Studies course (3000\u20134000 level).",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "COMS Upper-Division Elective"
+  },
+  "cpe_tech_elective": {
+    "depts": [
+      "cpe",
+      "csc"
+    ],
+    "description": "Upper-division CPE or CSC course for Computer Engineering technical elective credit.",
+    "max_level": 4999,
+    "min_level": 4000,
+    "title": "Technical Elective"
+  },
+  "dsci_approved_elective": {
+    "depts": [
+      "asci",
+      "dsci"
+    ],
+    "description": "Select any ASCI or DSCI course approved by the department for the Dairy Science degree.",
+    "max_level": 4999,
+    "min_level": 1000,
+    "title": "Approved ASCI/DSCI Elective"
+  },
+  "econ_project_elective": {
+    "depts": [
+      "econ"
+    ],
+    "description": "Any upper-division ECON lecture+lab course pair (3000\u20134000 level). Each elective is typically a 3-unit lecture paired with a 1-unit project lab (e.g., ECON 4010 + ECON 4010A).",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Economics & Project Elective"
+  },
+  "ee_lower_div_elective": {
+    "depts": [
+      "ee",
+      "cpe",
+      "csc",
+      "me",
+      "phys",
+      "chem",
+      "ime"
+    ],
+    "description": "EE students may use this slot for additional EE technical electives or qualifying lower-division courses.",
+    "max_level": 5999,
+    "min_level": 1000,
+    "title": "Lower-Division or Technical Elective"
+  },
+  "ee_technical_elective": {
+    "depts": [
+      "ee"
+    ],
+    "description": "EE students select from approved upper-division and graduate Electrical Engineering courses (4000\u20135000 level) for their technical elective slots.",
+    "max_level": 5999,
+    "min_level": 4000,
+    "title": "EE Technical Elective"
+  },
+  "eess_approved_elective": {
+    "depts": [
+      "nr",
+      "ss",
+      "ersc",
+      "geol",
+      "bot"
+    ],
+    "description": "Select an approved elective in natural resources, soil science, earth science, geology, or botany. Courses used for Major or Support requirements may not be double-counted. Verify with your academic advisor.",
+    "max_level": 4999,
+    "min_level": 2000,
+    "title": "Approved Elective"
+  },
+  "eess_nr_elective": {
+    "depts": [
+      "nr",
+      "ss",
+      "ersc"
+    ],
+    "description": "Select an upper-division natural resources, soil science, or earth science elective. Courses used for Major or Support requirements may not be double-counted.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Major NR/SS/ERSC Elective"
+  },
+  "eim_concentration_elective": {
+    "depts": [
+      "eim"
+    ],
+    "description": "Any upper-division Experience Industry Management course (3000\u20134000 level). When a concentration is selected, specific required courses replace this slot.",
+    "max_level": 4999,
+    "min_level": 1000,
+    "title": "Concentration Course"
+  },
+  "engl_advanced_elective": {
+    "depts": [
+      "engl"
+    ],
+    "description": "English students select an advanced English course (4000 level).",
+    "max_level": 4999,
+    "min_level": 4000,
+    "title": "Advanced English Elective"
+  },
+  "engl_intermediate_elective": {
+    "depts": [
+      "engl"
+    ],
+    "description": "English students select an intermediate-level English course (3000 level).",
+    "max_level": 3999,
+    "min_level": 3000,
+    "title": "Intermediate English Elective"
+  },
+  "engl_lower_div_elective": {
+    "depts": [
+      "engl"
+    ],
+    "description": "English students select a lower-division English course (2000 level).",
+    "max_level": 2999,
+    "min_level": 2000,
+    "title": "Lower-Division English Elective"
+  },
+  "enve_tech_elective": {
+    "depts": [
+      "enve"
+    ],
+    "description": "Any upper-division Environmental Engineering course (3000\u20134000 level).",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "ENVE Technical Elective"
+  },
+  "envm_concentration_elective": {
+    "depts": [
+      "nr",
+      "bio",
+      "bot",
+      "ss",
+      "ersc",
+      "brae",
+      "chem",
+      "stat",
+      "geog",
+      "pols",
+      "econ",
+      "crp",
+      "plsc"
+    ],
+    "description": "Approved elective for your ENVM concentration. Select a concentration to see specific course options.",
+    "max_level": 4999,
+    "min_level": 1000,
+    "title": "Concentration Elective"
+  },
+  "grc_concentration_elective": {
+    "depts": [
+      "grc"
+    ],
+    "description": "Any upper-division Graphic Communication course (3000\u20134000 level). For Individualized concentrations, minimum 6 units must have a GRC prefix.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "GRC Concentration/Individualized Elective"
+  },
+  "hist_ld_elective": {
+    "depts": [
+      "hist"
+    ],
+    "description": "Any 2000-level History course. Select with your advisor's approval.",
+    "max_level": 2999,
+    "min_level": 2000,
+    "title": "2XXX Level History Elective"
+  },
+  "hist_ud_elective": {
+    "depts": [
+      "hist"
+    ],
+    "description": "Any 3000\u20134000 level History course. Select with your advisor's approval.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "3XXX\u20134XXX Level History Elective"
+  },
+  "ie_technical_elective": {
+    "depts": [
+      "ime"
+    ],
+    "description": "IE students select from approved upper-division Industrial Engineering courses for their technical elective slots.",
+    "max_level": 5999,
+    "min_level": 3000,
+    "title": "IE Technical Elective"
+  },
+  "ints_eljs_concentration": {
+    "depts": [
+      "phil",
+      "es",
+      "jour",
+      "pols",
+      "psy",
+      "rels",
+      "soc",
+      "wgqs"
+    ],
+    "description": "Select from approved courses in the Ethics, Law, and Social Justice concentration sub-areas (Ethics, Law, and Social Justice). Consult the catalog for the full approved course list by sub-area.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Ethics, Law, and Social Justice Concentration Course"
+  },
+  "ints_gcss_concentration": {
+    "depts": [
+      "es",
+      "hist",
+      "soc",
+      "wlc",
+      "coms",
+      "engl",
+      "jour",
+      "pols",
+      "brae",
+      "isla",
+      "nr",
+      "phil",
+      "psc",
+      "psy",
+      "rels",
+      "wgqs"
+    ],
+    "description": "Select from approved courses in the Global Citizenship and Social Sustainability concentration sub-areas. Consult the catalog for the full approved course list by sub-area.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Global Citizenship and Social Sustainability Concentration Course"
+  },
+  "ints_hs_concentration": {
+    "depts": [
+      "isla",
+      "phil",
+      "es",
+      "nr",
+      "psy",
+      "soc",
+      "wgqs",
+      "ant",
+      "pols",
+      "bio",
+      "coms",
+      "engl",
+      "rels"
+    ],
+    "description": "Select from approved courses in the Health and Society concentration sub-areas. Consult the catalog for the full approved course list by sub-area.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Health and Society Concentration Course"
+  },
+  "ints_sts_concentration": {
+    "depts": [
+      "ant",
+      "es",
+      "isla",
+      "soc",
+      "wgqs",
+      "phil",
+      "coms",
+      "engl",
+      "brae",
+      "ersc",
+      "hist",
+      "pols",
+      "psc",
+      "wlc"
+    ],
+    "description": "Select from approved courses in the Science, Technology, and Society concentration sub-areas. Consult the catalog for the full approved course list by sub-area.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Science, Technology, and Society Concentration Course"
+  },
+  "ints_vmcs_concentration": {
+    "depts": [
+      "art",
+      "danc",
+      "mu",
+      "th",
+      "engl",
+      "fr",
+      "ger",
+      "span",
+      "wlc",
+      "coms",
+      "es",
+      "isla",
+      "kine",
+      "wgqs"
+    ],
+    "description": "Select from approved courses in the Visual, Media, and Cultural Studies concentration sub-areas. Consult the catalog for the full approved course list by sub-area.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Visual, Media, and Cultural Studies Concentration Course"
+  },
+  "itp_concentration_elective": {
+    "depts": [
+      "itp"
+    ],
+    "description": "Any ITP course. When a concentration is selected, specific required courses replace this slot.",
+    "max_level": 4999,
+    "min_level": 1000,
+    "title": "Concentration Course"
+  },
+  "jour_elective": {
+    "depts": [
+      "jour"
+    ],
+    "description": "Any JOUR course (1000\u20134999 level) not used to satisfy another requirement.",
+    "max_level": 4999,
+    "min_level": 1000,
+    "title": "Journalism Elective"
+  },
+  "laes_eng_elective": {
+    "depts": [
+      "csc",
+      "cpe",
+      "se",
+      "ee",
+      "me",
+      "aero",
+      "bmed",
+      "brae",
+      "ce",
+      "enve",
+      "ime",
+      "mate",
+      "engr"
+    ],
+    "description": "Select a director-approved upper-division course from the College of Engineering. A minimum of 10 units must be at the 3000-4000 level.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Engineering Concentration Elective"
+  },
+  "libs_hd_cd_course": {
+    "depts": [
+      "cd"
+    ],
+    "description": "Select any 2-unit Child Development (CD) course to complete the Human Development concentration.",
+    "max_level": 4999,
+    "min_level": 1000,
+    "title": "Human Development: Any Child Development Course"
+  },
+  "mate_prof_dev_elective": {
+    "depts": [
+      "mate",
+      "ime",
+      "bmed",
+      "bus",
+      "chem",
+      "coms",
+      "econ",
+      "ce",
+      "enve",
+      "itp",
+      "me"
+    ],
+    "description": "MATE students select a professional development elective from the approved interdisciplinary list (BIO, BMED, BUS, CE, CHEM, COMS, ECON, ENVE, IME, ITP, MATE, MATH, ME, PHYS, and others).",
+    "max_level": 5999,
+    "min_level": 2000,
+    "title": "Professional Development Elective"
+  },
+  "mate_technical_elective": {
+    "depts": [
+      "mate"
+    ],
+    "description": "MATE students select from approved upper-division Materials Engineering courses for their technical elective slots.",
+    "max_level": 5999,
+    "min_level": 4000,
+    "title": "MATE Technical Elective"
+  },
+  "me_tech_elective": {
+    "depts": [
+      "me",
+      "aero",
+      "bmed",
+      "brae",
+      "ce",
+      "cpe",
+      "csc",
+      "ee",
+      "engr",
+      "enve",
+      "ime",
+      "mate",
+      "se"
+    ],
+    "description": "ME general curriculum technical elective. The catalog requires 8-12 units from approved ME courses and allows 0-4 units from approved 3000-5000 level College of Engineering courses.",
+    "max_level": 5999,
+    "min_level": 3000,
+    "title": "Technical Elective"
+  },
+  "mfge_tech_elective": {
+    "depts": [
+      "ime"
+    ],
+    "description": "Upper-division IME course (3000\u20134999 level) approved as a technical elective by the Industrial and Manufacturing Engineering department.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Manufacturing Engineering Technical Elective"
+  },
+  "msci_approved_elective": {
+    "depts": [
+      "bio",
+      "msci",
+      "chem",
+      "phys",
+      "stat"
+    ],
+    "description": "Select an approved elective in biology, marine sciences, chemistry, physics, or statistics. Courses may not overlap with major or support requirements. Verify selection with your academic advisor.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Approved Elective"
+  },
+  "mu_upper_div_elective": {
+    "depts": [
+      "mu"
+    ],
+    "description": "Music students select an upper-division Music course (3000\u20134000 level).",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Upper-Division Music Elective"
+  },
+  "nut_dietetics_elective": {
+    "depts": [
+      "bio",
+      "chem",
+      "hlth",
+      "math",
+      "phys",
+      "psy",
+      "ant",
+      "fsn",
+      "nr",
+      "pols",
+      "nutr"
+    ],
+    "description": "Any 3000\u20134000 level course from BIO, CHEM, HLTH, MATH, PHYS, PSY, or selected ANT/FSN/NR/POLS courses approved for the Dietetics concentration.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Dietetics Concentration Elective"
+  },
+  "nut_prehealth_elective": {
+    "depts": [
+      "bio",
+      "chem",
+      "math",
+      "phys",
+      "psy",
+      "nutr"
+    ],
+    "description": "Any 3000\u20134000 level course from BIO, CHEM, MATH, PHYS, PSY, or NUTR approved for the Nutrition and Pre-Health Sciences concentration.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Nutrition and Pre-Health Sciences Elective"
+  },
+  "phil_arts_hum_support": {
+    "depts": [
+      "engl",
+      "hist",
+      "art",
+      "mu",
+      "thea",
+      "coms",
+      "span",
+      "fr",
+      "germ",
+      "ital",
+      "lat",
+      "chin",
+      "japn",
+      "rels"
+    ],
+    "description": "Any upper-division Arts and Humanities course outside the Philosophy department, satisfying GE Upper-Division Area 3.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Upper Division Arts and Humanities (non-PHIL)"
+  },
+  "phil_gen_elective": {
+    "depts": [
+      "phil"
+    ],
+    "description": "Any 3000\u20134000 level Philosophy course not already used for History of Philosophy requirements.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "General Philosophy Elective"
+  },
+  "phys_tech_elective": {
+    "depts": [
+      "astr",
+      "csc",
+      "data",
+      "geol",
+      "math",
+      "phys",
+      "stat"
+    ],
+    "description": "Any 3000\u20134999 level course from ASTR, CSC, DATA, GEOL, MATH, PHYS, or STAT; also CSC 2600 and CHEM 1122. 19 units total required. Verify selections with your advisor.",
+    "extra_courses": [
+      "CSC 2600",
+      "CHEM 1122"
+    ],
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Physics Technical Elective"
+  },
+  "plsc_concentration_elective": {
+    "depts": [
+      "plsc",
+      "ss",
+      "bot"
+    ],
+    "description": "Approved concentration course for your Plant Sciences track. Select a concentration to see the approved course list.",
+    "max_level": 4999,
+    "min_level": 1000,
+    "title": "Plant Sciences Concentration Elective"
+  },
+  "pols_upper_div_elective": {
+    "depts": [
+      "pols"
+    ],
+    "description": "POLS students select any upper-division Political Science course (3000\u20134000 level).",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "3000-4000 Level POLS Elective"
+  },
+  "psy_cognitive": {
+    "depts": [
+      "psy"
+    ],
+    "description": "One upper-division PSY course covering cognitive psychology, learning, or neuroscience.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Cognitive Elective"
+  },
+  "psy_mental_health": {
+    "depts": [
+      "psy"
+    ],
+    "description": "One upper-division PSY course covering mental health, clinical, or health psychology topics.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Mental & Physical Health Elective"
+  },
+  "psy_social_personality": {
+    "depts": [
+      "psy"
+    ],
+    "description": "One upper-division PSY course covering social or personality psychology topics.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Social & Personality Elective"
+  },
+  "psy_upper_div": {
+    "depts": [
+      "psy"
+    ],
+    "description": "Any upper-division PSY course (3000\u20134000 level).",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "PSY Approved Elective"
+  },
+  "se_tech_elective": {
+    "depts": [
+      "csc"
+    ],
+    "description": "Upper-division CSC course approved for Software Engineering technical elective credit.",
+    "max_level": 4999,
+    "min_level": 4000,
+    "title": "Technical Elective"
+  },
+  "soc_elective": {
+    "depts": [
+      "soc"
+    ],
+    "description": "Any upper-division SOC course (3000\u20134999 level) not already used to satisfy another requirement.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Sociology Elective"
+  },
+  "soc_ld_support": {
+    "depts": [
+      "anth",
+      "es",
+      "geog",
+      "soc",
+      "pols",
+      "psy",
+      "wgqs"
+    ],
+    "description": "Any lower-division (1000\u20132999) course from ANTH, ES, GEOG, SOC, POLS, PSY, or WGQS.",
+    "max_level": 2999,
+    "min_level": 1000,
+    "title": "Lower-Division Social Sciences Elective"
+  },
+  "span_lang_cult_elective": {
+    "depts": [
+      "span",
+      "fr",
+      "germ",
+      "ital",
+      "lat",
+      "chin",
+      "japn",
+      "port",
+      "arab",
+      "wlc",
+      "ant",
+      "hist",
+      "phil",
+      "geog",
+      "rels",
+      "engl"
+    ],
+    "description": "Any approved upper-division course in world languages, history, anthropology, philosophy, ethnic studies, geography, or related humanities fields.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Approved Language and Culture Elective"
+  }
+}

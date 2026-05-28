@@ -2,8 +2,8 @@ from dataclasses import dataclass
 
 from fastapi.testclient import TestClient
 
-import routers.professors as professors_router
 from main import app
+from services.polyratings import PolyRatingsCache, get_polyratings_cache
 
 
 client = TestClient(app)
@@ -17,25 +17,25 @@ class FakeProfessor:
     polyratings_url: str
 
 
-def test_professors_endpoint_returns_frontend_shape(monkeypatch):
-    def fake_get_professors_for_course(course_number: str):
-        assert course_number == "CSC 101"
-        return [
-            FakeProfessor(
-                name="Grace Hopper",
-                overall_score=3.85,
-                num_ratings=42,
-                polyratings_url="https://polyratings.dev/professor/prof-1",
-            )
-        ]
+def test_professors_endpoint_returns_frontend_shape():
+    class FakeCache(PolyRatingsCache):
+        def get_professors_for_course(self, course_number: str):
+            assert course_number == "CSC 101"
+            return [
+                FakeProfessor(
+                    name="Grace Hopper",
+                    overall_score=3.85,
+                    num_ratings=42,
+                    polyratings_url="https://polyratings.dev/professor/prof-1",
+                )
+            ]
 
-    monkeypatch.setattr(
-        professors_router,
-        "get_professors_for_course",
-        fake_get_professors_for_course,
-    )
-
-    response = client.get("/api/professors/CSC%20101")
+    fake = FakeCache()
+    app.dependency_overrides[get_polyratings_cache] = lambda: fake
+    try:
+        response = client.get("/api/professors/CSC%20101")
+    finally:
+        app.dependency_overrides.pop(get_polyratings_cache, None)
 
     assert response.status_code == 200
     assert response.json() == {
@@ -51,10 +51,16 @@ def test_professors_endpoint_returns_frontend_shape(monkeypatch):
     }
 
 
-def test_professors_endpoint_preserves_slash_course_numbers(monkeypatch):
-    monkeypatch.setattr(professors_router, "get_professors_for_course", lambda course_number: [])
+def test_professors_endpoint_preserves_slash_course_numbers():
+    class EmptyCache(PolyRatingsCache):
+        def get_professors_for_course(self, course_number: str):
+            return []
 
-    response = client.get("/api/professors/BIO%2FBOT")
+    app.dependency_overrides[get_polyratings_cache] = lambda: EmptyCache()
+    try:
+        response = client.get("/api/professors/BIO%2FBOT")
+    finally:
+        app.dependency_overrides.pop(get_polyratings_cache, None)
 
     assert response.status_code == 200
     assert response.json() == {"course_number": "BIO/BOT", "professors": []}

@@ -1,0 +1,142 @@
+[
+  {
+    "id": 704,
+    "name": "Introduction to the Biomedical Engineering Major",
+    "courseToMeet": "BMED101"
+  },
+  {
+    "id": 705,
+    "name": "Introduction to Biomedical Engineering Analysis",
+    "courseToMeet": "BMED102"
+  },
+  {
+    "id": 706,
+    "name": "Introduction to Biomedical Engineering Design",
+    "courseToMeet": "BMED212"
+  },
+  {
+    "id": 707,
+    "name": "Biomedical Engineering Measurement and Analysis",
+    "courseToMeet": "BMED310"
+  },
+  {
+    "id": 708,
+    "name": "Biomechanics",
+    "courseToMeet": "BMED410"
+  },
+  {
+    "id": 709,
+    "name": "Principles of Biomaterials Design",
+    "courseToMeet": "BMED420"
+  },
+  {
+    "id": 710,
+    "name": "Biomedical Engineering Transport",
+    "courseToMeet": "BMED425"
+  },
+  {
+    "id": 711,
+    "name": "Biomedical Modeling and Simulation",
+    "courseToMeet": "BMED430"
+  },
+  {
+    "id": 712,
+    "name": "Bioelectronics and Instrumentation",
+    "courseToMeet": "BMED440"
+  },
+  {
+    "id": 713,
+    "name": "Contemporary Issues in Biomedical Engineering",
+    "courseToMeet": "BMED450"
+  },
+  {
+    "id": 714,
+    "name": "Biomedical Engineering Design I",
+    "courseToMeet": "BMED455"
+  },
+  {
+    "id": 715,
+    "name": "Biomedical Engineering Design II: Senior Project",
+    "courseToMeet": "BMED456"
+  },
+  {
+    "id": 716,
+    "name": "Engineering Physiology",
+    "courseToMeet": "BMED460"
+  },
+  {
+    "id": 717,
+    "name": "Cell and Molecular Biology",
+    "courseToMeet": "BIO161"
+  },
+  {
+    "id": 718,
+    "name": "Human Anatomy and Physiology",
+    "courseToMeet": "BIO231 or BIO232"
+  },
+  {
+    "id": 719,
+    "name": "Mechanics of Materials I",
+    "courseToMeet": "CE204"
+  },
+  {
+    "id": 720,
+    "name": "General Chemistry Sequence",
+    "courseToMeet": "CHEM124 and CHEM125"
+  },
+  {
+    "id": 721,
+    "name": "Programming for Engineering Students",
+    "courseToMeet": "CSC231"
+  },
+  {
+    "id": 722,
+    "name": "Electric Circuit Theory",
+    "courseToMeet": "EE201"
+  },
+  {
+    "id": 723,
+    "name": "Writing Arguments about STEM",
+    "courseToMeet": "ENGL147"
+  },
+  {
+    "id": 724,
+    "name": "Materials Engineering",
+    "courseToMeet": "MATE210"
+  },
+  {
+    "id": 725,
+    "name": "Calculus Sequence",
+    "courseToMeet": "MATH141 and MATH142 and MATH143 and MATH241"
+  },
+  {
+    "id": 726,
+    "name": "Linear Analysis",
+    "courseToMeet": "MATH244"
+  },
+  {
+    "id": 727,
+    "name": "Engineering Mechanics",
+    "courseToMeet": "ME211 and ME212"
+  },
+  {
+    "id": 728,
+    "name": "Thermodynamics",
+    "courseToMeet": "ME302"
+  },
+  {
+    "id": 729,
+    "name": "Fluid Mechanics I",
+    "courseToMeet": "ME341"
+  },
+  {
+    "id": 730,
+    "name": "Physics Sequence",
+    "courseToMeet": "PHYS141 and PHYS142 and PHYS143"
+  },
+  {
+    "id": 731,
+    "name": "Statistical Methods for Engineers",
+    "courseToMeet": "STAT312"
+  }
+]

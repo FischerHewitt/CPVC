@@ -1,0 +1,512 @@
+[
+  {
+    "id": 1723,
+    "sourceCourse": "CPE1000",
+    "equivalentTo": "CPE100"
+  },
+  {
+    "id": 1724,
+    "sourceCourse": "CSC1024",
+    "equivalentTo": "CSC123"
+  },
+  {
+    "id": 1725,
+    "sourceCourse": "CSC1001 and CSC1001L and CSC2001 and CSC2001L",
+    "equivalentTo": "CSC101 and CSC202 and CSC203"
+  },
+  {
+    "id": 1726,
+    "sourceCourse": "CSC1001 and CSC1001L",
+    "equivalentTo": "CSC101"
+  },
+  {
+    "id": 1727,
+    "sourceCourse": "CSC2001 and CSC2001L",
+    "equivalentTo": "CSC202"
+  },
+  {
+    "id": 1728,
+    "sourceCourse": "CPE133 and CPE233",
+    "equivalentTo": "CPE133 and CPE2300"
+  },
+  {
+    "id": 1729,
+    "sourceCourse": "CPE2300 and CPE2301",
+    "equivalentTo": "CPE133 and CPE233"
+  },
+  {
+    "id": 1730,
+    "sourceCourse": "CPE3300",
+    "equivalentTo": "CPE315"
+  },
+  {
+    "id": 1731,
+    "sourceCourse": "CPE3300",
+    "equivalentTo": "CPE333"
+  },
+  {
+    "id": 1732,
+    "sourceCourse": "CSC4553",
+    "equivalentTo": "CSC453"
+  },
+  {
+    "id": 1733,
+    "sourceCourse": "EE3329",
+    "equivalentTo": "CPE329"
+  },
+  {
+    "id": 1735,
+    "sourceCourse": "CSC2050",
+    "equivalentTo": "CSC357"
+  },
+  {
+    "id": 1736,
+    "sourceCourse": "CPE4460 and CPE4461",
+    "equivalentTo": "CPE350 and CPE450 and CPE461 and CPE462"
+  },
+  {
+    "id": 1737,
+    "sourceCourse": "ENGR4460 and ENGR4461",
+    "equivalentTo": "CPE350 and CPE450 and CPE461 and CPE462"
+  },
+  {
+    "id": 1738,
+    "sourceCourse": "CSC4260 and CSC4261",
+    "equivalentTo": "CPE350 and CPE450 and CPE461 and CPE462"
+  },
+  {
+    "id": 1739,
+    "sourceCourse": "CPE4464",
+    "equivalentTo": "CPE464"
+  },
+  {
+    "id": 1740,
+    "sourceCourse": "MATH2031",
+    "equivalentTo": "CSC248"
+  },
+  {
+    "id": 1741,
+    "sourceCourse": "CSC3201",
+    "equivalentTo": "CSC321"
+  },
+  {
+    "id": 1744,
+    "sourceCourse": "EE2211 and EE2241 and EE3306 and EE3306L",
+    "equivalentTo": "EE115 and EE145 and EE215 and EE245 and EE315"
+  },
+  {
+    "id": 1745,
+    "sourceCourse": "EE2328",
+    "equivalentTo": "CPE327 and CPE367"
+  },
+  {
+    "id": 1746,
+    "sourceCourse": "EE2328",
+    "equivalentTo": "EE228"
+  },
+  {
+    "id": 1747,
+    "sourceCourse": "CHEM1120",
+    "equivalentTo": "CHEM124"
+  },
+  {
+    "id": 1748,
+    "sourceCourse": "PHIL3323",
+    "equivalentTo": "PHIL323"
+  },
+  {
+    "id": 1749,
+    "sourceCourse": "PHIL3323",
+    "equivalentTo": "PHIL327"
+  },
+  {
+    "id": 1750,
+    "sourceCourse": "PHIL3323",
+    "equivalentTo": "PHIL328"
+  },
+  {
+    "id": 1751,
+    "sourceCourse": "PHIL3323",
+    "equivalentTo": "PHIL339"
+  },
+  {
+    "id": 1752,
+    "sourceCourse": "PHIL3323",
+    "equivalentTo": "PHIL340"
+  },
+  {
+    "id": 1753,
+    "sourceCourse": "WGQS3350",
+    "equivalentTo": "ES350"
+  },
+  {
+    "id": 1754,
+    "sourceCourse": "WGQS3351",
+    "equivalentTo": "ES351"
+  },
+  {
+    "id": 1755,
+    "sourceCourse": "MATH1261 and MATH1262",
+    "equivalentTo": "MATH141 and MATH142 and MATH143"
+  },
+  {
+    "id": 1756,
+    "sourceCourse": "MATH2263",
+    "equivalentTo": "MATH241"
+  },
+  {
+    "id": 1757,
+    "sourceCourse": "MATH2341",
+    "equivalentTo": "MATH244"
+  },
+  {
+    "id": 1758,
+    "sourceCourse": "PHYS1141",
+    "equivalentTo": "PHYS141"
+  },
+  {
+    "id": 1759,
+    "sourceCourse": "PHYS1141 and PHYS1143",
+    "equivalentTo": "PHYS141 and PHYS142 and PHYS143"
+  },
+  {
+    "id": 1760,
+    "sourceCourse": "PHYS1143",
+    "equivalentTo": "PHYS143"
+  },
+  {
+    "id": 1761,
+    "sourceCourse": "STAT3310",
+    "equivalentTo": "STAT350"
+  },
+  {
+    "id": 1762,
+    "sourceCourse": "STAT3210",
+    "equivalentTo": "STAT350"
+  },
+  {
+    "id": 3650,
+    "sourceCourse": "CPE464",
+    "equivalentTo": "CPE4464"
+  },
+  {
+    "id": 3627,
+    "sourceCourse": "CPE100",
+    "equivalentTo": "CPE1000"
+  },
+  {
+    "id": 3628,
+    "sourceCourse": "CSC123",
+    "equivalentTo": "CSC1024"
+  },
+  {
+    "id": 3629,
+    "sourceCourse": "CSC101 and CSC202 and CSC203",
+    "equivalentTo": "CSC1001 and CSC1001L and CSC2001 and CSC2001L"
+  },
+  {
+    "id": 3630,
+    "sourceCourse": "CSC101",
+    "equivalentTo": "CSC1001 and CSC1001L"
+  },
+  {
+    "id": 3631,
+    "sourceCourse": "CSC202",
+    "equivalentTo": "CSC2001 and CSC2001L"
+  },
+  {
+    "id": 3632,
+    "sourceCourse": "TECH ELECTIVE",
+    "equivalentTo": "CSC203"
+  },
+  {
+    "id": 3633,
+    "sourceCourse": "CSC203",
+    "equivalentTo": "TECH ELECTIVE"
+  },
+  {
+    "id": 3634,
+    "sourceCourse": "CPE133 and CPE2300",
+    "equivalentTo": "CPE133 and CPE233"
+  },
+  {
+    "id": 3635,
+    "sourceCourse": "CPE133 and CPE233",
+    "equivalentTo": "CPE2300 and CPE2301"
+  },
+  {
+    "id": 3636,
+    "sourceCourse": "CPE315",
+    "equivalentTo": "CPE3300"
+  },
+  {
+    "id": 3637,
+    "sourceCourse": "CPE333",
+    "equivalentTo": "CPE3300"
+  },
+  {
+    "id": 3638,
+    "sourceCourse": "CSC453",
+    "equivalentTo": "CSC4553"
+  },
+  {
+    "id": 3639,
+    "sourceCourse": "CPE329",
+    "equivalentTo": "EE3329"
+  },
+  {
+    "id": 3640,
+    "sourceCourse": "CPE3160",
+    "equivalentTo": "CPE316"
+  },
+  {
+    "id": 3641,
+    "sourceCourse": "CPE316",
+    "equivalentTo": "CPE3160"
+  },
+  {
+    "id": 3642,
+    "sourceCourse": "CSC357",
+    "equivalentTo": "CSC2050"
+  },
+  {
+    "id": 3643,
+    "sourceCourse": "CPE350 and CPE450 and CPE461 and CPE462",
+    "equivalentTo": "CPE4460 and CPE4461"
+  },
+  {
+    "id": 3644,
+    "sourceCourse": "CPE350 and CPE450 and CPE461 and CPE462 ",
+    "equivalentTo": "ENGR4460 and ENGR4461"
+  },
+  {
+    "id": 3645,
+    "sourceCourse": "CPE350 and CPE450 and CPE461 and CPE462 ",
+    "equivalentTo": "CSC4260 and CSC4261"
+  },
+  {
+    "id": 3646,
+    "sourceCourse": "CPE350 and CPE4461",
+    "equivalentTo": "CPE350 and CPE450"
+  },
+  {
+    "id": 3647,
+    "sourceCourse": "CPE350 and CPE450",
+    "equivalentTo": "CPE350 and CPE4461"
+  },
+  {
+    "id": 3648,
+    "sourceCourse": "TECH ELECTIVE",
+    "equivalentTo": "CPE461 and CPE462"
+  },
+  {
+    "id": 3649,
+    "sourceCourse": "CPE461 and CPE462",
+    "equivalentTo": "TECH ELECTIVE"
+  },
+  {
+    "id": 3651,
+    "sourceCourse": "CSC248",
+    "equivalentTo": "MATH2031"
+  },
+  {
+    "id": 3652,
+    "sourceCourse": "CSC321",
+    "equivalentTo": "CSC3201"
+  },
+  {
+    "id": 3653,
+    "sourceCourse": "CPE4220",
+    "equivalentTo": "CPE422"
+  },
+  {
+    "id": 3654,
+    "sourceCourse": "CPE422",
+    "equivalentTo": "CPE4220"
+  },
+  {
+    "id": 3655,
+    "sourceCourse": "CPE4280",
+    "equivalentTo": "CPE426"
+  },
+  {
+    "id": 3656,
+    "sourceCourse": "CPE426",
+    "equivalentTo": "CPE4280"
+  },
+  {
+    "id": 3657,
+    "sourceCourse": "EE115 and EE145 and EE215 and EE245 and EE315",
+    "equivalentTo": "EE2211 and EE2241 and EE3306 and EE3306L"
+  },
+  {
+    "id": 3658,
+    "sourceCourse": "EE115 and EE145 and EE215 and EE245 and EE3306 and EE3306L",
+    "equivalentTo": "EE115 and EE145 and EE215 and EE245 and EE315"
+  },
+  {
+    "id": 3659,
+    "sourceCourse": "EE115 and EE145 and EE215 and EE245 and EE315",
+    "equivalentTo": "EE115 and EE145 and EE215 and EE245 and EE3306 and EE3306L"
+  },
+  {
+    "id": 3660,
+    "sourceCourse": "CPE327 and CPE36",
+    "equivalentTo": "EE2328"
+  },
+  {
+    "id": 3661,
+    "sourceCourse": "EE228",
+    "equivalentTo": "EE2328"
+  },
+  {
+    "id": 3662,
+    "sourceCourse": "CHEM124",
+    "equivalentTo": "CHEM1120"
+  },
+  {
+    "id": 3663,
+    "sourceCourse": "GE AREA 3B",
+    "equivalentTo": "PHIL230"
+  },
+  {
+    "id": 3664,
+    "sourceCourse": "PHIL230",
+    "equivalentTo": "GE AREA 3B"
+  },
+  {
+    "id": 3665,
+    "sourceCourse": "GE AREA 3B",
+    "equivalentTo": "PHIL231"
+  },
+  {
+    "id": 3666,
+    "sourceCourse": "PHIL231",
+    "equivalentTo": "GE AREA 3B"
+  },
+  {
+    "id": 3667,
+    "sourceCourse": "PHIL323",
+    "equivalentTo": "PHIL3323"
+  },
+  {
+    "id": 3668,
+    "sourceCourse": "PHIL327",
+    "equivalentTo": "PHIL3323"
+  },
+  {
+    "id": 3669,
+    "sourceCourse": "PHIL328",
+    "equivalentTo": "PHIL3323"
+  },
+  {
+    "id": 3670,
+    "sourceCourse": "PHIL339",
+    "equivalentTo": "PHIL3323"
+  },
+  {
+    "id": 3671,
+    "sourceCourse": "PHIL340",
+    "equivalentTo": "PHIL3323"
+  },
+  {
+    "id": 3672,
+    "sourceCourse": "ES350",
+    "equivalentTo": "WGQS3350"
+  },
+  {
+    "id": 3673,
+    "sourceCourse": "ES351",
+    "equivalentTo": "WGQS3351"
+  },
+  {
+    "id": 3674,
+    "sourceCourse": "MATH141 and MATH142 and MATH143",
+    "equivalentTo": "MATH1261 and MATH1262"
+  },
+  {
+    "id": 3675,
+    "sourceCourse": "MATH141 and MATH142 and MATH1262",
+    "equivalentTo": "MATH141 and MATH142 and MATH143"
+  },
+  {
+    "id": 3676,
+    "sourceCourse": "MATH141 and MATH142 and MATH143",
+    "equivalentTo": "MATH141 and MATH142 and MATH1262"
+  },
+  {
+    "id": 3677,
+    "sourceCourse": "MATH141 and MATH141B and MATH1262",
+    "equivalentTo": "MATH141 and MATH142 and MATH143"
+  },
+  {
+    "id": 3678,
+    "sourceCourse": "MATH141 and MATH142 and MATH143",
+    "equivalentTo": "MATH141 and MATH141B and MATH1262"
+  },
+  {
+    "id": 3679,
+    "sourceCourse": "MATH241",
+    "equivalentTo": "MATH2263"
+  },
+  {
+    "id": 3680,
+    "sourceCourse": "MATH244",
+    "equivalentTo": "MATH2341"
+  },
+  {
+    "id": 3681,
+    "sourceCourse": "PHYS141",
+    "equivalentTo": "PHYS1141"
+  },
+  {
+    "id": 3682,
+    "sourceCourse": "PHYS143",
+    "equivalentTo": "PHYS1143"
+  },
+  {
+    "id": 3683,
+    "sourceCourse": "PHYS141 and PHYS142 and PHYS143",
+    "equivalentTo": "PHYS1141 and PHYS1143"
+  },
+  {
+    "id": 3684,
+    "sourceCourse": "PHYS141 and PHYS142C and PHYS143C",
+    "equivalentTo": "PHYS141 and PHYS142 and PHYS143"
+  },
+  {
+    "id": 3685,
+    "sourceCourse": "PHYS141 and PHYS142 and PHYS143",
+    "equivalentTo": "PHYS141 and PHYS142C and PHYS143C"
+  },
+  {
+    "id": 3686,
+    "sourceCourse": "PHYS141 and PHYS142 and PHYS143C",
+    "equivalentTo": "PHYS141 and PHYS142 and PHYS143"
+  },
+  {
+    "id": 3687,
+    "sourceCourse": "PHYS141 and PHYS142 and PHYS143",
+    "equivalentTo": "PHYS141 and PHYS142 and PHYS143C"
+  },
+  {
+    "id": 3688,
+    "sourceCourse": "PHYS141 and PHYS143 and PHYS142C",
+    "equivalentTo": "PHYS141 and PHYS142 and PHYS143"
+  },
+  {
+    "id": 3689,
+    "sourceCourse": "PHYS141 and PHYS142 and PHYS143",
+    "equivalentTo": "PHYS141 and PHYS143 and PHYS142C"
+  },
+  {
+    "id": 3690,
+    "sourceCourse": "STAT350",
+    "equivalentTo": "STAT3310"
+  },
+  {
+    "id": 3691,
+    "sourceCourse": "STAT350",
+    "equivalentTo": "STAT3210"
+  }
+]

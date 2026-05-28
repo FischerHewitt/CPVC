@@ -1,0 +1,197 @@
+[
+  {
+    "id": 829,
+    "name": "Aerospace Fundamentals",
+    "courseToMeet": "AERO121"
+  },
+  {
+    "id": 830,
+    "name": "Introduction to Aerospace Design",
+    "courseToMeet": "AERO215"
+  },
+  {
+    "id": 831,
+    "name": "Aerospace Systems Engineering and Integration",
+    "courseToMeet": "AERO220"
+  },
+  {
+    "id": 832,
+    "name": "Aerospace Thermodynamics",
+    "courseToMeet": "AERO299"
+  },
+  {
+    "id": 833,
+    "name": "Aerospace Engineering Analysis",
+    "courseToMeet": "AERO300"
+  },
+  {
+    "id": 834,
+    "name": "Aerospace Fluid Mechanics",
+    "courseToMeet": "AERO302"
+  },
+  {
+    "id": 835,
+    "name": "Aerospace Gas Dynamics and Heat Transfer",
+    "courseToMeet": "AERO303"
+  },
+  {
+    "id": 836,
+    "name": "Fundamentals of Dynamics and Control",
+    "courseToMeet": "AERO320"
+  },
+  {
+    "id": 837,
+    "name": "Experimental Sensors, Actuators and Control",
+    "courseToMeet": "AERO321"
+  },
+  {
+    "id": 838,
+    "name": "Aerospace Structural Analysis I",
+    "courseToMeet": "AERO331"
+  },
+  {
+    "id": 850,
+    "name": "Calculus II (B4)",
+    "courseToMeet": "MATH142"
+  },
+  {
+    "id": 851,
+    "name": "Calculus III (Area B Electives)",
+    "courseToMeet": "MATH143"
+  },
+  {
+    "id": 852,
+    "name": "Calculus IV",
+    "courseToMeet": "MATH241"
+  },
+  {
+    "id": 839,
+    "name": "Fundamentals of Systems Engineering",
+    "courseToMeet": "AERO350"
+  },
+  {
+    "id": 840,
+    "name": "Aerospace Structural Analysis II",
+    "courseToMeet": "AERO431"
+  },
+  {
+    "id": 841,
+    "name": "Experimental Stress Analysis",
+    "courseToMeet": "AERO433"
+  },
+  {
+    "id": 842,
+    "name": "Aerospace Engineering Professional Preparation",
+    "courseToMeet": "AERO460"
+  },
+  {
+    "id": 843,
+    "name": "Aerospace Systems Senior Laboratory",
+    "courseToMeet": "AERO465"
+  },
+  {
+    "id": 844,
+    "name": "Mechanics of Materials I and Mechanics of Materials II",
+    "courseToMeet": "(CE204 and CE207) or CE208"
+  },
+  {
+    "id": 845,
+    "name": "Electric Circuit Theory and Electric Circuits Laboratory",
+    "courseToMeet": "EE201 and EE251"
+  },
+  {
+    "id": 846,
+    "name": "General Chemistry for Physical Science and Engineering I (B1 & B3)",
+    "courseToMeet": "CHEM124"
+  },
+  {
+    "id": 847,
+    "name": "Introduction to Design and Manufacturing\t",
+    "courseToMeet": "IME144"
+  },
+  {
+    "id": 848,
+    "name": "Materials Engineering",
+    "courseToMeet": "MATE210"
+  },
+  {
+    "id": 849,
+    "name": "Calculus I (B4)",
+    "courseToMeet": "MATH141"
+  },
+  {
+    "id": 853,
+    "name": "Linear Analysis I",
+    "courseToMeet": "MATH244"
+  },
+  {
+    "id": 854,
+    "name": "Engineering Statics",
+    "courseToMeet": "ME211"
+  },
+  {
+    "id": 855,
+    "name": "Engineering Dynamics",
+    "courseToMeet": "ME212"
+  },
+  {
+    "id": 856,
+    "name": "General Physics I (Area B Electives)",
+    "courseToMeet": "PHYS141"
+  },
+  {
+    "id": 857,
+    "name": "General Physics II",
+    "courseToMeet": "PHYS142"
+  },
+  {
+    "id": 858,
+    "name": "General Physics III",
+    "courseToMeet": "PHYS143"
+  },
+  {
+    "id": 859,
+    "name": "Statistical Methods for Engineers (Upper-Division B)",
+    "courseToMeet": "STAT312"
+  },
+  {
+    "id": 2832,
+    "name": "Aerodynamics and Flight Performance",
+    "courseToMeet": "AERO306"
+  },
+  {
+    "id": 2833,
+    "name": "Experimental Aerodynamic",
+    "courseToMeet": "AERO307"
+  },
+  {
+    "id": 2834,
+    "name": "Propulsion Systems",
+    "courseToMeet": "AERO401"
+  },
+  {
+    "id": 2835,
+    "name": "Supersonic and Hypersonic Aerodynamics",
+    "courseToMeet": "AERO405"
+  },
+  {
+    "id": 2836,
+    "name": "Aircraft Dynamics and Control",
+    "courseToMeet": "AERO420"
+  },
+  {
+    "id": 2837,
+    "name": "Aircraft Design I",
+    "courseToMeet": "AERO443"
+  },
+  {
+    "id": 2838,
+    "name": "Aircraft Design II",
+    "courseToMeet": "AERO444"
+  },
+  {
+    "id": 2839,
+    "name": "Aircraft Design III",
+    "courseToMeet": "AERO445"
+  }
+]

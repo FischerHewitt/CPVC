@@ -1,0 +1,50 @@
+[
+  {
+    "id": 910,
+    "name": "Individualized Course of Study",
+    "units": 26,
+    "catalogName": "2026-2028",
+    "degreeName": "General Engineering",
+    "linkedTechnicalElectiveAreas": [],
+    "sections": [
+      {
+        "id": 464,
+        "name": "Approved Elective",
+        "requiredCount": null,
+        "minUnits": 18,
+        "maxUnits": 26,
+        "restriction": "Courses must be 3000-Level or above",
+        "technicalElectives": [
+          {
+            "id": 5771,
+            "type": "Range",
+            "courseSubject": null,
+            "courseRule": null,
+            "minLevel": 3000,
+            "maxLevel": 4000,
+            "unitsAllowed": 26
+          }
+        ]
+      },
+      {
+        "id": 465,
+        "name": "Approved Elective (Lower Division)",
+        "requiredCount": null,
+        "minUnits": 0,
+        "maxUnits": 8,
+        "restriction": "Courses lower than 3000 level, must only take 8 units max",
+        "technicalElectives": [
+          {
+            "id": 5772,
+            "type": "Range",
+            "courseSubject": null,
+            "courseRule": null,
+            "minLevel": 1000,
+            "maxLevel": 3000,
+            "unitsAllowed": 8
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,7 @@
+Things to fix
+
+- Done: every concentration view should show its own concentration tips plus applicable general Flowchart Tips and GE Tips from the base major, including:
+  - No Major or Support courses may be selected as credit/no credit. In addition, no more than 12 units of cooperative or internship courses can count towards your degree requirements.
+  - GE Tips: Required in Major or Support; also satisfies General Education (GE) requirement.
+
+  - Make sure all the arrows are the same direction (e.g., point from prerequisite → dependent course).

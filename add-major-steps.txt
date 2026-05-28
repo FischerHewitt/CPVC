@@ -98,9 +98,23 @@ Claude will:
 9. Run pytest from the backend directory using .venv and confirm all
    tests pass.
 
-10. If frontend checklist behavior changed, run the frontend tests and build.
-    The Manual Course Checklist should display rows in this order: Major,
-    Support, GE, then Concentration/free-elective items.
+10. REQUIRED -- update the frontend fallback lists in
+    frontend/app/upload/page.tsx:
+    a) Add the new major to FALLBACK_MAJORS:
+           { code: "CODE", name: "Full Major Name" },
+    b) If the major has concentrations, add them to FALLBACK_CONCENTRATIONS:
+           CODE: concs(
+             ["none", "No Concentration Selected"],
+             ["conc_id", "Concentration Label"],
+             ...
+           ),
+       These fallbacks are shown when the API is unreachable so new majors
+       must be listed here to appear in the upload dropdown.
+    c) Run the frontend build to catch any TypeScript errors:
+           cd frontend && npm run build
+       The build must complete with no errors before the major is considered
+       done. The Manual Course Checklist should display rows in this order:
+       Major, Support, GE, then Concentration/free-elective items.
 
 11. REQUIRED -- log all ambiguities to catalog_ambiguities.txt in the
     repo root. Append a section for the new major using this format:

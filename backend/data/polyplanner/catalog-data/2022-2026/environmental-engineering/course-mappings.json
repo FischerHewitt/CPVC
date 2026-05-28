@@ -1,0 +1,192 @@
+[
+  {
+    "id": 2352,
+    "sourceCourse": "CE1112 or ENVE1112",
+    "equivalentTo": "CE113"
+  },
+  {
+    "id": 2353,
+    "sourceCourse": "ENGR2211",
+    "equivalentTo": "CE204 and ME211"
+  },
+  {
+    "id": 2354,
+    "sourceCourse": "CE2251 or ENVE2251",
+    "equivalentTo": "CE251"
+  },
+  {
+    "id": 2355,
+    "sourceCourse": "CE3336 or ENVE3336 and CE3337 or ENVE3337",
+    "equivalentTo": "ENVE264 and CE336 and CE337"
+  },
+  {
+    "id": 2356,
+    "sourceCourse": "CE3381",
+    "equivalentTo": "CE381"
+  },
+  {
+    "id": 2357,
+    "sourceCourse": "CE4433 or CE4434 or CE4435 or CE4440",
+    "equivalentTo": "CE434"
+  },
+  {
+    "id": 2358,
+    "sourceCourse": "ENVE1111",
+    "equivalentTo": "ENVE111"
+  },
+  {
+    "id": 2359,
+    "sourceCourse": "ENVE3309",
+    "equivalentTo": "ENVE309"
+  },
+  {
+    "id": 2360,
+    "sourceCourse": "ENVE2325",
+    "equivalentTo": "ENVE325"
+  },
+  {
+    "id": 2361,
+    "sourceCourse": "ENVE2331",
+    "equivalentTo": "ENVE331"
+  },
+  {
+    "id": 2362,
+    "sourceCourse": "ENVE3421",
+    "equivalentTo": "ENVE304 and ENVE421"
+  },
+  {
+    "id": 2363,
+    "sourceCourse": "ENVE3434",
+    "equivalentTo": "ENVE434"
+  },
+  {
+    "id": 2364,
+    "sourceCourse": "ENVE3438",
+    "equivalentTo": "ENVE438"
+  },
+  {
+    "id": 2365,
+    "sourceCourse": "ENVE3450",
+    "equivalentTo": "ENVE450"
+  },
+  {
+    "id": 2366,
+    "sourceCourse": "ENVE4466",
+    "equivalentTo": "CE465 and ENVE466"
+  },
+  {
+    "id": 2367,
+    "sourceCourse": "ENVE4467",
+    "equivalentTo": "ENVE467"
+  },
+  {
+    "id": 2368,
+    "sourceCourse": "ENVE4437",
+    "equivalentTo": "CORE ELECTIVES"
+  },
+  {
+    "id": 2369,
+    "sourceCourse": "ENVE4439",
+    "equivalentTo": "ENVE436 and ENVE439"
+  },
+  {
+    "id": 2370,
+    "sourceCourse": "ENVE4443",
+    "equivalentTo": "ENVE443"
+  },
+  {
+    "id": 2371,
+    "sourceCourse": "ENVE4480",
+    "equivalentTo": "ENVE480"
+  },
+  {
+    "id": 2372,
+    "sourceCourse": "CHEM1120",
+    "equivalentTo": "CHEM124"
+  },
+  {
+    "id": 2373,
+    "sourceCourse": "CHEM1122",
+    "equivalentTo": "CHEM125"
+  },
+  {
+    "id": 2374,
+    "sourceCourse": "CHEM124 and CHEM1122",
+    "equivalentTo": "CHEM124 and CHEM125 and CHEM126"
+  },
+  {
+    "id": 2375,
+    "sourceCourse": "CHEM124 and CHEM125 and CHEM128C",
+    "equivalentTo": "CHEM124 and CHEM125 and CHEM126"
+  },
+  {
+    "id": 2376,
+    "sourceCourse": "CHEM2240",
+    "equivalentTo": "CHEM312"
+  },
+  {
+    "id": 2377,
+    "sourceCourse": "MCRO2221 or MCRO2224",
+    "equivalentTo": "MCRO221 or MCRO224"
+  },
+  {
+    "id": 2378,
+    "sourceCourse": "MATH141 and MATH141B and MATH1262",
+    "equivalentTo": "MATH141 and MATH142 and MATH143"
+  },
+  {
+    "id": 2379,
+    "sourceCourse": "MATH141 and MATH142 and MATH1262",
+    "equivalentTo": "MATH141 and MATH142 and MATH143"
+  },
+  {
+    "id": 2380,
+    "sourceCourse": "MATH1261 and MATH1262",
+    "equivalentTo": "MATH141 and MATH142 and MATH143"
+  },
+  {
+    "id": 2381,
+    "sourceCourse": "MATH2263",
+    "equivalentTo": "MATH241"
+  },
+  {
+    "id": 2382,
+    "sourceCourse": "MATH2341",
+    "equivalentTo": "MATH244"
+  },
+  {
+    "id": 2383,
+    "sourceCourse": "PHYS1141",
+    "equivalentTo": "PHYS141"
+  },
+  {
+    "id": 2384,
+    "sourceCourse": "PHYS141 and PHYS142C and PHYS1143",
+    "equivalentTo": "PHYS141 and PHYS142 and PHYS143"
+  },
+  {
+    "id": 2385,
+    "sourceCourse": "PHYS141 and PHYS142 and PHYS143C",
+    "equivalentTo": "PHYS141 and PHYS142 and PHYS143"
+  },
+  {
+    "id": 2386,
+    "sourceCourse": "PHYS141 and PHYS143 and PHYS142C",
+    "equivalentTo": "PHYS141 and PHYS142 and PHYS143"
+  },
+  {
+    "id": 2387,
+    "sourceCourse": "PHYS1143",
+    "equivalentTo": "PHYS143"
+  },
+  {
+    "id": 2388,
+    "sourceCourse": "PHYS1141 and PHYS1143",
+    "equivalentTo": "PHYS141 and PHYS142 and PHYS143"
+  },
+  {
+    "id": 2389,
+    "sourceCourse": "STAT312",
+    "equivalentTo": "STAT3210"
+  }
+]

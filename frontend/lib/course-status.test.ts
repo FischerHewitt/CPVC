@@ -73,6 +73,27 @@ describe("getCourseStatus — regular course", () => {
     const inProgress = toNormalizedSet(["MATH 1261"]);
     expect(getCourseStatus(course, new Set(), inProgress, new Set(), new Set(), emptyLookup, emptyGEMap)).toBe("in_progress");
   });
+
+  it("returns completed when a non-required course is auto-satisfied by a later course", () => {
+    const course = makeCourse({
+      course_number: "MCRO 2221",
+      auto_satisfied_by: ["MCRO 2224"],
+      is_required: false,
+    });
+    const completed = toNormalizedSet(["MCRO 2224"]);
+    expect(getCourseStatus(course, completed, new Set(), new Set(), new Set(), emptyLookup, emptyGEMap)).toBe("completed");
+  });
+
+  it("returns completed when an orientation placeholder is auto-satisfied by quarter CSC 101", () => {
+    const course = makeCourse({
+      course_number: "CSC/CPE 1000",
+      title: "Computing Majors Orientation",
+      is_placeholder: true,
+      auto_satisfied_by: ["CSC 101"],
+    });
+    const completed = toNormalizedSet(["CSC 101"]);
+    expect(getCourseStatus(course, completed, new Set(), new Set(), new Set(), emptyLookup, emptyGEMap)).toBe("completed");
+  });
 });
 
 // ── non-GE placeholder (the bug that was fixed) ───────────────────────────────
@@ -143,10 +164,10 @@ describe("expandSlashCourseNumber", () => {
   });
 });
 
-// ── prereq_warning status ─────────────────────────────────────────────────────
+// ── slash-choice prereq status ────────────────────────────────────────────────
 
-describe("getCourseStatus — prereq_warning", () => {
-  it("returns prereq_warning when sole unmet prereq is a slash-choice tile", () => {
+describe("getCourseStatus — slash-choice prereqs", () => {
+  it("returns locked when sole unmet prereq is a slash-choice tile", () => {
     const slashTile = makeCourse({ course_number: "CHEM 2240/2242" });
     const course = makeCourse({ course_number: "CHEM 3000", prerequisites: ["CHEM 2240/2242"] });
     const lookup = new Map([
@@ -154,7 +175,7 @@ describe("getCourseStatus — prereq_warning", () => {
       ["CHEM 2240", slashTile],
       ["CHEM 2242", slashTile],
     ]);
-    expect(getCourseStatus(course, new Set(), new Set(), new Set(), new Set(), lookup, emptyGEMap)).toBe("prereq_warning");
+    expect(getCourseStatus(course, new Set(), new Set(), new Set(), new Set(), lookup, emptyGEMap)).toBe("locked");
   });
 
   it("returns incomplete when slash prereq is satisfied via a component number", () => {
@@ -190,6 +211,35 @@ describe("getCourseStatus — prereq_warning", () => {
   });
 });
 
+// ── slash-choice tile completion detection ────────────────────────────────────
+
+describe("getCourseStatus — slash-choice tile self-completion", () => {
+  it("marks a slash-choice placeholder as completed when a component number is in completed", () => {
+    // e.g. student has 'CSC 1024' on transcript; tile is 'CSC/CPE 1024'
+    const tile = makeCourse({ course_number: "CSC/CPE 1024", is_placeholder: true });
+    const completed = toNormalizedSet(["CSC 1024"]);
+    expect(getCourseStatus(tile, completed, new Set(), new Set(), new Set(), emptyLookup, emptyGEMap)).toBe("completed");
+  });
+
+  it("marks a slash-choice placeholder as completed via the second component", () => {
+    const tile = makeCourse({ course_number: "CSC/CPE 1024", is_placeholder: true });
+    const completed = toNormalizedSet(["CPE 1024"]);
+    expect(getCourseStatus(tile, completed, new Set(), new Set(), new Set(), emptyLookup, emptyGEMap)).toBe("completed");
+  });
+
+  it("marks a slash-choice placeholder as in_progress when a component is in inProgress", () => {
+    const tile = makeCourse({ course_number: "MATH 1261/1264", is_placeholder: true });
+    const inProgress = toNormalizedSet(["MATH 1261"]);
+    expect(getCourseStatus(tile, new Set(), inProgress, new Set(), new Set(), emptyLookup, emptyGEMap)).toBe("in_progress");
+  });
+
+  it("does not mark a slash-choice placeholder as completed from the full slash string alone", () => {
+    const tile = makeCourse({ course_number: "CSC/CPE 1024", is_placeholder: true });
+    const completed = toNormalizedSet(["CSC/CPE 1024"]);
+    expect(getCourseStatus(tile, completed, new Set(), new Set(), new Set(), emptyLookup, emptyGEMap)).toBe("completed");
+  });
+});
+
 // ── GE placeholder ────────────────────────────────────────────────────────────
 
 describe("getCourseStatus — GE placeholder", () => {
@@ -221,6 +271,13 @@ describe("getCourseStatus — GE placeholder", () => {
     const ge = makeCourse({ course_number: "GE 1C", category: "ge", is_placeholder: true });
     const geAreaMap: GEAreaMap = { "GE 1C": ["COMM 101", "COMS 1010"] };
     const inProgress = toNormalizedSet(["COMS 1010"]);
+    expect(getCourseStatus(ge, new Set(), inProgress, new Set(), new Set(), emptyLookup, geAreaMap)).toBe("in_progress");
+  });
+
+  it("returns in_progress when a quarter course satisfies a semester GE approved course", () => {
+    const ge = makeCourse({ course_number: "GE 1B", category: "ge", is_placeholder: true });
+    const geAreaMap: GEAreaMap = { "GE 1B": ["COMS 1126"] };
+    const inProgress = toNormalizedSet(["COMS 126"]);
     expect(getCourseStatus(ge, new Set(), inProgress, new Set(), new Set(), emptyLookup, geAreaMap)).toBe("in_progress");
   });
 

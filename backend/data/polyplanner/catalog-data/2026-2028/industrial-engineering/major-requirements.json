@@ -1,0 +1,152 @@
+[
+  {
+    "id": 2642,
+    "name": "Introduction to Industrial and Manufacturing Engineering",
+    "courseToMeet": "IME1101"
+  },
+  {
+    "id": 2643,
+    "name": "Technical Graphics Communication for Design and Manufacturing",
+    "courseToMeet": "IME1140"
+  },
+  {
+    "id": 2644,
+    "name": "Select One: Introduction to Metal Casting and Prototyping or Materials Joining or Introduction to Modern Electronics Manufacturing",
+    "courseToMeet": "IME1141 or IME1142 or IME1156"
+  },
+  {
+    "id": 2645,
+    "name": "Introduction to Design and Manufacturing",
+    "courseToMeet": "IME1143"
+  },
+  {
+    "id": 2646,
+    "name": "Process Improvement Fundamentals",
+    "courseToMeet": "IME1223"
+  },
+  {
+    "id": 2647,
+    "name": "Introduction to Enterprise Analytics and Database Systems",
+    "courseToMeet": "IME2212"
+  },
+  {
+    "id": 2648,
+    "name": "Financial Decision Making for Engineers",
+    "courseToMeet": "IME2315"
+  },
+  {
+    "id": 2649,
+    "name": "Operations Research and Management",
+    "courseToMeet": "IME3302"
+  },
+  {
+    "id": 2650,
+    "name": "Statistical Decision-Making and Quality Control",
+    "courseToMeet": "IME3326"
+  },
+  {
+    "id": 2651,
+    "name": "Production Planning and Control Systems",
+    "courseToMeet": "IME3410"
+  },
+  {
+    "id": 2652,
+    "name": "Process and System Simulation",
+    "courseToMeet": "IME3420"
+  },
+  {
+    "id": 2653,
+    "name": "Facilities Design and Warehousing",
+    "courseToMeet": "IME3443"
+  },
+  {
+    "id": 2654,
+    "name": "Human Factors and Ergonomics in Engineering and Systems Design",
+    "courseToMeet": "IME4319"
+  },
+  {
+    "id": 2655,
+    "name": "Applications of Enterprise Analytics",
+    "courseToMeet": "IME4372"
+  },
+  {
+    "id": 2656,
+    "name": "Supply Chain and Logistics Management",
+    "courseToMeet": "IME4417"
+  },
+  {
+    "id": 2657,
+    "name": "Senior Project - Design I",
+    "courseToMeet": "IME4461"
+  },
+  {
+    "id": 2658,
+    "name": "Senior Project - Design II",
+    "courseToMeet": "IME4462"
+  },
+  {
+    "id": 2659,
+    "name": "Circuits and Electronics Requirement",
+    "courseToMeet": "(EE2115 and EE2115L) or (EE2201 and EE2241)"
+  },
+  {
+    "id": 2660,
+    "name": "Introduction to Mechanics",
+    "courseToMeet": "ENGR2211"
+  },
+  {
+    "id": 2661,
+    "name": "Principles of Materials Engineering for Non-Majors and Materials Laboratory I",
+    "courseToMeet": "MATE1220 and MATE1215"
+  },
+  {
+    "id": 2662,
+    "name": "Fundamentals of Chemical Structure and Properties",
+    "courseToMeet": "CHEM1120"
+  },
+  {
+    "id": 2663,
+    "name": "Programming for Scientists and Engineers",
+    "courseToMeet": "CSC1032"
+  },
+  {
+    "id": 2664,
+    "name": "Linear Algebra or Linear Analysis",
+    "courseToMeet": "MATH1151 or MATH2341"
+  },
+  {
+    "id": 2665,
+    "name": "Calculus I",
+    "courseToMeet": "MATH1261"
+  },
+  {
+    "id": 2666,
+    "name": "Calculus II",
+    "courseToMeet": "MATH1262"
+  },
+  {
+    "id": 2667,
+    "name": "Calculus III",
+    "courseToMeet": "MATH2263"
+  },
+  {
+    "id": 2668,
+    "name": "General Physics I",
+    "courseToMeet": "PHYS1141"
+  },
+  {
+    "id": 2669,
+    "name": "General Physics II",
+    "courseToMeet": "PHYS1143"
+  },
+  {
+    "id": 2670,
+    "name": "Introductory Psychology",
+    "courseToMeet": "PSY2201"
+  },
+  {
+    "id": 2671,
+    "name": "Engineering Statistics",
+    "courseToMeet": "STAT3210"
+  }
+]

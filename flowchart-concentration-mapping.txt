@@ -1,0 +1,206 @@
+Flowchart & Concentration Mapping Reference
+============================================
+Last updated: 2026-05-21
+
+## SUMMARY / GOAL
+
+This document explains how the Mustang Blueprints system maps Cal Poly major
+concentrations to flowcharts. The core rule: when a concentration only changes
+which elective courses a student takes (not when required/support/GE courses
+appear), use slot_overrides. When a concentration moves required courses to
+different terms, use full_flowchart_key. CS concentrations required the latter.
+
+--------------------------------------------------------------------------------
+PATTERN A — slot_overrides (most majors)
+--------------------------------------------------------------------------------
+Used when: A concentration only changes which elective/capstone slots are filled,
+while all required courses (major, support, GE) stay in the same terms.
+
+How it works:
+  - The base major flowchart (e.g. ENVM_FLOWCHART) defines all required courses
+    in their standard term positions.
+  - Each concentration entry in concentrations.py has a "slot_overrides" dict
+    mapping tile IDs to replacement courses or placeholders.
+  - The frontend merges the overrides onto the base flowchart at render time.
+  - The FLOWCHARTS dict only contains the base flowchart key (e.g. "ENVM").
+
+Example (ENVM concentrations):
+  "conservation": {
+      "slot_overrides": {
+          "ENVM_CON1": {"course_number": "NR 4xxx", ...},
+          "ENVM_CON2": {"course_number": "NR 4yyy", ...},
+      }
+  }
+
+When to use: The concentration's required courses are in the same terms as the
+general curriculum. Only elective/capstone tiles differ.
+
+--------------------------------------------------------------------------------
+PATTERN B — full_flowchart_key (CS concentrations)
+--------------------------------------------------------------------------------
+Used when: A concentration moves required, support, or GE courses to different
+terms — not just swapping elective slots.
+
+How it works:
+  - A completely independent flowchart is defined in flowcharts.py
+    (e.g. CS_AIML_FLOWCHART) and registered in the FLOWCHARTS dict under a
+    concentration-specific key (e.g. "CS_AIML").
+  - The concentration entry in concentrations.py sets "full_flowchart_key" to
+    that key (e.g. "full_flowchart_key": "CS_AIML") with an empty slot_overrides.
+  - When the frontend encounters full_flowchart_key, it discards the base
+    flowchart entirely and loads the concentration-specific one instead.
+  - The /majors API endpoint EXCLUDES these concentration-only keys so they
+    don't appear as standalone majors in the upload dropdown.
+
+Example (CS concentrations):
+  "ai_ml": {
+      "full_flowchart_key": "CS_AIML",
+      "slot_overrides": {}
+  }
+
+When to use: The concentration PDF shows STAT 3210, MATH 2031, or other required
+courses appearing in different terms than the base flowchart — or new required
+courses are added that displace others.
+
+--------------------------------------------------------------------------------
+CS CONCENTRATION BREAKDOWN (what differs from base CS flowchart)
+--------------------------------------------------------------------------------
+
+All five CS concentrations are built as full independent flowcharts because each
+moves at least one required/support course to a different term.
+
+  AI/ML (CS_AIML):
+    - STAT 3210 moved from Junior Spring → Junior Fall
+    - MATH 2621 (Intro to Mathematical Optimization, 3u) added in Junior Fall
+    - Two AI/ML concentration electives in Senior Fall + two in Senior Spring
+
+  Data Engineering (CS_DATA_ENG):
+    - PHIL 3323 (Ethics, Science, Technology) moved to Junior Fall
+    - CSC 3665 (Introduction to Databases, 3u) added in Junior Spring
+    - STAT 3210 moved from Junior Spring → Junior Fall
+
+  Game Development (CS_GAME_DEV):
+    - CSC 3710 (Introduction to Computer Game Design, 4u) added in Junior Spring
+    - CSC 3780 (Game Engine Development, 4u) added in Senior Fall
+    - COMS 4404 (Video Games and Society, 3u) in Senior Spring
+    - Concentration CS/Game electives in Senior Spring
+
+  Graphics (CS_GRAPHICS):
+    - CSC 4710 (Introduction to Computer Graphics, 3u) added in Junior Spring
+    - STAT 3210 stays in Junior Spring (not moved)
+    - GE UD-4 in Senior Fall (not Junior Spring like some other concentrations)
+    - Graphics Elective slots in Senior Fall + Senior Spring
+
+  Privacy & Security (CS_PRIVACY):
+    - CSC 3250 (Intro to Privacy: Policy and Technology, 3u) added in Junior Spring
+    - CSC 4260 (Privacy & Security Capstone I, 3u) + GE UD-4 in Senior Fall
+    - CSC 4261 (Privacy & Security Capstone II, 3u) in Senior Spring
+
+Term-by-term unit totals (all concentrations = 120u total):
+
+  Concentration  | Y1F | Y1S | Y2F | Y2S | Y3F | Y3S | Y4F | Y4S |
+  ─────────────────────────────────────────────────────────────────
+  Base CS        |  14 |  14 |  13 |  13 |  13 |  17 |  16 |  20 | (via pytest)
+  AI/ML          |  14 |  14 |  13 |  13 |  13 |  17 |  16 |  20 |
+  Data Eng       |  14 |  14 |  13 |  13 |  13 |  17 |  16 |  20 |
+  Game Dev       |  14 |  14 |  13 |  13 |  13 |  17 |  16 |  20 |
+  Graphics       |  14 |  14 |  13 |  13 |  13 |  15 |  16 |  15 |
+  Privacy        |  14 |  14 |  13 |  13 |  13 |  16 |  16 |  14 |
+
+  All rows sum to 120u — verified by pytest test_cs_concentration_flowcharts_registered_and_total_120.
+
+--------------------------------------------------------------------------------
+BUGS FOUND AND FIXED IN THIS SESSION (2026-05-21)
+--------------------------------------------------------------------------------
+
+  CS_GRAPHICS  GRAPH_CSC4710   units: 4 → 3     (catalog says 3u)
+  CS_GRAPHICS  GRAPH_GE_UD4    grid_col: 5 → 6  (PDF places it in Senior Fall)
+  CS_GRAPHICS  GRAPH_EXT1      new tile added    (2u External Elective, grid_col=5)
+  CS_GAME_DEV  GAME_COMS4404   units: 4 → 3     (catalog says 3u)
+  CS_GAME_DEV  GAME_CS_ELEC1   units: 3 → 4     (PDF: "CS Elective 4" for slot 1)
+  CS_PRIVACY   PRIV_CSC3250    units: 4 → 3     (catalog says 3u)
+  CS_PRIVACY   PRIV_CSC4260    units: 4 → 3     (catalog says 3u)
+  CS_PRIVACY   PRIV_CONC3      new tile added    (2u Privacy/Security Elective, grid_col=7)
+
+Also fixed in this session: prerequisite course_number references across all
+CS-family flowcharts were updated to match renamed slash-choice course_numbers
+(e.g. "MATH 1262" → "MATH 1262/1265", "CSC 2050" → "CSC/CPE 2050", etc.) that
+had been updated in a prior session but whose downstream prereq references
+were not updated at the same time.
+
+Also fixed: /majors API endpoint now excludes concentration-only flowchart keys
+(full_flowchart_key values) from the major dropdown, so "Computer Science" only
+appears once instead of six times.
+
+--------------------------------------------------------------------------------
+ADDING FUTURE CONCENTRATIONS THAT NEED THE FULL-FLOWCHART PATTERN
+--------------------------------------------------------------------------------
+
+1. Define a new flowchart list in backend/data/flowcharts.py:
+       CS_NEWCONC_FLOWCHART: list[Course] = [ ... ]
+   Prefix all tile IDs that are unique to this concentration with a short
+   concentration prefix (e.g. "NEWC_"). Reuse shared tile IDs (CSC1001, etc.)
+   for tiles that are identical across concentrations.
+
+2. Call _compact_rows_by_category(CS_NEWCONC_FLOWCHART) in the compaction block.
+
+3. Register it in the FLOWCHARTS dict:
+       "CS_NEWCONC": {
+           "major": "Computer Science",
+           "total_units": 120,
+           "columns": [...],
+           "courses": CS_NEWCONC_FLOWCHART,
+       }
+   The /majors endpoint automatically excludes it from the dropdown (via the
+   _CONCENTRATION_FLOWCHART_KEYS filter in routers/flowchart.py).
+
+4. Add the concentration entry in backend/data/concentrations.py under "CS":
+       {
+           "id": "new_conc",
+           "name": "New Concentration Name",
+           "full_flowchart_key": "CS_NEWCONC",
+           "slot_overrides": {},
+       }
+
+5. Add tests in backend/tests/test_flowchart_data.py:
+   - Assert total_units == 120
+   - Assert key tile course_numbers, units, and grid_col values
+   - Assert full_flowchart_key == "CS_NEWCONC" in the concentrations dict
+
+6. Add to FALLBACK_CONCENTRATIONS in frontend/app/upload/page.tsx:
+       CS: concs(
+           ...existing...,
+           ["new_conc", "New Concentration Name"],
+       ),
+
+--------------------------------------------------------------------------------
+NOTE ON 5-YEAR PROGRAMS
+--------------------------------------------------------------------------------
+
+Not all majors are 4-year (8-term) programs. Some span 5 years (10 terms).
+
+  grid_col 0–7  = 4-year program (Freshman Fall through Senior Spring)
+  grid_col 0–9  = 5-year program (adds a 5th year: grid_col 8 = 5th Year Fall,
+                                                     grid_col 9 = 5th Year Spring)
+
+Known 5-year programs at Cal Poly SLO:
+  - Architecture (ARCH) — 10 terms, grid_col 0–9
+
+ALWAYS verify program length from the catalog before building or auditing a
+flowchart. A flowchart using grid_col 8–9 for a 5-year major is correct, not
+a bug. If you assume 8 columns and the catalog shows more terms, you are missing
+content.
+
+--------------------------------------------------------------------------------
+GENERAL PRINCIPLE FOR OTHER MAJORS
+--------------------------------------------------------------------------------
+
+Most other majors' concentrations only differ in the 3–6 elective/capstone slots
+at the end of the program, leaving required core courses in the same terms.
+slot_overrides (Pattern A) correctly handles those — no changes needed to their
+architecture.
+
+If in a future session you encounter a major where a concentration moves a
+required/support/GE course to a different term (not just swaps an elective slot),
+the fix is to add a full_flowchart_key entry pointing to a new complete flowchart,
+following Pattern B above.

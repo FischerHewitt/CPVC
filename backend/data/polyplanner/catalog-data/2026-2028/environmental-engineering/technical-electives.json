@@ -1,0 +1,194 @@
+[
+  {
+    "id": 814,
+    "name": "Technical Electives",
+    "units": 13,
+    "catalogName": "2026-2028",
+    "degreeName": "Environmental Engineering",
+    "linkedTechnicalElectiveAreas": [],
+    "sections": [
+      {
+        "id": 370,
+        "name": "CE Technical Elective",
+        "requiredCount": null,
+        "minUnits": 6,
+        "maxUnits": 6,
+        "restriction": null,
+        "technicalElectives": [
+          {
+            "id": 5626,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CE3321",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5627,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CE3352",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5628,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CE3375",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5629,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CE3381",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5630,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CE4400",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5631,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CE4413",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5632,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CE4433",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5633,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CE4434",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5634,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CE4435",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5635,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CE4440",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5636,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CE4474",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5637,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CE4475",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5638,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CE5536",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5639,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CE5537",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5640,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CE5538",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5641,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CE5539",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5642,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CE5541",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          }
+        ]
+      },
+      {
+        "id": 371,
+        "name": "Technical Elective",
+        "requiredCount": 1,
+        "minUnits": 6,
+        "maxUnits": 8,
+        "restriction": "Courses must be 300+ level",
+        "technicalElectives": [
+          {
+            "id": 5643,
+            "type": "Range",
+            "courseSubject": "ENVE",
+            "courseRule": null,
+            "minLevel": 300,
+            "maxLevel": 500,
+            "unitsAllowed": 8
+          }
+        ]
+      }
+    ]
+  }
+]

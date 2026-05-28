@@ -1,0 +1,317 @@
+[
+  {
+    "id": 1805,
+    "sourceCourse": "BMED1101",
+    "equivalentTo": "BMED101"
+  },
+  {
+    "id": 1806,
+    "sourceCourse": "BMED3102",
+    "equivalentTo": "BMED102"
+  },
+  {
+    "id": 1807,
+    "sourceCourse": "BMED2212",
+    "equivalentTo": "BMED212"
+  },
+  {
+    "id": 1808,
+    "sourceCourse": "BMED2310 and BMED2311",
+    "equivalentTo": "BMED310"
+  },
+  {
+    "id": 1809,
+    "sourceCourse": "BMED3410",
+    "equivalentTo": "BMED410"
+  },
+  {
+    "id": 1810,
+    "sourceCourse": "BMED2420",
+    "equivalentTo": "BMED420"
+  },
+  {
+    "id": 1811,
+    "sourceCourse": "BMED3425",
+    "equivalentTo": "BMED425"
+  },
+  {
+    "id": 1812,
+    "sourceCourse": "BMED3430",
+    "equivalentTo": "BMED430"
+  },
+  {
+    "id": 1813,
+    "sourceCourse": "BMED4440",
+    "equivalentTo": "BMED440"
+  },
+  {
+    "id": 1814,
+    "sourceCourse": "BMED4465 and BMED4466",
+    "equivalentTo": "BMED455 and BMED456"
+  },
+  {
+    "id": 1815,
+    "sourceCourse": "BMED4460",
+    "equivalentTo": "BMED460"
+  },
+  {
+    "id": 1816,
+    "sourceCourse": "BIO1151",
+    "equivalentTo": "BIO161"
+  },
+  {
+    "id": 1817,
+    "sourceCourse": "BIO2231",
+    "equivalentTo": "BIO231"
+  },
+  {
+    "id": 1818,
+    "sourceCourse": "BMED2232",
+    "equivalentTo": "BMED232"
+  },
+  {
+    "id": 1819,
+    "sourceCourse": "ENGR2211",
+    "equivalentTo": "ME211 and CE204"
+  },
+  {
+    "id": 1820,
+    "sourceCourse": "STAT3210",
+    "equivalentTo": "STAT312"
+  },
+  {
+    "id": 1821,
+    "sourceCourse": "CHEM1120",
+    "equivalentTo": "CHEM124"
+  },
+  {
+    "id": 1822,
+    "sourceCourse": "CHEM1122",
+    "equivalentTo": "CHEM125"
+  },
+  {
+    "id": 1823,
+    "sourceCourse": "CSC1031 or excess units from CENG course",
+    "equivalentTo": "CSC231"
+  },
+  {
+    "id": 1824,
+    "sourceCourse": "EE2201 or excess units from CENG course",
+    "equivalentTo": "EE201"
+  },
+  {
+    "id": 1825,
+    "sourceCourse": "MATE1220 or excess units from CENG course",
+    "equivalentTo": "MATE210"
+  },
+  {
+    "id": 1826,
+    "sourceCourse": "MATH1261 and MATH1262",
+    "equivalentTo": "MATH141 and MATH142 and MATH143"
+  },
+  {
+    "id": 1827,
+    "sourceCourse": "MATH2263",
+    "equivalentTo": "MATH241"
+  },
+  {
+    "id": 1828,
+    "sourceCourse": "MATH2341",
+    "equivalentTo": "MATH244"
+  },
+  {
+    "id": 1829,
+    "sourceCourse": "ENGR2212",
+    "equivalentTo": "ME212"
+  },
+  {
+    "id": 1830,
+    "sourceCourse": "ME3341",
+    "equivalentTo": "ME341"
+  },
+  {
+    "id": 1831,
+    "sourceCourse": "PHYS1141",
+    "equivalentTo": "PHYS141"
+  },
+  {
+    "id": 1832,
+    "sourceCourse": "PHYS1143",
+    "equivalentTo": "PHYS143"
+  },
+  {
+    "id": 1833,
+    "sourceCourse": "PHYS1141 and PHYS1143",
+    "equivalentTo": "PHYS141 and PHYS142 and PHYS143"
+  },
+  {
+    "id": 3535,
+    "sourceCourse": "BMED102",
+    "equivalentTo": "BMED3102"
+  },
+  {
+    "id": 3536,
+    "sourceCourse": "BMED212",
+    "equivalentTo": "BMED2212"
+  },
+  {
+    "id": 3537,
+    "sourceCourse": "BMED310",
+    "equivalentTo": "BMED2310 and BMED2311"
+  },
+  {
+    "id": 3538,
+    "sourceCourse": "BMED410",
+    "equivalentTo": "BMED3410"
+  },
+  {
+    "id": 3539,
+    "sourceCourse": "BMED420",
+    "equivalentTo": "BMED2420"
+  },
+  {
+    "id": 3540,
+    "sourceCourse": "BMED425",
+    "equivalentTo": "BMED3425"
+  },
+  {
+    "id": 3541,
+    "sourceCourse": "BMED430",
+    "equivalentTo": "BMED3430"
+  },
+  {
+    "id": 3542,
+    "sourceCourse": "BMED101",
+    "equivalentTo": "BMED1101"
+  },
+  {
+    "id": 3543,
+    "sourceCourse": "BMED440",
+    "equivalentTo": "BMED4440"
+  },
+  {
+    "id": 3544,
+    "sourceCourse": "ADDITIONAL TECH ELECTIVE",
+    "equivalentTo": "BMED450"
+  },
+  {
+    "id": 3545,
+    "sourceCourse": "BMED450",
+    "equivalentTo": "ADDITIONAL TECH ELECTIVE"
+  },
+  {
+    "id": 3546,
+    "sourceCourse": "BMED455 and BMED456",
+    "equivalentTo": "BMED4465 and BMED4466"
+  },
+  {
+    "id": 3547,
+    "sourceCourse": "BMED460",
+    "equivalentTo": "BMED4460"
+  },
+  {
+    "id": 3548,
+    "sourceCourse": "BIO161",
+    "equivalentTo": "BIO1151"
+  },
+  {
+    "id": 3549,
+    "sourceCourse": "BIO231",
+    "equivalentTo": "BIO2231"
+  },
+  {
+    "id": 3550,
+    "sourceCourse": "BMED232",
+    "equivalentTo": "BMED2232"
+  },
+  {
+    "id": 3551,
+    "sourceCourse": "ME211 and CE204",
+    "equivalentTo": "ENGR2211"
+  },
+  {
+    "id": 3552,
+    "sourceCourse": "STAT312",
+    "equivalentTo": "STAT3210"
+  },
+  {
+    "id": 3569,
+    "sourceCourse": "MATH141 and MATH142 and MATH143",
+    "equivalentTo": "MATH1261 and MATH1262"
+  },
+  {
+    "id": 3570,
+    "sourceCourse": "MATH141 and MATH142 and MATH1262",
+    "equivalentTo": "MATH141 and MATH142 and MATH143"
+  },
+  {
+    "id": 3571,
+    "sourceCourse": "MATH141 and MATH142 and MATH143",
+    "equivalentTo": "MATH141 and MATH142 and MATH1262"
+  },
+  {
+    "id": 3572,
+    "sourceCourse": "MATH141 and MATH141B and MATH1262",
+    "equivalentTo": "MATH141 and MATH142 and MATH143"
+  },
+  {
+    "id": 3573,
+    "sourceCourse": "MATH141 and MATH142 and MATH143",
+    "equivalentTo": "MATH141 and MATH141B and MATH1262"
+  },
+  {
+    "id": 3574,
+    "sourceCourse": "PHYS141 and PHYS142 and PHYS143",
+    "equivalentTo": "PHYS1141 and PHYS1143"
+  },
+  {
+    "id": 3575,
+    "sourceCourse": "PHYS141 and PHYS142 and PHYS143C",
+    "equivalentTo": "PHYS141 and PHYS142 and PHYS143"
+  },
+  {
+    "id": 3576,
+    "sourceCourse": "PHYS141 and PHYS142 and PHYS143",
+    "equivalentTo": "PHYS141 and PHYS142 and PHYS143C"
+  },
+  {
+    "id": 3577,
+    "sourceCourse": "PHYS141 and PHYS142C and PHYS143C",
+    "equivalentTo": "PHYS141 and PHYS142 and PHYS143"
+  },
+  {
+    "id": 3578,
+    "sourceCourse": "PHYS141 and PHYS142 and PHYS143",
+    "equivalentTo": "PHYS141 and PHYS142C and PHYS143C"
+  },
+  {
+    "id": 3579,
+    "sourceCourse": "PHYS141 and PHYS143 and PHYS142C",
+    "equivalentTo": "PHYS141 and PHYS142 and PHYS143"
+  },
+  {
+    "id": 3580,
+    "sourceCourse": "PHYS141 and PHYS142 and PHYS143",
+    "equivalentTo": "PHYS141 and PHYS143 and PHYS142C"
+  },
+  {
+    "id": 3581,
+    "sourceCourse": "ANY CENG COURSE",
+    "equivalentTo": "CE207 and EE321"
+  },
+  {
+    "id": 3582,
+    "sourceCourse": "CE207 and EE321",
+    "equivalentTo": "ANY CENG COURSE"
+  },
+  {
+    "id": 3583,
+    "sourceCourse": "ANY CENG COURSE",
+    "equivalentTo": "ME228"
+  },
+  {
+    "id": 3584,
+    "sourceCourse": "ME228",
+    "equivalentTo": "ANY CENG COURSE"
+  }
+]

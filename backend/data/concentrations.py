@@ -6,7 +6,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "none",
             "label": "General Curriculum",
-            "slot_overrides": {},
+                        "full_flowchart_key": "CS",
+"slot_overrides": {},
             "tips": [
                 "A minimum of 23 units is required to complete the concentration. Unit selection for requirements will vary based on students' selection of senior project, technical electives, and approved external electives.",
                 "A combined maximum of 6 units may be taken from CPE 4491, CPE 4492, CPE 4493, CSC 4091, CSC 4092, CSC 4093, CSC 4191, CSC 4192, CSC 4193, CSC 4291, CSC 4292, CSC 4293, CSC 4400, CSC 4495, CSC 4691, CSC 4692, CSC 4693, CSC 4791, CSC 4792, CSC 4793, CSC 4891, CSC 4892, CSC 4893, CSC 4991, CSC 4992, CSC 4993, DATA 4720, ENGR 2995, and ENGR 4995; of which up to a combined 4 units may be taken from CPE 4491, CSC 4091, CSC 4191, CSC 4291, CSC 4400, CSC 4495, CSC 4691, CSC 4791, CSC 4891, CSC 4991, and DATA 4720.",
@@ -21,40 +22,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "A minimum of 23 units is required to complete the concentration. Unit selection for requirements will vary based on students' selection of concentration electives and external electives.",
                 "A combined maximum of 6 units may be taken from CSC 4495, CSC 4891, CSC 4892, and CSC 4893; of which up to a combined 4 units may be taken from CSC 4495 and CSC 4891.",
             ],
-            "slot_overrides": {
-                "CON_JRS1": {
-                    "course_number": "DATA 3301",
-                    "title": "Introduction to Data Science",
-                    "units": 4,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CON_SRF1": {
-                    "course_number": "MATH 2621",
-                    "title": "Introduction to Mathematical Optimization",
-                    "units": 4,
-                    "prerequisites": ["MATH 1262"],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CON_SRS1": {
-                    "course_number": "Conc.",
-                    "title": "AI/ML Required Elective",
-                    "units": 4,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": True,
-                },
-                "CON_SRS2": {
-                    "course_number": "Conc.",
-                    "title": "AI/ML Concentration Elective",
-                    "units": 4,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": True,
-                },
-            },
+            "slot_overrides": {},
+            "full_flowchart_key": "CS_AIML",
         },
         {
             "id": "data_eng",
@@ -63,40 +32,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "A minimum of 23 units is required to complete the concentration. Unit selection for requirements will vary based on students' selection in the notated requirement and technical electives.",
                 "A combined maximum of 6 units may be taken from CSC 4495, CSC 4691, CSC 4692, and CSC 4693; of which up to a combined 4 units may be taken from CSC 4495 and CSC 4691.",
             ],
-            "slot_overrides": {
-                "CON_JRS1": {
-                    "course_number": "DATA 3301",
-                    "title": "Introduction to Data Science",
-                    "units": 4,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CON_SRF1": {
-                    "course_number": "CSC 3665",
-                    "title": "Introduction to Database Management Systems",
-                    "units": 4,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CON_SRS1": {
-                    "course_number": "CSC 4665",
-                    "title": "Database Management Systems Organization",
-                    "units": 4,
-                    "prerequisites": ["CSC 3665"],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CON_SRS2": {
-                    "course_number": "Conc.",
-                    "title": "Data Eng. Elective",
-                    "units": 4,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": True,
-                },
-            },
+            "slot_overrides": {},
+            "full_flowchart_key": "CS_DATA_ENG",
         },
         {
             "id": "game_dev",
@@ -105,40 +42,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "A minimum of 23 units is required to complete the concentration. Unit selection for requirements will vary based on students' selection of computer science electives and external electives.",
                 "A combined maximum of 6 units may be taken from CSC 4495, CSC 4791, CSC 4792, CSC 4793, CSC 4991, CSC 4992, and CSC 4993; of which up to a combined 4 units may be taken from CSC 4495, CSC 4791, and CSC 4991.",
             ],
-            "slot_overrides": {
-                "CON_JRS1": {
-                    "course_number": "CSC 3710",
-                    "title": "Game Design and Development",
-                    "units": 4,
-                    "prerequisites": ["CSC 2001"],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CON_SRF1": {
-                    "course_number": "CSC 3780",
-                    "title": "Game Engineering and Critical Analysis",
-                    "units": 4,
-                    "prerequisites": ["CSC 3710"],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CON_SRS1": {
-                    "course_number": "COMS 4404",
-                    "title": "Video Games and Society",
-                    "units": 4,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CON_SRS2": {
-                    "course_number": "Conc.",
-                    "title": "Game Dev Elective",
-                    "units": 4,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": True,
-                },
-            },
+            "slot_overrides": {},
+            "full_flowchart_key": "CS_GAME_DEV",
         },
         {
             "id": "graphics",
@@ -147,40 +52,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "A minimum of 23 units is required to complete the concentration. Unit selection for requirements will vary based on students' selection of concentration electives and external electives.",
                 "A combined maximum of 6 units may be taken from CSC 4495, CSC 4791, CSC 4792, CSC 4793, CSC 4991, CSC 4992, CSC 4993, ENGR 2995, and ENGR 4995; of which up to a combined 4 units may be taken from CSC 4495, CSC 4791, and CSC 4991.",
             ],
-            "slot_overrides": {
-                "CON_JRS1": {
-                    "course_number": "CSC 4710",
-                    "title": "Introduction to Computer Graphics",
-                    "units": 4,
-                    "prerequisites": ["CSC 2001"],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CON_SRF1": {
-                    "course_number": "Conc.",
-                    "title": "Graphics Required Elective",
-                    "units": 4,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": True,
-                },
-                "CON_SRS1": {
-                    "course_number": "Conc.",
-                    "title": "Graphics Required Elective",
-                    "units": 4,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": True,
-                },
-                "CON_SRS2": {
-                    "course_number": "Conc.",
-                    "title": "Graphics Concentration Elective",
-                    "units": 4,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": True,
-                },
-            },
+            "slot_overrides": {},
+            "full_flowchart_key": "CS_GRAPHICS",
         },
         {
             "id": "privacy_security",
@@ -190,212 +63,28 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "Unit selection for requirements will vary based on students' selection of concentration electives and external electives.",
                 "A combined maximum of 6 units may be taken from CSC 4495, CSC 4291, CSC 4292, CSC 4293, ENGR 2995, and ENGR 4995; of which up to a combined 4 units may be taken from CSC 4495 and CSC 4291.",
             ],
-            "slot_overrides": {
-                "CON_JRS1": {
-                    "course_number": "CSC 3250",
-                    "title": "Introduction to Privacy: Policy and Technology",
-                    "units": 4,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                # Replaces the standard CSC 4460 Senior Project slot
-                "CSC4460": {
-                    "course_number": "CSC 4260",
-                    "title": "Privacy & Security Capstone I",
-                    "units": 4,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CON_SRS1": {
-                    "course_number": "CSC 4261",
-                    "title": "Privacy & Security Capstone II",
-                    "units": 3,
-                    "prerequisites": ["CSC 4260"],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CON_SRS2": {
-                    "course_number": "Sec.",
-                    "title": "Security Elective",
-                    "units": 4,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": True,
-                },
-                "CON_SRS3": {
-                    "course_number": "MATH",
-                    "title": "Math Elective",
-                    "units": 3,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": True,
-                },
-            },
+            "slot_overrides": {},
+            "full_flowchart_key": "CS_PRIVACY",
         },
     ],
     "AERO": [
         {
             "id": "none",
             "label": "Concentration Not Yet Declared",
-            "slot_overrides": {},
+                        "full_flowchart_key": "AERO",
+"slot_overrides": {},
         },
         {
             "id": "aeronautics",
             "label": "Aeronautics",
-            "slot_overrides": {
-                "CON_JRS1": {
-                    "course_number": "AERO 3305",
-                    "title": "Introduction to Aerodynamics",
-                    "units": 3,
-                    "prerequisites": ["AERO 3301"],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CON_SRF1": {
-                    "course_number": "AERO 4401/4406",
-                    "title": "Ground to Space Propulsion and Experimental Aerodynamics",
-                    "units": 3,
-                    "prerequisites": ["AERO 3304", "AERO 3305"],
-                    "quarter_equivalents": ["AERO 4401", "AERO 4406"],
-                    "is_placeholder": True,
-                },
-                "CON_SRF2": {
-                    "course_number": "AERO 4405",
-                    "title": "Advanced Aerodynamics",
-                    "units": 3,
-                    "prerequisites": ["AERO 3305"],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CON_SRF3": {
-                    "course_number": "AERO 4420",
-                    "title": "Aircraft Dynamics and Control",
-                    "units": 3,
-                    "prerequisites": ["AERO 3320"],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CON_SRF4": {
-                    "course_number": "AERO 4461",
-                    "title": "Aircraft Design Senior Project I",
-                    "units": 3,
-                    "prerequisites": ["AERO 3305", "AERO 4420", "AERO 4431"],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CON_SRF5": {
-                    "course_number": "Aero TE 1",
-                    "title": "Aeronautics Technical Elective",
-                    "units": 3,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": True,
-                },
-                "CON_SRS1": {
-                    "course_number": "AERO 4462",
-                    "title": "Aircraft Design Senior Project II",
-                    "units": 3,
-                    "prerequisites": ["AERO 4461"],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CON_SRS2": {
-                    "course_number": "Aero TE 2",
-                    "title": "Aeronautics Technical Elective",
-                    "units": 3,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": True,
-                },
-                "CON_SRS3": {
-                    "course_number": "Aero TE 3",
-                    "title": "Aeronautics Technical Elective",
-                    "units": 3,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": True,
-                },
-            },
+            "full_flowchart_key": "AERO_AERONAUTICS",
+            "slot_overrides": {},
         },
         {
             "id": "astronautics",
             "label": "Astronautics",
-            "slot_overrides": {
-                "CON_JRS1": {
-                    "course_number": "AERO 3351",
-                    "title": "Introduction to Orbital Mechanics",
-                    "units": 3,
-                    "prerequisites": ["AERO 3320"],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CON_SRF1": {
-                    "course_number": "AERO 4402",
-                    "title": "Spaceflight Propulsion",
-                    "units": 2,
-                    "prerequisites": ["AERO 3304"],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CON_SRF2": {
-                    "course_number": "AERO 4421",
-                    "title": "Spacecraft Attitude Dynamics and Control",
-                    "units": 3,
-                    "prerequisites": ["AERO 3320", "AERO 3351"],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CON_SRF3": {
-                    "course_number": "AERO 4446",
-                    "title": "Spacecraft Electrical and Electric Systems",
-                    "units": 3,
-                    "prerequisites": ["AERO 3351"],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CON_SRF4": {
-                    "course_number": "AERO 4455/4456",
-                    "title": "Space Environments and Laboratory",
-                    "units": 4,
-                    "prerequisites": ["AERO 3351"],
-                    "quarter_equivalents": ["AERO 4455", "AERO 4456"],
-                    "is_placeholder": True,
-                },
-                "CON_SRF5": {
-                    "course_number": "AERO 4463",
-                    "title": "Spacecraft Design Senior Project I",
-                    "units": 3,
-                    "prerequisites": ["AERO 3351", "AERO 4421"],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CON_SRS1": {
-                    "course_number": "AERO 4464",
-                    "title": "Spacecraft Design Senior Project II",
-                    "units": 3,
-                    "prerequisites": ["AERO 4463"],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CON_SRS2": {
-                    "course_number": "Astro TE 1",
-                    "title": "Astronautics Technical Elective",
-                    "units": 3,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": True,
-                },
-                "CON_SRS3": {
-                    "course_number": "Astro TE 2",
-                    "title": "Astronautics Technical Elective",
-                    "units": 3,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": True,
-                },
-            },
+            "full_flowchart_key": "AERO_ASTRONAUTICS",
+            "slot_overrides": {},
         },
     ],
     "CPE": [
@@ -408,45 +97,14 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "A combined maximum of 8 units may be taken from CPE 4491, CPE 4492, CPE 4493, CPE 4495, CSC 4091, CSC 4092, CSC 4093, CSC 4191, CSC 4192, CSC 4193, CSC 4291, CSC 4292, CSC 4293, CSC 4400, CSC 4495, CSC 4691, CSC 4692, CSC 4693, CSC 4791, CSC 4792, CSC 4793, CSC 4891, CSC 4892, CSC 4893, CSC 4991, CSC 4992, CSC 4993, DATA 4720, and ENGR 4995; of which up to a combined 4 units may be taken from CPE 4400 and CSC 4400.",
                 "Excess units completed for senior project may be applied toward technical electives.",
             ],
-            "slot_overrides": {},
+                        "full_flowchart_key": "CPE",
+"slot_overrides": {},
         },
         {
             "id": "computer_architecture",
             "label": "Computer Architecture",
-            "slot_overrides": {
-                "CPE_CON_SRF1": {
-                    "course_number": "CPE 4300",
-                    "title": "Advanced Computer Architecture",
-                    "units": 4,
-                    "prerequisites": ["CPE 3300"],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CPE_CON_SRF2": {
-                    "course_number": "Conc.",
-                    "title": "Architecture Elective",
-                    "units": 4,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": True,
-                },
-                "CPE_CON_SRS1": {
-                    "course_number": "Conc.",
-                    "title": "Architecture Elective",
-                    "units": 4,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": True,
-                },
-                "CPE_CON_SRS2": {
-                    "course_number": "Conc.",
-                    "title": "Architecture Elective",
-                    "units": 4,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": True,
-                },
-            },
+            "full_flowchart_key": "CPE_COMPUTER_ARCHITECTURE",
+            "slot_overrides": {},
         },
         {
             "id": "computer_hardware",
@@ -457,735 +115,81 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "A combined maximum of 8 units may be taken from CPE 4491, CPE 4492, CPE 4493, CPE 4495, ENGR 2995, ENGR 4995, ENGR 5995; of which up to a combined 4 units may be taken from CPE 4495.",
                 "Excess units completed for senior project may be applied toward technical electives.",
             ],
-            "slot_overrides": {
-                # EE 3306 + 3306L replaces Circuits I in Sophomore Spring
-                "CPE_EE2211": {
-                    "course_number": "EE 3306",
-                    "title": "Electronics I",
-                    "units": 4,
-                    "prerequisites": ["EE 2211"],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CPE_CON_SRF1": {
-                    "course_number": "EE 4431",
-                    "title": "Computer-Aided Design of VLSI Devices",
-                    "units": 3,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CPE_CON_SRF2": {
-                    "course_number": "Conc.",
-                    "title": "Hardware Elective",
-                    "units": 4,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": True,
-                },
-                "CPE_CON_SRS1": {
-                    "course_number": "Conc.",
-                    "title": "Hardware Elective",
-                    "units": 4,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": True,
-                },
-                "CPE_CON_SRS2": {
-                    "course_number": "Conc.",
-                    "title": "Hardware Elective",
-                    "units": 4,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": True,
-                },
-            },
+            "full_flowchart_key": "CPE_COMPUTER_HARDWARE",
+            "slot_overrides": {},
         },
         {
             "id": "computer_systems",
             "label": "Computer Systems",
-            "slot_overrides": {
-                "CPE_CON_SRF1": {
-                    "course_number": "CPE 4669",
-                    "title": "Distributed Systems",
-                    "units": 4,
-                    "prerequisites": ["CPE 4464"],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CPE_CON_SRF2": {
-                    "course_number": "CPE 4650",
-                    "title": "Scalable Server Implementation",
-                    "units": 3,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CPE_CON_SRS1": {
-                    "course_number": "Conc.",
-                    "title": "Systems Elective",
-                    "units": 4,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": True,
-                },
-                "CPE_CON_SRS2": {
-                    "course_number": "Conc.",
-                    "title": "Systems Elective",
-                    "units": 4,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": True,
-                },
-            },
+            "full_flowchart_key": "CPE_COMPUTER_SYSTEMS",
+            "slot_overrides": {},
         },
         {
             "id": "embedded_systems",
             "label": "Embedded Systems",
-            "slot_overrides": {
-                # EE 2328 replaces EE 2211 (Circuits I) in Sophomore Spring
-                "CPE_EE2211": {
-                    "course_number": "EE 2328",
-                    "title": "Signals and Systems",
-                    "units": 4,
-                    "prerequisites": ["MATH 1262"],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CPE_CON_SRF1": {
-                    "course_number": "CPE 4180",
-                    "title": "Advanced Microcontrollers",
-                    "units": 3,
-                    "prerequisites": ["CPE 3160"],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CPE_CON_SRF2": {
-                    "course_number": "CPE 4390",
-                    "title": "Real-Time Operating Systems",
-                    "units": 3,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CPE_CON_SRS1": {
-                    "course_number": "CPE 4420",
-                    "title": "High-Performance Embedded Systems",
-                    "units": 3,
-                    "prerequisites": ["CPE 4180"],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CPE_CON_SRS2": {
-                    "course_number": "CPE 4455",
-                    "title": "Design of Fault-Tolerant Systems",
-                    "units": 4,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-            },
+            "full_flowchart_key": "CPE_EMBEDDED_SYSTEMS",
+            "slot_overrides": {},
         },
         {
             "id": "robotics",
             "label": "Robotics and Autonomous Systems",
-            "slot_overrides": {
-                # EE 2328 replaces EE 2211 in Sophomore Spring
-                "CPE_EE2211": {
-                    "course_number": "EE 2328",
-                    "title": "Signals and Systems",
-                    "units": 4,
-                    "prerequisites": ["MATH 1262"],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CPE_CON_SRF1": {
-                    "course_number": "Conc.",
-                    "title": "Robotics Elective",
-                    "units": 4,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": True,
-                },
-                "CPE_CON_SRF2": {
-                    "course_number": "Conc.",
-                    "title": "Robotics Elective",
-                    "units": 4,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": True,
-                },
-                "CPE_CON_SRS1": {
-                    "course_number": "Conc.",
-                    "title": "Robotics Elective",
-                    "units": 4,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": True,
-                },
-                "CPE_CON_SRS2": {
-                    "course_number": "Conc.",
-                    "title": "Robotics Elective",
-                    "units": 4,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": True,
-                },
-            },
+            "tips": [
+                "A maximum of 4 units may be applied toward concentration electives from CPE 4491–4495, CSC 4091–4993, DATA 4720, and ENGR 4995 combined.",
+            ],
+            "full_flowchart_key": "CPE_ROBOTICS",
+            "slot_overrides": {},
         },
         {
             "id": "security",
             "label": "Privacy and Security",
-            "slot_overrides": {
-                # Replaces the standard CPE capstone I slot
-                "CPE4460": {
-                    "course_number": "CSC 4260",
-                    "title": "Privacy & Security Capstone I",
-                    "units": 3,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CPE_CON_SRF1": {
-                    "course_number": "Sec.",
-                    "title": "CPE Security Elective",
-                    "units": 3,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": True,
-                },
-                "CPE_CON_SRF2": {
-                    "course_number": "MATH",
-                    "title": "Math Elective",
-                    "units": 3,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": True,
-                },
-                "CPE_CON_SRS1": {
-                    "course_number": "CSC 4261",
-                    "title": "Privacy & Security Capstone II",
-                    "units": 3,
-                    "prerequisites": ["CSC 4260"],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CPE_CON_SRS2": {
-                    "course_number": "Conc.",
-                    "title": "Concentration Elective",
-                    "units": 4,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "is_placeholder": True,
-                },
-            },
-        },
-    ],
-    "CE": [
-        {
-            "id": "none",
-            "label": "General Civil Engineering",
+            "full_flowchart_key": "CPE_SECURITY",
             "slot_overrides": {},
-        },
-        {
-            "id": "construction",
-            "label": "Construction Engineering",
-            "slot_overrides": {
-                "CE_TE_SRF1": {
-                    "course_number": "CE 4413",
-                    "title": "Advanced Civil Computer-Aided Site Design",
-                    "units": 2,
-                    "prerequisites": ["CE 1112", "CE 3321"],
-                    "quarter_equivalents": ["CE 413"],
-                    "is_placeholder": False,
-                },
-                "CE_TE_SRF2": {
-                    "course_number": "CE 4415",
-                    "title": "Advanced Building Information Modeling for Civil Engineering",
-                    "units": 4,
-                    "prerequisites": ["CE 3375"],
-                    "quarter_equivalents": ["CE 415"],
-                    "is_placeholder": False,
-                },
-                "CE_TE_SRF3": {
-                    "course_number": "CE 4436",
-                    "title": "Heavy Civil Temporary Structures and Shoring",
-                    "units": 3,
-                    "prerequisites": ["CE 3352", "CE 3375"],
-                    "quarter_equivalents": ["CE 436"],
-                    "is_placeholder": False,
-                },
-                "CE_TE_SRS1": {
-                    "course_number": "CE 4437",
-                    "title": "Heavy Civil Projects and Equipment",
-                    "units": 3,
-                    "prerequisites": ["CE 3375"],
-                    "quarter_equivalents": ["CE 437"],
-                    "is_placeholder": False,
-                },
-                "CE_TE_SRS2": {
-                    "course_number": "CE 4474",
-                    "title": "Environmental Compliance and Permitting",
-                    "units": 2,
-                    "prerequisites": ["CE 3337"],
-                    "quarter_equivalents": ["CE 474"],
-                    "is_placeholder": False,
-                },
-                "CE_TE_SRS3": {
-                    "course_number": "CE 5488",
-                    "title": "Engineering Risk Analysis",
-                    "units": 4,
-                    "prerequisites": ["STAT 3210"],
-                    "quarter_equivalents": ["CE 488"],
-                    "is_placeholder": False,
-                },
-            },
-        },
-        {
-            "id": "geotechnical",
-            "label": "Geotechnical Engineering",
-            "slot_overrides": {
-                "CE_TE_SRF1": {
-                    "course_number": "CE 4481",
-                    "title": "Foundation Design and Construction",
-                    "units": 4,
-                    "prerequisites": ["CE 3381"],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CE_TE_SRF2": {
-                    "course_number": "CE 4482",
-                    "title": "Earth Fills and Embankments",
-                    "units": 3,
-                    "prerequisites": ["CE 3381"],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CE_TE_SRF3": {
-                    "course_number": "CE 4483",
-                    "title": "Geotechnical Testing and Modeling",
-                    "units": 2,
-                    "prerequisites": ["CE 3381"],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CE_TE_SRS1": {
-                    "course_number": "CE 4484",
-                    "title": "Earth Retention, Excavations, and Tunnels",
-                    "units": 3,
-                    "prerequisites": ["CE 3381"],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CE_TE_SRS2": {
-                    "course_number": "CE 4486",
-                    "title": "Introduction to Geological Engineering",
-                    "units": 4,
-                    "prerequisites": ["CE 3381", "GEOL 2240"],
-                    "quarter_equivalents": ["CE 486"],
-                    "is_placeholder": False,
-                },
-                "CE_TE_SRS3": {
-                    "course_number": "CE 5488",
-                    "title": "Engineering Risk Analysis",
-                    "units": 4,
-                    "prerequisites": ["STAT 3210"],
-                    "quarter_equivalents": ["CE 488"],
-                    "is_placeholder": False,
-                },
-            },
-        },
-        {
-            "id": "structural",
-            "label": "Structural Engineering",
-            "slot_overrides": {
-                "CE_TE_SRF1": {
-                    "course_number": "CE 4356",
-                    "title": "Structural Steel Design",
-                    "units": 4,
-                    "prerequisites": ["CE 3352"],
-                    "quarter_equivalents": ["CE 356"],
-                    "is_placeholder": False,
-                },
-                "CE_TE_SRF2": {
-                    "course_number": "CE 4404",
-                    "title": "Applied Finite Element Analysis",
-                    "units": 3,
-                    "prerequisites": ["CE 3352"],
-                    "quarter_equivalents": ["CE 404"],
-                    "is_placeholder": False,
-                },
-                "CE_TE_SRF3": {
-                    "course_number": "CE 4407",
-                    "title": "Structural Dynamics",
-                    "units": 4,
-                    "prerequisites": ["CE 3352", "ENGR 2212"],
-                    "quarter_equivalents": ["CE 407"],
-                    "is_placeholder": False,
-                },
-                "CE_TE_SRS1": {
-                    "course_number": "CE 4446",
-                    "title": "Seismic Principles for Civil Engineering",
-                    "units": 1,
-                    "prerequisites": ["CE 3355"],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "CE_TE_SRS2": {
-                    "course_number": "CE 4455",
-                    "title": "Design of Timber Structures",
-                    "units": 4,
-                    "prerequisites": ["CE 3355"],
-                    "quarter_equivalents": ["CE 455"],
-                    "is_placeholder": False,
-                },
-                "CE_TE_SRS3": {
-                    "course_number": "CE 4459",
-                    "title": "FRP Strengthening of Reinforced Concrete Structures",
-                    "units": 4,
-                    "prerequisites": ["CE 3355"],
-                    "quarter_equivalents": ["CE 459"],
-                    "is_placeholder": False,
-                },
-            },
-        },
-        {
-            "id": "transportation",
-            "label": "Transportation Engineering",
-            "slot_overrides": {
-                "CE_TE_SRF1": {
-                    "course_number": "CE 4421",
-                    "title": "Traffic Engineering",
-                    "units": 3,
-                    "prerequisites": ["CE 3321"],
-                    "quarter_equivalents": ["CE 421"],
-                    "is_placeholder": False,
-                },
-                "CE_TE_SRF2": {
-                    "course_number": "CE 4422",
-                    "title": "Highway Geometrics and Design",
-                    "units": 3,
-                    "prerequisites": ["CE 3321"],
-                    "quarter_equivalents": ["CE 422"],
-                    "is_placeholder": False,
-                },
-                "CE_TE_SRF3": {
-                    "course_number": "CE 4423",
-                    "title": "Intelligent Transportation Systems",
-                    "units": 3,
-                    "prerequisites": ["CE 3321"],
-                    "quarter_equivalents": ["CE 423"],
-                    "is_placeholder": False,
-                },
-                "CE_TE_SRS1": {
-                    "course_number": "CE 4424",
-                    "title": "Public Transportation",
-                    "units": 3,
-                    "prerequisites": ["CE 3321"],
-                    "quarter_equivalents": ["CE 424"],
-                    "is_placeholder": False,
-                },
-                "CE_TE_SRS2": {
-                    "course_number": "CE 4425",
-                    "title": "Introduction to Railway Engineering",
-                    "units": 3,
-                    "prerequisites": ["CE 3321"],
-                    "quarter_equivalents": ["CE 425"],
-                    "is_placeholder": False,
-                },
-                "CE_TE_SRS3": {
-                    "course_number": "CE 5523",
-                    "title": "Transportation Systems Planning",
-                    "units": 4,
-                    "prerequisites": ["CE 3321"],
-                    "quarter_equivalents": ["CE 523"],
-                    "is_placeholder": False,
-                },
-            },
-        },
-        {
-            "id": "water_resources",
-            "label": "Water Resources Engineering",
-            "slot_overrides": {
-                "CE_TE_SRF1": {
-                    "course_number": "CE 4431",
-                    "title": "Introduction to Coastal Engineering",
-                    "units": 4,
-                    "prerequisites": ["CE 3337", "MATH 2341", "PHYS 1143"],
-                    "quarter_equivalents": ["CE 431"],
-                    "is_placeholder": False,
-                },
-                "CE_TE_SRF2": {
-                    "course_number": "CE 4433",
-                    "title": "Open Channel Hydraulics",
-                    "units": 4,
-                    "prerequisites": ["CE 3337"],
-                    "quarter_equivalents": ["CE 433"],
-                    "is_placeholder": False,
-                },
-                "CE_TE_SRF3": {
-                    "course_number": "CE 4434",
-                    "title": "Groundwater Hydraulics and Hydrology",
-                    "units": 3,
-                    "prerequisites": ["CE 3337"],
-                    "quarter_equivalents": ["CE 434"],
-                    "is_placeholder": False,
-                },
-                "CE_TE_SRS1": {
-                    "course_number": "CE 4435",
-                    "title": "Engineering Hydrology and Stormwater Management",
-                    "units": 4,
-                    "prerequisites": ["CE 3337"],
-                    "quarter_equivalents": ["CE 435"],
-                    "is_placeholder": False,
-                },
-                "CE_TE_SRS2": {
-                    "course_number": "CE 4440",
-                    "title": "Hydraulic Systems Engineering",
-                    "units": 4,
-                    "prerequisites": ["CE 3336"],
-                    "quarter_equivalents": ["CE 440"],
-                    "is_placeholder": False,
-                },
-                "CE_TE_SRS3": {
-                    "course_number": "CE 5539",
-                    "title": "Environmental Hydraulics",
-                    "units": 4,
-                    "prerequisites": ["CE 3337"],
-                    "quarter_equivalents": ["CE 539"],
-                    "is_placeholder": False,
-                },
-            },
         },
     ],
     "ME": [
         {
             "id": "none",
             "label": "General Curriculum",
-            "slot_overrides": {},
+                        "full_flowchart_key": "ME",
+"slot_overrides": {},
+            "tips": [
+                "ENGR 4460 and ENGR 4461 (4 units), or ENGR 4463 and ENGR 4464 (4 units) may substitute for ME 4460 and ME 4461.",
+                "Consult your advisor before selecting Technical Electives. 3000-level Technical Electives cannot be used for graduate credit in the blended BS+MS program.",
+                "ME 4470, ME 4471, ME 5570, and ME 5571 are variable-topic courses and may not count as Technical Electives — contact the instructor; a course substitution form may be required.",
+                "ME 4400 and ME 5500 are independent study courses that may count as Technical Electives with a course substitution form.",
+            ],
         },
         {
             "id": "energy_resources",
             "label": "Energy Resources",
-            "slot_overrides": {
-                "ME3317": {
-                    "course_number": "ME 3315",
-                    "title": "Energy Conversion",
-                    "units": 3,
-                    "prerequisites": ["ME 3302"],
-                    "quarter_equivalents": ["ME 315"],
-                    "is_placeholder": False,
-                },
-                "ME4417": {
-                    "course_number": "ME 3317",
-                    "title": "Vibrations and System Modeling",
-                    "units": 4,
-                    "prerequisites": ["ME 2212", "MATH 2341"],
-                    "quarter_equivalents": ["ME 317"],
-                    "is_placeholder": False,
-                },
-                "ME_TE_SRF1": {
-                    "course_number": "Energy TE 1",
-                    "title": "Energy Resources Technical Elective",
-                    "units": 4,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "elective_key": "me_energy_technical_elective",
-                    "is_placeholder": True,
-                },
-                "ME_TE_SRF2": {
-                    "course_number": "Energy TE 2",
-                    "title": "Energy Resources Technical Elective",
-                    "units": 4,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "elective_key": "me_energy_technical_elective",
-                    "is_placeholder": True,
-                },
-                "ME_TE_SRS1": {
-                    "course_number": "ME 4417",
-                    "title": "Mechanical Controls and Implementations",
-                    "units": 3,
-                    "prerequisites": ["ME 3317"],
-                    "quarter_equivalents": ["ME 418"],
-                    "elective_key": None,
-                    "is_placeholder": False,
-                },
-                "ME_TE_SRS2": {
-                    "course_number": "Energy TE 3",
-                    "title": "Additional Energy Resources Elective Unit",
-                    "units": 1,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "elective_key": "me_energy_technical_elective",
-                    "is_placeholder": True,
-                },
-            },
+            "full_flowchart_key": "ME_ENERGY_RESOURCES",
+            "slot_overrides": {},
         },
         {
             "id": "hvacr",
             "label": "Sustainable Technology for the Built Environment (HVAC&R)",
-            "slot_overrides": {
-                "ME_TE_SRF1": {
-                    "course_number": "ME 3355",
-                    "title": "Introduction to Sustainable Energy Usage in Buildings",
-                    "units": 3,
-                    "prerequisites": ["ME 3302"],
-                    "quarter_equivalents": ["ME 355"],
-                    "elective_key": None,
-                    "is_placeholder": False,
-                },
-                "ME_TE_SRF2": {
-                    "course_number": "ME 4455",
-                    "title": "Building Energy Performance and Modeling",
-                    "units": 3,
-                    "prerequisites": ["ME 3355"],
-                    "quarter_equivalents": ["ME 455"],
-                    "elective_key": None,
-                    "is_placeholder": False,
-                },
-                "ME4460": {
-                    "course_number": "ME 4465",
-                    "title": "HVAC&R Senior Design Project I",
-                    "units": 2,
-                    "prerequisites": ["ME 3355", "ME 3343"],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "ME4461": {
-                    "course_number": "ME 4466",
-                    "title": "HVAC&R Senior Design Project II",
-                    "units": 2,
-                    "prerequisites": ["ME 4465"],
-                    "quarter_equivalents": [],
-                    "is_placeholder": False,
-                },
-                "ME_TE_SRS1": {
-                    "course_number": "ME 4456",
-                    "title": "HVAC&R Air and Water Distribution for Sustainable Building Environments",
-                    "units": 3,
-                    "prerequisites": ["ME 3355", "ME 3341 & ME 3342"],
-                    "quarter_equivalents": [],
-                    "elective_key": None,
-                    "is_placeholder": False,
-                },
-                "ME_TE_SRS2": {
-                    "course_number": "ME 4457",
-                    "title": "Environmentally Efficient and Sustainable Refrigeration Systems",
-                    "units": 3,
-                    "prerequisites": ["ME 3355"],
-                    "quarter_equivalents": [],
-                    "elective_key": None,
-                    "is_placeholder": False,
-                },
-            },
+            "full_flowchart_key": "ME_HVACR",
+            "slot_overrides": {},
         },
         {
             "id": "mechatronics",
             "label": "Mechatronics",
-            "slot_overrides": {
-                "ME3317": {
-                    "course_number": "ME 3305",
-                    "title": "Mechatronics I",
-                    "units": 4,
-                    "prerequisites": ["EE 2115 & EE 2115L", "ME 2240"],
-                    "quarter_equivalents": ["ME 305"],
-                    "is_placeholder": False,
-                },
-                "ME4417": {
-                    "course_number": "ME 3319",
-                    "title": "Introduction to System Dynamics",
-                    "units": 4,
-                    "prerequisites": ["ME 2212", "MATH 2341"],
-                    "quarter_equivalents": ["ME 319"],
-                    "is_placeholder": False,
-                },
-                "ME_TE_SRF1": {
-                    "course_number": "ME 4305",
-                    "title": "Mechatronics II",
-                    "units": 3,
-                    "prerequisites": ["ME 3305"],
-                    "quarter_equivalents": ["ME 405"],
-                    "elective_key": None,
-                    "is_placeholder": False,
-                },
-                "ME_TE_SRF2": {
-                    "course_number": "ME 4419",
-                    "title": "Advanced Control Systems",
-                    "units": 3,
-                    "prerequisites": ["ME 3319"],
-                    "quarter_equivalents": ["ME 419"],
-                    "elective_key": None,
-                    "is_placeholder": False,
-                },
-                "ME_TE_SRS1": {
-                    "course_number": "Mech. TE 1",
-                    "title": "Mechatronics Technical Elective",
-                    "units": 3,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "elective_key": "me_mechatronics_technical_elective",
-                    "is_placeholder": True,
-                },
-                "ME_TE_SRS2": {
-                    "course_number": "Mech. TE 2",
-                    "title": "Additional Mechatronics Elective Units",
-                    "units": 2,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "elective_key": "me_mechatronics_technical_elective",
-                    "is_placeholder": True,
-                },
-            },
+            "full_flowchart_key": "ME_MECHATRONICS",
+            "slot_overrides": {},
         },
         {
             "id": "manufacturing",
             "label": "Manufacturing",
-            "slot_overrides": {
-                "ME_TE_SRF1": {
-                    "course_number": "IME 3327",
-                    "title": "Test Design and Analysis in Manufacturing Engineering",
-                    "units": 4,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "elective_key": None,
-                    "is_placeholder": False,
-                },
-                "ME_TE_SRF2": {
-                    "course_number": "IME 3330",
-                    "title": "Fundamentals of Manufacturing Engineering",
-                    "units": 4,
-                    "prerequisites": ["IME 1143"],
-                    "quarter_equivalents": ["IME 330"],
-                    "elective_key": None,
-                    "is_placeholder": False,
-                },
-                "ME_TE_SRS1": {
-                    "course_number": "Mfg. TE",
-                    "title": "Manufacturing Elective",
-                    "units": 3,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "elective_key": "me_manufacturing_elective",
-                    "is_placeholder": True,
-                },
-                "ME_TE_SRS2": {
-                    "course_number": "Mfg. Addl",
-                    "title": "Additional Manufacturing Elective Unit",
-                    "units": 1,
-                    "prerequisites": [],
-                    "quarter_equivalents": [],
-                    "elective_key": "me_manufacturing_elective",
-                    "is_placeholder": True,
-                },
-            },
+            "full_flowchart_key": "ME_MANUFACTURING",
+            "slot_overrides": {},
         },
     ],
     "AD": [
         {
             "id": "none",
             "label": "Concentration Not Yet Declared",
-            "slot_overrides": {},
+                        "full_flowchart_key": "AD",
+"slot_overrides": {},
         },
         {
             "id": "graphic_design",
@@ -1195,7 +199,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "A maximum of 3 units from Art History courses.",
                 "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
             ],
-            "slot_overrides": {
+                        "full_flowchart_key": "AD_GRAPHIC_DESIGN",
+"slot_overrides": {
                 "AD_PORTFOLIO": {
                     "course_number": "ART 3359",
                     "title": "Portfolio: Graphic Design",
@@ -1318,7 +323,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "A maximum of 3 units from Art History courses.",
                 "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
             ],
-            "slot_overrides": {
+                        "full_flowchart_key": "AD_PHOTOGRAPHY_AND_VIDEO",
+"slot_overrides": {
                 "AD_PORTFOLIO": {
                     "course_number": "ART 3379",
                     "title": "Portfolio: Photo Video",
@@ -1441,7 +447,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "A maximum of 3 units from Art History courses.",
                 "If a General Education (GE) course is used to satisfy a Major or Support requirement, additional units of Free Electives may be needed to complete the total units required for the degree.",
             ],
-            "slot_overrides": {
+                        "full_flowchart_key": "AD_STUDIO_ART",
+"slot_overrides": {
                 "AD_PORTFOLIO": {
                     "course_number": "ART 3399",
                     "title": "Portfolio: Studio Art",
@@ -1561,7 +568,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "none",
             "label": "Concentration Not Yet Declared",
-            "slot_overrides": {},
+                        "full_flowchart_key": "POLS",
+"slot_overrides": {},
         },
         {
             "id": "global_politics",
@@ -1571,7 +579,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "A maximum of 3 units of either POLS 3386 or POLS 3387 may count towards the concentration.",
                 "Consultation with advisor is recommended prior to selecting Approved Electives; bear in mind that your selection may impact pursuit of post-baccalaureate studies and/or goals.",
             ],
-            "slot_overrides": {
+                        "full_flowchart_key": "POLS_GLOBAL_POLITICS",
+"slot_overrides": {
                 "POLS_CON_JRF1": {
                     "course_number": "POLS 3308/3381",
                     "title": "Political Violence and Conflict Resolution or Peace and War",
@@ -1638,7 +647,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "A maximum of 3 units of either POLS 3386 or POLS 3387 may count towards the concentration.",
                 "Consultation with advisor is recommended prior to selecting Approved Electives; bear in mind that your selection may impact pursuit of post-baccalaureate studies and/or goals.",
             ],
-            "slot_overrides": {
+                        "full_flowchart_key": "POLS_PRE_LAW",
+"slot_overrides": {
                 "POLS_CON_JRF1": {
                     "course_number": "POLS 2245",
                     "title": "Judicial Process",
@@ -1705,7 +715,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "A maximum of 3 units of either POLS 3386 or POLS 3387 may count towards the concentration.",
                 "Consultation with advisor is recommended prior to selecting Approved Electives; bear in mind that your selection may impact pursuit of post-baccalaureate studies and/or goals.",
             ],
-            "slot_overrides": {
+                        "full_flowchart_key": "POLS_U_S_POLITICS",
+"slot_overrides": {
                 "POLS_CON_JRF1": {
                     "course_number": "U.S. Politics",
                     "title": "U.S. Institutions Required Course",
@@ -1767,7 +778,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "individualized",
             "label": "Individualized Course of Study",
-            "slot_overrides": {
+                        "full_flowchart_key": "POLS_INDIVIDUALIZED_COURSE_OF_STUDY",
+"slot_overrides": {
                 "POLS_CON_JRF1": {
                     "course_number": "Individualized",
                     "title": "Individualized Course of Study Elective",
@@ -1831,14 +843,16 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "none",
             "label": "General Curriculum",
-            "slot_overrides": {},
+                        "full_flowchart_key": "PSY",
+"slot_overrides": {},
         },
     ],
     "AGS": [
         {
             "id": "none",
             "label": "Emphasis Not Yet Declared",
-            "slot_overrides": {},
+                        "full_flowchart_key": "AGS",
+"slot_overrides": {},
         },
         {
             "id": "ag_engineering_tech",
@@ -1917,7 +931,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "none",
             "label": "Concentration Not Yet Declared",
-            "slot_overrides": {},
+                        "full_flowchart_key": "ANTGEOG",
+"slot_overrides": {},
         },
         {
             "id": "environmental_sustainability",
@@ -1925,7 +940,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
             "tips": [
                 "Course may be taken if not used to satisfy a requirement listed above.",
             ],
-            "slot_overrides": {
+                        "full_flowchart_key": "ANTGEOG_ENVIRONMENTAL_STUDIES_AND_SUSTAINABILITY",
+"slot_overrides": {
                 "ANTGEOG_CON_JRS1": {"course_number": "ERSC 3325 / ERSC 4414 / GEOG 4414 / ERSC 4415 / GEOG 4415", "title": "Earth Systems or Climate Change Course", "units": 3, "prerequisites": [], "quarter_equivalents": ["ERSC 325", "GEOG 325", "ERSC 414", "GEOG 414", "ERSC 415", "GEOG 415", "ERSC 3325", "ERSC 4414", "GEOG 4414", "ERSC 4415", "GEOG 4415"], "elective_key": "antgeog_env_climate", "is_placeholder": True},
                 "ANTGEOG_CON_JRS2": {"course_number": "GEOG 4435", "title": "Biodiversity and Biogeography Methods", "units": 3, "prerequisites": [], "quarter_equivalents": ["GEOG 435"], "is_placeholder": False},
                 "ANTGEOG_CON_SRF1": {"course_number": "GEOG 3328 / GEOG 4441", "title": "Remote Sensing or Geospatial Technologies", "units": 3, "prerequisites": [], "quarter_equivalents": ["GEOG 328", "GEOG 441", "GEOG 3328", "GEOG 4441"], "elective_key": "antgeog_env_geospatial", "is_placeholder": True},
@@ -1940,7 +956,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "Units in excess of total will be applied towards major's free electives.",
                 "Credit for a comparable level of proficiency may be substituted up to 3 units max.",
             ],
-            "slot_overrides": {
+                        "full_flowchart_key": "ANTGEOG_GLOBAL_STUDIES_AND_INTERNATIONAL_DEVELOPMENT",
+"slot_overrides": {
                 "ANTGEOG_CON_JRS1": {"course_number": "GEOG 4408", "title": "Geography of International Development", "units": 3, "prerequisites": [], "quarter_equivalents": ["GEOG 408"], "is_placeholder": False},
                 "ANTGEOG_CON_JRS2": {"course_number": "Global Studies Elective", "title": "Global Problems, Issues, and Methods Elective", "units": 3, "prerequisites": [], "quarter_equivalents": [], "elective_key": "antgeog_global_problems", "is_placeholder": True},
                 "ANTGEOG_CON_SRF1": {"course_number": "ANT 4401", "title": "Culture and Health", "units": 4, "prerequisites": [], "quarter_equivalents": ["ANT 401"], "is_placeholder": False},
@@ -1954,7 +971,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
             "tips": [
                 "Units in excess of total will be applied towards major's free electives.",
             ],
-            "slot_overrides": {
+                        "full_flowchart_key": "ANTGEOG_HUMAN_ECOLOGY",
+"slot_overrides": {
                 "ANTGEOG_CON_JRS1": {"course_number": "ANT 3309 / ANT 3320", "title": "Elements of Archaeology or California's Indigenous Past", "units": 3, "prerequisites": [], "quarter_equivalents": ["ANT 309", "ANT 320", "ANT 3309", "ANT 3320"], "elective_key": "antgeog_human_ecology_foundation", "is_placeholder": True},
                 "ANTGEOG_CON_JRS2": {"course_number": "ANT 3345", "title": "Human Behavioral Ecology", "units": 3, "prerequisites": [], "quarter_equivalents": ["ANT 345"], "is_placeholder": False},
                 "ANTGEOG_CON_SRF1": {"course_number": "ANT 4401", "title": "Culture and Health", "units": 4, "prerequisites": [], "quarter_equivalents": ["ANT 401"], "is_placeholder": False},
@@ -1965,7 +983,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "individualized",
             "label": "Individualized Course of Study",
-            "slot_overrides": {
+                        "full_flowchart_key": "ANTGEOG_INDIVIDUALIZED_COURSE_OF_STUDY",
+"slot_overrides": {
                 "ANTGEOG_CON_JRS1": {"course_number": "Individualized", "title": "Individualized Course of Study Elective", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
                 "ANTGEOG_CON_JRS2": {"course_number": "Individualized 2", "title": "Individualized Course of Study Elective", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
                 "ANTGEOG_CON_SRF1": {"course_number": "Individualized 3", "title": "Individualized Course of Study Elective", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
@@ -1987,7 +1006,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "Maximum of 6 units may be applied toward Approved Electives from the following: BIO 2200, BIO 3300, BIO 4400, BIO 4450, BIO 4466, BIO 4485, or BIO 4495.",
                 "Maximum of 2 units may be applied toward Approved Electives from ENGR/SCM 3302 or MSCI 4401.",
             ],
-            "slot_overrides": {},
+                        "full_flowchart_key": "BIO",
+"slot_overrides": {},
         },
         {
             "id": "anatomy_physiology",
@@ -1999,7 +1019,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "Maximum of 2 units may be applied toward Approved Electives from ENGR/SCM 3302 or MSCI 4401.",
                 "If BIO 4461, BIO 4462, or BIO 4463 is used to meet the senior project requirement, it cannot be double-counted as an approved elective.",
             ],
-            "slot_overrides": {
+                        "full_flowchart_key": "BIO_ANATOMY_AND_PHYSIOLOGY",
+"slot_overrides": {
                 "BIO_CON_JRF1": {"course_number": "BIO 4431", "title": "Advanced Anatomy and Physiology I", "units": 4, "prerequisites": ["BIO 3352"], "quarter_equivalents": [], "is_placeholder": False},
                 "BIO_CON_JRF2": {"course_number": "Approved Elective", "title": "Approved Elective", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
                 "BIO_CON_JRS1": {"course_number": "BIO 4432", "title": "Advanced Anatomy and Physiology II", "units": 4, "prerequisites": ["BIO 3352"], "quarter_equivalents": [], "is_placeholder": False},
@@ -2023,7 +1044,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "If BIO 4461, BIO 4462, or BIO 4463 is used to meet the senior project requirement, it cannot be double-counted as an approved elective.",
                 "Maximum of 2 units may be applied toward the Approved Electives from ENGR/SCM 3302 or MSCI 4401.",
             ],
-            "slot_overrides": {
+                        "full_flowchart_key": "BIO_ECOLOGY_EVOLUTION_BIODIVERSITY_AND_CONSERVATION",
+"slot_overrides": {
                 "BIO_CON_JRF1": {"course_number": "Biodiversity Course", "title": "Biodiversity Course", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
                 "BIO_CON_JRF2": {"course_number": "Approved Elective", "title": "Approved Elective", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
                 "BIO_CON_JRS1": {"course_number": "BIO 4413/4414", "title": "Evolutionary Medicine or Evolution", "units": 4, "prerequisites": ["BIO 2253", "BIO 3351"], "quarter_equivalents": ["BIO 413", "BIO 414"], "is_placeholder": True},
@@ -2046,7 +1068,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "Maximum of 6 units may be applied toward Approved Electives from the following: BIO 3300, BIO 4400, BIO 4450, BIO 4466, BIO 4485, BIO 4495.",
                 "Maximum of 2 units may be applied toward Approved Electives from ENGR/SCM 3302 or MSCI 4401.",
             ],
-            "slot_overrides": {
+                        "full_flowchart_key": "BIO_MOLECULAR_AND_CELLULAR_BIOLOGY",
+"slot_overrides": {
                 "BIO_CON_JRF1": {"course_number": "BIO 4457", "title": "Molecular Biology Laboratory", "units": 3, "prerequisites": ["BIO 3351"], "quarter_equivalents": ["BIO/CHEM 475"], "is_placeholder": False},
                 "BIO_CON_JRF2": {"course_number": "Approved Elective", "title": "Approved Elective", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
                 "BIO_CON_JRS1": {"course_number": "BIO 4452", "title": "Cell Biology", "units": 3, "prerequisites": ["BIO 3351"], "quarter_equivalents": [], "is_placeholder": False},
@@ -2064,12 +1087,14 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "none",
             "label": "Concentration Not Yet Declared",
-            "slot_overrides": {},
+                        "full_flowchart_key": "BMED",
+"slot_overrides": {},
         },
         {
             "id": "bioinstrumentation",
             "label": "Bioinstrumentation",
-            "slot_overrides": {
+                        "full_flowchart_key": "BMED_BIOINSTRUMENTATION",
+"slot_overrides": {
                 "BMED_CON_JRF1": {"course_number": "BMED 3355", "title": "Electronics", "units": 3, "prerequisites": ["BMED 2310", "BMED 2311"], "quarter_equivalents": ["BMED 355"], "is_placeholder": False},
                 "BMED_CON_JRS1": {"course_number": "MATH 3351", "title": "Ordinary Differential Equations", "units": 3, "prerequisites": [], "quarter_equivalents": ["MATH 344"], "is_placeholder": False},
                 "BMED_CON_SRF1": {"course_number": "Bioinstrumentation Elective", "title": "Bioinstrumentation Technical Elective", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
@@ -2080,7 +1105,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "cell_and_tissue_engineering",
             "label": "Cell and Tissue Engineering",
-            "slot_overrides": {
+                        "full_flowchart_key": "BMED_CELL_AND_TISSUE_ENGINEERING",
+"slot_overrides": {
                 "BMED_CON_JRF1": {"course_number": "BIO/BMED 3360", "title": "Developmental Biology", "units": 3, "prerequisites": ["BIO 1151"], "quarter_equivalents": [], "is_placeholder": False},
                 "BMED_CON_JRS1": {"course_number": "BIO/BMED 3362", "title": "Cell Biology", "units": 3, "prerequisites": ["BIO 1151"], "quarter_equivalents": [], "is_placeholder": False},
                 "BMED_CON_SRF1": {"course_number": "Cell/Tissue Elective", "title": "Cell and Tissue Engineering Elective", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
@@ -2091,7 +1117,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "mechanical_design",
             "label": "Mechanical Design",
-            "slot_overrides": {
+                        "full_flowchart_key": "BMED_MECHANICAL_DESIGN",
+"slot_overrides": {
                 "BMED_CON_JRF1": {"course_number": "IME 1140/1143", "title": "Manufacturing Processes or Materials Joining", "units": 3, "prerequisites": [], "quarter_equivalents": ["IME 140", "IME 143"], "is_placeholder": True},
                 "BMED_CON_JRS1": {"course_number": "ME 3328", "title": "Mechanical Behavior of Materials", "units": 3, "prerequisites": ["ENGR 2211"], "quarter_equivalents": ["ME 328"], "is_placeholder": False},
                 "BMED_CON_SRF1": {"course_number": "ME 3342", "title": "Heat Transfer", "units": 3, "prerequisites": ["ME 3341"], "quarter_equivalents": ["ME 343"], "is_placeholder": False},
@@ -2102,7 +1129,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "individualized",
             "label": "Individualized Course of Study",
-            "slot_overrides": {
+                        "full_flowchart_key": "BMED_INDIVIDUALIZED_COURSE_OF_STUDY",
+"slot_overrides": {
                 "BMED_CON_JRF1": {"course_number": "Individualized", "title": "Individualized Course of Study Elective", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
                 "BMED_CON_JRS1": {"course_number": "Individualized 2", "title": "Individualized Course of Study Elective", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
                 "BMED_CON_SRF1": {"course_number": "Individualized 3", "title": "Individualized Course of Study Elective", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
@@ -2115,38 +1143,31 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "none",
             "label": "General Biochemistry",
-            "slot_overrides": {},
+                        "full_flowchart_key": "BIOC",
+"slot_overrides": {},
         },
         {
             "id": "polymers_coatings",
             "label": "Polymers and Coatings",
-            "slot_overrides": {
-                "BIOC_CON_JRF": {"course_number": "CHEM 3380", "title": "Foundations of Macromolecular Chemistry", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False},
-                "BIOC_CON_JRS": {"course_number": "CHEM 4480/4481", "title": "Polymer Synthesis and Characterization", "units": 5, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False},
-                "BIOC_CON_SRF": {"course_number": "CHEM 4482/4483", "title": "Coatings and Formulations", "units": 5, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False},
-                "BIOC_CON_SRS": {"course_number": "CHEM 4486", "title": "Surface Chemistry of Materials", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False},
-            },
+"full_flowchart_key": "BIOC_POLYMERS_COATINGS",
+            "slot_overrides": {},
         },
     ],
     "CHEM": [
-        {"id": "none", "label": "No Concentration Declared", "slot_overrides": {}},
+        {"id": "none", "label": "No Concentration Declared", "full_flowchart_key": "CHEM", "slot_overrides": {}},
         {
             "id": "polymers_coatings",
             "label": "Polymers and Coatings",
-            "slot_overrides": {
-                "CHEM_SUBDISC2": {"course_number": "CHEM 4486", "title": "Surface Chemistry of Materials",               "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
-                "CHEM_ADV1":     {"course_number": "CHEM 4480", "title": "Polymer Synthesis and Characterization",       "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
-                "CHEM_ADV2":     {"course_number": "CHEM 4481", "title": "Polymer Synthesis and Characterization Laboratory", "units": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
-                "CHEM_ADV3":     {"course_number": "CHEM 4482", "title": "Coatings and Formulations",                    "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
-                "CHEM_ADV4":     {"course_number": "CHEM 4483", "title": "Coatings and Formulations Laboratory",         "units": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
-            },
+"full_flowchart_key": "CHEM_POLYMERS_COATINGS",
+            "slot_overrides": {},
         },
     ],
     "BUS": [
         {
             "id": "accounting",
             "label": "Accounting",
-            "slot_overrides": {
+                        "full_flowchart_key": "BUS_ACCOUNTING",
+"slot_overrides": {
                 "BUS_CON1": {"course_number": "BUS 3319", "title": "Data Analytics and Accounting Information Systems", "units": 3, "prerequisites": ["BUS 2215"], "quarter_equivalents": [], "is_placeholder": False},
                 "BUS_CON2": {"course_number": "BUS 3320", "title": "Federal Income Taxation for Individuals",          "units": 3, "prerequisites": [],           "quarter_equivalents": [], "is_placeholder": False},
                 "BUS_CON3": {"course_number": "BUS 3321", "title": "Intermediate Accounting I",                        "units": 3, "prerequisites": ["BUS 2215"], "quarter_equivalents": [], "is_placeholder": False},
@@ -2163,7 +1184,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "CHEM 1120 is recommended for those pursuing the Consumer Packaging concentration to fulfill GE Area 5A & 5C.",
                 "Courses taken to meet a major course requirement cannot be double-counted in the concentration.",
             ],
-            "slot_overrides": {
+                        "full_flowchart_key": "BUS_CONSUMER_PACKAGING",
+"slot_overrides": {
                 "BUS_CON1": {"course_number": "BUS 3396",  "title": "Consumer Insights",                     "units": 3, "prerequisites": ["BUS 3346"], "quarter_equivalents": [], "is_placeholder": False},
                 "BUS_CON2": {"course_number": "ITP 3330",  "title": "Packaging Fundamentals",                "units": 3, "prerequisites": [],           "quarter_equivalents": [], "is_placeholder": False},
                 "BUS_CON3": {"course_number": "ITP 4475",  "title": "Distribution Packaging Dynamics",       "units": 3, "prerequisites": [],           "quarter_equivalents": [], "is_placeholder": False},
@@ -2180,7 +1202,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "Units in excess of total will be applied towards major's free electives.",
                 "Courses taken to meet a major course requirement cannot be double-counted in the concentration.",
             ],
-            "slot_overrides": {
+                        "full_flowchart_key": "BUS_ENTREPRENEURSHIP",
+"slot_overrides": {
                 "BUS_CON1": {"course_number": "BUS 3310", "title": "Introduction to Entrepreneurship",          "units": 4, "prerequisites": [],           "quarter_equivalents": [], "is_placeholder": False},
                 "BUS_CON2": {"course_number": "Entr. Elective", "title": "Entrepreneurship Approved Elective",  "units": 3, "prerequisites": [],           "quarter_equivalents": [], "is_placeholder": True},
                 "BUS_CON3": {"course_number": "BUS 3330", "title": "Funding and Managing Startup Companies",    "units": 4, "prerequisites": ["BUS 3310"], "quarter_equivalents": [], "is_placeholder": False},
@@ -2197,7 +1220,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "All students need an approval from the finance chair to enroll in the Financial Management concentration.",
                 "Courses taken to meet a major course requirement cannot be double-counted in the concentration. Units in excess of total will be applied towards major's free electives.",
             ],
-            "slot_overrides": {
+                        "full_flowchart_key": "BUS_FINANCIAL_MANAGEMENT",
+"slot_overrides": {
                 "BUS_CON1": {"course_number": "BUS 3431",     "title": "Security Analysis and Portfolio Management", "units": 4, "prerequisites": [],                       "quarter_equivalents": [], "is_placeholder": False},
                 "BUS_CON2": {"course_number": "FM Elective",  "title": "Financial Management Track Elective",        "units": 3, "prerequisites": [],                       "quarter_equivalents": [], "is_placeholder": True},
                 "BUS_CON3": {"course_number": "BUS 3438",     "title": "Corporate Finance",                          "units": 4, "prerequisites": ["BUS 3431"],             "quarter_equivalents": [], "is_placeholder": False},
@@ -2210,7 +1234,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "information_systems_analytics",
             "label": "Information Systems and Analytics",
-            "slot_overrides": {
+                        "full_flowchart_key": "BUS_INFORMATION_SYSTEMS_AND_ANALYTICS",
+"slot_overrides": {
                 "BUS_CON1": {"course_number": "BUS 3393", "title": "Database Systems in Business",           "units": 3, "prerequisites": ["BUS 3391"], "quarter_equivalents": [], "is_placeholder": False},
                 "BUS_CON2": {"course_number": "BUS 3392", "title": "Business Application Development",       "units": 3, "prerequisites": ["BUS 3391"], "quarter_equivalents": [], "is_placeholder": False},
                 "BUS_CON3": {"course_number": "BUS 3394", "title": "Systems Analysis and Design",            "units": 3, "prerequisites": ["BUS 3393"], "quarter_equivalents": [], "is_placeholder": False},
@@ -2227,7 +1252,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "Courses taken to meet a major course requirement cannot be double-counted in the concentration.",
                 "Units in excess of total will be applied towards major's free electives.",
             ],
-            "slot_overrides": {
+                        "full_flowchart_key": "BUS_MANAGEMENT_AND_HUMAN_RESOURCES",
+"slot_overrides": {
                 "BUS_CON1": {"course_number": "BUS 3384", "title": "Human Resources Management",                        "units": 3, "prerequisites": [],           "quarter_equivalents": [], "is_placeholder": False},
                 "BUS_CON2": {"course_number": "MHR Elective", "title": "Management and HR Approved Elective",           "units": 3, "prerequisites": [],           "quarter_equivalents": [], "is_placeholder": True},
                 "BUS_CON3": {"course_number": "BUS 3388", "title": "Training, Developing, and Managing Employees",      "units": 3, "prerequisites": ["BUS 3384"], "quarter_equivalents": [], "is_placeholder": False},
@@ -2244,7 +1270,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "Courses taken to meet a major course requirement cannot be double-counted in the concentration.",
                 "BUS 3396 & 3396A and BUS 4418 & 4418A do not have activities separately; Marketing requires these courses to be taken together for four units each.",
             ],
-            "slot_overrides": {
+                        "full_flowchart_key": "BUS_MARKETING_MANAGEMENT",
+"slot_overrides": {
                 "BUS_CON1": {"course_number": "BUS 3396 & 3396A", "title": "Consumer Insights and Project",      "units": 4, "prerequisites": ["BUS 3346"], "quarter_equivalents": [], "is_placeholder": False},
                 "BUS_CON2": {"course_number": "Mktg. Elective",   "title": "Marketing Management Elective",      "units": 3, "prerequisites": [],           "quarter_equivalents": [], "is_placeholder": True},
                 "BUS_CON3": {"course_number": "BUS 4418 & 4418A", "title": "Marketing Research and Project",     "units": 4, "prerequisites": ["BUS 3346"], "quarter_equivalents": [], "is_placeholder": False},
@@ -2262,7 +1289,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "All students enrolled in the concentration are recommended to pursue a minor with the CAED department. The most popular minor is the Real Estate Property Development minor.",
                 "Courses taken to meet a major course requirement cannot be double-counted in the concentration.",
             ],
-            "slot_overrides": {
+                        "full_flowchart_key": "BUS_REAL_ESTATE_FINANCE",
+"slot_overrides": {
                 "BUS_CON1": {"course_number": "BUS 3431",     "title": "Security Analysis and Portfolio Management","units": 4, "prerequisites": [],           "quarter_equivalents": [], "is_placeholder": False},
                 "BUS_CON2": {"course_number": "REF Elective", "title": "Real Estate Finance Approved Elective",    "units": 3, "prerequisites": [],           "quarter_equivalents": [], "is_placeholder": True},
                 "BUS_CON3": {"course_number": "BUS 3440",     "title": "Financial Modeling and Visualization",     "units": 4, "prerequisites": ["BUS 3431"], "quarter_equivalents": [], "is_placeholder": False},
@@ -2278,7 +1306,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
             "tips": [
                 "Courses taken to meet a major course requirement cannot be double-counted in the concentration.",
             ],
-            "slot_overrides": {
+                        "full_flowchart_key": "BUS_SUPPLY_CHAIN_MANAGEMENT",
+"slot_overrides": {
                 "BUS_TECH_ELEC": {"course_number": "ITP 3303/3371", "title": "SCM Required ITP Elective",                    "units": 3, "prerequisites": [],           "quarter_equivalents": [], "is_placeholder": True},
                 "BUS_CON1":      {"course_number": "BUS 2208",       "title": "Shipping and Port Management",                  "units": 3, "prerequisites": [],           "quarter_equivalents": [], "is_placeholder": False},
                 "BUS_CON2":      {"course_number": "ITP 3371",       "title": "Supply Chain Management in Manufacturing and Services", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False},
@@ -2294,7 +1323,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "none",
             "label": "General Curriculum",
-            "slot_overrides": {},
+                        "full_flowchart_key": "EE",
+"slot_overrides": {},
             "tips": [
                 "A minimum of 8 units from the EE Technical Electives list is required.",
                 "A maximum of 4 units may come from either the Non-EE Technical Electives or the Lower-Division Electives list, with a combined maximum of 7 units allowed across both lists.",
@@ -2307,11 +1337,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "A minimum of 11 units from the EE Technical Electives list is required.",
                 "A maximum of 4 units may come from the Lower-Division Electives list.",
             ],
-            "slot_overrides": {
-                "EE_TECH1": {"course_number": "EE Technical Elective", "title": "ECC Technical Elective", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ee_ecc_elective"},
-                "EE_TECH2": {"course_number": "EE Technical Elective", "title": "ECC Technical Elective", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ee_ecc_elective"},
-                "EE_ELEC3": {"course_number": "EE Elective 3",         "title": "ECC Technical Elective", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ee_ecc_elective"},
-            },
+"full_flowchart_key": "EE_ECC",
+            "slot_overrides": {},
         },
         {
             "id": "power",
@@ -2320,24 +1347,22 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "A minimum of 8 units from the EE Technical Electives list is required.",
                 "A maximum of 4 units may come from the Lower-Division Electives list.",
             ],
-            "slot_overrides": {
-                "EE_TECH1": {"course_number": "EE 4406/4410",        "title": "Power System Analysis I or Fundamentals of Power Electronics", "units": 3, "prerequisites": ["EE 3255"], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ee_power_required"},
-                "EE_TECH2": {"course_number": "EE Power Elective 1", "title": "Power Technical Elective", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ee_power_elective"},
-                "EE_ELEC3": {"course_number": "EE Power Elective 2", "title": "Power Technical Elective", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ee_power_elective"},
-                "EE_ELEC4": {"course_number": "EE Power Elective 3", "title": "Power Technical Elective", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ee_power_elective"},
-            },
+"full_flowchart_key": "EE_POWER",
+            "slot_overrides": {},
         },
     ],
     "KINE": [
         {
             "id": "none",
             "label": "No Concentration Selected",
-            "slot_overrides": {},
+                        "full_flowchart_key": "KINE",
+"slot_overrides": {},
         },
         {
             "id": "exercise_science",
             "label": "Exercise Science",
-            "slot_overrides": {
+                        "full_flowchart_key": "KINE_EXERCISE_SCIENCE",
+"slot_overrides": {
                 "KINE_CON1": {"course_number": "KINE 3349", "title": "Exercise Testing and Prescription",     "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False},
                 "KINE_CON2": {"course_number": "KINE 4406", "title": "Motor Control",                         "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False},
                 "KINE_CON3": {"course_number": "KINE 3330", "title": "Group Exercise and Personal Training",  "units": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False},
@@ -2349,7 +1374,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "health_promotion",
             "label": "Health Promotion",
-            "slot_overrides": {
+                        "full_flowchart_key": "KINE_HEALTH_PROMOTION",
+"slot_overrides": {
                 "KINE_CON1": {"course_number": "HLTH 2261",   "title": "Social Determinants of Health",                       "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False},
                 "KINE_CON2": {"course_number": "HP Elective", "title": "Health Promotion Elective",                           "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "kine_hp_elective"},
                 "KINE_CON3": {"course_number": "KINE 4401",   "title": "Leadership in Health and Physical Activity Programs", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False},
@@ -2361,7 +1387,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "sport_science",
             "label": "Sport Science",
-            "slot_overrides": {
+                        "full_flowchart_key": "KINE_SPORT_SCIENCE",
+"slot_overrides": {
                 "KINE_3323": {"course_number": "KINE 3325",   "title": "Sport and Physical Activity Throughout Civilizations","units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False},
                 "KINE_FREE3": {"course_number": "Free Elective", "title": "Free Elective",                                    "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True},
                 "KINE_CON1": {"course_number": "KINE 3330",   "title": "Group Exercise and Personal Training",               "units": 2, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False},
@@ -2377,12 +1404,14 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "none",
             "label": "Undeclared / General",
-            "slot_overrides": {},
+                        "full_flowchart_key": "JOUR",
+"slot_overrides": {},
         },
         {
             "id": "media_innovation",
             "label": "Media Innovation",
-            "slot_overrides": {
+                        "full_flowchart_key": "JOUR_MEDIA_INNOVATION",
+"slot_overrides": {
                 "JOUR_CON1": {
                     "course_number": "JOUR 3350",
                     "title": "Data Journalism",
@@ -2430,7 +1459,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "news",
             "label": "News",
-            "slot_overrides": {
+                        "full_flowchart_key": "JOUR_NEWS",
+"slot_overrides": {
                 "JOUR_CON1": {
                     "course_number": "JOUR 3304",
                     "title": "Public Affairs Reporting",
@@ -2479,7 +1509,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "public_relations",
             "label": "Public Relations",
-            "slot_overrides": {
+                        "full_flowchart_key": "JOUR_PUBLIC_RELATIONS",
+"slot_overrides": {
                 "JOUR_CON1": {
                     "course_number": "JOUR 3342",
                     "title": "Public Relations Writing and Editing",
@@ -2526,7 +1557,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "ics",
             "label": "Individualized Course of Study",
-            "slot_overrides": {
+                        "full_flowchart_key": "JOUR_INDIVIDUALIZED_COURSE_OF_STUDY",
+"slot_overrides": {
                 "JOUR_CON1": {"course_number": "ICS Elective", "title": "ICS: Writing Intensive", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "jour_elective"},
                 "JOUR_CON2": {"course_number": "ICS Elective", "title": "ICS: Research", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "jour_elective"},
                 "JOUR_CON3": {"course_number": "ICS Elective", "title": "ICS: Media Technology", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "jour_elective"},
@@ -2539,12 +1571,14 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "none",
             "label": "General Food Science",
-            "slot_overrides": {},
+                        "full_flowchart_key": "FSN",
+"slot_overrides": {},
         },
         {
             "id": "culinology",
             "label": "Culinology",
-            "slot_overrides": {
+                        "full_flowchart_key": "FSN_CULINOLOGY",
+"slot_overrides": {
                 "FSN_CON1": {
                     "course_number": "FSN 1121",
                     "title": "Introduction to Culinology",
@@ -2599,7 +1633,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "food_safety",
             "label": "Food Safety",
-            "slot_overrides": {
+                        "full_flowchart_key": "FSN_FOOD_SAFETY",
+"slot_overrides": {
                 "FSN_CON1": {
                     "course_number": "Food Safety Elective",
                     "title": "Food Safety Elective",
@@ -2639,7 +1674,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "sft",
             "label": "Sustainable Food Technology",
-            "slot_overrides": {
+                        "full_flowchart_key": "FSN_SUSTAINABLE_FOOD_TECHNOLOGY",
+"slot_overrides": {
                 "FSN_CON1": {
                     "course_number": "SFT Elective",
                     "title": "Sustainable Food Technology Elective",
@@ -2678,36 +1714,12 @@ CONCENTRATIONS: dict[str, list[dict]] = {
             },
         },
     ],
-    "MATH": [
-        {
-            "id": "none",
-            "label": "General Mathematics",
-            "slot_overrides": {},
-        },
-        {
-            "id": "applied",
-            "label": "Applied Mathematics",
-            "slot_overrides": {},
-        },
-        {
-            "id": "teaching",
-            "label": "Teaching Mathematics",
-            "slot_overrides": {
-                "MATH_TRACK1": {"course_number": "Track Elective", "title": "Track Elective", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "math_track_teaching"},
-                "MATH_TRACK2": {"course_number": "Track Elective", "title": "Track Elective", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "math_track_teaching"},
-                "MATH_TRACK3": {"course_number": "Track Elective", "title": "Track Elective", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "math_track_teaching"},
-                "MATH_TRACK4": {"course_number": "Track Elective", "title": "Track Elective", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "math_track_teaching"},
-                "MATH_TRACK5": {"course_number": "Track Elective", "title": "Track Elective", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "math_track_teaching"},
-                "MATH_TRACK6": {"course_number": "Track Elective", "title": "Track Elective", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "math_track_teaching"},
-                "MATH_TRACK7": {"course_number": "Track Elective", "title": "Track Elective", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "math_track_teaching"},
-            },
-        },
-    ],
     "SOC": [
         {
             "id": "none",
             "label": "Undeclared / General",
-            "slot_overrides": {},
+                        "full_flowchart_key": "SOC",
+"slot_overrides": {},
         },
         {
             "id": "criminal_justice",
@@ -2715,7 +1727,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
             "tips": [
                 "A maximum of 6 units may count towards approved electives.",
             ],
-            "slot_overrides": {
+                        "full_flowchart_key": "SOC_CRIMINAL_JUSTICE",
+"slot_overrides": {
                 "SOC_CON1": {
                     "course_number": "SOC 3302",
                     "title": "Criminology",
@@ -2760,7 +1773,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "At least one concentration course must be in Sociology. A minimum of 16 units is required for the concentration, at least 10 of which must be upper-division. Units in excess of total will be applied towards major's free electives.",
                 "A maximum of 6 units may count towards approved electives.",
             ],
-            "slot_overrides": {
+                        "full_flowchart_key": "SOC_ORGANIZATIONS",
+"slot_overrides": {
                 "SOC_CON1": {
                     "course_number": "SOC 3395/4423",
                     "title": "Sociology of Complex Organizations or Gender and Work",
@@ -2806,7 +1820,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "A minimum of 16 units is required for the concentration. Any additional units may be applied towards major's free electives.",
                 "A maximum of 6 units may count towards approved electives.",
             ],
-            "slot_overrides": {
+                        "full_flowchart_key": "SOC_SOCIAL_JUSTICE",
+"slot_overrides": {
                 "SOC_CON1": {
                     "course_number": "SJ Required",
                     "title": "Social Justice Required Course",
@@ -2851,7 +1866,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
             "tips": [
                 "A maximum of 6 units may count towards approved electives.",
             ],
-            "slot_overrides": {
+                        "full_flowchart_key": "SOC_SOCIAL_SERVICES",
+"slot_overrides": {
                 "SOC_CON1": {
                     "course_number": "SOC 3303",
                     "title": "Social Work, Social Advocacy, and Social Service Agencies",
@@ -2891,14 +1907,16 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "ics",
             "label": "Individualized Course of Study",
-            "slot_overrides": {},
+                        "full_flowchart_key": "SOC_INDIVIDUALIZED_COURSE_OF_STUDY",
+"slot_overrides": {},
         },
     ],
     "WVIT": [
         {
             "id": "enology",
             "label": "Enology",
-            "slot_overrides": {
+                        "full_flowchart_key": "WVIT_ENOLOGY",
+"slot_overrides": {
                 "WVIT_CON1": {
                     "course_number": "CHEM 1122",
                     "title": "Fundamentals of Chemical Reactivity",
@@ -3009,7 +2027,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "viticulture",
             "label": "Viticulture",
-            "slot_overrides": {
+                        "full_flowchart_key": "WVIT_VITICULTURE",
+"slot_overrides": {
                 "WVIT_CON1": {
                     "course_number": "CHEM 2240",
                     "title": "Organic Chemistry: Fundamentals and Applications",
@@ -3120,7 +2139,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "wine_business",
             "label": "Wine Business",
-            "slot_overrides": {
+                        "full_flowchart_key": "WVIT_WINE_BUSINESS",
+"slot_overrides": {
                 "WVIT_CON1": {
                     "course_number": "AGB 2212/ECON 2030",
                     "title": "Agricultural Economics or Microeconomics",
@@ -3234,56 +2254,41 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "none",
             "label": "No Concentration Selected",
-            "slot_overrides": {},
+                        "full_flowchart_key": "EIM",
+"slot_overrides": {},
         },
         {
             "id": "event_planning",
             "label": "Event Planning and Management",
-            "slot_overrides": {
-                "EIM_CON1": {"course_number": "EIM 1114", "title": "Introduction to Hospitality and Travel",         "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
-                "EIM_CON2": {"course_number": "EIM 3317", "title": "Hospitality, Convention and Meeting Management",  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
-                "EIM_CON3": {"course_number": "EIM 3320", "title": "Strategic Event Planning",                        "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
-                "EIM_CON4": {"course_number": "EIM 4420", "title": "Strategic Event Implementation",                  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
-                "EIM_CON5": {"course_number": "Event Elec.", "title": "Event Planning Elective",                      "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "eim_event_elective"},
-                "EIM_CON6": {"course_number": "Event Elec.", "title": "Event Planning Elective",                      "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "eim_event_elective"},
-            },
+            "full_flowchart_key": "EIM_EVENT_PLANNING",
+            "slot_overrides": {},
         },
         {
             "id": "sport_recreation",
             "label": "Sport and Recreation Management",
-            "slot_overrides": {
-                "EIM_CON1": {"course_number": "EIM 1112/1160", "title": "Intro to Parks/Outdoor Recreation or Sport Management", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "eim_sport_intro_choice"},
-                "EIM_CON2": {"course_number": "EIM 2260/2275", "title": "Community Relations or Facilitation and Teambuilding", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "eim_sport_second_choice"},
-                "EIM_CON3": {"course_number": "EIM 3323/3325", "title": "Sport Marketing or Leadership in Outdoor Experiences", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "eim_sport_third_choice"},
-                "EIM_CON4": {"course_number": "Sport Elec.", "title": "Sport and Recreation Elective",                  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "eim_sport_elective"},
-                "EIM_CON5": {"course_number": "Sport Elec.", "title": "Sport and Recreation Elective",                  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "eim_sport_elective"},
-                "EIM_CON6": {"course_number": "Sport Elec.", "title": "Sport and Recreation Elective",                  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "eim_sport_elective"},
-            },
+            "full_flowchart_key": "EIM_SPORT_RECREATION",
+            "slot_overrides": {},
         },
         {
             "id": "tourism_hospitality",
             "label": "Tourism, Hospitality, and Destination Management",
-            "slot_overrides": {
-                "EIM_CON1": {"course_number": "EIM 1114", "title": "Introduction to Hospitality and Travel",          "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
-                "EIM_CON2": {"course_number": "EIM 2216", "title": "Resort and Lodging Operations",                   "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
-                "EIM_CON3": {"course_number": "EIM 3317", "title": "Hospitality, Convention and Meeting Management",   "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
-                "EIM_CON4": {"course_number": "EIM 3318", "title": "Destination and Hospitality Marketing and Management", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
-                "EIM_CON5": {"course_number": "Tourism Elec.", "title": "Tourism Elective",                           "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "eim_tourism_elective"},
-                "EIM_CON6": {"course_number": "Tourism Elec.", "title": "Tourism Elective",                           "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "eim_tourism_elective"},
-            },
+            "full_flowchart_key": "EIM_TOURISM_HOSPITALITY",
+            "slot_overrides": {},
         },
     ],
     "GRC": [
         {
             "id": "none",
             "label": "Individualized Course of Study",
-            "slot_overrides": {},
+                        "full_flowchart_key": "GRC_INDIVIDUALIZED_COURSE_OF_STUDY",
+"slot_overrides": {},
         },
         {
             "id": "design_reproduction_technology",
             "label": "Design Reproduction Technology",
             "tips": ["May be substituted with an advisor approved course."],
-            "slot_overrides": {
+                        "full_flowchart_key": "GRC_DESIGN_REPRODUCTION_TECHNOLOGY",
+"slot_overrides": {
                 "GRC_CON1": {"course_number": "ART 1101", "title": "Fundamentals of Drawing",                   "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "GRC_CON2": {"course_number": "ART 1102", "title": "2D Design",                                "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "GRC_CON3": {"course_number": "GRC 3270", "title": "Packaging Graphics Technology and Design", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
@@ -3297,7 +2302,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
             "id": "graphic_communication_management",
             "label": "Graphic Communication Management",
             "tips": ["May be substituted with an advisor approved course."],
-            "slot_overrides": {
+                        "full_flowchart_key": "GRC_GRAPHIC_COMMUNICATION_MANAGEMENT",
+"slot_overrides": {
                 "GRC_CON1": {"course_number": "BUS 2207",  "title": "Legal Responsibilities of Business",           "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "GRC_CON2": {"course_number": "BUS 2212",  "title": "Financial Accounting for Nonbusiness Majors",  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "GRC_CON3": {"course_number": "COMS 2213", "title": "Organizational Communication",                 "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
@@ -3311,7 +2317,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
             "id": "graphics_for_packaging",
             "label": "Graphics for Packaging",
             "tips": ["May be substituted with an advisor approved course."],
-            "slot_overrides": {
+                        "full_flowchart_key": "GRC_GRAPHICS_FOR_PACKAGING",
+"slot_overrides": {
                 "GRC_CON1": {"course_number": "GRC 3080",  "title": "Product Development for Cross-Device Interaction", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "GRC_CON2": {"course_number": "ITP 2234",  "title": "Packaging Design Fundamentals",                   "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "GRC_CON3": {"course_number": "ITP 3330",  "title": "Packaging Fundamentals",                          "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
@@ -3325,7 +2332,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
             "id": "immersive_experience_design",
             "label": "Immersive Experience Design",
             "tips": ["May be substituted with an advisor approved course."],
-            "slot_overrides": {
+                        "full_flowchart_key": "GRC_IMMERSIVE_EXPERIENCE_DESIGN",
+"slot_overrides": {
                 "GRC_CON1": {"course_number": "GRC 3080",  "title": "Product Development for Cross-Device Interaction", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "GRC_CON2": {"course_number": "GRC 4290",  "title": "User Experience Research Methods",                "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "GRC_CON3": {"course_number": "ART 4433",  "title": "The Art of Mixed Reality",                        "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
@@ -3339,7 +2347,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
             "id": "user_experience_user_interface",
             "label": "User Experience/User Interface",
             "tips": ["May be substituted with an advisor approved course."],
-            "slot_overrides": {
+                        "full_flowchart_key": "GRC_USER_EXPERIENCE_USER_INTERFACE",
+"slot_overrides": {
                 "GRC_CON1": {"course_number": "CSC 1024",  "title": "Introduction to Computing",                       "units": 2, "prerequisites": [], "quarter_equivalents": ["CSC 101"], "is_placeholder": False, "elective_key": None},
                 "GRC_CON2": {"course_number": "GRC 3990",  "title": "Front-end Web Development",                       "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "GRC_CON3": {"course_number": "PHIL 3323", "title": "Ethics, Science, and Technology",                 "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
@@ -3354,7 +2363,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "none",
             "label": "No Focus Area Selected",
-            "slot_overrides": {},
+                        "full_flowchart_key": "COMS",
+"slot_overrides": {},
         },
         {
             "id": "culture_identity_power",
@@ -3421,7 +2431,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "none",
             "label": "General Curriculum",
-            "slot_overrides": {},
+                        "full_flowchart_key": "ECON",
+"slot_overrides": {},
         },
         {
             "id": "accounting",
@@ -3429,7 +2440,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
             "tips": [
                 "Courses taken to meet a major course requirement cannot be double-counted in the concentration.",
             ],
-            "slot_overrides": {
+                        "full_flowchart_key": "ECON_ACCOUNTING",
+"slot_overrides": {
                 "ECON_CON1": {"course_number": "BUS 3319", "title": "Data Analytics and Accounting Information Systems", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "ECON_CON2": {"course_number": "BUS 3320", "title": "Federal Income Taxation for Individuals",           "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "ECON_CON3": {"course_number": "BUS 3321", "title": "Intermediate Accounting I",                         "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
@@ -3446,7 +2458,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "Courses taken to meet a major course requirement cannot be double-counted in the concentration.",
                 "CHEM 1120 is recommended for those pursuing the Consumer Packaging concentration to fulfill GE Area 5A & 5C.",
             ],
-            "slot_overrides": {
+                        "full_flowchart_key": "ECON_CONSUMER_PACKAGING",
+"slot_overrides": {
                 "ECON_CON1": {"course_number": "BUS 3396",  "title": "Consumer Insights",                  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "ECON_CON2": {"course_number": "ITP 2234",  "title": "Packaging Design Fundamentals",       "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "ECON_CON3": {"course_number": "ITP 3330",  "title": "Packaging Fundamentals",              "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
@@ -3462,7 +2475,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
             "tips": [
                 "If a course is taken to meet a Major or Support requirement, it cannot be double-counted as an Elective for the concentration.",
             ],
-            "slot_overrides": {
+                        "full_flowchart_key": "ECON_ECONOMICS_FOR_DATA_SCIENCE",
+"slot_overrides": {
                 "ECON_CON1": {"course_number": "ECON DS Elec.", "title": "Economics for Data Science Elective", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": None},
                 "ECON_CON2": {"course_number": "ECON DS Elec.", "title": "Economics for Data Science Elective", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": None},
                 "ECON_CON3": {"course_number": "ECON DS Elec.", "title": "Economics for Data Science Elective", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": None},
@@ -3479,7 +2493,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "Units in excess of total will be applied towards major's free electives.",
                 "Courses taken to meet a major course requirement cannot be double-counted in the concentration.",
             ],
-            "slot_overrides": {
+                        "full_flowchart_key": "ECON_ENTREPRENEURSHIP",
+"slot_overrides": {
                 "ECON_CON1": {"course_number": "BUS 3310",     "title": "Introduction to Entrepreneurship",      "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "ECON_CON2": {"course_number": "BUS 3330",     "title": "Funding and Managing Startup Companies", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "ECON_CON3": {"course_number": "ITP 4406",     "title": "Business-to-Business Complex Solutions Selling", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
@@ -3495,7 +2510,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "All students need an approval from the finance chair to enroll in the Financial Management concentration.",
                 "Courses taken to meet a major course requirement cannot be double-counted in the concentration. Units in excess of total will be applied towards major's free electives.",
             ],
-            "slot_overrides": {
+                        "full_flowchart_key": "ECON_FINANCIAL_MANAGEMENT",
+"slot_overrides": {
                 "ECON_CON1": {"course_number": "BUS 3431",    "title": "Security Analysis and Portfolio Management", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "ECON_CON2": {"course_number": "BUS 3438",    "title": "Corporate Finance",                         "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "ECON_CON3": {"course_number": "BUS 3441/3440","title": "Financial Analysis or Modeling",           "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": None},
@@ -3511,7 +2527,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
             "tips": [
                 "Courses taken to meet a major course requirement cannot be double-counted in the concentration.",
             ],
-            "slot_overrides": {
+                        "full_flowchart_key": "ECON_INFORMATION_SYSTEMS_AND_ANALYTICS",
+"slot_overrides": {
                 "ECON_CON1": {"course_number": "BUS 3392", "title": "Business Application Development",    "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "ECON_CON2": {"course_number": "BUS 3393", "title": "Database Systems in Business",        "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "ECON_CON3": {"course_number": "BUS 3394", "title": "Systems Analysis and Design",         "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
@@ -3527,7 +2544,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
             "tips": [
                 "Courses taken to meet a major course requirement cannot be double-counted in the concentration.",
             ],
-            "slot_overrides": {
+                        "full_flowchart_key": "ECON_MANAGEMENT_AND_HUMAN_RESOURCES",
+"slot_overrides": {
                 "ECON_CON1": {"course_number": "BUS 3384", "title": "Human Resources Management",                   "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "ECON_CON2": {"course_number": "BUS 3388", "title": "Training, Developing, and Managing Employees", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "ECON_CON3": {"course_number": "BUS 4477", "title": "Management Consulting, Change, and Development", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
@@ -3543,7 +2561,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
             "tips": [
                 "Courses taken to meet a major course requirement cannot be double-counted in the concentration.",
             ],
-            "slot_overrides": {
+                        "full_flowchart_key": "ECON_MARKETING_MANAGEMENT_CONCENTRATION_IN",
+"slot_overrides": {
                 "ECON_CON1": {"course_number": "BUS 3396",     "title": "Consumer Insights",          "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "ECON_CON2": {"course_number": "BUS 4418",     "title": "Marketing Research",         "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "ECON_CON3": {"course_number": "Mktg. Elec.",  "title": "Marketing Elective",         "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": None},
@@ -3561,7 +2580,8 @@ CONCENTRATIONS: dict[str, list[dict]] = {
                 "All students enrolled in the concentration are recommended to pursue a minor with the CAED department. The most popular minor is the Real Estate Property Development minor.",
                 "Courses taken to meet a major course requirement cannot be double-counted in the concentration.",
             ],
-            "slot_overrides": {
+                        "full_flowchart_key": "ECON_REAL_ESTATE_FINANCE",
+"slot_overrides": {
                 "ECON_CON1": {"course_number": "BUS 3431",    "title": "Security Analysis and Portfolio Management", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "ECON_CON2": {"course_number": "BUS 3440",    "title": "Financial Modeling and Visualization in Excel", "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
                 "ECON_CON3": {"course_number": "BUS 4434",    "title": "Real Estate Finance",                       "units": 4, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
@@ -3576,7 +2596,8 @@ CONCENTRATIONS["PLSC"] = [
     {
         "id": "none",
         "label": "No Concentration Selected",
-        "slot_overrides": {},
+                "full_flowchart_key": "PLSC",
+"slot_overrides": {},
     },
     {
         "id": "fruit_crop_science",
@@ -3586,7 +2607,8 @@ CONCENTRATIONS["PLSC"] = [
             "A maximum of 3 units may count towards Approved Electives.",
             "A maximum of 4 units may count towards Approved Electives.",
         ],
-        "slot_overrides": {
+                "full_flowchart_key": "PLSC_FRUIT_AND_CROP_SCIENCE",
+"slot_overrides": {
             "PLSC_CON1":  {"course_number": "Concentration", "title": "Concentration Elective 1",  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "plsc_fruit_crop_elective"},
             "PLSC_CON2":  {"course_number": "Concentration", "title": "Concentration Elective 2",  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "plsc_fruit_crop_elective"},
             "PLSC_CON3":  {"course_number": "Concentration", "title": "Concentration Elective 3",  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "plsc_fruit_crop_elective"},
@@ -3608,7 +2630,8 @@ CONCENTRATIONS["PLSC"] = [
             "A maximum of 3 units may count towards Approved Electives.",
             "A maximum of 4 units may count towards Approved Electives.",
         ],
-        "slot_overrides": {
+                "full_flowchart_key": "PLSC_ENVIRONMENTAL_HORTICULTURAL_SCIENCE",
+"slot_overrides": {
             "PLSC_CON1":  {"course_number": "Concentration", "title": "Concentration Elective 1",  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "plsc_environ_hort_elective"},
             "PLSC_CON2":  {"course_number": "Concentration", "title": "Concentration Elective 2",  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "plsc_environ_hort_elective"},
             "PLSC_CON3":  {"course_number": "Concentration", "title": "Concentration Elective 3",  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "plsc_environ_hort_elective"},
@@ -3648,14 +2671,15 @@ CONCENTRATIONS["PLSC"] = [
 ]
 
 CONCENTRATIONS["PHIL"] = [
-    {"id": "none", "label": "No Concentration Selected", "slot_overrides": {}},
+    {"id": "none", "label": "No Concentration Selected", "full_flowchart_key": "PHIL", "slot_overrides": {}},
     {
         "id": "ethics_and_society",
         "label": "Ethics and Society",
         "tips": [
             "If a course is taken to meet a Major or Support requirement, it cannot be double-counted as an Elective for the concentration.",
         ],
-        "slot_overrides": {
+                "full_flowchart_key": "PHIL_ETHICS_AND_SOCIETY",
+"slot_overrides": {
             "PHIL_CON1": {"course_number": "PHIL 4439",    "title": "Topics in Ethics and Political Philosophy", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
             "PHIL_CON2": {"course_number": "Concentration","title": "Ethics Elective 1",                         "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "phil_ethics_elective"},
             "PHIL_CON3": {"course_number": "Concentration","title": "Ethics Elective 2",                         "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "phil_ethics_elective"},
@@ -3669,7 +2693,8 @@ CONCENTRATIONS["PHIL"] = [
         "tips": [
             "If a course is taken to meet a Major or Support requirement, it cannot be double-counted as an Elective for the concentration.",
         ],
-        "slot_overrides": {
+                "full_flowchart_key": "PHIL_ETHICS_OF_SCIENCE_AND_TECHNOLOGY",
+"slot_overrides": {
             "PHIL_CON1": {"course_number": "PHIL 3323",    "title": "Ethics, Science, and Technology",               "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
             "PHIL_CON2": {"course_number": "Concentration","title": "Ethics and Philosophy of Science/Tech Elective 1","units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "phil_sci_tech_elective"},
             "PHIL_CON3": {"course_number": "Concentration","title": "Ethics and Philosophy of Science/Tech Elective 2","units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "phil_sci_tech_elective"},
@@ -3684,7 +2709,8 @@ CONCENTRATIONS["PHIL"] = [
             "If a course is taken to meet a Major or Support requirement, it cannot be double-counted as an Elective for the concentration.",
             "If a Religious Studies (RELS) course is taken to meet the Arts and Humanities Breadth requirement, it cannot be double-counted in the Philosophy and Religion concentration.",
         ],
-        "slot_overrides": {
+                "full_flowchart_key": "PHIL_PHILOSOPHY_AND_RELIGION",
+"slot_overrides": {
             "PHIL_CON1": {"course_number": "PHIL 3342",    "title": "Philosophy of Religion",              "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
             "PHIL_CON2": {"course_number": "Concentration","title": "Asian Philosophy and Religion Elective","units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "phil_asian_rel_elective"},
             "PHIL_CON3": {"course_number": "Concentration","title": "Religion Elective 1",                  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "phil_religion_elective"},
@@ -3695,25 +2721,31 @@ CONCENTRATIONS["PHIL"] = [
 ]
 
 CONCENTRATIONS["NUT"] = [
-    {"id": "none", "label": "No Concentration Selected", "slot_overrides": {}},
+    {"id": "none", "label": "No Concentration Selected", "full_flowchart_key": "NUT", "slot_overrides": {}},
     {
         "id": "dietetics",
         "label": "Dietetics",
-        "slot_overrides": {
+                "full_flowchart_key": "NUT_DIETETICS",
+"slot_overrides": {
             "NUT_CON1": {"course_number": "PSY 2201",     "title": "Introductory Psychology",                          "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
             "NUT_CON2": {"course_number": "NUTR 3321",    "title": "Experimental Foods",                               "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
             "NUT_CON3": {"course_number": "FSN 3346",     "title": "Institutional Food Service",                       "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
             "NUT_CON4": {"course_number": "NUTR 4426",    "title": "Nutrition and Foodservice Systems Management",     "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
             "NUT_CON5": {"course_number": "Concentration","title": "Dietetics Concentration Elective",                 "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "nut_dietetics_elective"},
         },
+        "tips": [
+            "The Dietetics elective slot may be filled by any 3000–4000 level BIO, CHEM, HLTH, MATH, PHYS, or PSY course.",
+        ],
     },
     {
         "id": "nutrition_prehealth",
         "label": "Nutrition and Pre-Health Sciences",
         "tips": [
+            "A minimum of 8 units must be taken at the 3000-4000 level.",
             "If a course is taken to meet a Major or Support requirement, it cannot be double-counted as an Elective for the concentration.",
         ],
-        "slot_overrides": {
+                "full_flowchart_key": "NUT_NUTRITION_AND_PRE_HEALTH_SCIENCES",
+"slot_overrides": {
             "NUT_CON1": {"course_number": "FSN 3305",     "title": "Nutrition and Exercise for Health and Disease Prevention", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
             "NUT_CON2": {"course_number": "Concentration","title": "Pre-Health Sciences Elective 1",                  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "nut_prehealth_elective"},
             "NUT_CON3": {"course_number": "Concentration","title": "Pre-Health Sciences Elective 2",                  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "nut_prehealth_elective"},
@@ -3724,11 +2756,12 @@ CONCENTRATIONS["NUT"] = [
 ]
 
 CONCENTRATIONS["PH"] = [
-    {"id": "none", "label": "No Concentration Selected", "slot_overrides": {}},
+    {"id": "none", "label": "No Concentration Selected", "full_flowchart_key": "PH", "slot_overrides": {}},
     {
         "id": "community_health_promotion",
         "label": "Community Health Promotion",
-        "slot_overrides": {
+                "full_flowchart_key": "PH_COMMUNITY_HEALTH_PROMOTION",
+"slot_overrides": {
             "PH_CON1": {"course_number": "HLTH 3305",     "title": "Drugs in Society",                      "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
             "PH_CON2": {"course_number": "HLTH 3310",     "title": "Injury Prevention",                     "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
             "PH_CON3": {"course_number": "HLTH 3348",     "title": "Public Health and Mental Health",       "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
@@ -3741,7 +2774,8 @@ CONCENTRATIONS["PH"] = [
         "tips": [
             "Units in excess of total will be applied towards major's free electives.",
         ],
-        "slot_overrides": {
+                "full_flowchart_key": "PH_HEALTH_EQUITY_AND_GLOBAL_HEALTH",
+"slot_overrides": {
             "PH_CON1": {"course_number": "HLTH 3348",     "title": "Public Health and Mental Health",                "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
             "PH_CON2": {"course_number": "HLTH 4413",     "title": "Health Promotion for Special Populations",      "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
             "PH_CON3": {"course_number": "HLTH 4444",     "title": "Comparative Health Care Systems",               "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
@@ -3754,7 +2788,8 @@ CONCENTRATIONS["PH"] = [
         "tips": [
             "Units in excess of total will be applied towards major's free electives.",
         ],
-        "slot_overrides": {
+                "full_flowchart_key": "PH_HEALTH_MANAGEMENT_AND_ADMINISTRATION",
+"slot_overrides": {
             "PH_CON1": {"course_number": "BUS 2212/ECON 2001", "title": "Financial Accounting or Survey of Economics",      "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "ph_bus_econ_elective"},
             "PH_CON2": {"course_number": "KINE 4401",          "title": "Leadership in Health and Physical Activity Programs", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
             "PH_CON3": {"course_number": "HLTH 4444",          "title": "Comparative Health Care Systems",                  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
@@ -3775,14 +2810,14 @@ def _envm_con(key: str) -> dict:
     return {slot: {**data, "elective_key": key} for slot, data in _ENVM_CON_SLOTS_BASE.items()}
 
 CONCENTRATIONS["ENVM"] = [
-    {"id": "none", "label": "No Concentration Selected", "slot_overrides": {}},
-    {"id": "conservation_science",            "label": "Conservation Science and Management",         "slot_overrides": _envm_con("envm_conservation_elective")},
-    {"id": "corporate_environmental",         "label": "Corporate Environmental Management",           "slot_overrides": _envm_con("envm_corporate_elective")},
-    {"id": "environmental_data_science",      "label": "Environmental Data Science",                   "slot_overrides": _envm_con("envm_data_science_elective")},
-    {"id": "env_law_justice_policy",          "label": "Environmental Law, Justice and Policy",        "slot_overrides": _envm_con("envm_law_justice_elective")},
-    {"id": "sustainable_agriculture",         "label": "Sustainable Agriculture",                      "slot_overrides": _envm_con("envm_sust_ag_elective")},
-    {"id": "sustainable_urban_development",   "label": "Sustainable Urban Development and Planning",   "slot_overrides": _envm_con("envm_sust_urban_elective")},
-    {"id": "water_science_management",        "label": "Water Science and Management",                 "slot_overrides": _envm_con("envm_water_mgmt_elective")},
+    {"id": "none", "label": "No Concentration Selected", "full_flowchart_key": "ENVM", "slot_overrides": {}},
+    {"id": "conservation_science",            "label": "Conservation Science and Management",         "full_flowchart_key": "ENVM_CONSERVATION_SCIENCE_AND_MANAGEMENT", "slot_overrides": _envm_con("envm_conservation_elective")},
+    {"id": "corporate_environmental",         "label": "Corporate Environmental Management",           "full_flowchart_key": "ENVM_CORPORATE_ENVIRONMENTAL_MANAGEMENT", "slot_overrides": _envm_con("envm_corporate_elective")},
+    {"id": "environmental_data_science",      "label": "Environmental Data Science",                   "full_flowchart_key": "ENVM_ENVIRONMENTAL_DATA_SCIENCE", "slot_overrides": _envm_con("envm_data_science_elective")},
+    {"id": "env_law_justice_policy",          "label": "Environmental Law, Justice and Policy",        "full_flowchart_key": "ENVM_ENVIRONMENTAL_LAW_JUSTICE_AND_POLICY", "slot_overrides": _envm_con("envm_law_justice_elective")},
+    {"id": "sustainable_agriculture",         "label": "Sustainable Agriculture",                      "full_flowchart_key": "ENVM_SUSTAINABLE_AGRICULTURE", "slot_overrides": _envm_con("envm_sust_ag_elective")},
+    {"id": "sustainable_urban_development",   "label": "Sustainable Urban Development and Planning",   "full_flowchart_key": "ENVM_SUSTAINABLE_URBAN_DEVELOPMENT_AND_PLANNING", "slot_overrides": _envm_con("envm_sust_urban_elective")},
+    {"id": "water_science_management",        "label": "Water Science and Management",                 "full_flowchart_key": "ENVM_WATER_SCIENCE_AND_MANAGEMENT", "slot_overrides": _envm_con("envm_water_mgmt_elective")},
 ]
 
 
@@ -3808,81 +2843,124 @@ def _libs_fixed(course_number: str, title: str, units: int, prereqs: list = None
 
 
 CONCENTRATIONS["LIBS"] = [
-    {"id": "none", "label": "No Concentration Selected", "slot_overrides": {}},
+    {"id": "none", "label": "No Concentration Selected", "full_flowchart_key": "LIBS", "slot_overrides": {}},
     {
         "id": "environmental_education",
         "label": "Environmental Education",
-        "slot_overrides": {
+                "full_flowchart_key": "LIBS_ENVIRONMENTAL_EDUCATION",
+"slot_overrides": {
             "LIBS_CON_EL1": _libs_placeholder("Env. Cultural/Social", "Environmental Ed: Cultural and Social Component", 3, "libs_env_cultural"),
             "LIBS_CON_EL2": _libs_placeholder("Env. Ecological",      "Environmental Ed: Ecological and Environmental Component", 3, "libs_env_ecological"),
             "LIBS_CON_EL3": _libs_placeholder("Env. Education/Comm",  "Environmental Ed: Education and Communication Component", 3, "libs_env_education"),
             "LIBS_CON_EL4": _libs_placeholder("Env. Capstone",        "Environmental Ed: Capstone", 3, "libs_env_capstone"),
         },
+        "tips": [
+            "Units in excess of the concentration total will be applied toward the major's free electives.",
+            "A course used to meet a Major or Support requirement cannot be double-counted as an Approved Elective.",
+        ],
     },
     {
         "id": "human_development",
         "label": "Human Development",
-        "slot_overrides": {
+                "full_flowchart_key": "LIBS_HUMAN_DEVELOPMENT",
+"slot_overrides": {
             "LIBS_CON_EL1": _libs_placeholder("HD: Applications to Education", "Human Development: Applications to Education and Advocacy", 3, "libs_hd_apps_ed"),
             "LIBS_CON_EL2": _libs_placeholder("HD: Child Dev. and Growth",     "Human Development: Child Development and Growth (4 units)", 4, "libs_hd_child_dev"),
             "LIBS_CON_EL3": _libs_placeholder("HD: Social Context",            "Human Development: Social Context and Relationships", 3, "libs_hd_social_context"),
             "LIBS_CON_EL4": _libs_placeholder("HD: Any CD Course (2 units)",   "Human Development: Any Child Development Course (2 units)", 2, "libs_hd_cd_course"),
         },
+        "tips": [
+            "Units in excess of the concentration total will be applied toward the major's free electives.",
+        ],
     },
     {
         "id": "mathematics",
         "label": "Mathematics",
-        "slot_overrides": {
+                "full_flowchart_key": "LIBS_MATHEMATICS",
+"slot_overrides": {
             "LIBS_CON_EL1": _libs_fixed("MATH 1261", "Calculus I", 4),
             "LIBS_CON_EL2": _libs_fixed("MATH 1262", "Calculus II", 4, ["MATH 1261"]),
             "LIBS_CON_EL3": _libs_fixed("MATH 2031", "Transition to Advanced Mathematics", 3, ["MATH 1262"]),
             "LIBS_CON_EL4": _libs_placeholder("Math Upper-Div Elective", "Upper-Division Mathematics Elective", 3, "libs_math_upper_div"),
+            # Math concentration is 14u (vs 12u base); Senior Spring free elective shrinks 3u→1u to keep total at 120u
+            "LIBS_FREE": _libs_placeholder("Free Elective", "Free Elective", 1, None),
         },
     },
     {
         "id": "english",
         "label": "English",
-        "slot_overrides": {
+                "full_flowchart_key": "LIBS_ENGLISH",
+"slot_overrides": {
             "LIBS_CON_EL1": _libs_fixed("ENGL 3311", "Writing With Style", 3),
             "LIBS_CON_EL2": _libs_fixed("ENGL 3392", "Reading Instruction for Young Adult Literature", 4),
             "LIBS_CON_EL3": _libs_placeholder("ENGL 3393/4424", "Theory/Practice of Tutoring Writing or Teaching ELA in Secondary", 4, "libs_engl_3393_choice"),
             "LIBS_CON_EL4": _libs_placeholder("Am. Literature Elective", "American Literature Elective", 3, "libs_am_lit_elective"),
+            # English concentration is 14u (vs 12u base); Senior Spring free elective shrinks 3u→1u to keep total at 120u
+            "LIBS_FREE": _libs_placeholder("Free Elective", "Free Elective", 1, None),
         },
     },
     {
         "id": "science",
         "label": "Science",
-        "slot_overrides": {
+                "full_flowchart_key": "LIBS_SCIENCE",
+"slot_overrides": {
             "LIBS_CON_EL1": _libs_placeholder("Sci. Core (CHEM/PHYS)", "Science Concentration: Core Science Course (include ≥3 units Chemistry)", 4, "libs_sci_core"),
             "LIBS_CON_EL2": _libs_placeholder("Science Elective",       "Science Concentration: Approved Science Elective", 3, "libs_sci_approved"),
             "LIBS_CON_EL3": _libs_placeholder("Science Elective",       "Science Concentration: Approved Science Elective", 3, "libs_sci_approved"),
             "LIBS_CON_EL4": _libs_placeholder("Science Elective",       "Science Concentration: Approved Science Elective", 3, "libs_sci_approved"),
         },
+        "tips": [
+            "A minimum of 3 units in CHEM is required. A two-course Chemistry sequence fulfills the authorization requirement; a Physics course is not needed if the Chemistry sequence is completed.",
+            "Courses can only be used once for major degree credit.",
+            "Units in excess of the concentration total will be applied toward the major's free electives.",
+        ],
     },
     {
         "id": "social_science",
         "label": "Social Science",
-        "slot_overrides": {
+                "full_flowchart_key": "LIBS_SOCIAL_SCIENCE",
+"slot_overrides": {
             "LIBS_CON_EL1": _libs_fixed("HIST 2208", "Survey of California History", 3),
             "LIBS_CON_EL2": _libs_placeholder("U.S. Government Elective", "U.S. Government Elective", 3, "libs_pols_elective"),
             "LIBS_CON_EL3": _libs_placeholder("Geography Elective",        "Geography Elective", 3, "libs_geog_elective"),
             "LIBS_CON_EL4": _libs_placeholder("ES/Hist/Soc Elective",     "Ethnic Studies, History, Sociology, or Women/Gender Studies Elective", 3, "libs_soc_hist_elective"),
         },
+        "tips": [
+            "Units in excess of the concentration total will be applied toward the major's free electives.",
+        ],
     },
     {
         "id": "tesol",
         "label": "Teaching English to Speakers of Other Languages (TESOL)",
-        "slot_overrides": {
+                "full_flowchart_key": "LIBS_TEACHING_ENGLISH_TO_SPEAKERS_OF_OTHER_LANGUAGES",
+"slot_overrides": {
             "LIBS_CON_EL1": _libs_fixed("COMS 3316",  "Intercultural Communication", 3),
             "LIBS_CON_EL2": _libs_placeholder("ENGL 2290/3390", "Introduction to Linguistics or Linguistic Structure of Modern English", 3, "libs_engl_ling_choice"),
             "LIBS_CON_EL3": _libs_fixed("ENGL 4497",  "Theories of Language Learning and Teaching", 3),
             "LIBS_CON_EL4": _libs_fixed("ENGL 4498",  "Approaches to Teaching English to Speakers of Other Languages", 3),
         },
+        # ENGL 4499 is a required 5th course for TESOL (1u practicum, Junior Spring)
+        "extra_courses": [
+            {
+                "id": "LIBS_TESOL_PRAC",
+                "course_number": "ENGL 4499",
+                "title": "Practicum in Teaching English to Speakers of Other Languages",
+                "units": 1,
+                "category": "concentration",
+                "grid_col": 5,
+                "grid_row": 0,
+                "prerequisites": ["ENGL 4498"],
+                "quarter_equivalents": [],
+                "is_placeholder": False,
+                "elective_key": None,
+            }
+        ],
     },
     {
         "id": "individualized",
         "label": "Individualized Course of Study",
-        "slot_overrides": {
+                "full_flowchart_key": "LIBS_INDIVIDUALIZED_COURSE_OF_STUDY",
+"slot_overrides": {
             "LIBS_CON_EL1": _libs_placeholder("Individualized Elective", "Individualized Course of Study Elective", 3, None),
             "LIBS_CON_EL2": _libs_placeholder("Individualized Elective", "Individualized Course of Study Elective", 3, None),
             "LIBS_CON_EL3": _libs_placeholder("Individualized Elective", "Individualized Course of Study Elective", 3, None),
@@ -3895,7 +2973,8 @@ CONCENTRATIONS["ITP"] = [
     {
         "id": "none",
         "label": "No Concentration Selected",
-        "slot_overrides": {},
+                "full_flowchart_key": "ITP",
+"slot_overrides": {},
     },
     {
         "id": "industrial_technology",
@@ -3903,7 +2982,8 @@ CONCENTRATIONS["ITP"] = [
         "tips": [
             "Units in excess of the concentration total will be applied towards major's free electives.",
         ],
-        "slot_overrides": {
+                "full_flowchart_key": "ITP_INDUSTRIAL_TECHNOLOGY",
+"slot_overrides": {
             "ITP_CON_SOF1": {"course_number": "ITP 2260", "title": "Materials and Manufacturing Technology",    "units": 3, "prerequisites": [],             "quarter_equivalents": ["ITP 260"], "is_placeholder": False, "elective_key": None},
             "ITP_CON_SOS1": {"course_number": "ITP 3390", "title": "Industrial Automation",                    "units": 3, "prerequisites": [],             "quarter_equivalents": ["ITP 390"], "is_placeholder": False, "elective_key": None},
             "ITP_CON_JRF1": {"course_number": "ITP 4403", "title": "Lean and Quality Systems Management",     "units": 3, "prerequisites": ["ITP 3303"],    "quarter_equivalents": ["ITP 403"], "is_placeholder": False, "elective_key": None},
@@ -3922,7 +3002,8 @@ CONCENTRATIONS["ITP"] = [
         "tips": [
             "Units in excess of the concentration total will be applied towards major's free electives.",
         ],
-        "slot_overrides": {
+                "full_flowchart_key": "ITP_PACKAGING",
+"slot_overrides": {
             "ITP_CON_SOF1": {"course_number": "ITP 2234", "title": "Packaging Design Fundamentals",           "units": 3, "prerequisites": [],             "quarter_equivalents": ["ITP 234"], "is_placeholder": False, "elective_key": None},
             "ITP_CON_SOS1": {"course_number": "ITP 3334", "title": "Structural Packaging Design",            "units": 3, "prerequisites": ["ITP 2234"],    "quarter_equivalents": [],           "is_placeholder": False, "elective_key": None},
             "ITP_CON_JRF1": {"course_number": "ITP 2241", "title": "Industrial and Packaging Materials",     "units": 3, "prerequisites": [],             "quarter_equivalents": [],           "is_placeholder": False, "elective_key": None},
@@ -3941,7 +3022,8 @@ CONCENTRATIONS["NR"] = [
     {
         "id": "none",
         "label": "No Concentration Selected",
-        "slot_overrides": {},
+                "full_flowchart_key": "NR",
+"slot_overrides": {},
     },
     {
         "id": "forest_resources",
@@ -3950,7 +3032,8 @@ CONCENTRATIONS["NR"] = [
             "Courses taken to meet major requirements cannot be double-counted as concentration electives.",
             "NR 4403 (1 unit) is the Forest Health lab paired with the required NR 4402; it counts toward concentration units.",
         ],
-        "slot_overrides": {
+                "full_flowchart_key": "NR_FOREST_RESOURCES",
+"slot_overrides": {
             "NR_CON_SOS1": {"course_number": "NR 2204",  "title": "Wildland Fire Control",                              "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
             "NR_CON_JRF1": {"course_number": "NR 2350",  "title": "Urban Forestry",                                     "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
             "NR_CON_JRF2": {"course_number": "FR Elec.", "title": "Forest Resources Approved Elective",                 "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "nr_fr_approved_elective"},
@@ -3967,7 +3050,8 @@ CONCENTRATIONS["NR"] = [
         "tips": [
             "Courses taken to meet major requirements cannot be double-counted as concentration electives.",
         ],
-        "slot_overrides": {
+                "full_flowchart_key": "NR_WATER_SCIENCES",
+"slot_overrides": {
             "NR_CON_SOS1": {"course_number": "WS Elec.", "title": "Water Science Approved Elective",                    "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "nr_ws_approved_elective"},
             "NR_CON_JRF1": {"course_number": "WS Elec.", "title": "Water Science Approved Elective",                    "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "nr_ws_approved_elective"},
             "NR_CON_JRF2": {"course_number": "WS Elec.", "title": "Water Science Approved Elective",                    "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "nr_ws_approved_elective"},
@@ -3984,7 +3068,8 @@ CONCENTRATIONS["NR"] = [
         "tips": [
             "Courses taken to meet major requirements cannot be double-counted as concentration electives.",
         ],
-        "slot_overrides": {
+                "full_flowchart_key": "NR_WILDLAND_FIRE",
+"slot_overrides": {
             "NR_CON_SOS1": {"course_number": "NR 2204",  "title": "Wildland Fire Control",                              "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
             "NR_CON_JRF1": {"course_number": "NR 2350",  "title": "Urban Forestry",                                     "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
             "NR_CON_JRF2": {"course_number": "NR 3340",  "title": "Wildland Fire Management",                           "units": 2, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
@@ -4005,7 +3090,8 @@ CONCENTRATIONS["EESS"] = [
             "Courses taken to meet major or support requirements cannot be double-counted in the concentration.",
             "ERSC 4450, GEOL 3330, MATH 1261, and PHYS 1141 are prerequisites for the Geology concentration and appear as slash-choice tiles in the base flowchart.",
         ],
-        "slot_overrides": {
+                "full_flowchart_key": "EESS_GEOLOGY",
+"slot_overrides": {
             "EESS_CON1": {"course_number": "NR 3318",   "title": "Introduction to Environmental Data Science",  "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
             "EESS_CON2": {"course_number": "GEOL 3310", "title": "Igneous and Metamorphic Petrology",           "units": 4, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
             "EESS_CON3": {"course_number": "GEOL 4415", "title": "Structural Geology",                          "units": 3, "prerequisites": [],          "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
@@ -4021,7 +3107,8 @@ CONCENTRATIONS["INTS"] = [
         "id": "none",
         "label": "No Concentration",
         "tips": [],
-        "slot_overrides": {},
+                "full_flowchart_key": "INTS",
+"slot_overrides": {},
     },
     {
         "id": "ethics_law_social_justice",
@@ -4030,7 +3117,8 @@ CONCENTRATIONS["INTS"] = [
             "The concentration consists of three sub-areas: Ethics (6 units), Law (6-8 units), and Social Justice (6-8 units). Consult the catalog for the approved course list for each sub-area.",
             "Courses taken to meet a Major requirement may not be double-counted in the concentration.",
         ],
-        "slot_overrides": {
+                "full_flowchart_key": "INTS_ETHICS_LAW_AND_SOCIAL_JUSTICE",
+"slot_overrides": {
             "INTS_CON1": {"course_number": "ELJS Conc.", "title": "Ethics, Law, and Social Justice Concentration Course 1", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_eljs_concentration"},
             "INTS_CON2": {"course_number": "ELJS Conc.", "title": "Ethics, Law, and Social Justice Concentration Course 2", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_eljs_concentration"},
             "INTS_CON3": {"course_number": "ELJS Conc.", "title": "Ethics, Law, and Social Justice Concentration Course 3", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_eljs_concentration"},
@@ -4046,7 +3134,8 @@ CONCENTRATIONS["INTS"] = [
             "The concentration consists of sub-areas: Ethnicity and Culture, Global and Cross-Cultural Communication, Global Political Economy, Sustainability and Global Environment, and Electives. Consult the catalog for the approved course list for each sub-area.",
             "Courses taken to meet a Major requirement may not be double-counted in the concentration.",
         ],
-        "slot_overrides": {
+                "full_flowchart_key": "INTS_GLOBAL_CITIZENSHIP_AND_SOCIAL_SUSTAINABILITY",
+"slot_overrides": {
             "INTS_CON1": {"course_number": "GCSS Conc.", "title": "Global Citizenship and Social Sustainability Concentration Course 1", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_gcss_concentration"},
             "INTS_CON2": {"course_number": "GCSS Conc.", "title": "Global Citizenship and Social Sustainability Concentration Course 2", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_gcss_concentration"},
             "INTS_CON3": {"course_number": "GCSS Conc.", "title": "Global Citizenship and Social Sustainability Concentration Course 3", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_gcss_concentration"},
@@ -4062,7 +3151,8 @@ CONCENTRATIONS["INTS"] = [
             "The concentration consists of sub-areas: Environmental Health, Gender/Race/Culture and Health, Health Systems, Medical Anthropology, and Electives. Consult the catalog for the approved course list for each sub-area.",
             "Courses taken to meet a Major requirement may not be double-counted in the concentration.",
         ],
-        "slot_overrides": {
+                "full_flowchart_key": "INTS_HEALTH_AND_SOCIETY",
+"slot_overrides": {
             "INTS_CON1": {"course_number": "HS Conc.",   "title": "Health and Society Concentration Course 1", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_hs_concentration"},
             "INTS_CON2": {"course_number": "HS Conc.",   "title": "Health and Society Concentration Course 2", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_hs_concentration"},
             "INTS_CON3": {"course_number": "HS Conc.",   "title": "Health and Society Concentration Course 3", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_hs_concentration"},
@@ -4078,7 +3168,8 @@ CONCENTRATIONS["INTS"] = [
             "The concentration consists of sub-areas: Gender/Race/Culture/Science/Technology, Philosophy of Science and Technology, Science Communication, and Electives. Consult the catalog for the approved course list for each sub-area.",
             "Courses taken to meet a Major requirement may not be double-counted in the concentration.",
         ],
-        "slot_overrides": {
+                "full_flowchart_key": "INTS_SCIENCE_TECHNOLOGY_AND_SOCIETY",
+"slot_overrides": {
             "INTS_CON1": {"course_number": "STS Conc.",  "title": "Science, Technology, and Society Concentration Course 1", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_sts_concentration"},
             "INTS_CON2": {"course_number": "STS Conc.",  "title": "Science, Technology, and Society Concentration Course 2", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_sts_concentration"},
             "INTS_CON3": {"course_number": "STS Conc.",  "title": "Science, Technology, and Society Concentration Course 3", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_sts_concentration"},
@@ -4094,7 +3185,8 @@ CONCENTRATIONS["INTS"] = [
             "The concentration consists of sub-areas: Art/Dance/Music/Theatre, Literature, Popular Culture, Technology and Human Expression, and Electives. Consult the catalog for the approved course list for each sub-area.",
             "Courses taken to meet a Major requirement may not be double-counted in the concentration.",
         ],
-        "slot_overrides": {
+                "full_flowchart_key": "INTS_VISUAL_MEDIA_AND_CULTURAL_STUDIES",
+"slot_overrides": {
             "INTS_CON1": {"course_number": "VMCS Conc.", "title": "Visual, Media, and Cultural Studies Concentration Course 1", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_vmcs_concentration"},
             "INTS_CON2": {"course_number": "VMCS Conc.", "title": "Visual, Media, and Cultural Studies Concentration Course 2", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_vmcs_concentration"},
             "INTS_CON3": {"course_number": "VMCS Conc.", "title": "Visual, Media, and Cultural Studies Concentration Course 3", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "ints_vmcs_concentration"},
@@ -4112,7 +3204,8 @@ CONCENTRATIONS["LAES"] = [
         "tips": [
             "LAES students must select both an Engineering concentration (26 units) and a Liberal Arts concentration (16 units). The Engineering concentration overrides the Eng. Conc. slots; the Liberal Arts concentration fills the LA Conc. slots.",
         ],
-        "slot_overrides": {},
+                "full_flowchart_key": "LAES",
+"slot_overrides": {},
     },
     {
         "id": "computer_science",
@@ -4121,7 +3214,8 @@ CONCENTRATIONS["LAES"] = [
             "The CS engineering concentration requires CSC 1001 (Fundamentals of Computer Science, 3u), CSC 2001 (Data Structures, 3u), and 20 units of director-approved CSC/CPE/SE electives with a minimum of 10 upper-division units.",
             "Must also select a Liberal Arts concentration (16 units) to fill the LA Conc. slots.",
         ],
-        "slot_overrides": {
+                "full_flowchart_key": "LAES_COMPUTER_SCIENCE",
+"slot_overrides": {
             "LAES_ENG_CON1": {"course_number": "CSC 1001",  "title": "Fundamentals of Computer Science",                  "units": 3, "prerequisites": [],               "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
             "LAES_ENG_CON2": {"course_number": "CSC 2001",  "title": "Data Structures",                                   "units": 3, "prerequisites": ["CSC 1001"],      "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
             "LAES_ENG_CON3": {"course_number": "CSC Elec.", "title": "CS/CPE/SE Engineering Elective",                    "units": 3, "prerequisites": [],               "quarter_equivalents": [], "is_placeholder": True,  "elective_key": "laes_eng_elective"},
@@ -4140,7 +3234,8 @@ CONCENTRATIONS["LAES"] = [
             "The EE engineering concentration requires EE 2211 (Electric Circuit Analysis I, 3u), EE 2212 (Electric Circuit Analysis II, 3u), EE 2241 (Electric Circuit Analysis Lab I, 1u), MATH 2341 or MATH 2343 (Linear Analysis or Differential Equations, 3-4u), and 15-16 units of director-approved CPE/EE electives with a minimum of 10 upper-division units.",
             "Must also select a Liberal Arts concentration (16 units) to fill the LA Conc. slots.",
         ],
-        "slot_overrides": {
+                "full_flowchart_key": "LAES_ELECTRICAL_ENGINEERING",
+"slot_overrides": {
             "LAES_ENG_CON1": {"course_number": "EE 2211",   "title": "Electric Circuit Analysis I",                       "units": 3, "prerequisites": [],               "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
             "LAES_ENG_CON2": {"course_number": "EE 2212",   "title": "Electric Circuit Analysis II",                      "units": 3, "prerequisites": ["EE 2211"],      "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
             "LAES_ENG_CON3": {"course_number": "EE 2241",   "title": "Electric Circuit Analysis Laboratory I",            "units": 1, "prerequisites": ["EE 2211"],      "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
@@ -4159,7 +3254,8 @@ CONCENTRATIONS["LAES"] = [
             "The IE engineering concentration requires CSC 1032 (3u), IME 1140 & 1143 (3u combined), IME 1223 (4u), IME 2212 (4u), IME 2315 (2u), and 10 units of director-approved upper-division IE electives.",
             "Must also select a Liberal Arts concentration (16 units) to fill the LA Conc. slots.",
         ],
-        "slot_overrides": {
+                "full_flowchart_key": "LAES_INDUSTRIAL_ENGINEERING",
+"slot_overrides": {
             "LAES_ENG_CON1": {"course_number": "CSC 1032",      "title": "Programming for Scientists and Engineers",     "units": 3, "prerequisites": [],               "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
             "LAES_ENG_CON2": {"course_number": "IME 1140/1143", "title": "Technical Graphics and Introduction to Design and Manufacturing", "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
             "LAES_ENG_CON3": {"course_number": "IME 1223",      "title": "Process Improvement Fundamentals",             "units": 4, "prerequisites": [],               "quarter_equivalents": [], "is_placeholder": False, "elective_key": None},
@@ -4178,7 +3274,8 @@ CONCENTRATIONS["LAES"] = [
             "The Engineering ICS concentration requires 26 units of director-approved electives from the College of Engineering, with a minimum of 10 upper-division units. A written justification demonstrating cohesive hybrid integration with the Liberal Arts concentration is required.",
             "Must also select a Liberal Arts concentration (16 units) to fill the LA Conc. slots.",
         ],
-        "slot_overrides": {
+                "full_flowchart_key": "LAES_ENGINEERING_INDIVIDUALIZED_COURSE_OF_STUDY",
+"slot_overrides": {
             "LAES_ENG_CON1": {"course_number": "CoE Elec.", "title": "Engineering ICS Elective",  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "laes_eng_elective"},
             "LAES_ENG_CON2": {"course_number": "CoE Elec.", "title": "Engineering ICS Elective",  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "laes_eng_elective"},
             "LAES_ENG_CON3": {"course_number": "CoE Elec.", "title": "Engineering ICS Elective",  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "laes_eng_elective"},
@@ -4190,4 +3287,91 @@ CONCENTRATIONS["LAES"] = [
             "LAES_ENG_CON9": {"course_number": "CoE Elec.", "title": "Engineering ICS Elective",  "units": 3, "prerequisites": [], "quarter_equivalents": [], "is_placeholder": True, "elective_key": "laes_eng_elective"},
         },
     },
+    {
+        "id": "liberal_arts_focused",
+        "label": "Liberal Arts Focused Course of Study",
+        "full_flowchart_key": "LAES_LIBERAL_ARTS_FOCUSED_COURSE_OF_STUDY",
+        "slot_overrides": {},
+    },
+    {
+        "id": "technical_professional_comm",
+        "label": "Technical and Professional Communication",
+        "full_flowchart_key": "LAES_TECHNICAL_AND_PROFESSIONAL_COMMUNICATION",
+        "slot_overrides": {},
+    },
+    {
+        "id": "liberal_arts_ics",
+        "label": "Liberal Arts Individualized Course of Study",
+        "full_flowchart_key": "LAES_LIBERAL_ARTS_INDIVIDUALIZED_COURSE_OF_STUDY",
+        "slot_overrides": {},
+    },
 ]
+
+CONCENTRATIONS["GEN"] = [
+    {
+        "id": "none",
+        "label": "No Concentration Selected",
+        "full_flowchart_key": "GEN",
+        "slot_overrides": {},
+    },
+    {
+        "id": "individualized",
+        "label": "Individualized Course of Study",
+        "full_flowchart_key": "GEN_INDIVIDUALIZED_COURSE_OF_STUDY",
+        "slot_overrides": {},
+    },
+]
+
+
+def _populate_full_flowchart_slot_overrides() -> None:
+    """Expose full-flowchart concentration replacements as slot overrides too."""
+    from data.flowcharts import FLOWCHARTS
+
+    overlay_major_codes = {"AERO", "ME", "EIM"}
+    override_keys = [
+        "course_number",
+        "title",
+        "units",
+        "prerequisites",
+        "quarter_equivalents",
+        "is_placeholder",
+        "elective_key",
+        "auto_satisfied_by",
+    ]
+
+    for major_code, concentrations in CONCENTRATIONS.items():
+        if major_code not in overlay_major_codes:
+            continue
+
+        base_flowchart = FLOWCHARTS.get(major_code)
+        if not base_flowchart:
+            continue
+
+        base_by_id = {course["id"]: course for course in base_flowchart["courses"]}
+        for concentration in concentrations:
+            full_key = concentration.get("full_flowchart_key")
+            if not full_key or concentration.get("slot_overrides"):
+                continue
+
+            full_flowchart = FLOWCHARTS.get(full_key)
+            if not full_flowchart:
+                continue
+
+            overrides: dict[str, dict] = {}
+            for full_course in full_flowchart["courses"]:
+                base_course = base_by_id.get(full_course["id"])
+                if not base_course:
+                    continue
+
+                if any(full_course.get(key) != base_course.get(key) for key in override_keys):
+                    override = {
+                        key: full_course.get(key)
+                        for key in override_keys
+                        if key in full_course or key == "elective_key"
+                    }
+                    overrides[full_course["id"]] = override
+
+            concentration["slot_overrides"] = overrides
+
+
+_populate_full_flowchart_slot_overrides()

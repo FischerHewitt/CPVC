@@ -7,6 +7,7 @@ import Image from "next/image";
 import { getMajors, parseTranscript, parseCsvTranscript, getConcentrations, getFlowchart, syncSession } from "@/lib/api";
 import { saveSession } from "@/lib/session";
 import { parseMbpFile } from "@/lib/mbp";
+import { parseCalPolyCSV } from "@/lib/calpoly-csv";
 import { validateFile, getFileType, getProgressLabel } from "@/lib/upload-utils";
 import type { MajorOption, Concentration } from "@/lib/types";
 
@@ -150,55 +151,16 @@ function concs(...pairs: [string, string][]): Concentration[] {
 }
 
 const FALLBACK_CONCENTRATIONS: Record<string, Concentration[]> = {
-  CS: concs(
-    ["none", "General Curriculum"],
-    ["ai_ml", "AI & Machine Learning"],
-    ["data_eng", "Data Engineering"],
-    ["game_dev", "Game Development"],
-    ["graphics", "Graphics"],
-    ["privacy_security", "Privacy & Security"],
-  ),
-  AERO: concs(
-    ["none", "Concentration Not Yet Declared"],
-    ["aeronautics", "Aeronautics"],
-    ["astronautics", "Astronautics"],
-  ),
-  CPE: concs(
-    ["none", "General Curriculum"],
-    ["computer_architecture", "Computer Architecture"],
-    ["computer_hardware", "Computer Hardware Engineering"],
-    ["computer_systems", "Computer Systems"],
-    ["embedded_systems", "Embedded Systems"],
-    ["robotics", "Robotics and Autonomous Systems"],
-    ["security", "Privacy and Security"],
-  ),
-  CE: concs(
-    ["none", "General Civil Engineering"],
-    ["construction", "Construction Engineering"],
-    ["geotechnical", "Geotechnical Engineering"],
-    ["structural", "Structural Engineering"],
-    ["transportation", "Transportation Engineering"],
-    ["water_resources", "Water Resources Engineering"],
-  ),
-  ME: concs(
-    ["none", "General Curriculum"],
-    ["energy_resources", "Energy Resources"],
-    ["hvacr", "Sustainable Technology for the Built Environment (HVAC&R)"],
-    ["mechatronics", "Mechatronics"],
-    ["manufacturing", "Manufacturing"],
-  ),
   AD: concs(
     ["none", "Concentration Not Yet Declared"],
     ["graphic_design", "Graphic Design"],
     ["photo_video", "Photography and Video"],
     ["studio_art", "Studio Art"],
   ),
-  POLS: concs(
+  AERO: concs(
     ["none", "Concentration Not Yet Declared"],
-    ["global_politics", "Global Politics"],
-    ["pre_law", "Pre-Law"],
-    ["us_politics", "U.S. Politics"],
-    ["individualized", "Individualized Course of Study"],
+    ["aeronautics", "Aeronautics"],
+    ["astronautics", "Astronautics"],
   ),
   AGS: concs(
     ["none", "Emphasis Not Yet Declared"],
@@ -222,6 +184,10 @@ const FALLBACK_CONCENTRATIONS: Record<string, Concentration[]> = {
     ["ecology_evolution_biodiversity_conservation", "Ecology, Evolution, Biodiversity, and Conservation"],
     ["molecular_cellular", "Molecular and Cellular Biology"],
   ),
+  BIOC: concs(
+    ["none", "General Biochemistry"],
+    ["polymers_coatings", "Polymers and Coatings"],
+  ),
   BMED: concs(
     ["none", "Concentration Not Yet Declared"],
     ["bioinstrumentation", "Bioinstrumentation"],
@@ -229,9 +195,205 @@ const FALLBACK_CONCENTRATIONS: Record<string, Concentration[]> = {
     ["mechanical_design", "Mechanical Design"],
     ["individualized", "Individualized Course of Study"],
   ),
-  BIOC: concs(
-    ["none", "General Biochemistry"],
+  BUS: concs(
+    ["accounting", "Accounting"],
+    ["consumer_packaging", "Consumer Packaging"],
+    ["entrepreneurship", "Entrepreneurship"],
+    ["financial_management", "Financial Management"],
+    ["information_systems_analytics", "Information Systems and Analytics"],
+    ["management_human_resources", "Management and Human Resources"],
+    ["marketing_management", "Marketing Management"],
+    ["real_estate_finance", "Real Estate Finance"],
+    ["supply_chain_management", "Supply Chain Management (Solano)"],
+  ),
+  CHEM: concs(
+    ["none", "No Concentration Declared"],
     ["polymers_coatings", "Polymers and Coatings"],
+  ),
+  COMS: concs(
+    ["none", "No Focus Area Selected"],
+    ["culture_identity_power", "Culture, Identity, and Power"],
+    ["media_technology", "Media and Technology"],
+    ["persuasion_social_influence", "Persuasion and Social Influence"],
+    ["politics_advocacy_civic", "Politics, Advocacy, and Civic Engagement"],
+    ["relationships_orgs_socialization", "Relationships, Organizations, and Socialization"],
+  ),
+  CPE: concs(
+    ["none", "General Curriculum"],
+    ["computer_architecture", "Computer Architecture"],
+    ["computer_hardware", "Computer Hardware Engineering"],
+    ["computer_systems", "Computer Systems"],
+    ["embedded_systems", "Embedded Systems"],
+    ["robotics", "Robotics and Autonomous Systems"],
+    ["security", "Privacy and Security"],
+  ),
+  CS: concs(
+    ["none", "General Curriculum"],
+    ["ai_ml", "AI & Machine Learning"],
+    ["data_eng", "Data Engineering"],
+    ["game_dev", "Game Development"],
+    ["graphics", "Graphics"],
+    ["privacy_security", "Privacy & Security"],
+  ),
+  ECON: concs(
+    ["none", "General Curriculum"],
+    ["accounting", "Accounting"],
+    ["consumer_packaging", "Consumer Packaging"],
+    ["econ_data_science", "Economics for Data Science"],
+    ["entrepreneurship", "Entrepreneurship"],
+    ["financial_management", "Financial Management"],
+    ["information_systems", "Information Systems and Analytics"],
+    ["management_hr", "Management and Human Resources"],
+    ["marketing", "Marketing Management"],
+    ["real_estate", "Real Estate Finance"],
+  ),
+  EE: concs(
+    ["none", "General Curriculum"],
+    ["ecc", "Electronics, Controls, and Communications"],
+    ["power", "Power"],
+  ),
+  EESS: concs(
+    ["geology", "Geology"],
+  ),
+  EIM: concs(
+    ["none", "No Concentration Selected"],
+    ["event_planning", "Event Planning and Management"],
+    ["sport_recreation", "Sport and Recreation Management"],
+    ["tourism_hospitality", "Tourism, Hospitality, and Destination Management"],
+  ),
+  ENVM: concs(
+    ["none", "No Concentration Selected"],
+    ["conservation_science", "Conservation Science and Management"],
+    ["corporate_environmental", "Corporate Environmental Management"],
+    ["environmental_data_science", "Environmental Data Science"],
+    ["env_law_justice_policy", "Environmental Law, Justice and Policy"],
+    ["sustainable_agriculture", "Sustainable Agriculture"],
+    ["sustainable_urban_development", "Sustainable Urban Development and Planning"],
+    ["water_science_management", "Water Science and Management"],
+  ),
+  FSN: concs(
+    ["none", "General Food Science"],
+    ["culinology", "Culinology"],
+    ["food_safety", "Food Safety"],
+    ["sft", "Sustainable Food Technology"],
+  ),
+  GEN: concs(
+    ["none", "No Concentration Selected"],
+    ["individualized", "Individualized Course of Study"],
+  ),
+  GRC: concs(
+    ["none", "Individualized Course of Study"],
+    ["design_reproduction_technology", "Design Reproduction Technology"],
+    ["graphic_communication_management", "Graphic Communication Management"],
+    ["graphics_for_packaging", "Graphics for Packaging"],
+    ["immersive_experience_design", "Immersive Experience Design"],
+    ["user_experience_user_interface", "User Experience/User Interface"],
+  ),
+  INTS: concs(
+    ["none", "No Concentration"],
+    ["ethics_law_social_justice", "Ethics, Law, and Social Justice"],
+    ["global_citizenship_social_sustainability", "Global Citizenship and Social Sustainability"],
+    ["health_and_society", "Health and Society"],
+    ["science_technology_society", "Science, Technology, and Society"],
+    ["visual_media_cultural_studies", "Visual, Media, and Cultural Studies"],
+  ),
+  ITP: concs(
+    ["none", "No Concentration Selected"],
+    ["industrial_technology", "Industrial Technology"],
+    ["packaging", "Packaging"],
+  ),
+  JOUR: concs(
+    ["none", "Undeclared / General"],
+    ["media_innovation", "Media Innovation"],
+    ["news", "News"],
+    ["public_relations", "Public Relations"],
+    ["ics", "Individualized Course of Study"],
+  ),
+  KINE: concs(
+    ["none", "No Concentration Selected"],
+    ["exercise_science", "Exercise Science"],
+    ["health_promotion", "Health Promotion"],
+    ["sport_science", "Sport Science"],
+  ),
+  LAES: concs(
+    ["none", "No Engineering Concentration Selected"],
+    ["computer_science", "Computer Science (Engineering)"],
+    ["electrical_engineering", "Electrical Engineering (Engineering)"],
+    ["industrial_engineering", "Industrial Engineering (Engineering)"],
+    ["engineering_ics", "Engineering Individualized Course of Study"],
+    ["liberal_arts_focused", "Liberal Arts Focused Course of Study"],
+    ["technical_professional_comm", "Technical and Professional Communication"],
+    ["liberal_arts_ics", "Liberal Arts Individualized Course of Study"],
+  ),
+  LIBS: concs(
+    ["none", "No Concentration Selected"],
+    ["environmental_education", "Environmental Education"],
+    ["human_development", "Human Development"],
+    ["mathematics", "Mathematics"],
+    ["english", "English"],
+    ["science", "Science"],
+    ["social_science", "Social Science"],
+    ["tesol", "Teaching English to Speakers of Other Languages (TESOL)"],
+    ["individualized", "Individualized Course of Study"],
+  ),
+  ME: concs(
+    ["none", "General Curriculum"],
+    ["energy_resources", "Energy Resources"],
+    ["hvacr", "Sustainable Technology for the Built Environment (HVAC&R)"],
+    ["mechatronics", "Mechatronics"],
+    ["manufacturing", "Manufacturing"],
+  ),
+  NR: concs(
+    ["none", "No Concentration Selected"],
+    ["forest_resources", "Forest Resources"],
+    ["water_science", "Water Science"],
+    ["wildland_fire", "Wildland Fire"],
+  ),
+  NUT: concs(
+    ["none", "No Concentration Selected"],
+    ["dietetics", "Dietetics"],
+    ["nutrition_prehealth", "Nutrition and Pre-Health Sciences"],
+  ),
+  PH: concs(
+    ["none", "No Concentration Selected"],
+    ["community_health_promotion", "Community Health Promotion"],
+    ["health_equity_global_health", "Health Equity and Global Health"],
+    ["health_management_administration", "Health Management and Administration"],
+  ),
+  PHIL: concs(
+    ["none", "No Concentration Selected"],
+    ["ethics_and_society", "Ethics and Society"],
+    ["ethics_science_technology", "Ethics of Science and Technology"],
+    ["philosophy_and_religion", "Philosophy and Religion"],
+  ),
+  PLSC: concs(
+    ["none", "No Concentration Selected"],
+    ["fruit_crop_science", "Fruit and Crop Science"],
+    ["environ_horticultural_science", "Environmental Horticultural Science"],
+    ["plant_protection_science", "Plant Protection Science"],
+  ),
+  POLS: concs(
+    ["none", "Concentration Not Yet Declared"],
+    ["global_politics", "Global Politics"],
+    ["pre_law", "Pre-Law"],
+    ["us_politics", "U.S. Politics"],
+    ["individualized", "Individualized Course of Study"],
+  ),
+  PSY: concs(
+    ["none", "General Curriculum"],
+  ),
+  SOC: concs(
+    ["none", "Undeclared / General"],
+    ["criminal_justice", "Criminal Justice"],
+    ["organizations", "Organizations"],
+    ["social_justice", "Social Justice"],
+    ["social_services", "Social Services"],
+    ["ics", "Individualized Course of Study"],
+  ),
+  WVIT: concs(
+    ["enology", "Enology"],
+    ["viticulture", "Viticulture"],
+    ["wine_business", "Wine Business"],
   ),
 };
 
@@ -250,10 +412,57 @@ const FALLBACK_MAJORS: MajorOption[] = [
   { code: "AGC", name: "Agricultural Communication" },
   { code: "AGS", name: "Agricultural Science" },
   { code: "ASCI", name: "Animal Science" },
+  { code: "AGB", name: "Agricultural Business" },
+  { code: "ARCE", name: "Architectural Engineering" },
   { code: "ANTGEOG", name: "Anthropology and Geography" },
   { code: "ARCH", name: "Architecture" },
   { code: "BIO", name: "Biological Sciences" },
   { code: "BMED", name: "Biomedical Engineering" },
+  { code: "BIOC", name: "Biochemistry" },
+  { code: "CHEM", name: "Chemistry" },
+  { code: "ASM", name: "Agricultural Systems Management" },
+  { code: "BRAE", name: "BioResource and Agricultural Engineering" },
+  { code: "BUS", name: "Business Administration" },
+  { code: "STAT", name: "Statistics" },
+  { code: "CD", name: "Child Development" },
+  { code: "CRP", name: "City and Regional Planning" },
+  { code: "MATE", name: "Materials Engineering" },
+  { code: "IE", name: "Industrial Engineering" },
+  { code: "EE", name: "Electrical Engineering" },
+  { code: "KINE", name: "Kinesiology" },
+  { code: "MATH", name: "Mathematics" },
+  { code: "MFGE", name: "Manufacturing Engineering" },
+  { code: "PHYS", name: "Physics" },
+  { code: "JOUR", name: "Journalism" },
+  { code: "FSN", name: "Food Science and Nutrition" },
+  { code: "SOC", name: "Sociology" },
+  { code: "CM", name: "Construction Management" },
+  { code: "LA", name: "Landscape Architecture" },
+  { code: "WVIT", name: "Wine and Viticulture" },
+  { code: "ENVE", name: "Environmental Engineering" },
+  { code: "EIM", name: "Experience and Event Management" },
+  { code: "GRC", name: "Graphic Communication" },
+  { code: "COMS", name: "Communication Studies" },
+  { code: "ENVM", name: "Environmental Management and Protection" },
+  { code: "PLSC", name: "Plant Sciences" },
+  { code: "MCRO", name: "Microbiology" },
+  { code: "HIST", name: "History" },
+  { code: "ECON", name: "Economics" },
+  { code: "PH", name: "Public Health" },
+  { code: "PHIL", name: "Philosophy" },
+  { code: "NUT", name: "Nutrition" },
+  { code: "SPAN", name: "Spanish" },
+  { code: "THEA", name: "Theatre Arts" },
+  { code: "LIBS", name: "Liberal Studies" },
+  { code: "DSCI", name: "Dairy Science" },
+  { code: "ITP", name: "Industrial Technology and Packaging" },
+  { code: "NR", name: "Forest and Fire Sciences" },
+  { code: "CES", name: "Comparative Ethnic Studies" },
+  { code: "GEN", name: "General Engineering" },
+  { code: "MSCI", name: "Marine Sciences" },
+  { code: "EESS", name: "Environmental Earth and Soil Sciences" },
+  { code: "INTS", name: "Interdisciplinary Studies" },
+  { code: "LAES", name: "Liberal Arts and Engineering Studies" },
 ];
 
 export default function UploadPage() {
@@ -282,9 +491,12 @@ export default function UploadPage() {
 
   useEffect(() => {
     const fallback = FALLBACK_CONCENTRATIONS[majorCode] ?? [];
-    setConcentrations(fallback);
-    if (fallback.length === 0) setConcentration("none");
     let cancelled = false;
+    setTimeout(() => {
+      if (cancelled) return;
+      setConcentrations(fallback);
+      if (fallback.length === 0) setConcentration("none");
+    }, 0);
     getConcentrations(majorCode)
       .then((list) => { if (!cancelled && list.length > 0) setConcentrations(list); })
       .catch(() => {});
@@ -346,6 +558,9 @@ export default function UploadPage() {
       const result = isCsv
         ? await parseCsvTranscript(file, majorCode)
         : await parseTranscript(file, majorCode);
+      if (isCsv && result.completed.length === 0 && result.in_progress.length === 0) {
+        throw new Error("CSV parser returned no courses");
+      }
       setProgress(95);
       const majorName = majors.find((m) => m.code === majorCode)?.name ?? majorCode;
       saveSession({
@@ -363,6 +578,32 @@ export default function UploadPage() {
       setProgress(100);
       router.push(`/flowchart/${result.session_id}`);
     } catch (e) {
+      if (isCsv) {
+        try {
+          const parsed = parseCalPolyCSV(await file.text());
+          if (!parsed || (parsed.completed.length === 0 && parsed.inProgress.length === 0)) {
+            throw e;
+          }
+          const majorName = majors.find((m) => m.code === majorCode)?.name ?? majorCode;
+          const sessionId = crypto.randomUUID();
+          saveSession({
+            sessionId,
+            studentName: majorName,
+            major: majorCode,
+            completed: parsed.completed,
+            inProgress: parsed.inProgress,
+            coursePositions: {},
+            plannedGECourses: {},
+            concentration: concentration !== "none" ? concentration : undefined,
+          });
+          createdFlowchart = true;
+          setProgress(100);
+          router.push(`/flowchart/${sessionId}`);
+          return;
+        } catch (fallbackError) {
+          console.error(fallbackError);
+        }
+      }
       setError(
         isCsv
           ? "Failed to parse course list. Make sure it's the CSV downloaded from Student Center."

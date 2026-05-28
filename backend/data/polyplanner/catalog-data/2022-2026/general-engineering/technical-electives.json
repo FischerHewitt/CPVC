@@ -1,0 +1,205 @@
+[
+  {
+    "id": 908,
+    "name": "Physical Science Electives",
+    "units": 4,
+    "catalogName": "2022-2026",
+    "degreeName": "General Engineering",
+    "linkedTechnicalElectiveAreas": [],
+    "sections": [
+      {
+        "id": 461,
+        "name": "Physical Science Elective",
+        "requiredCount": null,
+        "minUnits": 4,
+        "maxUnits": 4,
+        "restriction": null,
+        "technicalElectives": [
+          {
+            "id": 5754,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CHEM126",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5755,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CHEM129",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5756,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "GEOL102",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5757,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "GEOL201",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5758,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "GEOL241",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5759,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "GEOL305",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5760,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "PHYS211",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5761,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "PHYS323",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 909,
+    "name": "General Curriculum",
+    "units": 40,
+    "catalogName": "2022-2026",
+    "degreeName": "General Engineering",
+    "linkedTechnicalElectiveAreas": [],
+    "sections": [
+      {
+        "id": 462,
+        "name": "General Curriculum",
+        "requiredCount": null,
+        "minUnits": 22,
+        "maxUnits": 22,
+        "restriction": null,
+        "technicalElectives": [
+          {
+            "id": 5762,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CE207",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5763,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CPE133 or EE133",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5764,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CPE202 or CSC202",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5765,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CPE239 or EE239",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5767,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ME305",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5768,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "EE321 and EE361",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5769,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "IME418",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5766,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "IME356",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          }
+        ]
+      },
+      {
+        "id": 463,
+        "name": "Approved Elective",
+        "requiredCount": null,
+        "minUnits": 18,
+        "maxUnits": 18,
+        "restriction": "Courses must be 300-Level or above",
+        "technicalElectives": [
+          {
+            "id": 5770,
+            "type": "Range",
+            "courseSubject": null,
+            "courseRule": null,
+            "minLevel": 300,
+            "maxLevel": 500,
+            "unitsAllowed": 18
+          }
+        ]
+      }
+    ]
+  }
+]

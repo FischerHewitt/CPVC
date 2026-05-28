@@ -4,6 +4,57 @@ import { useEffect, useState } from "react";
 import type { Course, GEArea, GECourse, Professor, CourseInfo } from "@/lib/types";
 import { getGECourses, getProfessors, getCourseInfo } from "@/lib/api";
 
+type GEPanelStatus = "planned" | "completed" | "in_progress";
+const STATUS_ORDER = ["planned", "in_progress", "completed"] as const;
+
+export function geStatusOrder(): GEPanelStatus[] {
+  return [...STATUS_ORDER];
+}
+
+const STATUS_LABELS: Record<GEPanelStatus, string> = {
+  planned: "Plan",
+  completed: "Done",
+  in_progress: "IP",
+};
+
+export const GE_STATUS_STYLES: Record<GEPanelStatus, {
+  activeButton: string;
+  inactiveButton: string;
+  selectedCard: string;
+  selectedRow: string;
+  selectedTitle: string;
+  selectedText: string;
+  selectedSubtleText: string;
+}> = {
+  planned: {
+    activeButton: "border-blue-600 bg-blue-600 text-white",
+    inactiveButton: "border-blue-200 text-blue-700 hover:border-blue-400 hover:bg-blue-50",
+    selectedCard: "border-blue-200 bg-blue-50",
+    selectedRow: "border-blue-300 bg-blue-50/40",
+    selectedTitle: "text-blue-900",
+    selectedText: "text-blue-800/80",
+    selectedSubtleText: "text-blue-800/70",
+  },
+  completed: {
+    activeButton: "border-green-700 bg-green-700 text-white",
+    inactiveButton: "border-green-200 text-green-800 hover:border-green-400 hover:bg-green-50",
+    selectedCard: "border-green-200 bg-green-50",
+    selectedRow: "border-green-300 bg-green-50/40",
+    selectedTitle: "text-green-900",
+    selectedText: "text-green-800/80",
+    selectedSubtleText: "text-green-800/70",
+  },
+  in_progress: {
+    activeButton: "border-orange-600 bg-orange-600 text-white",
+    inactiveButton: "border-orange-200 text-orange-700 hover:border-orange-400 hover:bg-orange-50",
+    selectedCard: "border-orange-200 bg-orange-50",
+    selectedRow: "border-orange-300 bg-orange-50/40",
+    selectedTitle: "text-orange-900",
+    selectedText: "text-orange-800/80",
+    selectedSubtleText: "text-orange-800/70",
+  },
+};
+
 // ── Professor row ─────────────────────────────────────────────────────────────
 
 function ProfessorRow({ prof }: { prof: Professor }) {
@@ -121,28 +172,21 @@ function GECourseDetail({ geCourse, onBack }: CourseDetailProps) {
 
 interface CourseRowProps {
   geCourse: GECourse;
-  completed: boolean;
-  inProgress: boolean;
-  planned: boolean;
-  onToggle: (courseNumber: string) => void;
-  onToggleInProgress: (courseNumber: string) => void;
-  onPlan: (courseNumber: string, units: number) => void;
+  status?: GEPanelStatus;
+  onChoose: (courseNumber: string, units: number, status: GEPanelStatus) => void;
   onSelect: (c: GECourse) => void;
 }
 
 function GECourseRow({
   geCourse,
-  completed,
-  inProgress,
-  planned,
-  onToggle,
-  onToggleInProgress,
-  onPlan,
+  status,
+  onChoose,
   onSelect,
 }: CourseRowProps) {
   const [expanded, setExpanded]     = useState(false);
   const [professors, setProfessors] = useState<Professor[]>([]);
   const [loading, setLoading]       = useState(false);
+  const selectedStyles = status ? GE_STATUS_STYLES[status] : null;
 
   function toggleProfs(e: React.MouseEvent) {
     e.stopPropagation();
@@ -157,42 +201,13 @@ function GECourseRow({
 
   return (
     <div className={`border rounded-lg overflow-hidden mb-1.5 transition-colors ${
-      completed
-        ? "border-green-300 bg-green-50/40"
-        : inProgress
-          ? "border-blue-300 bg-blue-50/50"
-          : planned
-            ? "border-blue-200 bg-blue-50/40"
-            : "border-gray-100"
+      selectedStyles ? selectedStyles.selectedRow : "border-gray-100"
     }`}>
       <div className="flex items-center px-3 py-2.5 hover:bg-gray-50 transition-colors gap-2">
-        <div className="flex flex-shrink-0 flex-col gap-1.5">
-          <label className="flex items-center gap-1 text-[10px] font-semibold text-gray-600" title={completed ? "Mark not taken" : "Mark as completed"}>
-            <input
-              type="checkbox"
-              checked={completed}
-              onChange={() => onToggle(geCourse.course_number)}
-              className="h-3.5 w-3.5 accent-green-700 cursor-pointer"
-              onClick={(e) => e.stopPropagation()}
-            />
-            Done
-          </label>
-          <label className="flex items-center gap-1 text-[10px] font-semibold text-amber-700" title={inProgress ? "Remove in progress" : "Mark in progress"}>
-            <input
-              type="checkbox"
-              checked={inProgress && !completed}
-              onChange={() => onToggleInProgress(geCourse.course_number)}
-              className="h-3.5 w-3.5 accent-amber-600 cursor-pointer"
-              onClick={(e) => e.stopPropagation()}
-            />
-            IP
-          </label>
-        </div>
-
         {/* Clickable title → detail view */}
         <button className="flex-1 text-left min-w-0" onClick={() => onSelect(geCourse)}>
           <div className={`text-sm font-semibold hover:text-green-800 transition-colors leading-tight ${
-            completed ? "text-green-800 line-through opacity-70" : inProgress ? "text-blue-800" : "text-gray-800"
+            selectedStyles ? selectedStyles.selectedTitle : "text-gray-800"
           }`}>
             {geCourse.course_number}
           </div>
@@ -200,22 +215,24 @@ function GECourseRow({
         </button>
 
         <div className="flex items-center gap-1.5 flex-shrink-0">
-          {inProgress && !completed && (
-            <span className="rounded bg-amber-100 px-1.5 py-0.5 text-[10px] font-bold text-amber-800">
-              IP
-            </span>
-          )}
-          <button
-            onClick={(e) => { e.stopPropagation(); onPlan(geCourse.course_number, geCourse.units); }}
-            className={`text-[10px] px-1.5 py-0.5 rounded border transition-colors ${
-              planned
-                ? "border-blue-300 bg-blue-100 text-blue-800"
-                : "border-gray-200 text-gray-400 hover:border-blue-300 hover:text-blue-700"
-            }`}
-            title={planned ? "Remove from plan" : "Plan to take this course"}
-          >
-            {planned ? "Planned" : "Plan"}
-          </button>
+          {STATUS_ORDER.map((nextStatus) => {
+            const style = GE_STATUS_STYLES[nextStatus];
+            return (
+              <button
+                key={nextStatus}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onChoose(geCourse.course_number, geCourse.units, nextStatus);
+                }}
+                className={`text-[10px] px-1.5 py-0.5 rounded border font-semibold transition-colors ${
+                  status === nextStatus ? style.activeButton : style.inactiveButton
+                }`}
+                title={`${STATUS_LABELS[nextStatus]} ${geCourse.course_number}`}
+              >
+                {STATUS_LABELS[nextStatus]}
+              </button>
+            );
+          })}
           <span className="text-xs text-gray-400">{geCourse.units}u</span>
           <button onClick={toggleProfs}
                   className="text-[10px] text-gray-400 hover:text-gray-600 px-1.5 py-0.5 rounded border border-gray-200 hover:border-gray-300 transition-colors"
@@ -268,6 +285,41 @@ function hasGEStatus(geCourse: GECourse, knownSet: Set<string>) {
   return normalizedKnown.has(norm(geCourse.course_number)) || (candidate ? normalizedKnown.has(norm(candidate)) : false);
 }
 
+export function getGECoursePanelStatus(
+  geCourse: GECourse,
+  completedSet: Set<string>,
+  inProgressSet: Set<string>,
+  plannedCourseNumber?: string,
+): GEPanelStatus | undefined {
+  if (hasGEStatus(geCourse, completedSet)) return "completed";
+  if (hasGEStatus(geCourse, inProgressSet)) return "in_progress";
+  if (plannedCourseNumber === geCourse.course_number) return "planned";
+  return undefined;
+}
+
+export function filterGECourses(courses: GECourse[], query: string): GECourse[] {
+  const q = query.trim().toLowerCase();
+  if (!q) return courses;
+  return courses.filter((course) =>
+    `${course.course_number} ${course.title}`.toLowerCase().includes(q)
+  );
+}
+
+export function selectedGECourse(
+  courses: GECourse[],
+  completedSet: Set<string>,
+  inProgressSet: Set<string>,
+  plannedCourseNumber?: string,
+): { course: GECourse; status: GEPanelStatus } | undefined {
+  for (const status of ["completed", "in_progress", "planned"] as const) {
+    const match = courses.find((candidate) =>
+      getGECoursePanelStatus(candidate, completedSet, inProgressSet, plannedCourseNumber) === status
+    );
+    if (match) return { course: match, status };
+  }
+  return undefined;
+}
+
 export default function GEDetailPanel({
   course,
   completedSet,
@@ -282,6 +334,7 @@ export default function GEDetailPanel({
   const [area, setArea]         = useState<GEArea | null>(null);
   const [loading, setLoading]   = useState(false);
   const [selected, setSelected] = useState<GECourse | null>(null);
+  const [query, setQuery]       = useState("");
 
   const courseNumber = course?.course_number;
 
@@ -297,13 +350,18 @@ export default function GEDetailPanel({
       if (cancelled) return;
       setArea(null);
       setSelected(null);
+      setQuery("");
       setLoading(true);
     }, 0);
     getGECourses(courseNumber)
       .then((a) => {
         if (cancelled) return;
         setArea(a);
-        if (a) onAreaLoaded?.(a.area_id, a.courses.map((c) => c.course_number));
+        if (a) {
+          const courseNumbers = a.courses.map((c) => c.course_number);
+          onAreaLoaded?.(courseNumber, courseNumbers);
+          if (a.area_id !== courseNumber) onAreaLoaded?.(a.area_id, courseNumbers);
+        }
       })
       .finally(() => { if (!cancelled) setLoading(false); });
 
@@ -311,6 +369,26 @@ export default function GEDetailPanel({
   }, [courseNumber, onAreaLoaded]);
 
   if (!course) return null;
+  const areaId = course.course_number;
+
+  const plannedCourseNumber = plannedGECourses[areaId];
+  const selectedCourse = area
+    ? selectedGECourse(area.courses, completedSet, inProgressSet, plannedCourseNumber)
+    : undefined;
+  const selectedStyles = selectedCourse ? GE_STATUS_STYLES[selectedCourse.status] : null;
+  const visibleCourses = area ? filterGECourses(area.courses, query) : [];
+
+  function chooseGECourse(courseNumber: string, units: number, status: GEPanelStatus) {
+    if (status === "planned") onPlanGECourse(areaId, courseNumber, units);
+    else if (status === "completed") onToggleGECourse(areaId, courseNumber);
+    else onToggleGECourseInProgress(areaId, courseNumber);
+  }
+
+  function clearSelectedCourse() {
+    if (!selectedCourse) return;
+    const { course: geCourse, status } = selectedCourse;
+    chooseGECourse(geCourse.course_number, geCourse.units, status);
+  }
 
   return (
     <>
@@ -336,31 +414,64 @@ export default function GEDetailPanel({
             <GECourseDetail geCourse={selected} onBack={() => setSelected(null)} />
           ) : (
             <div className="flex-1 overflow-y-auto px-5 py-4">
-              {area && <p className="text-xs text-gray-500 mb-3">{area.description}</p>}
+              {selectedCourse && selectedStyles && (
+                <div className={`mb-4 rounded-lg border px-3 py-3 ${selectedStyles.selectedCard}`}>
+                  <div className="flex items-start gap-2">
+                    <div className="min-w-0 flex-1">
+                      <div className={`text-sm font-bold ${selectedStyles.selectedTitle}`}>{selectedCourse.course.course_number}</div>
+                      <div className={`text-xs ${selectedStyles.selectedText}`}>{selectedCourse.course.title}</div>
+                      <div className={`mt-1 text-[11px] ${selectedStyles.selectedSubtleText}`}>{selectedCourse.course.units} units selected</div>
+                    </div>
+                    <button
+                      onClick={clearSelectedCourse}
+                      className="rounded border border-gray-200 bg-white px-2 py-1 text-[10px] font-semibold text-gray-700 hover:border-gray-300"
+                    >
+                      Clear
+                    </button>
+                  </div>
+                  <div className="mt-3 flex gap-1.5">
+                    {STATUS_ORDER.map((status) => {
+                      const style = GE_STATUS_STYLES[status];
+                      return (
+                        <button
+                          key={status}
+                          onClick={() => chooseGECourse(selectedCourse.course.course_number, selectedCourse.course.units, status)}
+                          className={`rounded border px-2 py-1 text-xs font-semibold transition-colors ${
+                            selectedCourse.status === status ? style.activeButton : `bg-white ${style.inactiveButton}`
+                          }`}
+                        >
+                          {STATUS_LABELS[status]}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              <input
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="Search approved GE courses"
+                className="mb-3 w-full rounded border border-gray-300 px-3 py-2 text-sm outline-none focus:border-blue-700"
+              />
 
               <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">
                 Approved Courses
-                {area && (
-                  <span className="ml-1 font-normal normal-case text-gray-400">
-                    — click a course for description
-                  </span>
-                )}
               </div>
 
               {loading && <div className="text-xs text-gray-400">Loading…</div>}
               {!loading && !area && (
                 <div className="text-xs text-gray-400">No course list available for this GE area yet.</div>
               )}
-              {area?.courses.map((c) => (
+              {area && !loading && visibleCourses.length === 0 && (
+                <div className="text-xs text-gray-400">No matching courses.</div>
+              )}
+              {visibleCourses.map((c) => (
                 <GECourseRow
                   key={c.course_number}
                   geCourse={c}
-                  completed={hasGEStatus(c, completedSet)}
-                  inProgress={hasGEStatus(c, inProgressSet)}
-                  planned={plannedGECourses[course.course_number] === c.course_number}
-                  onToggle={(courseNumber) => onToggleGECourse(course.course_number, courseNumber)}
-                  onToggleInProgress={(courseNumber) => onToggleGECourseInProgress(course.course_number, courseNumber)}
-                  onPlan={(courseNumber, units) => onPlanGECourse(course.course_number, courseNumber, units)}
+                  status={getGECoursePanelStatus(c, completedSet, inProgressSet, plannedCourseNumber)}
+                  onChoose={chooseGECourse}
                   onSelect={setSelected}
                 />
               ))}

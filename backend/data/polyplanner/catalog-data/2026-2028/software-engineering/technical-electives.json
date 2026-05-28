@@ -1,0 +1,3965 @@
+[
+  {
+    "id": 556,
+    "name": "Technical Electives",
+    "units": 16,
+    "catalogName": "2026-2028",
+    "degreeName": "Software Engineering",
+    "linkedTechnicalElectiveAreas": [
+      {
+        "id": 554,
+        "name": "Technical Electives",
+        "units": 16,
+        "catalogName": "2022-2026",
+        "degreeName": "Software Engineering",
+        "linkedTechnicalElectiveAreas": [],
+        "sections": [
+          {
+            "id": 56,
+            "name": "Approved External Electives",
+            "requiredCount": null,
+            "minUnits": null,
+            "maxUnits": 4,
+            "restriction": null,
+            "technicalElectives": [
+              {
+                "id": 1250,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "AERO450",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1251,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "ART376",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1252,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "ART384",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1253,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "BUS310",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1254,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CHEM216",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1255,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CHEM217",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1256,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CHEM218",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1257,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CHEM312",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1258,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "ECON339",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1259,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "EE201 and EE251",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1260,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "EE314",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1261,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE336",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1262,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "EE336",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1263,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "EE424",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1264,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "ENVE542",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1265,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "IME301",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1266,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "IME356",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1267,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "IME403",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1268,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "IME456",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1269,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "MATH206",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1270,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "MATH242",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1271,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "MATH248",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1272,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "MATH341",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1273,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "MATH350",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1274,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "MATH412",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1275,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "ME211",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1276,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "ME212",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1277,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "ME405",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1278,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "PHIL412",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1279,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "PHIL422",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1280,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "PHYS211",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1281,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "PSY329",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1282,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "PSY333",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1283,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "PSY357",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1284,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "STAT305",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1285,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "STAT323",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1286,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "STAT324",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1287,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "STAT330",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1288,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "STAT331",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1289,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "STAT334",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1290,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "STAT416",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1291,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "STAT418",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1292,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "STAT419",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1293,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "STAT434",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              }
+            ]
+          },
+          {
+            "id": 55,
+            "name": "Core Technical Electives",
+            "requiredCount": null,
+            "minUnits": null,
+            "maxUnits": null,
+            "restriction": "",
+            "technicalElectives": [
+              {
+                "id": 1157,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC313",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1158,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC321",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1159,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE321",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1160,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC323",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1161,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC325",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1162,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC344",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1163,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC364",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1164,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC366",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1165,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC369",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1166,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC371",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1167,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC377",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1168,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC378",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1169,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC400",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1170,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC409",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1171,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC410",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1172,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC421",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1173,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC422",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1174,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC424",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1175,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC425",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1176,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE425",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1177,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC429",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1178,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC431",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1179,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE431",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1180,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC436",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1181,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC437",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1182,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC445",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1183,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC448",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1184,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC453",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1185,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE453",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1186,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC454",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1187,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE454",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1188,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC458",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1189,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE458",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1190,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC466",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1191,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC468",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1192,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC469",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1193,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE469",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1194,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC471",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1195,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE471",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1196,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC473",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1197,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC474",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1198,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC476",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1199,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE476",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1200,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC477",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1201,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC478",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1202,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC480",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1203,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC481",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1204,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC482",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1205,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC486",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1206,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC487",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1207,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC490",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1208,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC493",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1209,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC496",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1210,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC497 and CSC498",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1211,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC508",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1212,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC509",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1213,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC513",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1214,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC515",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1215,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE515",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1216,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC521",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1217,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC522",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1218,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC524",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1219,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC530",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1220,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC540",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1221,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC549",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1222,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC550",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1223,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC560",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1224,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC564",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1225,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE564",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1226,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC566",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1227,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC569",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1228,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE569",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1229,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC570",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1230,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC572",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1231,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC580",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1232,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC581",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1233,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC582",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1234,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC587",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1235,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE315",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1236,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE316",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1237,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE400",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1238,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE416",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1239,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE419",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1240,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE428",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1241,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "EE428",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1242,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE464",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1243,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE465",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1244,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE488",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1245,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "IME458",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1246,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "MATE458",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1247,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "DATA301",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1248,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "PHYS345",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1249,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE345",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "sections": [
+      {
+        "id": 60,
+        "name": "Core Technical Electives",
+        "requiredCount": null,
+        "minUnits": null,
+        "maxUnits": null,
+        "restriction": null,
+        "technicalElectives": [
+          {
+            "id": 1570,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC3113",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1571,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC3203",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1572,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC3250",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1573,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC3445",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1574,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC3662",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1575,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC3710",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1576,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC3760",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1577,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC3780",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1578,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4036",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1579,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4037",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1580,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4091",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1581,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4092",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1582,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4093",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1583,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4100",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1584,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4170",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1585,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4184",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1586,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4186",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1587,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4191",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1588,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4192",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1589,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4193",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1590,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4210",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1591,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4212",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1592,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4214",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1593,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4230",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1594,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4260",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1595,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CPE4260",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1596,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4261",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1597,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CPE4261",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1598,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4270",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1599,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4291",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1600,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4292",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1601,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4293",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1602,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4310",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1603,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4400",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1604,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4448",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1605,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4470",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1606,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4471",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1607,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4472",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1608,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4495",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1609,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4553",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1610,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CPE4553",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1611,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4554",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1612,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4570",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1613,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4665",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1614,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4691",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1615,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4692",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1616,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4693",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1617,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4710",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1618,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4730",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1619,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4740",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1620,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4760",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1621,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4770",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1622,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4791",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1623,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4792",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1624,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4793",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1625,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4880",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1626,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4888",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1627,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4891",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1628,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4892",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1629,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4893",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1630,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4991",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1631,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4992",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1632,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC4993",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1633,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC5100",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1634,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC5113",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1635,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC5170",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1636,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC5201",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1637,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC5210",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1638,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC5220",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1639,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC5270",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1640,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC5281",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1641,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC5370",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1642,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC5445",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1643,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC5447",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1644,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC5449",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1645,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC5550",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1646,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC5570",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1647,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC5571",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1648,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC5572",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1649,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC5660",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1650,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC5669",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1651,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC5670",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1652,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC5710",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1653,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC5740",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1654,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC5770",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1655,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CSC5870",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1656,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CPE2300",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1657,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CPE2301",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1658,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CPE3160",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1659,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CPE4190",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1660,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CPE4220",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1661,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CPE4250",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1662,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CPE4464",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1663,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CPE4465",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1664,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CPE4470",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1665,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CPE4471",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1666,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CPE4472",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1667,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CPE4491",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1668,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CPE4492",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1669,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CPE4493",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1670,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CPE4650",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1671,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CPE4669",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1672,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CPE5564",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1673,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "DATA3301",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1674,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "DATA4632",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1675,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "DATA4720",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1676,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ENGR2995",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1677,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ENGR4995",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 557,
+    "name": "Approved Mathematics/Statistics/Science Electives",
+    "units": 6,
+    "catalogName": "2026-2028",
+    "degreeName": "Software Engineering",
+    "linkedTechnicalElectiveAreas": [
+      {
+        "id": 554,
+        "name": "Technical Electives",
+        "units": 16,
+        "catalogName": "2022-2026",
+        "degreeName": "Software Engineering",
+        "linkedTechnicalElectiveAreas": [],
+        "sections": [
+          {
+            "id": 56,
+            "name": "Approved External Electives",
+            "requiredCount": null,
+            "minUnits": null,
+            "maxUnits": 4,
+            "restriction": null,
+            "technicalElectives": [
+              {
+                "id": 1250,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "AERO450",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1251,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "ART376",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1252,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "ART384",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1253,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "BUS310",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1254,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CHEM216",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1255,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CHEM217",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1256,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CHEM218",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1257,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CHEM312",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1258,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "ECON339",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1259,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "EE201 and EE251",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1260,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "EE314",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1261,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE336",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1262,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "EE336",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1263,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "EE424",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1264,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "ENVE542",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1265,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "IME301",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1266,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "IME356",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1267,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "IME403",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1268,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "IME456",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1269,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "MATH206",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1270,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "MATH242",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1271,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "MATH248",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1272,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "MATH341",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1273,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "MATH350",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1274,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "MATH412",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1275,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "ME211",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1276,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "ME212",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1277,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "ME405",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1278,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "PHIL412",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1279,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "PHIL422",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1280,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "PHYS211",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1281,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "PSY329",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1282,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "PSY333",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1283,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "PSY357",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1284,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "STAT305",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1285,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "STAT323",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1286,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "STAT324",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1287,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "STAT330",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1288,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "STAT331",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1289,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "STAT334",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1290,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "STAT416",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1291,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "STAT418",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1292,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "STAT419",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1293,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "STAT434",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              }
+            ]
+          },
+          {
+            "id": 55,
+            "name": "Core Technical Electives",
+            "requiredCount": null,
+            "minUnits": null,
+            "maxUnits": null,
+            "restriction": "",
+            "technicalElectives": [
+              {
+                "id": 1157,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC313",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1158,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC321",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1159,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE321",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1160,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC323",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1161,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC325",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1162,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC344",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1163,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC364",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1164,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC366",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1165,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC369",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1166,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC371",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1167,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC377",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1168,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC378",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1169,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC400",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1170,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC409",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1171,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC410",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1172,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC421",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1173,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC422",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1174,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC424",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1175,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC425",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1176,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE425",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1177,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC429",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1178,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC431",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1179,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE431",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1180,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC436",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1181,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC437",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1182,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC445",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1183,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC448",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1184,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC453",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1185,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE453",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1186,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC454",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1187,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE454",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1188,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC458",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1189,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE458",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1190,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC466",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1191,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC468",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1192,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC469",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1193,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE469",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1194,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC471",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1195,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE471",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1196,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC473",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1197,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC474",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1198,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC476",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1199,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE476",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1200,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC477",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1201,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC478",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1202,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC480",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1203,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC481",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1204,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC482",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1205,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC486",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1206,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC487",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1207,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC490",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1208,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC493",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1209,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC496",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1210,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC497 and CSC498",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1211,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC508",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1212,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC509",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1213,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC513",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1214,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC515",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1215,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE515",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1216,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC521",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1217,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC522",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1218,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC524",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1219,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC530",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1220,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC540",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1221,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC549",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1222,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC550",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1223,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC560",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1224,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC564",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1225,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE564",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1226,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC566",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1227,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC569",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1228,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE569",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1229,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC570",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1230,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC572",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1231,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC580",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1232,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC581",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1233,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC582",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1234,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CSC587",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1235,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE315",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1236,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE316",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1237,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE400",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1238,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE416",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1239,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE419",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1240,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE428",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1241,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "EE428",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1242,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE464",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1243,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE465",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1244,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE488",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1245,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "IME458",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1246,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "MATE458",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1247,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "DATA301",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1248,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "PHYS345",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              },
+              {
+                "id": 1249,
+                "type": "Exactly",
+                "courseSubject": null,
+                "courseRule": "CPE345",
+                "minLevel": null,
+                "maxLevel": null,
+                "unitsAllowed": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "sections": [
+      {
+        "id": 61,
+        "name": "Approved Math/Stats/Science List",
+        "requiredCount": null,
+        "minUnits": null,
+        "maxUnits": null,
+        "restriction": null,
+        "technicalElectives": [
+          {
+            "id": 1678,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ASTR3301",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1679,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ASTR3302",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1680,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BIO1113",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1681,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BIO1114",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1682,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BIO2213",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1683,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BIO2217",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1684,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BIO2252",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1685,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BIO3312",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1686,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BIO3315",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1687,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BIO3318",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1688,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BIO3351",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1689,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CHEM1122",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1690,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "GEOL2240",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1691,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "GEOL2241",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1692,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATH2263",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1693,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATH2341",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1694,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATH2343",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1695,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATH2621",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1696,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATH3011",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1697,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATH3051",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1698,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATH3055",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1699,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATH3111",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1700,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATH3511",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1701,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATH3622",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1702,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATH3651",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1703,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATH3681",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1704,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATH4052",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1705,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATH4531",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1706,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATH4911",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1707,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MCRO2227",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1708,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MCRO3301",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1709,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MCRO3342",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1710,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MCRO4421",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1711,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MSCI1111",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1712,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MSCI1112",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1713,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "PHYS1141",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1714,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "STAT1510",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1715,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "STAT1810",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1716,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "STAT2610",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1717,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "STAT3430",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1718,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "STAT3520",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1719,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "STAT3800",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1720,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "STAT3820",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1721,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "STAT4610",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1722,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "STAT4750",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1723,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "STAT4770",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 1724,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "STAT4790",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          }
+        ]
+      }
+    ]
+  }
+]

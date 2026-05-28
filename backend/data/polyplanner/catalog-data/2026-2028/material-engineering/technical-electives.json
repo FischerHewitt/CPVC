@@ -1,0 +1,842 @@
+[
+  {
+    "id": 802,
+    "name": "Technical Electives",
+    "units": 10,
+    "catalogName": "2026-2028",
+    "degreeName": "Material Engineering",
+    "linkedTechnicalElectiveAreas": [],
+    "sections": [
+      {
+        "id": 352,
+        "name": "Technical Elective",
+        "requiredCount": null,
+        "minUnits": 6,
+        "maxUnits": 6,
+        "restriction": null,
+        "technicalElectives": [
+          {
+            "id": 4852,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BMED4434",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4853,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BMED4435",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4854,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BMED4460",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4855,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BMED5530",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4856,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CE3352",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4857,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CE3355",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4858,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CHEM3380",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4859,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CHEM4480",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4860,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CHEM4481",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4861,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ENVE4439",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4862,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "IME3303",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4863,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "IME4401",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4864,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "IME4421",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4865,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "IME4435",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4866,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ITP3330",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4867,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ITP3341",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4868,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ITP4404",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4869,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ITP4411",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4870,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATE4390",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4871,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATE4400",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4872,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATE4402",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4873,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATE4410",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4874,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATE4420",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4875,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATE4425",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4876,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATE4440",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4877,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATE4450",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4878,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATE4456",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4879,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATE4470",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4880,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATE4471",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4881,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATE4481",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4882,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATE4490",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4883,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ME3341",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4884,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ME4380",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4885,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "PHYS4425",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          }
+        ]
+      },
+      {
+        "id": 353,
+        "name": "Professional Development Elective",
+        "requiredCount": null,
+        "minUnits": 3,
+        "maxUnits": 4,
+        "restriction": null,
+        "technicalElectives": [
+          {
+            "id": 4886,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BIO2231",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4887,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BIO2232",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4888,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BMED2310",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4889,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BMED2311",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4890,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BMED4434",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4891,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BMED4435",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4892,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BMED4460",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4893,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BMED5530",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4894,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BMED5550",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4895,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BUS2207",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4896,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BUS2212",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4897,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BUS3302",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4898,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CE2259",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4899,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CE3352",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4900,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CHEM3380",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4901,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CHEM4480",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4902,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CHEM4481",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4903,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "COMS3301",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4904,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "COMS3395",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4905,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ECON2030",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4906,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ECON3015",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4907,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ENVE2331",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4908,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ENVE3309",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4909,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "IME2315",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4910,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "IME4401",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4911,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "IME4421",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4912,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "IME4435",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4913,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ITP2211",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4914,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ITP2234",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4915,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ITP3303",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4916,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ITP3330",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4917,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ITP3341",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4918,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ITP3371",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4919,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ITP4404",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4920,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ITP4411",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4921,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATE2190",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4922,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATE4390",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4923,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATE4400",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4924,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATE4402",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4925,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATE4410",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4926,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATE4420",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4927,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATE4425",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4928,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATE4440",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4929,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATE4450",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4930,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATE4456",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4931,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATE4470",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4932,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATE4471",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4933,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATE4481",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4934,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATE4490",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4935,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MATH2263",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4936,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ME2212",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4937,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ME2240",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4938,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ME3341",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4939,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ME4380",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4940,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ME4451",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4941,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "STAT3800",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          }
+        ]
+      }
+    ]
+  }
+]

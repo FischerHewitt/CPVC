@@ -1,0 +1,147 @@
+[
+  {
+    "id": 815,
+    "name": "Aerospace Engineering Dynamics",
+    "courseToMeet": "AERO2220"
+  },
+  {
+    "id": 816,
+    "name": "Engineering Numerical Analysis (Upper-Division 2/5)",
+    "courseToMeet": "AERO3300"
+  },
+  {
+    "id": 817,
+    "name": "Thermo Fluid Dynamics",
+    "courseToMeet": "AERO3301"
+  },
+  {
+    "id": 818,
+    "name": "Thermo Fluids Laboratory",
+    "courseToMeet": "AERO3302"
+  },
+  {
+    "id": 819,
+    "name": "Heat and Mass Transfer",
+    "courseToMeet": "AERO3303"
+  },
+  {
+    "id": 820,
+    "name": "Aerospace Propulsion Systems",
+    "courseToMeet": "AERO3304"
+  },
+  {
+    "id": 821,
+    "name": "System Dynamics",
+    "courseToMeet": "AERO3320"
+  },
+  {
+    "id": 822,
+    "name": "Aerospace Structural Analysis I",
+    "courseToMeet": "AERO3331"
+  },
+  {
+    "id": 824,
+    "name": "Propulsion Laboratory",
+    "courseToMeet": "AERO4403"
+  },
+  {
+    "id": 825,
+    "name": "Aerospace Structural Analysis II",
+    "courseToMeet": "AERO4431"
+  },
+  {
+    "id": 828,
+    "name": "Experimental Stress Analysis",
+    "courseToMeet": "AERO4433"
+  },
+  {
+    "id": 814,
+    "name": "Aerospace Fundamentals",
+    "courseToMeet": "AERO1121"
+  },
+  {
+    "id": 823,
+    "name": "Aerospace Engineering Professional Preparation",
+    "courseToMeet": "AERO3460"
+  },
+  {
+    "id": 861,
+    "name": "Introduction to Mechanics",
+    "courseToMeet": "ENGR2211"
+  },
+  {
+    "id": 862,
+    "name": "Introduction to Design and Manufacturing and Technical Graphics Communication for Design and Manufacturing\t",
+    "courseToMeet": "IME1143 and IME1140"
+  },
+  {
+    "id": 863,
+    "name": "Principles of Materials Engineering for Non-Majors",
+    "courseToMeet": "MATE1220"
+  },
+  {
+    "id": 864,
+    "name": "Calculus I (2)",
+    "courseToMeet": "MATH1261"
+  },
+  {
+    "id": 865,
+    "name": "Calculus II",
+    "courseToMeet": "MATH1262"
+  },
+  {
+    "id": 866,
+    "name": "Calculus III",
+    "courseToMeet": "MATH2263"
+  },
+  {
+    "id": 867,
+    "name": "Linear Analysis",
+    "courseToMeet": "MATH2341"
+  },
+  {
+    "id": 868,
+    "name": "General Physics I",
+    "courseToMeet": "PHYS1141"
+  },
+  {
+    "id": 869,
+    "name": "General Physics II",
+    "courseToMeet": "PHYS1143"
+  },
+  {
+    "id": 860,
+    "name": "Fundamentals of Chemical Structure and Properties (5A & 5C)",
+    "courseToMeet": "CHEM1120"
+  },
+  {
+    "id": 2752,
+    "name": "Introduction to Aerodynamics",
+    "courseToMeet": "AERO3305"
+  },
+  {
+    "id": 2753,
+    "name": "Ground to Space Propulsion",
+    "courseToMeet": "AERO4401"
+  },
+  {
+    "id": 2754,
+    "name": "Advanced Aerodynamics",
+    "courseToMeet": "AERO4405"
+  },
+  {
+    "id": 2755,
+    "name": "Experimental Aerodynamics",
+    "courseToMeet": "AERO4406"
+  },
+  {
+    "id": 2756,
+    "name": "Aircraft Dynamics and Control",
+    "courseToMeet": "AERO4420"
+  },
+  {
+    "id": 2757,
+    "name": "Aircraft Design Senior Project I and Aircraft Design Senior Project II",
+    "courseToMeet": "AERO4461 and AERO 4462"
+  }
+]

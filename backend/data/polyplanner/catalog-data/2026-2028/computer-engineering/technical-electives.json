@@ -1,0 +1,366 @@
+[
+  {
+    "id": 753,
+    "name": "Technical Electives",
+    "units": 14,
+    "catalogName": "2026-2028",
+    "degreeName": "Computer Engineering",
+    "linkedTechnicalElectiveAreas": [],
+    "sections": [
+      {
+        "id": 305,
+        "name": "Any 2000-5000 level course (College of Engineering or Bailey College of Science and Mathematics)",
+        "requiredCount": null,
+        "minUnits": 0,
+        "maxUnits": 4,
+        "restriction": null,
+        "technicalElectives": [
+          {
+            "id": 4778,
+            "type": "Range",
+            "courseSubject": "AERO",
+            "courseRule": null,
+            "minLevel": 2000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4779,
+            "type": "Range",
+            "courseSubject": "BMED",
+            "courseRule": null,
+            "minLevel": 2000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4780,
+            "type": "Range",
+            "courseSubject": "BRAE",
+            "courseRule": null,
+            "minLevel": 2000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4781,
+            "type": "Range",
+            "courseSubject": "CE",
+            "courseRule": null,
+            "minLevel": 2000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4782,
+            "type": "Range",
+            "courseSubject": "CPE",
+            "courseRule": null,
+            "minLevel": 2000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4783,
+            "type": "Range",
+            "courseSubject": "CSC",
+            "courseRule": null,
+            "minLevel": 2000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4784,
+            "type": "Range",
+            "courseSubject": "EE",
+            "courseRule": null,
+            "minLevel": 2000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4785,
+            "type": "Range",
+            "courseSubject": "ENGR",
+            "courseRule": null,
+            "minLevel": 2000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4786,
+            "type": "Range",
+            "courseSubject": "ENVE",
+            "courseRule": null,
+            "minLevel": 2000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4787,
+            "type": "Range",
+            "courseSubject": "IME",
+            "courseRule": null,
+            "minLevel": 2000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4788,
+            "type": "Range",
+            "courseSubject": "MATE",
+            "courseRule": null,
+            "minLevel": 2000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4789,
+            "type": "Range",
+            "courseSubject": "ME",
+            "courseRule": null,
+            "minLevel": 2000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4790,
+            "type": "Range",
+            "courseSubject": "ASTR",
+            "courseRule": null,
+            "minLevel": 2000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4791,
+            "type": "Range",
+            "courseSubject": "BIO",
+            "courseRule": null,
+            "minLevel": 2000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4792,
+            "type": "Range",
+            "courseSubject": "BOT",
+            "courseRule": null,
+            "minLevel": 2000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4793,
+            "type": "Range",
+            "courseSubject": "CHEM",
+            "courseRule": null,
+            "minLevel": 2000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4794,
+            "type": "Range",
+            "courseSubject": "DATA",
+            "courseRule": null,
+            "minLevel": 2000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4795,
+            "type": "Range",
+            "courseSubject": "GEOL",
+            "courseRule": null,
+            "minLevel": 2000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4796,
+            "type": "Range",
+            "courseSubject": "MATH",
+            "courseRule": null,
+            "minLevel": 2000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4797,
+            "type": "Range",
+            "courseSubject": "MCRO",
+            "courseRule": null,
+            "minLevel": 2000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4798,
+            "type": "Range",
+            "courseSubject": "MSCI",
+            "courseRule": null,
+            "minLevel": 2000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4799,
+            "type": "Range",
+            "courseSubject": "PHYS",
+            "courseRule": null,
+            "minLevel": 2000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4800,
+            "type": "Range",
+            "courseSubject": "STAT",
+            "courseRule": null,
+            "minLevel": 2000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          }
+        ]
+      },
+      {
+        "id": 306,
+        "name": "Any 3000-5000 level CPE/CSC/EE course",
+        "requiredCount": null,
+        "minUnits": 10,
+        "maxUnits": 14,
+        "restriction": null,
+        "technicalElectives": [
+          {
+            "id": 4801,
+            "type": "Range",
+            "courseSubject": "CPE",
+            "courseRule": null,
+            "minLevel": 3000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4802,
+            "type": "Range",
+            "courseSubject": "CSC",
+            "courseRule": null,
+            "minLevel": 3000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4803,
+            "type": "Range",
+            "courseSubject": "EE",
+            "courseRule": null,
+            "minLevel": 3000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          }
+        ]
+      },
+      {
+        "id": 307,
+        "name": "Science/Math Technical Elective",
+        "requiredCount": null,
+        "minUnits": 3,
+        "maxUnits": 3,
+        "restriction": null,
+        "technicalElectives": [
+          {
+            "id": 4804,
+            "type": "Range",
+            "courseSubject": "ASTR",
+            "courseRule": null,
+            "minLevel": 1000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4805,
+            "type": "Range",
+            "courseSubject": "BIO",
+            "courseRule": null,
+            "minLevel": 1000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4806,
+            "type": "Range",
+            "courseSubject": "BOT",
+            "courseRule": null,
+            "minLevel": 1000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4807,
+            "type": "Range",
+            "courseSubject": "CHEM",
+            "courseRule": null,
+            "minLevel": 1000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4808,
+            "type": "Range",
+            "courseSubject": "GEOL",
+            "courseRule": null,
+            "minLevel": 1000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4809,
+            "type": "Range",
+            "courseSubject": "MATH",
+            "courseRule": null,
+            "minLevel": 1000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4810,
+            "type": "Range",
+            "courseSubject": "MCRO",
+            "courseRule": null,
+            "minLevel": 1000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4811,
+            "type": "Range",
+            "courseSubject": "MSCI",
+            "courseRule": null,
+            "minLevel": 1000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4812,
+            "type": "Range",
+            "courseSubject": "PHYS",
+            "courseRule": null,
+            "minLevel": 1000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          },
+          {
+            "id": 4813,
+            "type": "Range",
+            "courseSubject": "STAT",
+            "courseRule": null,
+            "minLevel": 1000,
+            "maxLevel": 5999,
+            "unitsAllowed": null
+          }
+        ]
+      }
+    ]
+  }
+]

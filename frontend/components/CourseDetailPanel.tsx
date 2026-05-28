@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import type { Course, CourseInfo, CourseStatus, Professor } from "@/lib/types";
 import { getCourseInfo, getProfessors } from "@/lib/api";
+import { expandSlashCourseNumber } from "@/lib/course-status";
 
 interface Props {
   course: Course | null;
@@ -30,7 +31,12 @@ function hasAnyCourseNumber(normalizedKnownNums: Set<string>, courseNums: string
 }
 
 function courseNumberCandidates(course: Course) {
-  return [course.course_number, ...course.quarter_equivalents];
+  return [
+    course.course_number,
+    ...course.quarter_equivalents,
+    ...(course.auto_satisfied_by ?? []),
+    ...expandSlashCourseNumber(course.course_number),
+  ];
 }
 
 function getLiveStatus(
@@ -102,9 +108,29 @@ export default function CourseDetailPanel({
   const inferredSet = new Set(inferred.map(norm));
   const liveStatus = getLiveStatus(course, status, completedSet, inProgressSet, inferredSet);
   const knownPrereqSet = new Set([...completed, ...inProgress, ...inferred].map(norm));
-  const prereqCourses = allCourses.filter((c) =>
-    course.prerequisites.includes(c.course_number)
-  );
+  const courseLookup = new Map<string, Course>();
+  for (const item of allCourses) {
+    for (const candidate of courseNumberCandidates(item)) {
+      courseLookup.set(norm(candidate), item);
+    }
+  }
+  const prereqRows = course.prerequisites.map((prereqNumber) => {
+    const prereqCourse = courseLookup.get(norm(prereqNumber));
+    const candidates = prereqCourse ? courseNumberCandidates(prereqCourse) : [prereqNumber];
+    const choices = prereqCourse ? expandSlashCourseNumber(prereqCourse.course_number) : [];
+    const met = hasAnyCourseNumber(knownPrereqSet, candidates);
+    const isChoice = Boolean(prereqCourse?.course_number.includes("/"));
+    const metVia = (met && isChoice) ? (choices.find((c) => knownPrereqSet.has(norm(c))) ?? null) : null;
+    return {
+      key: prereqNumber,
+      course: prereqCourse,
+      label: prereqCourse?.course_number ?? prereqNumber,
+      met,
+      isChoice,
+      choices,
+      metVia,
+    };
+  });
   const catalogUrl = `https://catalog.calpoly.edu/courses/${course.course_number.split(" ")[0].toLowerCase()}/`;
 
   return (
@@ -170,6 +196,38 @@ export default function CourseDetailPanel({
             </a>
           </div>
 
+          {/* Lab + lecture breakdown */}
+          {course.lab_component && (
+            <div>
+              <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Course Components</div>
+              <div className="rounded-lg border border-gray-200 overflow-hidden text-sm">
+                <div className="flex items-center justify-between px-3 py-2 bg-gray-50 border-b border-gray-100">
+                  <div className="flex items-center gap-2">
+                    <span className="text-gray-400">📖</span>
+                    <span className="font-medium text-gray-700">Lecture</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="font-mono text-gray-500 text-xs">{course.course_number}</span>
+                    <span className="font-semibold text-gray-700">{course.lab_component.lecture_units} units</span>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between px-3 py-2 bg-gray-50">
+                  <div className="flex items-center gap-2">
+                    <span className="text-gray-400">🔬</span>
+                    <span className="font-medium text-gray-700">Lab</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="font-mono text-gray-500 text-xs">{course.lab_component.course_number}</span>
+                    <span className="font-semibold text-gray-700">{course.lab_component.lab_units} unit{course.lab_component.lab_units !== 1 ? 's' : ''}</span>
+                  </div>
+                </div>
+              </div>
+              <p className="text-[11px] text-gray-400 mt-1.5">
+                Both sections are required and appear separately on your transcript.
+              </p>
+            </div>
+          )}
+
           {/* Quarter equivalents */}
           {course.quarter_equivalents.length > 0 && (
             <div>
@@ -183,17 +241,28 @@ export default function CourseDetailPanel({
           )}
 
           {/* Prerequisites */}
-          {prereqCourses.length > 0 && (
+          {prereqRows.length > 0 && (
             <div>
               <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Prerequisites</div>
               <div className="flex flex-col gap-1.5">
-                {prereqCourses.map((p) => (
-                  <div key={p.id} className="flex items-center justify-between text-sm">
-                    <span className="font-medium text-gray-700">{p.course_number}</span>
-                    {hasAnyCourseNumber(knownPrereqSet, courseNumberCandidates(p)) ? (
-                      <span className="text-green-600 text-xs font-semibold">✓ Done</span>
+                {prereqRows.map((row) => (
+                  <div key={row.key} className="flex items-center justify-between gap-3 text-sm">
+                    <div>
+                      <span className="font-medium text-gray-700">{row.label}</span>
+                      {!row.met && row.isChoice && row.choices.length > 1 && (
+                        <div className="text-[11px] text-amber-700">
+                          Choose one: {row.choices.join(" or ")}
+                        </div>
+                      )}
+                    </div>
+                    {row.met ? (
+                      <span className="text-green-600 text-xs font-semibold">
+                        {"✓ "}{row.metVia ? <span className="underline">{row.metVia}</span> : "Done"}
+                      </span>
+                    ) : row.isChoice ? (
+                      <span className="text-amber-600 text-xs font-semibold">{"⚠ Choice needed"}</span>
                     ) : (
-                      <span className="text-red-500 text-xs font-semibold">✗ Needed</span>
+                      <span className="text-red-500 text-xs font-semibold">{"✗ Needed"}</span>
                     )}
                   </div>
                 ))}

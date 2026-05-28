@@ -1,0 +1,202 @@
+[
+  {
+    "id": 2602,
+    "name": "Introduction to Industrial and Manufacturing Engineering",
+    "courseToMeet": "IME101"
+  },
+  {
+    "id": 2603,
+    "name": "Manufacturing Processes: Net Shape",
+    "courseToMeet": "IME141"
+  },
+  {
+    "id": 2604,
+    "name": "Introduction to Design and Manufacturing",
+    "courseToMeet": "IME144"
+  },
+  {
+    "id": 2605,
+    "name": "Basic Electronics Manufacturing",
+    "courseToMeet": "IME156"
+  },
+  {
+    "id": 2606,
+    "name": "Introduction to Enterprise Analytics",
+    "courseToMeet": "IME212"
+  },
+  {
+    "id": 2607,
+    "name": "Process Improvement Fundamentals",
+    "courseToMeet": "IME223"
+  },
+  {
+    "id": 2608,
+    "name": "Operations Research I",
+    "courseToMeet": "IME301"
+  },
+  {
+    "id": 2609,
+    "name": "Operations Research II",
+    "courseToMeet": "IME305"
+  },
+  {
+    "id": 2610,
+    "name": "Data Management and System Design",
+    "courseToMeet": "IME312"
+  },
+  {
+    "id": 2611,
+    "name": "Financial Decision Making for Engineers",
+    "courseToMeet": "IME315"
+  },
+  {
+    "id": 2612,
+    "name": "Human Factors Engineering",
+    "courseToMeet": "IME319"
+  },
+  {
+    "id": 2613,
+    "name": "Engineering Test Design and Analysis",
+    "courseToMeet": "IME326"
+  },
+  {
+    "id": 2614,
+    "name": "Applications of Enterprise Analytics",
+    "courseToMeet": "IME372"
+  },
+  {
+    "id": 2615,
+    "name": "Production Planning and Control Systems",
+    "courseToMeet": "IME410"
+  },
+  {
+    "id": 2616,
+    "name": "Supply Chain and Logistics Management",
+    "courseToMeet": "IME417"
+  },
+  {
+    "id": 2617,
+    "name": "Simulation",
+    "courseToMeet": "IME420"
+  },
+  {
+    "id": 2618,
+    "name": "Ergonomics Laboratory",
+    "courseToMeet": "IME429"
+  },
+  {
+    "id": 2619,
+    "name": "Quality Engineering",
+    "courseToMeet": "IME430"
+  },
+  {
+    "id": 2620,
+    "name": "Facilities Planning and Design",
+    "courseToMeet": "IME443"
+  },
+  {
+    "id": 2621,
+    "name": "Senior Design Project I and Senior Design Project II and Senior Design Project III",
+    "courseToMeet": "IME481 and IME482 and IME483"
+  },
+  {
+    "id": 2622,
+    "name": "Support Course Options",
+    "courseToMeet": "CE204 or EE321 or ME212"
+  },
+  {
+    "id": 2623,
+    "name": "Life Science for Engineers and Bioengineering Fundamentals",
+    "courseToMeet": "BIO213 and BMED213"
+  },
+  {
+    "id": 2624,
+    "name": "General Chemistry for Physical Science and Engineering I",
+    "courseToMeet": "CHEM124"
+  },
+  {
+    "id": 2625,
+    "name": "Computer Programming for Scientists and Engineers or Fundamentals of Computer Science",
+    "courseToMeet": "CSC232 or CPE101 or CSC101"
+  },
+  {
+    "id": 2626,
+    "name": "Electric Circuit Theory",
+    "courseToMeet": "EE201"
+  },
+  {
+    "id": 2627,
+    "name": "Electric Circuits Laboratory",
+    "courseToMeet": "EE251"
+  },
+  {
+    "id": 2628,
+    "name": "Writing Arguments about STEM",
+    "courseToMeet": "ENGL147"
+  },
+  {
+    "id": 2629,
+    "name": "Materials Engineering",
+    "courseToMeet": "MATE210"
+  },
+  {
+    "id": 2630,
+    "name": "Materials Laboratory I",
+    "courseToMeet": "MATE215"
+  },
+  {
+    "id": 2631,
+    "name": "Calculus I",
+    "courseToMeet": "MATH141"
+  },
+  {
+    "id": 2632,
+    "name": "Calculus II",
+    "courseToMeet": "MATH142"
+  },
+  {
+    "id": 2633,
+    "name": "Calculus III",
+    "courseToMeet": "MATH143"
+  },
+  {
+    "id": 2634,
+    "name": "Calculus IV",
+    "courseToMeet": "MATH241"
+  },
+  {
+    "id": 2635,
+    "name": "Linear Analysis I",
+    "courseToMeet": "MATH244"
+  },
+  {
+    "id": 2636,
+    "name": "Engineering Statics",
+    "courseToMeet": "ME211"
+  },
+  {
+    "id": 2637,
+    "name": "General Physics I",
+    "courseToMeet": "PHYS141"
+  },
+  {
+    "id": 2638,
+    "name": "General Physics II",
+    "courseToMeet": "PHYS142"
+  },
+  {
+    "id": 2639,
+    "name": "General Physics III",
+    "courseToMeet": "PHYS143"
+  },
+  {
+    "id": 2640,
+    "name": "General Psychology",
+    "courseToMeet": "PSY201 or PSY202"
+  },
+  {
+    "id": 2641,
+    "name": "Probability and Statistics for Engineers and Scientists",
+    "courseToMeet": "STAT321"
+  }
+]

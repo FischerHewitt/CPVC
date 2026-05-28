@@ -1,0 +1,301 @@
+[
+  {
+    "id": 1103,
+    "name": "Technical Electives",
+    "units": 6,
+    "catalogName": "2026-2028",
+    "degreeName": "Aerospace Engineering Astronautics",
+    "linkedTechnicalElectiveAreas": [],
+    "sections": [
+      {
+        "id": 653,
+        "name": "Technical Electives",
+        "requiredCount": 0,
+        "minUnits": 6,
+        "maxUnits": null,
+        "restriction": "",
+        "technicalElectives": [
+          {
+            "id": 6182,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "AERO3305",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 6183,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "AERO4401",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 6184,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "AERO4405",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 6185,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "AERO4406",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 6186,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "AERO4407",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 6187,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "AERO4408",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 6188,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "AERO4409",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 6189,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "AERO4420",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 6190,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "AERO4422",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 6191,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "AERO4425",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 6192,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "AERO4450",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 6193,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "AERO4452",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 6194,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "AERO4457",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 6195,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "AERO4470",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 6196,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "AERO4471",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 6197,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "AERO5504",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 6198,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "AERO5507",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 6199,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "AERO5522",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 6200,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "AERO5526",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 6201,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "AERO5534",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 6202,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "AERO5540",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 6203,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "AERO5541",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 6204,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "AERO5548",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 6205,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "AERO5549",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 6206,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "AERO5553",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 6207,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "AERO5557",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 6208,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "AERO5560",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 6209,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "AERO5568",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 6210,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "AERO5569",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 6211,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "AERO5570",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 6212,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "AERO5571",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          }
+        ]
+      }
+    ]
+  }
+]

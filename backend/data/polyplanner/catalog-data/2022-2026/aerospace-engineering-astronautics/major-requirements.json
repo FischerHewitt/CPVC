@@ -1,0 +1,202 @@
+[
+  {
+    "id": 2822,
+    "name": "Calculus II",
+    "courseToMeet": "MATH142"
+  },
+  {
+    "id": 2823,
+    "name": "Calculus III",
+    "courseToMeet": "MATH143"
+  },
+  {
+    "id": 2824,
+    "name": "Calculus IV",
+    "courseToMeet": "MATH241"
+  },
+  {
+    "id": 2814,
+    "name": "Aerospace Engineering Professional Prep",
+    "courseToMeet": "AERO460"
+  },
+  {
+    "id": 2815,
+    "name": "Aerospace Systems Senior Laboratory",
+    "courseToMeet": "AERO465"
+  },
+  {
+    "id": 2816,
+    "name": "Mechanics of Materials I and Mechanics of Materials II or Mechanics of Materials",
+    "courseToMeet": "CE204 and CE 207 or CE 208"
+  },
+  {
+    "id": 2817,
+    "name": "Electric Circuit Theory and Electric Circuits Laboratory",
+    "courseToMeet": "EE201 and EE251"
+  },
+  {
+    "id": 2818,
+    "name": "General Chemistry for Physical Science and Engineering I ",
+    "courseToMeet": "CHEM124"
+  },
+  {
+    "id": 2819,
+    "name": "Introduction to Design and Manufacturing",
+    "courseToMeet": "IME144"
+  },
+  {
+    "id": 2825,
+    "name": "Linear Analysis I",
+    "courseToMeet": "MATH244"
+  },
+  {
+    "id": 2821,
+    "name": "Calculus I",
+    "courseToMeet": "MATH141"
+  },
+  {
+    "id": 2801,
+    "name": "Aerospace Fundamentals",
+    "courseToMeet": "AERO121"
+  },
+  {
+    "id": 2802,
+    "name": "Introduction to Aerospace Design",
+    "courseToMeet": "AERO215"
+  },
+  {
+    "id": 2803,
+    "name": "Aerospace Systems Engineering & Integration",
+    "courseToMeet": "AERO220"
+  },
+  {
+    "id": 2804,
+    "name": "Aerospace Thermodynamics",
+    "courseToMeet": "AERO299"
+  },
+  {
+    "id": 2805,
+    "name": "Aerospace Engineering Analysis",
+    "courseToMeet": "AERO300"
+  },
+  {
+    "id": 2806,
+    "name": "Aerospace Fluid Mechanics",
+    "courseToMeet": "AERO302"
+  },
+  {
+    "id": 2807,
+    "name": "Aerospace Gas Dynamics and Heat Transfer",
+    "courseToMeet": "AERO303"
+  },
+  {
+    "id": 2808,
+    "name": "Fundamentals of Dynamics and Control",
+    "courseToMeet": "AERO320"
+  },
+  {
+    "id": 2809,
+    "name": "Experimental Sensors, Actuators and Control",
+    "courseToMeet": "AERO321"
+  },
+  {
+    "id": 2810,
+    "name": "Aerospace Structural Analysis I",
+    "courseToMeet": "AERO331"
+  },
+  {
+    "id": 2811,
+    "name": "Fundamentals of Systems Engineering",
+    "courseToMeet": "AERO350"
+  },
+  {
+    "id": 2812,
+    "name": "Aerospace Structural Analysis II",
+    "courseToMeet": "AERO431"
+  },
+  {
+    "id": 2813,
+    "name": "Experimental Stress Analysis",
+    "courseToMeet": "AERO433"
+  },
+  {
+    "id": 2820,
+    "name": "Materials Engineering",
+    "courseToMeet": "MATE210"
+  },
+  {
+    "id": 2826,
+    "name": "Engineering Statics",
+    "courseToMeet": "ME211"
+  },
+  {
+    "id": 2827,
+    "name": "Engineering Dynamics",
+    "courseToMeet": "ME212"
+  },
+  {
+    "id": 2829,
+    "name": "General Physics II",
+    "courseToMeet": "PHYS142"
+  },
+  {
+    "id": 2828,
+    "name": "General Physics IA",
+    "courseToMeet": "PHYS 141"
+  },
+  {
+    "id": 2830,
+    "name": "General Physics III",
+    "courseToMeet": "PHYS 132"
+  },
+  {
+    "id": 2831,
+    "name": "Statistical Methods for Engineers ",
+    "courseToMeet": "STAT 312"
+  },
+  {
+    "id": 2840,
+    "name": "Introduction to Orbital Mechanics",
+    "courseToMeet": "AERO351"
+  },
+  {
+    "id": 2841,
+    "name": "Space Environments I",
+    "courseToMeet": "AERO355"
+  },
+  {
+    "id": 2842,
+    "name": "Space Environments II",
+    "courseToMeet": "AERO356"
+  },
+  {
+    "id": 2843,
+    "name": "Spacecraft Propulsion Systems",
+    "courseToMeet": "AERO402"
+  },
+  {
+    "id": 2844,
+    "name": "Spacecraft Attitude Dynamics and Control",
+    "courseToMeet": "AERO421"
+  },
+  {
+    "id": 2845,
+    "name": "Spacecraft Electrical and Electric Systems",
+    "courseToMeet": "AERO466"
+  },
+  {
+    "id": 2846,
+    "name": "Spacecraft Design I",
+    "courseToMeet": "AERO447"
+  },
+  {
+    "id": 2847,
+    "name": "Spacecraft Design II",
+    "courseToMeet": "AERO448"
+  },
+  {
+    "id": 2848,
+    "name": "Spacecraft Design III",
+    "courseToMeet": "AERO449"
+  }
+]

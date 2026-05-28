@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import type { Course, GEAreaMap, Professor, GECourse } from "@/lib/types";
+import type { Course, FreeElectiveSelection, FreeElectiveStatus, GEAreaMap, Professor, GECourse } from "@/lib/types";
 import { getProfessors, getGECourses, getElectiveCourses } from "@/lib/api";
 import {
   toNormalizedSet,
@@ -10,6 +10,7 @@ import {
   courseIsInProgress,
   geAreaIsKnown,
 } from "@/lib/checklist-utils";
+import { parseCalPolyCSV } from "@/lib/calpoly-csv";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -29,52 +30,17 @@ interface Props {
   inProgress: string[];
   geAreaMap: GEAreaMap;
   plannedGECourses: Record<string, string>;
+  plannedFreeElectiveCourses: Record<string, FreeElectiveSelection>;
   onToggleCourse: (course: Course) => void;
   onToggleCourseInProgress: (course: Course) => void;
   onToggleGEArea: (course: Course) => void;
   onToggleGEAreaInProgress: (course: Course) => void;
   onTogglePickedCourse: (courseNumber: string) => void;
   onTogglePickedCourseInProgress: (courseNumber: string) => void;
+  onToggleFreeElectiveStatus: (course: Course, status: FreeElectiveStatus) => void;
+  onOpenFreeElectivePicker: (course: Course) => void;
   onImportCSV: (completed: string[], inProgress: string[]) => void;
   onClose: () => void;
-}
-
-// ── CSV helpers ───────────────────────────────────────────────────────────────
-
-function parseCSVLine(line: string): string[] {
-  const result: string[] = [];
-  let current = "";
-  let inQuotes = false;
-  for (const char of line) {
-    if (char === '"') { inQuotes = !inQuotes; }
-    else if (char === "," && !inQuotes) { result.push(current.trim()); current = ""; }
-    else { current += char; }
-  }
-  result.push(current.trim());
-  return result;
-}
-
-function parseCalPolyCSV(text: string): { completed: string[]; inProgress: string[] } | null {
-  const lines = text.trim().split(/\r?\n/);
-  if (lines.length < 2) return null;
-  const header = parseCSVLine(lines[0]);
-  const courseIdx = header.findIndex((h) => h.toLowerCase() === "course");
-  const statusIdx = header.findIndex((h) => h.toLowerCase() === "status");
-  if (courseIdx === -1 || statusIdx === -1) return null;
-  const completed: string[] = [];
-  const inProgress: string[] = [];
-  for (let i = 1; i < lines.length; i++) {
-    const cols = parseCSVLine(lines[i]);
-    const course = cols[courseIdx]?.trim();
-    const status = cols[statusIdx]?.trim();
-    if (!course || !status) continue;
-    if (["Taken", "Transferred (Course)", "Transferred (Test)"].includes(status)) {
-      completed.push(course);
-    } else if (status === "In Progress") {
-      inProgress.push(course);
-    }
-  }
-  return { completed, inProgress };
 }
 
 const CATEGORY_LABELS: Record<string, string> = {
@@ -87,6 +53,7 @@ const CATEGORY_LABELS: Record<string, string> = {
 
 const CATEGORY_ORDER = ["major", "support", "ge", "concentration"] as const;
 const CATEGORY_RANK = new Map(CATEGORY_ORDER.map((item, index) => [item, index]));
+const ROW_ACTION_ARROW = "▶";
 
 function norm(s: string) { return s.toUpperCase().trim().replace(/\s+/g, " "); }
 
@@ -99,6 +66,10 @@ function compareCoursePosition(a: Course, b: Course) {
     || a.grid_col - b.grid_col
     || a.grid_row - b.grid_row
     || a.course_number.localeCompare(b.course_number);
+}
+
+function isFreeElective(course: Course) {
+  return course.title.toLowerCase().includes("free elective") || course.course_number.toLowerCase().startsWith("free");
 }
 
 // ── ProfessorRow ──────────────────────────────────────────────────────────────
@@ -151,10 +122,14 @@ function FloatingPopover({
 
   useEffect(() => {
     let cancelled = false;
-    setLoading(true);
-    setProfessors([]);
-    setPickerCourses([]);
-    setCourseDetail(null);
+    setTimeout(() => {
+      if (cancelled) return;
+      setLoading(true);
+      setProfessors([]);
+      setPickerCourses([]);
+      setPickerTitle("");
+      setCourseDetail(null);
+    }, 0);
 
     if (trigger.type === "professors") {
       getProfessors(trigger.courseNumber)
@@ -180,8 +155,11 @@ function FloatingPopover({
   useEffect(() => {
     if (!courseDetail) return;
     let cancelled = false;
-    setDetailLoading(true);
-    setDetailProfs([]);
+    setTimeout(() => {
+      if (cancelled) return;
+      setDetailLoading(true);
+      setDetailProfs([]);
+    }, 0);
     getProfessors(courseDetail)
       .then((p) => { if (!cancelled) setDetailProfs(p); })
       .finally(() => { if (!cancelled) setDetailLoading(false); });
@@ -400,7 +378,7 @@ function CourseRow({
           className="mt-0.5 shrink-0 rounded border border-gray-200 px-1.5 py-0.5 text-[10px] text-gray-400 transition-colors hover:border-gray-300 hover:text-gray-600"
           title="Show professors"
         >
-          ▼
+          {ROW_ACTION_ARROW}
         </button>
       </div>
     </div>
@@ -493,7 +471,7 @@ function GEAreaRow({
         className="mt-0.5 shrink-0 rounded border border-gray-200 px-1.5 py-0.5 text-[10px] text-gray-400 transition-colors hover:border-blue-300 hover:text-blue-600"
         title="Browse courses for this GE area"
       >
-        ▶
+        {ROW_ACTION_ARROW}
       </button>
     </div>
   );
@@ -505,20 +483,25 @@ interface ElectiveRowProps {
   course: Course;
   checked: boolean;
   inProgressMatch: boolean;
+  freeSelection?: FreeElectiveSelection;
   onToggle: () => void;
   onToggleInProgress: () => void;
   onOpenPicker: (t: PopoverTrigger) => void;
+  onOpenFreePicker: () => void;
 }
 
 function ElectivePlaceholderRow({
   course,
   checked,
   inProgressMatch,
+  freeSelection,
   onToggle,
   onToggleInProgress,
   onOpenPicker,
+  onOpenFreePicker,
 }: ElectiveRowProps) {
   const rowRef = useRef<HTMLDivElement>(null);
+  const free = isFreeElective(course);
 
   return (
     <div
@@ -559,23 +542,35 @@ function ElectivePlaceholderRow({
           {inProgressMatch && !checked && (
             <span className="rounded bg-amber-50 px-1.5 py-0.5 text-[10px] font-bold text-amber-700">IP</span>
           )}
+          {freeSelection?.status === "planned" && (
+            <span className="rounded bg-blue-100 px-1.5 py-0.5 text-[10px] font-bold text-blue-800">Planned</span>
+          )}
           <span className="rounded bg-gray-100 px-1.5 py-0.5 text-[10px] font-semibold uppercase text-gray-500">
             {CATEGORY_LABELS[course.category] ?? course.category}
           </span>
         </span>
         <span className="mt-0.5 block text-xs leading-snug text-gray-500">{course.title}</span>
+        {freeSelection && (
+          <span className="mt-1 block text-[11px] text-blue-700">
+            Selected: {freeSelection.course_number} — {freeSelection.title} ({freeSelection.units}u)
+          </span>
+        )}
       </span>
-      {course.elective_key && (
+      {(course.elective_key || free) && (
         <button
           onClick={(e) => {
             e.stopPropagation();
+            if (free) {
+              onOpenFreePicker();
+              return;
+            }
             const rect = rowRef.current?.getBoundingClientRect();
             if (rect) onOpenPicker({ type: "picker", course, rect });
           }}
           className="mt-0.5 shrink-0 rounded border border-gray-200 px-1.5 py-0.5 text-[10px] text-gray-400 transition-colors hover:border-blue-300 hover:text-blue-600"
-          title="Browse courses for this elective"
+          title={free ? "Search catalog courses for this free elective" : "Browse courses for this elective"}
         >
-          ▶
+          {ROW_ACTION_ARROW}
         </button>
       )}
     </div>
@@ -591,12 +586,15 @@ export default function ManualCourseChecklist({
   inProgress,
   geAreaMap,
   plannedGECourses,
+  plannedFreeElectiveCourses,
   onToggleCourse,
   onToggleCourseInProgress,
   onToggleGEArea,
   onToggleGEAreaInProgress,
   onTogglePickedCourse,
   onTogglePickedCourseInProgress,
+  onToggleFreeElectiveStatus,
+  onOpenFreeElectivePicker,
   onImportCSV,
   onClose,
 }: Props) {
@@ -631,7 +629,7 @@ export default function ManualCourseChecklist({
   );
 
   const electivePlaceholders = useMemo(
-    () => courses.filter((c) => c.is_placeholder && c.category !== "ge" && c.category !== "concentration"),
+    () => courses.filter((c) => c.is_placeholder && c.category !== "ge" && (c.category !== "concentration" || isFreeElective(c))),
     [courses],
   );
 
@@ -670,10 +668,14 @@ export default function ManualCourseChecklist({
     const q = query.trim();
     return electivePlaceholders.filter((c) => {
       if (category !== "all" && c.category !== category) return false;
-      if (q && !matchesCourse(c, q)) return false;
+      if (q && !matchesCourse(c, q)) {
+        const freeSelection = plannedFreeElectiveCourses[c.id];
+        const selectedHaystack = `${freeSelection?.course_number ?? ""} ${freeSelection?.title ?? ""}`;
+        if (!selectedHaystack.toLowerCase().includes(q.toLowerCase())) return false;
+      }
       return true;
     });
-  }, [electivePlaceholders, category, query]);
+  }, [electivePlaceholders, category, query, plannedFreeElectiveCourses]);
 
   const checklistRows = useMemo<ChecklistRow[]>(() => {
     return [
@@ -687,12 +689,16 @@ export default function ManualCourseChecklist({
     useMemo(() => ({
       completedCount:     selectableCourses.filter((c) => courseIsCompleted(c, completedSet)).length,
       geCompletedCount:   gePlaceholders.filter((c) => geAreaIsKnown(c, geAreaMap, completedSet)).length,
-      elecCompletedCount: electivePlaceholders.filter((c) => courseIsCompleted(c, completedSet)).length,
+      elecCompletedCount: electivePlaceholders.filter((c) => (
+        plannedFreeElectiveCourses[c.id]?.status === "completed" || courseIsCompleted(c, completedSet)
+      )).length,
       inProgressCount:    selectableCourses.filter((c) => !courseIsCompleted(c, completedSet) && courseIsInProgress(c, inProgressSet)).length,
       geInProgressCount:  gePlaceholders.filter((c) => !geAreaIsKnown(c, geAreaMap, completedSet) && geAreaIsKnown(c, geAreaMap, inProgressSet)).length,
-      elecInProgressCount: electivePlaceholders.filter((c) => !courseIsCompleted(c, completedSet) && courseIsInProgress(c, inProgressSet)).length,
+      elecInProgressCount: electivePlaceholders.filter((c) => (
+        plannedFreeElectiveCourses[c.id]?.status === "in_progress" || (!courseIsCompleted(c, completedSet) && courseIsInProgress(c, inProgressSet))
+      )).length,
       totalTracked:       selectableCourses.length + gePlaceholders.length + electivePlaceholders.length,
-    }), [selectableCourses, gePlaceholders, electivePlaceholders, completedSet, inProgressSet, geAreaMap]);
+    }), [selectableCourses, gePlaceholders, electivePlaceholders, completedSet, inProgressSet, geAreaMap, plannedFreeElectiveCourses]);
 
   if (!open) return null;
 
@@ -810,15 +816,19 @@ export default function ManualCourseChecklist({
               }
 
               if (type === "elective") {
+                const freeSelection = plannedFreeElectiveCourses[course.id];
+                const free = isFreeElective(course);
                 return (
                   <ElectivePlaceholderRow
                     key={course.id}
                     course={course}
-                    checked={courseIsCompleted(course, completedSet)}
-                    inProgressMatch={courseIsInProgress(course, inProgressSet)}
-                    onToggle={() => onToggleGEArea(course)}
-                    onToggleInProgress={() => onToggleGEAreaInProgress(course)}
+                    checked={free ? freeSelection?.status === "completed" : courseIsCompleted(course, completedSet)}
+                    inProgressMatch={free ? freeSelection?.status === "in_progress" : courseIsInProgress(course, inProgressSet)}
+                    freeSelection={freeSelection}
+                    onToggle={() => free ? onToggleFreeElectiveStatus(course, freeSelection?.status === "completed" ? "planned" : "completed") : onToggleGEArea(course)}
+                    onToggleInProgress={() => free ? onToggleFreeElectiveStatus(course, freeSelection?.status === "in_progress" ? "planned" : "in_progress") : onToggleGEAreaInProgress(course)}
                     onOpenPicker={setPopover}
+                    onOpenFreePicker={() => onOpenFreeElectivePicker(course)}
                   />
                 );
               }

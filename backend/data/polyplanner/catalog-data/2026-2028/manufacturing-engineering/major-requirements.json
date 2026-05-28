@@ -1,0 +1,152 @@
+[
+  {
+    "id": 2702,
+    "name": "Introduction to Industrial and Manufacturing Engineering",
+    "courseToMeet": "IME1101"
+  },
+  {
+    "id": 2703,
+    "name": "Technical Graphics Communication for Design and Manufacturing",
+    "courseToMeet": "IME1140"
+  },
+  {
+    "id": 2704,
+    "name": "Introduction to Metal Casting and Prototyping",
+    "courseToMeet": "IME1141"
+  },
+  {
+    "id": 2705,
+    "name": "Materials Joining",
+    "courseToMeet": "IME1142"
+  },
+  {
+    "id": 2706,
+    "name": "Introduction to Design and Manufacturing",
+    "courseToMeet": "IME1143"
+  },
+  {
+    "id": 2707,
+    "name": "Introduction to Modern Electronics Manufacturing",
+    "courseToMeet": "IME1156"
+  },
+  {
+    "id": 2708,
+    "name": "Process Improvement Fundamentals",
+    "courseToMeet": "IME1223"
+  },
+  {
+    "id": 2709,
+    "name": "Intermediate Design and Manufacturing",
+    "courseToMeet": "IME2243"
+  },
+  {
+    "id": 2710,
+    "name": "Financial Decision Making for Engineers",
+    "courseToMeet": "IME2315"
+  },
+  {
+    "id": 2711,
+    "name": "Test Design and Analysis in Manufacturing Engineering",
+    "courseToMeet": "IME3327"
+  },
+  {
+    "id": 2712,
+    "name": "Fundamentals of Manufacturing Engineering",
+    "courseToMeet": "IME3330"
+  },
+  {
+    "id": 2713,
+    "name": "Manufacturing and Process Automation",
+    "courseToMeet": "IME3356"
+  },
+  {
+    "id": 2714,
+    "name": "Product and Process Development",
+    "courseToMeet": "IME4418"
+  },
+  {
+    "id": 2715,
+    "name": "Computer-Aided Manufacturing and Process Analysis",
+    "courseToMeet": "IME4450"
+  },
+  {
+    "id": 2716,
+    "name": "Senior Project - Design I",
+    "courseToMeet": "IME4461"
+  },
+  {
+    "id": 2717,
+    "name": "Senior Project - Design II",
+    "courseToMeet": "IME4462"
+  },
+  {
+    "id": 2718,
+    "name": "Programming for Scientists and Engineers",
+    "courseToMeet": "CSC1032"
+  },
+  {
+    "id": 2719,
+    "name": "Fundamentals of Chemical Structure and Properties",
+    "courseToMeet": "CHEM1120"
+  },
+  {
+    "id": 2720,
+    "name": "Circuits & Electronics for Non-Majors with Lab",
+    "courseToMeet": "EE2115 and EE2115L"
+  },
+  {
+    "id": 2721,
+    "name": "Introduction to Mechanics",
+    "courseToMeet": "ENGR2211"
+  },
+  {
+    "id": 2722,
+    "name": "Introduction to Engineering Dynamics",
+    "courseToMeet": "ENGR2212"
+  },
+  {
+    "id": 2723,
+    "name": "Principles of Materials Engineering for Majors",
+    "courseToMeet": "MATE1210"
+  },
+  {
+    "id": 2724,
+    "name": "Materials Laboratory I",
+    "courseToMeet": "MATE1215"
+  },
+  {
+    "id": 2725,
+    "name": "Linear Algebra (or Linear Analysis)",
+    "courseToMeet": "MATH1151 or MATH2341"
+  },
+  {
+    "id": 2726,
+    "name": "Calculus I",
+    "courseToMeet": "MATH1261"
+  },
+  {
+    "id": 2727,
+    "name": "Calculus II",
+    "courseToMeet": "MATH1262"
+  },
+  {
+    "id": 2728,
+    "name": "Calculus III",
+    "courseToMeet": "MATH2263"
+  },
+  {
+    "id": 2729,
+    "name": "General Physics I",
+    "courseToMeet": "PHYS1141"
+  },
+  {
+    "id": 2730,
+    "name": "General Physics II",
+    "courseToMeet": "PHYS1143"
+  },
+  {
+    "id": 2731,
+    "name": "Engineering Statistics (Upper-Division)",
+    "courseToMeet": "STAT3210"
+  }
+]

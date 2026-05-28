@@ -1,0 +1,292 @@
+[
+  {
+    "id": 2069,
+    "sourceCourse": "BMED101",
+    "equivalentTo": "BMED1101"
+  },
+  {
+    "id": 2070,
+    "sourceCourse": "BMED102",
+    "equivalentTo": "BMED3102"
+  },
+  {
+    "id": 2071,
+    "sourceCourse": "BMED212",
+    "equivalentTo": "BMED2212"
+  },
+  {
+    "id": 2072,
+    "sourceCourse": "BMED310",
+    "equivalentTo": "BMED2310 and BMED2311"
+  },
+  {
+    "id": 2073,
+    "sourceCourse": "EE201 and CSC231",
+    "equivalentTo": "BMED2310 and BMED2311"
+  },
+  {
+    "id": 2074,
+    "sourceCourse": "BMED410",
+    "equivalentTo": "BMED3410"
+  },
+  {
+    "id": 2075,
+    "sourceCourse": "BMED420",
+    "equivalentTo": "BMED2420"
+  },
+  {
+    "id": 2076,
+    "sourceCourse": "BMED425",
+    "equivalentTo": "BMED3425"
+  },
+  {
+    "id": 2077,
+    "sourceCourse": "BMED430",
+    "equivalentTo": "BMED3430"
+  },
+  {
+    "id": 2078,
+    "sourceCourse": "BMED440",
+    "equivalentTo": "BMED4440"
+  },
+  {
+    "id": 2079,
+    "sourceCourse": "BMED455 and BMED456",
+    "equivalentTo": "BMED4465 and BMED4466"
+  },
+  {
+    "id": 2080,
+    "sourceCourse": "BMED460",
+    "equivalentTo": "BMED4460"
+  },
+  {
+    "id": 2081,
+    "sourceCourse": "BIO161",
+    "equivalentTo": "BIO1151"
+  },
+  {
+    "id": 2082,
+    "sourceCourse": "BIO231 or BIO232",
+    "equivalentTo": "BIO2231 or BIO2232"
+  },
+  {
+    "id": 2083,
+    "sourceCourse": "ME211 and CE204",
+    "equivalentTo": "ENGR2211"
+  },
+  {
+    "id": 2084,
+    "sourceCourse": "CHEM124",
+    "equivalentTo": "CHEM1120"
+  },
+  {
+    "id": 2085,
+    "sourceCourse": "CHEM125",
+    "equivalentTo": "CHEM1122"
+  },
+  {
+    "id": 2086,
+    "sourceCourse": "MATH141 and MATH142 and MATH143",
+    "equivalentTo": "MATH1261 and MATH1262"
+  },
+  {
+    "id": 2087,
+    "sourceCourse": "MATH141 and MATH142 and MATH1262",
+    "equivalentTo": "MATH1261 and MATH1262"
+  },
+  {
+    "id": 2088,
+    "sourceCourse": "MATH141 and MATH141B and MATH1262",
+    "equivalentTo": "MATH1261 and MATH1262"
+  },
+  {
+    "id": 2089,
+    "sourceCourse": "MATH241",
+    "equivalentTo": "MATH2263"
+  },
+  {
+    "id": 2090,
+    "sourceCourse": "MATH244",
+    "equivalentTo": "MATH2341"
+  },
+  {
+    "id": 2091,
+    "sourceCourse": "ME212",
+    "equivalentTo": "ENGR2212"
+  },
+  {
+    "id": 2092,
+    "sourceCourse": "ME341",
+    "equivalentTo": "ME3341"
+  },
+  {
+    "id": 2093,
+    "sourceCourse": "PHYS141 and PHYS142 and PHYS143",
+    "equivalentTo": "PHYS1141 and PHYS1143"
+  },
+  {
+    "id": 2094,
+    "sourceCourse": "PHYS141 and PHYS142 and PHYS143C",
+    "equivalentTo": "PHYS1141 and PHYS1143"
+  },
+  {
+    "id": 2095,
+    "sourceCourse": "PHYS141 and PHYS143 and PHYS142C",
+    "equivalentTo": "PHYS1141 and PHYS1143"
+  },
+  {
+    "id": 2096,
+    "sourceCourse": "PHYS141 and PHYS142C and PHYS1143",
+    "equivalentTo": "PHYS1141 and PHYS1143"
+  },
+  {
+    "id": 2097,
+    "sourceCourse": "STAT312",
+    "equivalentTo": "STAT3210"
+  },
+  {
+    "id": 2948,
+    "sourceCourse": "BIO1151",
+    "equivalentTo": "BIO161"
+  },
+  {
+    "id": 2949,
+    "sourceCourse": "BIO2231 or BIO2232",
+    "equivalentTo": "BIO231 or BIO232"
+  },
+  {
+    "id": 2950,
+    "sourceCourse": "BMED1101",
+    "equivalentTo": "BMED101"
+  },
+  {
+    "id": 2951,
+    "sourceCourse": "BMED2212",
+    "equivalentTo": "BMED212"
+  },
+  {
+    "id": 2952,
+    "sourceCourse": "BMED2310 and BMED2311",
+    "equivalentTo": "BMED310"
+  },
+  {
+    "id": 2953,
+    "sourceCourse": "BMED2310 and BMED2311",
+    "equivalentTo": "EE201 and CSC231"
+  },
+  {
+    "id": 2954,
+    "sourceCourse": "BMED2420",
+    "equivalentTo": "BMED420"
+  },
+  {
+    "id": 2955,
+    "sourceCourse": "BMED3102",
+    "equivalentTo": "BMED102"
+  },
+  {
+    "id": 2956,
+    "sourceCourse": "BMED3410",
+    "equivalentTo": "BMED410"
+  },
+  {
+    "id": 2957,
+    "sourceCourse": "BMED3425",
+    "equivalentTo": "BMED425"
+  },
+  {
+    "id": 2958,
+    "sourceCourse": "BMED3430",
+    "equivalentTo": "BMED430"
+  },
+  {
+    "id": 2959,
+    "sourceCourse": "BMED4440",
+    "equivalentTo": "BMED440"
+  },
+  {
+    "id": 2960,
+    "sourceCourse": "BMED4460",
+    "equivalentTo": "BMED460"
+  },
+  {
+    "id": 2961,
+    "sourceCourse": "BMED4465 and BMED4466",
+    "equivalentTo": "BMED455 and BMED456"
+  },
+  {
+    "id": 2962,
+    "sourceCourse": "CHEM1120",
+    "equivalentTo": "CHEM124"
+  },
+  {
+    "id": 2963,
+    "sourceCourse": "CHEM1122",
+    "equivalentTo": "CHEM125"
+  },
+  {
+    "id": 2964,
+    "sourceCourse": "ENGR2211",
+    "equivalentTo": "ME211 and CE204"
+  },
+  {
+    "id": 2965,
+    "sourceCourse": "ENGR2212",
+    "equivalentTo": "ME212"
+  },
+  {
+    "id": 2966,
+    "sourceCourse": "MATH1261 and MATH1262",
+    "equivalentTo": "MATH141 and MATH142 and MATH143"
+  },
+  {
+    "id": 2967,
+    "sourceCourse": "MATH1261 and MATH1262",
+    "equivalentTo": "MATH141 and MATH142 and MATH1262"
+  },
+  {
+    "id": 2968,
+    "sourceCourse": "MATH1261 and MATH1262",
+    "equivalentTo": "MATH141 and MATH141B and MATH1262"
+  },
+  {
+    "id": 2969,
+    "sourceCourse": "MATH2263",
+    "equivalentTo": "MATH241"
+  },
+  {
+    "id": 2970,
+    "sourceCourse": "MATH2341",
+    "equivalentTo": "MATH244"
+  },
+  {
+    "id": 2971,
+    "sourceCourse": "ME3341",
+    "equivalentTo": "ME341"
+  },
+  {
+    "id": 2972,
+    "sourceCourse": "PHYS1141 and PHYS1143",
+    "equivalentTo": "PHYS141 and PHYS142 and PHYS143"
+  },
+  {
+    "id": 2973,
+    "sourceCourse": "PHYS1141 and PHYS1143",
+    "equivalentTo": "PHYS141 and PHYS142 and PHYS143C"
+  },
+  {
+    "id": 2974,
+    "sourceCourse": "PHYS1141 and PHYS1143",
+    "equivalentTo": "PHYS141 and PHYS143 and PHYS142C"
+  },
+  {
+    "id": 2975,
+    "sourceCourse": "PHYS1141 and PHYS1143",
+    "equivalentTo": "PHYS141 and PHYS142C and PHYS1143"
+  },
+  {
+    "id": 2976,
+    "sourceCourse": "STAT3210",
+    "equivalentTo": "STAT312"
+  }
+]

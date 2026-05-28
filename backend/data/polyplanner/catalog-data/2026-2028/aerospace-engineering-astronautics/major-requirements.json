@@ -1,0 +1,147 @@
+[
+  {
+    "id": 2758,
+    "name": "Aerospace Fundamentals",
+    "courseToMeet": "AERO1121"
+  },
+  {
+    "id": 2759,
+    "name": "Aerospace Engineering Dynamics",
+    "courseToMeet": "AERO2220"
+  },
+  {
+    "id": 2783,
+    "name": "Spacecraft Attitude Dynamics and Control",
+    "courseToMeet": "AERO4421"
+  },
+  {
+    "id": 2760,
+    "name": "Engineering Numerical Analysis",
+    "courseToMeet": "AERO3300"
+  },
+  {
+    "id": 2761,
+    "name": "Thermo Fluid Dynamics",
+    "courseToMeet": "AERO3301"
+  },
+  {
+    "id": 2762,
+    "name": "Thermo Fluids Laboratory",
+    "courseToMeet": "AERO3302"
+  },
+  {
+    "id": 2763,
+    "name": "Heat and Mass Transfer",
+    "courseToMeet": "AERO3303"
+  },
+  {
+    "id": 2764,
+    "name": "Aerospace Propulsion Systems",
+    "courseToMeet": "AERO3304"
+  },
+  {
+    "id": 2765,
+    "name": "System Dynamics",
+    "courseToMeet": "AERO3320"
+  },
+  {
+    "id": 2766,
+    "name": "Aerospace Structural Analysis I",
+    "courseToMeet": "AERO3331"
+  },
+  {
+    "id": 2767,
+    "name": "Aerospace Engineering Professional Preparation",
+    "courseToMeet": "AERO3460"
+  },
+  {
+    "id": 2768,
+    "name": "Propulsion Laboratory",
+    "courseToMeet": "AERO4403"
+  },
+  {
+    "id": 2769,
+    "name": "Aerospace Structural Analysis II",
+    "courseToMeet": "AERO4431"
+  },
+  {
+    "id": 2770,
+    "name": "Experimental Stress Analysis",
+    "courseToMeet": "AERO4433"
+  },
+  {
+    "id": 2784,
+    "name": "Spacecraft Electrical and Electric Systems",
+    "courseToMeet": "AERO4446"
+  },
+  {
+    "id": 2771,
+    "name": "Fundamentals of Chemical Structure and Properties",
+    "courseToMeet": "CHEM1120"
+  },
+  {
+    "id": 2772,
+    "name": "Introduction to Mechanics",
+    "courseToMeet": "ENGR2211"
+  },
+  {
+    "id": 2773,
+    "name": "Introduction to Design and Manufacturing and Technical Graphics Communication for Design and Manufacturing",
+    "courseToMeet": "IME1143 and IME1140"
+  },
+  {
+    "id": 2774,
+    "name": "Principles of Materials Engineering for Non-Majors",
+    "courseToMeet": "MATE1220"
+  },
+  {
+    "id": 2785,
+    "name": "Space Environments and Space Environments Laboratory",
+    "courseToMeet": "AERO4455 and AERO4456"
+  },
+  {
+    "id": 2786,
+    "name": "Spacecraft Design Senior Project I and Spacecraft Design Senior Project II",
+    "courseToMeet": "AERO 4463 and AERO 4464"
+  },
+  {
+    "id": 2775,
+    "name": "Calculus I",
+    "courseToMeet": "MATH1261"
+  },
+  {
+    "id": 2776,
+    "name": "Calculus II",
+    "courseToMeet": "MATH1262"
+  },
+  {
+    "id": 2778,
+    "name": "Linear Analysis",
+    "courseToMeet": "MATH2341"
+  },
+  {
+    "id": 2777,
+    "name": "Calculus III",
+    "courseToMeet": "MATH2263"
+  },
+  {
+    "id": 2779,
+    "name": "General Physics I",
+    "courseToMeet": "PHYS1141"
+  },
+  {
+    "id": 2780,
+    "name": "General Physics II",
+    "courseToMeet": "PHYS1143"
+  },
+  {
+    "id": 2781,
+    "name": "Introduction to Orbital Mechanics",
+    "courseToMeet": "AERO3351"
+  },
+  {
+    "id": 2782,
+    "name": "Spaceflight Propulsion",
+    "courseToMeet": "AERO4402"
+  }
+]

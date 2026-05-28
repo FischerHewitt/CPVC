@@ -1,6 +1,8 @@
 from fastapi.testclient import TestClient
 
 import routers.electives as electives_router
+import services.elective_catalog as elective_catalog
+from data.flowcharts import FLOWCHARTS
 from main import app
 
 
@@ -30,8 +32,7 @@ def test_static_elective_endpoint_returns_agb_agricultural_options():
         "ASCI 2239",
         "DSCI 2229",
         "FSN 2245",
-        "PLSC 1120",
-        "PLSC 1120L",
+        "PLSC 1120/1120L",
         "SS 1120",
     ]
 
@@ -188,16 +189,8 @@ def test_auto_placeholder_endpoint_returns_direct_course_options(monkeypatch):
     assert [course["course_number"] for course in data["courses"]][:2] == ["DSCI 2229", "FSN 2245"]
 
 
-def test_auto_placeholder_endpoint_returns_dynamic_courses_for_broad_bucket(monkeypatch):
-    monkeypatch.setattr(
-        electives_router,
-        "get_dept_courses",
-        lambda dept: {
-            f"{dept.upper()} 2999": {"title": "Lower Course", "units": "3"},
-            f"{dept.upper()} 3301": {"title": "Upper Course", "units": "4"},
-        },
-    )
-
+def test_auto_placeholder_endpoint_returns_empty_for_unregistered_placeholder():
+    """Unregistered placeholders with no direct course numbers return empty courses."""
     response = client.get(
         "/api/electives/auto/placeholder",
         params={
@@ -209,7 +202,8 @@ def test_auto_placeholder_endpoint_returns_dynamic_courses_for_broad_bucket(monk
 
     assert response.status_code == 200
     data = response.json()
-    assert data["courses"] == [{"course_number": "POLS 3301", "title": "Upper Course", "units": 4}]
+    assert data["courses"] == []
+    assert "No elective options configured" in data["description"]
 
 
 def test_elective_endpoint_returns_agb_dynamic_ranges(monkeypatch):
@@ -525,6 +519,83 @@ def test_elective_endpoint_returns_mate_options():
     assert r3.status_code == 200
     assert len(r3.json()["courses"]) > 0
     assert all(c["course_number"].startswith("MATE ") for c in r3.json()["courses"])
+
+
+def test_computer_science_electives_use_catalog_approved_lists():
+    tech = client.get("/api/electives/cs_tech_elective")
+    assert tech.status_code == 200
+    tech_numbers = [c["course_number"] for c in tech.json()["courses"]]
+    assert "CSC 3203" in tech_numbers
+    assert "CPE 4220" in tech_numbers
+    assert "DATA 3301" in tech_numbers
+    assert "CSC 3200" not in tech_numbers
+
+    external = client.get("/api/electives/cs_external_elective")
+    assert external.status_code == 200
+    external_numbers = [c["course_number"] for c in external.json()["courses"]]
+    assert "BIO 1113" in external_numbers
+    assert "MATH 2263" in external_numbers
+    assert "CSC 3203" not in external_numbers
+
+
+def test_computer_science_concentration_electives_are_exact_lists():
+    graphics = client.get("/api/electives/cs_graphics_required_elective")
+    assert graphics.status_code == 200
+    graphics_numbers = [c["course_number"] for c in graphics.json()["courses"]]
+    assert graphics_numbers == [
+        "CSC 4471",
+        "CSC 4472",
+        "CSC 4730",
+        "CSC 4740",
+        "CSC 4760",
+        "CSC 4770",
+    ]
+
+    privacy = client.get("/api/electives/cs_privacy_security_elective")
+    assert privacy.status_code == 200
+    privacy_numbers = [c["course_number"] for c in privacy.json()["courses"]]
+    assert "CSC 4210" in privacy_numbers
+    assert "CPE 4280" in privacy_numbers
+    assert "CSC 3710" not in privacy_numbers
+
+
+def test_computer_science_electives_are_not_dynamic_scrapers():
+    assert not [key for key in elective_catalog.get_dynamic_configs() if key.startswith("cs_")]
+
+
+def test_computer_science_flowchart_elective_slots_are_populated():
+    for flowchart_key in ["CS", "CS_AIML", "CS_DATA_ENG", "CS_GAME_DEV", "CS_GRAPHICS", "CS_PRIVACY"]:
+        for course in FLOWCHARTS[flowchart_key]["courses"]:
+            key = course.get("elective_key")
+            if not key:
+                continue
+            response = client.get(f"/api/electives/{key}")
+            assert response.status_code == 200, (flowchart_key, course["id"], key)
+            assert response.json()["courses"], (flowchart_key, course["id"], key)
+
+
+def test_computer_science_concentration_auto_fallbacks_are_populated():
+    for course_id, expected in [
+        ("AIML_CONC1", "cs_aiml_conc_elective"),
+        ("DE_CONC1", "cs_data_eng_elective"),
+        ("GAME_CS_ELEC1", "cs_game_elective"),
+        ("GRAPH_CONC1", "cs_graphics_conc_elective"),
+        ("GRAPH_ELEC1", "cs_graphics_required_elective"),
+        ("PRIV_CONC1", "cs_privacy_security_elective"),
+    ]:
+        response = client.get(
+            "/api/electives/auto/placeholder",
+            params={
+                "course_id": course_id,
+                "course_number": "Conc.",
+                "title": "Concentration Elective",
+                "quarter_equivalents": "",
+            },
+        )
+        assert response.status_code == 200
+        body = response.json()
+        assert body["courses"], course_id
+        assert body["title"] == client.get(f"/api/electives/{expected}").json()["title"]
 
 
 def test_elective_endpoint_returns_math_options():
@@ -1392,7 +1463,6 @@ def test_elective_endpoint_returns_phil_options():
 
 def test_elective_endpoint_returns_nut_options():
     for key, expected in [
-        ("nut_mcro_choice",    "MCRO 2221"),
         ("nut_senior_project", "NUTR 4461"),
     ]:
         r = client.get(f"/api/electives/{key}")
@@ -1444,6 +1514,14 @@ def test_elective_endpoint_returns_span_options():
     assert r.status_code == 200
     nums = [c["course_number"] for c in r.json()["courses"]]
     assert any(n.startswith("SPAN ") for n in nums), "No SPAN course in span_lang_cult_elective"
+
+
+def test_span_2202_2206_picker_uses_course_specific_units():
+    r = client.get("/api/electives/span_2202_2206")
+    assert r.status_code == 200
+    units = {c["course_number"]: c["units"] for c in r.json()["courses"]}
+    assert units["SPAN 2202"] == 4
+    assert units["SPAN 2206"] == 3
 
 
 def test_elective_endpoint_returns_thea_options():

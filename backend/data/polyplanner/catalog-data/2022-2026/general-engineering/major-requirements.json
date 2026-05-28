@@ -1,0 +1,127 @@
+[
+  {
+    "id": 2452,
+    "name": "Mechanics of Materials I",
+    "courseToMeet": "CE204"
+  },
+  {
+    "id": 2453,
+    "name": "Fundamentals of Computer Science",
+    "courseToMeet": "CSC101 or CPE101"
+  },
+  {
+    "id": 2454,
+    "name": "Electric Circuit Theory and Laboratory",
+    "courseToMeet": "EE201 and EE251"
+  },
+  {
+    "id": 2455,
+    "name": "Introduction to Engineering",
+    "courseToMeet": "ENGR110"
+  },
+  {
+    "id": 2456,
+    "name": "Introduction to Design and Manufacturing",
+    "courseToMeet": "IME144"
+  },
+  {
+    "id": 2457,
+    "name": "Engineering Economics or Financial Decision Making for Engineers",
+    "courseToMeet": "IME314 or IME315"
+  },
+  {
+    "id": 2458,
+    "name": "Materials Engineering and Materials Laboratory I",
+    "courseToMeet": "MATE210 and MATE215"
+  },
+  {
+    "id": 2459,
+    "name": "Engineering Statics",
+    "courseToMeet": "ME211"
+  },
+  {
+    "id": 2460,
+    "name": "Engineering Dynamics",
+    "courseToMeet": "ME212"
+  },
+  {
+    "id": 2461,
+    "name": "Thermodynamics I",
+    "courseToMeet": "ME302"
+  },
+  {
+    "id": 2462,
+    "name": "Fluid Mechanics I",
+    "courseToMeet": "ME341"
+  },
+  {
+    "id": 2463,
+    "name": "Heat Transfer",
+    "courseToMeet": "ME343"
+  },
+  {
+    "id": 2464,
+    "name": "Senior Design Sequence or Discipline-Specific Senior Project",
+    "courseToMeet": "ENGR459 and ENGR460 and ENGR461"
+  },
+  {
+    "id": 2465,
+    "name": "General Chemistry Sequence (B1 and B3 option)",
+    "courseToMeet": "CHEM124 and CHEM125"
+  },
+  {
+    "id": 2466,
+    "name": "General Chemistry for Agriculture and Life Science Sequence",
+    "courseToMeet": "CHEM127 and CHEM128"
+  },
+  {
+    "id": 2467,
+    "name": "Gender, Race, Culture, Science and Technology or Equivalent",
+    "courseToMeet": "ES350 or ES351"
+  },
+  {
+    "id": 2468,
+    "name": "Calculus I",
+    "courseToMeet": "MATH141"
+  },
+  {
+    "id": 2469,
+    "name": "Calculus II",
+    "courseToMeet": "MATH142"
+  },
+  {
+    "id": 2470,
+    "name": "Calculus III",
+    "courseToMeet": "MATH143"
+  },
+  {
+    "id": 2471,
+    "name": "Calculus IV",
+    "courseToMeet": "MATH241"
+  },
+  {
+    "id": 2472,
+    "name": "Linear Analysis I",
+    "courseToMeet": "MATH244"
+  },
+  {
+    "id": 2473,
+    "name": "Upper-Division Mathematics or Statistics",
+    "courseToMeet": "MATH344 or STAT312 or STAT350"
+  },
+  {
+    "id": 2474,
+    "name": "General Physics I",
+    "courseToMeet": "PHYS141"
+  },
+  {
+    "id": 2475,
+    "name": "General Physics II",
+    "courseToMeet": "PHYS142"
+  },
+  {
+    "id": 2476,
+    "name": "General Physics III",
+    "courseToMeet": "PHYS143"
+  }
+]

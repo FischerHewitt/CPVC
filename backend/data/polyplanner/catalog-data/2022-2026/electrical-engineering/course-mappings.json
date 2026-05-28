@@ -1,0 +1,112 @@
+[
+  {
+    "id": 2204,
+    "sourceCourse": "EE1111",
+    "equivalentTo": "EE111"
+  },
+  {
+    "id": 2205,
+    "sourceCourse": "EE1111L",
+    "equivalentTo": "EE151"
+  },
+  {
+    "id": 2206,
+    "sourceCourse": "CPE2300 and CPE2301",
+    "equivalentTo": "CPE133 and CPE233"
+  },
+  {
+    "id": 2207,
+    "sourceCourse": "EE2211",
+    "equivalentTo": "EE113 and EE211"
+  },
+  {
+    "id": 2208,
+    "sourceCourse": "EE2241",
+    "equivalentTo": "EE143 and EE241"
+  },
+  {
+    "id": 2209,
+    "sourceCourse": "EE2212",
+    "equivalentTo": "EE212 and EE242"
+  },
+  {
+    "id": 2210,
+    "sourceCourse": "EE2328",
+    "equivalentTo": "EE228 and EE328 and EE368"
+  },
+  {
+    "id": 2211,
+    "sourceCourse": "EE3302 and EE3302L",
+    "equivalentTo": "EE302 and EE342"
+  },
+  {
+    "id": 2212,
+    "sourceCourse": "EE3255 and EE3255L",
+    "equivalentTo": "EE255 and EE295"
+  },
+  {
+    "id": 2213,
+    "sourceCourse": "EE3306 and EE3306L and EE3308 and EE3308L",
+    "equivalentTo": "EE306 and EE346 and EE307 and EE347 and EE308 and EE348"
+  },
+  {
+    "id": 2214,
+    "sourceCourse": "EE4314 and EE4314L",
+    "equivalentTo": "EE314"
+  },
+  {
+    "id": 2215,
+    "sourceCourse": "EE3329",
+    "equivalentTo": "CPE329 or EE336"
+  },
+  {
+    "id": 2216,
+    "sourceCourse": "EE3335 and EE3335L",
+    "equivalentTo": "EE335 and EE375"
+  },
+  {
+    "id": 2217,
+    "sourceCourse": "EE4461 and EE4462",
+    "equivalentTo": "EE460 and EE461 and EE462"
+  },
+  {
+    "id": 2218,
+    "sourceCourse": "EE4463 and EE4464",
+    "equivalentTo": "EE463 and EE464"
+  },
+  {
+    "id": 2219,
+    "sourceCourse": "MATH1261 and MATH1262",
+    "equivalentTo": "MATH141 and MATH142 and MATH143"
+  },
+  {
+    "id": 2220,
+    "sourceCourse": "MATH2263",
+    "equivalentTo": "MATH241"
+  },
+  {
+    "id": 2221,
+    "sourceCourse": "MATH2341",
+    "equivalentTo": "MATH244"
+  },
+  {
+    "id": 2222,
+    "sourceCourse": "PHYS1141",
+    "equivalentTo": "PHYS141"
+  },
+  {
+    "id": 2223,
+    "sourceCourse": "PHYS1143",
+    "equivalentTo": "PHYS143"
+  },
+  {
+    "id": 2224,
+    "sourceCourse": "PHYS1141 and PHYS1143",
+    "equivalentTo": "PHYS141 and PHYS142 and PHYS143"
+  },
+  {
+    "id": 2225,
+    "sourceCourse": "STAT3310",
+    "equivalentTo": "STAT350"
+  }
+]

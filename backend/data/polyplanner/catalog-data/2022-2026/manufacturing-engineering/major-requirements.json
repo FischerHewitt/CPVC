@@ -1,0 +1,207 @@
+[
+  {
+    "id": 1940,
+    "name": "Introduction to Industrial and Manufacturing Engineering",
+    "courseToMeet": "IME101"
+  },
+  {
+    "id": 1941,
+    "name": "Manufacturing Processes: Net Shape",
+    "courseToMeet": "IME141"
+  },
+  {
+    "id": 1942,
+    "name": "Manufacturing Processes: Materials Joining",
+    "courseToMeet": "IME142"
+  },
+  {
+    "id": 1943,
+    "name": "Introduction to Design and Manufacturing",
+    "courseToMeet": "IME144"
+  },
+  {
+    "id": 1944,
+    "name": "Basic Electronics Manufacturing",
+    "courseToMeet": "IME156"
+  },
+  {
+    "id": 1945,
+    "name": "Process Improvement Fundamentals",
+    "courseToMeet": "IME223"
+  },
+  {
+    "id": 1946,
+    "name": "Intermediate Design and Manufacturing",
+    "courseToMeet": "IME244"
+  },
+  {
+    "id": 1947,
+    "name": "Engineering Economics",
+    "courseToMeet": "IME314 or IME315"
+  },
+  {
+    "id": 1948,
+    "name": "Test Design and Analysis in Manufacturing Engineering",
+    "courseToMeet": "IME327"
+  },
+  {
+    "id": 1949,
+    "name": "Fundamentals of Manufacturing Engineering",
+    "courseToMeet": "IME330"
+  },
+  {
+    "id": 1950,
+    "name": "Computer-Aided Manufacturing I",
+    "courseToMeet": "IME335"
+  },
+  {
+    "id": 1951,
+    "name": "Manufacturing Systems Integration",
+    "courseToMeet": "IME342"
+  },
+  {
+    "id": 1952,
+    "name": "Manufacturing Automation",
+    "courseToMeet": "IME356"
+  },
+  {
+    "id": 1953,
+    "name": "Supply Chain and Logistics Management",
+    "courseToMeet": "IME417"
+  },
+  {
+    "id": 1954,
+    "name": "Product-Process Design",
+    "courseToMeet": "IME418"
+  },
+  {
+    "id": 1955,
+    "name": "Quality Engineering",
+    "courseToMeet": "IME430"
+  },
+  {
+    "id": 1956,
+    "name": "Manufacturing Process and Tool Engineering",
+    "courseToMeet": "IME450"
+  },
+  {
+    "id": 1958,
+    "name": "Life Science for Engineers and Bioengineering Fundamentals",
+    "courseToMeet": "BIO213 and BMED213"
+  },
+  {
+    "id": 1959,
+    "name": "Mechanics of Materials I",
+    "courseToMeet": "CE204"
+  },
+  {
+    "id": 1960,
+    "name": "General Chemistry for Physical Science and Engineering I",
+    "courseToMeet": "CHEM124"
+  },
+  {
+    "id": 1961,
+    "name": "General Chemistry for Physical Science and Engineering II",
+    "courseToMeet": "CHEM125"
+  },
+  {
+    "id": 1962,
+    "name": "Computer Programming for Scientists and Engineers",
+    "courseToMeet": "CSC232"
+  },
+  {
+    "id": 1963,
+    "name": "Electric Circuit Theory",
+    "courseToMeet": "EE201"
+  },
+  {
+    "id": 1964,
+    "name": "Electric Circuits Laboratory",
+    "courseToMeet": "EE251"
+  },
+  {
+    "id": 1965,
+    "name": "Electronics",
+    "courseToMeet": "EE321"
+  },
+  {
+    "id": 1966,
+    "name": "Writing Arguments about STEM",
+    "courseToMeet": "ENGL147"
+  },
+  {
+    "id": 1967,
+    "name": "Materials Engineering",
+    "courseToMeet": "MATE210"
+  },
+  {
+    "id": 1968,
+    "name": "Materials Laboratory I",
+    "courseToMeet": "MATE215"
+  },
+  {
+    "id": 1969,
+    "name": "Calculus I",
+    "courseToMeet": "MATH141"
+  },
+  {
+    "id": 1970,
+    "name": "Calculus II",
+    "courseToMeet": "MATH142"
+  },
+  {
+    "id": 1971,
+    "name": "Calculus III",
+    "courseToMeet": "MATH143"
+  },
+  {
+    "id": 1972,
+    "name": "Calculus IV",
+    "courseToMeet": "MATH241"
+  },
+  {
+    "id": 1973,
+    "name": "Linear Analysis I",
+    "courseToMeet": "MATH244"
+  },
+  {
+    "id": 1974,
+    "name": "Engineering Statics",
+    "courseToMeet": "ME211"
+  },
+  {
+    "id": 1975,
+    "name": "Engineering Dynamics",
+    "courseToMeet": "ME212"
+  },
+  {
+    "id": 1976,
+    "name": "Thermodynamics I",
+    "courseToMeet": "ME302"
+  },
+  {
+    "id": 1977,
+    "name": "General Physics I",
+    "courseToMeet": "PHYS141"
+  },
+  {
+    "id": 1978,
+    "name": "General Physics II",
+    "courseToMeet": "PHYS142"
+  },
+  {
+    "id": 1979,
+    "name": "General Physics III",
+    "courseToMeet": "PHYS143"
+  },
+  {
+    "id": 1980,
+    "name": "Probability and Statistics for Engineers and Scientists",
+    "courseToMeet": "STAT321"
+  },
+  {
+    "id": 1957,
+    "name": "Senior Design Project I and Senior Design Project II and Senior Design Project III",
+    "courseToMeet": "(IME481 and IME482 and IME483) or (ENGR459 and ENGR460 and ENGR461) or (ENGR463 and ENGR464 and ENGR465)"
+  }
+]

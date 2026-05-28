@@ -1,0 +1,258 @@
+[
+  {
+    "id": 852,
+    "name": "Approved Technical Electives",
+    "units": 12,
+    "catalogName": "2022-2026",
+    "degreeName": "Environmental Engineering",
+    "linkedTechnicalElectiveAreas": [],
+    "sections": [
+      {
+        "id": 402,
+        "name": "Approved Technical Elective",
+        "requiredCount": null,
+        "minUnits": 0,
+        "maxUnits": 12,
+        "restriction": null,
+        "technicalElectives": [
+          {
+            "id": 5654,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ERSC/GEOG414",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5655,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "PHYS313",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5656,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "PSC/UNIV492",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5657,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BIO363",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5658,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ENGR/ENVE581",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5659,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "MCRO342",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5660,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "LA/NR317",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5661,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "STAT313",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5662,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "STAT323",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5663,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CHEM314",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5664,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CHEM341",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5665,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BRAE448",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5666,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "PHYS310",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5667,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "BRAE532",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5668,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CRP/NR404",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5669,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "CRP/NR408",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5670,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "IME314",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5671,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "IME315",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 853,
+    "name": "Major Electives",
+    "units": 12,
+    "catalogName": "2022-2026",
+    "degreeName": "Environmental Engineering",
+    "linkedTechnicalElectiveAreas": [],
+    "sections": [
+      {
+        "id": 403,
+        "name": "Major Elective",
+        "requiredCount": null,
+        "minUnits": 12,
+        "maxUnits": 12,
+        "restriction": null,
+        "technicalElectives": [
+          {
+            "id": 5672,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ENVE411",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5673,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ENVE436",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5674,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ENVE439",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5675,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ENVE443",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5676,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ENVE455",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          },
+          {
+            "id": 5677,
+            "type": "Exactly",
+            "courseSubject": null,
+            "courseRule": "ENVE480",
+            "minLevel": null,
+            "maxLevel": null,
+            "unitsAllowed": null
+          }
+        ]
+      }
+    ]
+  }
+]

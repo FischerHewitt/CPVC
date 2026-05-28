@@ -1,0 +1,227 @@
+[
+  {
+    "id": 1967,
+    "sourceCourse": "CE111",
+    "equivalentTo": "CE1111"
+  },
+  {
+    "id": 1968,
+    "sourceCourse": "CE113 and BRAE239",
+    "equivalentTo": "CE1112"
+  },
+  {
+    "id": 1969,
+    "sourceCourse": "CE251",
+    "equivalentTo": "CE2251"
+  },
+  {
+    "id": 1970,
+    "sourceCourse": "CE259 and MATE210 and CAP FOR MATE215",
+    "equivalentTo": "CE2259"
+  },
+  {
+    "id": 1971,
+    "sourceCourse": "CAP FOR CE259 and MATE210 and MATE215",
+    "equivalentTo": "CE2259"
+  },
+  {
+    "id": 1972,
+    "sourceCourse": "CE321 and CE322",
+    "equivalentTo": "CE3321"
+  },
+  {
+    "id": 1973,
+    "sourceCourse": "CE222",
+    "equivalentTo": "FREE ELECTIVES"
+  },
+  {
+    "id": 1974,
+    "sourceCourse": "ME341 or ENVE264 and CE336 and CE337",
+    "equivalentTo": "CE3336 and CE3337"
+  },
+  {
+    "id": 1975,
+    "sourceCourse": "CE207 and CE352",
+    "equivalentTo": "CE3352"
+  },
+  {
+    "id": 1976,
+    "sourceCourse": "CE355",
+    "equivalentTo": "CE3355"
+  },
+  {
+    "id": 1977,
+    "sourceCourse": "CE371",
+    "equivalentTo": "CE3375"
+  },
+  {
+    "id": 1978,
+    "sourceCourse": "CE381 and CE382",
+    "equivalentTo": "CE3381"
+  },
+  {
+    "id": 1979,
+    "sourceCourse": "CE465 and CE466",
+    "equivalentTo": "CE4466"
+  },
+  {
+    "id": 1980,
+    "sourceCourse": "CE467",
+    "equivalentTo": "CE4467"
+  },
+  {
+    "id": 1981,
+    "sourceCourse": "CHEM124",
+    "equivalentTo": "CHEM1120"
+  },
+  {
+    "id": 1982,
+    "sourceCourse": "CE204 and ME211",
+    "equivalentTo": "ENGR2211"
+  },
+  {
+    "id": 1983,
+    "sourceCourse": "ME212",
+    "equivalentTo": "ENGR2212"
+  },
+  {
+    "id": 1984,
+    "sourceCourse": "GEOL201",
+    "equivalentTo": "GEOL2240"
+  },
+  {
+    "id": 1985,
+    "sourceCourse": "MATH141 and MATH142 and MATH143",
+    "equivalentTo": "MATH1261 and MATH1262"
+  },
+  {
+    "id": 1986,
+    "sourceCourse": "MATH241",
+    "equivalentTo": "MATH2263"
+  },
+  {
+    "id": 1987,
+    "sourceCourse": "MATH244",
+    "equivalentTo": "MATH2341"
+  },
+  {
+    "id": 1988,
+    "sourceCourse": "PHYS141 and PHYS142 and PHYS143",
+    "equivalentTo": "PHYS1141 and PHYS1143"
+  },
+  {
+    "id": 1989,
+    "sourceCourse": "STAT312",
+    "equivalentTo": "STAT3210"
+  },
+  {
+    "id": 2977,
+    "sourceCourse": "CE1111",
+    "equivalentTo": "CE111"
+  },
+  {
+    "id": 2978,
+    "sourceCourse": "CE1112",
+    "equivalentTo": "CE113 and BRAE239"
+  },
+  {
+    "id": 2979,
+    "sourceCourse": "CE2251",
+    "equivalentTo": "CE251"
+  },
+  {
+    "id": 2980,
+    "sourceCourse": "CE2259",
+    "equivalentTo": "CE259 and MATE210 and CAP FOR MATE215"
+  },
+  {
+    "id": 2981,
+    "sourceCourse": "CE2259",
+    "equivalentTo": "CAP FOR CE259 and MATE210 and MATE215"
+  },
+  {
+    "id": 2982,
+    "sourceCourse": "CE3321",
+    "equivalentTo": "CE321 and CE322"
+  },
+  {
+    "id": 2983,
+    "sourceCourse": "CE3336 and CE3337",
+    "equivalentTo": "ME341 or ENVE264 and CE336 and CE337"
+  },
+  {
+    "id": 2984,
+    "sourceCourse": "CE3352",
+    "equivalentTo": "CE207 and CE352"
+  },
+  {
+    "id": 2985,
+    "sourceCourse": "CE3355",
+    "equivalentTo": "CE355"
+  },
+  {
+    "id": 2986,
+    "sourceCourse": "CE3375",
+    "equivalentTo": "CE371"
+  },
+  {
+    "id": 2987,
+    "sourceCourse": "CE3381",
+    "equivalentTo": "CE381 and CE382"
+  },
+  {
+    "id": 2988,
+    "sourceCourse": "CE4466",
+    "equivalentTo": "CE465 and CE466"
+  },
+  {
+    "id": 2989,
+    "sourceCourse": "CE4467",
+    "equivalentTo": "CE467"
+  },
+  {
+    "id": 2990,
+    "sourceCourse": "CHEM1120",
+    "equivalentTo": "CHEM124"
+  },
+  {
+    "id": 2991,
+    "sourceCourse": "ENGR2211",
+    "equivalentTo": "CE204 and ME211"
+  },
+  {
+    "id": 2992,
+    "sourceCourse": "ENGR2212",
+    "equivalentTo": "ME212"
+  },
+  {
+    "id": 2993,
+    "sourceCourse": "GEOL2240",
+    "equivalentTo": "GEOL201"
+  },
+  {
+    "id": 2994,
+    "sourceCourse": "MATH1261 and MATH1262",
+    "equivalentTo": "MATH141 and MATH142 and MATH143"
+  },
+  {
+    "id": 2995,
+    "sourceCourse": "MATH2263",
+    "equivalentTo": "MATH241"
+  },
+  {
+    "id": 2996,
+    "sourceCourse": "MATH2341",
+    "equivalentTo": "MATH244"
+  },
+  {
+    "id": 2997,
+    "sourceCourse": "PHYS1141 and PHYS1143",
+    "equivalentTo": "PHYS141 and PHYS142 and PHYS143"
+  },
+  {
+    "id": 2998,
+    "sourceCourse": "STAT3210",
+    "equivalentTo": "STAT312"
+  }
+]

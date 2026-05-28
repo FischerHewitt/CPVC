@@ -1,0 +1,137 @@
+[
+  {
+    "id": 2401,
+    "name": "Infrastructure Systems",
+    "courseToMeet": "ENVE3465 or CE3465"
+  },
+  {
+    "id": 2389,
+    "name": "Introduction to Environmental Engineering",
+    "courseToMeet": "ENVE1111"
+  },
+  {
+    "id": 2390,
+    "name": "Spatial Visualization and Drawing",
+    "courseToMeet": "ENVE1112 or CE1112"
+  },
+  {
+    "id": 2391,
+    "name": "Computational Applications in Civil and Environmental Engineering",
+    "courseToMeet": "ENVE2251 or CE2251"
+  },
+  {
+    "id": 2392,
+    "name": "Air Quality Engineering and Measurements",
+    "courseToMeet": "ENVE2325"
+  },
+  {
+    "id": 2393,
+    "name": "Fundamentals of Environmental Engineering",
+    "courseToMeet": "ENVE2331"
+  },
+  {
+    "id": 2394,
+    "name": "Noise Control and Occupational Safety and Health",
+    "courseToMeet": "ENVE3309"
+  },
+  {
+    "id": 2395,
+    "name": "Environmental Fluid Mechanics and Hydraulic Systems",
+    "courseToMeet": "ENVE3336 or CE3336"
+  },
+  {
+    "id": 2396,
+    "name": "Water Resources and Environmental Engineering",
+    "courseToMeet": "ENVE3337 or CE3337"
+  },
+  {
+    "id": 2397,
+    "name": "Sustainable Systems Engineering",
+    "courseToMeet": "ENVE3450"
+  },
+  {
+    "id": 2398,
+    "name": "Chemistry of Environmental Systems",
+    "courseToMeet": "ENVE3434"
+  },
+  {
+    "id": 2399,
+    "name": "Transfer Phenomena and Process Thermodynamics",
+    "courseToMeet": "ENVE3421"
+  },
+  {
+    "id": 2400,
+    "name": "Water and Wastewater Treatment Design",
+    "courseToMeet": "ENVE3438"
+  },
+  {
+    "id": 2402,
+    "name": "Fate, Transport and Control of Environmental Pollutants",
+    "courseToMeet": "ENVE4437"
+  },
+  {
+    "id": 2403,
+    "name": "Solid and Hazardous Waste Management",
+    "courseToMeet": "ENVE4439"
+  },
+  {
+    "id": 2404,
+    "name": "Senior Project Design I",
+    "courseToMeet": "ENVE4466"
+  },
+  {
+    "id": 2405,
+    "name": "Senior Project Design II",
+    "courseToMeet": "ENVE4467"
+  },
+  {
+    "id": 2406,
+    "name": "Fundamentals of Chemical Structure and Properties",
+    "courseToMeet": "CHEM1120"
+  },
+  {
+    "id": 2407,
+    "name": "Fundamentals of Chemical Reactivity",
+    "courseToMeet": "CHEM1122"
+  },
+  {
+    "id": 2408,
+    "name": "Introduction to Mechanics",
+    "courseToMeet": "ENGR2211"
+  },
+  {
+    "id": 2409,
+    "name": "Calculus I",
+    "courseToMeet": "MATH1261"
+  },
+  {
+    "id": 2410,
+    "name": "Calculus II",
+    "courseToMeet": "MATH1262"
+  },
+  {
+    "id": 2411,
+    "name": "Linear Analysis",
+    "courseToMeet": "MATH2341"
+  },
+  {
+    "id": 2412,
+    "name": "Introduction to Microbiology",
+    "courseToMeet": "MCRO2221"
+  },
+  {
+    "id": 2413,
+    "name": "General Physics I",
+    "courseToMeet": "PHYS1141"
+  },
+  {
+    "id": 2414,
+    "name": "General Physics II",
+    "courseToMeet": "PHYS1143"
+  },
+  {
+    "id": 2415,
+    "name": "Engineering Statistics",
+    "courseToMeet": "STAT3210"
+  }
+]

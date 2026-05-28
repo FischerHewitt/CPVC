@@ -1,0 +1,147 @@
+[
+  {
+    "id": 2048,
+    "name": "Introduction to Mechanical Engineering",
+    "courseToMeet": "ME1125"
+  },
+  {
+    "id": 2049,
+    "name": "Engineering Design Communication",
+    "courseToMeet": "ME1148"
+  },
+  {
+    "id": 2050,
+    "name": "Engineering Dynamics",
+    "courseToMeet": "ME2212"
+  },
+  {
+    "id": 2051,
+    "name": "Applied Programming for Mechanical Engineering",
+    "courseToMeet": "ME2240"
+  },
+  {
+    "id": 2052,
+    "name": "Design Using Solid Modeling",
+    "courseToMeet": "ME2248"
+  },
+  {
+    "id": 2053,
+    "name": "Design Thinking and Creativity",
+    "courseToMeet": "ME3234"
+  },
+  {
+    "id": 2054,
+    "name": "Engineering Measurement and Data Analysis",
+    "courseToMeet": "ME3236"
+  },
+  {
+    "id": 2055,
+    "name": "Thermodynamics",
+    "courseToMeet": "ME3302"
+  },
+  {
+    "id": 2056,
+    "name": "Design for Strength and Stiffness",
+    "courseToMeet": "ME3328"
+  },
+  {
+    "id": 2057,
+    "name": "Mechanical Systems Design",
+    "courseToMeet": "ME3329"
+  },
+  {
+    "id": 2058,
+    "name": "Fluid Mechanics with Lab",
+    "courseToMeet": "ME3341 and ME3342"
+  },
+  {
+    "id": 2059,
+    "name": "Heat Transfer",
+    "courseToMeet": "ME3343"
+  },
+  {
+    "id": 2060,
+    "name": "Thermal System Design",
+    "courseToMeet": "ME4440"
+  },
+  {
+    "id": 2061,
+    "name": "Life Science Support Course",
+    "courseToMeet": "BIO1111 or BIO2213 or BIO2215 or BIO2217"
+  },
+  {
+    "id": 2062,
+    "name": "Chemistry Fundamentals",
+    "courseToMeet": "CHEM1120"
+  },
+  {
+    "id": 2063,
+    "name": "Circuits and Electronics with Lab",
+    "courseToMeet": "EE2115 and EE2115L"
+  },
+  {
+    "id": 2064,
+    "name": "Introduction to Mechanics",
+    "courseToMeet": "ENGR2211"
+  },
+  {
+    "id": 2065,
+    "name": "Manufacturing Processes",
+    "courseToMeet": "IME1141 or IME1142 or IME1149"
+  },
+  {
+    "id": 2066,
+    "name": "Introduction to Design and Manufacturing",
+    "courseToMeet": "IME1143"
+  },
+  {
+    "id": 2067,
+    "name": "Materials Engineering with Lab",
+    "courseToMeet": "MATE1220 and MATE1215"
+  },
+  {
+    "id": 2068,
+    "name": "Calculus I",
+    "courseToMeet": "MATH1261"
+  },
+  {
+    "id": 2069,
+    "name": "Calculus II",
+    "courseToMeet": "MATH1262"
+  },
+  {
+    "id": 2070,
+    "name": "Calculus III",
+    "courseToMeet": "MATH2263"
+  },
+  {
+    "id": 2071,
+    "name": "Linear Analysis",
+    "courseToMeet": "MATH2341"
+  },
+  {
+    "id": 2072,
+    "name": "General Physics I",
+    "courseToMeet": "PHYS1141"
+  },
+  {
+    "id": 2073,
+    "name": "General Physics II",
+    "courseToMeet": "PHYS1143"
+  },
+  {
+    "id": 2074,
+    "name": "Vibrations and System Modeling",
+    "courseToMeet": "ME3317"
+  },
+  {
+    "id": 2075,
+    "name": "Mechanical Controls and Implementations",
+    "courseToMeet": "ME4417"
+  },
+  {
+    "id": 2076,
+    "name": "Senior Design Project",
+    "courseToMeet": "(ME4460 and ME4461) or (ENGR4460 and ENGR4461) or (ENGR4463 and ENGR4464)"
+  }
+]

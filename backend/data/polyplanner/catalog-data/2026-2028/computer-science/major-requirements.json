@@ -1,0 +1,102 @@
+[
+  {
+    "id": 602,
+    "name": "Computing Majors Orientation",
+    "courseToMeet": "CSC1000 or CPE1000"
+  },
+  {
+    "id": 603,
+    "name": "Fundamentals of Computer Science + Lab",
+    "courseToMeet": "CSC1001 and CSC1001L"
+  },
+  {
+    "id": 604,
+    "name": "Introduction to Computing",
+    "courseToMeet": "CSC1024 or CPE1024"
+  },
+  {
+    "id": 605,
+    "name": "Data Structures + Lab",
+    "courseToMeet": "CSC2001 and CSC2001L"
+  },
+  {
+    "id": 606,
+    "name": "System Software Mechanics",
+    "courseToMeet": "CSC2050 or CPE2050"
+  },
+  {
+    "id": 608,
+    "name": "Modern Application Development",
+    "courseToMeet": "CSC3001"
+  },
+  {
+    "id": 609,
+    "name": "Software Engineering",
+    "courseToMeet": "CSC3100"
+  },
+  {
+    "id": 610,
+    "name": "Introduction to Computer Security",
+    "courseToMeet": "CSC3201 or CPE3201"
+  },
+  {
+    "id": 611,
+    "name": "Programming Languages",
+    "courseToMeet": "CSC3300"
+  },
+  {
+    "id": 612,
+    "name": "Algorithms and Complexity",
+    "courseToMeet": "CSC3449"
+  },
+  {
+    "id": 613,
+    "name": "Introduction to Operating Systems",
+    "courseToMeet": "CSC4553 or CPE4553"
+  },
+  {
+    "id": 614,
+    "name": "Chemistry or Physics Foundation",
+    "courseToMeet": "CHEM1120 or PHYS1141"
+  },
+  {
+    "id": 615,
+    "name": "Linear Algebra",
+    "courseToMeet": "MATH1151"
+  },
+  {
+    "id": 616,
+    "name": "Calculus Sequence",
+    "courseToMeet": "(MATH1261 and MATH1262) or (MATH1264 and MATH1265)"
+  },
+  {
+    "id": 617,
+    "name": "Transition to Advanced Mathematics",
+    "courseToMeet": "MATH2031"
+  },
+  {
+    "id": 618,
+    "name": "Ethics, Science, and Technology",
+    "courseToMeet": "PHIL3323"
+  },
+  {
+    "id": 619,
+    "name": "Engineering Statistics",
+    "courseToMeet": "STAT3210"
+  },
+  {
+    "id": 620,
+    "name": "Gender/Race/Culture in Tech",
+    "courseToMeet": "WGQS3350 or WGQS3351"
+  },
+  {
+    "id": 607,
+    "name": "Introduction to Computer Systems",
+    "courseToMeet": "CSC2300 or CPE2300"
+  },
+  {
+    "id": 621,
+    "name": "Life Science Support Elective",
+    "courseToMeet": "(BIO1111 and BIO1112) or BIO1150 or BIO1151 or BOT1121 or MCRO2221"
+  }
+]

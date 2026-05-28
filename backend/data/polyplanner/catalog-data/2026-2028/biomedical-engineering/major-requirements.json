@@ -1,0 +1,137 @@
+[
+  {
+    "id": 732,
+    "name": "Introduction to Biomedical Engineering",
+    "courseToMeet": "BMED1101"
+  },
+  {
+    "id": 733,
+    "name": "Introduction to Mechanical Design in Biomedical Engineering",
+    "courseToMeet": "BMED2212"
+  },
+  {
+    "id": 734,
+    "name": "Introduction to Electrical Design in Biomedical Engineering",
+    "courseToMeet": "BMED2310"
+  },
+  {
+    "id": 735,
+    "name": "Introduction to Electrical Design in Biomedical Engineering Lab",
+    "courseToMeet": "BMED2311"
+  },
+  {
+    "id": 736,
+    "name": "Principles and Applications of Biomaterials",
+    "courseToMeet": "BMED2420"
+  },
+  {
+    "id": 737,
+    "name": "Biomedical Engineering Professional Development",
+    "courseToMeet": "BMED3102"
+  },
+  {
+    "id": 738,
+    "name": "Biomechanics",
+    "courseToMeet": "BMED3410"
+  },
+  {
+    "id": 739,
+    "name": "Biomedical Engineering Transport",
+    "courseToMeet": "BMED3425"
+  },
+  {
+    "id": 740,
+    "name": "Biomedical Modeling and Simulation",
+    "courseToMeet": "BMED3430"
+  },
+  {
+    "id": 741,
+    "name": "Bioelectronics and Instrumentation",
+    "courseToMeet": "BMED4440"
+  },
+  {
+    "id": 742,
+    "name": "Medical Physiology for Engineers",
+    "courseToMeet": "BMED4460"
+  },
+  {
+    "id": 743,
+    "name": "Senior Project: Design I",
+    "courseToMeet": "BMED4465"
+  },
+  {
+    "id": 744,
+    "name": "Senior Project: Design II",
+    "courseToMeet": "BMED4466"
+  },
+  {
+    "id": 745,
+    "name": "Life: Molecules and Cells (5B & 5C)",
+    "courseToMeet": "BIO1151"
+  },
+  {
+    "id": 748,
+    "name": "Fundamentals of Chemical Structure and Properties (5A)",
+    "courseToMeet": "CHEM1120"
+  },
+  {
+    "id": 749,
+    "name": "Fundamentals of Chemical Reactivity",
+    "courseToMeet": "CHEM1122"
+  },
+  {
+    "id": 750,
+    "name": "Introduction to Mechanics",
+    "courseToMeet": "ENGR2211"
+  },
+  {
+    "id": 751,
+    "name": "Introduction to Engineering Dynamics",
+    "courseToMeet": "ENGR2212"
+  },
+  {
+    "id": 752,
+    "name": "Calculus I",
+    "courseToMeet": "MATH1261"
+  },
+  {
+    "id": 753,
+    "name": "Calculus II",
+    "courseToMeet": "MATH1262"
+  },
+  {
+    "id": 754,
+    "name": "Calculus III",
+    "courseToMeet": "MATH2263"
+  },
+  {
+    "id": 755,
+    "name": "Linear Analysis",
+    "courseToMeet": "MATH2341"
+  },
+  {
+    "id": 756,
+    "name": "Fluid Mechanics",
+    "courseToMeet": "ME3341"
+  },
+  {
+    "id": 746,
+    "name": "Human Anatomy and Physiology I or II",
+    "courseToMeet": "BIO2231 or BIO2232"
+  },
+  {
+    "id": 757,
+    "name": "General Physics I",
+    "courseToMeet": "PHYS1141"
+  },
+  {
+    "id": 758,
+    "name": "General Physics II",
+    "courseToMeet": "PHYS1143"
+  },
+  {
+    "id": 759,
+    "name": "Engineering Statistics (Upper-Division 2/5)",
+    "courseToMeet": "STAT3210"
+  }
+]

@@ -1,0 +1,4006 @@
+{
+  "ad_art_history_elective": {
+    "courses": [
+      "ART 3310",
+      "ART 3311",
+      "ART 3313",
+      "ART 3314",
+      "ART 3317",
+      "ART 3320",
+      "ART 3321",
+      "ART 3322",
+      "ART 3323",
+      "ART 3324",
+      "ART 3327"
+    ],
+    "description": "Art and Design students select one upper-division art history course.",
+    "title": "Upper-Division Art History Elective"
+  },
+  "ad_portfolio_review": {
+    "courses": [
+      "ART 3359",
+      "ART 3379",
+      "ART 3399"
+    ],
+    "description": "Students must take one of these courses.",
+    "title": "Portfolio Review"
+  },
+  "ad_sculpture_or_painting": {
+    "courses": [
+      "ART 1184",
+      "ART 2282"
+    ],
+    "description": "Students must take one of these courses.",
+    "title": "Beginning Sculpture or Painting"
+  },
+  "agb_agricultural_elective": {
+    "courses": [
+      "ASCI 1112",
+      "ASCI 2215",
+      "ASCI 2239",
+      "DSCI 2229",
+      "FSN 2245",
+      "PLSC 1120/1120L",
+      "SS 1120"
+    ],
+    "description": "AGB students must take one agricultural elective from the catalog list. PLSC 1120 and PLSC 1120L are the paired plant sciences lecture/lab option.",
+    "title": "Agricultural Elective"
+  },
+  "agb_senior_project": {
+    "courses": [
+      "AGB 4462",
+      "AGB 4463"
+    ],
+    "description": "AGB students complete one senior project option: AGB 4462 (Applied Agribusiness Problems) or AGB 4463 (Agribusiness Consulting).",
+    "title": "Senior Project"
+  },
+  "agc_ags_marketing": {
+    "courses": [
+      "AGB 3301",
+      "WVIT 3343"
+    ],
+    "description": "AGC and AGS students take one marketing course covering food or wine marketing.",
+    "title": "Food Marketing Elective"
+  },
+  "agc_chem_elective": {
+    "courses": [
+      "CHEM 1110",
+      "CHEM 1120"
+    ],
+    "description": "AGC and ASM students must take one chemistry course: a survey (CHEM 1110) or the more rigorous fundamentals course (CHEM 1120).",
+    "title": "Chemistry Elective"
+  },
+  "agc_fsn_elective": {
+    "courses": [
+      "FSN 1111",
+      "FSN 2245"
+    ],
+    "description": "AGC students take one food science course: FSN 1111 (Food Processing) or FSN 2245 (Food Safety).",
+    "title": "Food Science Elective"
+  },
+  "agc_plsc_pair": {
+    "courses": [
+      "PLSC 1120",
+      "PLSC 1120L"
+    ],
+    "description": "AGC students take both PLSC 1120 and PLSC 1120L for the plant sciences support requirement.",
+    "title": "Principles of Plant Sciences with Lab"
+  },
+  "agc_stat_data_1000": {
+    "courses": [
+      "STAT 1000",
+      "DATA 1000"
+    ],
+    "description": "AGC students complete the cross-listed Statistical and Data Literacy course as STAT 1000 or DATA 1000.",
+    "title": "Statistical and Data Literacy"
+  },
+  "ags_agc_ag_issues": {
+    "courses": [
+      "AGC 4452",
+      "AG 4452"
+    ],
+    "description": "AGS students take either AGC 4452 or AG 4452.",
+    "title": "Current Trends and Issues"
+  },
+  "ags_aged_agc_choice": {
+    "courses": [
+      "AGED 4410",
+      "AGC 3314"
+    ],
+    "description": "AGS students take either AGED 4410 or AGC 3314.",
+    "title": "Computer Applications or Fairgrounds and Expositions"
+  },
+  "ags_asci_pair": {
+    "courses": [
+      "ASCI 1102",
+      "ASCI 1103"
+    ],
+    "description": "AGS students take both ASCI 1102 and ASCI 1103 for the animal science foundation requirement.",
+    "title": "Animal Management Systems and Laboratory"
+  },
+  "ags_brae_aquaculture_irrigation": {
+    "courses": [
+      "BRAE 4438",
+      "MSCI 4438",
+      "BRAE 4440"
+    ],
+    "description": "Agricultural Engineering Technology emphasis students take Aquaculture or Agricultural Irrigation Systems.",
+    "title": "Aquaculture or Agricultural Irrigation Systems"
+  },
+  "ags_dairy_food_safety": {
+    "courses": [
+      "DSCI 2229",
+      "FSN 2245"
+    ],
+    "description": "AGS students take either General Dairy Manufacturing or Elements of Food Safety.",
+    "title": "Safe Practices in Handling Food Products"
+  },
+  "ags_life_science": {
+    "courses": [
+      "BIO 1111",
+      "BIO 1151",
+      "BOT 1121",
+      "MCRO 2221"
+    ],
+    "description": "AGS students select one life science support course from the catalog list.",
+    "title": "Life Science Support Elective"
+  },
+  "ags_math_elective": {
+    "courses": [
+      "MATH 1006",
+      "MATH 1007",
+      "MATH 1261",
+      "MATH 1264",
+      "MATH 1267"
+    ],
+    "description": "AGS students take one math or statistics course at an appropriate level for their background. MATH 1006 is college algebra; MATH 1007 is precalculus; MATH 1261 and 1264 are calculus options; MATH 1267 is business calculus.",
+    "title": "Mathematics Support Elective"
+  },
+  "ags_nr_choice": {
+    "courses": [
+      "NR 3308",
+      "NR 3323"
+    ],
+    "description": "AGS students take either NR 3308 or NR 3323.",
+    "title": "Natural Resources Requirement"
+  },
+  "ags_soil_science": {
+    "courses": [
+      "SS 1120",
+      "SS 1130"
+    ],
+    "description": "AGS students take one soil science course from the catalog list.",
+    "title": "Soil Science Requirement"
+  },
+  "antgeog_env_climate": {
+    "courses": [
+      "ERSC 3325",
+      "ERSC 4414",
+      "GEOG 4414",
+      "ERSC 4415",
+      "GEOG 4415"
+    ],
+    "description": "Environmental Studies and Sustainability students take one climate or earth systems course.",
+    "title": "Earth Systems or Climate Change Course"
+  },
+  "antgeog_env_geospatial": {
+    "courses": [
+      "GEOG 3328",
+      "GEOG 4441"
+    ],
+    "description": "Environmental Studies and Sustainability students take one geospatial methods course.",
+    "title": "Remote Sensing or Geospatial Technologies"
+  },
+  "antgeog_human_ecology_foundation": {
+    "courses": [
+      "ANT 3309",
+      "ANT 3320"
+    ],
+    "description": "Human Ecology students take one course from this catalog pair.",
+    "title": "Archaeology or Indigenous Past"
+  },
+  "antgeog_human_ecology_geog": {
+    "courses": [
+      "ERSC 3325",
+      "GEOG 3308"
+    ],
+    "description": "Human Ecology students take either Climate and Humanity or Global Geography.",
+    "title": "Climate and Humanity or Global Geography"
+  },
+  "antgeog_internship": {
+    "courses": [
+      "ANT 4465",
+      "GEOG 4465"
+    ],
+    "description": "Complete internship units through ANT 4465 or GEOG 4465. A study abroad course may substitute with advisor approval.",
+    "title": "Internship"
+  },
+  "antgeog_methods_elective": {
+    "courses": [
+      "ANT 3310",
+      "ANT 3311",
+      "ANT 3312",
+      "ISLA 3393",
+      "GEOG 3328",
+      "GEOG 4441"
+    ],
+    "description": "Select one methodological course from the catalog list.",
+    "title": "Methodological Course Elective"
+  },
+  "antgeog_physical_geography": {
+    "courses": [
+      "GEOG 2250",
+      "ERSC 2250"
+    ],
+    "description": "Take the cross-listed Physical Geography course as GEOG 2250 or ERSC 2250.",
+    "title": "Physical Geography"
+  },
+  "antgeog_professional_preparation": {
+    "courses": [
+      "ANT 3384",
+      "GEOG 3384"
+    ],
+    "description": "Take the cross-listed professional preparation course as ANT 3384 or GEOG 3384.",
+    "title": "Professional Preparation"
+  },
+  "antgeog_regional_geography": {
+    "courses": [
+      "GEOG 3340",
+      "GEOG 3370",
+      "GEOG 3380"
+    ],
+    "description": "Select one regional geography course from the catalog list.",
+    "title": "Regional Geography Elective"
+  },
+  "antgeog_research_design": {
+    "courses": [
+      "ANT 4455",
+      "GEOG 4455"
+    ],
+    "description": "Take the cross-listed research design course as ANT 4455 or GEOG 4455.",
+    "title": "Research Design and Methods"
+  },
+  "antgeog_senior_project_i": {
+    "courses": [
+      "ANT 4461",
+      "GEOG 4461"
+    ],
+    "description": "Anthropology and Geography students take one senior project I course.",
+    "title": "Senior Project I"
+  },
+  "antgeog_senior_project_ii": {
+    "courses": [
+      "ANT 4462",
+      "GEOG 4462"
+    ],
+    "description": "Anthropology and Geography students take one senior project II course.",
+    "title": "Senior Project II"
+  },
+  "arce_caed_interdisciplinary_elective": {
+    "courses": [
+      "ARCE 4484",
+      "ARCE 4486"
+    ],
+    "description": "ARCE students take ARCE 4484, ARCE 4486, or an advisor-approved 3000-5000 level ARCH, CM, CRP, or LA course up to 3 units.",
+    "title": "CAED Interdisciplinary Elective"
+  },
+  "arce_fe_technical_elective": {
+    "courses": [
+      "GEOL 2240",
+      "GEOL 3305",
+      "IME 2315",
+      "MATH 2263",
+      "ME 2212"
+    ],
+    "description": "ARCE students complete 5-6 units from the FE technical elective list.",
+    "title": "FE Technical Elective"
+  },
+  "arce_hist_elective": {
+    "courses": [
+      "ARCH 2221",
+      "ARCH 2222",
+      "ARCE 2280"
+    ],
+    "description": "ARCE students select one history course from history of world architecture or history of structures.",
+    "title": "History of Architecture or Structures"
+  },
+  "arce_surveying_elective": {
+    "courses": [
+      "BRAE 1239",
+      "BRAE 2237",
+      "CM 2239"
+    ],
+    "description": "ARCE students select one surveying course (2\u20133 units) for FE/PE exam preparation.",
+    "title": "FE/PE Surveying Elective"
+  },
+  "arch_physics_i": {
+    "courses": [
+      "PHYS 1121",
+      "PHYS 1141"
+    ],
+    "description": "Students must take one of these courses.",
+    "title": "College Physics I or General Physics I"
+  },
+  "arch_precalc_or_calculus": {
+    "courses": [
+      "MATH 1007",
+      "MATH 1261"
+    ],
+    "description": "Students must take one of these courses.",
+    "title": "Precalculus or Calculus I"
+  },
+  "asci_animal_management": {
+    "courses": [
+      "ASCI 2230",
+      "ASCI 2231",
+      "ASCI 2232",
+      "ASCI 2233"
+    ],
+    "description": "ASCI students complete 6 units from the animal management elective list.",
+    "title": "Animal Management Elective"
+  },
+  "asci_biochem_elective": {
+    "courses": [
+      "ASCI 3319",
+      "CHEM 3350",
+      "CHEM 3352"
+    ],
+    "description": "ASCI students take one biochemistry course: ASCI 3319, CHEM 3350, or CHEM 3352.",
+    "title": "Biochemistry Elective"
+  },
+  "asci_enterprise_elective": {
+    "courses": [
+      "ASCI 2001",
+      "ASCI 2002",
+      "ASCI 2003",
+      "ASCI 2004",
+      "ASCI 2005",
+      "ASCI 2006",
+      "ASCI 2007",
+      "ASCI 2008",
+      "ASCI 2009",
+      "ASCI 2010",
+      "ASCI 2011",
+      "ASCI 2012",
+      "ASCI 2013",
+      "ASCI 2014",
+      "ASCI 2015",
+      "ASCI 2016",
+      "ASCI 2017",
+      "ASCI 4001",
+      "ASCI 4002",
+      "ASCI 4003",
+      "ASCI 4004",
+      "ASCI 4005",
+      "ASCI 4006",
+      "ASCI 4007",
+      "ASCI 4008",
+      "ASCI 4009",
+      "ASCI 4010",
+      "ASCI 4011",
+      "ASCI 4012",
+      "ASCI 4013",
+      "ASCI 4014",
+      "ASCI 4015"
+    ],
+    "description": "ASCI students complete 3 units from the enterprise experience elective list.",
+    "title": "Enterprise Experience Elective"
+  },
+  "asci_meat_science_pair": {
+    "courses": [
+      "ASCI 2210",
+      "ASCI 2211"
+    ],
+    "description": "ASCI students take both Meat Science and Meat Science Laboratory.",
+    "title": "Meat Science with Laboratory"
+  },
+  "asci_nutrition_elective": {
+    "courses": [
+      "ASCI 3346",
+      "ASCI 3350",
+      "ASCI 3355",
+      "ASCI 4419"
+    ],
+    "description": "ASCI students take one nutrition course from the catalog list.",
+    "title": "Nutrition Elective"
+  },
+  "asci_org_chem": {
+    "courses": [
+      "CHEM 2240",
+      "CHEM 2242"
+    ],
+    "description": "ASCI students take one organic chemistry course: CHEM 2240 (Fundamentals, 4 units) or CHEM 2242 (Organic Chemistry I, 5 units).",
+    "title": "Organic Chemistry Elective"
+  },
+  "asci_physiology_elective": {
+    "courses": [
+      "ASCI 4403",
+      "ASCI 4405",
+      "ASCI 4406",
+      "ASCI 4438",
+      "ASCI 4440",
+      "ASCI 4455",
+      "DSCI 3321",
+      "DSCI 3330"
+    ],
+    "description": "ASCI students take one physiology course from the catalog list.",
+    "title": "Physiology Elective"
+  },
+  "asci_senior_project": {
+    "courses": [
+      "ASCI 4477",
+      "ASCI 4478",
+      "ASCI 4479"
+    ],
+    "description": "ASCI students complete one senior project option.",
+    "title": "Senior Project"
+  },
+  "asm_approved_elective": {
+    "courses": [
+      "BRAE 2200",
+      "BRAE 3344",
+      "BRAE 3345",
+      "BRAE 3349",
+      "NR 3349",
+      "BRAE 4400",
+      "BRAE 4447",
+      "BRAE 4448",
+      "BRAE 5405",
+      "BRAE 5435",
+      "BRAE 5436",
+      "BRAE 5532",
+      "BRAE 5533",
+      "CRP 4408",
+      "NR 4408",
+      "EE 4434",
+      "FDSC 1110",
+      "FSN 2202",
+      "FSN 2245",
+      "FSN 2250",
+      "FSN 3305",
+      "FSN 3316",
+      "IME 1141",
+      "IME 1142",
+      "IME 1143",
+      "IME 3320",
+      "ITP 3330",
+      "ITP 3341",
+      "LA 2218",
+      "NR 3306",
+      "NR 4416",
+      "NUTR 3310",
+      "NUTR 3315",
+      "SS 1120",
+      "SS 2221"
+    ],
+    "description": "ASM students complete 9 units from the approved elective list. Animal or plant production courses from ASCI, DSCI, or PLSC may also be eligible; verify those broad production choices with an advisor.",
+    "title": "Approved Elective"
+  },
+  "asm_chem_elective": {
+    "courses": [
+      "CHEM 1110",
+      "CHEM 1120"
+    ],
+    "description": "ASM students must take one chemistry course: CHEM 1110 (survey) or CHEM 1120 (fundamentals).",
+    "title": "Chemistry Elective"
+  },
+  "asm_math_elective": {
+    "courses": [
+      "MATH 1007",
+      "STAT 1110"
+    ],
+    "description": "ASM students take one of these courses based on their math placement: MATH 1007 (Precalculus) or STAT 1110 (Applied Statistics). MATH 1267 is a separate required support course.",
+    "title": "Math / Statistics Elective"
+  },
+  "bio_chem_organic": {
+    "courses": [
+      "CHEM 2240",
+      "CHEM 2242"
+    ],
+    "description": "BIO students take one organic chemistry course: CHEM 2240 (Fundamentals, 4 units) or CHEM 2242 (Organic Chemistry I, 5 units).",
+    "title": "Organic Chemistry for Biology"
+  },
+  "bio_phys_intro": {
+    "courses": [
+      "PHYS 1121",
+      "PHYS 1141"
+    ],
+    "description": "BIO students take one introductory physics course: PHYS 1121 (College Physics I) or PHYS 1141 (General Physics I).",
+    "title": "Introductory Physics for Biology"
+  },
+  "bio_senior_project": {
+    "courses": [
+      "BIO 4461",
+      "BIO 4462",
+      "BIO 4463"
+    ],
+    "description": "BIO students complete one senior project option.",
+    "title": "Biology Senior Project"
+  },
+  "bioc_bio_mcro_advanced_elective": {
+    "courses": [
+      "BIO 3351",
+      "BIO 3352",
+      "BIO 4433",
+      "BIO 4434",
+      "BIO 4451",
+      "BIO 4452",
+      "BIO 4455",
+      "BIO 4456",
+      "BIO 4458",
+      "MCRO 4402",
+      "MCRO 4423",
+      "MCRO 4424"
+    ],
+    "description": "BIOC students select 3\u20134 units from approved upper-division Biology and Microbiology courses.",
+    "title": "BIO or MCRO Advanced Elective"
+  },
+  "bioc_chem_advanced_elective": {
+    "courses": [
+      "CHEM 4450",
+      "CHEM 4452",
+      "CHEM 4456",
+      "CHEM 4457",
+      "CHEM 4458"
+    ],
+    "description": "BIOC students select 2\u20133 units from this list of advanced biochemistry electives.",
+    "title": "Biochemistry Advanced Elective"
+  },
+  "bioc_mol_bio_or_protein": {
+    "courses": [
+      "CHEM 4453",
+      "CHEM 4454"
+    ],
+    "description": "BIOC students take one of these two laboratory technique courses as a major requirement.",
+    "title": "Molecular Biology or Protein Techniques"
+  },
+  "bioc_research_or_methods2": {
+    "courses": [
+      "CHEM 2201",
+      "CHEM 2203"
+    ],
+    "description": "BIOC students take one of these two research courses as a major requirement.",
+    "title": "Undergraduate Research or Research Methods II"
+  },
+  "bmed_anat_phys": {
+    "courses": [
+      "BIO 2231",
+      "BIO 2232"
+    ],
+    "description": "BMED students take either Human Anatomy and Physiology I or Human Anatomy and Physiology II.",
+    "title": "Human Anatomy and Physiology I or II"
+  },
+  "brae_econ_elective": {
+    "courses": [
+      "ECON 2001",
+      "ECON 2040"
+    ],
+    "description": "BRAE students take either the general Survey of Economics or the agriculture-focused Principles of Economics.",
+    "title": "Survey of Economics"
+  },
+  "bus_calculus_choice": {
+    "courses": [
+      "MATH 1264",
+      "MATH 1267"
+    ],
+    "description": "Students must take one of these courses.",
+    "title": "Calculus for Data Science I or Business Calculus"
+  },
+  "bus_finance_methods_choice": {
+    "courses": [
+      "BUS 1342",
+      "BUS 3343"
+    ],
+    "description": "Students must take one of these courses.",
+    "title": "Financial Institutions or Quantitative Methods in Finance"
+  },
+  "bus_intl_elective": {
+    "courses": [
+      "BUS 3300",
+      "BUS 3301",
+      "BUS 3302",
+      "BUS 3304",
+      "BUS 3311",
+      "BUS 3433",
+      "BUS 4410",
+      "BUS 4446"
+    ],
+    "description": "BUS students select one international business elective from the approved list.",
+    "title": "International Business Elective"
+  },
+  "bus_senior_project": {
+    "courses": [
+      "BUS 4461",
+      "BUS 4462",
+      "BUS 4464",
+      "BUS 4465",
+      "BUS 4467",
+      "BUS 4472",
+      "BUS 4473",
+      "BUS 4474"
+    ],
+    "description": "BUS students complete one senior project or capstone elective from the approved list.",
+    "title": "Business Senior Project / Capstone"
+  },
+  "cd_dei_elective": {
+    "courses": [
+      "ES 3380",
+      "ES 3381",
+      "PSY 3304",
+      "WGQS 3301",
+      "WGQS 3330",
+      "WGQS 3351"
+    ],
+    "description": "CD students select one approved DEI course examining systems of power, identity, and social justice. Also satisfies GE Upper-Division Area 4.",
+    "title": "Diversity, Equity and Inclusion Course"
+  },
+  "cd_foundational_course": {
+    "courses": [
+      "CD 1131",
+      "CD 2202",
+      "CD 2254"
+    ],
+    "description": "CD students select one of these foundational courses in their freshman year.",
+    "title": "Foundational CD Course"
+  },
+  "cd_internship_i": {
+    "courses": [
+      "CD 4448",
+      "CD 4453"
+    ],
+    "description": "CD students select one first-semester internship: a research internship or a supervised fieldwork internship.",
+    "title": "Research or Fieldwork Internship I"
+  },
+  "cd_lifestage_elective": {
+    "courses": [
+      "CD 3304",
+      "CD 3305",
+      "CD 3306"
+    ],
+    "description": "CD students must take two different life stage development courses (one per semester) covering infancy/toddlerhood, childhood, or adolescence.",
+    "title": "Life Stage Development Course"
+  },
+  "cd_professional_skills": {
+    "courses": [
+      "COMS 3316",
+      "COMS 3320",
+      "PSY 3304",
+      "PSY 3323",
+      "PSY 3350"
+    ],
+    "description": "CD students select one approved professional skills course developing interpersonal, intercultural, and teamwork competencies.",
+    "title": "Professional Skills Course"
+  },
+  "cd_upper_div_science": {
+    "courses": [
+      "BIO 3312",
+      "ES 3350",
+      "FSN 3305",
+      "IME 3320",
+      "ISLA 3305",
+      "NR 3310",
+      "PSY 3344"
+    ],
+    "description": "CD students select one approved upper-division science course. Also satisfies GE Upper-Division Area 2/5.",
+    "title": "Upper-Division Science Course"
+  },
+  "ces_theory": {
+    "courses": [
+      "ES 4401",
+      "ES 4402",
+      "ES 4403"
+    ],
+    "description": "Select one: ES 4401 (Ethnic Studies: Theoretical Foundations), ES 4402 (Decolonial Theory), or ES 4403 (Feminist and Queer/Trans of Color Theories). Three theory courses are required across Junior and Senior years.",
+    "title": "Ethnic Studies Theory Course"
+  },
+  "chem_research_or_methods": {
+    "courses": [
+      "CHEM 2201",
+      "CHEM 2203"
+    ],
+    "description": "CHEM students take one of these two research courses as a major requirement.",
+    "title": "Undergraduate Research or Research Methods II"
+  },
+  "chem_subdiscipline_elective": {
+    "courses": [
+      "CHEM 2244",
+      "CHEM 3320",
+      "CHEM 3321",
+      "CHEM 3354",
+      "CHEM 3356",
+      "CHEM 3394",
+      "CHEM 3395",
+      "CHEM 4420",
+      "CHEM 4430",
+      "CHEM 4432",
+      "CHEM 4440",
+      "CHEM 4442",
+      "CHEM 4444",
+      "CHEM 4450",
+      "CHEM 4451",
+      "CHEM 4452",
+      "CHEM 4453",
+      "CHEM 4454",
+      "CHEM 4456",
+      "CHEM 4457",
+      "CHEM 4458",
+      "CHEM 4480",
+      "CHEM 4481",
+      "CHEM 4482",
+      "CHEM 4483",
+      "CHEM 4486",
+      "CHEM 4490"
+    ],
+    "description": "CHEM students select courses from two different subdisciplines: Analytical, Biochemistry, Inorganic, Organic, Physical Chemistry, or Polymers.",
+    "title": "Advanced Subdiscipline Elective"
+  },
+  "cm_accounting_choice": {
+    "courses": [
+      "BUS 2212",
+      "BUS 2214"
+    ],
+    "description": "Select one: Financial Accounting for Nonbusiness Majors (BUS 2212) or Financial Accounting (BUS 2214).",
+    "title": "Financial Accounting Course Choice"
+  },
+  "cm_major_elective": {
+    "courses": [
+      "ARCH 4415",
+      "ARCH 4435",
+      "CM 4421",
+      "CM 4475",
+      "CRP 3303",
+      "CRP 3334",
+      "CRP 4325",
+      "CRP 4433",
+      "CRP 4442",
+      "CRP 4445",
+      "CRP 4455",
+      "CRP 4458",
+      "CRP 4481",
+      "LA 3304",
+      "LA 4410",
+      "LA 4413",
+      "LA 4417",
+      "LA 4418"
+    ],
+    "description": "Select one 3-unit elective from the approved list of architecture, construction, planning, and landscape architecture courses.",
+    "title": "Construction Management Major Elective"
+  },
+  "coms_advocacy_choice": {
+    "courses": [
+      "COMS 2250",
+      "COMS 2208"
+    ],
+    "description": "COMS 2250 (Building Advocacy Skills) or COMS 2208 (Performance, Literature, and Culture).",
+    "title": "Advocacy or Performance"
+  },
+  "coms_criticism_choice": {
+    "courses": [
+      "COMS 3332",
+      "COMS 3385"
+    ],
+    "description": "COMS 3332 (Rhetorical Criticism) or COMS 3385 (Media Criticism). Both satisfy the GWR requirement.",
+    "title": "Rhetorical or Media Criticism (GWR)"
+  },
+  "coms_focus_culture": {
+    "courses": [
+      "COMS 3308",
+      "COMS 3319",
+      "COMS 3320",
+      "COMS 3331",
+      "COMS 3333",
+      "COMS 3350",
+      "COMS 3351",
+      "COMS 3352",
+      "COMS 3387",
+      "COMS 4404",
+      "COMS 4418",
+      "COMS 4420",
+      "COMS 4421",
+      "COMS 4428",
+      "COMS 4430",
+      "COMS 4435"
+    ],
+    "description": "Select from approved Culture, Identity, and Power focus area courses.",
+    "title": "Culture, Identity, and Power Focus Area Course"
+  },
+  "coms_focus_media": {
+    "courses": [
+      "COMS 3317",
+      "COMS 3384",
+      "COMS 3386",
+      "COMS 3387",
+      "COMS 3395",
+      "COMS 4402",
+      "COMS 4404",
+      "COMS 4418",
+      "COMS 4421",
+      "COMS 4458",
+      "ISLA 3303"
+    ],
+    "description": "Select from approved Media and Technology focus area courses.",
+    "title": "Media and Technology Focus Area Course"
+  },
+  "coms_focus_persuasion": {
+    "courses": [
+      "COMS 2226",
+      "COMS 3301",
+      "COMS 3302",
+      "COMS 3305",
+      "COMS 3317",
+      "COMS 3330",
+      "COMS 3350",
+      "COMS 3351",
+      "COMS 3352",
+      "COMS 3384",
+      "COMS 3386",
+      "COMS 4418",
+      "COMS 4420",
+      "COMS 4435"
+    ],
+    "description": "Select from approved Persuasion and Social Influence focus area courses.",
+    "title": "Persuasion and Social Influence Focus Area Course"
+  },
+  "coms_focus_politics": {
+    "courses": [
+      "COMS 2226",
+      "COMS 3302",
+      "COMS 3305",
+      "COMS 3308",
+      "COMS 3319",
+      "COMS 3330",
+      "COMS 3331",
+      "COMS 3350",
+      "COMS 3351",
+      "COMS 3352",
+      "COMS 3384",
+      "COMS 3386",
+      "COMS 3390",
+      "COMS 4402",
+      "COMS 4435"
+    ],
+    "description": "Select from approved Politics, Advocacy, and Civic Engagement focus area courses.",
+    "title": "Politics, Advocacy, and Civic Engagement Focus Area Course"
+  },
+  "coms_focus_relationships": {
+    "courses": [
+      "COMS 3301",
+      "COMS 3320",
+      "COMS 3333",
+      "COMS 3387",
+      "COMS 4413",
+      "COMS 4420",
+      "COMS 4421",
+      "COMS 4428",
+      "COMS 4430",
+      "COMS 4458"
+    ],
+    "description": "Select from approved Relationships, Organizations, and Socialization focus area courses.",
+    "title": "Relationships, Organizations, and Socialization Focus Area Course"
+  },
+  "coms_interp_choice": {
+    "courses": [
+      "COMS 2211",
+      "COMS 2213",
+      "COMS 2215",
+      "COMS 2217"
+    ],
+    "description": "Select from COMS 2211, 2213, 2215, or 2217. Two separate courses from this list are required.",
+    "title": "Interpersonal/Organizational/Media/Group Communication"
+  },
+  "coms_public_speaking": {
+    "courses": [
+      "COMS 1101",
+      "COMS 1102"
+    ],
+    "description": "COMS 1101 (Public Speaking) or COMS 1102 (Public Speaking in Digital Spaces). Also satisfies GE Area 1C.",
+    "title": "Public Speaking"
+  },
+  "coms_research_methods": {
+    "courses": [
+      "COMS 3312",
+      "COMS 3313"
+    ],
+    "description": "COMS 3312 (Quantitative Research Methods) or COMS 3313 (Qualitative Research Methods).",
+    "title": "Quantitative or Qualitative Research Methods"
+  },
+  "cpe_ee_elective": {
+    "courses": [
+      "EE 3306",
+      "EE 2328"
+    ],
+    "description": "CPE students take either EE 3306 (Electronics I) or EE 2328 (Signals and Systems) as an EE support elective.",
+    "title": "Electronics I or Signals and Systems"
+  },
+  "cpe_ethics_or_stats": {
+    "courses": [
+      "PHIL 3323",
+      "STAT 3210",
+      "STAT 3310"
+    ],
+    "description": "CPE students must take one of these three courses as a support requirement.",
+    "title": "Ethics / Engineering Statistics"
+  },
+  "cpe_linear_math": {
+    "courses": [
+      "MATH 1151",
+      "MATH 2341"
+    ],
+    "description": "CPE students take either MATH 1151 (Linear Algebra) or MATH 2341 (Linear Analysis) as a math support requirement.",
+    "title": "Linear Algebra or Linear Analysis"
+  },
+  "cpe_stats": {
+    "courses": [
+      "STAT 3210",
+      "STAT 3310"
+    ],
+    "description": "CPE students take either STAT 3210 (Engineering Statistics) or STAT 3310 (Probability and Random Processes for Engineers).",
+    "title": "Engineering Statistics"
+  },
+  "cpe_wgqs": {
+    "courses": [
+      "WGQS 3350",
+      "WGQS 3351"
+    ],
+    "description": "CPE students take either WGQS 3350 or WGQS 3351 as an ethics/society requirement.",
+    "title": "Gender, Race, Culture, Science, and Technology"
+  },
+  "crp_caed_elective": {
+    "courses": [
+      "ARCE 2280",
+      "ARCH 3325",
+      "ARCH 4445",
+      "CM 3317",
+      "CM 3318",
+      "CM 3334",
+      "CM 3335",
+      "CM 4475",
+      "CRP 3303",
+      "CRP 3334",
+      "CRP 4428",
+      "CRP 4448",
+      "CRP 4458",
+      "CRP 4481",
+      "EDES 3350",
+      "EDES 4406",
+      "EDES 4408",
+      "LA 4410",
+      "LA 4413",
+      "LA 4417",
+      "LA 4418"
+    ],
+    "description": "CRP students select from CAED-approved elective courses covering architecture, construction, landscape, environmental design, and planning topics.",
+    "title": "CAED Designated Elective"
+  },
+  "crp_senior_project": {
+    "courses": [
+      "CRP 4461",
+      "CRP 4463"
+    ],
+    "description": "CRP students complete their senior project as either a written report or a studio project.",
+    "title": "Senior Project"
+  },
+  "crp_stat_data_support": {
+    "courses": [
+      "DATA 1000",
+      "STAT 1110"
+    ],
+    "description": "CRP students select one statistics or data course that also satisfies GE Area 2.",
+    "title": "Statistical and Data Literacy"
+  },
+  "cs_aiml_conc_elective": {
+    "courses": [
+      "CSC 4610",
+      "DATA 4610",
+      "CSC 4620",
+      "DATA 4620",
+      "CSC 4667",
+      "CSC 4820",
+      "CSC 4880",
+      "CSC 4881",
+      "CSC 4888",
+      "CSC 4891",
+      "CSC 4892",
+      "CSC 4893",
+      "CSC 5571",
+      "CSC 5572",
+      "CSC 5666",
+      "CSC 5820",
+      "CSC 5870",
+      "CSC 5880",
+      "CSC 5887"
+    ],
+    "description": "Approved elective courses for the AI & Machine Learning concentration.",
+    "title": "AI/ML Concentration Elective"
+  },
+  "cs_aiml_ml_required": {
+    "courses": [
+      "DATA 4610",
+      "CSC 4667",
+      "CSC 4820",
+      "CSC 4880"
+    ],
+    "description": "AI & Machine Learning concentration students complete one of these approved required electives.",
+    "title": "AI/ML Required Elective"
+  },
+  "cs_calc_seq_1": {
+    "courses": [
+      "MATH 1261",
+      "MATH 1264"
+    ],
+    "description": "CS and SE students may take the standard calculus sequence (MATH 1261 + MATH 1262) or the data science calculus sequence (MATH 1264 + MATH 1265). Choose one first-semester option.",
+    "title": "Calculus I or Calculus for Data Science I"
+  },
+  "cs_calc_seq_2": {
+    "courses": [
+      "MATH 1262",
+      "MATH 1265"
+    ],
+    "description": "Take MATH 1262 after MATH 1261, or MATH 1265 after MATH 1264. Follow the same sequence you started.",
+    "title": "Calculus II or Calculus for Data Science II"
+  },
+  "cs_computer_systems": {
+    "courses": [
+      "CSC 2300",
+      "CPE 2300"
+    ],
+    "description": "Computer Science students may satisfy this requirement with CSC 2300 or CPE 2300.",
+    "title": "Introduction to Computer Systems"
+  },
+  "cs_data_eng_elective": {
+    "courses": [
+      "CSC 3250",
+      "CSC 3660",
+      "CSC 3662",
+      "CSC 3665",
+      "CSC 4310",
+      "CSC 4610",
+      "DATA 4610",
+      "CSC 4620",
+      "DATA 4620",
+      "CSC 4665",
+      "CSC 4667",
+      "CSC 4691",
+      "CSC 4692",
+      "CSC 4693",
+      "CSC 4820",
+      "CSC 4880",
+      "CSC 4888",
+      "CSC 5660",
+      "CSC 5669"
+    ],
+    "description": "Approved elective courses for the Data Engineering concentration.",
+    "title": "Data Engineering Concentration Elective"
+  },
+  "cs_ethics_elective": {
+    "courses": [
+      "PHIL 3323",
+      "WGQS 3350",
+      "WGQS 3351"
+    ],
+    "description": "CS and SE students must take one of these three courses covering ethics, technology, and society.",
+    "title": "Ethics / Gender, Race & Technology"
+  },
+  "cs_external_elective": {
+    "courses": [
+      "AERO 2220",
+      "AERO 4450",
+      "ART 1102",
+      "ART 1103",
+      "ART 1104",
+      "ART 1141",
+      "ART 3332",
+      "ART 4433",
+      "ASTR 3301",
+      "ASTR 3302",
+      "BIO 1113",
+      "BIO 1114",
+      "BIO 2213",
+      "BIO 2217",
+      "BIO 2252",
+      "BIO 3312",
+      "BIO 3315",
+      "BIO 3318",
+      "BIO 3323",
+      "BIO 3351",
+      "BMED 2310",
+      "BMED 2311",
+      "BOT 3313",
+      "BUS 2212",
+      "BUS 3302",
+      "BUS 3310",
+      "CHEM 1120",
+      "CHEM 1122",
+      "COMS 2213",
+      "COMS 2226",
+      "COMS 2250",
+      "COMS 3301",
+      "COMS 3302",
+      "COMS 3395",
+      "COMS 4402",
+      "COMS 4404",
+      "COMS 4421",
+      "COMS 4430",
+      "COMS 4435",
+      "CSC 4495",
+      "DATA 1810",
+      "STAT 1810",
+      "DATA 3800",
+      "STAT 3800",
+      "DATA 3820",
+      "STAT 3820",
+      "EE 2115",
+      "EE 2115L",
+      "EE 2201",
+      "EE 2211",
+      "EE 2241",
+      "ENGL 3387",
+      "ENGL 3390",
+      "ENGR 2211",
+      "ENGR 2212",
+      "ENGR 2234",
+      "ENGR 3302",
+      "ENVE 3323",
+      "ENVE 3324",
+      "GEOL 2240",
+      "GEOL 2241",
+      "GEOL 3330",
+      "GRC 4290",
+      "HLTH 2281",
+      "HLTH 2297",
+      "HLTH 3337",
+      "IME 1140",
+      "IME 1141",
+      "IME 1142",
+      "IME 1143",
+      "IME 1156",
+      "IME 1223",
+      "IME 2212",
+      "IME 2243",
+      "IME 2315",
+      "IME 3303",
+      "IME 3326",
+      "IME 3327",
+      "IME 4403",
+      "IME 4408",
+      "IME 4421",
+      "IME 4435",
+      "IME 4456",
+      "ISLA 3340",
+      "ISLA 3341",
+      "KINE 1181",
+      "KINE 2266",
+      "MATE 1220",
+      "MATH 2263",
+      "MATH 2341",
+      "MATH 2343",
+      "MATH 2621",
+      "MATH 3051",
+      "MATH 3055",
+      "MATH 3111",
+      "MATH 3511",
+      "MATH 3622",
+      "MATH 3651",
+      "MATH 3680",
+      "MATH 3681",
+      "MATH 4052",
+      "MATH 4531",
+      "MATH 4911",
+      "MCRO 2227",
+      "MCRO 3301",
+      "MCRO 3342",
+      "MCRO 4421",
+      "ME 2210",
+      "ME 2212",
+      "MSCI 1111",
+      "MSCI 1112",
+      "PHIL 2241",
+      "PHIL 3321",
+      "PHIL 3322",
+      "PHIL 3327",
+      "PHIL 3328",
+      "PHIL 3331",
+      "PHIL 3341",
+      "PHIL 4412",
+      "PHIL 4422",
+      "PHIL 4423",
+      "PHYS 1141",
+      "PHYS 1143",
+      "PHYS 2211",
+      "PSY 3302",
+      "PSY 3350",
+      "PSY 3357",
+      "STAT 1510",
+      "STAT 2610",
+      "STAT 3430",
+      "STAT 3520",
+      "STAT 3540",
+      "STAT 4610",
+      "STAT 4750",
+      "STAT 4770",
+      "STAT 4790"
+    ],
+    "description": "Catalog-approved external electives for Computer Science. These are limited by the catalog rules for the selected curriculum or concentration.",
+    "title": "Approved External Elective"
+  },
+  "cs_game_elective": {
+    "courses": [
+      "CSC 3710",
+      "CSC 3760",
+      "CSC 3780",
+      "CSC 4036",
+      "CSC 4037",
+      "CSC 4184",
+      "CSC 4186",
+      "CSC 4471",
+      "CSC 4472",
+      "CSC 4710",
+      "CSC 4730",
+      "CSC 4740",
+      "CSC 4760",
+      "CSC 4770",
+      "CSC 4791",
+      "CSC 4792",
+      "CSC 4793",
+      "CSC 4991",
+      "CSC 4992",
+      "CSC 4993"
+    ],
+    "description": "Approved CS electives for the Game Development concentration.",
+    "title": "Game Development CS Elective"
+  },
+  "cs_graphics_conc_elective": {
+    "courses": [
+      "CSC 3710",
+      "CSC 3760",
+      "CSC 3780",
+      "CSC 4471",
+      "CSC 4472",
+      "CSC 4730",
+      "CSC 4740",
+      "CSC 4760",
+      "CSC 4770",
+      "CSC 4791",
+      "CSC 4792",
+      "CSC 4793",
+      "CSC 4991",
+      "CSC 4992",
+      "CSC 4993",
+      "ART 3332",
+      "ART 4433"
+    ],
+    "description": "Approved elective courses for the Graphics concentration.",
+    "title": "Graphics Concentration Elective"
+  },
+  "cs_graphics_required_elective": {
+    "courses": [
+      "CSC 4471",
+      "CSC 4472",
+      "CSC 4730",
+      "CSC 4740",
+      "CSC 4760",
+      "CSC 4770"
+    ],
+    "description": "Approved required elective options for the Graphics concentration.",
+    "title": "Graphics Required Elective"
+  },
+  "cs_intro_computing": {
+    "courses": [
+      "CSC 1024",
+      "CPE 1024"
+    ],
+    "description": "Computer Science students may satisfy this requirement with CSC 1024 or CPE 1024.",
+    "title": "Introduction to Computing"
+  },
+  "cs_life_science": {
+    "courses": [
+      "BIO 1111",
+      "BIO 1112",
+      "BIO 1150",
+      "BIO 1151",
+      "BOT 1121",
+      "MCRO 2221"
+    ],
+    "description": "One life science course from Biology, Botany, or Microbiology (4 units). If you take BIO 1111 (3-unit lecture), also enroll in BIO 1112 (1-unit lab) to meet the full 4-unit requirement.",
+    "title": "Life Science Elective"
+  },
+  "cs_operating_systems": {
+    "courses": [
+      "CSC 4553",
+      "CPE 4553"
+    ],
+    "description": "Computer Science students may satisfy this requirement with CSC 4553 or CPE 4553.",
+    "title": "Introduction to Operating Systems"
+  },
+  "cs_orientation": {
+    "courses": [
+      "CSC 1000",
+      "CPE 1000"
+    ],
+    "description": "Computer Science students may satisfy this requirement with CSC 1000 or CPE 1000.",
+    "title": "Computing Majors Orientation"
+  },
+  "cs_phys_or_chem": {
+    "courses": [
+      "PHYS 1141",
+      "CHEM 1120"
+    ],
+    "description": "CS students must take one of these two courses as a science support requirement.",
+    "title": "Physics I or Fund. Chemistry"
+  },
+  "cs_privacy_math_elective": {
+    "courses": [
+      "MATH 2263",
+      "MATH 3051",
+      "MATH 3055",
+      "MATH 3111",
+      "MATH 4911"
+    ],
+    "description": "Privacy & Security concentration students choose one approved mathematics elective (3 units).",
+    "title": "Privacy & Security Mathematics Elective"
+  },
+  "cs_privacy_security_elective": {
+    "courses": [
+      "CSC 3203",
+      "CSC 4210",
+      "CSC 4212",
+      "CSC 4214",
+      "CSC 4230",
+      "CSC 4270",
+      "CSC 4291",
+      "CSC 4292",
+      "CSC 4293",
+      "CSC 4310",
+      "CSC 4471",
+      "CSC 4472",
+      "CSC 5201",
+      "CSC 5210",
+      "CSC 5220",
+      "CSC 5270",
+      "CSC 5281",
+      "CPE 4220",
+      "CPE 4250",
+      "CPE 4280",
+      "CPE 4464",
+      "CPE 5564"
+    ],
+    "description": "Approved elective courses for the Privacy & Security concentration.",
+    "title": "Privacy & Security Concentration Elective"
+  },
+  "cs_security_intro": {
+    "courses": [
+      "CSC 3201",
+      "CPE 3201"
+    ],
+    "description": "Computer Science students may satisfy this requirement with CSC 3201 or CPE 3201.",
+    "title": "Introduction to Computer Security"
+  },
+  "cs_senior_project": {
+    "courses": [
+      "CSC 4460",
+      "CSC 4461",
+      "DATA 4460"
+    ],
+    "description": "Catalog-approved senior project options for Computer Science.",
+    "title": "Senior Project Options"
+  },
+  "cs_system_software": {
+    "courses": [
+      "CSC 2050",
+      "CPE 2050"
+    ],
+    "description": "Computer Science students may satisfy this requirement with CSC 2050 or CPE 2050.",
+    "title": "System Software Mechanics"
+  },
+  "cs_tech_elective": {
+    "courses": [
+      "CSC 3113",
+      "CSC 3203",
+      "CSC 3250",
+      "CSC 3445",
+      "CSC 3660",
+      "CSC 3662",
+      "CSC 3665",
+      "CSC 3710",
+      "CSC 3760",
+      "CSC 3780",
+      "CSC 4036",
+      "CSC 4037",
+      "CSC 4091",
+      "CSC 4092",
+      "CSC 4093",
+      "CSC 4100",
+      "CSC 4170",
+      "CSC 4184",
+      "CSC 4186",
+      "CSC 4191",
+      "CSC 4192",
+      "CSC 4193",
+      "CSC 4210",
+      "CSC 4212",
+      "CSC 4214",
+      "CSC 4230",
+      "CSC 4270",
+      "CSC 4291",
+      "CSC 4292",
+      "CSC 4293",
+      "CSC 4310",
+      "CSC 4400",
+      "CSC 4448",
+      "CSC 4470",
+      "CSC 4471",
+      "CSC 4472",
+      "CSC 4495",
+      "CSC 4554",
+      "CSC 4570",
+      "CSC 4610",
+      "DATA 4610",
+      "CSC 4620",
+      "DATA 4620",
+      "CSC 4665",
+      "CSC 4667",
+      "CSC 4691",
+      "CSC 4692",
+      "CSC 4693",
+      "CSC 4710",
+      "CSC 4730",
+      "CSC 4740",
+      "CSC 4760",
+      "CSC 4770",
+      "CSC 4791",
+      "CSC 4792",
+      "CSC 4793",
+      "CSC 4820",
+      "CSC 4880",
+      "CSC 4881",
+      "CSC 4888",
+      "CSC 4891",
+      "CSC 4892",
+      "CSC 4893",
+      "CSC 4991",
+      "CSC 4992",
+      "CSC 4993",
+      "CSC 5100",
+      "CSC 5113",
+      "CSC 5170",
+      "CSC 5201",
+      "CSC 5210",
+      "CSC 5220",
+      "CSC 5270",
+      "CSC 5281",
+      "CSC 5370",
+      "CSC 5445",
+      "CSC 5447",
+      "CSC 5449",
+      "CSC 5550",
+      "CSC 5570",
+      "CSC 5571",
+      "CSC 5572",
+      "CSC 5660",
+      "CSC 5666",
+      "CSC 5669",
+      "CSC 5670",
+      "CSC 5710",
+      "CSC 5740",
+      "CSC 5770",
+      "CSC 5820",
+      "CSC 5870",
+      "CSC 5880",
+      "CSC 5887",
+      "CPE 2301",
+      "CPE 3160",
+      "CPE 3300",
+      "CPE 4140",
+      "CPE 4160",
+      "CPE 4180",
+      "CPE 4190",
+      "CPE 4220",
+      "CPE 4250",
+      "CPE 4280",
+      "CPE 4300",
+      "CPE 4390",
+      "CPE 4420",
+      "CPE 4455",
+      "CPE 4464",
+      "CPE 4465",
+      "CPE 4470",
+      "CPE 4471",
+      "CPE 4472",
+      "CPE 4491",
+      "CPE 4492",
+      "CPE 4493",
+      "CPE 4650",
+      "CPE 4669",
+      "CPE 5300",
+      "CPE 5420",
+      "CPE 5564",
+      "CPE 5660",
+      "DATA 3301",
+      "DATA 3302",
+      "DATA 4401",
+      "DATA 4632",
+      "DATA 4720",
+      "ENGR 2995",
+      "ENGR 4995"
+    ],
+    "description": "Catalog-approved Computer Science core technical electives for the 2026-2028 catalog.",
+    "title": "Technical Elective"
+  },
+  "cs_wgqs_choice": {
+    "courses": [
+      "WGQS 3350",
+      "WGQS 3351"
+    ],
+    "description": "Computer Science students may satisfy this support requirement with WGQS 3350 or WGQS 3351.",
+    "title": "Gender/Race/Culture in Tech"
+  },
+  "dsci_senior_project": {
+    "courses": [
+      "ASCI 4477",
+      "ASCI 4478",
+      "ASCI 4479"
+    ],
+    "description": "Select one senior project option: Research Experience, Advanced Internship, or Current Issues in Animal Science.",
+    "title": "Senior Project"
+  },
+  "dsci_ud_elective": {
+    "courses": [
+      "DSCI 4401",
+      "DSCI 4402",
+      "DSCI 4410",
+      "DSCI 4412"
+    ],
+    "description": "Select an upper-division Dairy Science elective from the approved list.",
+    "title": "Upper-Division Dairy Science Elective"
+  },
+  "econ_accounting_elective": {
+    "courses": [
+      "BUS 4424",
+      "BUS 4425",
+      "BUS 4426",
+      "BUS 4427",
+      "BUS 4428"
+    ],
+    "description": "Select from the approved accounting elective list: BUS 4424, 4425, 4426, 4427, or 4428.",
+    "title": "Accounting Concentration Elective"
+  },
+  "econ_bus_choice": {
+    "courses": [
+      "BUS 2207",
+      "BUS 2214"
+    ],
+    "description": "BUS 2207 (Legal Responsibilities of Business) or BUS 2214 (Financial Accounting).",
+    "title": "Legal Responsibilities or Financial Accounting"
+  },
+  "econ_info_sys_project": {
+    "courses": [
+      "BUS 4492",
+      "BUS 4497"
+    ],
+    "description": "Select one project or capstone course for the Information Systems and Analytics concentration.",
+    "title": "Information Systems Project Course"
+  },
+  "econ_intro_choice": {
+    "courses": [
+      "ECON 2030",
+      "ECON 2001"
+    ],
+    "description": "ECON 2001 (Survey of Economics) or ECON 2030 (Microeconomics). ECON 2030 is the standard path; ECON 2001 is the survey option.",
+    "title": "Introductory Microeconomics or Survey of Economics"
+  },
+  "econ_macro_choice": {
+    "courses": [
+      "ECON 2040",
+      "ECON 2021"
+    ],
+    "description": "ECON 2040 (Macroeconomics) or ECON 2021 (Using Big Data for Economics).",
+    "title": "Macroeconomics or Using Big Data"
+  },
+  "econ_mgmt_hr_project": {
+    "courses": [
+      "BUS 4477",
+      "BUS 4489"
+    ],
+    "description": "Select one project or consulting course for the Management and Human Resources concentration.",
+    "title": "Management and HR Project Course"
+  },
+  "ee_ecc_elective": {
+    "courses": [
+      "BMED 4434",
+      "EE 4410",
+      "EE 4412",
+      "EE 4416",
+      "EE 4418",
+      "EE 4419",
+      "EE 4425",
+      "EE 4431",
+      "EE 4440",
+      "EE 4470",
+      "EE 4471",
+      "EE 5344",
+      "EE 5424",
+      "EE 5502",
+      "EE 5504",
+      "EE 5509",
+      "EE 5513",
+      "EE 5514",
+      "EE 5515",
+      "EE 5524",
+      "EE 5525",
+      "EE 5526",
+      "EE 5530",
+      "EE 5531",
+      "EE 5532",
+      "EE 5533",
+      "EE 5544"
+    ],
+    "description": "ECC concentration students select from the approved electronics, controls, and communications EE elective list.",
+    "title": "Electronics, Controls, and Communications Elective"
+  },
+  "ee_power_elective": {
+    "courses": [
+      "EE 4406",
+      "EE 4407",
+      "EE 4410",
+      "EE 4417",
+      "EE 4420",
+      "EE 4433",
+      "EE 4434",
+      "EE 4435",
+      "EE 4450",
+      "EE 4470",
+      "EE 4471",
+      "EE 5510",
+      "EE 5511",
+      "EE 5512",
+      "EE 5517",
+      "EE 5518",
+      "EE 5519",
+      "EE 5520",
+      "EE 5535"
+    ],
+    "description": "Power concentration students select from the approved power-focused EE elective list.",
+    "title": "Power Concentration Elective"
+  },
+  "ee_power_required": {
+    "courses": [
+      "EE 4406",
+      "EE 4410"
+    ],
+    "description": "Power concentration students take one of these as a required course in Senior Fall.",
+    "title": "Power Required Course"
+  },
+  "ee_senior_proj_lab_i": {
+    "courses": [
+      "EE 4463",
+      "EE 4465"
+    ],
+    "description": "EE students complete one of these senior project design lab options in Senior Fall.",
+    "title": "Senior Project Design Lab I"
+  },
+  "ee_senior_proj_lab_ii": {
+    "courses": [
+      "EE 4464",
+      "EE 4466"
+    ],
+    "description": "EE students complete one of these senior project design lab options in Senior Spring.",
+    "title": "Senior Project Design Lab II"
+  },
+  "eess_env_physics_choice": {
+    "courses": [
+      "SS 4424",
+      "ERSC 4442",
+      "ERSC 4443"
+    ],
+    "description": "Select one: SS 4424 (Environmental Soil Physics), ERSC 4442 (Applied Groundwater Hydrology), or ERSC 4443 (Applied Environmental Contaminant Transport).",
+    "title": "Soil Physics or Applied Groundwater/Contaminant Transport"
+  },
+  "eess_gis_choice": {
+    "courses": [
+      "BRAE 3345",
+      "NR 4418"
+    ],
+    "description": "Select one: BRAE 3345 (Photogrammetry and Remote Sensing with GIS Applications, 3 units) or NR 4418 (Applied Geographic Information System, 2 units). Selecting NR 4418 will update the tile to 2 units.",
+    "title": "GIS or Remote Sensing Applications"
+  },
+  "eess_math_choice": {
+    "courses": [
+      "MATH 1261",
+      "MATH 1264"
+    ],
+    "description": "Select one: MATH 1261 (Calculus I) or MATH 1264 (Calculus for Data Science I). MATH 1261 is required for students pursuing the Geology concentration.",
+    "title": "Calculus I (GE 2)"
+  },
+  "eess_phys_choice": {
+    "courses": [
+      "PHYS 1121",
+      "PHYS 1141"
+    ],
+    "description": "Select one: PHYS 1121 (College Physics I) or PHYS 1141 (General Physics I). PHYS 1141 is required for students pursuing the Geology concentration.",
+    "title": "Physics I"
+  },
+  "eess_senior_project": {
+    "courses": [
+      "ERSC 4478",
+      "ERSC 4479"
+    ],
+    "description": "Select one senior project option. Crosslisted as ERSC/NR.",
+    "title": "Environmental Earth and Soil Sciences Senior Project"
+  },
+  "eess_soil_or_geomorph": {
+    "courses": [
+      "SS 4422",
+      "ERSC 4450"
+    ],
+    "description": "Select one: SS 4422 (Soil Ecology, 4 units) or ERSC 4450 (Geomorphology, 3 units). Selecting ERSC 4450 will update the tile to 3 units. ERSC 4450 is a prerequisite for the Geology concentration.",
+    "title": "Soil Ecology or Geomorphology"
+  },
+  "eess_strat_or_soil": {
+    "courses": [
+      "GEOL 3330",
+      "SS 2221",
+      "SS 3444"
+    ],
+    "description": "Select one: GEOL 3330 (Principles of Stratigraphy, 3 units), SS 2221 (Soil Health and Plant Nutrition, 4 units), or SS 3444 (Climate Smart Agriculture, 3 units). Selecting SS 2221 will update the tile to 4 units.",
+    "title": "Stratigraphy, Soil Health, or Climate Smart Agriculture"
+  },
+  "eim_acct_choice": {
+    "courses": [
+      "BUS 2212",
+      "AGB 2214"
+    ],
+    "description": "BUS 2212 (Financial Accounting for Nonbusiness Majors) or AGB 2214 (Agricultural Business Accounting).",
+    "title": "Financial Accounting"
+  },
+  "eim_event_elective": {
+    "courses": [
+      "BUS 2207",
+      "COMS 2211",
+      "COMS 3301",
+      "COMS 3384",
+      "EIM 2216",
+      "EIM 3318",
+      "EIM 3321",
+      "EIM 3323",
+      "EIM 4400",
+      "EIM 4412",
+      "EIM 4450",
+      "JOUR 3300",
+      "JOUR 3342"
+    ],
+    "description": "Select from approved Event Planning and Management concentration electives.",
+    "title": "Event Planning and Management Concentration Elective"
+  },
+  "eim_math_elective": {
+    "courses": [
+      "MATH 1004",
+      "MATH 1006",
+      "MATH 1007",
+      "MATH 1267"
+    ],
+    "description": "MATH 1004 (Stretch College Algebra), MATH 1006 (College Algebra), MATH 1007 (Precalculus), or MATH 1267 (Business Calculus). All satisfy GE Area 2.",
+    "title": "Mathematics Requirement"
+  },
+  "eim_mgmt_acct_choice": {
+    "courses": [
+      "BUS 2215",
+      "AGB 3323"
+    ],
+    "description": "BUS 2215 (Managerial Accounting for Nonbusiness Majors) or AGB 3323 (Agricultural Business Finance).",
+    "title": "Managerial Accounting"
+  },
+  "eim_senior_project": {
+    "courses": [
+      "EIM 4460",
+      "EIM 4461"
+    ],
+    "description": "EIM 4460 (Senior Project: Community Engagement) or EIM 4461 (Senior Project: Industry Partner).",
+    "title": "Senior Project"
+  },
+  "eim_sport_elective": {
+    "courses": [
+      "EIM 3317",
+      "EIM 3320",
+      "EIM 3321",
+      "EIM 4400",
+      "EIM 4412",
+      "KINE 1181"
+    ],
+    "description": "Select from approved Sport and Recreation Management concentration electives.",
+    "title": "Sport and Recreation Management Concentration Elective"
+  },
+  "eim_sport_intro_choice": {
+    "courses": [
+      "EIM 1112",
+      "EIM 1160"
+    ],
+    "description": "EIM 1112 (Introduction to Parks and Outdoor Recreation) or EIM 1160 (Introduction to Sport Management).",
+    "title": "Sport/Recreation Intro Course"
+  },
+  "eim_sport_second_choice": {
+    "courses": [
+      "EIM 2260",
+      "EIM 2275"
+    ],
+    "description": "EIM 2260 (Community Relations and Sports-Based Youth Development) or EIM 2275 (Facilitation and Teambuilding Experiences).",
+    "title": "Sport/Recreation Community/Facilitation Course"
+  },
+  "eim_sport_third_choice": {
+    "courses": [
+      "EIM 3323",
+      "EIM 3325"
+    ],
+    "description": "EIM 3323 (Sport Marketing and the Fan Experience) or EIM 3325 (Leadership in Outdoor Experiences).",
+    "title": "Sport/Recreation Upper-Division Course"
+  },
+  "eim_stat_choice": {
+    "courses": [
+      "STAT 1110",
+      "STAT 1210"
+    ],
+    "description": "STAT 1110 (Applied Statistical Concepts and Methods) or STAT 1210 (Business Statistics I).",
+    "title": "Statistics"
+  },
+  "eim_tourism_elective": {
+    "courses": [
+      "EIM 3320",
+      "EIM 3321",
+      "EIM 3323",
+      "EIM 4400",
+      "EIM 4412",
+      "EIM 4450",
+      "WVIT 2121"
+    ],
+    "description": "Select from approved Tourism, Hospitality, and Destination Management concentration electives.",
+    "title": "Tourism, Hospitality, and Destination Management Concentration Elective"
+  },
+  "engl_diversity_elective": {
+    "courses": [
+      "ENGL 4427",
+      "ENGL 4439",
+      "ENGL 4449",
+      "ENGL 4459",
+      "ENGL 4467",
+      "ENGL 4495"
+    ],
+    "description": "English students complete one 4000-level diversity elective from the approved list.",
+    "title": "English Diversity Elective"
+  },
+  "engl_gwr_elective": {
+    "courses": [
+      "ENGL 3611",
+      "ENGL 3618",
+      "ENGL 3625",
+      "ENGL 3626"
+    ],
+    "description": "English students complete one upper-division English course that satisfies the Graduation Writing Requirement (GWR).",
+    "title": "Upper-Division English GWR Elective"
+  },
+  "engl_language_1101": {
+    "courses": [
+      "CHIN 1101",
+      "FR 1101",
+      "GER 1101",
+      "ITAL 1101",
+      "JPNS 1101",
+      "SPAN 1101",
+      "WLC 1101"
+    ],
+    "description": "Students must take one of these courses.",
+    "title": "Elementary Language and Culture"
+  },
+  "enve_ce_elective": {
+    "courses": [
+      "CE 3321",
+      "CE 3352",
+      "CE 3375",
+      "CE 3381",
+      "CE 4413",
+      "CE 4433",
+      "CE 4434",
+      "CE 4435",
+      "CE 4440",
+      "CE 4474",
+      "CE 4475",
+      "CE 5536",
+      "CE 5537",
+      "CE 5538",
+      "CE 5539",
+      "CE 5541"
+    ],
+    "description": "Approved Civil Engineering technical elective courses for Environmental Engineering majors.",
+    "title": "CE Technical Elective"
+  },
+  "envm_bio_ecology_choice": {
+    "courses": [
+      "NR 2208",
+      "BIO 2215",
+      "BIO 2217"
+    ],
+    "description": "Choose one ecology or wildlife course from the approved list.",
+    "title": "Ecology/Wildlife Elective"
+  },
+  "envm_bio_life_choice": {
+    "courses": [
+      "BIO 1111",
+      "BIO 1150",
+      "BIO 1151"
+    ],
+    "description": "Choose one general biology option. BIO 1111/1112 are a 3+1 lecture/lab pair.",
+    "title": "Life Sciences Lab (GE 5B/5C)"
+  },
+  "envm_bio_plant_choice": {
+    "courses": [
+      "BIO 1114",
+      "BOT 1121"
+    ],
+    "description": "Choose one: BIO 1114 (Plant Diversity and Ecology) or BOT 1121 (General Botany).",
+    "title": "Plant/Life Sciences (GE 5B/5C)"
+  },
+  "envm_chem_choice": {
+    "courses": [
+      "CHEM 1120",
+      "CHEM 1122"
+    ],
+    "description": "Choose one: CHEM 1120 (Chemical Structure and Properties) or CHEM 1122 (Chemical Reactivity).",
+    "title": "General Chemistry (GE 5A)"
+  },
+  "envm_conservation_elective": {
+    "courses": [
+      "ASCI 2239",
+      "ASCI 3370",
+      "BIO 2253",
+      "BIO 3312",
+      "BIO 3322",
+      "BIO 3324",
+      "BIO 3325",
+      "BIO 3326",
+      "BIO 3327",
+      "BIO 3343",
+      "BIO 3351",
+      "BIO 4414",
+      "BIO 4427",
+      "BIO 4442",
+      "BIO 4444",
+      "BOT 3313",
+      "BOT 3326",
+      "BOT 4433",
+      "ERSC 3303",
+      "NR 1141",
+      "NR 3319",
+      "NR 4402",
+      "NR 4418",
+      "NR 4421",
+      "NR 4431",
+      "PLSC 1120",
+      "PLSC 1124",
+      "PLSC 1132",
+      "PLSC 1150",
+      "PLSC 2232",
+      "SS 3321",
+      "SS 4440"
+    ],
+    "description": "Approved electives for the Conservation Science and Management concentration.",
+    "title": "Conservation Science and Management Elective"
+  },
+  "envm_corporate_elective": {
+    "courses": [
+      "BUS 3310",
+      "BUS 3382",
+      "ECON 2001",
+      "ECON 2030",
+      "ECON 3050",
+      "ENGL 3310",
+      "ENVE 3323",
+      "ITP 3330",
+      "ITP 3341",
+      "ITP 3371",
+      "ITP 4411",
+      "ITP 4415",
+      "MATE 1220",
+      "MATE 3232",
+      "NR 3326",
+      "NR 4442",
+      "NR 4445",
+      "PHIL 3323"
+    ],
+    "description": "Approved electives for the Corporate Environmental Management concentration.",
+    "title": "Corporate Environmental Management Elective"
+  },
+  "envm_data_science_elective": {
+    "courses": [
+      "BRAE 1239",
+      "BRAE 2237",
+      "BRAE 3345",
+      "BRAE 4447",
+      "GEOG 3328",
+      "GEOG 4441",
+      "NR 3335",
+      "NR 4418",
+      "NR 4431",
+      "NR 4442",
+      "NR 4445",
+      "STAT 1510",
+      "STAT 1810",
+      "STAT 3430",
+      "STAT 3520",
+      "STAT 3530",
+      "STAT 3540"
+    ],
+    "description": "Approved electives for the Environmental Data Science concentration.",
+    "title": "Environmental Data Science Elective"
+  },
+  "envm_ecology_choice": {
+    "courses": [
+      "NR 3304",
+      "NR 3305",
+      "NR 3306"
+    ],
+    "description": "Choose one ecology or habitat management course (4 units).",
+    "title": "Ecology/Habitat Elective"
+  },
+  "envm_enviro_choice": {
+    "courses": [
+      "NR 3310",
+      "BOT 3311",
+      "BRAE 3348",
+      "ENVE 3324"
+    ],
+    "description": "Choose one upper-division environmental science course. Satisfies GE UD-2/5.",
+    "title": "Environmental Science Elective (GE UD2/5)"
+  },
+  "envm_law_justice_elective": {
+    "courses": [
+      "ERSC 3325",
+      "GEOG 3308",
+      "GEOG 4408",
+      "NR 3326",
+      "NR 3335",
+      "NR 4404",
+      "NR 4408",
+      "NR 4416",
+      "PHIL 3340",
+      "POLS 2225",
+      "POLS 2229",
+      "POLS 3351",
+      "POLS 4419",
+      "POLS 4426"
+    ],
+    "description": "Approved electives for the Environmental Law, Justice and Policy concentration.",
+    "title": "Environmental Law, Justice and Policy Elective"
+  },
+  "envm_math_choice": {
+    "courses": [
+      "MATH 1264",
+      "MATH 1267"
+    ],
+    "description": "Choose one: MATH 1264 (Calculus for Data Science I, 4u) or MATH 1267 (Business Calculus, 3u).",
+    "title": "Mathematics (GE 2)"
+  },
+  "envm_policy_choice": {
+    "courses": [
+      "NR 4404",
+      "NR 4408",
+      "NR 4416",
+      "AG 4452"
+    ],
+    "description": "Choose one environmental law, policy, or impact analysis course (4 units).",
+    "title": "Environmental Law/Policy Elective"
+  },
+  "envm_quant_choice": {
+    "courses": [
+      "NR 3326",
+      "NR 4418",
+      "NR 4431",
+      "NR 4442",
+      "NR 4445"
+    ],
+    "description": "Choose one applied quantitative or GIS methods course.",
+    "title": "Applied Quantitative Methods Elective"
+  },
+  "envm_senior_project": {
+    "courses": [
+      "NR 4460",
+      "NR 4462",
+      "NR 4463",
+      "NR 4464",
+      "NR 4465"
+    ],
+    "description": "Choose one senior project option based on your concentration and interests.",
+    "title": "Senior Project"
+  },
+  "envm_soc_choice": {
+    "courses": [
+      "NR 3308",
+      "NR 3323",
+      "NR 3324",
+      "NR 3328",
+      "NR 3335"
+    ],
+    "description": "Choose one course addressing human or social dimensions of natural resources management.",
+    "title": "Human/Social Dimensions Elective"
+  },
+  "envm_sust_ag_elective": {
+    "courses": [
+      "AG 4452",
+      "BRAE 3340",
+      "NR 3304",
+      "NR 3310",
+      "NR 3324",
+      "NR 3360",
+      "PLSC 3315",
+      "PLSC 3444",
+      "PLSC 4420",
+      "POLS 3332",
+      "SS 2221",
+      "SS 3321",
+      "SS 4440"
+    ],
+    "description": "Approved electives for the Sustainable Agriculture concentration.",
+    "title": "Sustainable Agriculture Elective"
+  },
+  "envm_sust_urban_elective": {
+    "courses": [
+      "BRAE 3348",
+      "CM 3317",
+      "CRP 1211",
+      "CRP 1212",
+      "CRP 1213",
+      "CRP 2214",
+      "CRP 3334",
+      "CRP 3336",
+      "CRP 4435",
+      "CRP 4445",
+      "EDES 4406",
+      "EDES 4408",
+      "NR 4404",
+      "NR 4408",
+      "NR 4416"
+    ],
+    "description": "Approved electives for the Sustainable Urban Development and Planning concentration.",
+    "title": "Sustainable Urban Development and Planning Elective"
+  },
+  "envm_water_choice": {
+    "courses": [
+      "NR 3319",
+      "NR 4402",
+      "NR 4421",
+      "SS 3321",
+      "ERSC 3303"
+    ],
+    "description": "Choose one watershed, soils, or forest health course.",
+    "title": "Watershed/Soil Science Elective"
+  },
+  "envm_water_mgmt_elective": {
+    "courses": [
+      "BRAE 3340",
+      "BRAE 3349",
+      "ERSC 3303",
+      "ERSC 4442",
+      "ERSC 4443",
+      "ERSC 4450",
+      "GEOL 2240",
+      "NR 3319",
+      "NR 3321",
+      "NR 4408",
+      "NR 4418",
+      "NR 4421",
+      "NR 4422",
+      "NR 4431",
+      "PHYS 1121",
+      "SS 3321",
+      "SS 4440"
+    ],
+    "description": "Approved electives for the Water Science and Management concentration.",
+    "title": "Water Science and Management Elective"
+  },
+  "fsn_fs_elective": {
+    "courses": [
+      "ASCI 4415",
+      "DSCI 3344",
+      "DSCI 4402",
+      "FDSC 5545",
+      "MCRO 3342",
+      "PLSC 4421"
+    ],
+    "description": "Approved electives for the Food Safety concentration. Select from agricultural, food, or microbiology courses at the 3000\u20135000 level.",
+    "title": "Food Safety Concentration Elective"
+  },
+  "fsn_senior_project": {
+    "courses": [
+      "FDSC 4460",
+      "FDSC 4461",
+      "FDSC 4462"
+    ],
+    "description": "Choose one senior project option: FDSC 4460 (Undergraduate Research), FDSC 4461 (Senior Project I), or FDSC 4462 (Senior Project II, Culinology emphasis).",
+    "title": "Food Science Senior Project"
+  },
+  "fsn_sft_elective": {
+    "courses": [
+      "BRAE 3348",
+      "BRAE 3349",
+      "BRAE 5436",
+      "NR 3324"
+    ],
+    "description": "Approved electives for the Sustainable Food Technology concentration. Select from bioresource and agricultural engineering courses.",
+    "title": "Sustainable Food Technology Concentration Elective"
+  },
+  "gen_gender_sci_choice": {
+    "courses": [
+      "WGQS 3350",
+      "WGQS 3351"
+    ],
+    "description": "Select one: WGQS 3350 (Gender, Race, Culture, Science, and Technology) or WGQS 3351 (Gender, Race, Class, Nation: Critical Computing and Engineering Studies). Both satisfy USCP requirement.",
+    "title": "Gender, Race, Culture in Science/Engineering and Technology (USCP)"
+  },
+  "grc_design_elective": {
+    "courses": [
+      "ART 1103",
+      "ART 2201",
+      "ART 2263",
+      "ART 3351",
+      "ART 4433",
+      "GRC 4400",
+      "GRC 4451",
+      "GRC 4452",
+      "GRC 4453",
+      "GRC 4485",
+      "GRC 4495",
+      "GRC 4550"
+    ],
+    "description": "Select from approved Design Reproduction Technology concentration electives.",
+    "title": "Design Reproduction Technology Concentration Elective"
+  },
+  "grc_immersive_elective": {
+    "courses": [
+      "COMS 3384",
+      "GRC 3990",
+      "GRC 4400",
+      "GRC 4451",
+      "GRC 4485",
+      "GRC 4495",
+      "GRC 4900",
+      "PSY 2201"
+    ],
+    "description": "Select from approved Immersive Experience Design concentration electives.",
+    "title": "Immersive Experience Design Concentration Elective"
+  },
+  "grc_mgmt_elective": {
+    "courses": [
+      "BUS 3310",
+      "BUS 3382",
+      "ENGL 3310",
+      "GRC 3270",
+      "GRC 4400",
+      "GRC 4451",
+      "GRC 4485",
+      "GRC 4495"
+    ],
+    "description": "Select from approved Graphic Communication Management concentration electives.",
+    "title": "Graphic Communication Management Concentration Elective"
+  },
+  "grc_packaging_elective": {
+    "courses": [
+      "GRC 4400",
+      "GRC 4451",
+      "GRC 4485",
+      "GRC 4495",
+      "ITP 3334",
+      "ITP 4408"
+    ],
+    "description": "Select from approved Graphics for Packaging concentration electives.",
+    "title": "Graphics for Packaging Concentration Elective"
+  },
+  "grc_senior_project": {
+    "courses": [
+      "GRC 4461",
+      "GRC 4462",
+      "GRC 4463"
+    ],
+    "description": "GRC 4461 (Senior Project I), GRC 4462 (Senior Project II), or GRC 4463 (Senior Project III).",
+    "title": "Senior Project"
+  },
+  "grc_uxui_elective": {
+    "courses": [
+      "COMS 3317",
+      "COMS 4404",
+      "GRC 4290",
+      "GRC 4400",
+      "GRC 4451",
+      "GRC 4485",
+      "GRC 4495",
+      "PSY 2252"
+    ],
+    "description": "Select from approved UX/UI concentration electives.",
+    "title": "User Experience/User Interface Concentration Elective"
+  },
+  "hist_global_elective": {
+    "courses": [
+      "HIST 3309",
+      "HIST 3310",
+      "HIST 3313",
+      "HIST 3316",
+      "HIST 3318",
+      "HIST 3319",
+      "HIST 3320",
+      "HIST 3337",
+      "HIST 3338",
+      "HIST 4415",
+      "HIST 4416",
+      "HIST 4417",
+      "HIST 4419",
+      "HIST 4423",
+      "HIST 4428",
+      "HIST 4429",
+      "HIST 4442",
+      "HIST 4443",
+      "HIST 4444",
+      "HIST 4457",
+      "HIST 4459"
+    ],
+    "description": "8 units required, selected from the catalog-approved Global Histories list. Choose any combination from the following courses.",
+    "title": "Global Histories Elective"
+  },
+  "hist_lang_elective": {
+    "courses": [
+      "CHIN 2201",
+      "FR 2201",
+      "GER 2201",
+      "ITAL 2201",
+      "JPNS 2201",
+      "SPAN 2201",
+      "WLC 2201"
+    ],
+    "description": "Complete one intermediate-level world language course (4 units) to satisfy the History BA language requirement.",
+    "title": "World Language Requirement"
+  },
+  "ie_intro_lab": {
+    "courses": [
+      "IME 1141",
+      "IME 1142",
+      "IME 1156"
+    ],
+    "description": "IE students select one introductory laboratory course from the following options.",
+    "title": "IE Introductory Lab Course"
+  },
+  "ie_linear_math": {
+    "courses": [
+      "MATH 1151",
+      "MATH 2341"
+    ],
+    "description": "IE students select either Linear Algebra or Linear Analysis.",
+    "title": "Linear Mathematics"
+  },
+  "ie_support_elective": {
+    "courses": [
+      "ENGR 2211",
+      "EE 2115",
+      "EE 2201",
+      "MATE 1220"
+    ],
+    "description": "IE students select one technical science support course track: mechanics, circuits, or materials.",
+    "title": "Technical Science Support Elective"
+  },
+  "ints_intro_course": {
+    "courses": [
+      "ES 1112",
+      "HIST 2206",
+      "HIST 2216",
+      "ISLA 1123",
+      "ISLA 2240",
+      "JOUR 2219",
+      "JOUR 2228",
+      "RELS 2201",
+      "WGQS 2201",
+      "WGQS 2301"
+    ],
+    "description": "Select one approved introductory course from the list. Consult your advisor for the current catalog-approved list.",
+    "title": "INTS Introductory Course"
+  },
+  "ints_ud_isla_elective": {
+    "courses": [
+      "COMS 3395",
+      "ISLA 3303",
+      "ISLA 3305",
+      "ISLA 3320",
+      "ISLA 3330",
+      "ISLA 3335",
+      "ISLA 3340",
+      "ISLA 3341",
+      "ISLA 3345",
+      "ISLA 3350",
+      "ISLA 3393",
+      "ISLA 3395",
+      "ISLA 4411",
+      "ISLA 4440",
+      "ISLA 4456"
+    ],
+    "description": "Select an upper-division ISLA or crosslisted Science Communication course approved for the Interdisciplinary Studies major.",
+    "title": "Upper-Division ISLA Elective"
+  },
+  "itp_it_approved_elective": {
+    "courses": [
+      "ITP 2203",
+      "ITP 2211",
+      "ITP 2234",
+      "ITP 2241",
+      "ITP 2275",
+      "ITP 3304",
+      "ITP 4404",
+      "ITP 4406",
+      "ITP 4412",
+      "ITP 4413",
+      "ITP 4414",
+      "ITP 4430",
+      "ITP 4475",
+      "ITP 4498",
+      "BUS 2212",
+      "BUS 2214",
+      "BUS 2215",
+      "BUS 3384",
+      "BUS 3387",
+      "BUS 3392",
+      "BUS 3393",
+      "BUS 4489",
+      "BUS 3310",
+      "BUS 3313"
+    ],
+    "description": "Select an approved elective from the Industrial Technology concentration list. Verify selection with your academic advisor.",
+    "title": "IT Concentration Approved Elective"
+  },
+  "itp_math_choice": {
+    "courses": [
+      "MATH 1261",
+      "MATH 1267"
+    ],
+    "description": "ITP students take Calculus I (MATH 1261) or Business Calculus (MATH 1267). Note: MATH 1267 may also require the corequisite MATH 1277 Business Calculus Workshop (1 unit).",
+    "title": "Calculus I or Business Calculus"
+  },
+  "itp_pkg_approved_elective": {
+    "courses": [
+      "ITP 2211",
+      "ITP 2260",
+      "ITP 3304",
+      "ITP 3390",
+      "ITP 4403",
+      "ITP 4404",
+      "ITP 4406",
+      "ITP 4410",
+      "ITP 4412",
+      "ITP 4413",
+      "ITP 4414",
+      "ITP 4415",
+      "ITP 4428",
+      "FSN 3319",
+      "BUS 2212",
+      "BUS 2214",
+      "BUS 2215",
+      "BUS 3384",
+      "BUS 3387",
+      "BUS 3392",
+      "BUS 3393",
+      "BUS 4489",
+      "BUS 3310",
+      "BUS 3313"
+    ],
+    "description": "Select an approved elective from the Packaging concentration list. Verify selection with your academic advisor.",
+    "title": "Packaging Concentration Approved Elective"
+  },
+  "itp_stat_choice": {
+    "courses": [
+      "STAT 1110",
+      "STAT 1210"
+    ],
+    "description": "ITP students take Applied Statistical Concepts and Methods (STAT 1110) or Business Statistics I (STAT 1210). Either course also satisfies GE Area 2.",
+    "title": "Statistics"
+  },
+  "jour_crosscultural": {
+    "courses": [
+      "JOUR 2219",
+      "JOUR 3319"
+    ],
+    "description": "Select either JOUR 2219 or JOUR 3319 to satisfy this cross-cultural communication requirement.",
+    "title": "Mass Media in a Cross-Cultural Society or Global Communication"
+  },
+  "jour_mi_method": {
+    "courses": [
+      "JOUR 3345",
+      "JOUR 3310"
+    ],
+    "description": "Select JOUR 3345 (Social Media for Strategic Communication) or JOUR 3310 (Advanced Digital Journalism).",
+    "title": "Media Innovation: Method Elective"
+  },
+  "jour_mi_practicum": {
+    "courses": [
+      "JOUR 3352",
+      "JOUR 3353"
+    ],
+    "description": "Select JOUR 3352 (Advanced News Reporting Practicum) or JOUR 3353 (Advanced Broadcast Journalism Practicum).",
+    "title": "Media Innovation: Advanced Practicum"
+  },
+  "jour_news_elective": {
+    "courses": [
+      "JOUR 3307",
+      "JOUR 3333",
+      "JOUR 3338",
+      "JOUR 3346",
+      "JOUR 3348",
+      "JOUR 3350",
+      "JOUR 3352",
+      "JOUR 3353",
+      "JOUR 3378"
+    ],
+    "description": "Select from the Writing/Digital path (JOUR 3307, 3350, 3352) or the Audio/Visual path (JOUR 3333, 3338, 3346, 3348, 3353, 3378).",
+    "title": "News Concentration Elective"
+  },
+  "jour_pr_or_choice": {
+    "courses": [
+      "JOUR 3314",
+      "JOUR 3315",
+      "JOUR 3345"
+    ],
+    "description": "Select one of JOUR 3314 (PR & Crisis Management), JOUR 3315 (PR & Advertising Production), or JOUR 3345 (Social Media for Strategic Communication).",
+    "title": "Public Relations: Or-Choice Elective"
+  },
+  "jour_stat_choice": {
+    "courses": [
+      "STAT 1000",
+      "STAT 1110",
+      "STAT 1210"
+    ],
+    "description": "Select one statistics course to satisfy the support requirement. Any of these three options are accepted.",
+    "title": "Statistics"
+  },
+  "kine_cultural_course": {
+    "courses": [
+      "KINE 3323",
+      "KINE 3324",
+      "KINE 3325"
+    ],
+    "description": "KINE students choose one sport-and-society course. Sport Science concentration students must select KINE 3325.",
+    "title": "Sport and Society Course"
+  },
+  "kine_es_elective": {
+    "courses": [
+      "KINE 2278",
+      "KINE 3378",
+      "KINE 3382",
+      "KINE 4400",
+      "KINE 4401",
+      "KINE 4408",
+      "KINE 4409",
+      "KINE 4445",
+      "KINE 4448"
+    ],
+    "description": "Exercise Science students select 6 units from this approved list.",
+    "title": "Exercise Science Concentration Elective"
+  },
+  "kine_hlth_choice": {
+    "courses": [
+      "HLTH 1155",
+      "HLTH 1160"
+    ],
+    "description": "KINE students fulfill GE Area 4B with one of these two health courses.",
+    "title": "Health and Society Course (GE 4B)"
+  },
+  "kine_hp_elective": {
+    "courses": [
+      "HLTH 2200",
+      "HLTH 2281",
+      "HLTH 3305",
+      "HLTH 3310",
+      "HLTH 3318",
+      "HLTH 4400",
+      "HLTH 4435",
+      "KINE 3349",
+      "KINE 3382",
+      "KINE 4404",
+      "KINE 4408",
+      "SCM 3301",
+      "SCM 3363"
+    ],
+    "description": "Health Promotion students select 8 units from this approved list.",
+    "title": "Health Promotion Concentration Elective"
+  },
+  "kine_math_choice": {
+    "courses": [
+      "MATH 1007",
+      "MATH 1261"
+    ],
+    "description": "KINE students take Precalculus (most common) or Calculus I to satisfy GE Area 2 and the math support requirement.",
+    "title": "Precalculus or Calculus I (GE Area 2)"
+  },
+  "kine_senior_project": {
+    "courses": [
+      "KINE 4460",
+      "KINE 4461",
+      "KINE 4462",
+      "KINE 4463"
+    ],
+    "description": "KINE students complete a 2-unit senior project in one of four formats.",
+    "title": "Senior Project"
+  },
+  "kine_ss_elective": {
+    "courses": [
+      "COMS 3387",
+      "EIM 2260",
+      "KINE 2278",
+      "KINE 3349",
+      "KINE 3378",
+      "KINE 3382",
+      "KINE 4404",
+      "KINE 4408",
+      "KINE 4448"
+    ],
+    "description": "Sport Science students select 6 units from this approved list.",
+    "title": "Sport Science Concentration Elective"
+  },
+  "la_bio_choice": {
+    "courses": [
+      "BIO 1114",
+      "BOT 1121"
+    ],
+    "description": "BIO 1114 or BOT 1121.",
+    "title": "Plant Biology Requirement"
+  },
+  "la_caed_finance": {
+    "courses": [
+      "ARCH 4445",
+      "CM 3334",
+      "CM 4475",
+      "CRP 3315",
+      "CRP 4420",
+      "CRP 4446",
+      "LA 5531",
+      "LA 5538"
+    ],
+    "description": "CAED approved elective in finance, legal, and implementation.",
+    "title": "CAED Elective: Finance, Legal, and Implementation"
+  },
+  "la_caed_sustain": {
+    "courses": [
+      "CM 3317",
+      "CRP 4325",
+      "CRP 4445",
+      "EDES 3350",
+      "EDES 4406",
+      "LA 5520",
+      "LA 5521"
+    ],
+    "description": "CAED approved elective in sustainability.",
+    "title": "CAED Elective: Sustainability"
+  },
+  "la_caed_theory": {
+    "courses": [
+      "ARCE 2280",
+      "CM 3318",
+      "CRP 3303",
+      "CRP 3334",
+      "CRP 4428",
+      "CRP 4433",
+      "CRP 4448"
+    ],
+    "description": "CAED approved elective in design theory and history.",
+    "title": "CAED Elective: Design Theory and History"
+  },
+  "la_des_elec1": {
+    "courses": [
+      "ARCH 1121",
+      "CRP 1222",
+      "DATA 1000",
+      "SS 1120",
+      "STAT 1110"
+    ],
+    "description": "Approved courses for Designated Elective Group 1.",
+    "title": "Designated Elective Group 1"
+  },
+  "la_des_elec2": {
+    "courses": [
+      "BIO 2215",
+      "BIO 2217",
+      "CM 2239",
+      "GEOL 2240"
+    ],
+    "description": "Approved courses for Designated Elective Group 2.",
+    "title": "Designated Elective Group 2"
+  },
+  "la_des_elec3": {
+    "courses": [
+      "BOT 3311",
+      "BOT 3326",
+      "BRAE 3340",
+      "COMS 3316",
+      "ES 3360",
+      "GEOG 3325",
+      "NR 3310",
+      "NR 3349",
+      "PLSC 3334"
+    ],
+    "description": "Approved courses for Designated Elective Group 3.",
+    "title": "Designated Elective Group 3"
+  },
+  "la_pro_topics": {
+    "courses": [
+      "LA 4414",
+      "LA 4415",
+      "LA 4416",
+      "LA 4417",
+      "LA 4418"
+    ],
+    "description": "LA Professional Topics elective.",
+    "title": "Professional Topics Elective"
+  },
+  "la_studio_choice": {
+    "courses": [
+      "LA 4422",
+      "LA 4424"
+    ],
+    "description": "Interdisciplinary or Contemporary Issues design studio.",
+    "title": "Design Studio Choice"
+  },
+  "libs_advanced_integration": {
+    "courses": [
+      "LS 4411",
+      "LS 4412",
+      "LS 4413"
+    ],
+    "description": "Students select one Advanced Integration course aligned with their concentration: History/Social Sciences (LS 4411), Arts (LS 4412), or Science/Engineering (LS 4413).",
+    "title": "Advanced Integration Seminar"
+  },
+  "libs_am_lit_elective": {
+    "courses": [
+      "ENGL 3340",
+      "ENGL 3341",
+      "ENGL 3342",
+      "ENGL 3343",
+      "ENGL 3345",
+      "ENGL 3346",
+      "ENGL 3347"
+    ],
+    "description": "English concentration students select one American Literature course.",
+    "title": "American Literature Elective"
+  },
+  "libs_engl_3393_choice": {
+    "courses": [
+      "ENGL 3393",
+      "ENGL 4424"
+    ],
+    "description": "English concentration students choose between ENGL 3393 (Theory/Practice of Tutoring Writing) or ENGL 4424 (Teaching ELA in Secondary).",
+    "title": "Theory/Practice of Tutoring Writing or Teaching ELA in Secondary"
+  },
+  "libs_engl_ling_choice": {
+    "courses": [
+      "ENGL 2290",
+      "ENGL 3390"
+    ],
+    "description": "TESOL concentration students choose between ENGL 2290 (Intro to Linguistics) or ENGL 3390 (Linguistic Structure of Modern English).",
+    "title": "Introduction to Linguistics or Linguistic Structure of Modern English"
+  },
+  "libs_env_capstone": {
+    "courses": [
+      "SCM 3316",
+      "SCM 3360"
+    ],
+    "description": "Select one Environmental Education capstone course.",
+    "title": "Environmental Education: Capstone"
+  },
+  "libs_env_cultural": {
+    "courses": [
+      "BOT 3311",
+      "ERSC 3325",
+      "ES 3360",
+      "GEOG 1150",
+      "GEOG 3350",
+      "GEOG 3370",
+      "GEOG 3380",
+      "HIST 3311",
+      "PHIL 3340",
+      "PSC 3320"
+    ],
+    "description": "Select one course examining the cultural and social dimensions of environmental issues.",
+    "title": "Environmental Education: Cultural and Social Component"
+  },
+  "libs_env_ecological": {
+    "courses": [
+      "BIO 1114",
+      "BIO 2217",
+      "BOT 3326",
+      "NR 3310",
+      "PSC 2201"
+    ],
+    "description": "Select one course examining ecological and environmental science topics.",
+    "title": "Environmental Education: Ecological and Environmental Component"
+  },
+  "libs_env_education": {
+    "courses": [
+      "COMS 3390",
+      "LS 3380",
+      "LS 4411",
+      "LS 4412",
+      "LS 4413",
+      "MSCI 4440",
+      "NR 3328",
+      "UNIV 3330"
+    ],
+    "description": "Select one course focused on environmental education and communication skills.",
+    "title": "Environmental Education: Education and Communication Component"
+  },
+  "libs_geog_elective": {
+    "courses": [
+      "GEOG 1150",
+      "GEOG 3308"
+    ],
+    "description": "Social Science concentration students select one Geography course.",
+    "title": "Geography Elective"
+  },
+  "libs_hd_apps_ed": {
+    "courses": [
+      "CD 3350",
+      "CD 3351",
+      "CD 3356",
+      "CD 4460",
+      "PSY 3318",
+      "PSY 3320",
+      "PSY 3325",
+      "PSY 3350",
+      "PSY 3357"
+    ],
+    "description": "Select one course applying child development concepts to education or advocacy settings.",
+    "title": "Human Development: Applications to Education and Advocacy"
+  },
+  "libs_hd_child_dev": {
+    "courses": [
+      "CD 3304",
+      "CD 3305",
+      "CD 3306",
+      "PSY 3324"
+    ],
+    "description": "Select one 4-unit course on child development, growth, or adolescent psychology.",
+    "title": "Human Development: Child Development and Growth"
+  },
+  "libs_hd_social_context": {
+    "courses": [
+      "CD 2254",
+      "CD 4417",
+      "CD 4424",
+      "LS 3350",
+      "PSY 2205",
+      "PSY 2240"
+    ],
+    "description": "Select one course examining how social contexts and relationships shape child development.",
+    "title": "Human Development: Social Context and Relationships"
+  },
+  "libs_math_upper_div": {
+    "courses": [
+      "MATH 1151",
+      "MATH 3011",
+      "MATH 3051",
+      "MATH 3055",
+      "MATH 3111",
+      "MATH 3511",
+      "MATH 3971",
+      "STAT 3710"
+    ],
+    "description": "Mathematics concentration students select one upper-division mathematics or statistics course.",
+    "title": "Upper-Division Mathematics Elective"
+  },
+  "libs_phil_choice": {
+    "courses": [
+      "PHIL 2230",
+      "PHIL 2231"
+    ],
+    "description": "Students choose between PHIL 2230 (Knowledge and Reality) or PHIL 2231 (Ethics and Political Philosophy).",
+    "title": "Philosophical Classics"
+  },
+  "libs_pols_elective": {
+    "courses": [
+      "POLS 1112",
+      "POLS 3310",
+      "POLS 3315",
+      "POLS 3319",
+      "POLS 3348",
+      "POLS 3349"
+    ],
+    "description": "Social Science concentration students select one U.S. Government course.",
+    "title": "U.S. Government Elective"
+  },
+  "libs_sci_approved": {
+    "courses": [
+      "ASTR 1101",
+      "ASTR 1102",
+      "ASTR 3324",
+      "BIO 1114",
+      "BIO 2231",
+      "BIO 2232",
+      "BIO 3312",
+      "BIO 3315",
+      "BIO 3318",
+      "BOT 1121",
+      "BOT 3311",
+      "BOT 3326",
+      "GEOL 2203",
+      "GEOL 2240",
+      "LS 3305",
+      "MCRO 2221",
+      "MCRO 3342",
+      "MSCI 1111",
+      "NR 3306",
+      "PSC 2201",
+      "PSC 3320"
+    ],
+    "description": "Select from approved science electives for the Liberal Studies Science concentration.",
+    "title": "Science Concentration: Approved Science Elective"
+  },
+  "libs_sci_core": {
+    "courses": [
+      "CHEM 1110",
+      "CHEM 1112",
+      "CHEM 1120",
+      "CHEM 1122",
+      "CHEM 2240",
+      "PHYS 1111",
+      "PHYS 1121",
+      "PHYS 1123",
+      "PHYS 1141"
+    ],
+    "description": "Science concentration students must include at least 3 units from Chemistry; choose from CHEM or PHYS core offerings.",
+    "title": "Science Concentration: Core Science Course"
+  },
+  "libs_senior_project": {
+    "courses": [
+      "LS 4461",
+      "LS 4462"
+    ],
+    "description": "Students complete either LS 4461 (Senior Project Seminar) or LS 4462 (Senior Project Research).",
+    "title": "Senior Project Seminar or Research"
+  },
+  "libs_soc_hist_elective": {
+    "courses": [
+      "ES 2253",
+      "ES 2254",
+      "ES 2255",
+      "ES 2256",
+      "ES 3310",
+      "ES 3311",
+      "ES 3312",
+      "ES 3350",
+      "ES 3380",
+      "ES 3381",
+      "HIST 3307",
+      "HIST 3310",
+      "HIST 3313",
+      "HIST 3316",
+      "HIST 3319",
+      "HIST 3322",
+      "HIST 3334",
+      "HIST 3335",
+      "HIST 3338",
+      "LS 3350",
+      "SOC 3315"
+    ],
+    "description": "Social Science concentration students select one course from approved Ethnic Studies, History, Sociology, or Women/Gender Studies offerings.",
+    "title": "Ethnic Studies, History, Sociology, or Women/Gender Studies Elective"
+  },
+  "libs_stat_choice": {
+    "courses": [
+      "STAT 1000",
+      "STAT 1110"
+    ],
+    "description": "Liberal Studies students take either STAT 1000 or STAT 1110 to satisfy the statistics support requirement.",
+    "title": "Statistical and Data Literacy or Applied Statistical Concepts"
+  },
+  "mate_chem_elective": {
+    "courses": [
+      "CHEM 1122",
+      "CHEM 2240"
+    ],
+    "description": "MATE students select one chemistry course: CHEM 1122 (Fundamentals of Chemical Reactivity) or CHEM 2240 (Organic Chemistry: Fundamentals and Applications).",
+    "title": "Chemistry Elective"
+  },
+  "mate_design_elective": {
+    "courses": [
+      "IME 3326",
+      "ME 3234"
+    ],
+    "description": "MATE students select one design elective: IME 3326 (Statistical Decision-Making and Quality Control) or ME 3234 (Design Thinking and Creativity).",
+    "title": "Design Elective"
+  },
+  "math_programming_elective": {
+    "courses": [
+      "CSC 2001",
+      "CSC 2600",
+      "MATH 3681",
+      "PHYS 4202",
+      "STAT 2610"
+    ],
+    "description": "MATH students take one computing course from this approved list.",
+    "title": "Programming / Scientific Computing Elective"
+  },
+  "math_senior_project": {
+    "courses": [
+      "MATH 4463",
+      "MATH 4464"
+    ],
+    "description": "MATH students complete their senior project as either the standard seminar or the applied seminar.",
+    "title": "Senior Project Seminar"
+  },
+  "math_track_elective": {
+    "courses": [
+      "MATH 3011",
+      "MATH 3051",
+      "MATH 3055",
+      "MATH 3111",
+      "MATH 3301",
+      "MATH 3351",
+      "MATH 3511",
+      "MATH 3622",
+      "MATH 3651",
+      "MATH 3681",
+      "MATH 4052",
+      "MATH 4265",
+      "MATH 4342",
+      "MATH 4352",
+      "MATH 4512",
+      "MATH 4531",
+      "MATH 4541",
+      "MATH 4652",
+      "MATH 4653",
+      "MATH 4911",
+      "MATH 4981",
+      "MATH 4982"
+    ],
+    "description": "Upper-division electives for the General Mathematics or Applied Mathematics track (List A).",
+    "title": "Mathematics Track Elective (General / Applied)"
+  },
+  "math_track_teaching": {
+    "courses": [
+      "MATH 3011",
+      "MATH 3051",
+      "MATH 3055",
+      "MATH 3111",
+      "MATH 3301",
+      "MATH 3351",
+      "MATH 3511",
+      "MATH 3622",
+      "MATH 3651",
+      "MATH 3681",
+      "MATH 3971",
+      "MATH 4052",
+      "MATH 4265",
+      "MATH 4342",
+      "MATH 4352",
+      "MATH 4512",
+      "MATH 4531",
+      "MATH 4541",
+      "MATH 4652",
+      "MATH 4653",
+      "MATH 4911",
+      "MATH 4972",
+      "MATH 4981",
+      "MATH 4982"
+    ],
+    "description": "Upper-division electives for the Teaching Mathematics track (List A plus teaching-specific courses).",
+    "title": "Teaching Mathematics Track Elective"
+  },
+  "math_upper_div_choice": {
+    "courses": [
+      "MATH 3051",
+      "MATH 3111",
+      "MATH 3301"
+    ],
+    "description": "MATH students satisfy the Upper-Division GE Area 2/5 requirement with one of these courses.",
+    "title": "Upper-Division Math Elective (GE UD 2/5)"
+  },
+  "mcro_bioc_choice": {
+    "courses": [
+      "CHEM 3350",
+      "CHEM 3352"
+    ],
+    "description": "MCRO students take either the applied biochemistry course (CHEM 3350) or the rigorous full-sequence biochemistry (CHEM 3352). CHEM 3352 is recommended for graduate/professional school.",
+    "title": "Biochemistry (GE UD2/5)"
+  },
+  "mcro_orga_choice": {
+    "courses": [
+      "CHEM 2240",
+      "CHEM 2242"
+    ],
+    "description": "MCRO students take either the applied survey (CHEM 2240) or the traditional first-semester sequence (CHEM 2242). Confirm with your advisor.",
+    "title": "Organic Chemistry"
+  },
+  "mcro_restricted_elective": {
+    "courses": [
+      "BIO 4429",
+      "BIO 4452",
+      "BIO 4456",
+      "BIO 4457",
+      "MCRO 4402",
+      "MCRO 4423",
+      "MCRO 4424",
+      "MCRO 4433",
+      "MCRO 4436"
+    ],
+    "description": "Select from the approved restricted elective list. Verify eligibility with your advisor.",
+    "title": "Microbiology Restricted Elective"
+  },
+  "mcro_senior_project": {
+    "courses": [
+      "BIO 4461",
+      "BIO 4462",
+      "BIO 4463"
+    ],
+    "description": "MCRO students complete one of the three senior project options with their research advisor.",
+    "title": "Senior Project"
+  },
+  "me_energy_technical_elective": {
+    "courses": [
+      "EE 3255 & EE 3255L",
+      "EE 4420",
+      "ME 4437",
+      "ME 4438",
+      "ME 4439",
+      "ME 4443",
+      "ME 4444",
+      "ME 4450",
+      "ME 4455",
+      "ME 4488",
+      "ME 5541"
+    ],
+    "description": "Energy Resources students select from the approved technical elective list.",
+    "title": "Energy Resources Technical Elective"
+  },
+  "me_ime_mfg_selective": {
+    "courses": [
+      "IME 1141",
+      "IME 1142",
+      "IME 1149"
+    ],
+    "description": "ME students select one 1-unit manufacturing process course.",
+    "title": "Manufacturing Process Selective"
+  },
+  "me_life_science": {
+    "courses": [
+      "BIO 1111",
+      "BIO 2213",
+      "BIO 2215",
+      "BIO 2217"
+    ],
+    "description": "ME students select one life science course that also fulfills GE Area 5B.",
+    "title": "Life Science Support Elective"
+  },
+  "me_manufacturing_elective": {
+    "courses": [
+      "IME 3331",
+      "IME 3336",
+      "IME 3356",
+      "IME 4418",
+      "IME 4428",
+      "IME 4432",
+      "IME 4435",
+      "IME 4450",
+      "IME 5543",
+      "MATE 4434 & MATE 4435",
+      "ME 3305",
+      "ME 4380",
+      "ME 4480"
+    ],
+    "description": "Manufacturing students select from the approved technical elective list.",
+    "title": "Manufacturing Elective"
+  },
+  "me_mechatronics_technical_elective": {
+    "courses": [
+      "ME 3313",
+      "ME 4423",
+      "ME 4452",
+      "ME 5305",
+      "ME 5506"
+    ],
+    "description": "Mechatronics students select from the approved technical elective list.",
+    "title": "Mechatronics Technical Elective"
+  },
+  "mfge_linear_math": {
+    "courses": [
+      "MATH 1151",
+      "MATH 2341"
+    ],
+    "description": "Select MATH 1151 (Linear Algebra, 3 units) or MATH 2341 (Linear Analysis, 4 units). MATH 2341 adds 1 unit to the program total (128 \u2192 129 units).",
+    "title": "Linear Algebra or Linear Analysis"
+  },
+  "msci_chem_choice": {
+    "courses": [
+      "CHEM 2240",
+      "CHEM 2242"
+    ],
+    "description": "Select one: CHEM 2240 (Organic Chemistry: Fundamentals and Applications, 4 units) or CHEM 2242 (Organic Chemistry I, 5 units).",
+    "title": "Organic Chemistry"
+  },
+  "msci_marine_elective": {
+    "courses": [
+      "BIO 3322",
+      "BIO 3326",
+      "BIO 4443",
+      "MSCI 3303",
+      "MSCI 3324",
+      "MSCI 4403",
+      "MSCI 4437",
+      "MSCI 4438",
+      "MSCI 4439",
+      "MSCI 4440"
+    ],
+    "description": "Select from the approved Marine Science Elective list. Electives may not overlap with courses already counted toward major or support requirements.",
+    "title": "Marine Science Elective"
+  },
+  "msci_math_choice": {
+    "courses": [
+      "MATH 1261",
+      "MATH 1264"
+    ],
+    "description": "Select one: MATH 1261 (Calculus I) or MATH 1264 (Calculus for Data Science I). Students emphasizing Chemistry, Engineering, or Physics should take MATH 1261.",
+    "title": "Calculus I (GE 2)"
+  },
+  "msci_phys1_choice": {
+    "courses": [
+      "PHYS 1121",
+      "PHYS 1141"
+    ],
+    "description": "Select one: PHYS 1121 (College Physics I) or PHYS 1141 (General Physics I). Students emphasizing Physics should take PHYS 1141; MATH 1261 is required for PHYS 1141.",
+    "title": "Physics I"
+  },
+  "msci_phys2_choice": {
+    "courses": [
+      "PHYS 1123",
+      "PHYS 1143"
+    ],
+    "description": "Select one: PHYS 1123 (College Physics II) or PHYS 1143 (General Physics II). Must match the Physics I selection.",
+    "title": "Physics II"
+  },
+  "msci_senior_project": {
+    "courses": [
+      "BIO 4461",
+      "BIO 4462",
+      "BIO 4463"
+    ],
+    "description": "Select one senior project option. Only one may be used to satisfy the senior project requirement; additional units may be applied to Approved Electives.",
+    "title": "Marine Sciences Senior Project"
+  },
+  "mu_ensemble_lower": {
+    "courses": [
+      "MU 1168",
+      "MU 1171",
+      "MU 1172",
+      "MU 1173",
+      "MU 1174",
+      "MU 1181",
+      "MU 1182",
+      "MU 1183",
+      "MU 1184",
+      "MU 1187",
+      "MU 1188"
+    ],
+    "description": "Music students enroll in one major ensemble per semester. Lower-division ensembles are 1000-level.",
+    "title": "Major Ensemble (Lower Division)"
+  },
+  "mu_ensemble_upper": {
+    "courses": [
+      "MU 3368",
+      "MU 3371",
+      "MU 3372",
+      "MU 3373",
+      "MU 3374",
+      "MU 3381",
+      "MU 3382",
+      "MU 3383",
+      "MU 3384",
+      "MU 3387",
+      "MU 3388"
+    ],
+    "description": "Music students enroll in one major ensemble per semester. Upper-division ensembles are 3000-level.",
+    "title": "Major Ensemble (Upper Division)"
+  },
+  "mu_fundamentals_or_materials_i": {
+    "courses": [
+      "MU 1101",
+      "MU 1103"
+    ],
+    "description": "Students must take one of these courses.",
+    "title": "Music Fundamentals or Materials and Structures I"
+  },
+  "mu_materials_i_or_ii": {
+    "courses": [
+      "MU 1103",
+      "MU 2203"
+    ],
+    "description": "Students must take one of these courses.",
+    "title": "Materials and Structures of Music I or II"
+  },
+  "mu_uscp_music_choice": {
+    "courses": [
+      "MU 2221",
+      "MU 2227"
+    ],
+    "description": "Students must take one of these courses.",
+    "title": "Jazz Styles or Popular Music of the United States"
+  },
+  "nr_bio_bot_choice": {
+    "courses": [
+      "BIO 1114",
+      "BOT 1121"
+    ],
+    "description": "Select one: BIO 1114 (Plant Diversity and Ecology) or BOT 1121 (General Botany). Both satisfy GE 5B and 5C.",
+    "title": "Plant Biology (GE 5B/5C)"
+  },
+  "nr_fr_approved_elective": {
+    "courses": [
+      "BIO 3321",
+      "BIO 3323",
+      "BIO 3327",
+      "BIO 4446",
+      "BIO 4448",
+      "BOT 3313",
+      "BOT 4433",
+      "BRAE 3345",
+      "NR 3349",
+      "BRAE 4447",
+      "EIM 4480",
+      "NR 2203",
+      "NR 3306",
+      "NR 3312",
+      "NR 3340",
+      "NR 4404",
+      "NR 4418",
+      "SS 2221",
+      "SS 3321",
+      "SS 4431",
+      "SS 4440",
+      "SS 4444"
+    ],
+    "description": "Select an approved elective from the Forest Resources concentration list. Verify selection with your academic advisor.",
+    "title": "Forest Resources Approved Elective"
+  },
+  "nr_senior_project": {
+    "courses": [
+      "NR 4460",
+      "NR 4466",
+      "NR 4475"
+    ],
+    "description": "Select one senior project option. Consult your advisor for which option aligns with your concentration.",
+    "title": "Natural Resources Senior Project"
+  },
+  "nr_wf_approved_elective": {
+    "courses": [
+      "BOT 3326",
+      "CRP 1212",
+      "CRP 4458",
+      "ES 4406",
+      "KINE 1181",
+      "NR 2200",
+      "NR 2203",
+      "NR 3312",
+      "NR 3339",
+      "NR 4400",
+      "NR 4404",
+      "NR 4408",
+      "NR 4418",
+      "SS 3321",
+      "SS 4440"
+    ],
+    "description": "Select an approved elective from the Wildland Fire concentration list. Verify selection with your academic advisor.",
+    "title": "Wildland Fire Approved Elective"
+  },
+  "nr_ws_approved_elective": {
+    "courses": [
+      "AG 4452",
+      "BRAE 3340",
+      "BRAE 3345",
+      "NR 3349",
+      "CHEM 1122",
+      "EIM 4480",
+      "MATH 1265",
+      "NR 4400",
+      "NR 4408",
+      "NR 4422",
+      "PHYS 1121",
+      "PHYS 1123",
+      "SS 4421",
+      "SS 4431",
+      "SS 4440",
+      "STAT 3520"
+    ],
+    "description": "Select an approved elective from the Water Science concentration list. Verify selection with your academic advisor.",
+    "title": "Water Science Approved Elective"
+  },
+  "nr_ws_soil_choice": {
+    "courses": [
+      "SS 3321",
+      "SS 4431"
+    ],
+    "description": "Select one: SS 3321 (Soil Morphology) or SS 4431 (Spatial Data Analysis and Environmental Mapping).",
+    "title": "Water Science Soil Course"
+  },
+  "nut_senior_project": {
+    "courses": [
+      "NUTR 4460",
+      "NUTR 4461",
+      "NUTR 4462"
+    ],
+    "description": "Choose one Senior Project option.",
+    "title": "Senior Project"
+  },
+  "ph_ant_soc_elective": {
+    "courses": [
+      "ANT 2201",
+      "SOC 1110"
+    ],
+    "description": "Choose ANT 2201 or SOC 1110.",
+    "title": "Cultural Anthropology or Comparative Societies"
+  },
+  "ph_bus_econ_elective": {
+    "courses": [
+      "BUS 2212",
+      "ECON 2001"
+    ],
+    "description": "Choose BUS 2212 or ECON 2001 for the Health Management and Administration concentration.",
+    "title": "Financial Accounting or Survey of Economics"
+  },
+  "ph_com_health_elective": {
+    "courses": [
+      "COMS 4418",
+      "FSN 2250",
+      "FSN 3305",
+      "NUTR 3310",
+      "KINE 4401",
+      "KINE 4412",
+      "MCRO 3342"
+    ],
+    "description": "Choose one approved elective for the Community Health Promotion concentration.",
+    "title": "Community Health Promotion Elective"
+  },
+  "ph_equity_global_elective": {
+    "courses": [
+      "ANT 3345",
+      "EDES 3350",
+      "GEOG 3325",
+      "MCRO 3342",
+      "POLS 2225",
+      "POLS 3328",
+      "POLS 3332",
+      "SOC 4435"
+    ],
+    "description": "Choose one approved elective for the Health Equity and Global Health concentration.",
+    "title": "Health Equity and Global Health Elective"
+  },
+  "ph_hlth_freshman_elective": {
+    "courses": [
+      "HLTH 1155",
+      "HLTH 1160"
+    ],
+    "description": "Choose one of HLTH 1155 or HLTH 1160 to satisfy GE Area 4B.",
+    "title": "Health GE 4B Elective"
+  },
+  "ph_mgmt_admin_elective": {
+    "courses": [
+      "BUS 2207",
+      "BUS 3346",
+      "BUS 3382",
+      "BUS 3384",
+      "ECON 2021",
+      "PSY 3302"
+    ],
+    "description": "Choose one approved elective for the Health Management and Administration concentration.",
+    "title": "Health Management and Administration Elective"
+  },
+  "ph_senior_project": {
+    "courses": [
+      "HLTH 4460",
+      "HLTH 4461",
+      "HLTH 4462",
+      "HLTH 4463"
+    ],
+    "description": "Choose one Senior Project option: Experiential, Report, Research, or Internship.",
+    "title": "Senior Project"
+  },
+  "phil_asian_rel_elective": {
+    "courses": [
+      "PHIL 3361",
+      "PHIL 3362",
+      "RELS 3301",
+      "RELS 3306",
+      "RELS 3307"
+    ],
+    "description": "Approved Asian philosophy and religion electives for the Philosophy and Religion concentration.",
+    "title": "Asian Philosophy and Religion Elective"
+  },
+  "phil_ethics_elective": {
+    "courses": [
+      "PHIL 3332",
+      "PHIL 3333",
+      "PHIL 3334",
+      "PHIL 3335",
+      "PHIL 3336",
+      "PHIL 3337",
+      "PHIL 3341",
+      "PHIL 3343",
+      "PHIL 3385",
+      "PHIL 4439"
+    ],
+    "description": "Approved ethics electives for Ethics and Society or Ethics of Science and Technology concentrations.",
+    "title": "Ethics Elective"
+  },
+  "phil_hist_group1": {
+    "courses": [
+      "PHIL 3309",
+      "PHIL 3310",
+      "PHIL 3312"
+    ],
+    "description": "Choose one: Early Greek Philosophy through Plato, Aristotle and Hellenistic Philosophy, or Medieval Philosophy.",
+    "title": "History of Philosophy Group 1 (Ancient/Medieval)"
+  },
+  "phil_hist_group2": {
+    "courses": [
+      "PHIL 3313",
+      "PHIL 3314",
+      "PHIL 3315"
+    ],
+    "description": "Choose one: Early Modern Rationalism, Early Modern Empiricism, or Kant and 19th Century European Philosophy.",
+    "title": "History of Philosophy Group 2 (Early Modern)"
+  },
+  "phil_hist_group3": {
+    "courses": [
+      "PHIL 3317",
+      "PHIL 3318",
+      "PHIL 3319"
+    ],
+    "description": "Choose one: History of Analytic Philosophy, Phenomenology, or Existentialism.",
+    "title": "History of Philosophy Group 3 (19th-20th Century)"
+  },
+  "phil_religion_elective": {
+    "courses": [
+      "RELS 3302",
+      "RELS 3304",
+      "RELS 3310",
+      "RELS 3311",
+      "RELS 3344"
+    ],
+    "description": "Approved religion electives for the Philosophy and Religion concentration.",
+    "title": "Religion Elective"
+  },
+  "phil_sci_tech_elective": {
+    "courses": [
+      "PHIL 3322",
+      "PHIL 3327",
+      "PHIL 3328",
+      "PHIL 3339",
+      "PHIL 3340"
+    ],
+    "description": "Approved science/technology ethics electives for the Ethics of Science and Technology concentration.",
+    "title": "Ethics and Philosophy of Science/Technology Elective"
+  },
+  "phil_senior_phil_elective": {
+    "courses": [
+      "PHIL 4421",
+      "PHIL 4422",
+      "PHIL 4423",
+      "PHIL 4429",
+      "PHIL 4439",
+      "PHIL 4449"
+    ],
+    "description": "Approved senior-level philosophy electives for the Philosophy and Religion concentration.",
+    "title": "Senior Philosophy Elective"
+  },
+  "phil_senior_sem_elective": {
+    "courses": [
+      "PHIL 4421",
+      "PHIL 4422",
+      "PHIL 4439"
+    ],
+    "description": "Approved senior seminar electives for the Ethics of Science and Technology concentration.",
+    "title": "Senior Seminar Elective"
+  },
+  "phil_tech_ethics_elective": {
+    "courses": [
+      "PHIL 3322",
+      "PHIL 3323",
+      "PHIL 3327",
+      "PHIL 3328",
+      "PHIL 3339",
+      "PHIL 3340"
+    ],
+    "description": "Approved technology ethics electives for the Ethics and Society concentration.",
+    "title": "Technology Ethics Elective"
+  },
+  "phys_lab_elective": {
+    "courses": [
+      "PHYS 3323",
+      "PHYS 4425",
+      "PHYS 4428",
+      "ASTR 4444"
+    ],
+    "description": "Select one lab elective from: PHYS 3323 (Optics), PHYS 4425 (Solid State Physics), PHYS 4428 (Nonlinear Dynamics and Chaos), or ASTR 4444 (Observational Astronomy).",
+    "title": "Physics Lab Elective"
+  },
+  "plsc_environ_hort_elective": {
+    "courses": [
+      "PLSC 1123",
+      "PLSC 2200",
+      "PLSC 2212",
+      "PLSC 2225",
+      "PLSC 2234",
+      "PLSC 3301",
+      "PLSC 3332",
+      "PLSC 3333",
+      "PLSC 3334",
+      "PLSC 3339",
+      "PLSC 3340",
+      "PLSC 4400",
+      "PLSC 4420",
+      "PLSC 4425",
+      "PLSC 4427",
+      "PLSC 4428",
+      "PLSC 4437",
+      "PLSC 4441",
+      "PLSC 4450"
+    ],
+    "description": "Required or approved elective courses for the Environmental Horticultural Science concentration.",
+    "title": "Environmental Horticultural Science Elective"
+  },
+  "plsc_fruit_crop_elective": {
+    "courses": [
+      "PLSC 1132",
+      "PLSC 1150",
+      "PLSC 1175",
+      "PLSC 2200",
+      "PLSC 2205",
+      "PLSC 2232",
+      "PLSC 2244",
+      "PLSC 3331",
+      "PLSC 3333",
+      "PLSC 3337",
+      "PLSC 3339",
+      "PLSC 3360",
+      "PLSC 4400",
+      "PLSC 4406",
+      "PLSC 4420",
+      "PLSC 4421",
+      "PLSC 4427",
+      "PLSC 4428",
+      "PLSC 4431",
+      "PLSC 4441",
+      "PLSC 4450",
+      "WVIT 4414"
+    ],
+    "description": "Required or approved elective courses for the Fruit and Crop Science concentration. Includes fixed required courses and concentration-approved electives.",
+    "title": "Fruit and Crop Science Elective"
+  },
+  "plsc_plant_protection_elective": {
+    "courses": [
+      "PLSC 1132",
+      "PLSC 1150",
+      "PLSC 1175",
+      "PLSC 2200",
+      "PLSC 2205",
+      "PLSC 2212",
+      "PLSC 2244",
+      "PLSC 3331",
+      "PLSC 3333",
+      "PLSC 3339",
+      "PLSC 3360",
+      "PLSC 4400",
+      "PLSC 4406",
+      "PLSC 4427",
+      "PLSC 4428",
+      "PLSC 4431",
+      "PLSC 4441",
+      "PLSC 4450",
+      "WVIT 4414"
+    ],
+    "description": "Required or approved elective courses for the Plant Protection Science concentration.",
+    "title": "Plant Protection Science Elective"
+  },
+  "pols_dei_elective": {
+    "courses": [
+      "POLS 3310",
+      "POLS 3343",
+      "POLS 4417",
+      "POLS 4445",
+      "POLS 4457",
+      "POLS 4459"
+    ],
+    "description": "POLS students complete one DEI-designated course from the approved list.",
+    "title": "POLS Diversity, Equity, and Inclusion Elective"
+  },
+  "pols_support_4b": {
+    "courses": [
+      "ANT 2201",
+      "GEOG 1150",
+      "HIST 2222",
+      "HIST 2223",
+      "SOC 1110"
+    ],
+    "description": "Students must take one of these courses.",
+    "title": "Social and Behavioral Sciences Support"
+  },
+  "psy_dei": {
+    "courses": [
+      "ES 3380",
+      "ES 3381",
+      "PSY 3304",
+      "WGQS 3301",
+      "WGQS 3330",
+      "WGQS 3351"
+    ],
+    "description": "One approved DEI course required for the Psychology BS. These courses examine systems of power, identity, and social justice from multiple perspectives.",
+    "title": "Diversity, Equity and Inclusion Course"
+  },
+  "psy_foundation_course": {
+    "courses": [
+      "PSY 2205",
+      "PSY 2252",
+      "PSY 2256"
+    ],
+    "description": "Students must take one of these courses.",
+    "title": "Foundation Course"
+  },
+  "psy_internship_i": {
+    "courses": [
+      "PSY 4448",
+      "PSY 4453"
+    ],
+    "description": "Students must take one of these courses.",
+    "title": "Internship I"
+  },
+  "psy_internship_ii": {
+    "courses": [
+      "PSY 4449",
+      "PSY 4454"
+    ],
+    "description": "Students must take one of these courses.",
+    "title": "Internship II"
+  },
+  "psy_professional_skills": {
+    "courses": [
+      "COMS 3316",
+      "COMS 3320",
+      "PSY 3304",
+      "PSY 3323",
+      "PSY 3350"
+    ],
+    "description": "One approved professional skills course required for the Psychology BS. These courses develop interpersonal, intercultural, and teamwork competencies relevant to psychology careers.",
+    "title": "Professional Skills Support Course"
+  },
+  "psy_upper_div_science": {
+    "courses": [
+      "BIO 3312",
+      "FSN 3305",
+      "IME 3320",
+      "ISLA 3305",
+      "NR 3310",
+      "PSY 3344",
+      "WGQS 3350"
+    ],
+    "description": "One approved upper-division science course required for the Psychology BS. Courses cover biological, environmental, or social science topics with scientific rigor.",
+    "title": "Upper-Division Science Course"
+  },
+  "se_database_elective": {
+    "courses": [
+      "CSC 3660",
+      "CSC 3665"
+    ],
+    "description": "Select a database course. CSC 3665 (4 units) will also satisfy 2 units of Technical Electives per the SE flowchart notes.",
+    "title": "Introduction to Databases 1 or Introduction to Database Management Systems"
+  },
+  "soc_cj_elective": {
+    "courses": [
+      "SOC 3303",
+      "SOC 3395",
+      "SOC 4406",
+      "SOC 4414",
+      "SOC 4444"
+    ],
+    "description": "Approved electives for the Criminal Justice concentration. Select SOC courses from the approved list.",
+    "title": "Criminal Justice Concentration Elective"
+  },
+  "soc_cj_req_choice": {
+    "courses": [
+      "SOC 4402",
+      "SOC 4412"
+    ],
+    "description": "Select one: Gender, Crime, and Violence or Contemporary Issues in Criminal Justice.",
+    "title": "Criminal Justice Required Course Choice"
+  },
+  "soc_org_core": {
+    "courses": [
+      "SOC 3395",
+      "SOC 4423"
+    ],
+    "description": "Select one: Sociology of Complex Organizations or Gender and Work.",
+    "title": "Organizations Core Course Choice"
+  },
+  "soc_org_method": {
+    "courses": [
+      "SOC 3310",
+      "COMS 3320",
+      "PSY 2252"
+    ],
+    "description": "Select one: SOC 3310, COMS 3320, or PSY 2252.",
+    "title": "Organizations Method Course"
+  },
+  "soc_sj_req": {
+    "courses": [
+      "SOC 3305",
+      "SOC 3308",
+      "SOC 3315",
+      "SOC 3321",
+      "SOC 3327",
+      "SOC 3343",
+      "SOC 4402",
+      "SOC 4431",
+      "SOC 4433",
+      "SOC 4435",
+      "SOC 4444"
+    ],
+    "description": "Select from the approved Social Justice concentration required courses list.",
+    "title": "Social Justice Required Course"
+  },
+  "soc_ss_elective": {
+    "courses": [
+      "SOC 3305",
+      "SOC 3308",
+      "SOC 3395",
+      "SOC 4402",
+      "SOC 4431",
+      "SOC 4435",
+      "SOC 4440"
+    ],
+    "description": "Approved electives for the Social Services concentration.",
+    "title": "Social Services Concentration Elective"
+  },
+  "soc_wi_elective": {
+    "courses": [
+      "SOC 3315",
+      "SOC 3321",
+      "SOC 3326",
+      "SOC 3343"
+    ],
+    "description": "Select one 3-unit upper-division writing-intensive SOC course.",
+    "title": "SOC Writing-Intensive Upper-Division Elective"
+  },
+  "span_2202_2206": {
+    "courses": [
+      "SPAN 2202",
+      "SPAN 2206"
+    ],
+    "description": "Students choose between SPAN 2202 (Intermediate Spanish II) or SPAN 2206 (Spanish for Heritage Speakers) based on their language background.",
+    "title": "Intermediate Spanish II or Spanish for Heritage Speakers"
+  },
+  "span_3k_elective": {
+    "courses": [
+      "SPAN 3303",
+      "SPAN 3305",
+      "SPAN 3307",
+      "SPAN 3340",
+      "SPAN 3380"
+    ],
+    "description": "Select from approved 3000-level SPAN courses (12 units total across four elective slots).",
+    "title": "Spanish 3000-Level Elective"
+  },
+  "span_4k_elective": {
+    "courses": [
+      "SPAN 4402",
+      "SPAN 4410",
+      "SPAN 4416",
+      "SPAN 4470"
+    ],
+    "description": "Select from approved 4000-level SPAN courses (6 units total across two elective slots).",
+    "title": "Spanish 4000-Level Elective"
+  },
+  "th_construction_choice": {
+    "courses": [
+      "TH 3325",
+      "TH 3330"
+    ],
+    "description": "Students choose between TH 3325 (Costume Construction II) or TH 3330 (Stagecraft II) to advance in their production specialization.",
+    "title": "Costume Construction II or Stagecraft II"
+  },
+  "th_design_choice": {
+    "courses": [
+      "TH 4430",
+      "TH 4432"
+    ],
+    "description": "Students choose between TH 4430 (Scenic Design) or TH 4432 (Costume Design) for their advanced design requirement.",
+    "title": "Scenic Design or Costume Design"
+  },
+  "th_history_choice": {
+    "courses": [
+      "TH 2227",
+      "TH 2228"
+    ],
+    "description": "Students take one Theatre History course in the freshman year \u2014 either TH 2227 (History I, ancient through 18th century) or TH 2228 (History II, 19th century through present).",
+    "title": "Theatre History I or Theatre History II"
+  },
+  "th_ld_elective": {
+    "courses": [
+      "TH 2215",
+      "TH 2240",
+      "TH 2245",
+      "TH 2250",
+      "TH 2255",
+      "TH 2265",
+      "TH 2270",
+      "TH 2275",
+      "TH 2285"
+    ],
+    "description": "Select from approved lower-division Theatre Arts elective courses (9 units total across three elective slots).",
+    "title": "Lower-Division Theatre Elective"
+  },
+  "th_mainstage_choice": {
+    "courses": [
+      "TH 1145",
+      "TH 1155"
+    ],
+    "description": "Theatre Arts students choose between TH 1145 (Mainstage Rehearsal and Performance I) and TH 1155 (Mainstage Production I) based on their role \u2014 performance vs. production/design.",
+    "title": "Mainstage Rehearsal and Performance I or Mainstage Production I"
+  },
+  "th_ud_elective": {
+    "courses": [
+      "TH 3315",
+      "TH 3320",
+      "TH 3325",
+      "TH 3330",
+      "TH 3345",
+      "TH 3350",
+      "TH 3355",
+      "TH 3360",
+      "TH 3370",
+      "TH 3380",
+      "TH 3390",
+      "TH 4400",
+      "TH 4420",
+      "TH 4430",
+      "TH 4432",
+      "TH 4470",
+      "TH 4471",
+      "TH 4480"
+    ],
+    "description": "Select from approved upper-division Theatre Arts elective courses (18 units total across six elective slots).",
+    "title": "Upper-Division Theatre Elective"
+  },
+  "wvit_accounting_choice": {
+    "courses": [
+      "AGB 2214",
+      "BUS 2214"
+    ],
+    "description": "AGB 2214 or BUS 2214.",
+    "title": "Financial Accounting"
+  },
+  "wvit_math_choice": {
+    "courses": [
+      "MATH 1261",
+      "MATH 1267"
+    ],
+    "description": "MATH 1261 (Calculus I, 4 units) or MATH 1267 (Business Calculus, 3 units).",
+    "title": "Calculus Requirement"
+  },
+  "wvit_senior_project": {
+    "courses": [
+      "WVIT 4464",
+      "WVIT 4465"
+    ],
+    "description": "WVIT 4464 (Enology/Viticulture) or WVIT 4465 (Research Experience).",
+    "title": "Senior Project"
+  },
+  "wvit_wb_hr_choice": {
+    "courses": [
+      "AGB 3369",
+      "BUS 3384"
+    ],
+    "description": "AGB 3369 or BUS 3384 (Wine Business concentration).",
+    "title": "Personnel or Human Resources Management"
+  },
+  "wvit_wb_micro_choice": {
+    "courses": [
+      "AGB 2212",
+      "ECON 2030"
+    ],
+    "description": "AGB 2212 or ECON 2030 (Wine Business concentration).",
+    "title": "Agricultural Economics or Microeconomics"
+  }
+}

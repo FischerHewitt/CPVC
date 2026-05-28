@@ -1,4 +1,4 @@
-import type { TranscriptSession } from "./types";
+import type { FreeElectiveSelection, TranscriptSession } from "./types";
 import { syncSession } from "./api";
 
 // ─── localStorage (primary offline cache) ────────────────────────────────────
@@ -34,6 +34,8 @@ export function persistSession(
     course_positions?: Record<string, unknown>;
     planned_ge_courses?: Record<string, string>;
     planned_ge_units?: Record<string, number>;
+    planned_course_units?: Record<string, number>;
+    planned_free_elective_courses?: Record<string, FreeElectiveSelection>;
     concentration?: string;
   },
 ): void {
@@ -45,6 +47,8 @@ export function persistSession(
     course_positions: (session.coursePositions ?? {}) as Record<string, unknown>,
     planned_ge_courses: session.plannedGECourses ?? {},
     planned_ge_units: session.plannedGEUnits ?? {},
+    planned_course_units: session.plannedCourseUnits ?? {},
+    planned_free_elective_courses: session.plannedFreeElectiveCourses ?? {},
   };
 
   void syncSession(session.sessionId, delta);

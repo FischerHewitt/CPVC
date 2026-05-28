@@ -1,0 +1,177 @@
+[
+  {
+    "id": 2353,
+    "name": "Computer Aided Drafting in Civil Engineering",
+    "courseToMeet": "CE113"
+  },
+  {
+    "id": 2354,
+    "name": "Mechanics of Materials Sequence (select one option)",
+    "courseToMeet": "CE204 and CE207 or CE208"
+  },
+  {
+    "id": 2355,
+    "name": "Programming Applications in Engineering",
+    "courseToMeet": "CE251"
+  },
+  {
+    "id": 2356,
+    "name": "Water Resources Engineering",
+    "courseToMeet": "CE336"
+  },
+  {
+    "id": 2357,
+    "name": "Hydraulics Laboratory",
+    "courseToMeet": "CE337"
+  },
+  {
+    "id": 2358,
+    "name": "Geotechnical Engineering",
+    "courseToMeet": "CE381"
+  },
+  {
+    "id": 2359,
+    "name": "Groundwater Hydraulics and Hydrology",
+    "courseToMeet": "CE434"
+  },
+  {
+    "id": 2360,
+    "name": "Civil Engineering Professional Practice",
+    "courseToMeet": "CE465"
+  },
+  {
+    "id": 2361,
+    "name": "Introduction to the Environmental Engineering Profession",
+    "courseToMeet": "ENVE111"
+  },
+  {
+    "id": 2362,
+    "name": "Environmental Fluid Mechanics",
+    "courseToMeet": "ENVE264"
+  },
+  {
+    "id": 2363,
+    "name": "Process Thermodynamics",
+    "courseToMeet": "ENVE304"
+  },
+  {
+    "id": 2364,
+    "name": "Noise and Vibration Control",
+    "courseToMeet": "ENVE309"
+  },
+  {
+    "id": 2365,
+    "name": "Air Quality Engineering",
+    "courseToMeet": "ENVE325"
+  },
+  {
+    "id": 2366,
+    "name": "Fundamentals of Environmental Engineering",
+    "courseToMeet": "ENVE331"
+  },
+  {
+    "id": 2367,
+    "name": "Mass Transfer Operations",
+    "courseToMeet": "ENVE421"
+  },
+  {
+    "id": 2368,
+    "name": "Air Quality Measurements",
+    "courseToMeet": "ENVE426"
+  },
+  {
+    "id": 2369,
+    "name": "Water Chemistry and Water Quality Measurements",
+    "courseToMeet": "ENVE434"
+  },
+  {
+    "id": 2370,
+    "name": "Water and Wastewater Treatment Design",
+    "courseToMeet": "ENVE438"
+  },
+  {
+    "id": 2371,
+    "name": "Industrial Pollution Prevention",
+    "courseToMeet": "ENVE450"
+  },
+  {
+    "id": 2372,
+    "name": "Senior Project Design Laboratory I and II",
+    "courseToMeet": "ENVE466 and ENVE467"
+  },
+  {
+    "id": 2374,
+    "name": "General Chemistry for Physical Science and Engineering I",
+    "courseToMeet": "CHEM124"
+  },
+  {
+    "id": 2375,
+    "name": "General Chemistry for Physical Science and Engineering II",
+    "courseToMeet": "CHEM125"
+  },
+  {
+    "id": 2376,
+    "name": "General Chemistry for Physical Science and Engineering III",
+    "courseToMeet": "CHEM126"
+  },
+  {
+    "id": 2377,
+    "name": "Organic Chemistry: Fundamentals and Applications",
+    "courseToMeet": "CHEM312"
+  },
+  {
+    "id": 2378,
+    "name": "Calculus I",
+    "courseToMeet": "MATH141"
+  },
+  {
+    "id": 2379,
+    "name": "Calculus II",
+    "courseToMeet": "MATH142"
+  },
+  {
+    "id": 2380,
+    "name": "Calculus III",
+    "courseToMeet": "MATH143"
+  },
+  {
+    "id": 2381,
+    "name": "Calculus IV",
+    "courseToMeet": "MATH241"
+  },
+  {
+    "id": 2382,
+    "name": "Linear Analysis I",
+    "courseToMeet": "MATH244"
+  },
+  {
+    "id": 2384,
+    "name": "Engineering Statics",
+    "courseToMeet": "ME211"
+  },
+  {
+    "id": 2385,
+    "name": "General Physics I",
+    "courseToMeet": "PHYS141"
+  },
+  {
+    "id": 2386,
+    "name": "General Physics II",
+    "courseToMeet": "PHYS142"
+  },
+  {
+    "id": 2387,
+    "name": "General Physics III",
+    "courseToMeet": "PHYS143"
+  },
+  {
+    "id": 2388,
+    "name": "Statistical Methods for Engineers",
+    "courseToMeet": "STAT312"
+  },
+  {
+    "id": 2383,
+    "name": "Microbiology",
+    "courseToMeet": "MCRO221 or MCRO224"
+  }
+]

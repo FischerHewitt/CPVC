@@ -51,7 +51,48 @@ resolved in the codebase.
     (all 4u). Tile units confirmed at 4u.
 
 --------------------------------------------------------------------------------
-4. SLASH-CHOICE COURSES (Pick One of Two)                              [RESOLVED]
+4. PH — COURSE PREFIX AMBIGUITIES (RESOLVED)
+--------------------------------------------------------------------------------
+
+  NUTR 3310 "Maternal and Child Nutrition"                             [DONE]
+    Issue: Uncertain whether prefix was NUTR or NUT.
+    Resolution: Confirmed NUTR 3310 is correct. No change needed.
+
+  EDES 3350 "The Global Environment"                                   [DONE]
+    Issue: Uncommon EDES prefix — possibly Environmental Design or older code.
+    Resolution: Confirmed EDES 3350 is valid. Cross-listed as
+    AG/EDES/ENGR/GEOG/ISLA/SCM/UNIV 3350 (3u). Title updated in PH picker
+    to show all valid prefixes. Unit corrected from 4u → 3u in LAES picker.
+
+  GEOG 3325 "Climate and Humanity"                                     [DONE]
+    Issue: Uncertain whether prefix was GEOG or ANTGEOG.
+    Resolution: Confirmed GEOG 3325 (3u). Unit corrected from 4u → 3u
+    in LAES picker.
+
+--------------------------------------------------------------------------------
+5. AGB — CAFES PREFIX ELECTIVE (RESOLVED)
+--------------------------------------------------------------------------------
+
+  agb_cafes_prefix_elective                                            [DONE]
+    Issue: Flagged as "too broad; catalog has specific approved list."
+    Resolution: Confirmed correct as-is. The catalog literally reads "Select
+    any AG/AGC/AGED/ASCI/BRAE/DSCI/EIM/ERSC/ESCI/FSN/NR/PLSC/SS/WVIT course"
+    with no further restriction — the broad dynamic picker matches catalog intent.
+    Bonus fix: PLSC 1120 + PLSC 1120L were two separate picker entries (2u+1u);
+    merged into a single "PLSC 1120/1120L — Principles of Plant Sciences + Lab"
+    entry (3u) to match the catalog's paired presentation.
+
+--------------------------------------------------------------------------------
+6. PHIL — RELS COURSE PREFIX (RESOLVED)
+--------------------------------------------------------------------------------
+
+  RELS 3301–3344 in Philosophy and Religion concentration              [DONE]
+    Issue: Uncertain whether RELS is a valid Cal Poly semester prefix or
+    cross-listed under HIST/ANT/another department.
+    Resolution: Confirmed RELS is a valid prefix. No changes needed.
+
+--------------------------------------------------------------------------------
+6. SLASH-CHOICE COURSES (Pick One of Two)                              [RESOLVED]
 --------------------------------------------------------------------------------
 Resolution: expandSlashCourseNumber in frontend/lib/course-status.ts splits
 "CHEM 2240/2242" → ["CHEM 2240", "CHEM 2242"], etc. The course lookup in
@@ -61,3 +102,323 @@ of 🔒 locked, indicating the student has options to fulfill the requirement.
 
 Affected majors: MCRO, PLSC, CPE, ME, AERO, PSY, ENGL, AD, POLS, and others
 with paired lecture/lab or or-choice requirements.
+
+--------------------------------------------------------------------------------
+8. PHYS — TECHNICAL ELECTIVE PICKER (RESOLVED)
+--------------------------------------------------------------------------------
+
+  phys_tech_elective                                                     [DONE]
+    Issue: Was PHYS/ASTR 3000–4999 only; under-included approved departments
+    and couldn't surface CSC 2600 or CHEM 1122 (lower-level exceptions).
+    Resolution: Expanded depts to ASTR, CSC, DATA, GEOL, MATH, PHYS, STAT at
+    3000–4999. Added extra_courses support to _DYNAMIC entries so CSC 2600
+    and CHEM 1122 (both 4u) appear at the top of the list. CR/NC and 4-unit
+    cap tips were already present in PHYS flowchart notes from batch run.
+
+--------------------------------------------------------------------------------
+7. HIST / POLS DYNAMIC ELECTIVE PICKERS (CONFIRMED CORRECT)
+--------------------------------------------------------------------------------
+
+  hist_ld_elective | All HIST 2000–2999                                  [DONE]
+    Confirmed: catalog requirement is genuinely any 2000-level HIST course.
+    _DYNAMIC picker is correct as-is.
+
+  hist_ud_elective | All HIST 3000–4999                                  [DONE]
+    Confirmed: catalog requirement is genuinely any 3000–4000-level HIST course.
+    _DYNAMIC picker is correct as-is. (hist_global_elective was separately
+    converted to _STATIC — see entry 5.)
+
+  pols_upper_div_elective | All POLS 3000–4000                           [DONE]
+    Confirmed correct as-is. _DYNAMIC picker matches catalog intent.
+
+--------------------------------------------------------------------------------
+6. MCRO — SENIOR PROJECT UNIT COUNTS (RESOLVED)
+--------------------------------------------------------------------------------
+
+  mcro_senior_project picker: BIO 4461, 4462, 4463                      [DONE]
+    Issue: Picker had incorrect units (1u / 2u / 3u). The "undercounts by ~2u"
+    ambiguity was based on a false assumption that students take all three
+    sequentially. Confirmed: it is a genuine pick-one slot, all three courses
+    are 2 units each.
+    Resolution: Corrected picker to 2u / 2u / 2u, matching the BIO and MSCI
+    major pickers. Tile already at 2u — no flowchart change needed.
+
+--------------------------------------------------------------------------------
+5. HIST — GLOBAL HISTORIES ELECTIVE (RESOLVED)
+--------------------------------------------------------------------------------
+
+  hist_global_elective                                                   [DONE]
+    Issue: Was _DYNAMIC (all HIST 3000–4999), over-including US-history courses
+    that should not count toward the Global Histories requirement.
+    Resolution: Converted to _STATIC with the exact 21-course catalog-approved
+    list: HIST 3309, 3310, 3313, 3316, 3318, 3319, 3320, 3337, 3338, 4415,
+    4416, 4417, 4419, 4423, 4428, 4429, 4442, 4443, 4444, 4457, 4459.
+    8 units required; students select any combination from this list.
+
+--------------------------------------------------------------------------------
+LIBS — Liberal Studies: Mathematics and English concentration unit mismatch
+--------------------------------------------------------------------------------
+- Math concentration totals 14u (MATH 1261 4u + MATH 1262 4u + MATH 2031 3u +
+  upper-div elective 3u) vs 12u base (4 × 3u slots).
+- English concentration totals 14u (ENGL 3311 3u + ENGL 3392 4u + ENGL 3393/4424
+  4u + Am. Lit. elective 3u) vs 12u base.
+- Resolution: Added "LIBS_FREE" slot_override in both concentrations that reduces
+  the Senior Spring free elective from 3u to 1u, keeping the program total at 120u.
+
+--------------------------------------------------------------------------------
+LIBS — TESOL concentration: missing ENGL 4499 practicum
+--------------------------------------------------------------------------------
+- ENGL 4499 (Practicum in Teaching English to Speakers of Other Languages, 1u)
+  is required for TESOL students but was absent from the flowchart.
+- Resolution: Added as extra_courses on the tesol concentration entry (grid_col=5,
+  Junior Spring), with ENGL 4498 as prerequisite. TESOL total is now 121u.
+- ENGL 4499 is NOT required for English concentration students (it appears as a
+  selectable option in that track, not a fixed requirement).
+
+--------------------------------------------------------------------------------
+EESS — Environmental Earth and Soil Sciences: slash-choice unit mismatches
+--------------------------------------------------------------------------------
+- SS 2221 = 4u, NR 4418 = 2u (confirmed by user). Unit counts in pickers are correct.
+- All three tiles (EESS_STRAT_SOIL, EESS_SOIL_GEO, EESS_GIS_CHOICE) have real
+  mismatches: choosing the odd-unit option shifts the term total by ±1u.
+- Resolution: Picker unit counts left accurate (SS 2221 = 4u, NR 4418 = 2u,
+  ERSC 4450 = 3u). Picker descriptions updated to inform the student that
+  selecting the mismatched option will update the tile. The existing frontend
+  plannedGEUnits + effectiveUnits() mechanism already handles the tile display
+  update automatically when a course is selected — no frontend changes needed.
+
+--------------------------------------------------------------------------------
+PLSC — Concentration Elective 10 (CON10) unit mismatch                [DONE]
+--------------------------------------------------------------------------------
+- CON10 was coded at 4u while all other concentration elective slots (CON1–9,
+  CON11, CON12) are 3u. User confirmed from the Plant Sciences catalog PDF that
+  all 12 concentration slots are 3u, and that Senior Spring (Plant Protection
+  Science) totals 16u: PLSC 4410 (3u) + PLSC 4431 (3u) + PLSC 4462 (1u) +
+  Approved Elective (3u) + GE (3u) + GE (3u).
+- Resolution: PLSC_CON10 updated from 4u → 3u in flowcharts.py. PLSC
+  total_units updated from 120 → 119 to match the corrected tile sum.
+  Test assertions updated accordingly (all 241 tests pass).
+
+--------------------------------------------------------------------------------
+SPAN — SPAN 2202 / SPAN 2206 unit variance                           [DONE]
+--------------------------------------------------------------------------------
+- Issue: Catalog listed the requirement as "3-4 units", but the picker modeled
+  both options at 4u. User confirmed SPAN 2202 is 4u and SPAN 2206 is 3u.
+- Resolution: Kept the SPAN 2202/2206 flowchart tile at 4u so the default
+  program total remains 120u. Updated the picker so SPAN 2206 is 3u. The
+  elective checkbox handlers now persist selected option units, so choosing
+  SPAN 2206 as selected, completed, or in-progress overrides the tile to 3u.
+
+--------------------------------------------------------------------------------
+SPAN — Free elective distribution                                      [DONE]
+--------------------------------------------------------------------------------
+- Issue: Spanish free electives were flagged as uncertain: 27 units modeled as
+  9 tiles x 3u with term placement assumed.
+- Resolution: Confirmed 9 free-elective tiles is correct. Existing placement
+  remains: 2 in Freshman Spring; 1 each in Sophomore Fall, Sophomore Spring,
+  Junior Fall, Junior Spring, and Senior Fall; 2 in Senior Spring. Added a
+  regression assertion for the distribution.
+
+--------------------------------------------------------------------------------
+SPAN — No concentrations                                               [DONE]
+--------------------------------------------------------------------------------
+- Issue: Spanish BA was flagged for confirmation of whether it has
+  concentrations, emphases, or tracks.
+- Resolution: User confirmed the Spanish BA has no formal concentrations,
+  emphases, or tracks in the 2026-2028 catalog. No code change needed.
+
+--------------------------------------------------------------------------------
+THEA — No concentrations                                               [DONE]
+--------------------------------------------------------------------------------
+- Issue: Theatre Arts BA was flagged for confirmation of whether it has
+  concentrations, emphases, or tracks.
+- Resolution: User confirmed the Theatre Arts BA has no formal concentrations,
+  emphases, or tracks in the 2026-2028 catalog. No code change needed.
+
+--------------------------------------------------------------------------------
+DSCI — No concentrations                                               [DONE]
+--------------------------------------------------------------------------------
+- Issue: Dairy Science BS was flagged for confirmation of whether it has
+  concentrations, emphases, or tracks.
+- Resolution: User confirmed no concentrations exist for this major. No code
+  change needed.
+
+--------------------------------------------------------------------------------
+THEA — UD GE Area 3 satisfied by TH 3305                               [DONE]
+--------------------------------------------------------------------------------
+- Issue: Theatre Arts had no standalone upper-division GE Area 3 tile because
+  TH 3305 was modeled as double-counting for the major and UD GE Area 3.
+- Resolution: User confirmed this is correct. No code change needed.
+
+--------------------------------------------------------------------------------
+LIBS — GE areas satisfied by major/support courses                     [DONE]
+--------------------------------------------------------------------------------
+- Issue: Liberal Studies has only 8 standalone GE tiles because several GE
+  areas are satisfied by required major/support courses.
+- Resolution: User confirmed this matches the catalog explicitly. No code
+  change needed.
+
+--------------------------------------------------------------------------------
+NUT — NUTR 3315 at 2 units                                             [DONE]
+--------------------------------------------------------------------------------
+- Issue: NUTR 3315 "Nutrition in Aging" was flagged because 2 units is unusual
+  for a standalone course.
+- Resolution: User confirmed 2 units is correct and modeled as-is per catalog.
+  No code change needed.
+
+--------------------------------------------------------------------------------
+NUT — NUTR 3333 at 1 unit                                             [DONE]
+--------------------------------------------------------------------------------
+- Issue: NUTR 3333 "Nutrient Metabolism Lab" was flagged because it is a
+  1-unit co-requisite lab attached to NUTR 3332.
+- Resolution: User confirmed 1 unit is correct and it should remain modeled
+  as a separate 1-unit tile. No code change needed.
+
+--------------------------------------------------------------------------------
+NUT — MCRO 2221 supplemental, MCRO 2224 required                       [DONE]
+--------------------------------------------------------------------------------
+- Issue: Nutrition had MCRO 2224/2221 modeled as a slash-choice requirement.
+- Resolution: User clarified MCRO 2221 is not for credit for Biology and
+  Microbiology majors and functions as a supplemental course before MCRO 2224,
+  not as the required flowchart course. Split the tile into required MCRO 2224
+  and a Freshman Fall MCRO 2221 supplemental tile marked "NR (not required)".
+  MCRO 2221 does not count toward required units, and it is automatically
+  checked off when the student has credit for MCRO 2224.
+
+--------------------------------------------------------------------------------
+PHIL — 2-unit free elective in Senior Spring                            [DONE]
+--------------------------------------------------------------------------------
+- Issue: Philosophy has one 2-unit free elective tile to reach exactly 120
+  units.
+- Resolution: User confirmed the 2-unit free elective is correct and belongs
+  in the 2nd term of senior year. Moved PHIL_FREE8 to Senior Spring and added
+  a regression assertion for its units and placement.
+
+--------------------------------------------------------------------------------
+BATCH — Concentration-specific tips review (batch 1 of 2)             [DONE]
+--------------------------------------------------------------------------------
+Catalog pages fetched for: AERO, CE, ME, MATH, LIBS, PHIL, ECON, BUS, EIM,
+COMS, ENVM, BMED, BIOC, CHEM (Polymers and Coatings).
+
+Results:
+- AERO (none, aeronautics, astronautics): all footnotes program-wide. No
+  concentration-specific tips needed.
+- CE (none, construction, geotechnical, structural, transportation, water
+  resources): all footnotes program-wide. No concentration-specific tips needed.
+- ME (none/General Curriculum): notes 5–8 are General Curriculum-only — added
+  as tips to ME/none in concentrations.py (ENGR substitution rule, TE advisor
+  note, variable-topic TE note, independent study TE note). Notes 1–4 already
+  captured in major-level flowchart notes.
+- ME (energy_resources, hvacr, mechatronics, manufacturing): no concentration-
+  specific footnotes beyond program-wide notes 1–4.
+- MATH (none, applied, teaching): all 6 footnotes program-wide. No tips needed.
+- LIBS (environmental_education): 2 tips added — "units in excess applied to
+  free electives" and "no double-counting major/support as approved elective."
+- LIBS (human_development): 1 tip added — "units in excess applied to free
+  electives."
+- LIBS (science): 3 tips added — CHEM minimum, no double-counting, units in
+  excess to free electives.
+- LIBS (social_science): 1 tip added — "units in excess applied to free
+  electives."
+- LIBS (none, mathematics, english, tesol, individualized): no concentration-
+  specific footnotes beyond program-wide notes.
+- PHIL/none: no concentration-specific footnotes.
+- ECON/none: no concentration-specific footnotes beyond program-wide.
+- BUS/accounting, BUS/information_systems_analytics: no unique concentration-
+  specific footnotes beyond the 8 program-wide BUS footnotes.
+- EIM (all 4), COMS (all 6), ENVM (all 8), BMED (all 5), BIOC (both),
+  CHEM/polymers_coatings: all confirmed as having only program-wide footnotes
+  already captured in major-level flowchart notes.
+
+--------------------------------------------------------------------------------
+BATCH — Concentration-specific tips review (batch 2 of 2)             [DONE]
+--------------------------------------------------------------------------------
+Catalog pages fetched for: CPE (5 remaining), AGS, KINE, FSN, WVIT, NUT, PH,
+POLS (2), PSY, AD, JOUR (5), SOC (2), GRC, ANTGEOG (2), NR, ITP, INTS, PLSC,
+EESS, LAES.
+
+Tips added to concentrations.py:
+- CPE/robotics: "A maximum of 4 units may be applied toward concentration
+  electives from CPE 4491–4495, CSC 4091–4993, DATA 4720, and ENGR 4995
+  combined." (unique to Robotics — not present in other CPE concentrations)
+- NUT/dietetics: "The Dietetics elective slot may be filled by any 3000–4000
+  level BIO, CHEM, HLTH, MATH, PHYS, or PSY course."
+- NUT/nutrition_prehealth: "A minimum of 8 units must be taken at the 3000-4000
+  level." (second tip; first tip about double-counting was already present)
+
+Confirmed no concentration-specific tips (all notes program-wide already in
+major-level flowchart notes):
+- CPE/computer_architecture, computer_systems, embedded_systems, security
+- AGS (all 7 concentrations)
+- KINE (all 4)
+- FSN (all 4)
+- WVIT (all 3)
+- NUT/none
+- PH/none, PH/community_health_promotion
+- POLS/none, POLS/individualized
+- PSY/none
+- AD/none
+- JOUR (all 5)
+- SOC/none, SOC/ics
+- GRC/none
+- ANTGEOG/none, ANTGEOG/individualized
+- CHEM/none, BIOC/none
+- NR/none, ITP/none, INTS/none, PLSC/none, EESS/none, LAES/none
+
+--------------------------------------------------------------------------------
+COURSE CATALOG DATA DISCREPANCIES — Title fixes (2026-05-26)
+--------------------------------------------------------------------------------
+The following title discrepancies were resolved by aligning non-home-department
+entries to the home department's catalog title:
+
+- CSC 1001 title: EE/EE_ECC/EE_POWER had "Fundamentals of Computer Science and Lab"
+  → fixed to "Fundamentals of Computer Science" (matching CS flowchart / CSC dept)
+
+- STAT 1110 title: ENVM had "Applied Statistical Concepts"
+  → fixed to "Applied Statistical Concepts and Methods" (matching all other flowcharts)
+
+- HIST 2201 title: LIBS had "U.S. History to 1877"
+  → fixed to "United States History I" (matching HIST dept flowchart)
+
+- NR 3363 title: EESS had "Career Preparation and Practices in Natural Resources Fields"
+  → fixed to "Career Preparation in Natural Resources" (matching NR/ENVM dept)
+
+- ASCI 3363 title: DSCI had "Professional Development in Animal Sciences"
+  → fixed to "Professional Development in the Animal Sciences" (matching ASCI dept)
+
+Remaining unit discrepancies still open (require catalog verification of program totals):
+  CSC 1001 units: SE=3u, CPE*=3u (should be 4u per CS — would change program totals)
+  CSC 2001 units: SE=3u, CPE*=3u (should be 4u per CS — would change program totals)
+  CSC 3665 units/title: SE has "Database Applications" (3u) vs CS "Introduction to
+    Database Management Systems" (4u)
+  MATE 1210 units: MATE has 3u, MFGE has 4u (different titles too)
+
+--------------------------------------------------------------------------------
+COURSE CATALOG DATA DISCREPANCIES — Unit fixes (2026-05-26)
+--------------------------------------------------------------------------------
+After fetching catalog.calpoly.edu/courses and plan-of-study pages:
+
+CSC 1001 / CSC 2001 units:
+- CS flowchart: 4u (correct — plan of study bundles lecture + CSC 1001L/2001L lab)
+- CPE flowchart: 3u + separate CSC 1001L/2001L tiles (correct — separate lab tiles)
+- SE flowchart: was 3u with no lab tile → FIXED to 4u (bundled, matching plan of study)
+  No change to CS or CPE.
+
+CSC 3665 in SE:
+- SE had a wrong fixed tile "Database Applications" (3u) AND a separate wrong CSC 3660
+  tile "Database Modeling, Design and Implementation" (2u).
+- Catalog plan of study shows a single slash-choice: CSC 3660/3665 (2-4u), where
+  CSC 3660 (2u) "Introduction to Databases 1" is the base and CSC 3665 (4u)
+  "Introduction to Database Management Systems" is an alternative counting as 2u
+  requirement + 2u TEs.
+- FIXED: removed SE_CSC3665 tile; converted SE_CSC3660 to slash-choice placeholder
+  (CSC 3660/3665, 2u, elective_key: se_database_elective); added se_database_elective
+  to electives_static.json; updated course_supplements.json with correct CSC 3660 title.
+- SE GE 5B (Life Science) also corrected: was 3u → 4u (per catalog plan of study).
+- Net unit change to SE total: 0 (sum stays 120).
+
+MATE 1210:
+- MATE flowchart: 3u "Principles of Materials Engineering for Majors" + separate MATE 1215
+  (1u) lab tile — correct (separate tiles).
+- MFGE flowchart: 4u (bundled with MATE 1215 lab per plan of study) — title was wrong
+  ("Principles of Materials Engineering" missing "for Majors") → FIXED title.

@@ -1,0 +1,172 @@
+[
+  {
+    "id": 2255,
+    "name": "Digital Design",
+    "courseToMeet": "CPE133 or EE133"
+  },
+  {
+    "id": 2256,
+    "name": "Computer Design & Assembly Language Program",
+    "courseToMeet": "CPE233 or EE233"
+  },
+  {
+    "id": 2257,
+    "name": "Introduction to Electrical Engineering and Introduction to Electrical Engineering Lab",
+    "courseToMeet": "EE111 and EE151"
+  },
+  {
+    "id": 2258,
+    "name": "Electric Circuit Analysis I (select one option)",
+    "courseToMeet": "EE113 and EE143 OR EE112 and IME156"
+  },
+  {
+    "id": 2259,
+    "name": "Electric Circuit Analysis II and Electric Circuit Analysis Laboratory II",
+    "courseToMeet": "EE211 and EE241"
+  },
+  {
+    "id": 2260,
+    "name": "Electric Circuit Analysis III and Electric Circuit Analysis Laboratory III",
+    "courseToMeet": "EE212 and EE242"
+  },
+  {
+    "id": 2261,
+    "name": "Continuous-Time Signals and Systems",
+    "courseToMeet": "EE228"
+  },
+  {
+    "id": 2262,
+    "name": "Energy Conversion Electromagnetics and Energy Conversion Electromagnetics Lab",
+    "courseToMeet": "EE255 and EE295"
+  },
+  {
+    "id": 2263,
+    "name": "Classical Control Systems and Classical Control Systems Laboratory",
+    "courseToMeet": "EE302 and EE342"
+  },
+  {
+    "id": 2264,
+    "name": "Semiconductor Device Electronics and Semiconductor Device Electronics Lab",
+    "courseToMeet": "EE306 and EE346"
+  },
+  {
+    "id": 2265,
+    "name": "Digital Electronics & Integrated Circuits and Digital Electronics & Integrated Circuits Lab",
+    "courseToMeet": "EE307 and EE347"
+  },
+  {
+    "id": 2266,
+    "name": "Analog Electronics & Integrated Circuits and Analog Electronics & Integrated Circuits Lab",
+    "courseToMeet": "EE308 and EE348"
+  },
+  {
+    "id": 2267,
+    "name": "Introduction to Communication Systems",
+    "courseToMeet": "EE314"
+  },
+  {
+    "id": 2268,
+    "name": "Discrete-Time Signals and Systems and Signals and Systems Laboratory",
+    "courseToMeet": "EE328 and EE368"
+  },
+  {
+    "id": 2270,
+    "name": "Electromagnetic Fields and Transmission",
+    "courseToMeet": "EE335"
+  },
+  {
+    "id": 2271,
+    "name": "Electromagnetic Fields and Transmission Lab",
+    "courseToMeet": "EE375"
+  },
+  {
+    "id": 2272,
+    "name": "Electromagnetic Waves",
+    "courseToMeet": "EE402"
+  },
+  {
+    "id": 2273,
+    "name": "Electronic Design and Electronic Design Laboratory",
+    "courseToMeet": "EE409 and EE449"
+  },
+  {
+    "id": 2274,
+    "name": "Senior Project Preparation",
+    "courseToMeet": "EE460"
+  },
+  {
+    "id": 2275,
+    "name": "Senior Project sequence (select one option)",
+    "courseToMeet": "EE461 and EE462 OR EE463 and EE464"
+  },
+  {
+    "id": 2276,
+    "name": "Life Science for Engineers / Bioengineering Fundamentals (cross-listed)",
+    "courseToMeet": "BIO213 or BMED213"
+  },
+  {
+    "id": 2277,
+    "name": "General Chemistry for Physical Science & Engineering",
+    "courseToMeet": "CHEM124"
+  },
+  {
+    "id": 2278,
+    "name": "Fundamentals of Computer Science",
+    "courseToMeet": "CSC101 or CPE101"
+  },
+  {
+    "id": 2279,
+    "name": "Calculus I",
+    "courseToMeet": "MATH141"
+  },
+  {
+    "id": 2280,
+    "name": "Calculus II",
+    "courseToMeet": "MATH142"
+  },
+  {
+    "id": 2281,
+    "name": "Calculus III",
+    "courseToMeet": "MATH143"
+  },
+  {
+    "id": 2282,
+    "name": "Calculus IV",
+    "courseToMeet": "MATH241"
+  },
+  {
+    "id": 2283,
+    "name": "Linear Analysis I",
+    "courseToMeet": "MATH244"
+  },
+  {
+    "id": 2284,
+    "name": "General Physics IA",
+    "courseToMeet": "PHYS141"
+  },
+  {
+    "id": 2285,
+    "name": "General Physics II",
+    "courseToMeet": "PHYS142"
+  },
+  {
+    "id": 2286,
+    "name": "General Physics III",
+    "courseToMeet": "PHYS143"
+  },
+  {
+    "id": 2287,
+    "name": "Modern Physics I",
+    "courseToMeet": "PHYS211"
+  },
+  {
+    "id": 2288,
+    "name": "Probability and Random Processes for Engineers",
+    "courseToMeet": "STAT350"
+  },
+  {
+    "id": 2269,
+    "name": "Microcontroller-Based Systems Design / Microprocessor System Design (select one)",
+    "courseToMeet": "EE329 or CPE329 or EE336"
+  }
+]

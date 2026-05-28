@@ -1,5 +1,6 @@
 export type Category = "major" | "support" | "concentration" | "ge";
-export type CourseStatus = "completed" | "inferred" | "in_progress" | "incomplete" | "locked" | "prereq_warning";
+export type CourseStatus = "completed" | "inferred" | "in_progress" | "incomplete" | "locked";
+export type FreeElectiveStatus = "planned" | "completed" | "in_progress";
 
 export interface Course {
   id: string;
@@ -11,8 +12,11 @@ export interface Course {
   grid_row: number;
   prerequisites: string[];
   quarter_equivalents: string[];
+  is_required?: boolean;
+  auto_satisfied_by?: string[];
   elective_key?: string;
   is_placeholder: boolean;
+  lab_component?: { course_number: string; lecture_units: number; lab_units: number };
 }
 
 export interface ColumnLabel {
@@ -48,8 +52,17 @@ export interface TranscriptSession {
   coursePositions?: Record<string, CoursePosition>;
   plannedGECourses?: Record<string, string>;
   plannedGEUnits?: Record<string, number>;
+  plannedCourseUnits?: Record<string, number>;
+  plannedFreeElectiveCourses?: Record<string, FreeElectiveSelection>;
   concentration?: string;
   notes?: string;
+}
+
+export interface FreeElectiveSelection {
+  course_number: string;
+  title: string;
+  units: number;
+  status: FreeElectiveStatus;
 }
 
 export interface ConcentrationSlotOverride {
@@ -67,6 +80,7 @@ export interface Concentration {
   slot_overrides: Record<string, ConcentrationSlotOverride>;
   extra_courses?: Course[];
   tips?: string[];
+  full_flowchart_key?: string;
 }
 
 export interface Professor {
@@ -81,6 +95,8 @@ export interface GECourse {
   title: string;
   units: number;
 }
+
+export type CourseSearchResult = GECourse;
 
 /** Maps GE area ID (e.g. "GE 1A") to list of approved semester course numbers */
 export type GEAreaMap = Record<string, string[]>;

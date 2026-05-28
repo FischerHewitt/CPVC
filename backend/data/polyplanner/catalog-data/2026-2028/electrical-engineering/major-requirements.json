@@ -1,0 +1,142 @@
+[
+  {
+    "id": 2289,
+    "name": "Introduction to Electrical Engineering and Laboratory",
+    "courseToMeet": "EE1111 and EE1111L"
+  },
+  {
+    "id": 2290,
+    "name": "Electric Circuit Analysis I",
+    "courseToMeet": "EE2211"
+  },
+  {
+    "id": 2291,
+    "name": "Electric Circuit Analysis I Laboratory",
+    "courseToMeet": "EE2241"
+  },
+  {
+    "id": 2292,
+    "name": "Electric Circuit Analysis II",
+    "courseToMeet": "EE2212"
+  },
+  {
+    "id": 2293,
+    "name": "Signals and Systems",
+    "courseToMeet": "EE2328"
+  },
+  {
+    "id": 2294,
+    "name": "Classical Control Systems and Laboratory",
+    "courseToMeet": "EE3302 and EE3302L"
+  },
+  {
+    "id": 2295,
+    "name": "Electronics I and Laboratory",
+    "courseToMeet": "EE3306 and EE3306L"
+  },
+  {
+    "id": 2296,
+    "name": "Electronics II and Laboratory",
+    "courseToMeet": "EE3308 and EE3308L"
+  },
+  {
+    "id": 2297,
+    "name": "Electric Machines and Power Systems and Laboratory",
+    "courseToMeet": "EE3255 and EE3255L"
+  },
+  {
+    "id": 2298,
+    "name": "Electromagnetic Fields and Transmission and Laboratory",
+    "courseToMeet": "EE3335 and EE3335L"
+  },
+  {
+    "id": 2299,
+    "name": "Cyber-Physical Systems",
+    "courseToMeet": "EE3329"
+  },
+  {
+    "id": 2300,
+    "name": "Communication Systems and Laboratory",
+    "courseToMeet": "EE4314 and EE4314L"
+  },
+  {
+    "id": 2301,
+    "name": "Senior Project I",
+    "courseToMeet": "EE4461"
+  },
+  {
+    "id": 2302,
+    "name": "Senior Project II",
+    "courseToMeet": "EE4462"
+  },
+  {
+    "id": 2303,
+    "name": "Senior Project Design Option I",
+    "courseToMeet": "EE4463 or EE4465"
+  },
+  {
+    "id": 2304,
+    "name": "Senior Project Design Option II",
+    "courseToMeet": "EE4464 or EE4466"
+  },
+  {
+    "id": 2305,
+    "name": "Electrical Engineering Fundamentals of Engineering Exam",
+    "courseToMeet": "EE4459"
+  },
+  {
+    "id": 2306,
+    "name": "Life Science for Engineers",
+    "courseToMeet": "BIO2213"
+  },
+  {
+    "id": 2307,
+    "name": "Fundamentals of Computer Science and Laboratory",
+    "courseToMeet": "CSC1001 and CSC1001L"
+  },
+  {
+    "id": 2308,
+    "name": "Introduction to Computer Systems",
+    "courseToMeet": "CPE2300"
+  },
+  {
+    "id": 2309,
+    "name": "Introduction to HDL and Digital Design Laboratory",
+    "courseToMeet": "CPE2301"
+  },
+  {
+    "id": 2310,
+    "name": "Calculus I",
+    "courseToMeet": "MATH1261"
+  },
+  {
+    "id": 2311,
+    "name": "Calculus II",
+    "courseToMeet": "MATH1262"
+  },
+  {
+    "id": 2312,
+    "name": "Calculus III",
+    "courseToMeet": "MATH2263"
+  },
+  {
+    "id": 2313,
+    "name": "Linear Analysis",
+    "courseToMeet": "MATH2341"
+  },
+  {
+    "id": 2314,
+    "name": "General Physics I",
+    "courseToMeet": "PHYS1141"
+  },
+  {
+    "id": 2315,
+    "name": "General Physics II",
+    "courseToMeet": "PHYS1143"
+  },
+  {
+    "id": 2316,
+    "name": "Probability and Random Processes for Engineers",
+    "courseToMeet": "STAT3310"
+  }
+]

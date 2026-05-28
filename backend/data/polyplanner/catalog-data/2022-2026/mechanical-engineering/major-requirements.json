@@ -1,0 +1,232 @@
+[
+  {
+    "id": 2002,
+    "name": "Introduction to Mechanical Engineering I",
+    "courseToMeet": "ME128"
+  },
+  {
+    "id": 2003,
+    "name": "Introduction to Mechanical Engineering II",
+    "courseToMeet": "ME129"
+  },
+  {
+    "id": 2004,
+    "name": "Introduction to Mechanical Engineering III",
+    "courseToMeet": "ME130"
+  },
+  {
+    "id": 2005,
+    "name": "Freshmen Orientation to Mechanical Engineering",
+    "courseToMeet": "ME163"
+  },
+  {
+    "id": 2006,
+    "name": "Engineering Statics",
+    "courseToMeet": "ME211"
+  },
+  {
+    "id": 2007,
+    "name": "Engineering Dynamics",
+    "courseToMeet": "ME212"
+  },
+  {
+    "id": 2008,
+    "name": "Philosophy of Design",
+    "courseToMeet": "ME234"
+  },
+  {
+    "id": 2009,
+    "name": "Measurement and Engineering Data Analysis",
+    "courseToMeet": "ME236"
+  },
+  {
+    "id": 2010,
+    "name": "Intro to Detailed Design with Solid Modeling",
+    "courseToMeet": "ME251"
+  },
+  {
+    "id": 2011,
+    "name": "Thermodynamics I",
+    "courseToMeet": "ME302"
+  },
+  {
+    "id": 2012,
+    "name": "Thermodynamics II",
+    "courseToMeet": "ME303"
+  },
+  {
+    "id": 2013,
+    "name": "Mechanical Vibrations",
+    "courseToMeet": "ME318"
+  },
+  {
+    "id": 2014,
+    "name": "Introduction to System Dynamics",
+    "courseToMeet": "ME322"
+  },
+  {
+    "id": 2015,
+    "name": "Design for Strength and Stiffness",
+    "courseToMeet": "ME328"
+  },
+  {
+    "id": 2016,
+    "name": "Mechanical Systems Design",
+    "courseToMeet": "ME329"
+  },
+  {
+    "id": 2017,
+    "name": "Fluid Mechanics I",
+    "courseToMeet": "ME341"
+  },
+  {
+    "id": 2018,
+    "name": "Heat Transfer",
+    "courseToMeet": "ME343"
+  },
+  {
+    "id": 2019,
+    "name": "Fluid Mechanics II",
+    "courseToMeet": "ME347"
+  },
+  {
+    "id": 2020,
+    "name": "Thermal System Design",
+    "courseToMeet": "ME448"
+  },
+  {
+    "id": 2021,
+    "name": "Mechanics of Materials I",
+    "courseToMeet": "CE204"
+  },
+  {
+    "id": 2022,
+    "name": "Mechanics of Materials II",
+    "courseToMeet": "CE207"
+  },
+  {
+    "id": 2023,
+    "name": "General Chemistry I",
+    "courseToMeet": "CHEM124"
+  },
+  {
+    "id": 2024,
+    "name": "General Chemistry II",
+    "courseToMeet": "CHEM125"
+  },
+  {
+    "id": 2025,
+    "name": "Programming for Engineering Students",
+    "courseToMeet": "CSC231 or CSC234"
+  },
+  {
+    "id": 2026,
+    "name": "Electric Circuit Theory",
+    "courseToMeet": "EE201"
+  },
+  {
+    "id": 2027,
+    "name": "Electric Circuits Laboratory",
+    "courseToMeet": "EE251"
+  },
+  {
+    "id": 2028,
+    "name": "Electronics",
+    "courseToMeet": "EE321"
+  },
+  {
+    "id": 2029,
+    "name": "Electronics Laboratory",
+    "courseToMeet": "EE361"
+  },
+  {
+    "id": 2030,
+    "name": "Manufacturing Processes: Materials Joining",
+    "courseToMeet": "IME142"
+  },
+  {
+    "id": 2031,
+    "name": "Subtractive Manufacturing Processes Requirement",
+    "courseToMeet": "(IME145 and IME146) or IME143"
+  },
+  {
+    "id": 2032,
+    "name": "Materials Engineering with Lab",
+    "courseToMeet": "MATE210 and MATE215"
+  },
+  {
+    "id": 2033,
+    "name": "Calculus I",
+    "courseToMeet": "MATH141"
+  },
+  {
+    "id": 2034,
+    "name": "Calculus II",
+    "courseToMeet": "MATH142"
+  },
+  {
+    "id": 2035,
+    "name": "Calculus III",
+    "courseToMeet": "MATH143"
+  },
+  {
+    "id": 2036,
+    "name": "Calculus IV",
+    "courseToMeet": "MATH241"
+  },
+  {
+    "id": 2037,
+    "name": "Linear Analysis I",
+    "courseToMeet": "MATH244"
+  },
+  {
+    "id": 2038,
+    "name": "Linear Analysis II",
+    "courseToMeet": "MATH344"
+  },
+  {
+    "id": 2039,
+    "name": "General Physics I",
+    "courseToMeet": "PHYS141"
+  },
+  {
+    "id": 2040,
+    "name": "General Physics II",
+    "courseToMeet": "PHYS142"
+  },
+  {
+    "id": 2041,
+    "name": "General Physics III",
+    "courseToMeet": "PHYS143"
+  },
+  {
+    "id": 2042,
+    "name": "Manufacturing Processes Elective",
+    "courseToMeet": "IME141 or ITP341 or ME161"
+  },
+  {
+    "id": 2043,
+    "name": "Intermediate Dynamics",
+    "courseToMeet": "ME326"
+  },
+  {
+    "id": 2044,
+    "name": "Mechanical Controls Requirement",
+    "courseToMeet": "ME418 or ME419"
+  },
+  {
+    "id": 2045,
+    "name": "Senior Design Project I",
+    "courseToMeet": "ME428"
+  },
+  {
+    "id": 2046,
+    "name": "Senior Design Project II",
+    "courseToMeet": "ME429"
+  },
+  {
+    "id": 2047,
+    "name": "Senior Design Project III",
+    "courseToMeet": "ME430"
+  }
+]
