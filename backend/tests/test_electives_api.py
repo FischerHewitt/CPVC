@@ -4,6 +4,7 @@ import routers.electives as electives_router
 import services.elective_catalog as elective_catalog
 from data.flowcharts import FLOWCHARTS
 from main import app
+import services.elective_catalog as ec
 
 
 client = TestClient(app)
@@ -1746,3 +1747,45 @@ def test_laes_elective_keys():
     r = client.get("/api/electives/laes_eng_elective")
     assert r.status_code == 200
     assert len(r.json()["courses"]) > 0
+
+
+# ── Issue #26 tests ──────────────────────────────────────────────────────────
+
+def test_graph_conc2_elective_excludes_removed_courses():
+    """GRAPH_CONC2 (cs_graphics_conc_elective) must NOT contain the 6 courses
+    that are not valid 3-4 unit graphics concentration electives."""
+    response = client.get("/api/electives/cs_graphics_conc_elective")
+    assert response.status_code == 200
+    numbers = [c["course_number"] for c in response.json()["courses"]]
+    for bad in ["CSC 4471", "CSC 4472", "CSC 4791", "CSC 4792", "CSC 4793", "CSC 4991"]:
+        assert bad not in numbers, f"{bad} should have been removed from cs_graphics_conc_elective"
+
+
+def test_csc_4770_has_variable_units_in_graphics_conc_elective():
+    """CSC 4770 should expose units_min=1 and units_max=4 via the endpoint."""
+    response = client.get("/api/electives/cs_graphics_conc_elective")
+    assert response.status_code == 200
+    courses = response.json()["courses"]
+    csc4770 = next((c for c in courses if c["course_number"] == "CSC 4770"), None)
+    assert csc4770 is not None, "CSC 4770 must remain in cs_graphics_conc_elective"
+    assert csc4770.get("units_min") == 1, f"Expected units_min=1, got {csc4770.get('units_min')}"
+    assert csc4770.get("units_max") == 4, f"Expected units_max=4, got {csc4770.get('units_max')}"
+
+
+# ── Issue #25 tests ──────────────────────────────────────────────────────────
+
+def test_econ_lecture_lab_pairs_have_course_components():
+    """ECON upper-division lecture+lab pairs must have course_components in the catalog."""
+    ec.reload()  # ensure fresh load after any supplement changes
+    for course_number in ["ECON 3015", "ECON 4021", "ECON 4031"]:
+        result = ec.resolve_course(course_number)
+        assert result is not None, f"{course_number} not found in catalog"
+        comps = result.get("course_components")
+        assert comps is not None, f"{course_number} missing course_components"
+        assert len(comps) == 2, f"{course_number} expected 2 components, got {len(comps)}"
+        types = {c["type"] for c in comps}
+        assert "Lecture" in types, f"{course_number} missing Lecture component"
+        assert "Project Lab" in types, f"{course_number} missing Project Lab component"
+        lab = next(c for c in comps if c["type"] == "Project Lab")
+        assert lab["course_number"].endswith("A"), \
+            f"{course_number} lab course_number should end in A, got {lab['course_number']}"

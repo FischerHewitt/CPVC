@@ -440,6 +440,89 @@ describe("FlowchartGrid custom course unit totals", () => {
   });
 });
 
+describe("FlowchartGrid concentration placeholder planned course display", () => {
+  const flowchartWithConc: Flowchart = {
+    major: "Computer Science",
+    code: "CS",
+    total_units: 120,
+    columns: [{ year: "Senior", term: "Spring" }],
+    courses: [
+      {
+        id: "CONC1",
+        course_number: "Conc.",
+        title: "Graphics Concentration Elective",
+        units: 4,
+        category: "concentration",
+        grid_col: 0,
+        grid_row: 0,
+        prerequisites: [],
+        quarter_equivalents: [],
+        is_placeholder: true,
+      },
+      {
+        id: "CONC2",
+        course_number: "Conc.",
+        title: "Graphics Concentration Elective 2",
+        units: 3,
+        category: "concentration",
+        grid_col: 0,
+        grid_row: 1,
+        prerequisites: [],
+        quarter_equivalents: [],
+        is_placeholder: true,
+      },
+    ],
+  };
+
+  function renderConcGrid(session: TranscriptSession) {
+    return renderToStaticMarkup(
+      <FlowchartGrid
+        flowchart={flowchartWithConc}
+        session={session}
+        inferred={[]}
+        geAreaMap={{}}
+        onCourseClick={vi.fn()}
+        onToggleCourseCompleted={vi.fn()}
+        onToggleCourseInProgress={vi.fn()}
+        onMoveCourse={vi.fn()}
+      />,
+    );
+  }
+
+  it("shows planned course name on a concentration placeholder tile when keyed by course id", () => {
+    // plannedGECourses must be keyed by course.id (not course_number) so that
+    // two "Conc." tiles can each track a different planned selection.
+    const html = renderConcGrid({
+      sessionId: "test",
+      studentName: "Test Student",
+      major: "CS",
+      completed: [],
+      inProgress: [],
+      plannedGECourses: { CONC1: "CSC 4730" },
+    });
+
+    expect(html).toContain("planned: CSC 4730");
+  });
+
+  it("does not bleed a planned course from one Conc. tile to another", () => {
+    // CONC1 has a planned selection; CONC2 must NOT show the same planned name.
+    const html = renderConcGrid({
+      sessionId: "test",
+      studentName: "Test Student",
+      major: "CS",
+      completed: [],
+      inProgress: [],
+      plannedGECourses: { CONC1: "CSC 4730" },
+    });
+
+    const firstOccurrence  = html.indexOf("planned: CSC 4730");
+    const secondOccurrence = html.indexOf("planned: CSC 4730", firstOccurrence + 1);
+    // CSC 4730 planned label should appear exactly once (only on CONC1)
+    expect(firstOccurrence).toBeGreaterThan(-1);
+    expect(secondOccurrence).toBe(-1);
+  });
+});
+
 describe("FlowchartGrid remove custom tile", () => {
   it("does not show a covered-by badge after the custom course is removed", () => {
     // After removal, session.customCourses is empty — no entry → no badge

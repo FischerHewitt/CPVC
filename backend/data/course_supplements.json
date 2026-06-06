@@ -1449,7 +1449,7 @@
   },
   "CSC 4770": {
     "title": "Special Advanced Topics in Computer Graphics",
-    "units": 1
+    "units": "1-4"
   },
   "CSC 4791": {
     "title": "Seminars in Graphics",
@@ -1678,6 +1678,150 @@
   "ECON 2030": {
     "title": "Microeconomics",
     "units": 3
+  },
+  "ECON 3015": {
+    "title": "Programming for Economics and Analytics",
+    "units": 4,
+    "course_components": [
+      {"type": "Lecture", "course_number": "ECON 3015", "units": 3},
+      {"type": "Project Lab", "course_number": "ECON 3015A", "units": 1}
+    ]
+  },
+  "ECON 4010": {
+    "title": "Mathematical Economics",
+    "units": 4,
+    "course_components": [
+      {"type": "Lecture", "course_number": "ECON 4010", "units": 3},
+      {"type": "Project Lab", "course_number": "ECON 4010A", "units": 1}
+    ]
+  },
+  "ECON 4011": {
+    "title": "Optimization in Julia for Economics and Data Science",
+    "units": 4,
+    "course_components": [
+      {"type": "Lecture", "course_number": "ECON 4011", "units": 3},
+      {"type": "Project Lab", "course_number": "ECON 4011A", "units": 1}
+    ]
+  },
+  "ECON 4012": {
+    "title": "Probability Models for Economic Decisions",
+    "units": 4,
+    "course_components": [
+      {"type": "Lecture", "course_number": "ECON 4012", "units": 3},
+      {"type": "Project Lab", "course_number": "ECON 4012A", "units": 1}
+    ]
+  },
+  "ECON 4013": {
+    "title": "Experimental and Behavioral Economics",
+    "units": 4,
+    "course_components": [
+      {"type": "Lecture", "course_number": "ECON 4013", "units": 3},
+      {"type": "Project Lab", "course_number": "ECON 4013A", "units": 1}
+    ]
+  },
+  "ECON 4021": {
+    "title": "Advanced Econometrics",
+    "units": 4,
+    "course_components": [
+      {"type": "Lecture", "course_number": "ECON 4021", "units": 3},
+      {"type": "Project Lab", "course_number": "ECON 4021A", "units": 1}
+    ]
+  },
+  "ECON 4024": {
+    "title": "Applied Forecasting",
+    "units": 4,
+    "course_components": [
+      {"type": "Lecture", "course_number": "ECON 4024", "units": 3},
+      {"type": "Project Lab", "course_number": "ECON 4024A", "units": 1}
+    ]
+  },
+  "ECON 4025": {
+    "title": "Causal Machine Learning for Economics",
+    "units": 4,
+    "course_components": [
+      {"type": "Lecture", "course_number": "ECON 4025", "units": 3},
+      {"type": "Project Lab", "course_number": "ECON 4025A", "units": 1}
+    ]
+  },
+  "ECON 4031": {
+    "title": "Industrial Organization",
+    "units": 4,
+    "course_components": [
+      {"type": "Lecture", "course_number": "ECON 4031", "units": 3},
+      {"type": "Project Lab", "course_number": "ECON 4031A", "units": 1}
+    ]
+  },
+  "ECON 4042": {
+    "title": "Monetary Economics",
+    "units": 4,
+    "course_components": [
+      {"type": "Lecture", "course_number": "ECON 4042", "units": 3},
+      {"type": "Project Lab", "course_number": "ECON 4042A", "units": 1}
+    ]
+  },
+  "ECON 4043": {
+    "title": "International Monetary Economics",
+    "units": 4,
+    "course_components": [
+      {"type": "Lecture", "course_number": "ECON 4043", "units": 3},
+      {"type": "Project Lab", "course_number": "ECON 4043A", "units": 1}
+    ]
+  },
+  "ECON 4052": {
+    "title": "Public Finance and Public Policy",
+    "units": 4,
+    "course_components": [
+      {"type": "Lecture", "course_number": "ECON 4052", "units": 3},
+      {"type": "Project Lab", "course_number": "ECON 4052A", "units": 1}
+    ]
+  },
+  "ECON 4053": {
+    "title": "Labor Economics",
+    "units": 4,
+    "course_components": [
+      {"type": "Lecture", "course_number": "ECON 4053", "units": 3},
+      {"type": "Project Lab", "course_number": "ECON 4053A", "units": 1}
+    ]
+  },
+  "ECON 4055": {
+    "title": "Urban Economics",
+    "units": 4,
+    "course_components": [
+      {"type": "Lecture", "course_number": "ECON 4055", "units": 3},
+      {"type": "Project Lab", "course_number": "ECON 4055A", "units": 1}
+    ]
+  },
+  "ECON 4061": {
+    "title": "International Trade Theory",
+    "units": 4,
+    "course_components": [
+      {"type": "Lecture", "course_number": "ECON 4061", "units": 3},
+      {"type": "Project Lab", "course_number": "ECON 4061A", "units": 1}
+    ]
+  },
+  "ECON 4071": {
+    "title": "Environmental Economics",
+    "units": 4,
+    "course_components": [
+      {"type": "Lecture", "course_number": "ECON 4071", "units": 3},
+      {"type": "Project Lab", "course_number": "ECON 4071A", "units": 1}
+    ]
+  },
+  "ECON 4072": {
+    "title": "Economics of Energy and Resources",
+    "units": 4,
+    "course_components": [
+      {"type": "Lecture", "course_number": "ECON 4072", "units": 3},
+      {"type": "Project Lab", "course_number": "ECON 4072A", "units": 1}
+    ]
+  },
+  "ECON 4073": {
+    "title": "Economics of Land and Water",
+    "units": 4,
+    "course_components": [
+      {"type": "Lecture", "course_number": "ECON 4073", "units": 3},
+      {"type": "Project Lab", "course_number": "ECON 4073A", "units": 1}
+    ]
   },
   "EDES 3350": {
     "title": "The Global Environment",

@@ -188,11 +188,14 @@ export default function FlowchartGrid({
         });
       } else if (course.is_placeholder && !isFreeElective(course)) {
         const active = course.quarter_equivalents.find((c) => completedNums.has(norm(c)) || inProgressNums.has(norm(c)));
+        // Concentration/support elective placeholders are keyed by course.id in plannedGECourses
+        // so that multiple tiles sharing the same course_number (e.g. "Conc.") don't collide.
+        const plannedForSlot = plannedGECourses[course.id] ?? plannedGECourses[course.course_number];
         map.set(course.id, {
           checked: hasAnyCourseNumber(completedNums, courseCompletionCandidates(course)),
           inProgressChecked: hasAnyCourseNumber(inProgressNums, courseCompletionCandidates(course)),
-          plannedCourseNumber: plannedGECourses[course.course_number],
-          activeCourseNumber: plannedGECourses[course.course_number] ?? active,
+          plannedCourseNumber: plannedForSlot,
+          activeCourseNumber: plannedForSlot ?? active,
         });
       } else {
         map.set(course.id, {
