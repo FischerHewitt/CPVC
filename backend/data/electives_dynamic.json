@@ -457,6 +457,24 @@
     "min_level": 3000,
     "title": "3XXX\u20134XXX Level History Elective"
   },
+  "hist_ss_ud_elective": {
+    "depts": [
+      "ant",
+      "crp",
+      "econ",
+      "es",
+      "geog",
+      "jour",
+      "pols",
+      "psy",
+      "soc",
+      "wgqs"
+    ],
+    "description": "Any upper-division (3000\u20134999) Social Science course from a non-History department. Qualifying departments include ANT, CRP, ECON, ES, GEOG, JOUR, POLS, PSY, SOC, and WGQS. Verify with your advisor.",
+    "max_level": 4999,
+    "min_level": 3000,
+    "title": "Non-History Social Science Upper Division"
+  },
   "ie_technical_elective": {
     "depts": [
       "ime"

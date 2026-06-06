@@ -16,6 +16,8 @@ import json
 from pathlib import Path
 from typing import TypedDict
 
+from services.units import parse_units_range
+
 _DATA_DIR = Path(__file__).parent.parent / "data"
 
 _catalog: dict[str, dict] = {}
@@ -39,7 +41,10 @@ def _load() -> None:
         p = _DATA_DIR / fname
         if p.exists():
             with open(p) as f:
-                merged.update(json.load(f))
+                raw_catalog: dict[str, dict] = json.load(f)
+            for course_number, info in raw_catalog.items():
+                unit_fields = parse_units_range(info.get("units", 3))
+                merged[course_number] = {**info, **unit_fields}
     _catalog = merged
 
     # ── Static elective definitions ───────────────────────────────────────────

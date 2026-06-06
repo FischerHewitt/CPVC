@@ -422,3 +422,182 @@ MATE 1210:
   (1u) lab tile — correct (separate tiles).
 - MFGE flowchart: 4u (bundled with MATE 1215 lab per plan of study) — title was wrong
   ("Principles of Materials Engineering" missing "for Majors") → FIXED title.
+
+--------------------------------------------------------------------------------
+CS — COMPUTER SCIENCE CONCENTRATIONS — Tile-level fixes (audit 2026-05-21)    [DONE]
+--------------------------------------------------------------------------------
+
+1. CS_GRAPHICS (CSC 4710 units):
+   - "Introduction to Computer Graphics" was coded 4u; catalog says 3u. Fixed.
+
+2. CS_GRAPHICS (GE UD-4 term placement):
+   - GRAPH_GE_UD4 was in Junior Spring (grid_col=5); PDF places it in Senior
+     Fall (grid_col=6). Fixed. The vacated Junior Spring slot was replaced with
+     a new External Elective tile (GRAPH_EXT1, 2u) per the PDF.
+
+3. CS_GAME_DEV (COMS 4404 units):
+   - "Video Games and Society" was coded 4u; catalog says 3u. Fixed.
+   - To keep Senior Spring total at 15u, GAME_CS_ELEC1 was changed from 3u → 4u
+     (PDF labels the first CS Elective slot as "4 units").
+
+4. CS_PRIVACY (CSC 3250 and CSC 4260 units):
+   - PRIV_CSC3250 "Introduction to Privacy: Policy and Technology" was coded 4u;
+     catalog says 3u. Fixed.
+   - PRIV_CSC4260 "Privacy & Security Capstone I" was coded 4u; catalog says 3u.
+     Fixed.
+
+5. CS_PRIVACY (missing Y4S tile):
+   - PDF Senior Spring shows 5 items including an optional concentration elective.
+     Current flowchart had only 4 tiles in Y4S. Added PRIV_CONC3 (2u) to restore
+     balance. Net unit change across all fixes = 0 (total stays 120u).
+
+Note: Item 6 (GRAPH_CONC2 "3-4 unit" range ambiguity) remains open in catalog_ambiguities.txt.
+
+--------------------------------------------------------------------------------
+CONCENTRATION FLOWCHART REBUILD (2026-05-27)                                  [DONE]
+--------------------------------------------------------------------------------
+The following concentrations were rebuilt with fully independent flowcharts
+(Pattern B / full_flowchart_key). All changes verified against Cal Poly catalog
+Plan of Study Grids.
+
+AERO_AERONAUTICS / AERO_ASTRONAUTICS:
+- AER_TE1/TE2/TE3 and AST_TE1/TE2 placeholders have no elective_key; the
+  catalog lists these as "Concentration Technical Electives" from an
+  advisor-approved list not enumerated in the public catalog.
+
+CPE_COMPUTER_ARCHITECTURE:
+- ARCH_CE1 (Concentration Elective col 7) has no elective_key; catalog
+  does not enumerate the approved course list for this slot.
+
+CPE_COMPUTER_HARDWARE:
+- CHW_MATHSCI1 / CHW_MATHSCI2 placeholders: catalog says "Math/Science
+  Concentration Course" but does not enumerate the full approved list.
+- CHW_TE1/TE2/TE3/TE4 placeholders: advisor-approved tech elective list
+  not published in catalog.
+
+CPE_COMPUTER_SYSTEMS:
+- CSY_COURSE1 (CSC 4214/CPE 4220/CPE 4280) and CSY_COURSE2
+  (CSC 4310/CSC 4554/CPE 4465) are slash-choices inferred from catalog
+  sub-table; verified against catalog grid.
+
+CPE_EMBEDDED_SYSTEMS:
+- EMBD_LA_DE1 / EMBD_LA_DE2: catalog says "Linear Algebra or Differential
+  Equations"; exact slash-choice list confirmed from catalog note.
+
+CPE_ROBOTICS:
+- ROB_TE1/TE2/TE3: advisor-approved Robotic Elective list not enumerated.
+- ROB_GE4B moved from col=4 to col=6 per catalog grid; confirmed.
+
+CPE_SECURITY:
+- CPESEC_CE1/CE2/CE3: concentration elective list not published in catalog.
+
+EE_ECC:
+- ECC_TECH3 (Technical Elective 3) and ECC_ELEC4 (Lower-Div or Tech
+  Elective) both use ee_ecc_elective key; catalog confirms ECC electives
+  drawn from ECC-approved list.
+
+EE_POWER:
+- POW_TECH3 / POW_ELEC4 use ee_power_elective; catalog confirms power
+  electives from power-approved list.
+
+CE — removed from CONCENTRATIONS:
+- Cal Poly CE degree has no sub-concentrations in the catalog. The prior
+  implementation incorrectly split CE into construction/geotechnical/
+  structural/transportation/water_resources tracks. Removed.
+
+MATH — removed from CONCENTRATIONS:
+- MATH_TEACHING was identical to the base MATH flowchart (incorrect build).
+  MATH does not have catalog-listed concentrations with distinct Plan of
+  Study Grids that differ term-by-term; removed from CONCENTRATIONS.
+
+--------------------------------------------------------------------------------
+MSCI — BIO 4461/4462/4463 senior project units                        [DONE]
+--------------------------------------------------------------------------------
+- Issue: Senior project slot assumed at 2u for each BIO 4461/4462/4463 option;
+  unit value was unverified.
+- Resolution: Confirmed all three BIO senior project courses are 2u each.
+  No code change needed; tile and picker are correct.
+
+--------------------------------------------------------------------------------
+NUT — FSN 2250 GE designation                                         [DONE]
+--------------------------------------------------------------------------------
+- Issue: FSN 2250 listed as "Major/GE (USCP)" — questioned whether it satisfied
+  GE Area 4B, making the standalone NUT_GE4B tile redundant.
+- Resolution: FSN 2250 carries USCP (a quarter-system flag), not GE Area 4B.
+  The standalone NUT_GE4B tile is correct. No code change needed.
+
+--------------------------------------------------------------------------------
+CES — CES_GE5C standalone 1-unit lab tile                             [DONE]
+--------------------------------------------------------------------------------
+- Issue: Questioned whether a separate 1-unit GE 5C lab tile is actually
+  required or whether GE 5B satisfies the lab requirement.
+- Resolution: Confirmed via catalog.calpoly.edu — Cal Poly lists GE 5C as a
+  separate 1-unit requirement. CES_GE5C tile is correct. No code change needed.
+
+--------------------------------------------------------------------------------
+THEA — TH 4480 unit count                                             [DONE]
+--------------------------------------------------------------------------------
+- Issue: TH 4480 Internship had unspecified units in the catalog listing;
+  modeled at 3u as a consistent assumption.
+- Resolution: Confirmed TH 4480 is 3u. No code change needed.
+
+--------------------------------------------------------------------------------
+THEA — TH 2285 variable unit count                                    [DONE]
+--------------------------------------------------------------------------------
+- Issue: TH 2285 Internship stored as units: 3 but catalog specifies 1–3 units
+  (CR/NC). GitHub Issue #15.
+- Resolution: course_supplements.json updated to "units": "1-3". Variable-unit
+  parsing infrastructure added (backend/services/units.py, frontend/lib/units.ts).
+  ElectiveDetailPanel now renders unit pills for variable-unit courses.
+  Tests added. Issue #15 closed.
+
+--------------------------------------------------------------------------------
+ECON — Lecture+lab pairing in elective picker                         [DONE]
+--------------------------------------------------------------------------------
+- Issue: ECON upper-division electives are lecture+lab pairs (e.g. ECON 3001 +
+  ECON 3001A). Flowchart tile is 4u (combined), but the dynamic picker only
+  shows the lecture course; students may not realise they need to register for
+  the paired lab separately.
+- Decision: Variant B — surface the lab via a "Course Components" section in
+  the course detail modal (same pattern as required tiles like CSC 2001).
+  No inline warning strip on the picker row.
+- Implementation needed: add course_components entries to course_supplements.json
+  for each ECON lecture+lab pair so the detail modal shows both components
+  with "Both sections are required and appear separately on your transcript."
+
+--------------------------------------------------------------------------------
+CS GRAPHICS — GRAPH_CONC2 "3-4 units" elective slot                  [DONE]
+--------------------------------------------------------------------------------
+- Issue: PDF labels GRAPH_CONC2 as "3-4 units" but was modeled as fixed 4u.
+  Picker included 1u–2u courses (CSC 4471, 4472, 4791, 4792, 4793, 4991) that
+  can never satisfy a 3u+ requirement. CSC 4770 is 1–4u variable.
+- Decisions:
+  1. Filter: remove the 6 courses whose max is ≤ 2u from graph_conc2_elective.
+  2. CSC 4770 (1–4u): add "units": "1-4" to course_supplements.json so it
+     renders with inline unit pills (same pattern as TH 2285).
+  3. When a student plans a course, the flowchart tile shows the planned course
+     name + unit count ("planned: CSC 3760 (3)") — Variant B chosen.
+     Implementation: wire plannedElectiveCourses into courseDisplayData in
+     FlowchartGrid.tsx for the is_placeholder && !isFreeElective && !isGE branch
+     (currently routes through plannedGECourses which is incorrect for electives).
+  4. Term total already updates via onSetSlotUnits → setSlotUnits →
+     plannedCourseUnits → effectiveUnits — no new work needed there.
+
+--------------------------------------------------------------------------------
+HIST — HIST_GEUD4 Non-History Social Science Upper Division           [DONE]
+--------------------------------------------------------------------------------
+- Issue: Placeholder had no elective_key; panel showed "No course list available."
+- Decision: Add broad dynamic bucket (hist_ss_ud_elective) covering ANT, CRP,
+  ECON, ES, GEOG, JOUR, POLS, PSY, SOC, WGQS at 3000–4999 level with inline
+  search. HIST excluded from depts list. Students still advised to verify with
+  advisor via the description string.
+- Changes: flowcharts.py HIST_GEUD4 elective_key set to "hist_ss_ud_elective";
+  electives_dynamic.json entry added.
+
+--------------------------------------------------------------------------------
+MSCI — Sophomore Fall 17u term total                                  [DONE]
+--------------------------------------------------------------------------------
+- Issue: Sophomore Fall showed 17u, flagged as unusual.
+- Resolution: Confirmed via catalog.calpoly.edu — the official MSCI Plan of
+  Study Grid places PSC 2201 (3u) + Physics I (4u) + Calc I (4u) + 2 GE (3u+3u)
+  = 17u in Sophomore Fall. Correct as-is, no change needed.

@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { NextResponse } from "next/server";
+import { parseUnitsRange } from "@/lib/units";
 
 const DATA_DIR = path.resolve(process.cwd(), "../backend/data");
 
@@ -29,11 +30,6 @@ async function courseCatalog(): Promise<Record<string, CourseInfo>> {
   return catalogCache;
 }
 
-function parseUnits(raw: string | number | undefined): number {
-  const match = String(raw ?? "").match(/\d+/);
-  return match ? Number(match[0]) : 0;
-}
-
 export async function GET(
   _request: Request,
   { params }: { params: Promise<{ key: string }> },
@@ -51,7 +47,8 @@ export async function GET(
       .map((num) => {
         const info = catalog[num];
         if (!info) return null;
-        return { course_number: num, title: info.title ?? "", units: parseUnits(info.units) };
+        const unitFields = parseUnitsRange(info.units);
+        return { course_number: num, title: info.title ?? "", ...unitFields };
       })
       .filter((c): c is { course_number: string; title: string; units: number } => c !== null);
 

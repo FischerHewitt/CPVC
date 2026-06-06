@@ -105,6 +105,8 @@ export interface GECourse {
   course_number: string;
   title: string;
   units: number;
+  units_min?: number;
+  units_max?: number;
 }
 
 export type CourseSearchResult = GECourse;

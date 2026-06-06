@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import type { Course, CourseSearchResult, ElectiveArea, GECourse, Professor, CourseInfo } from "@/lib/types";
 import { getElectiveCourses, getPlaceholderElectiveCourses, getProfessors, getCourseInfo } from "@/lib/api";
 import { type GEPanelStatus, GE_STATUS_ORDER, GE_STATUS_LABELS, GE_STATUS_STYLES } from "@/lib/status-styles";
+import { parseUnitsRange } from "@/lib/units";
 import {
   searchFreeElectiveCatalog,
   shouldSearchFreeElectiveCatalog,
@@ -11,6 +12,25 @@ import {
 } from "@/lib/free-elective-search";
 
 // ── Pure helpers (exported for tests) ────────────────────────────────────────
+
+export function electiveCourseActiveStatus(
+  completed: boolean,
+  inProgress: boolean,
+  planned: boolean,
+): "completed" | "in_progress" | "planned" | null {
+  if (completed) return "completed";
+  if (inProgress) return "in_progress";
+  if (planned) return "planned";
+  return null;
+}
+
+export function isVariableUnit(course: GECourse): boolean {
+  return (
+    course.units_min !== undefined &&
+    course.units_max !== undefined &&
+    course.units_min < course.units_max
+  );
+}
 
 export function filterEligibleCourses(courses: GECourse[], query: string): GECourse[] {
   const q = query.trim().toLowerCase();
@@ -132,6 +152,7 @@ interface ElectiveCourseRowProps {
   onToggle: (courseNumber: string, units: number) => void;
   onToggleInProgress: (courseNumber: string, units: number) => void;
   onPlan: (courseNumber: string, units: number) => void;
+  onSetSlotUnits?: (units: number | null) => void;
   onSelect: (c: GECourse) => void;
 }
 
@@ -146,20 +167,27 @@ function ElectiveCourseRow({
   onToggle,
   onToggleInProgress,
   onPlan,
+  onSetSlotUnits,
   onSelect,
 }: ElectiveCourseRowProps) {
   const [expanded, setExpanded]         = useState(false);
   const [professors, setProfessors]     = useState<Professor[]>([]);
   const [loading, setLoading]           = useState(false);
-  const [chosenUnits, setChosenUnits]   = useState(plannedSlotUnits ?? 1);
   const [warnDismissed, setWarnDismissed] = useState(false);
+
+  const isVar = isVariableUnit(course);
+  const defaultChosenUnits = isVar ? (course.units_min ?? course.units) : course.units;
+  const [chosenUnits, setChosenUnits] = useState(plannedSlotUnits ?? defaultChosenUnits);
+
   const prevPlannedSlotUnits = useRef(plannedSlotUnits);
   useEffect(() => {
     if (prevPlannedSlotUnits.current !== plannedSlotUnits) {
       prevPlannedSlotUnits.current = plannedSlotUnits;
-      setChosenUnits(plannedSlotUnits ?? 1);
+      setChosenUnits(plannedSlotUnits ?? defaultChosenUnits);
     }
-  }, [plannedSlotUnits]);
+  }, [plannedSlotUnits, defaultChosenUnits]);
+
+  const activeStatus = electiveCourseActiveStatus(completed, inProgress, planned);
 
   function toggleProfs(e: React.MouseEvent) {
     e.stopPropagation();
@@ -170,60 +198,73 @@ function ElectiveCourseRow({
     getProfessors(course.course_number).then(setProfessors).finally(() => setLoading(false));
   }
 
-  return (
-    <div className={`border rounded-lg overflow-hidden mb-1.5 transition-colors ${
-      completed
-        ? "border-green-300 bg-green-50/40"
-        : inProgress
-          ? "border-blue-300 bg-blue-50/50"
-          : planned
-            ? "border-blue-200 bg-blue-50/40"
-            : "border-gray-100"
-    }`}>
-      <div className="flex items-center px-3 py-2.5 hover:bg-gray-50 transition-colors gap-2">
-        <div className="flex flex-shrink-0 flex-col gap-1.5">
-          <label className="flex items-center gap-1 text-[10px] font-semibold text-gray-600" title={completed ? "Mark not taken" : "Mark as completed"}>
-            <input
-              type="checkbox"
-              checked={completed}
-              onChange={() => onToggle(course.course_number, course.units)}
-              className="h-3.5 w-3.5 accent-green-700 cursor-pointer"
-              onClick={(e) => e.stopPropagation()}
-            />
-            Done
-          </label>
-          <label className="flex items-center gap-1 text-[10px] font-semibold text-amber-700" title={inProgress ? "Remove in progress" : "Mark in progress"}>
-            <input
-              type="checkbox"
-              checked={inProgress && !completed}
-              onChange={() => onToggleInProgress(course.course_number, course.units)}
-              className="h-3.5 w-3.5 accent-amber-600 cursor-pointer"
-              onClick={(e) => e.stopPropagation()}
-            />
-            IP
-          </label>
-        </div>
+  function handleStatusButton(status: GEPanelStatus) {
+    const effectiveUnits = (isVar || isCapped) ? chosenUnits : course.units;
+    const deselecting = activeStatus === status;
+    if (status === "planned") {
+      onPlan(course.course_number, effectiveUnits);
+      onSetSlotUnits?.(deselecting ? null : effectiveUnits);
+    } else if (status === "in_progress") {
+      onToggleInProgress(course.course_number, effectiveUnits);
+    } else {
+      onToggle(course.course_number, effectiveUnits);
+    }
+  }
 
+  function handlePillClick(u: number) {
+    setChosenUnits(u);
+    if (activeStatus) onSetSlotUnits?.(u);
+  }
+
+  const rowStyle = activeStatus ? GE_STATUS_STYLES[activeStatus].selectedRow : "border-gray-100";
+
+  return (
+    <div className={`border rounded-lg overflow-hidden mb-1.5 transition-colors ${rowStyle}`}>
+      <div className="flex items-center px-3 py-2.5 hover:bg-gray-50/50 transition-colors gap-2">
+        {/* Course name + subtitle */}
         <button className="flex-1 text-left min-w-0" onClick={() => onSelect(course)}>
           <div className={`text-sm font-semibold hover:text-green-800 transition-colors leading-tight ${
-            completed ? "text-green-800 line-through opacity-70" : inProgress ? "text-blue-800" : "text-gray-800"
+            activeStatus === "completed"
+              ? "text-green-800 line-through opacity-70"
+              : activeStatus
+                ? GE_STATUS_STYLES[activeStatus].selectedTitle
+                : "text-gray-800"
           }`}>
             {course.course_number}
           </div>
           <div className="text-xs text-gray-500 leading-tight line-clamp-2">{course.title}</div>
         </button>
-        <div className="flex items-center gap-1.5 flex-shrink-0">
-          {inProgress && !completed && (
-            <span className="rounded bg-amber-100 px-1.5 py-0.5 text-[10px] font-bold text-amber-800">
-              IP
-            </span>
-          )}
-          {isCapped && (
-            <div className="flex gap-0.5" title="Units to count toward requirement">
-              {[1, 2, 3].map((u) => (
+
+        {/* Plan / IP / Done buttons */}
+        <div className="flex gap-1 flex-shrink-0">
+          {GE_STATUS_ORDER.map((status) => {
+            const style = GE_STATUS_STYLES[status];
+            return (
+              <button
+                key={status}
+                onClick={(e) => { e.stopPropagation(); handleStatusButton(status); }}
+                className={`rounded border px-1.5 py-0.5 text-[10px] font-semibold transition-colors ${
+                  activeStatus === status ? style.activeButton : `bg-white ${style.inactiveButton}`
+                }`}
+              >
+                {GE_STATUS_LABELS[status]}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Unit label / pills */}
+        <div className="flex items-center gap-0.5 flex-shrink-0">
+          {(isVar || isCapped) && activeStatus ? (
+            /* Variable-unit or capped pills — shown when any status is active */
+            <>
+              {Array.from(
+                { length: (isCapped ? 3 : (course.units_max ?? course.units)) - ((isCapped ? 1 : course.units_min) ?? 1) + 1 },
+                (_, i) => (isCapped ? 1 : (course.units_min ?? 1)) + i,
+              ).map((u) => (
                 <button
                   key={u}
-                  onClick={(e) => { e.stopPropagation(); setChosenUnits(u); }}
+                  onClick={(e) => { e.stopPropagation(); handlePillClick(u); }}
                   className={`text-[9px] w-5 h-5 rounded border font-bold transition-colors ${
                     chosenUnits === u
                       ? "bg-blue-600 border-blue-600 text-white"
@@ -233,27 +274,25 @@ function ElectiveCourseRow({
                   {u}
                 </button>
               ))}
-            </div>
+              <span className="text-xs text-gray-400 ml-0.5">u</span>
+            </>
+          ) : isVar ? (
+            /* Variable-unit, no active status — show range label */
+            <span className="text-xs text-gray-400">{course.units_min}–{course.units_max}u</span>
+          ) : (
+            /* Fixed-unit — always show static label */
+            <span className="text-xs text-gray-400">{isCapped ? chosenUnits : course.units}u</span>
           )}
-          <button
-            onClick={(e) => { e.stopPropagation(); onPlan(course.course_number, isCapped ? chosenUnits : course.units); }}
-            className={`text-[10px] px-1.5 py-0.5 rounded border transition-colors ${
-              planned
-                ? "border-blue-300 bg-blue-100 text-blue-800"
-                : "border-gray-200 text-gray-400 hover:border-blue-300 hover:text-blue-700"
-            }`}
-            title={planned ? "Remove selected course" : "Select this course"}
-          >
-            {planned ? "Selected" : "Select"}
-          </button>
-          <span className="text-xs text-gray-400">{isCapped ? chosenUnits : course.units}u</span>
-          <button onClick={toggleProfs}
-                  className="text-[10px] text-gray-400 hover:text-gray-600 px-1.5 py-0.5 rounded border border-gray-200 hover:border-gray-300 transition-colors"
-                  title="Show professors">
-            {expanded ? "▲" : "▼"}
-          </button>
         </div>
+
+        {/* Prof dropdown toggle */}
+        <button onClick={toggleProfs}
+                className="text-[10px] text-gray-400 hover:text-gray-600 px-1.5 py-0.5 rounded border border-gray-200 hover:border-gray-300 transition-colors flex-shrink-0"
+                title="Show professors">
+          {expanded ? "▲" : "▼"}
+        </button>
       </div>
+
       {coreqWarning && !warnDismissed && (
         <div className="px-3 py-1.5 border-t border-amber-200 bg-amber-50 text-[11px] text-amber-800 flex items-start justify-between gap-2">
           <span>⚠ {coreqWarning}</span>
@@ -542,6 +581,7 @@ export default function ElectiveDetailPanel({
                 {visibleCourses.map((c) => {
                   const isCapped = cappedCourseConfig?.numbers.has(c.course_number) ?? false;
                   const isPlanned = plannedElectiveCourses[course.course_number] === c.course_number;
+                  const isVar = isVariableUnit(c);
                   return (
                     <ElectiveCourseRow
                       key={c.course_number}
@@ -550,19 +590,18 @@ export default function ElectiveDetailPanel({
                       inProgress={hasElectiveStatus(c, inProgressSet)}
                       planned={isPlanned}
                       isCapped={isCapped}
-                      plannedSlotUnits={isCapped && isPlanned ? plannedSlotUnits : undefined}
+                      plannedSlotUnits={(isCapped || isVar) && isPlanned ? plannedSlotUnits : undefined}
                       coreqWarning={labCoreqWarning(c.course_number, completedSet, inProgressSet, flowchartCourseNumbers)}
                       onToggle={(courseNumber, units) => onToggleElectiveCourse(course, courseNumber, units)}
                       onToggleInProgress={(courseNumber, units) => onToggleElectiveCourseInProgress(course, courseNumber, units)}
                       onPlan={(courseNumber, units) => {
                         const deselecting = plannedElectiveCourses[course.course_number] === courseNumber;
                         onPlanElectiveCourse(course, courseNumber, units);
-                        if (isCapped && onSetSlotUnits && currentSlotId) {
-                          onSetSlotUnits(currentSlotId, deselecting ? null : units);
-                        }
-                        // Selecting from the list clears any override card
                         if (!deselecting) setOverrideCourse(null);
                       }}
+                      onSetSlotUnits={onSetSlotUnits && currentSlotId
+                        ? (units) => onSetSlotUnits(currentSlotId, units)
+                        : undefined}
                       onSelect={setSelected}
                     />
                   );

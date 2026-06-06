@@ -18,21 +18,7 @@ verify with their advisor.
     Risk: Very broad; used as fallback when no concentration is selected.
 
 
---------------------------------------------------------------------------------
-3. HIST — LANGUAGE AND UPPER-DIVISION SUPPORT REQUIREMENTS
---------------------------------------------------------------------------------
-  HIST_GEUD4: "Non-History Social Science Upper Division"
-    Catalog requires 3u UD Social Science from a non-HIST department. Modeled
-    as a support-category placeholder with no elective_key; any qualifying UD
-    social science course counts.
 
---------------------------------------------------------------------------------
-6. ECON — PROJECT LAB PAIRING
---------------------------------------------------------------------------------
-Many upper-division ECON electives come as a lecture+lab pair (e.g.,
-ECON 3001 + ECON 3001L). The flowchart models these as a combined unit count,
-but the _DYNAMIC picker only surfaces the lecture course. Students may not
-realize they need to also register for the paired lab section.
 
 --------------------------------------------------------------------------------
 7. FREE / UNRESTRICTED ELECTIVE SLOTS (NO CATALOG BACKING)
@@ -108,12 +94,6 @@ PH (Public Health, BS — added 2026-05-18)
 --------------------------------------------------------------------------------
 NUT (Nutrition, BS — added 2026-05-18)
 --------------------------------------------------------------------------------
-3. FSN 2250 GE designation:
-   Listed as "Major/GE (USCP)" in the catalog. USCP was a quarter-system GE
-   requirement; in the semester catalog this course may satisfy Area 4B. The
-   flowchart counts it as a major course (3u). If it satisfies GE 4B, the
-   standalone GE 4B tile in FS is redundant — flagged as an ambiguity.
-
 4. Dietetics elective breadth:
    The Dietetics concentration elective includes "any 3000-4000 level BIO,
    CHEM, HLTH, MATH, PHYS, or PSY course" which is a very broad bucket.
@@ -195,9 +175,6 @@ THEA — Theatre Arts
    tile cannot express conditional prerequisites. No prerequisite was set for
    this tile.
 
-6. TH 2285 and TH 4480 unit counts:
-   Internship courses (TH 2285, TH 4480) had unspecified units in the catalog
-   listing. Both were modeled at 3 units consistent with other TH electives.
 
 --------------------------------------------------------------------------------
 LIBS — Liberal Studies
@@ -308,10 +285,6 @@ CES -- Comparative Ethnic Studies, BA
 - CES Literature/Cultural Production (GE UD3) uses a dynamic ES 3000-4999
   bucket. Exact approved courses for UD3 not explicitly listed in the flowchart
   footnotes.
-- CES_GE5C is modeled as a 1-unit standalone GE 5C lab tile in SoF to balance
-  the 16-unit term total (POP1+AREA6_2+GE5A+GE5B+GE5C+FREE = 3+3+3+3+1+3=16).
-  This is an unusual layout; verify whether a separate 1-unit lab is actually
-  required or if GE 5B satisfies the lab requirement.
 - Free Elective totals across 8 terms (6 x 3u = 18u of FREE tiles) were
   inferred from unit balance; actual free elective count depends on specific
   GE/major double-count rules.
@@ -346,8 +319,6 @@ MSCI -- Marine Sciences, BS
 - Approved Elective bucket (msci_approved_elective) is a broad dynamic filter
   across BIO/MSCI/CHEM/PHYS/STAT 3000-4999; the catalog does not enumerate an
   exact approved elective list. Verify selections with advisor.
-- Senior project assumed as 2u for each BIO 4461/4462/4463 option.
-- The flowchart's SoF term total is 17u (unusual); verify balance with advisor.
 
 --------------------------------------------------------------------------------
 EESS -- Environmental Earth and Soil Sciences, BS
@@ -414,43 +385,9 @@ LAES -- Liberal Arts and Engineering Studies, BS
 --------------------------------------------------------------------------------
 CS — COMPUTER SCIENCE CONCENTRATIONS (audit 2026-05-21)
 --------------------------------------------------------------------------------
-The five CS concentrations each use full_flowchart_key to point to an independent
-flowchart (CS_AIML, CS_DATA_ENG, CS_GAME_DEV, CS_GRAPHICS, CS_PRIVACY). These
-are correct in structure; the following tile-level bugs were found and fixed:
+Items 1–5 (unit fixes and tile placement bugs) moved to completed_ambiguities.txt.
+Open item:
 
-1. CS_GRAPHICS (CSC 4710 units):
-   - "Introduction to Computer Graphics" was coded 4u; catalog says 3u. Fixed.
-
-2. CS_GRAPHICS (GE UD-4 term placement):
-   - GRAPH_GE_UD4 was in Junior Spring (grid_col=5); PDF places it in Senior
-     Fall (grid_col=6). Fixed. The vacated Junior Spring slot was replaced with
-     a new External Elective tile (GRAPH_EXT1, 2u) per the PDF.
-
-3. CS_GAME_DEV (COMS 4404 units):
-   - "Video Games and Society" was coded 4u; catalog says 3u. Fixed.
-   - To keep Senior Spring total at 15u, GAME_CS_ELEC1 was changed from 3u → 4u
-     (PDF labels the first CS Elective slot as "4 units").
-
-4. CS_PRIVACY (CSC 3250 and CSC 4260 units):
-   - PRIV_CSC3250 "Introduction to Privacy: Policy and Technology" was coded 4u;
-     catalog says 3u. Fixed.
-   - PRIV_CSC4260 "Privacy & Security Capstone I" was coded 4u; catalog says 3u.
-     Fixed.
-
-5. CS_PRIVACY (missing Y4S tile):
-   - PDF Senior Spring shows 5 items including an optional concentration elective.
-     Current flowchart had only 4 tiles in Y4S. Added PRIV_CONC3 (2u) to restore
-     balance. Net unit change across all fixes = 0 (total stays 120u).
-
-6. GRAPH_CONC2 unit range:
-   - PDF labels the second Graphics Concentration Elective as "3-4 units".
-     Modeled as fixed 4u. Students taking a 3u elective will have 1 free unit.
-
---------------------------------------------------------------------------------
-COURSE CATALOG BUILD — Unit Discrepancies Resolved (2026-05-26)
---------------------------------------------------------------------------------
-All unit and title discrepancies resolved after catalog verification. See
-completed_ambiguities.txt for full details.
 
 --------------------------------------------------------------------------------
 COURSE SUPPLEMENTS — Orphan Courses from CS Elective Lists (2026-05-26)
@@ -530,58 +467,25 @@ flowchart grids were not present in the FlowchartPdf text data:
   PLSC: plant_protection_science (1)
 
 --------------------------------------------------------------------------------
-CONCENTRATION FLOWCHART REBUILD (2026-05-27)
+MANUAL VISUAL CHECK — Flowcharts modified in 2026-05 build
 --------------------------------------------------------------------------------
-The following concentrations were rebuilt with fully independent flowcharts
-(Pattern B / full_flowchart_key). All changes verified against Cal Poly catalog
-Plan of Study Grids.
+The following flowcharts had code-level fixes applied during the 2026-05 audit
+and concentration rebuild. Open each in the browser and spot-check tile
+placement, unit counts, and term ordering.
 
-AERO_AERONAUTICS / AERO_ASTRONAUTICS:
-- AER_TE1/TE2/TE3 and AST_TE1/TE2 placeholders have no elective_key; the
-  catalog lists these as "Concentration Technical Electives" from an
-  advisor-approved list not enumerated in the public catalog.
+CS concentration flowcharts (unit and placement fixes):
+  CS_GRAPHICS  — CSC 4710 now 3u; GRAPH_GE_UD4 moved to Senior Fall (col 6);
+                  GRAPH_EXT1 (2u External Elective) added to Junior Spring
+  CS_GAME_DEV  — COMS 4404 now 3u; GAME_CS_ELEC1 bumped to 4u (Senior Spring)
+  CS_PRIVACY   — CSC 3250 and CSC 4260 now 3u; PRIV_CONC3 (2u) added to Y4S
 
-CPE_COMPUTER_ARCHITECTURE:
-- ARCH_CE1 (Concentration Elective col 7) has no elective_key; catalog
-  does not enumerate the approved course list for this slot.
+SE / MFGE unit and title fixes (catalog build 2026-05-26):
+  SE       — CSC 1001/2001 now 4u (bundled); CSC 3660/3665 slash-choice;
+              GE 5B now 4u
+  MFGE     — MATE 1210 title corrected
 
-CPE_COMPUTER_HARDWARE:
-- CHW_MATHSCI1 / CHW_MATHSCI2 placeholders: catalog says "Math/Science
-  Concentration Course" but does not enumerate the full approved list.
-- CHW_TE1/TE2/TE3/TE4 placeholders: advisor-approved tech elective list
-  not published in catalog.
-
-CPE_COMPUTER_SYSTEMS:
-- CSY_COURSE1 (CSC 4214/CPE 4220/CPE 4280) and CSY_COURSE2
-  (CSC 4310/CSC 4554/CPE 4465) are slash-choices inferred from catalog
-  sub-table; verified against catalog grid.
-
-CPE_EMBEDDED_SYSTEMS:
-- EMBD_LA_DE1 / EMBD_LA_DE2: catalog says "Linear Algebra or Differential
-  Equations"; exact slash-choice list confirmed from catalog note.
-
-CPE_ROBOTICS:
-- ROB_TE1/TE2/TE3: advisor-approved Robotic Elective list not enumerated.
-- ROB_GE4B moved from col=4 to col=6 per catalog grid; confirmed.
-
-CPE_SECURITY:
-- CPESEC_CE1/CE2/CE3: concentration elective list not published in catalog.
-
-EE_ECC:
-- ECC_TECH3 (Technical Elective 3) and ECC_ELEC4 (Lower-Div or Tech
-  Elective) both use ee_ecc_elective key; catalog confirms ECC electives
-  drawn from ECC-approved list.
-
-EE_POWER:
-- POW_TECH3 / POW_ELEC4 use ee_power_elective; catalog confirms power
-  electives from power-approved list.
-
-CE — removed from CONCENTRATIONS:
-- Cal Poly CE degree has no sub-concentrations in the catalog. The prior
-  implementation incorrectly split CE into construction/geotechnical/
-  structural/transportation/water_resources tracks. Removed.
-
-MATH — removed from CONCENTRATIONS:
-- MATH_TEACHING was identical to the base MATH flowchart (incorrect build).
-  MATH does not have catalog-listed concentrations with distinct Plan of
-  Study Grids that differ term-by-term; removed from CONCENTRATIONS.
+Concentration flowcharts rebuilt Pattern B (2026-05-27):
+  AERO_AERONAUTICS, AERO_ASTRONAUTICS
+  CPE_COMPUTER_ARCHITECTURE, CPE_COMPUTER_HARDWARE, CPE_COMPUTER_SYSTEMS,
+  CPE_EMBEDDED_SYSTEMS, CPE_ROBOTICS, CPE_SECURITY
+  EE_ECC, EE_POWER

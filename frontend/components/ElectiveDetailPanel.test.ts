@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { labCoreqWarning, filterEligibleCourses, isOverrideCourse } from "./ElectiveDetailPanel";
+import { labCoreqWarning, filterEligibleCourses, isOverrideCourse, electiveCourseActiveStatus, isVariableUnit } from "./ElectiveDetailPanel";
 
 describe("labCoreqWarning", () => {
   it("returns undefined for a non-lab course number", () => {
@@ -106,5 +106,49 @@ describe("isOverrideCourse", () => {
 
   it("returns true for an empty eligible list", () => {
     expect(isOverrideCourse("CSC 4100", [])).toBe(true);
+  });
+});
+
+describe("electiveCourseActiveStatus", () => {
+  it("returns null when no status is active", () => {
+    expect(electiveCourseActiveStatus(false, false, false)).toBeNull();
+  });
+
+  it("returns 'completed' when completed", () => {
+    expect(electiveCourseActiveStatus(true, false, false)).toBe("completed");
+  });
+
+  it("returns 'in_progress' when in progress but not completed", () => {
+    expect(electiveCourseActiveStatus(false, true, false)).toBe("in_progress");
+  });
+
+  it("returns 'planned' when planned but not in progress or completed", () => {
+    expect(electiveCourseActiveStatus(false, false, true)).toBe("planned");
+  });
+
+  it("completed takes priority over in_progress", () => {
+    expect(electiveCourseActiveStatus(true, true, false)).toBe("completed");
+  });
+
+  it("completed takes priority over planned", () => {
+    expect(electiveCourseActiveStatus(true, false, true)).toBe("completed");
+  });
+});
+
+describe("isVariableUnit", () => {
+  it("returns false for a fixed-unit course", () => {
+    expect(isVariableUnit({ course_number: "TH 2215", title: "Voice", units: 3 })).toBe(false);
+  });
+
+  it("returns true when units_min and units_max are present and differ", () => {
+    expect(isVariableUnit({ course_number: "TH 2285", title: "Internship", units: 1, units_min: 1, units_max: 3 })).toBe(true);
+  });
+
+  it("returns false when only units_min is present", () => {
+    expect(isVariableUnit({ course_number: "X 1000", title: "X", units: 3, units_min: 3 })).toBe(false);
+  });
+
+  it("returns false when units_min equals units_max", () => {
+    expect(isVariableUnit({ course_number: "X 1000", title: "X", units: 3, units_min: 3, units_max: 3 })).toBe(false);
   });
 });
