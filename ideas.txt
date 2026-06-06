@@ -34,17 +34,6 @@ an additional set of course tiles (possibly a separate row group or overlay)
 and track completion independently. Would need minor data added to the
 backend similar to how concentrations work.
 
-Free Elective Course Picker
-----------------------------
-Currently free/unrestricted elective tiles have no elective_key and show no
-course options in the Manual Course Checklist — students can check them off
-but can't record which specific course they took or plan to take. A future
-improvement would let students search and attach any catalog course to a free
-elective slot (not restricted to a predefined list). The attached course would
-show its number, title, and units on the tile, and count toward the unit total.
-This is distinct from the existing elective picker which draws from a fixed
-catalog-backed list.
-
 Manual Tile / Custom Course Override
 --------------------------------------
 Let students add a course to any slot manually, and let them override the
@@ -155,11 +144,4 @@ done
 ======
 - Home Page Redesign
 - Better Search / Course Lookup
-------------------------------
-The current UI has no global search. A search tool would let students type a
-course number or keyword (e.g. "CSC 3", "algorithms", "writing") and see
-matching tiles highlighted or listed — useful for quickly locating a specific
-course across the full flowchart or checking whether a course appears anywhere
-in the plan. Could also power the free elective picker above. Implementation
-options: client-side fuzzy search over the loaded flowchart JSON, or a
-lightweight backend endpoint that searches across all majors.
+- Free Elective Course Picker

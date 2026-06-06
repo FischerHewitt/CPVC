@@ -1,9 +1,19 @@
+"use client";
+
+import { useEffect, useState, useRef, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import { getMajors, parseTranscript, parseCsvTranscript, getConcentrations, getFlowchart, syncSession } from "@/lib/api";
+import { saveSession } from "@/lib/session";
+import { parseMbpFile } from "@/lib/mbp";
+import { parseCalPolyCSV } from "@/lib/calpoly-csv";
+import { validateFile, getFileType, getProgressLabel } from "@/lib/upload-utils";
+import type { MajorOption, Concentration } from "@/lib/types";
 
 const css = `
 *{box-sizing:border-box}
-.bp-page{
+.bp-upload{
   --bp-bg:#0E3A8A;
   --bp-bg-deep:#0A2C6B;
   --bp-line:rgba(255,255,255,0.16);
@@ -28,512 +38,811 @@ const css = `
   overflow-x:hidden;
   min-height:100vh;
 }
-.bp-page .sheet{position:relative;max-width:1320px;margin:0 auto;padding:12px 48px 0}
-.bp-page .mono{font-family:var(--font-mono-bp,'JetBrains Mono',monospace)}
-.bp-page .label-strong{font-family:var(--font-mono-bp,'JetBrains Mono',monospace);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--bp-ink)}
+.bp-upload .sheet{position:relative;max-width:1320px;margin:0 auto;padding:12px 48px 48px}
+.bp-upload .mono{font-family:var(--font-mono-bp,'JetBrains Mono',monospace)}
 
 /* topbar */
-.bp-page .topbar{display:flex;align-items:center;gap:24px;border-bottom:1px solid var(--bp-line);padding:8px 0;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--bp-ink-dim)}
-.bp-page .topbar .dot{width:8px;height:8px;border-radius:50%;background:var(--bp-amber);box-shadow:0 0 8px var(--bp-amber)}
-.bp-page .topbar .spacer{flex:1}
-.bp-page .topbar a{color:var(--bp-ink-dim);text-decoration:none;border-bottom:1px solid transparent;padding-bottom:2px;transition:.15s}
-.bp-page .topbar a:hover{color:var(--bp-ink);border-color:var(--bp-amber)}
+.bp-upload .topbar{display:flex;align-items:center;gap:24px;border-bottom:1px solid var(--bp-line);padding:8px 0;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--bp-ink-dim)}
+.bp-upload .topbar .dot{width:8px;height:8px;border-radius:50%;background:var(--bp-amber);box-shadow:0 0 0 3px rgba(246,198,103,0.18)}
+.bp-upload .topbar .nav{margin-left:auto;display:flex;gap:24px}
+.bp-upload .topbar a{color:var(--bp-ink-dim);text-decoration:none;transition:.15s}
+.bp-upload .topbar a:hover{color:var(--bp-ink)}
 
 /* title block */
-.bp-page .titleblock{margin-top:12px;display:grid;grid-template-columns:72px 1fr auto;align-items:center;gap:20px;padding:8px 0 14px;border-bottom:1px dashed var(--bp-line-strong)}
-.bp-page .logo-box{width:72px;height:72px;border:1px solid var(--bp-line-strong);display:grid;place-items:center;position:relative;background:rgba(255,255,255,0.03)}
-.bp-page .logo-box::before,.bp-page .logo-box::after{content:"";position:absolute;width:8px;height:8px;border:1px solid var(--bp-line-strong);border-radius:50%}
-.bp-page .logo-box::before{top:-4px;left:-4px;background:var(--bp-bg)}
-.bp-page .logo-box::after{bottom:-4px;right:-4px;background:var(--bp-bg)}
-.bp-page .titleblock .name{font-family:var(--font-mono-bp,'JetBrains Mono',monospace);font-weight:700;font-size:38px;letter-spacing:0.28em;text-transform:uppercase;color:var(--bp-ink)}
-.bp-page .titleblock .sub{font-size:10px;letter-spacing:0.32em;text-transform:uppercase;color:var(--bp-ink-dim);margin-top:-3px}
-.bp-page .titleblock .meta{display:grid;grid-template-columns:repeat(3,minmax(0,auto));gap:0;border:1px solid var(--bp-line-strong);font-size:10px;letter-spacing:0.18em;text-transform:uppercase}
-.bp-page .titleblock .meta>div{padding:8px 14px;border-right:1px solid var(--bp-line)}
-.bp-page .titleblock .meta>div:last-child{border-right:0}
-.bp-page .titleblock .meta b{display:block;color:var(--bp-ink);font-weight:600;margin-top:2px;letter-spacing:0.18em}
-.bp-page .titleblock .meta span{color:var(--bp-ink-faint)}
+.bp-upload .titleblock{margin-top:12px;display:grid;grid-template-columns:96px 1fr auto;align-items:center;gap:24px;padding:8px 0 14px;border-bottom:1px dashed var(--bp-line-strong)}
+.bp-upload .logo-box{width:96px;height:96px;border:1px solid var(--bp-line-strong);display:grid;place-items:center;position:relative;background:rgba(255,255,255,0.03)}
+.bp-upload .logo-box::before,.bp-upload .logo-box::after{content:"";position:absolute;width:10px;height:10px;border:1px solid var(--bp-line-strong);background:var(--bp-bg)}
+.bp-upload .logo-box::before{top:-5px;left:-5px}
+.bp-upload .logo-box::after{bottom:-5px;right:-5px}
+.bp-upload .titleblock .name{font-family:var(--font-mono-bp,'JetBrains Mono',monospace);font-weight:700;font-size:24px;letter-spacing:0.22em;text-transform:uppercase;color:var(--bp-ink);white-space:nowrap}
+.bp-upload .titleblock .sub{font-size:10px;letter-spacing:0.32em;text-transform:uppercase;color:var(--bp-ink-dim);margin-top:-3px}
+.bp-upload .titleblock .meta{display:grid;grid-template-columns:repeat(3,minmax(0,auto));gap:0;border:1px solid var(--bp-line-strong);font-size:10px;letter-spacing:0.18em;text-transform:uppercase}
+.bp-upload .titleblock .meta>div{padding:8px 14px;border-right:1px solid var(--bp-line)}
+.bp-upload .titleblock .meta>div:last-child{border-right:0}
+.bp-upload .titleblock .meta b{display:block;color:var(--bp-ink);font-weight:600;margin-top:2px;letter-spacing:0.18em}
+.bp-upload .titleblock .meta span{color:var(--bp-ink-faint)}
 
-/* hero */
-.bp-page .hero{position:relative;padding:24px 0 48px;display:grid;grid-template-columns:1fr 1.15fr;gap:48px;align-items:start}
-.bp-page .hero-left{display:flex;flex-direction:column;min-height:100%}
-.bp-page .hero .kicker{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--bp-line-strong);padding:6px 12px;font-size:10px;letter-spacing:0.32em;text-transform:uppercase;color:var(--bp-ink);background:rgba(255,255,255,0.03)}
-.bp-page .hero .kicker .pip{width:6px;height:6px;background:var(--bp-amber);border-radius:50%}
-.bp-page .hero h1{font-family:var(--font-display,'Big Shoulders Display',sans-serif);font-weight:800;font-size:clamp(64px,9.2vw,160px);line-height:0.84;letter-spacing:0.005em;text-transform:uppercase;margin:16px 0 0;color:var(--bp-ink)}
-.bp-page .hero h1 .stroke{-webkit-text-stroke:1.5px var(--bp-ink);color:transparent}
-.bp-page .hero h1 .amber{color:var(--bp-amber);-webkit-text-stroke:0}
-.bp-page .hero .ctas{display:flex;align-items:center;gap:14px;margin-top:20px;flex-wrap:nowrap}
+/* form stage */
+.bp-upload .form-stage{padding:48px 0;display:grid;grid-template-columns:1fr;place-items:center}
+.bp-upload .form-sheet{position:relative;width:100%;max-width:720px;border:1px solid var(--bp-line-strong);background:rgba(10,44,107,0.55);padding:36px 40px 32px}
+.bp-upload .form-sheet>.corner-tl,.bp-upload .form-sheet>.corner-tr,.bp-upload .form-sheet>.corner-bl,.bp-upload .form-sheet>.corner-br{position:absolute;width:12px;height:12px;border:1px solid var(--bp-amber);background:var(--bp-bg-deep)}
+.bp-upload .form-sheet>.corner-tl{top:-6px;left:-6px}
+.bp-upload .form-sheet>.corner-tr{top:-6px;right:-6px}
+.bp-upload .form-sheet>.corner-bl{bottom:-6px;left:-6px}
+.bp-upload .form-sheet>.corner-br{bottom:-6px;right:-6px}
+
+/* sheet header */
+.bp-upload .sheet-head{display:flex;align-items:center;justify-content:space-between;border-bottom:1px dashed var(--bp-line);padding-bottom:14px;margin-bottom:18px;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--bp-ink-dim)}
+.bp-upload .sheet-head b{color:var(--bp-amber);font-weight:700}
+
+/* form lede */
+.bp-upload .form-lede{font-size:13px;line-height:1.6;color:var(--bp-ink);margin:0 0 32px;max-width:520px}
+
+/* step labels */
+.bp-upload .step-label{display:flex;align-items:center;gap:10px;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--bp-ink-dim);margin-bottom:10px}
+.bp-upload .step-label b{color:var(--bp-amber);font-weight:700;border:1px solid var(--bp-amber);padding:2px 7px;letter-spacing:0.18em}
+.bp-upload .step-label .rule{flex:1;height:1px;background:var(--bp-line)}
+
+/* dropzone */
+.bp-upload .dropzone{display:block;width:100%;position:relative;border:1.5px dashed var(--bp-line-strong);background:rgba(255,255,255,0.03);padding:40px 24px;text-align:center;cursor:pointer;transition:background 0.15s,border-color 0.15s;margin-bottom:28px}
+.bp-upload .dropzone:hover,.bp-upload .dropzone.drag{border-color:var(--bp-amber);background:rgba(246,198,103,0.06)}
+.bp-upload .dropzone .glyph{display:block;margin:0 auto 16px;width:36px;height:36px;color:var(--bp-ink);opacity:0.7}
+.bp-upload .dropzone:hover .glyph,.bp-upload .dropzone.drag .glyph,.bp-upload .dropzone.has-file .glyph{color:var(--bp-amber);opacity:1}
+.bp-upload .dropzone .dz-title{font-family:var(--font-mono-bp,'JetBrains Mono',monospace);font-size:13px;font-weight:500;letter-spacing:0.04em;color:var(--bp-ink);margin-bottom:6px}
+.bp-upload .dropzone .dz-title u{text-underline-offset:3px}
+.bp-upload .dropzone .dz-sub{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--bp-ink-dim)}
+.bp-upload .dropzone.has-file{border-style:solid;border-color:var(--bp-amber);background:rgba(246,198,103,0.06)}
+.bp-upload .dropzone.has-file .dz-title{color:var(--bp-amber);font-weight:600}
+
+/* help accordion */
+.bp-upload .help{margin-top:-12px;margin-bottom:28px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--bp-ink-dim)}
+.bp-upload .help summary{cursor:pointer;user-select:none;display:flex;align-items:center;gap:8px;list-style:none;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--bp-line-strong)}
+.bp-upload .help summary::-webkit-details-marker{display:none}
+.bp-upload .help summary:hover{color:var(--bp-ink);text-decoration-color:var(--bp-amber)}
+.bp-upload .help .body{margin-top:14px;border-left:1px dashed var(--bp-line-strong);padding:6px 0 6px 16px;font-size:12px;line-height:1.7;letter-spacing:0;text-transform:none;color:var(--bp-ink)}
+.bp-upload .help .body b{color:var(--bp-amber);display:block;margin-top:10px;font-weight:600}
+.bp-upload .help .body b:first-child{margin-top:0}
+.bp-upload .help .body .note{color:var(--bp-ink-dim);font-size:11px;margin-top:2px}
+
+/* field / select */
+.bp-upload .field{margin-bottom:24px}
+.bp-upload .field select{width:100%;appearance:none;-webkit-appearance:none;background:linear-gradient(45deg,transparent 50%,var(--bp-amber) 50%) calc(100% - 18px) 50%/6px 6px no-repeat,linear-gradient(135deg,var(--bp-amber) 50%,transparent 50%) calc(100% - 12px) 50%/6px 6px no-repeat,rgba(10,44,107,0.6);color:var(--bp-ink);border:1px solid var(--bp-line-strong);padding:12px 36px 12px 14px;font-family:var(--font-mono-bp,'JetBrains Mono',monospace);font-size:14px;letter-spacing:0.04em;cursor:pointer}
+.bp-upload .field select:hover,.bp-upload .field select:focus{outline:none;border-color:var(--bp-amber)}
+.bp-upload .field select option{background:var(--bp-bg-deep);color:var(--bp-ink)}
 
 /* buttons */
-.bp-page .btn{font-family:var(--font-mono-bp,'JetBrains Mono',monospace);font-size:13px;letter-spacing:0.28em;text-transform:uppercase;padding:18px 32px;border:1px solid var(--bp-ink);color:var(--bp-bg-deep);background:var(--bp-ink);text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;gap:14px;transition:.15s;white-space:nowrap}
-.bp-page .btn:hover{background:var(--bp-amber);border-color:var(--bp-amber);color:#1c1404}
-.bp-page .btn.ghost{background:transparent;color:var(--bp-ink);border-color:var(--bp-line-strong)}
-.bp-page .btn.ghost:hover{background:rgba(255,255,255,0.06);color:var(--bp-ink);border-color:var(--bp-ink)}
+.bp-upload .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--font-mono-bp,'JetBrains Mono',monospace);font-weight:600;font-size:13px;letter-spacing:0.22em;text-transform:uppercase;padding:16px 22px;width:100%;cursor:pointer;background:var(--bp-amber);color:#1a1a1a;border:1px solid var(--bp-amber);text-decoration:none;transition:background 0.12s,transform 0.05s}
+.bp-upload .btn:hover{background:#f9d486;transform:translateY(-1px)}
+.bp-upload .btn:active{transform:translateY(0)}
+.bp-upload .btn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+.bp-upload .btn.ghost{background:transparent;color:var(--bp-ink);border:1px solid var(--bp-line-strong)}
+.bp-upload .btn.ghost:hover{background:rgba(255,255,255,0.06);border-color:var(--bp-ink)}
 
-/* hero right */
-.bp-page .hero-right{position:relative;border:1px solid var(--bp-line-strong);background:linear-gradient(var(--bp-line-faint) 1px,transparent 1px) 0 0/24px 24px,linear-gradient(90deg,var(--bp-line-faint) 1px,transparent 1px) 0 0/24px 24px,var(--bp-bg-deep);padding:20px}
-.bp-page .hero-right .panel-head{display:flex;justify-content:space-between;align-items:center;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--bp-ink-dim);padding-bottom:10px;border-bottom:1px dashed var(--bp-line)}
-.bp-page .hero-right .panel-head b{color:var(--bp-ink);font-weight:600}
-.bp-page .detail-callout{position:absolute;border:1px solid var(--bp-ink);border-radius:50%;width:64px;height:64px;display:grid;place-items:center;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--bp-ink);text-align:center;background:var(--bp-bg-deep)}
-.bp-page .detail-callout.tl{top:-14px;left:-14px}
-.bp-page .detail-callout b{display:block;font-size:14px;letter-spacing:0.04em;margin-top:2px}
+/* divider */
+.bp-upload .divider{display:flex;align-items:center;gap:14px;margin:24px 0 14px;font-size:10px;letter-spacing:0.32em;text-transform:uppercase;color:var(--bp-ink-faint)}
+.bp-upload .divider::before,.bp-upload .divider::after{content:"";flex:1;height:1px;background:var(--bp-line)}
 
-/* mini chart */
-.bp-page .mini-chart{margin-top:18px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.bp-page .mini-chart .col-head{font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:var(--bp-ink);padding:6px 4px;border:1px solid var(--bp-ink);text-align:center;background:rgba(255,255,255,0.06)}
-.bp-page .mini-chart .tile{border:1px solid var(--bp-line-strong);padding:8px 8px 9px;font-size:10px;background:rgba(255,255,255,0.04);position:relative;min-height:54px}
-.bp-page .mini-chart .tile .code{font-size:9px;letter-spacing:0.18em;color:var(--bp-ink-dim)}
-.bp-page .mini-chart .tile .name{font-size:11px;color:var(--bp-ink);font-weight:600;line-height:1.2;margin-top:4px}
-.bp-page .mini-chart .tile.cat-major{background:rgba(125,211,252,0.18);border-color:#7dd3fc}
-.bp-page .mini-chart .tile.cat-major .code{color:#bae6fd}
-.bp-page .mini-chart .tile.cat-major .name{color:#e0f2fe}
-.bp-page .mini-chart .tile.cat-support{background:rgba(167,139,250,0.20);border-color:#a78bfa}
-.bp-page .mini-chart .tile.cat-support .code{color:#ddd6fe}
-.bp-page .mini-chart .tile.cat-support .name{color:#ede9fe}
-.bp-page .mini-chart .tile.cat-ge{background:rgba(74,222,128,0.16);border-color:#4ade80}
-.bp-page .mini-chart .tile.cat-ge .code{color:#bbf7d0}
-.bp-page .mini-chart .tile.cat-ge .name{color:#dcfce7}
-.bp-page .mini-chart .tile.done{box-shadow:inset 0 0 0 9999px rgba(246,198,103,0.22);border-color:var(--bp-amber)}
-.bp-page .mini-chart .tile.done .code{color:var(--bp-amber)}
-.bp-page .mini-chart .tile.done .name{color:var(--bp-amber)}
-.bp-page .mini-chart .tile.done::after{content:"✓";position:absolute;top:4px;right:7px;font-weight:700;font-size:12px;color:var(--bp-amber)}
-.bp-page .mini-chart .tile.now{border-style:dashed}
-.bp-page .mini-chart .tile.now::after{content:"IP";position:absolute;top:6px;right:8px;font-size:8px;letter-spacing:0.1em;color:var(--bp-ink);font-weight:700}
-.bp-page .mini-chart .tile.placeholder{background-image:repeating-linear-gradient(45deg,transparent 0 6px,rgba(255,255,255,0.06) 6px 12px);border-style:dashed}
-.bp-page .mini-chart .tile.placeholder .name{font-style:italic;opacity:0.9}
+/* progress bar */
+.bp-upload .progress-wrap{border:1px solid rgba(246,198,103,0.3);background:rgba(246,198,103,0.06);padding:12px 16px;margin-bottom:20px}
+.bp-upload .progress-top{display:flex;justify-content:space-between;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:8px;color:var(--bp-ink-dim)}
+.bp-upload .progress-top b{color:var(--bp-amber)}
+.bp-upload .progress-bar{height:3px;background:rgba(255,255,255,0.1);position:relative}
+.bp-upload .progress-bar-fill{position:absolute;left:0;top:0;bottom:0;background:var(--bp-amber);transition:width 0.3s ease-out}
 
-/* progress row */
-.bp-page .progress-row{margin-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.bp-page .progress-cell{border:1px solid var(--bp-line);padding:10px 12px}
-.bp-page .progress-cell .lbl{display:flex;justify-content:space-between;font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:var(--bp-ink-dim)}
-.bp-page .progress-cell .lbl b{color:var(--bp-ink);font-weight:600}
-.bp-page .progress-cell .bar{margin-top:8px;height:4px;background:rgba(255,255,255,0.1);position:relative}
-.bp-page .progress-cell .bar::after{content:"";position:absolute;left:0;top:0;bottom:0}
-.bp-page .progress-cell.major .bar::after{width:62%;background:#7dd3fc}
-.bp-page .progress-cell.support .bar::after{width:33%;background:#a78bfa}
-.bp-page .progress-cell.ge .bar::after{width:45%;background:#4ade80}
+/* error */
+.bp-upload .error-box{border:1px solid rgba(246,198,103,0.5);background:rgba(246,198,103,0.08);padding:10px 14px;margin-bottom:20px;font-size:12px;color:var(--bp-amber);letter-spacing:0.04em}
 
-/* legend */
-.bp-page .legend{margin-top:14px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.bp-page .legend .item{display:flex;align-items:center;gap:10px;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--bp-ink);border:1px solid var(--bp-line);padding:8px 10px}
-.bp-page .legend .sw{width:18px;height:14px;border:1px solid var(--bp-ink)}
-.bp-page .legend .sw.major{background:rgba(125,211,252,0.45);border-color:#7dd3fc}
-.bp-page .legend .sw.support{background:rgba(167,139,250,0.45);border-color:#a78bfa}
-.bp-page .legend .sw.conc{background:rgba(244,114,182,0.45);border-color:#f472b6}
-.bp-page .legend .sw.ge{background:rgba(74,222,128,0.45);border-color:#4ade80}
-
-/* section */
-.bp-page .section{position:relative;padding:72px 0}
-.bp-page .section-head{display:grid;grid-template-columns:144px 1fr auto;align-items:end;gap:24px;border-top:1px solid var(--bp-line-strong);border-bottom:1px dashed var(--bp-line-strong);padding:24px 0;margin-bottom:48px}
-.bp-page .section-head .bignum{font-family:var(--font-display,'Big Shoulders Display',sans-serif);font-weight:800;font-size:120px;line-height:0.85;letter-spacing:0.005em;color:var(--bp-amber);margin:0}
-.bp-page .section-head .head-body{padding-bottom:6px}
-.bp-page .section-head .num{font-family:var(--font-mono-bp,'JetBrains Mono',monospace);font-size:12px;letter-spacing:0.32em;text-transform:uppercase;color:var(--bp-ink-dim);display:inline-flex;align-items:center;gap:8px}
-.bp-page .section-head .num::before{content:"";width:24px;height:1px;background:var(--bp-amber)}
-.bp-page .section-head h2{font-family:var(--font-display,'Big Shoulders Display',sans-serif);font-weight:800;font-size:clamp(56px,6.4vw,96px);line-height:0.88;letter-spacing:0.005em;text-transform:uppercase;margin:14px 0 0;color:var(--bp-ink)}
-.bp-page .section-head .scale{font-family:var(--font-mono-bp,'JetBrains Mono',monospace);font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--bp-ink-dim);border:1px solid var(--bp-line-strong);padding:8px 12px;align-self:end;margin-bottom:6px}
-
-/* steps */
-.bp-page .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--bp-line-strong)}
-.bp-page .step{padding:24px;border-right:1px solid var(--bp-line);position:relative;display:flex;flex-direction:column}
-.bp-page .step:last-child{border-right:0}
-.bp-page .step .step-num{display:flex;align-items:baseline;gap:10px;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--bp-ink-dim)}
-.bp-page .step .step-num b{font-family:var(--font-display,'Big Shoulders Display',sans-serif);font-size:64px;font-weight:800;line-height:1;color:var(--bp-amber);letter-spacing:0.01em}
-.bp-page .step h3{font-family:var(--font-display,'Big Shoulders Display',sans-serif);font-size:32px;font-weight:700;letter-spacing:0.01em;text-transform:uppercase;margin:16px 0 10px;color:var(--bp-ink)}
-.bp-page .step p{font-size:13px;line-height:1.65;color:var(--bp-ink);margin:0 0 24px}
-.bp-page .step .icon{margin-top:auto;height:144px;border:1px dashed var(--bp-line-strong);display:grid;place-items:center;color:var(--bp-ink-dim);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;background:repeating-linear-gradient(45deg,transparent 0 8px,rgba(255,255,255,0.03) 8px 16px)}
-.bp-page .step .icon svg{width:100%;height:100%;padding:18px}
-
-/* features */
-.bp-page .features{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
-.bp-page .feat{border:1px solid var(--bp-line-strong);padding:24px;position:relative;background:rgba(255,255,255,0.02)}
-.bp-page .feat::before{content:"";position:absolute;top:-5px;left:-5px;width:10px;height:10px;border:1px solid var(--bp-line-strong);background:var(--bp-bg)}
-.bp-page .feat::after{content:"";position:absolute;bottom:-5px;right:-5px;width:10px;height:10px;border:1px solid var(--bp-line-strong);background:var(--bp-bg)}
-.bp-page .feat .feat-label{display:flex;justify-content:space-between;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--bp-ink-dim)}
-.bp-page .feat h3{font-family:var(--font-display,'Big Shoulders Display',sans-serif);font-size:36px;font-weight:700;letter-spacing:0.01em;text-transform:uppercase;margin:12px 0 10px;color:var(--bp-ink);line-height:1}
-.bp-page .feat p{font-size:13px;line-height:1.65;color:var(--bp-ink);margin:0}
-.bp-page .feat.size-lg{grid-column:span 6}
-.bp-page .feat.size-md{grid-column:span 4}
-.bp-page .feat.size-half{grid-column:span 6}
-.bp-page .feat.size-full{grid-column:span 12;padding:24px}
-.bp-page .feat .stat{font-family:var(--font-display,'Big Shoulders Display',sans-serif);font-size:108px;font-weight:800;letter-spacing:0.005em;line-height:0.9;color:var(--bp-amber);margin:14px 0 4px}
-.bp-page .feat .stat-sub{font-size:10px;letter-spacing:0.24em;text-transform:uppercase;color:var(--bp-ink-dim)}
-.bp-page .feat .screenshot-frame{margin-top:18px;border:1px solid var(--bp-line-strong);background:rgba(255,255,255,0.04);padding:8px;position:relative}
-
-/* cta block */
-.bp-page .cta-block{position:relative;border:1.5px solid var(--bp-ink);padding:48px;margin:48px 0;background:repeating-linear-gradient(45deg,transparent 0 22px,rgba(255,255,255,0.03) 22px 44px)}
-.bp-page .cta-block::before,.bp-page .cta-block::after,.bp-page .cta-block>i:nth-child(1),.bp-page .cta-block>i:nth-child(2){content:"";position:absolute;width:14px;height:14px;border:1px solid var(--bp-ink);border-radius:50%;background:var(--bp-bg)}
-.bp-page .cta-block::before{top:-8px;left:-8px}
-.bp-page .cta-block::after{top:-8px;right:-8px}
-.bp-page .cta-block>i:nth-child(1){bottom:-8px;left:-8px}
-.bp-page .cta-block>i:nth-child(2){bottom:-8px;right:-8px}
-.bp-page .cta-block .tag{display:inline-block;font-size:10px;letter-spacing:0.32em;text-transform:uppercase;color:var(--bp-amber)}
-.bp-page .cta-block h2{font-family:var(--font-display,'Big Shoulders Display',sans-serif);font-weight:800;font-size:clamp(56px,7vw,104px);line-height:0.9;letter-spacing:0.01em;text-transform:uppercase;margin:10px 0 18px;color:var(--bp-ink);max-width:980px}
-.bp-page .cta-block p{max-width:560px;font-size:14px;line-height:1.65;color:var(--bp-ink);margin:0 0 28px}
-.bp-page .cta-block .ctas{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-
-/* footer */
-.bp-page footer{border-top:1px dashed var(--bp-line-strong);padding:24px 0 48px;color:var(--bp-ink-dim);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
-.bp-page footer p{margin:0;line-height:1.8}
-.bp-page footer .disclaimer{max-width:640px;text-transform:none;letter-spacing:0.04em;font-size:11px;color:var(--bp-ink)}
-.bp-page footer .disclaimer strong{color:var(--bp-amber);font-weight:700}
-.bp-page footer .footnote{font-size:9px;color:var(--bp-ink-faint)}
-.bp-page footer .right{text-align:right}
-.bp-page footer a{color:var(--bp-ink);text-decoration:none;border-bottom:1px solid var(--bp-line-strong);padding-bottom:1px}
-.bp-page footer a:hover{border-color:var(--bp-amber);color:var(--bp-amber)}
+/* footnote */
+.bp-upload .footnote{margin-top:24px;padding-top:18px;border-top:1px dashed var(--bp-line);text-align:center;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--bp-ink-faint)}
+.bp-upload .footnote .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--bp-amber);margin-right:6px;vertical-align:middle}
 
 /* responsive */
-@media(max-width:900px){
-  .bp-page .sheet{padding:20px 22px 0}
-  .bp-page .hero{grid-template-columns:1fr;padding:40px 0 56px}
-  .bp-page .titleblock{grid-template-columns:64px 1fr}
-  .bp-page .titleblock .meta{grid-column:span 2;margin-top:8px}
-  .bp-page .steps{grid-template-columns:1fr}
-  .bp-page .step{border-right:0;border-bottom:1px solid var(--bp-line)}
-  .bp-page .step:last-child{border-bottom:0}
-  .bp-page .section-head{grid-template-columns:1fr}
-  .bp-page .section-head .bignum{font-size:84px}
-  .bp-page .section-head .scale{justify-self:start}
-  .bp-page .features .feat.size-lg,.bp-page .features .feat.size-md,.bp-page .features .feat.size-half{grid-column:span 12}
-  .bp-page .legend{grid-template-columns:repeat(2,1fr)}
-  .bp-page footer{grid-template-columns:1fr}
-  .bp-page footer .right{text-align:left}
-  .bp-page .cta-block{padding:36px 24px 40px}
+@media(max-width:720px){
+  .bp-upload .sheet{padding:12px 22px 32px}
+  .bp-upload .form-sheet{padding:28px 22px 24px}
+  .bp-upload .titleblock{grid-template-columns:56px 1fr}
+  .bp-upload .titleblock .meta{display:none}
+  .bp-upload .topbar .nav{display:none}
 }
 `;
 
-export default function HomePage() {
+function concs(...pairs: [string, string][]): Concentration[] {
+  return pairs.map(([id, label]) => ({ id, label, slot_overrides: {} }));
+}
+
+const FALLBACK_CONCENTRATIONS: Record<string, Concentration[]> = {
+  AD: concs(
+    ["none", "Concentration Not Yet Declared"],
+    ["graphic_design", "Graphic Design"],
+    ["photo_video", "Photography and Video"],
+    ["studio_art", "Studio Art"],
+  ),
+  AERO: concs(
+    ["none", "Concentration Not Yet Declared"],
+    ["aeronautics", "Aeronautics"],
+    ["astronautics", "Astronautics"],
+  ),
+  AGS: concs(
+    ["none", "Emphasis Not Yet Declared"],
+    ["ag_engineering_tech", "Agricultural Engineering Technology"],
+    ["agribusiness", "Agribusiness"],
+    ["animal_science", "Animal Science"],
+    ["plant_crop_soil", "Plant, Crop, and Soil Science"],
+    ["forestry_natural_resources", "Forestry and Natural Resources"],
+    ["ornamental_horticulture", "Ornamental Horticulture"],
+  ),
+  ANTGEOG: concs(
+    ["none", "Concentration Not Yet Declared"],
+    ["environmental_sustainability", "Environmental Studies and Sustainability"],
+    ["global_studies", "Global Studies and International Development"],
+    ["human_ecology", "Human Ecology"],
+    ["individualized", "Individualized Course of Study"],
+  ),
+  BIO: concs(
+    ["none", "General Curriculum in Biology"],
+    ["anatomy_physiology", "Anatomy and Physiology"],
+    ["ecology_evolution_biodiversity_conservation", "Ecology, Evolution, Biodiversity, and Conservation"],
+    ["molecular_cellular", "Molecular and Cellular Biology"],
+  ),
+  BIOC: concs(
+    ["none", "General Biochemistry"],
+    ["polymers_coatings", "Polymers and Coatings"],
+  ),
+  BMED: concs(
+    ["none", "Concentration Not Yet Declared"],
+    ["bioinstrumentation", "Bioinstrumentation"],
+    ["cell_and_tissue_engineering", "Cell and Tissue Engineering"],
+    ["mechanical_design", "Mechanical Design"],
+    ["individualized", "Individualized Course of Study"],
+  ),
+  BUS: concs(
+    ["accounting", "Accounting"],
+    ["consumer_packaging", "Consumer Packaging"],
+    ["entrepreneurship", "Entrepreneurship"],
+    ["financial_management", "Financial Management"],
+    ["information_systems_analytics", "Information Systems and Analytics"],
+    ["management_human_resources", "Management and Human Resources"],
+    ["marketing_management", "Marketing Management"],
+    ["real_estate_finance", "Real Estate Finance"],
+    ["supply_chain_management", "Supply Chain Management (Solano)"],
+  ),
+  CHEM: concs(
+    ["none", "No Concentration Declared"],
+    ["polymers_coatings", "Polymers and Coatings"],
+  ),
+  COMS: concs(
+    ["none", "No Focus Area Selected"],
+    ["culture_identity_power", "Culture, Identity, and Power"],
+    ["media_technology", "Media and Technology"],
+    ["persuasion_social_influence", "Persuasion and Social Influence"],
+    ["politics_advocacy_civic", "Politics, Advocacy, and Civic Engagement"],
+    ["relationships_orgs_socialization", "Relationships, Organizations, and Socialization"],
+  ),
+  CPE: concs(
+    ["none", "General Curriculum"],
+    ["computer_architecture", "Computer Architecture"],
+    ["computer_hardware", "Computer Hardware Engineering"],
+    ["computer_systems", "Computer Systems"],
+    ["embedded_systems", "Embedded Systems"],
+    ["robotics", "Robotics and Autonomous Systems"],
+    ["security", "Privacy and Security"],
+  ),
+  CS: concs(
+    ["none", "General Curriculum"],
+    ["ai_ml", "AI & Machine Learning"],
+    ["data_eng", "Data Engineering"],
+    ["game_dev", "Game Development"],
+    ["graphics", "Graphics"],
+    ["privacy_security", "Privacy & Security"],
+  ),
+  ECON: concs(
+    ["none", "General Curriculum"],
+    ["accounting", "Accounting"],
+    ["consumer_packaging", "Consumer Packaging"],
+    ["econ_data_science", "Economics for Data Science"],
+    ["entrepreneurship", "Entrepreneurship"],
+    ["financial_management", "Financial Management"],
+    ["information_systems", "Information Systems and Analytics"],
+    ["management_hr", "Management and Human Resources"],
+    ["marketing", "Marketing Management"],
+    ["real_estate", "Real Estate Finance"],
+  ),
+  EE: concs(
+    ["none", "General Curriculum"],
+    ["ecc", "Electronics, Controls, and Communications"],
+    ["power", "Power"],
+  ),
+  EESS: concs(
+    ["geology", "Geology"],
+  ),
+  EIM: concs(
+    ["none", "No Concentration Selected"],
+    ["event_planning", "Event Planning and Management"],
+    ["sport_recreation", "Sport and Recreation Management"],
+    ["tourism_hospitality", "Tourism, Hospitality, and Destination Management"],
+  ),
+  ENVM: concs(
+    ["none", "No Concentration Selected"],
+    ["conservation_science", "Conservation Science and Management"],
+    ["corporate_environmental", "Corporate Environmental Management"],
+    ["environmental_data_science", "Environmental Data Science"],
+    ["env_law_justice_policy", "Environmental Law, Justice and Policy"],
+    ["sustainable_agriculture", "Sustainable Agriculture"],
+    ["sustainable_urban_development", "Sustainable Urban Development and Planning"],
+    ["water_science_management", "Water Science and Management"],
+  ),
+  FSN: concs(
+    ["none", "General Food Science"],
+    ["culinology", "Culinology"],
+    ["food_safety", "Food Safety"],
+    ["sft", "Sustainable Food Technology"],
+  ),
+  GEN: concs(
+    ["none", "No Concentration Selected"],
+    ["individualized", "Individualized Course of Study"],
+  ),
+  GRC: concs(
+    ["none", "Individualized Course of Study"],
+    ["design_reproduction_technology", "Design Reproduction Technology"],
+    ["graphic_communication_management", "Graphic Communication Management"],
+    ["graphics_for_packaging", "Graphics for Packaging"],
+    ["immersive_experience_design", "Immersive Experience Design"],
+    ["user_experience_user_interface", "User Experience/User Interface"],
+  ),
+  INTS: concs(
+    ["none", "No Concentration"],
+    ["ethics_law_social_justice", "Ethics, Law, and Social Justice"],
+    ["global_citizenship_social_sustainability", "Global Citizenship and Social Sustainability"],
+    ["health_and_society", "Health and Society"],
+    ["science_technology_society", "Science, Technology, and Society"],
+    ["visual_media_cultural_studies", "Visual, Media, and Cultural Studies"],
+  ),
+  ITP: concs(
+    ["none", "No Concentration Selected"],
+    ["industrial_technology", "Industrial Technology"],
+    ["packaging", "Packaging"],
+  ),
+  JOUR: concs(
+    ["none", "Undeclared / General"],
+    ["media_innovation", "Media Innovation"],
+    ["news", "News"],
+    ["public_relations", "Public Relations"],
+    ["ics", "Individualized Course of Study"],
+  ),
+  KINE: concs(
+    ["none", "No Concentration Selected"],
+    ["exercise_science", "Exercise Science"],
+    ["health_promotion", "Health Promotion"],
+    ["sport_science", "Sport Science"],
+  ),
+  LAES: concs(
+    ["none", "No Engineering Concentration Selected"],
+    ["computer_science", "Computer Science (Engineering)"],
+    ["electrical_engineering", "Electrical Engineering (Engineering)"],
+    ["industrial_engineering", "Industrial Engineering (Engineering)"],
+    ["engineering_ics", "Engineering Individualized Course of Study"],
+    ["liberal_arts_focused", "Liberal Arts Focused Course of Study"],
+    ["technical_professional_comm", "Technical and Professional Communication"],
+    ["liberal_arts_ics", "Liberal Arts Individualized Course of Study"],
+  ),
+  LIBS: concs(
+    ["none", "No Concentration Selected"],
+    ["environmental_education", "Environmental Education"],
+    ["human_development", "Human Development"],
+    ["mathematics", "Mathematics"],
+    ["english", "English"],
+    ["science", "Science"],
+    ["social_science", "Social Science"],
+    ["tesol", "Teaching English to Speakers of Other Languages (TESOL)"],
+    ["individualized", "Individualized Course of Study"],
+  ),
+  ME: concs(
+    ["none", "General Curriculum"],
+    ["energy_resources", "Energy Resources"],
+    ["hvacr", "Sustainable Technology for the Built Environment (HVAC&R)"],
+    ["mechatronics", "Mechatronics"],
+    ["manufacturing", "Manufacturing"],
+  ),
+  NR: concs(
+    ["none", "No Concentration Selected"],
+    ["forest_resources", "Forest Resources"],
+    ["water_science", "Water Science"],
+    ["wildland_fire", "Wildland Fire"],
+  ),
+  NUT: concs(
+    ["none", "No Concentration Selected"],
+    ["dietetics", "Dietetics"],
+    ["nutrition_prehealth", "Nutrition and Pre-Health Sciences"],
+  ),
+  PH: concs(
+    ["none", "No Concentration Selected"],
+    ["community_health_promotion", "Community Health Promotion"],
+    ["health_equity_global_health", "Health Equity and Global Health"],
+    ["health_management_administration", "Health Management and Administration"],
+  ),
+  PHIL: concs(
+    ["none", "No Concentration Selected"],
+    ["ethics_and_society", "Ethics and Society"],
+    ["ethics_science_technology", "Ethics of Science and Technology"],
+    ["philosophy_and_religion", "Philosophy and Religion"],
+  ),
+  PLSC: concs(
+    ["none", "No Concentration Selected"],
+    ["fruit_crop_science", "Fruit and Crop Science"],
+    ["environ_horticultural_science", "Environmental Horticultural Science"],
+    ["plant_protection_science", "Plant Protection Science"],
+  ),
+  POLS: concs(
+    ["none", "Concentration Not Yet Declared"],
+    ["global_politics", "Global Politics"],
+    ["pre_law", "Pre-Law"],
+    ["us_politics", "U.S. Politics"],
+    ["individualized", "Individualized Course of Study"],
+  ),
+  PSY: concs(
+    ["none", "General Curriculum"],
+  ),
+  SOC: concs(
+    ["none", "Undeclared / General"],
+    ["criminal_justice", "Criminal Justice"],
+    ["organizations", "Organizations"],
+    ["social_justice", "Social Justice"],
+    ["social_services", "Social Services"],
+    ["ics", "Individualized Course of Study"],
+  ),
+  WVIT: concs(
+    ["enology", "Enology"],
+    ["viticulture", "Viticulture"],
+    ["wine_business", "Wine Business"],
+  ),
+};
+
+const FALLBACK_MAJORS: MajorOption[] = [
+  { code: "CS", name: "Computer Science" },
+  { code: "AERO", name: "Aerospace Engineering" },
+  { code: "SE", name: "Software Engineering" },
+  { code: "CPE", name: "Computer Engineering" },
+  { code: "CE", name: "Civil Engineering" },
+  { code: "ME", name: "Mechanical Engineering" },
+  { code: "AD", name: "Art and Design" },
+  { code: "POLS", name: "Political Science" },
+  { code: "PSY", name: "Psychology" },
+  { code: "ENGL", name: "English" },
+  { code: "MU", name: "Music" },
+  { code: "AGC", name: "Agricultural Communication" },
+  { code: "AGS", name: "Agricultural Science" },
+  { code: "ASCI", name: "Animal Science" },
+  { code: "AGB", name: "Agricultural Business" },
+  { code: "ARCE", name: "Architectural Engineering" },
+  { code: "ANTGEOG", name: "Anthropology and Geography" },
+  { code: "ARCH", name: "Architecture" },
+  { code: "BIO", name: "Biological Sciences" },
+  { code: "BMED", name: "Biomedical Engineering" },
+  { code: "BIOC", name: "Biochemistry" },
+  { code: "CHEM", name: "Chemistry" },
+  { code: "ASM", name: "Agricultural Systems Management" },
+  { code: "BRAE", name: "BioResource and Agricultural Engineering" },
+  { code: "BUS", name: "Business Administration" },
+  { code: "STAT", name: "Statistics" },
+  { code: "CD", name: "Child Development" },
+  { code: "CRP", name: "City and Regional Planning" },
+  { code: "MATE", name: "Materials Engineering" },
+  { code: "IE", name: "Industrial Engineering" },
+  { code: "EE", name: "Electrical Engineering" },
+  { code: "KINE", name: "Kinesiology" },
+  { code: "MATH", name: "Mathematics" },
+  { code: "MFGE", name: "Manufacturing Engineering" },
+  { code: "PHYS", name: "Physics" },
+  { code: "JOUR", name: "Journalism" },
+  { code: "FSN", name: "Food Science and Nutrition" },
+  { code: "SOC", name: "Sociology" },
+  { code: "CM", name: "Construction Management" },
+  { code: "LA", name: "Landscape Architecture" },
+  { code: "WVIT", name: "Wine and Viticulture" },
+  { code: "ENVE", name: "Environmental Engineering" },
+  { code: "EIM", name: "Experience and Event Management" },
+  { code: "GRC", name: "Graphic Communication" },
+  { code: "COMS", name: "Communication Studies" },
+  { code: "ENVM", name: "Environmental Management and Protection" },
+  { code: "PLSC", name: "Plant Sciences" },
+  { code: "MCRO", name: "Microbiology" },
+  { code: "HIST", name: "History" },
+  { code: "ECON", name: "Economics" },
+  { code: "PH", name: "Public Health" },
+  { code: "PHIL", name: "Philosophy" },
+  { code: "NUT", name: "Nutrition" },
+  { code: "SPAN", name: "Spanish" },
+  { code: "THEA", name: "Theatre Arts" },
+  { code: "LIBS", name: "Liberal Studies" },
+  { code: "DSCI", name: "Dairy Science" },
+  { code: "ITP", name: "Industrial Technology and Packaging" },
+  { code: "NR", name: "Forest and Fire Sciences" },
+  { code: "CES", name: "Comparative Ethnic Studies" },
+  { code: "GEN", name: "General Engineering" },
+  { code: "MSCI", name: "Marine Sciences" },
+  { code: "EESS", name: "Environmental Earth and Soil Sciences" },
+  { code: "INTS", name: "Interdisciplinary Studies" },
+  { code: "LAES", name: "Liberal Arts and Engineering Studies" },
+];
+
+export default function UploadPage() {
+  const router = useRouter();
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [dragging, setDragging] = useState(false);
+  const [file, setFile] = useState<File | null>(null);
+  const [majorCode, setMajorCode] = useState("CS");
+  const [majors, setMajors] = useState<MajorOption[]>(FALLBACK_MAJORS);
+  const [concentrations, setConcentrations] = useState<Concentration[]>(
+    () => FALLBACK_CONCENTRATIONS["CS"] ?? [],
+  );
+  const [concentration, setConcentration] = useState<string>("none");
+  const [loading, setLoading] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [error, setError] = useState<string | null>(null);
+  const [isMbpFile, setIsMbpFile] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    getMajors()
+      .then((nextMajors) => { if (!cancelled && nextMajors.length > 0) setMajors(nextMajors); })
+      .catch(() => { if (!cancelled) setMajors(FALLBACK_MAJORS); });
+    return () => { cancelled = true; };
+  }, []);
+
+  useEffect(() => {
+    const fallback = FALLBACK_CONCENTRATIONS[majorCode] ?? [];
+    let cancelled = false;
+    setTimeout(() => {
+      if (cancelled) return;
+      setConcentrations(fallback);
+      if (fallback.length === 0) setConcentration("none");
+    }, 0);
+    getConcentrations(majorCode)
+      .then((list) => { if (!cancelled && list.length > 0) setConcentrations(list); })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, [majorCode]);
+
+  useEffect(() => {
+    if (!loading) return;
+    const interval = window.setInterval(() => {
+      setProgress((current) => {
+        if (current < 45) return current + 6;
+        if (current < 75) return current + 3;
+        if (current < 90) return current + 1;
+        return current;
+      });
+    }, 350);
+    return () => window.clearInterval(interval);
+  }, [loading]);
+
+  const handleFile = (f: File) => {
+    const err = validateFile(f.name);
+    if (err) { setError(err); return; }
+    setFile(f);
+    setIsMbpFile(getFileType(f.name) === "mbp");
+    setProgress(0);
+    setError(null);
+  };
+
+  const onDrop = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    setDragging(false);
+    const f = e.dataTransfer.files[0];
+    if (f) handleFile(f);
+  }, []);
+
+  const onSubmit = async () => {
+    if (!file) { setError("Please upload your transcript or course list first."); return; }
+    if (loading) return;
+
+    if (isMbpFile) {
+      try {
+        const text = await file.text();
+        const data = parseMbpFile(text);
+        const newSessionId = crypto.randomUUID();
+        saveSession({ ...data, sessionId: newSessionId });
+        router.push(`/flowchart/${newSessionId}`);
+      } catch {
+        setError("Could not read the flowchart file. Make sure it's a valid .mbp file.");
+      }
+      return;
+    }
+
+    setLoading(true);
+    setProgress(12);
+    setError(null);
+    let createdFlowchart = false;
+    const isCsv = file.name.endsWith(".csv");
+    try {
+      const result = isCsv
+        ? await parseCsvTranscript(file, majorCode)
+        : await parseTranscript(file, majorCode);
+      if (isCsv && result.completed.length === 0 && result.in_progress.length === 0) {
+        throw new Error("CSV parser returned no courses");
+      }
+      setProgress(95);
+      const majorName = majors.find((m) => m.code === majorCode)?.name ?? majorCode;
+      saveSession({
+        sessionId: result.session_id,
+        studentName: result.student_name || majorName,
+        major: majorCode,
+        completed: result.completed,
+        inProgress: result.in_progress,
+        coursePositions: {},
+        plannedGECourses: {},
+        concentration: concentration !== "none" ? concentration : undefined,
+      });
+      if (concentration !== "none") void syncSession(result.session_id, { concentration });
+      createdFlowchart = true;
+      setProgress(100);
+      router.push(`/flowchart/${result.session_id}`);
+    } catch (e) {
+      if (isCsv) {
+        try {
+          const parsed = parseCalPolyCSV(await file.text());
+          if (!parsed || (parsed.completed.length === 0 && parsed.inProgress.length === 0)) {
+            throw e;
+          }
+          const majorName = majors.find((m) => m.code === majorCode)?.name ?? majorCode;
+          const sessionId = crypto.randomUUID();
+          saveSession({
+            sessionId,
+            studentName: majorName,
+            major: majorCode,
+            completed: parsed.completed,
+            inProgress: parsed.inProgress,
+            coursePositions: {},
+            plannedGECourses: {},
+            concentration: concentration !== "none" ? concentration : undefined,
+          });
+          createdFlowchart = true;
+          setProgress(100);
+          router.push(`/flowchart/${sessionId}`);
+          return;
+        } catch (fallbackError) {
+          console.error(fallbackError);
+        }
+      }
+      setError(
+        isCsv
+          ? "Failed to parse course list. Make sure it's the CSV downloaded from Student Center."
+          : "Failed to parse transcript. Make sure it's a Cal Poly unofficial transcript PDF.",
+      );
+      console.error(e);
+    } finally {
+      if (!createdFlowchart) { setProgress(0); setLoading(false); }
+    }
+  };
+
+  const onBrowse = async () => {
+    if (loading) return;
+    setLoading(true);
+    setError(null);
+    setProgress(35);
+    try {
+      await getFlowchart(majorCode);
+    } catch (e) {
+      console.error(e);
+      setError("Could not reach the backend for this major. Check the API deployment and NEXT_PUBLIC_API_URL.");
+      setProgress(0);
+      setLoading(false);
+      return;
+    }
+    const sessionId = crypto.randomUUID();
+    const majorName = majors.find((m) => m.code === majorCode)?.name ?? majorCode;
+    saveSession({
+      sessionId,
+      studentName: majorName,
+      major: majorCode,
+      completed: [],
+      inProgress: [],
+      coursePositions: {},
+      plannedGECourses: {},
+      concentration: concentration !== "none" ? concentration : undefined,
+    });
+    setProgress(100);
+    router.push(`/flowchart/${sessionId}`);
+  };
+
+  const statusLabel = loading
+    ? "Parsing…"
+    : file
+      ? "File Ready"
+      : "Awaiting File";
+
+  const dzClass = `dropzone${dragging ? " drag" : ""}${file ? " has-file" : ""}`;
+  const dzTitle = file ? file.name : "Drop your file here, or  click to browse";
+  const dzSub = file
+    ? `${Math.round(file.size / 1024)} KB · ready to parse`
+    : "PDF · CSV · MBP — up to 10 MB";
+
   return (
     <>
       <style>{css}</style>
-      <div className="bp-page">
+      <div className="bp-upload">
         <div className="sheet">
 
           {/* ── TOPBAR ── */}
           <div className="topbar">
             <span className="dot" />
-            <span>Sheet 01 / 01</span>
+            <span>Sheet 02 / 03</span>
             <span>Rev. A · 2026.05</span>
             <span>Scale 1 : 1</span>
-            <span className="spacer" />
-            <a href="#how">How It Works</a>
-            <Link href="/upload">Majors</Link>
-            <a href="#about">About</a>
-            <Link href="/support">Support</Link>
+            <span>Step · Input</span>
+            <span className="nav">
+              <Link href="/about">About</Link>
+              <Link href="/support">Support</Link>
+            </span>
           </div>
 
           {/* ── TITLE BLOCK ── */}
           <div className="titleblock">
             <div className="logo-box">
-              <Image src="/mb-logo.png" alt="Mustang Blueprints" width={62} height={62} style={{ objectFit: "contain" }} />
+              <Image src="/mb-logo.png" alt="Mustang Blueprints" width={84} height={84} style={{ objectFit: "contain" }} />
             </div>
             <div>
               <div className="name">Mustang Blueprints</div>
               <div className="sub">Cal Poly · Four-Year Course Planner · Student-Built</div>
             </div>
             <div className="meta">
-              <div><span>Project</span><b>MB-001</b></div>
-              <div><span>Majors</span><b>65 Total</b></div>
-              <div><span>Status</span><b>Live</b></div>
+              <div><span>Sheet</span><b>02</b></div>
+              <div><span>Step</span><b>Input</b></div>
+              <div><span>Status</span><b>{statusLabel}</b></div>
             </div>
           </div>
 
-          {/* ── HERO ── */}
-          <section className="hero">
-            <div className="hero-left">
-              <span className="kicker"><span className="pip" />A Blueprint for Your Degree</span>
-              <h1>
-                Draft your<br />
-                <span className="stroke">
-                  <span className="amber">four</span> years.
-                </span>
-              </h1>
-              <div className="ctas">
-                <Link href="/upload" className="btn">Open the Planner <span>→</span></Link>
-                <a href="#how" className="btn ghost">See how it works</a>
-              </div>
-              <div style={{ marginTop: "24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px 28px", maxWidth: "560px" }}>
-                <div className="label-strong">✓ No account · No storage</div>
-                <div className="label-strong">✓ Works for all 65 majors</div>
-                <div className="label-strong">✓ PDF or CSV upload</div>
-                <div className="label-strong">✓ Tracks GE + concentrations</div>
-              </div>
-            </div>
+          {/* ── FORM STAGE ── */}
+          <main className="form-stage">
+            <div className="form-sheet">
+              <i className="corner-tl" /><i className="corner-tr" />
+              <i className="corner-bl" /><i className="corner-br" />
 
-            {/* Hero right: mini flowchart preview */}
-            <div className="hero-right">
-              <div className="detail-callout tl">Detail<b>A</b></div>
-              <div className="panel-head">
-                <span>SAM · COMPUTER SCIENCE · BS</span>
-                <span><b>52</b> / 120 units</span>
+              <div className="sheet-head">
+                <span>Input Your Record</span>
+                <span>Detail · D</span>
               </div>
-              <div className="mini-chart">
-                <div className="col-head">Fr · Fall</div>
-                <div className="col-head">Fr · Spr</div>
-                <div className="col-head">So · Fall</div>
-                <div className="col-head">So · Spr</div>
-                {/* major row */}
-                <div className="tile cat-major done"><div className="code">CSC 1024</div><div className="name">Intro to Computing</div></div>
-                <div className="tile cat-major done"><div className="code">CSC 1001</div><div className="name">Fund. of CS</div></div>
-                <div className="tile cat-major done"><div className="code">CSC 2001</div><div className="name">Data Structures</div></div>
-                <div className="tile cat-major now"><div className="code">CSC 2050</div><div className="name">Sys. Software</div></div>
-                {/* support row */}
-                <div className="tile cat-support done"><div className="code">MATH 1261</div><div className="name">Calculus I</div></div>
-                <div className="tile cat-support done"><div className="code">MATH 1262</div><div className="name">Calculus II</div></div>
-                <div className="tile cat-support now"><div className="code">MATH 1151</div><div className="name">Linear Algebra</div></div>
-                <div className="tile cat-support"><div className="code">MATH 2031</div><div className="name">Adv. Math</div></div>
-                {/* GE row */}
-                <div className="tile cat-ge done"><div className="code">GE 1A</div><div className="name">Written Comm.</div></div>
-                <div className="tile cat-ge done"><div className="code">GE 1B</div><div className="name">Critical Think.</div></div>
-                <div className="tile cat-ge placeholder"><div className="code">GE 3A · Arts</div><div className="name">Choose 1</div></div>
-                <div className="tile cat-ge placeholder"><div className="code">GE 3B · Hum.</div><div className="name">Choose 1</div></div>
+
+              <p className="form-lede">
+                Drop in your transcript, course list, or saved{" "}
+                <span className="mono" style={{ color: "var(--bp-amber)" }}>.mbp</span> file.
+              </p>
+
+              {/* Step 01: Upload File */}
+              <div className="step-label">
+                <b>01</b><span>Upload File</span><span className="rule" />
               </div>
-              <div className="progress-row">
-                <div className="progress-cell major">
-                  <div className="lbl"><span>Major</span><b>9 / 14</b></div>
-                  <div className="bar" />
+
+              <label
+                className={dzClass}
+                onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
+                onDragLeave={() => setDragging(false)}
+                onDrop={onDrop}
+              >
+                <svg
+                  className="glyph"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={1.5}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M12 3v12" />
+                  <path d="M7 8l5-5 5 5" />
+                  <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
+                </svg>
+                <div className="dz-title">
+                  {file ? dzTitle : <>Drop your file here, or <u>click to browse</u></>}
                 </div>
-                <div className="progress-cell support">
-                  <div className="lbl"><span>Support</span><b>1 / 3</b></div>
-                  <div className="bar" />
+                <div className="dz-sub">{dzSub}</div>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept=".pdf,.csv,.mbp"
+                  style={{ display: "none" }}
+                  onChange={(e) => { const f = e.target.files?.[0]; if (f) handleFile(f); }}
+                />
+              </label>
+
+              {/* Help accordion */}
+              <details className="help">
+                <summary>How to download your file from my.calpoly.edu</summary>
+                <div className="body">
+                  <b>📊 CSV — Course List (Recommended)</b>
+                  my.calpoly.edu → Student Center → Academic Process → Course List → download arrow (top-right corner)
+                  <div className="note">Includes transfer credit and test scores — most accurate option.</div>
+                  <b>📄 PDF — Unofficial Transcript</b>
+                  my.calpoly.edu → Student Center → Student Records → View Unofficial Transcript → Download PDF
+                  <b>🗺️ MBP — Saved Flowchart</b>
+                  A <span className="mono">.mbp</span> file you previously exported from Mustang Blueprints.
                 </div>
-                <div className="progress-cell ge">
-                  <div className="lbl"><span>Gen. Ed.</span><b>5 / 11</b></div>
-                  <div className="bar" />
-                </div>
-              </div>
-              <div className="legend">
-                <div className="item"><span className="sw major" />Major</div>
-                <div className="item"><span className="sw support" />Support</div>
-                <div className="item"><span className="sw conc" />Concentration</div>
-                <div className="item"><span className="sw ge" />Gen Ed</div>
-              </div>
-            </div>
-          </section>
+              </details>
 
-          {/* ── SECTION 01: HOW IT WORKS ── */}
-          <section className="section" id="how">
-            <div className="section-head">
-              <div className="bignum">01</div>
-              <div className="head-body">
-                <div className="num" style={{ color: "rgb(246,198,103)" }}>Section · Procedure</div>
-                <h2>From transcript<br />to flowchart in <span style={{ color: "var(--bp-amber)" }}>~10 seconds</span>.</h2>
-              </div>
-              <div className="scale">Scale · 1:1 · Sheet 01</div>
-            </div>
+              {/* Step 02: Major (hidden for .mbp) */}
+              {!isMbpFile && (
+                <>
+                  <div className="step-label">
+                    <b>02</b><span>Major</span><span className="rule" />
+                  </div>
+                  <div className="field">
+                    <select
+                      value={majorCode}
+                      onChange={(e) => { setMajorCode(e.target.value); setConcentration("none"); }}
+                    >
+                      {[...majors].sort((a, b) => a.name.localeCompare(b.name)).map((m) => (
+                        <option key={m.code} value={m.code}>{m.name}</option>
+                      ))}
+                    </select>
+                  </div>
+                </>
+              )}
 
-            <div className="steps">
-              {/* Step 01 */}
-              <div className="step">
-                <div className="step-num"><b>01</b><span>Upload</span></div>
-                <h3>Drop in your transcript.</h3>
-                <p style={{ fontSize: "14px", lineHeight: "1.75" }}>
-                  PDF unofficial transcript, CSV course list from Student Center, or a saved{" "}
-                  <span className="mono">.mbp</span> file — whichever you have. Nothing leaves your browser.
-                </p>
-                <div className="icon">
-                  <svg viewBox="0 0 160 100" fill="none" stroke="currentColor" strokeWidth={1.2} preserveAspectRatio="xMidYMid meet">
-                    <rect x="30" y="10" width="54" height="68" stroke="#F1F6FF" />
-                    <path d="M38 22 H76 M38 30 H76 M38 38 H68 M38 46 H72 M38 54 H62 M38 62 H70" stroke="#F1F6FF" strokeDasharray="3 3" opacity={0.6} />
-                    <text x="38" y="18" fontFamily="JetBrains Mono" fontSize="5" fill="#F6C667" stroke="none" letterSpacing="1">TRANSCRIPT</text>
-                    <path d="M100 22 H132 M124 14 L132 22 L124 30" stroke="#F6C667" strokeWidth={1.4} />
-                    <text x="104" y="38" fontFamily="JetBrains Mono" fontSize="5" fill="#F6C667" stroke="none" letterSpacing="1">PARSE</text>
-                    <rect x="100" y="50" width="40" height="28" stroke="#F1F6FF" strokeDasharray="3 3" />
-                    <path d="M114 60 H126 M114 66 H126 M114 72 H122" stroke="#F1F6FF" opacity={0.7} />
-                    <path d="M30 86 H84 M30 84 V88 M84 84 V88" stroke="#F1F6FF" opacity={0.4} />
-                    <path d="M100 86 H140 M100 84 V88 M140 84 V88" stroke="#F1F6FF" opacity={0.4} />
-                  </svg>
-                </div>
-              </div>
-              {/* Step 02 */}
-              <div className="step">
-                <div className="step-num"><b>02</b><span>Match</span></div>
-                <h3>Courses light up.</h3>
-                <p style={{ lineHeight: "1.75", fontSize: "14px" }}>
-                  Every completed class is auto-mapped to its slot — quarter equivalents included. Prereqs unlock,
-                  in-progress classes mark themselves, transfer credit lands where it belongs.
-                </p>
-                <div className="icon">
-                  <svg viewBox="0 0 160 100" fill="none" stroke="currentColor" strokeWidth={1.2} preserveAspectRatio="xMidYMid meet">
-                    <g stroke="#F1F6FF" strokeWidth={1.1}>
-                      <rect x="18" y="22" width="28" height="22" fill="rgba(246,198,103,0.18)" stroke="#F6C667" />
-                      <rect x="54" y="22" width="28" height="22" fill="rgba(246,198,103,0.18)" stroke="#F6C667" />
-                      <rect x="90" y="22" width="28" height="22" strokeDasharray="3 3" />
-                      <rect x="126" y="22" width="28" height="22" strokeDasharray="3 3" />
-                      <rect x="18" y="54" width="28" height="22" fill="rgba(246,198,103,0.18)" stroke="#F6C667" />
-                      <rect x="54" y="54" width="28" height="22" strokeDasharray="3 3" />
-                      <rect x="90" y="54" width="28" height="22" strokeDasharray="3 3" />
-                      <rect x="126" y="54" width="28" height="22" strokeDasharray="3 3" />
-                    </g>
-                    <g stroke="#F6C667" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" fill="none">
-                      <path d="M28 33 L31 36 L37 30" />
-                      <path d="M64 33 L67 36 L73 30" />
-                      <path d="M28 65 L31 68 L37 62" />
-                    </g>
-                    <g fontFamily="JetBrains Mono" fontSize={4.5} fill="#F1F6FF" stroke="none" opacity={0.55} letterSpacing="0.8">
-                      <text x="22" y="16">FR·F</text>
-                      <text x="58" y="16">FR·S</text>
-                      <text x="94" y="16">SO·F</text>
-                      <text x="130" y="16">SO·S</text>
-                    </g>
-                    <path d="M18 86 H154" stroke="#F1F6FF" opacity={0.3} strokeDasharray="2 4" />
-                  </svg>
-                </div>
-              </div>
-              {/* Step 03 */}
-              <div className="step">
-                <div className="step-num"><b>03</b><span>Plan</span></div>
-                <h3>Map out the rest.</h3>
-                <p style={{ fontSize: "14px", lineHeight: "1.75" }}>
-                  Pick a concentration, drag electives around, plan GEs by area. Save your blueprint as a{" "}
-                  <span className="mono">.mbp</span> and pick it back up next quarter.
-                </p>
-                <div className="icon">
-                  <svg viewBox="0 0 160 100" fill="none" stroke="currentColor" strokeWidth={1.2} preserveAspectRatio="xMidYMid meet">
-                    <circle cx="16" cy="50" r="5" fill="#F6C667" stroke="#F6C667" />
-                    <text x="6" y="68" fontFamily="JetBrains Mono" fontSize="5" fill="#F1F6FF" stroke="none" opacity={0.7} letterSpacing="1">NOW</text>
-                    <path d="M22 50 Q42 50 50 32 T84 28 Q102 28 110 50 T144 50" stroke="#F6C667" strokeWidth={1.4} strokeDasharray="4 3" />
-                    <circle cx="50" cy="32" r="3" stroke="#F1F6FF" />
-                    <circle cx="84" cy="28" r="3" stroke="#F1F6FF" />
-                    <circle cx="110" cy="50" r="3" stroke="#F1F6FF" />
-                    <line x1="144" y1="50" x2="144" y2="22" stroke="#F1F6FF" strokeWidth={1.4} />
-                    <path d="M144 22 L156 26 L144 30 Z" fill="#F6C667" stroke="#F6C667" />
-                    <text x="130" y="68" fontFamily="JetBrains Mono" fontSize="5" fill="#F6C667" stroke="none" letterSpacing="1">DIPLOMA</text>
-                    <path d="M8 84 H152" stroke="#F1F6FF" opacity={0.3} strokeDasharray="2 4" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </section>
+              {/* Step 03: Concentration (hidden for .mbp or when none available) */}
+              {!isMbpFile && concentrations.length > 0 && (
+                <>
+                  <div className="step-label">
+                    <b>03</b><span>Concentration</span><span className="rule" />
+                  </div>
+                  <div className="field">
+                    <select
+                      value={concentration}
+                      onChange={(e) => setConcentration(e.target.value)}
+                    >
+                      {[
+                        ...concentrations.filter((c) => c.id === "none"),
+                        ...[...concentrations.filter((c) => c.id !== "none")].sort((a, b) =>
+                          a.label.localeCompare(b.label)
+                        ),
+                      ].map((c) => (
+                        <option key={c.id} value={c.id}>{c.label}</option>
+                      ))}
+                    </select>
+                  </div>
+                </>
+              )}
 
-          {/* ── SECTION 02: SPECIFICATIONS ── */}
-          <section className="section" id="about">
-            <div className="section-head">
-              <div className="bignum">02</div>
-              <div className="head-body">
-                <div className="num" style={{ color: "rgb(246,198,103)" }}>Section · Specifications</div>
-                <h2>Built for the way<br />Cal Poly actually works.</h2>
-              </div>
-              <div className="scale">Detail · B · Sheet 02</div>
-            </div>
+              {/* Error */}
+              {error && <div className="error-box">⚠ {error}</div>}
 
-            <div className="features">
-              <div className="feat size-lg">
-                <div className="feat-label"><span>01 · Catalog Accuracy</span><span>Verified</span></div>
-                <h3>Every course pulled straight from the Cal Poly catalog.</h3>
-                <p style={{ lineHeight: "1.75" }}>
-                  Units, titles, prerequisites and term placement match the published flowchart for each major.
-                  Footnotes from the catalog are surfaced as &ldquo;Tips&rdquo; right next to the relevant tile
-                  — including those weird overlap rules nobody reads.
-                </p>
-              </div>
-
-              <div className="feat size-md">
-                <div className="feat-label"><span>02 · Coverage</span><span>Scope</span></div>
-                <div className="stat">65</div>
-                <div className="stat-sub">Majors supported</div>
-                <p style={{ marginTop: "18px" }}>
-                  From Aerospace to Wine &amp; Viticulture. Concentrations, emphases, and tracks all included.
-                </p>
-              </div>
-
-              <div className="feat size-half">
-                <div className="feat-label"><span>03 · Q→S Mapping</span><span>Built-in</span></div>
-                <h3 style={{ fontSize: "22px" }}>Quarter to semester, handled.</h3>
-                <p>
-                  Transcripts from the quarter system are mapped automatically. CSC 101 becomes CSC 1001.
-                  CHEM 124 becomes CHEM 1241. You don&apos;t do the math.
-                </p>
-              </div>
-
-              <div className="feat size-half">
-                <div className="feat-label"><span>04 · Privacy</span><span>Local-only</span></div>
-                <h3 style={{ fontSize: "22px" }}>Your transcript never leaves your browser.</h3>
-                <p>
-                  Parsing happens locally. We don&apos;t store transcripts, names, or PolyPass IDs.
-                  Save to a <span className="mono">.mbp</span> file you control.
-                </p>
-              </div>
-
-              <div className="feat size-full">
-                <div className="feat-label"><span>Detail · C · In Use</span><span>Computer Science · BS</span></div>
-                <h3 style={{ fontSize: "22px" }}>What you&apos;ll see inside.</h3>
-                <p style={{ maxWidth: "780px" }}>
-                  Every requirement, every prereq lock, every GE bucket — laid out the way Cal Poly publishes them.
-                  Check off classes as you go, plan electives, and watch the progress bars move.
-                </p>
-                <div className="screenshot-frame">
-                  <div style={{ height: "280px", display: "grid", placeItems: "center", background: "rgba(10,44,107,0.7)" }}>
-                    <div style={{ textAlign: "center" }}>
-                      <div style={{ fontSize: "10px", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(241,246,255,0.35)", marginBottom: "16px" }}>
-                        Flowchart Preview
-                      </div>
-                      <Link href="/upload" className="btn" style={{ fontSize: "10px" }}>
-                        Open the Planner →
-                      </Link>
-                    </div>
+              {/* Progress */}
+              {loading && (
+                <div className="progress-wrap">
+                  <div className="progress-top">
+                    <span>{getProgressLabel(progress)}</span>
+                    <b>{Math.round(progress)}%</b>
+                  </div>
+                  <div className="progress-bar">
+                    <div className="progress-bar-fill" style={{ width: `${progress}%` }} />
                   </div>
                 </div>
-              </div>
+              )}
 
-              <div className="feat size-half">
-                <div className="feat-label"><span>05 · Planning Tools</span><span>Interactive</span></div>
-                <h3>Notes, electives, GE planner, in-progress tracking.</h3>
-                <p style={{ lineHeight: "1.75" }}>
-                  Add personal notes per term. Pick which courses you&apos;ll use to satisfy each GE area.
-                  Mark classes in-progress so your projected progress bar moves with you.
-                </p>
-              </div>
+              {/* Primary CTA */}
+              <button
+                className="btn"
+                onClick={onSubmit}
+                disabled={loading || !file}
+              >
+                {loading
+                  ? (isMbpFile ? "Restoring flowchart…" : "Creating flowchart…")
+                  : (isMbpFile ? "Restore My Flowchart →" : "View My Flowchart →")}
+              </button>
 
-              <div className="feat size-half">
-                <div className="feat-label"><span>06 · Free &amp; Open</span><span>By a student</span></div>
-                <h3>Made by a Cal Poly student, free for every Cal Poly student.</h3>
-                <p style={{ lineHeight: "1.75" }}>
-                  No subscription. No sign-up. No nonsense. Mustang Blueprints exists because building a
-                  four-year plan in Excel is a rite of passage that nobody asked for.
-                </p>
-              </div>
-            </div>
-          </section>
+              <div className="divider">— or —</div>
 
-          {/* ── CTA BLOCK ── */}
-          <section className="section" id="cta">
-            <div className="cta-block">
-              <i /><i />
-              <span className="tag">— Ready to draft?</span>
-              <h2>Bring a transcript.<br />Leave with a plan.</h2>
-              <p>Most students finish in under 30 seconds. No account required. Works on any browser, any device, any major.</p>
-              <div className="ctas">
-                <Link href="/upload" className="btn">Start Your Blueprint <span>→</span></Link>
-                <Link href="/upload" className="btn ghost">Browse without a transcript</Link>
+              {/* Secondary CTA */}
+              <button className="btn ghost" onClick={onBrowse} disabled={loading}>
+                Browse without a transcript →
+              </button>
+
+              {/* Footnote */}
+              <div className="footnote">
+                <span className="dot" />Parsed locally · nothing leaves your browser
               </div>
             </div>
-          </section>
-
-          {/* ── FOOTER ── */}
-          <footer>
-            <div>
-              <p className="disclaimer">
-                Mustang Blueprints is an independent student project and is{" "}
-                <strong>not affiliated with or endorsed by Cal&nbsp;Poly San Luis Obispo</strong>.
-                Course requirements change every catalog year — always verify your plan with your academic advisor before registering.
-              </p>
-              <p className="footnote" style={{ marginTop: "14px" }}>
-                © 2026 Mustang Blueprints · MB-001 · Rev. A
-              </p>
-            </div>
-            <div className="right">
-              <p>
-                <Link href="/legal">Privacy &amp; Legal</Link>
-                {" "}&nbsp;·&nbsp;{" "}
-                <Link href="/support">Support</Link>
-                {" "}&nbsp;·&nbsp;{" "}
-                <Link href="/upload">Open the Planner</Link>
-              </p>
-              <p className="footnote" style={{ marginTop: "14px" }}>
-                Drawn &amp; drafted in San Luis Obispo, CA
-              </p>
-            </div>
-          </footer>
-
+          </main>
         </div>
       </div>
     </>

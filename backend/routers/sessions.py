@@ -11,6 +11,7 @@ ALLOWED_UPDATE_FIELDS = {
     "planned_ge_units",
     "planned_course_units",
     "planned_free_elective_courses",
+    "planned_custom_courses",
     "concentration",
 }
 
@@ -30,5 +31,5 @@ def patch(session_id: str, body: dict):
         raise HTTPException(status_code=400, detail="No valid fields to update")
     try:
         return update_session(session_id, **updates)
-    except Exception:
+    except KeyError:
         raise HTTPException(status_code=404, detail="Session not found")

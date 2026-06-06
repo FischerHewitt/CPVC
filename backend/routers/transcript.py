@@ -6,6 +6,8 @@ from services.sessions import create_session
 
 router = APIRouter()
 
+_MAX_UPLOAD_BYTES = 5 * 1024 * 1024  # 5 MB
+
 
 class TranscriptResponse(BaseModel):
     session_id: str
@@ -24,7 +26,9 @@ async def parse(
     if not file.filename or not file.filename.endswith(".pdf"):
         raise HTTPException(status_code=400, detail="Only PDF files are accepted.")
 
-    contents = await file.read()
+    contents = await file.read(_MAX_UPLOAD_BYTES + 1)
+    if len(contents) > _MAX_UPLOAD_BYTES:
+        raise HTTPException(status_code=413, detail="File too large. Maximum size is 5 MB.")
     result = parse_transcript(io.BytesIO(contents))
 
     completed   = sorted(completed_course_numbers(result))
@@ -56,7 +60,9 @@ async def parse_csv(
     if not file.filename or not file.filename.endswith(".csv"):
         raise HTTPException(status_code=400, detail="Only CSV files are accepted.")
 
-    contents = await file.read()
+    contents = await file.read(_MAX_UPLOAD_BYTES + 1)
+    if len(contents) > _MAX_UPLOAD_BYTES:
+        raise HTTPException(status_code=413, detail="File too large. Maximum size is 5 MB.")
     result = parse_csv_transcript(io.BytesIO(contents))
 
     completed   = sorted(completed_course_numbers(result))

@@ -2,7 +2,8 @@ import os
 import httpx
 
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
+from typing import Optional
 
 router = APIRouter()
 
@@ -20,7 +21,7 @@ _FROM_ADDRESS = "Mustang Blueprints <onboarding@resend.dev>"
 
 class ContactRequest(BaseModel):
     name: str = ""
-    email: str = ""
+    email: Optional[EmailStr] = None
     category: str = "bug"
     custom_subject: str = ""
     message: str
@@ -41,11 +42,11 @@ def send_contact(req: ContactRequest):
         else _CATEGORY_LABELS.get(req.category, "Message")
     )
     subject = f"[Mustang Blueprints] {category_label} from {req.name.strip() or 'a user'}"
-    reply_to = req.email.strip() or DEVELOPER_EMAIL
+    reply_to = str(req.email) if req.email else DEVELOPER_EMAIL
 
     body = (
         f"Name: {req.name.strip() or '(not provided)'}\n"
-        f"Email: {req.email.strip() or '(not provided)'}\n"
+        f"Email: {req.email or '(not provided)'}\n"
         f"Category: {category_label}\n\n"
         f"{req.message.strip()}"
     )

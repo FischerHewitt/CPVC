@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useRef, useState } from "react";
-import type { Course, CourseStatus } from "@/lib/types";
+import type { Course, CourseStatus, CustomCourseEntry } from "@/lib/types";
 
 function isFreeElective(course: Course) {
   return course.title.toLowerCase().includes("free elective") || course.course_number.toLowerCase().startsWith("free");
@@ -30,6 +30,14 @@ export function usePanelState() {
   const [courseLookupPos, setCourseLookupPos] = useState({ x: 160, y: 140 });
   const courseLookupDrag = useRef<DragState | null>(null);
   const [courseSearch, setCourseSearch] = useState("");
+
+  const [addCourseCol, setAddCourseCol] = useState<number | null>(null);
+  const [addCoursePanelPos, setAddCoursePanelPos] = useState({ x: 60, y: 160 });
+  const addCoursePanelDrag = useRef<DragState | null>(null);
+
+  const [editCustomCourse, setEditCustomCourse] = useState<{ id: string; entry: CustomCourseEntry } | null>(null);
+  const [editCustomPanelPos, setEditCustomPanelPos] = useState({ x: 60, y: 160 });
+  const editCustomPanelDrag = useRef<DragState | null>(null);
 
   const openCoursePanel = useCallback((course: Course, status: CourseStatus) => {
     if (course.is_placeholder && (course.category === "ge" || course.course_number.startsWith("ART 3000+"))) {
@@ -69,5 +77,7 @@ export function usePanelState() {
     otherCreditsOpen, setOtherCreditsOpen, otherCreditsPos, setOtherCreditsPos, otherCreditsDrag,
     courseLookupOpen, setCourseLookupOpen, courseLookupPos, setCourseLookupPos, courseLookupDrag,
     courseSearch, setCourseSearch,
+    addCourseCol, setAddCourseCol, addCoursePanelPos, setAddCoursePanelPos, addCoursePanelDrag,
+    editCustomCourse, setEditCustomCourse, editCustomPanelPos, setEditCustomPanelPos, editCustomPanelDrag,
   };
 }

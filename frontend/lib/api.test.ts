@@ -10,6 +10,7 @@ import {
   getProfessors,
   inferPrerequisites,
   searchCatalogCourses,
+  syncSession,
 } from "./api";
 import { resetPolyRatingsCacheForTests } from "./polyratings";
 
@@ -214,5 +215,60 @@ describe("API static fallback", () => {
     vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new Error("backend down")));
 
     await expect(searchCatalogCourses("coms1126")).resolves.toEqual([]);
+  });
+});
+
+describe("syncSession", () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  it("sends concentration='none' as the string 'none' so the DB column is cleared", async () => {
+    let sentBody: unknown;
+    vi.stubGlobal("fetch", vi.fn(async (_url: unknown, init: RequestInit) => {
+      sentBody = JSON.parse(init.body as string);
+      return new Response(null, { status: 200 });
+    }));
+
+    await syncSession("sess-1", { concentration: "none" });
+
+    expect(sentBody).toEqual({ concentration: "none" });
+  });
+
+  it("includes planned_custom_courses in the session sync body", async () => {
+    let sentBody: unknown;
+    vi.stubGlobal("fetch", vi.fn(async (_url: unknown, init: RequestInit) => {
+      sentBody = JSON.parse(init.body as string);
+      return new Response(null, { status: 200 });
+    }));
+
+    const customCourse = {
+      course_number: "ACCT 221",
+      title: "Accounting for Non-Business Majors",
+      units: 4,
+      grid_col: 1,
+      status: "planned" as const,
+    };
+
+    await syncSession("sess-1", {
+      planned_custom_courses: { "custom-uuid-1": customCourse },
+    });
+
+    expect(sentBody).toEqual({
+      planned_custom_courses: { "custom-uuid-1": customCourse },
+    });
+  });
+
+  it("omits concentration from the body when the field is absent (not-touching-it case)", async () => {
+    let sentBody: unknown;
+    vi.stubGlobal("fetch", vi.fn(async (_url: unknown, init: RequestInit) => {
+      sentBody = JSON.parse(init.body as string);
+      return new Response(null, { status: 200 });
+    }));
+
+    await syncSession("sess-1", { completed: ["CSC 1001"] });
+
+    expect(sentBody).toEqual({ completed: ["CSC 1001"] });
+    expect((sentBody as Record<string, unknown>)).not.toHaveProperty("concentration");
   });
 });

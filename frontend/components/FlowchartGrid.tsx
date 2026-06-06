@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { Course, CourseStatus, Flowchart, GEAreaMap, TranscriptSession } from "@/lib/types";
+import type { Course, CourseStatus, CustomCourseEntry, Flowchart, GEAreaMap, TranscriptSession } from "@/lib/types";
 import { norm, toNormalizedSet, hasAnyCourseNumber, isFreeElective, getCourseStatus, expandSlashCourseNumber, courseCompletionCandidates } from "@/lib/course-status";
 import { gePlaceholderDisplayData, withPlannedGECourses } from "@/lib/ge-placeholder";
 import CourseCard, { CATEGORY_STYLES } from "./CourseCard";
@@ -21,6 +21,11 @@ interface Props {
     targetRow: number,
     targetCourseId?: string,
   ) => void;
+  onAddCourse?: (col: number) => void;
+  onClearCustomAssignment?: (customId: string) => void;
+  onRemoveCustomCourse?: (customId: string) => void;
+  onSetCustomCourseStatus?: (customId: string, status: CustomCourseEntry["status"]) => void;
+  onCustomCourseClick?: (customId: string, entry: CustomCourseEntry) => void;
 }
 
 
@@ -116,6 +121,11 @@ export default function FlowchartGrid({
   onToggleCourseCompleted,
   onToggleCourseInProgress,
   onMoveCourse,
+  onAddCourse,
+  onClearCustomAssignment,
+  onRemoveCustomCourse,
+  onSetCustomCourseStatus,
+  onCustomCourseClick,
 }: Props) {
   const completedNums  = useMemo(() => toNormalizedSet(session.completed), [session.completed]);
   const inProgressNums = useMemo(() => toNormalizedSet(session.inProgress), [session.inProgress]);
@@ -226,9 +236,13 @@ export default function FlowchartGrid({
       if (status === "completed" || status === "inferred") earnedUnits += u;
       else if (status === "in_progress") inProgressUnits += u;
     }
+    for (const entry of Object.values(session.customCourses ?? {})) {
+      if (entry.status === "completed") earnedUnits += entry.units;
+      else if (entry.status === "in_progress") inProgressUnits += entry.units;
+    }
     return { earnedUnits, inProgressUnits };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [flowchart.courses, courseStatuses, plannedGEUnits, plannedFreeElectiveCourses]);
+  }, [flowchart.courses, courseStatuses, plannedGEUnits, plannedFreeElectiveCourses, session.customCourses]);
 
   const totalUnits = flowchart.total_units;
 
@@ -267,6 +281,22 @@ export default function FlowchartGrid({
     () => Math.max(...flowchart.courses.map((c) => getCoursePosition(c, positions).grid_row + 1), 1),
     [flowchart.courses, positions]
   ) + (draggedCourseId ? 1 : 0);
+
+  // Map from flowchart course.id → [customId, entry] for assigned custom courses
+  const coveredByMap = useMemo(() => {
+    const map = new Map<string, [string, CustomCourseEntry]>();
+    for (const [id, entry] of Object.entries(session.customCourses ?? {})) {
+      if (entry.assignedToSlotId) map.set(entry.assignedToSlotId, [id, entry]);
+    }
+    return map;
+  }, [session.customCourses]);
+
+  // Map from course.id → course for looking up slot labels on custom tiles
+  const courseById = useMemo(() => {
+    const map = new Map<string, Course>();
+    for (const c of flowchart.courses) map.set(c.id, c);
+    return map;
+  }, [flowchart.courses]);
 
   const handleDrop = (targetCol: number, targetRow: number, targetCourse?: Course) => {
     if (!draggedCourseId || draggedCourseId === targetCourse?.id) return;
@@ -369,6 +399,7 @@ export default function FlowchartGrid({
                 }
                 const status = courseStatuses.get(course.id)!;
                 const display = courseDisplayData.get(course.id)!;
+                const covering = coveredByMap.get(course.id);
                 return (
                   <div
                     key={colIdx}
@@ -383,6 +414,16 @@ export default function FlowchartGrid({
                     onDragOver={(event) => event.preventDefault()}
                     onDrop={() => handleDrop(colIdx, rowIdx, course)}
                   >
+                    {covering && (
+                      <div className="mb-1 flex items-center gap-1 rounded px-1.5 py-0.5 text-[10px] font-bold"
+                           style={{ background: "#fed7aa", color: "#9a3412", border: "1px solid #fb923c" }}>
+                        <span>covered by {covering[1].course_number}</span>
+                        <button
+                          className="ml-auto hover:text-red-700"
+                          onClick={(e) => { e.stopPropagation(); onClearCustomAssignment?.(covering[0]); }}
+                        >✕</button>
+                      </div>
+                    )}
                     <CourseCard
                       course={course}
                       status={status}
@@ -402,6 +443,98 @@ export default function FlowchartGrid({
               })}
             </div>
           ))}
+
+          {/* Custom course tiles — rendered below flowchart tiles, grouped by column */}
+          {session.customCourses && Object.keys(session.customCourses).length > 0 && (
+            <div className="grid gap-1 mt-1" style={{ gridTemplateColumns: `repeat(${numCols}, minmax(0, 1fr))` }}>
+              {Array.from({ length: numCols }).map((_, colIdx) => {
+                const colEntries = Object.entries(session.customCourses ?? {})
+                  .filter(([, e]) => e.grid_col === colIdx) as [string, CustomCourseEntry][];
+                return (
+                  <div key={colIdx} className="flex flex-col gap-1">
+                    {colEntries.map(([id, entry]) => {
+                      const colors = CATEGORY_STYLES.custom;
+                      return (
+                        <div
+                          key={id}
+                          className="rounded border text-center transition-all select-none relative cursor-pointer hover:shadow-md active:scale-[0.99]"
+                          style={{ background: colors.bg, borderColor: colors.border, borderWidth: 1.5, color: colors.text }}
+                          onClick={() => onCustomCourseClick?.(id, entry)}
+                        >
+                          {/* Checkbox — absolute top-left, matching CourseCard */}
+                          <label
+                            className="absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded border bg-white/85 shadow-sm cursor-pointer"
+                            title={entry.status === "completed" ? "Mark incomplete" : "Mark completed"}
+                            onClick={(e) => e.stopPropagation()}
+                            onMouseDown={(e) => e.stopPropagation()}
+                          >
+                            <input
+                              type="checkbox"
+                              checked={entry.status === "completed"}
+                              onChange={() => onSetCustomCourseStatus?.(id, entry.status === "completed" ? "planned" : "completed")}
+                              className="h-3 w-3 accent-green-700 cursor-pointer"
+                            />
+                          </label>
+                          {/* IP button — absolute top-right, matching CourseCard */}
+                          <label
+                            className={`absolute right-1 top-1 flex h-4 min-w-5 items-center justify-center rounded border px-0.5 text-[8px] font-bold shadow-sm cursor-pointer transition-colors ${
+                              entry.status === "in_progress"
+                                ? "bg-amber-500 border-amber-600 text-white"
+                                : "bg-white/85 border-gray-300 text-amber-700"
+                            }`}
+                            title={entry.status === "in_progress" ? "Remove in progress" : "Mark in progress"}
+                            onClick={(e) => e.stopPropagation()}
+                            onMouseDown={(e) => e.stopPropagation()}
+                          >
+                            <input
+                              type="checkbox"
+                              checked={entry.status === "in_progress"}
+                              onChange={() => onSetCustomCourseStatus?.(id, entry.status === "in_progress" ? "planned" : "in_progress")}
+                              className="sr-only"
+                            />
+                            IP
+                          </label>
+                          {/* Content — matches CourseCard px-1 py-2 */}
+                          <div className="px-1 py-2">
+                            {/* Status badge row */}
+                            <div className="flex justify-center mb-0.5 h-3">
+                              {entry.status === "completed"  && <span className="text-green-800 text-[10px] font-bold">✓</span>}
+                              {entry.status === "in_progress" && <span className="text-amber-600 text-[10px] font-bold">IP</span>}
+                            </div>
+                            {/* Title first (bold), then course number (units) — matches CourseCard */}
+                            <div className="text-[11px] font-bold leading-tight">{entry.title}</div>
+                            <div className="text-[10px] mt-0.5 font-medium opacity-75">
+                              {entry.course_number} ({entry.units})
+                            </div>
+                            {entry.assignedToSlotId && courseById.get(entry.assignedToSlotId) && (
+                              <div className="text-[9px] mt-0.5 opacity-70">
+                                → {courseById.get(entry.assignedToSlotId)!.course_number}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
+          {/* Add course buttons — one per column */}
+          {onAddCourse && (
+            <div className="grid gap-1 mt-1" style={{ gridTemplateColumns: `repeat(${numCols}, minmax(0, 1fr))` }}>
+              {Array.from({ length: numCols }).map((_, colIdx) => (
+                <button
+                  key={colIdx}
+                  onClick={() => onAddCourse(colIdx)}
+                  className="rounded border border-dashed border-gray-300 py-1.5 text-xs text-gray-400 hover:border-green-500 hover:text-green-700 transition-colors"
+                >
+                  + add course
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 

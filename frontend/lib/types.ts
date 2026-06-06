@@ -1,4 +1,14 @@
 export type Category = "major" | "support" | "concentration" | "ge";
+export type CustomCourseStatus = "planned" | "completed" | "in_progress";
+
+export interface CustomCourseEntry {
+  course_number: string;
+  title: string;
+  units: number;
+  grid_col: number;
+  status: CustomCourseStatus;
+  assignedToSlotId?: string;
+}
 export type CourseStatus = "completed" | "inferred" | "in_progress" | "incomplete" | "locked";
 export type FreeElectiveStatus = "planned" | "completed" | "in_progress";
 
@@ -54,6 +64,7 @@ export interface TranscriptSession {
   plannedGEUnits?: Record<string, number>;
   plannedCourseUnits?: Record<string, number>;
   plannedFreeElectiveCourses?: Record<string, FreeElectiveSelection>;
+  customCourses?: Record<string, CustomCourseEntry>;
   concentration?: string;
   notes?: string;
 }

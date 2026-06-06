@@ -1,7 +1,8 @@
 import re
+import time
 
 from fastapi import APIRouter, HTTPException, Query
-from services.catalog import get_course_info, get_dept_courses
+from services.catalog import get_course_info, get_dept_courses, CACHE_TTL
 import services.elective_catalog as elective_catalog
 
 router = APIRouter()
@@ -13,8 +14,9 @@ _COURSE_RE = re.compile(r"(?:(?P<dept>[A-Z]{2,5})\s*)?(?P<num>\d{3,4}[A-Z]?)")
 
 def _build_courses(depts: list[str], min_level: int, max_level: int) -> list[dict]:
     cache_key = (tuple(depts), min_level, max_level)
-    if cache_key in _build_courses_cache:
-        return _build_courses_cache[cache_key]
+    entry = _build_courses_cache.get(cache_key)
+    if entry and (time.time() - entry["fetched_at"]) < CACHE_TTL:
+        return entry["courses"]
     courses = []
     for dept in depts:
         dept_courses = get_dept_courses(dept)
@@ -23,7 +25,7 @@ def _build_courses(depts: list[str], min_level: int, max_level: int) -> list[dic
             if len(parts) < 2:
                 continue
             try:
-                level = int(parts[-1])
+                level = int(parts[-1].rstrip("ABCDEFGHIJKLMNOPQRSTUVWXYZ"))
             except ValueError:
                 continue
             if not (min_level <= level <= max_level):
@@ -39,7 +41,7 @@ def _build_courses(depts: list[str], min_level: int, max_level: int) -> list[dic
                 "title": info.get("title", ""),
                 "units": units,
             })
-    _build_courses_cache[cache_key] = courses
+    _build_courses_cache[cache_key] = {"fetched_at": time.time(), "courses": courses}
     return courses
 
 

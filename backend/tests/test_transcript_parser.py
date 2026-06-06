@@ -77,6 +77,63 @@ def test_completed_and_in_progress_course_numbers_filter_grades():
     assert in_progress_course_numbers(result) == {"MATH 141", "ENGL 134", "PHYS 141"}
 
 
+def test_completed_course_with_no_grade_is_not_dropped():
+    """A PDF line where the grade token is missing but units were earned (e.g. grade=None)
+    must land in completed, not be silently dropped."""
+    _, _, _, courses = _parse_lines(
+        [
+            "Name: Ada Lovelace",
+            "Student ID: 123456789",
+            "Plan: Computer Science BS",
+            "Fall Quarter 2025",
+            # Grade column absent — regex captures grade=None, but earned=4.0
+            "MATH 141 Calculus I 4.00 4.00 16.00",
+            # Normal case for comparison
+            "CSC 101 Fundamentals of Computer Science 4.00 4.00 A 16.00",
+        ]
+    )
+    result = TranscriptResult(
+        student_name="Ada Lovelace",
+        student_id="123456789",
+        major="Computer Science BS",
+        courses=courses,
+    )
+
+    math_course = next(c for c in courses if c.course_number == "MATH 141")
+    assert math_course.grade is None
+    assert math_course.earned == 4.0
+
+    assert "MATH 141" in completed_course_numbers(result)
+    assert "MATH 141" not in in_progress_course_numbers(result)
+
+
+def test_in_progress_course_with_no_grade_stays_in_progress():
+    """A course with grade=None and earned=0 must land in in_progress, not be dropped."""
+    _, _, _, courses = _parse_lines(
+        [
+            "Name: Ada Lovelace",
+            "Student ID: 123456789",
+            "Plan: Computer Science BS",
+            "Spring Semester 2026",
+            # In-progress: attempted=4, earned=0, no grade captured
+            "CSC 203 Proj-Based OO Prog and Design 4.00 0.00",
+        ]
+    )
+    result = TranscriptResult(
+        student_name="Ada Lovelace",
+        student_id="123456789",
+        major="Computer Science BS",
+        courses=courses,
+    )
+
+    csc_course = next(c for c in courses if c.course_number == "CSC 203")
+    assert csc_course.grade is None
+    assert csc_course.earned == 0.0
+
+    assert "CSC 203" not in completed_course_numbers(result)
+    assert "CSC 203" in in_progress_course_numbers(result)
+
+
 def test_parse_csv_transcript_reads_student_center_course_list():
     result = parse_csv_transcript(io.BytesIO(STUDENT_CENTER_CSV.encode("utf-8")))
 

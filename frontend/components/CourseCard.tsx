@@ -23,6 +23,7 @@ export const CATEGORY_STYLES: Record<string, { bg: string; border: string; text:
   concentration: { bg: "#fce7f3", border: "#be185d", text: "#831843" },
   free:          { bg: "#e5e7eb", border: "#6b7280", text: "#374151" },
   ge:            { bg: "#dcfce7", border: "#15803d", text: "#14532d" },
+  custom:        { bg: "#e5e7eb", border: "#6b7280", text: "#374151" },
 };
 
 export default function CourseCard({

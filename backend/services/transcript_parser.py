@@ -207,7 +207,7 @@ def completed_course_numbers(result: TranscriptResult) -> set[str]:
     return {
         c.course_number
         for c in result.courses
-        if c.earned > 0 and c.grade not in (None, "W", "F", "NC", "U")
+        if c.earned > 0 and c.grade not in ("W", "F", "NC", "U")
     }
 
 

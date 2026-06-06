@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { loadSession, saveSession, persistSession } from "@/lib/session";
+import { applyAddCustomCourse, applyAssignCustomCourse, applyClearCustomAssignment, applyRemoveCustomCourse, applySetCustomCourseStatus, applyUpdateCustomCourse } from "@/lib/custom-courses";
 import {
   getFlowchart, inferPrerequisites, getSession, getGEAreaMap,
   getConcentrations, syncSession,
@@ -44,7 +45,10 @@ export function useFlowchartSession(sessionId: string) {
   const [concentrations, setConcentrations] = useState<Concentration[]>([]);
   const [concentrationFlowchart, setConcentrationFlowchart] = useState<Flowchart | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [syncMissing, setSyncMissing] = useState(false);
   const [myNotesText, setMyNotesText] = useState("");
+
+  const onSyncMissing = useCallback(() => setSyncMissing(true), []);
 
   const activeConcentration = useMemo(
     () => concentrations.find((c) => c.id === (session?.concentration ?? "none")),
@@ -119,7 +123,7 @@ export function useFlowchartSession(sessionId: string) {
       const normalized = normalizePlannedGEPlaceholderStatuses(s);
       s = normalized.session;
       saveSession(s);
-      if (normalized.changed) void syncSession(s.sessionId, { completed: s.completed, in_progress: s.inProgress });
+      if (normalized.changed) void syncSession(s.sessionId, { completed: s.completed, in_progress: s.inProgress }).then((r) => { if (r === "missing") onSyncMissing(); });
       if (!cancelled) {
         setSession(s);
         setMyNotesText(s.notes ?? "");
@@ -216,7 +220,7 @@ export function useFlowchartSession(sessionId: string) {
     };
     const next = { ...session, plannedFreeElectiveCourses };
     setSession(next);
-    persistSession(next, { planned_free_elective_courses: plannedFreeElectiveCourses });
+    persistSession(next, { planned_free_elective_courses: plannedFreeElectiveCourses }, onSyncMissing);
     return { openPicker: false };
   }, [session]);
 
@@ -247,10 +251,10 @@ export function useFlowchartSession(sessionId: string) {
 
   const changeConcentration = useCallback((newId: string) => {
     if (!session) return;
-    const next = { ...session, concentration: newId === "none" ? undefined : newId };
+    const next = { ...session, concentration: newId };
     setSession(next);
     saveSession(next);
-    void syncSession(session.sessionId, { concentration: newId === "none" ? undefined : newId });
+    void syncSession(session.sessionId, { concentration: newId }).then((r) => { if (r === "missing") onSyncMissing(); });
   }, [session]);
 
   const toggleCourseCompleted = useCallback((course: Course, selectedCourseId?: string): ToggleResult => {
@@ -274,7 +278,7 @@ export function useFlowchartSession(sessionId: string) {
       : session.inProgress.filter((n) => !removeNums.has(normalizeNum(n)));
     const next = { ...session, completed, inProgress };
     setSession(next);
-    persistSession(next, { completed, in_progress: inProgress });
+    persistSession(next, { completed, in_progress: inProgress }, onSyncMissing);
     void refreshInferred(next);
     return {
       newStatus: selectedCourseId === course.id ? (isCompleted ? "incomplete" : "completed") : null,
@@ -303,7 +307,7 @@ export function useFlowchartSession(sessionId: string) {
       : session.completed.filter((n) => !removeNums.has(normalizeNum(n)));
     const next = { ...session, completed, inProgress };
     setSession(next);
-    persistSession(next, { completed, in_progress: inProgress });
+    persistSession(next, { completed, in_progress: inProgress }, onSyncMissing);
     void refreshInferred(next);
     return {
       newStatus: selectedCourseId === course.id ? (isInProgress ? "incomplete" : "in_progress") : null,
@@ -331,7 +335,7 @@ export function useFlowchartSession(sessionId: string) {
     }
     const next = { ...session, completed, inProgress, plannedGECourses };
     setSession(next);
-    persistSession(next, { completed, in_progress: inProgress, planned_ge_courses: plannedGECourses });
+    persistSession(next, { completed, in_progress: inProgress, planned_ge_courses: plannedGECourses }, onSyncMissing);
     void refreshInferred(next);
   }, [session, rememberGEAreaCourse, courseNumberCandidateSet, refreshInferred]);
 
@@ -355,7 +359,7 @@ export function useFlowchartSession(sessionId: string) {
     }
     const next = { ...session, completed, inProgress, plannedGECourses };
     setSession(next);
-    persistSession(next, { completed, in_progress: inProgress, planned_ge_courses: plannedGECourses });
+    persistSession(next, { completed, in_progress: inProgress, planned_ge_courses: plannedGECourses }, onSyncMissing);
     void refreshInferred(next);
   }, [session, rememberGEAreaCourse, courseNumberCandidateSet, refreshInferred]);
 
@@ -372,7 +376,7 @@ export function useFlowchartSession(sessionId: string) {
       : session.inProgress.filter((n) => !candidateSet.has(normalizeNum(n)));
     const next = { ...session, completed, inProgress };
     setSession(next);
-    persistSession(next, { completed, in_progress: inProgress });
+    persistSession(next, { completed, in_progress: inProgress }, onSyncMissing);
     void refreshInferred(next);
   }, [session, geAreaCandidateSet, refreshInferred]);
 
@@ -389,7 +393,7 @@ export function useFlowchartSession(sessionId: string) {
       : session.completed.filter((n) => !candidateSet.has(normalizeNum(n)));
     const next = { ...session, completed, inProgress };
     setSession(next);
-    persistSession(next, { completed, in_progress: inProgress });
+    persistSession(next, { completed, in_progress: inProgress }, onSyncMissing);
     void refreshInferred(next);
   }, [session, geAreaCandidateSet, refreshInferred]);
 
@@ -406,7 +410,7 @@ export function useFlowchartSession(sessionId: string) {
     }
     const next = { ...session, plannedGECourses, plannedGEUnits };
     setSession(next);
-    persistSession(next, { planned_ge_courses: plannedGECourses, planned_ge_units: plannedGEUnits });
+    persistSession(next, { planned_ge_courses: plannedGECourses, planned_ge_units: plannedGEUnits }, onSyncMissing);
   }, [session]);
 
   const toggleElectiveCourse = useCallback((placeholder: Course, courseNumber: string, units: number) => {
@@ -428,7 +432,7 @@ export function useFlowchartSession(sessionId: string) {
     }
     const next = { ...session, completed, inProgress, plannedGECourses, plannedGEUnits };
     setSession(next);
-    persistSession(next, { completed, in_progress: inProgress, planned_ge_courses: plannedGECourses, planned_ge_units: plannedGEUnits });
+    persistSession(next, { completed, in_progress: inProgress, planned_ge_courses: plannedGECourses, planned_ge_units: plannedGEUnits }, onSyncMissing);
     void refreshInferred(next);
   }, [session, electiveRemoveSet, refreshInferred]);
 
@@ -451,7 +455,7 @@ export function useFlowchartSession(sessionId: string) {
     }
     const next = { ...session, completed, inProgress, plannedGECourses, plannedGEUnits };
     setSession(next);
-    persistSession(next, { completed, in_progress: inProgress, planned_ge_courses: plannedGECourses, planned_ge_units: plannedGEUnits });
+    persistSession(next, { completed, in_progress: inProgress, planned_ge_courses: plannedGECourses, planned_ge_units: plannedGEUnits }, onSyncMissing);
     void refreshInferred(next);
   }, [session, electiveRemoveSet, refreshInferred]);
 
@@ -467,7 +471,49 @@ export function useFlowchartSession(sessionId: string) {
     };
     const next = { ...session, plannedFreeElectiveCourses };
     setSession(next);
-    persistSession(next, { planned_free_elective_courses: plannedFreeElectiveCourses });
+    persistSession(next, { planned_free_elective_courses: plannedFreeElectiveCourses }, onSyncMissing);
+  }, [session]);
+
+  const addCustomCourse = useCallback((col: number, course: CourseSearchResult, id: string, assignedToSlotId?: string) => {
+    if (!session) return;
+    const next = applyAddCustomCourse(session, col, course, id, assignedToSlotId);
+    setSession(next);
+    persistSession(next, { planned_custom_courses: next.customCourses ?? {} }, onSyncMissing);
+  }, [session]);
+
+  const assignCustomCourse = useCallback((customId: string, slotId: string) => {
+    if (!session) return;
+    const next = applyAssignCustomCourse(session, customId, slotId);
+    setSession(next);
+    persistSession(next, { planned_custom_courses: next.customCourses ?? {} }, onSyncMissing);
+  }, [session]);
+
+  const clearCustomAssignment = useCallback((customId: string) => {
+    if (!session) return;
+    const next = applyClearCustomAssignment(session, customId);
+    setSession(next);
+    persistSession(next, { planned_custom_courses: next.customCourses ?? {} }, onSyncMissing);
+  }, [session]);
+
+  const updateCustomCourse = useCallback((id: string, updates: Parameters<typeof applyUpdateCustomCourse>[2]) => {
+    if (!session) return;
+    const next = applyUpdateCustomCourse(session, id, updates);
+    setSession(next);
+    persistSession(next, { planned_custom_courses: next.customCourses ?? {} }, onSyncMissing);
+  }, [session]);
+
+  const setCustomCourseStatus = useCallback((id: string, status: Parameters<typeof applySetCustomCourseStatus>[2]) => {
+    if (!session) return;
+    const next = applySetCustomCourseStatus(session, id, status);
+    setSession(next);
+    persistSession(next, { planned_custom_courses: next.customCourses ?? {} }, onSyncMissing);
+  }, [session]);
+
+  const removeCustomCourse = useCallback((id: string) => {
+    if (!session) return;
+    const next = applyRemoveCustomCourse(session, id);
+    setSession(next);
+    persistSession(next, { planned_custom_courses: next.customCourses ?? {} }, onSyncMissing);
   }, [session]);
 
   const setFreeElectiveStatus = useCallback((placeholder: Course, status: FreeElectiveStatus): { openPicker: boolean } => {
@@ -480,7 +526,7 @@ export function useFlowchartSession(sessionId: string) {
     delete plannedFreeElectiveCourses[placeholder.id];
     const next = { ...session, plannedFreeElectiveCourses };
     setSession(next);
-    persistSession(next, { planned_free_elective_courses: plannedFreeElectiveCourses });
+    persistSession(next, { planned_free_elective_courses: plannedFreeElectiveCourses }, onSyncMissing);
   }, [session]);
 
   const setSlotUnits = useCallback((courseId: string, units: number | null) => {
@@ -490,7 +536,7 @@ export function useFlowchartSession(sessionId: string) {
     else plannedCourseUnits[courseId] = units;
     const next = { ...session, plannedCourseUnits };
     setSession(next);
-    persistSession(next, { planned_course_units: plannedCourseUnits });
+    persistSession(next, { planned_course_units: plannedCourseUnits }, onSyncMissing);
   }, [session]);
 
   const moveCourse = useCallback((courseId: string, targetCol: number, targetRow: number, targetCourseId?: string) => {
@@ -503,14 +549,14 @@ export function useFlowchartSession(sessionId: string) {
     if (targetCourseId) positions[targetCourseId] = draggedPos;
     const next = { ...session, coursePositions: positions };
     setSession(next);
-    persistSession(next, { course_positions: positions as Record<string, unknown> });
+    persistSession(next, { course_positions: positions as Record<string, unknown> }, onSyncMissing);
   }, [session, resolvedFlowchart]);
 
   const resetCourseLayout = useCallback(() => {
     if (!session) return;
     const next = { ...session, coursePositions: {} };
     setSession(next);
-    persistSession(next, { course_positions: {} });
+    persistSession(next, { course_positions: {} }, onSyncMissing);
   }, [session]);
 
   const downloadSession = useCallback(() => {
@@ -528,7 +574,7 @@ export function useFlowchartSession(sessionId: string) {
     if (!session) return;
     const next = { ...session, completed: csvCompleted, inProgress: csvInProgress };
     setSession(next);
-    persistSession(next, { completed: csvCompleted, in_progress: csvInProgress });
+    persistSession(next, { completed: csvCompleted, in_progress: csvInProgress }, onSyncMissing);
     void refreshInferred(next);
   }, [session, refreshInferred]);
 
@@ -549,7 +595,7 @@ export function useFlowchartSession(sessionId: string) {
       : [...session.completed, courseNumber];
     const next = { ...session, completed: nextCompleted };
     setSession(next);
-    persistSession(next, { completed: nextCompleted });
+    persistSession(next, { completed: nextCompleted }, onSyncMissing);
     void refreshInferred(next);
   }, [session, refreshInferred]);
 
@@ -562,7 +608,7 @@ export function useFlowchartSession(sessionId: string) {
       : [...session.inProgress, courseNumber];
     const next = { ...session, inProgress: nextInProgress };
     setSession(next);
-    persistSession(next, { in_progress: nextInProgress });
+    persistSession(next, { in_progress: nextInProgress }, onSyncMissing);
   }, [session]);
 
   return {
@@ -575,6 +621,7 @@ export function useFlowchartSession(sessionId: string) {
     activeConcentration,
     otherCredits,
     error,
+    syncMissing,
     myNotesText,
     statusCompletedNums,
     statusInProgressNums,
@@ -597,6 +644,12 @@ export function useFlowchartSession(sessionId: string) {
     chooseFreeElectiveCourse,
     setFreeElectiveStatus,
     clearFreeElectiveCourse,
+    addCustomCourse,
+    updateCustomCourse,
+    assignCustomCourse,
+    clearCustomAssignment,
+    setCustomCourseStatus,
+    removeCustomCourse,
     setSlotUnits,
     moveCourse,
     resetCourseLayout,

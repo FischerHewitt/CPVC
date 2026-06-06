@@ -62,4 +62,6 @@ def update_session(session_id: str, **updates) -> dict:
         .eq("session_id", session_id)
         .execute()
     )
+    if not result.data:
+        raise KeyError(session_id)
     return result.data[0]

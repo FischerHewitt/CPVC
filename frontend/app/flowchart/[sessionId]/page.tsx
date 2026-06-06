@@ -14,6 +14,8 @@ import GEDetailPanel from "@/components/GEDetailPanel";
 import ElectiveDetailPanel from "@/components/ElectiveDetailPanel";
 import FreeElectivePickerPanel from "@/components/FreeElectivePickerPanel";
 import ManualCourseChecklist from "@/components/ManualCourseChecklist";
+import CustomCourseDetailPanel from "@/components/CustomCourseDetailPanel";
+import AddCoursePanel from "@/components/AddCoursePanel";
 
 export default function FlowchartPage() {
   const { sessionId } = useParams<{ sessionId: string }>();
@@ -99,7 +101,7 @@ export default function FlowchartPage() {
           borderBottom: "2px solid rgba(255,255,255,0.18)",
         }}
       >
-        <button onClick={() => router.push("/upload")} className="text-white/60 hover:text-white text-sm font-mono flex-shrink-0">← Back</button>
+        <button onClick={() => router.push("/")} className="text-white/60 hover:text-white text-sm font-mono flex-shrink-0">← Back</button>
         <div className="text-white font-bold text-sm font-mono truncate">{fs.flowchart.major}</div>
         {fs.concentrations.length > 0 && (
           <>
@@ -124,6 +126,13 @@ export default function FlowchartPage() {
           </div>
         </div>
       </header>
+
+      {fs.syncMissing && (
+        <div className="px-6 py-2.5 flex items-center gap-3 text-sm font-mono" style={{ background: "#92400E", color: "#FEF3C7", borderBottom: "1px solid rgba(255,255,255,0.15)" }}>
+          <span>⚠</span>
+          <span>Your session is no longer syncing to the cloud — progress is saved on this device only. Bookmark this page to return to your session.</span>
+        </div>
+      )}
 
       <main className="flex-1 p-2 sm:p-6">
         <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-3 sm:p-5">
@@ -197,7 +206,13 @@ export default function FlowchartPage() {
             onToggleCourseInProgress={toggleCourseInProgress}
             onMoveCourse={fs.moveCourse}
             onCourseClick={panel.openCoursePanel}
+            onAddCourse={(col) => panel.setAddCourseCol(col)}
+            onClearCustomAssignment={fs.clearCustomAssignment}
+            onRemoveCustomCourse={fs.removeCustomCourse}
+            onSetCustomCourseStatus={fs.setCustomCourseStatus}
+            onCustomCourseClick={(id, entry) => panel.setEditCustomCourse({ id, entry })}
           />
+
         </div>
       </main>
 
@@ -228,6 +243,7 @@ export default function FlowchartPage() {
         completedSet={new Set(fs.session.completed)}
         inProgressSet={new Set(fs.session.inProgress)}
         plannedElectiveCourses={fs.session.plannedGECourses ?? {}}
+        flowchartCourseNumbers={new Set(fs.resolvedFlowchart.courses.filter((c) => !c.is_placeholder).map((c) => c.course_number))}
         currentSlotId={panel.selectedElectiveCourse?.id}
         plannedSlotUnits={panel.selectedElectiveCourse ? (fs.session.plannedCourseUnits ?? {})[panel.selectedElectiveCourse.id] : undefined}
         cappedCourseConfig={fs.getCappedCourseConfig(panel.selectedElectiveCourse)}
@@ -379,6 +395,46 @@ export default function FlowchartPage() {
             )}
           </div>
         </div>
+      )}
+
+      {panel.addCourseCol !== null && fs.resolvedFlowchart && (
+        <AddCoursePanel
+          col={panel.addCourseCol}
+          termLabel={fs.resolvedFlowchart.columns[panel.addCourseCol]?.term ?? `Column ${panel.addCourseCol}`}
+          assignableSlots={fs.resolvedFlowchart.courses
+            .filter((c) => {
+              if (c.grid_col !== panel.addCourseCol) return false;
+              const customEntries = Object.values(fs.session!.customCourses ?? {});
+              return !customEntries.some((e) => e.assignedToSlotId === c.id);
+            })
+            .map((c) => ({ id: c.id, course_number: c.course_number, title: c.title }))}
+          panelPos={panel.addCoursePanelPos}
+          panelDrag={panel.addCoursePanelDrag}
+          onSetPos={panel.setAddCoursePanelPos}
+          onAdd={(course, slotId) => fs.addCustomCourse(panel.addCourseCol!, course, crypto.randomUUID(), slotId)}
+          onClose={() => panel.setAddCourseCol(null)}
+        />
+      )}
+
+      {panel.editCustomCourse && fs.resolvedFlowchart && fs.session && (
+        <CustomCourseDetailPanel
+          customId={panel.editCustomCourse.id}
+          entry={panel.editCustomCourse.entry}
+          termLabel={fs.resolvedFlowchart.columns[panel.editCustomCourse.entry.grid_col]?.term ?? `Column ${panel.editCustomCourse.entry.grid_col}`}
+          assignableSlots={fs.resolvedFlowchart.courses
+            .filter((c) => {
+              if (c.grid_col !== panel.editCustomCourse!.entry.grid_col) return false;
+              const customEntries = Object.entries(fs.session!.customCourses ?? {});
+              return !customEntries.some(([eid, e]) => e.assignedToSlotId === c.id && eid !== panel.editCustomCourse!.id);
+            })
+            .map((c) => ({ id: c.id, course_number: c.course_number, title: c.title }))}
+          panelPos={panel.editCustomPanelPos}
+          panelDrag={panel.editCustomPanelDrag}
+          onSetPos={panel.setEditCustomPanelPos}
+          onUpdate={(updates) => fs.updateCustomCourse(panel.editCustomCourse!.id, updates)}
+          onRemove={() => fs.removeCustomCourse(panel.editCustomCourse!.id)}
+          onClose={() => panel.setEditCustomCourse(null)}
+        />
       )}
 
       {panel.courseLookupOpen && (

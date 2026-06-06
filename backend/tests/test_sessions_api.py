@@ -116,13 +116,103 @@ def test_patch_session_rejects_body_without_allowed_fields(monkeypatch):
     assert response.json()["detail"] == "No valid fields to update"
 
 
-def test_patch_session_returns_404_when_update_fails(monkeypatch):
-    def raise_not_found(*_args, **_kwargs):
-        raise RuntimeError("missing")
+def test_patch_session_clears_concentration_with_none_sentinel(monkeypatch):
+    """Sending concentration='none' must reach update_session — it must not be filtered."""
+    captured = {}
 
-    monkeypatch.setattr(sessions_router, "update_session", raise_not_found)
+    def fake_update_session(session_id: str, **updates):
+        captured["updates"] = updates
+        return {"session_id": session_id, **updates}
+
+    monkeypatch.setattr(sessions_router, "update_session", fake_update_session)
+
+    response = client.patch(
+        "/api/sessions/session-123",
+        json={"concentration": "none"},
+    )
+
+    assert response.status_code == 200
+    assert captured["updates"] == {"concentration": "none"}
+
+
+def test_patch_session_returns_404_when_session_key_missing(monkeypatch):
+    def raise_key_error(*_args, **_kwargs):
+        raise KeyError("missing-session")
+
+    monkeypatch.setattr(sessions_router, "update_session", raise_key_error)
 
     response = client.patch("/api/sessions/missing-session", json={"completed": ["CSC 1001"]})
 
     assert response.status_code == 404
     assert response.json()["detail"] == "Session not found"
+
+
+def test_get_session_returns_planned_custom_courses(monkeypatch):
+    def fake_get_session(session_id: str):
+        return {
+            "session_id": session_id,
+            "student_name": "Ada Lovelace",
+            "major": "MATH",
+            "completed": [],
+            "in_progress": [],
+            "planned_custom_courses": {
+                "custom-uuid-1": {
+                    "course_number": "ACCT 221",
+                    "title": "Accounting for Non-Business Majors",
+                    "units": 4,
+                    "grid_col": 1,
+                    "status": "planned",
+                }
+            },
+        }
+
+    monkeypatch.setattr(sessions_router, "get_session", fake_get_session)
+
+    response = client.get("/api/sessions/session-123")
+
+    assert response.status_code == 200
+    custom = response.json()["planned_custom_courses"]["custom-uuid-1"]
+    assert custom["course_number"] == "ACCT 221"
+    assert custom["status"] == "planned"
+    assert custom["grid_col"] == 1
+
+
+def test_patch_session_passes_through_planned_custom_courses(monkeypatch):
+    captured = {}
+
+    def fake_update_session(session_id: str, **updates):
+        captured["updates"] = updates
+        return {"session_id": session_id, **updates}
+
+    monkeypatch.setattr(sessions_router, "update_session", fake_update_session)
+
+    custom_course = {
+        "course_number": "ACCT 221",
+        "title": "Accounting for Non-Business Majors",
+        "units": 4,
+        "grid_col": 1,
+        "status": "planned",
+    }
+
+    response = client.patch(
+        "/api/sessions/session-123",
+        json={"planned_custom_courses": {"custom-uuid-1": custom_course}},
+    )
+
+    assert response.status_code == 200
+    assert "planned_custom_courses" in captured["updates"]
+    assert captured["updates"]["planned_custom_courses"]["custom-uuid-1"]["course_number"] == "ACCT 221"
+
+
+def test_patch_session_propagates_non_key_errors_as_500(monkeypatch):
+    def raise_runtime_error(*_args, **_kwargs):
+        raise RuntimeError("supabase unavailable")
+
+    monkeypatch.setattr(sessions_router, "update_session", raise_runtime_error)
+
+    # raise_server_exceptions=False lets starlette convert the unhandled exception
+    # to an HTTP 500 response instead of re-raising it in the test process.
+    error_client = TestClient(app, raise_server_exceptions=False)
+    response = error_client.patch("/api/sessions/session-123", json={"completed": ["CSC 1001"]})
+
+    assert response.status_code == 500

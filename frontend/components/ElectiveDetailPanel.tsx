@@ -1,8 +1,31 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { Course, ElectiveArea, GECourse, Professor, CourseInfo } from "@/lib/types";
+import type { Course, CourseSearchResult, ElectiveArea, GECourse, Professor, CourseInfo } from "@/lib/types";
 import { getElectiveCourses, getPlaceholderElectiveCourses, getProfessors, getCourseInfo } from "@/lib/api";
+import { type GEPanelStatus, GE_STATUS_ORDER, GE_STATUS_LABELS, GE_STATUS_STYLES } from "@/lib/status-styles";
+import {
+  searchFreeElectiveCatalog,
+  shouldSearchFreeElectiveCatalog,
+  FREE_ELECTIVE_SEARCH_DEBOUNCE_MS,
+} from "@/lib/free-elective-search";
+
+// ── Pure helpers (exported for tests) ────────────────────────────────────────
+
+export function filterEligibleCourses(courses: GECourse[], query: string): GECourse[] {
+  const q = query.trim().toLowerCase();
+  if (!q) return courses;
+  return courses.filter((c) =>
+    c.course_number.toLowerCase().includes(q) || c.title.toLowerCase().includes(q)
+  );
+}
+
+export function isOverrideCourse(courseNumber: string, eligibleCourses: GECourse[]): boolean {
+  const normalized = courseNumber.toUpperCase().trim().replace(/\s+/g, " ");
+  return !eligibleCourses.some(
+    (c) => c.course_number.toUpperCase().trim().replace(/\s+/g, " ") === normalized
+  );
+}
 
 // ── Professor row (shared style with GEDetailPanel) ───────────────────────────
 
@@ -105,6 +128,7 @@ interface ElectiveCourseRowProps {
   planned: boolean;
   isCapped?: boolean;
   plannedSlotUnits?: number;
+  coreqWarning?: string;
   onToggle: (courseNumber: string, units: number) => void;
   onToggleInProgress: (courseNumber: string, units: number) => void;
   onPlan: (courseNumber: string, units: number) => void;
@@ -118,15 +142,17 @@ function ElectiveCourseRow({
   planned,
   isCapped,
   plannedSlotUnits,
+  coreqWarning,
   onToggle,
   onToggleInProgress,
   onPlan,
   onSelect,
 }: ElectiveCourseRowProps) {
-  const [expanded, setExpanded]     = useState(false);
-  const [professors, setProfessors] = useState<Professor[]>([]);
-  const [loading, setLoading]       = useState(false);
-  const [chosenUnits, setChosenUnits] = useState(plannedSlotUnits ?? 1);
+  const [expanded, setExpanded]         = useState(false);
+  const [professors, setProfessors]     = useState<Professor[]>([]);
+  const [loading, setLoading]           = useState(false);
+  const [chosenUnits, setChosenUnits]   = useState(plannedSlotUnits ?? 1);
+  const [warnDismissed, setWarnDismissed] = useState(false);
   const prevPlannedSlotUnits = useRef(plannedSlotUnits);
   useEffect(() => {
     if (prevPlannedSlotUnits.current !== plannedSlotUnits) {
@@ -228,6 +254,16 @@ function ElectiveCourseRow({
           </button>
         </div>
       </div>
+      {coreqWarning && !warnDismissed && (
+        <div className="px-3 py-1.5 border-t border-amber-200 bg-amber-50 text-[11px] text-amber-800 flex items-start justify-between gap-2">
+          <span>⚠ {coreqWarning}</span>
+          <button
+            onClick={(e) => { e.stopPropagation(); setWarnDismissed(true); }}
+            className="flex-shrink-0 text-amber-600 hover:text-amber-900 leading-none"
+            title="Dismiss"
+          >×</button>
+        </div>
+      )}
       {expanded && (
         <div className="px-3 pb-2 border-t border-gray-100 bg-gray-50/60">
           {loading && <div className="text-xs text-gray-400 py-2">Loading professors…</div>}
@@ -253,6 +289,7 @@ interface Props {
   completedSet: Set<string>;
   inProgressSet: Set<string>;
   plannedElectiveCourses: Record<string, string>;
+  flowchartCourseNumbers?: Set<string>;
   currentSlotId?: string;
   plannedSlotUnits?: number;
   cappedCourseConfig?: CappedCourseConfig;
@@ -279,11 +316,25 @@ function hasElectiveStatus(option: GECourse, knownSet: Set<string>) {
   return normalizedKnown.has(norm(option.course_number)) || (candidate ? normalizedKnown.has(norm(candidate)) : false);
 }
 
+export function labCoreqWarning(
+  courseNumber: string,
+  completedSet: Set<string>,
+  inProgressSet: Set<string>,
+  flowchartCourseNumbers: Set<string>,
+): string | undefined {
+  if (!courseNumber.match(/\d[A-Z]$/)) return undefined;
+  const lectureNumber = courseNumber.replace(/([A-Z])$/, "");
+  const known = new Set([...completedSet, ...inProgressSet, ...flowchartCourseNumbers].map(norm));
+  if (known.has(norm(lectureNumber))) return undefined;
+  return `Lab course — requires concurrent enrollment in ${lectureNumber}. Confirm with your advisor.`;
+}
+
 export default function ElectiveDetailPanel({
   course,
   completedSet,
   inProgressSet,
   plannedElectiveCourses,
+  flowchartCourseNumbers = new Set(),
   currentSlotId,
   plannedSlotUnits,
   cappedCourseConfig,
@@ -297,26 +348,127 @@ export default function ElectiveDetailPanel({
   const [loading, setLoading]   = useState(false);
   const [selected, setSelected] = useState<GECourse | null>(null);
 
+  // In-list search filter (Issue #9)
+  const [listFilter, setListFilter] = useState("");
+
+  // Elective override state (Issues #10, #11)
+  const [accordionOpen, setAccordionOpen]       = useState(false);
+  const [overrideQuery, setOverrideQuery]       = useState("");
+  const [overrideResults, setOverrideResults]   = useState<CourseSearchResult[]>([]);
+  const [overrideCourse, setOverrideCourse]     = useState<GECourse | null>(null);
+  const overrideDebounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const electiveKey = course?.elective_key;
 
+  // Load area and reconstruct override card on panel open (Issues #10, #11)
   useEffect(() => {
     let cancelled = false;
     if (!course) {
-      setTimeout(() => { if (!cancelled) setSelected(null); }, 0);
+      setTimeout(() => {
+        if (!cancelled) {
+          setSelected(null);
+          setOverrideCourse(null);
+          setAccordionOpen(false);
+          setListFilter("");
+          setOverrideQuery("");
+          setOverrideResults([]);
+        }
+      }, 0);
       return () => { cancelled = true; };
     }
+    const plannedAtOpen = plannedElectiveCourses[course.course_number];
     setTimeout(() => {
       if (cancelled) return;
       setArea(null); setSelected(null); setLoading(true);
+      setOverrideCourse(null); setAccordionOpen(false);
+      setListFilter(""); setOverrideQuery(""); setOverrideResults([]);
     }, 0);
     const request = electiveKey ? getElectiveCourses(electiveKey) : getPlaceholderElectiveCourses(course);
     request
-      .then((a) => { if (!cancelled) setArea(a); })
+      .then((a) => {
+        if (!cancelled) {
+          setArea(a);
+          // Issue #11: reconstruct override card if planned course isn't in the eligible list
+          if (a && plannedAtOpen && isOverrideCourse(plannedAtOpen, a.courses)) {
+            getCourseInfo(plannedAtOpen).then((info) => {
+              if (!cancelled) {
+                setOverrideCourse(
+                  info
+                    ? { course_number: plannedAtOpen, title: info.title, units: Number(info.units) || 0 }
+                    : { course_number: plannedAtOpen, title: "", units: 0 }
+                );
+              }
+            });
+          }
+        }
+      })
       .finally(() => { if (!cancelled) setLoading(false); });
     return () => { cancelled = true; };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [course, electiveKey]);
 
+  // Debounced override catalog search
+  useEffect(() => {
+    if (overrideDebounceRef.current) clearTimeout(overrideDebounceRef.current);
+    if (!shouldSearchFreeElectiveCatalog(overrideQuery)) { setOverrideResults([]); return; }
+    overrideDebounceRef.current = setTimeout(async () => {
+      const found = await searchFreeElectiveCatalog(overrideQuery);
+      setOverrideResults(found);
+    }, FREE_ELECTIVE_SEARCH_DEBOUNCE_MS);
+    return () => { if (overrideDebounceRef.current) clearTimeout(overrideDebounceRef.current); };
+  }, [overrideQuery]);
+
   if (!course) return null;
+
+  // Derive override course's current status from session state
+  const overrideStatus: GEPanelStatus | undefined = (() => {
+    if (!overrideCourse) return undefined;
+    if (hasElectiveStatus(overrideCourse, completedSet)) return "completed";
+    if (hasElectiveStatus(overrideCourse, inProgressSet)) return "in_progress";
+    if (plannedElectiveCourses[course.course_number] === overrideCourse.course_number) return "planned";
+    return undefined;
+  })();
+
+  function handleOverrideSelect(result: CourseSearchResult) {
+    if (!course) return;
+    const eligibleCourses = area?.courses ?? [];
+    const inList = eligibleCourses.find(
+      (c) => norm(c.course_number) === norm(result.course_number)
+    );
+    setAccordionOpen(false);
+    setOverrideQuery("");
+    setOverrideResults([]);
+    if (inList) {
+      // Course is in the eligible list — treat as a normal selection
+      onPlanElectiveCourse(course, inList.course_number, inList.units);
+      setOverrideCourse(null);
+    } else {
+      // Genuine override — store it and show the override card
+      const overrideEntry: GECourse = { course_number: result.course_number, title: result.title, units: result.units };
+      setOverrideCourse(overrideEntry);
+      onPlanElectiveCourse(course, result.course_number, result.units);
+    }
+  }
+
+  function chooseOverrideCourse(status: GEPanelStatus) {
+    if (!course || !overrideCourse) return;
+    const willClear = status === overrideStatus;
+    if (status === "planned") onPlanElectiveCourse(course, overrideCourse.course_number, overrideCourse.units);
+    else if (status === "completed") onToggleElectiveCourse(course, overrideCourse.course_number, overrideCourse.units);
+    else onToggleElectiveCourseInProgress(course, overrideCourse.course_number, overrideCourse.units);
+    if (willClear) setOverrideCourse(null);
+  }
+
+  function clearOverrideSelection() {
+    if (course && overrideCourse) {
+      if (overrideStatus === "completed") onToggleElectiveCourse(course, overrideCourse.course_number, overrideCourse.units);
+      else if (overrideStatus === "in_progress") onToggleElectiveCourseInProgress(course, overrideCourse.course_number, overrideCourse.units);
+      else if (overrideStatus === "planned") onPlanElectiveCourse(course, overrideCourse.course_number, overrideCourse.units);
+    }
+    setOverrideCourse(null);
+  }
+
+  const visibleCourses = filterEligibleCourses(area?.courses ?? [], listFilter);
 
   return (
     <>
@@ -341,64 +493,178 @@ export default function ElectiveDetailPanel({
           {selected ? (
             <ElectiveCourseDetail course={selected} onBack={() => setSelected(null)} />
           ) : (
-            <div className="flex-1 overflow-y-auto px-5 py-4">
-              {area && <p className="text-xs text-gray-500 mb-3">{area.description}</p>}
+            <>
+              <div className="flex-1 overflow-y-auto px-5 py-4">
+                {area && <p className="text-xs text-gray-500 mb-3">{area.description}</p>}
 
-              {cappedCourseConfig && cappedCourseConfig.totalAcrossSlots > 0 && (
-                <div className={`mb-3 rounded px-3 py-2 text-xs border ${
-                  cappedCourseConfig.totalAcrossSlots > cappedCourseConfig.cap
-                    ? "bg-red-50 border-red-200 text-red-800"
-                    : "bg-amber-50 border-amber-200 text-amber-800"
-                }`}>
-                  {cappedCourseConfig.totalAcrossSlots > cappedCourseConfig.cap ? "⚠️" : "ℹ️"}{" "}
-                  <strong>{cappedCourseConfig.label}</strong> are limited to{" "}
-                  <strong>{cappedCourseConfig.cap} units</strong> combined toward Major Electives.
-                  {" "}Currently planned: <strong>{cappedCourseConfig.totalAcrossSlots}u</strong>.
-                  {cappedCourseConfig.totalAcrossSlots > cappedCourseConfig.cap && (
-                    <span> You may not be able to count all of these units — check with your advisor.</span>
+                {cappedCourseConfig && cappedCourseConfig.totalAcrossSlots > 0 && (
+                  <div className={`mb-3 rounded px-3 py-2 text-xs border ${
+                    cappedCourseConfig.totalAcrossSlots > cappedCourseConfig.cap
+                      ? "bg-red-50 border-red-200 text-red-800"
+                      : "bg-amber-50 border-amber-200 text-amber-800"
+                  }`}>
+                    {cappedCourseConfig.totalAcrossSlots > cappedCourseConfig.cap ? "⚠️" : "ℹ️"}{" "}
+                    <strong>{cappedCourseConfig.label}</strong> are limited to{" "}
+                    <strong>{cappedCourseConfig.cap} units</strong> combined toward Major Electives.
+                    {" "}Currently planned: <strong>{cappedCourseConfig.totalAcrossSlots}u</strong>.
+                    {cappedCourseConfig.totalAcrossSlots > cappedCourseConfig.cap && (
+                      <span> You may not be able to count all of these units — check with your advisor.</span>
+                    )}
+                  </div>
+                )}
+
+                <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">
+                  Eligible Courses
+                  {area && (
+                    <span className="ml-1 font-normal normal-case text-gray-400">
+                      — click a course for description
+                    </span>
                   )}
                 </div>
-              )}
 
-              <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">
-                Eligible Courses
+                {/* In-list search filter (Issue #9) */}
                 {area && (
-                  <span className="ml-1 font-normal normal-case text-gray-400">
-                    — click a course for description
-                  </span>
+                  <input
+                    value={listFilter}
+                    onChange={(e) => setListFilter(e.target.value)}
+                    placeholder="Search by course number or title…"
+                    className="mb-3 w-full rounded border border-gray-200 px-3 py-1.5 text-xs outline-none focus:border-blue-400"
+                  />
                 )}
+
+                {loading && <div className="text-xs text-gray-400">Loading…</div>}
+                {!loading && !area && (
+                  <div className="text-xs text-gray-400">No course list available for this elective yet.</div>
+                )}
+                {!loading && area && visibleCourses.length === 0 && listFilter && (
+                  <div className="text-xs text-gray-400 py-2">No matches for "{listFilter}".</div>
+                )}
+                {visibleCourses.map((c) => {
+                  const isCapped = cappedCourseConfig?.numbers.has(c.course_number) ?? false;
+                  const isPlanned = plannedElectiveCourses[course.course_number] === c.course_number;
+                  return (
+                    <ElectiveCourseRow
+                      key={c.course_number}
+                      course={c}
+                      completed={hasElectiveStatus(c, completedSet)}
+                      inProgress={hasElectiveStatus(c, inProgressSet)}
+                      planned={isPlanned}
+                      isCapped={isCapped}
+                      plannedSlotUnits={isCapped && isPlanned ? plannedSlotUnits : undefined}
+                      coreqWarning={labCoreqWarning(c.course_number, completedSet, inProgressSet, flowchartCourseNumbers)}
+                      onToggle={(courseNumber, units) => onToggleElectiveCourse(course, courseNumber, units)}
+                      onToggleInProgress={(courseNumber, units) => onToggleElectiveCourseInProgress(course, courseNumber, units)}
+                      onPlan={(courseNumber, units) => {
+                        const deselecting = plannedElectiveCourses[course.course_number] === courseNumber;
+                        onPlanElectiveCourse(course, courseNumber, units);
+                        if (isCapped && onSetSlotUnits && currentSlotId) {
+                          onSetSlotUnits(currentSlotId, deselecting ? null : units);
+                        }
+                        // Selecting from the list clears any override card
+                        if (!deselecting) setOverrideCourse(null);
+                      }}
+                      onSelect={setSelected}
+                    />
+                  );
+                })}
               </div>
 
-              {loading && <div className="text-xs text-gray-400">Loading…</div>}
-              {!loading && !area && (
-                <div className="text-xs text-gray-400">No course list available for this elective yet.</div>
-              )}
-              {area?.courses.map((c) => {
-                const isCapped = cappedCourseConfig?.numbers.has(c.course_number) ?? false;
-                const isPlanned = plannedElectiveCourses[course.course_number] === c.course_number;
-                return (
-                  <ElectiveCourseRow
-                    key={c.course_number}
-                    course={c}
-                    completed={hasElectiveStatus(c, completedSet)}
-                    inProgress={hasElectiveStatus(c, inProgressSet)}
-                    planned={isPlanned}
-                    isCapped={isCapped}
-                    plannedSlotUnits={isCapped && isPlanned ? plannedSlotUnits : undefined}
-                    onToggle={(courseNumber, units) => onToggleElectiveCourse(course, courseNumber, units)}
-                    onToggleInProgress={(courseNumber, units) => onToggleElectiveCourseInProgress(course, courseNumber, units)}
-                    onPlan={(courseNumber, units) => {
-                      const deselecting = plannedElectiveCourses[course.course_number] === courseNumber;
-                      onPlanElectiveCourse(course, courseNumber, units);
-                      if (isCapped && onSetSlotUnits && currentSlotId) {
-                        onSetSlotUnits(currentSlotId, deselecting ? null : units);
-                      }
-                    }}
-                    onSelect={setSelected}
-                  />
-                );
-              })}
-            </div>
+              {/* Override accordion (Issues #10, #11) */}
+              <div className="flex-shrink-0 border-t-2" style={{ borderColor: "var(--cp-green)" }}>
+                {overrideCourse ? (
+                  /* Override card */
+                  <div className="px-5 py-3" style={{ background: "#f0f7f4" }}>
+                    <div className={`rounded border p-3 ${overrideStatus ? GE_STATUS_STYLES[overrideStatus].selectedCard : "border-gray-200 bg-white"}`}>
+                      <div className="flex items-start justify-between gap-2 mb-2">
+                        <div className="min-w-0">
+                          <div className={`text-sm font-bold ${overrideStatus ? GE_STATUS_STYLES[overrideStatus].selectedTitle : "text-gray-900"}`}>
+                            {overrideCourse.course_number}
+                          </div>
+                          {overrideCourse.title && (
+                            <div className={`text-xs ${overrideStatus ? GE_STATUS_STYLES[overrideStatus].selectedText : "text-gray-600"}`}>
+                              {overrideCourse.title}
+                            </div>
+                          )}
+                          <div className={`text-[11px] ${overrideStatus ? GE_STATUS_STYLES[overrideStatus].selectedSubtleText : "text-gray-400"}`}>
+                            {overrideCourse.units}u · override selection
+                          </div>
+                        </div>
+                        <button
+                          onClick={clearOverrideSelection}
+                          className="rounded border border-gray-200 bg-white px-2 py-1 text-[10px] font-semibold text-gray-600 hover:border-gray-300 flex-shrink-0"
+                        >
+                          Clear
+                        </button>
+                      </div>
+                      <div className="flex gap-1.5 items-center">
+                        {GE_STATUS_ORDER.map((status) => {
+                          const style = GE_STATUS_STYLES[status];
+                          return (
+                            <button
+                              key={status}
+                              onClick={() => chooseOverrideCourse(status)}
+                              className={`rounded border px-2 py-1 text-xs font-semibold transition-colors ${
+                                overrideStatus === status ? style.activeButton : `bg-white ${style.inactiveButton}`
+                              }`}
+                            >
+                              {GE_STATUS_LABELS[status]}
+                            </button>
+                          );
+                        })}
+                        <span className="text-xs text-gray-400 ml-1">{overrideCourse.units}u</span>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  /* "Can't find your course?" accordion */
+                  <>
+                    <button
+                      onClick={() => setAccordionOpen((o) => !o)}
+                      className="w-full flex items-center justify-between px-5 py-2.5 text-xs transition-colors"
+                      style={accordionOpen
+                        ? { background: "var(--cp-green)", color: "white" }
+                        : { background: "#f0f7f4", color: "var(--cp-green)" }}
+                    >
+                      <span className="font-semibold">Can&apos;t find your course?</span>
+                      <span style={{ opacity: 0.7 }}>{accordionOpen ? "▲" : "▼"}</span>
+                    </button>
+                    {accordionOpen && (
+                      <div className="px-5 pb-3 pt-2 flex flex-col gap-2" style={{ background: "#f0f7f4" }}>
+                        <div className="relative">
+                          <input
+                            autoFocus
+                            placeholder="Search catalog for any course…"
+                            value={overrideQuery}
+                            onChange={(e) => setOverrideQuery(e.target.value)}
+                            className="w-full rounded border px-3 py-1.5 text-xs bg-white outline-none"
+                            style={{ borderColor: "var(--cp-green)" }}
+                          />
+                          {overrideResults.length > 0 && (
+                            <div className="absolute bottom-full left-0 right-0 mb-1 rounded border border-gray-200 bg-white shadow-md max-h-40 overflow-y-auto z-10">
+                              {overrideResults.map((r) => {
+                                const inList = area?.courses.some((c) => norm(c.course_number) === norm(r.course_number));
+                                return (
+                                  <button
+                                    key={r.course_number}
+                                    onClick={() => handleOverrideSelect(r)}
+                                    className="block w-full text-left px-3 py-2 text-xs hover:bg-gray-50 border-b border-gray-50 last:border-0"
+                                  >
+                                    <span className="font-bold font-mono">{r.course_number}</span>
+                                    <span className="ml-1.5 text-gray-500">{r.title}</span>
+                                    <span className="ml-1 text-gray-400">· {r.units}u</span>
+                                    {inList && <span className="ml-2 text-[10px] font-semibold" style={{ color: "var(--cp-green)" }}>in list</span>}
+                                  </button>
+                                );
+                              })}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    )}
+                  </>
+                )}
+              </div>
+            </>
           )}
         </div>
       </div>

@@ -411,3 +411,24 @@ def test_build_courses_cache_is_populated_on_first_call_and_returns_same_object(
 
     assert first is second  # same list object — cache hit, not rebuilt
     assert cache_key in _build_courses_cache
+
+
+def test_build_courses_includes_letter_suffix_course_numbers():
+    """_build_courses must not skip courses like EE 1111L or ME 3339L."""
+    from routers.electives import _build_courses
+
+    # EE dept has letter-suffix lab courses (L suffix); wide range to catch them
+    ee_courses = _build_courses(["ee"], 1000, 5999)
+    course_numbers = {c["course_number"] for c in ee_courses}
+
+    # EE 1111L is a real Cal Poly catalog course that was previously skipped
+    assert any(cn.endswith("L") for cn in course_numbers), (
+        "Expected at least one L-suffix EE course in results"
+    )
+
+    me_courses = _build_courses(["me"], 3000, 5999)
+    me_numbers = {c["course_number"] for c in me_courses}
+
+    assert any(cn.endswith("L") for cn in me_numbers), (
+        "Expected at least one L-suffix ME course in results"
+    )

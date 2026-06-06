@@ -166,3 +166,17 @@ if p not in {x['course_number'] for x in fc['courses']}])]"`
 
 13. Report any catalog ambiguities or elective buckets represented as
     placeholders.
+
+## Agent skills
+
+### Issue tracker
+
+Issues live in GitHub Issues for `FischerHewitt/CPVC`. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Uses the default five-label vocabulary (needs-triage, needs-info, ready-for-agent, ready-for-human, wontfix). See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Multi-context repo — `CONTEXT.md` at the root is the shared glossary; `backend/` and `frontend/` each have their own `CONTEXT.md`. See `docs/agents/domain.md`.

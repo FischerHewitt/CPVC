@@ -1,4 +1,4 @@
-import type { Flowchart, Professor, GEArea, GEAreaMap, ElectiveArea, CourseInfo, TranscriptSession, MajorOption, Concentration, CourseSearchResult, FreeElectiveSelection } from "./types";
+import type { CustomCourseEntry, Flowchart, Professor, GEArea, GEAreaMap, ElectiveArea, CourseInfo, TranscriptSession, MajorOption, Concentration, CourseSearchResult, FreeElectiveSelection } from "./types";
 import { getPolyRatingsProfessorsForCourse } from "./polyratings";
 
 type StaticFlowchartData = {
@@ -279,6 +279,8 @@ export async function getSession(sessionId: string): Promise<TranscriptSession |
 }
 
 /** Persist session changes back to the DB (best-effort, never throws). */
+export type SyncResult = "ok" | "missing" | "error";
+
 export async function syncSession(
   sessionId: string,
   updates: {
@@ -289,16 +291,20 @@ export async function syncSession(
     planned_ge_units?: Record<string, number>;
     planned_course_units?: Record<string, number>;
     planned_free_elective_courses?: Record<string, FreeElectiveSelection>;
+    planned_custom_courses?: Record<string, CustomCourseEntry>;
     concentration?: string;
   },
-): Promise<void> {
+): Promise<SyncResult> {
   try {
-    await fetch(apiUrl(`/api/sessions/${sessionId}`), {
+    const res = await fetch(apiUrl(`/api/sessions/${sessionId}`), {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updates),
     });
+    if (res.status === 404) return "missing";
+    if (!res.ok) return "error";
+    return "ok";
   } catch {
-    // silently ignore — localStorage is the fallback
+    return "error";
   }
 }

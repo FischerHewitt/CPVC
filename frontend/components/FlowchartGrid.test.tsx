@@ -215,6 +215,315 @@ describe("FlowchartGrid free elective display", () => {
   });
 });
 
+describe("FlowchartGrid custom course tiles", () => {
+  it("renders an add-course button per column when onAddCourse is provided", () => {
+    const html = renderToStaticMarkup(
+      <FlowchartGrid
+        flowchart={flowchart}
+        session={{ sessionId: "t", studentName: "T", major: "CS", completed: [], inProgress: [] }}
+        inferred={[]}
+        geAreaMap={{}}
+        onCourseClick={vi.fn()}
+        onToggleCourseCompleted={vi.fn()}
+        onToggleCourseInProgress={vi.fn()}
+        onMoveCourse={vi.fn()}
+        onAddCourse={vi.fn()}
+      />
+    );
+    expect(html).toContain("add course");
+  });
+
+  it("does not render an add-course button when onAddCourse is not provided", () => {
+    const html = renderGrid(
+      { sessionId: "t", studentName: "T", major: "CS", completed: [], inProgress: [] },
+      {},
+    );
+    expect(html).not.toContain("add course");
+  });
+
+  it("renders custom course tiles in their assigned column", () => {
+    const html = renderToStaticMarkup(
+      <FlowchartGrid
+        flowchart={flowchart}
+        session={{
+          sessionId: "t", studentName: "T", major: "CS", completed: [], inProgress: [],
+          customCourses: {
+            "uuid-1": { course_number: "ACCT 221", title: "Accounting", units: 4, grid_col: 0, status: "planned" },
+          },
+        }}
+        inferred={[]}
+        geAreaMap={{}}
+        onCourseClick={vi.fn()}
+        onToggleCourseCompleted={vi.fn()}
+        onToggleCourseInProgress={vi.fn()}
+        onMoveCourse={vi.fn()}
+        onAddCourse={vi.fn()}
+      />
+    );
+    expect(html).toContain("ACCT 221");
+    expect(html).toContain("Accounting");
+  });
+
+  it("styles custom tiles with the free-elective grey color", () => {
+    const html = renderToStaticMarkup(
+      <FlowchartGrid
+        flowchart={flowchart}
+        session={{
+          sessionId: "t", studentName: "T", major: "CS", completed: [], inProgress: [],
+          customCourses: {
+            "uuid-1": { course_number: "ACCT 221", title: "Accounting", units: 4, grid_col: 0, status: "planned" },
+          },
+        }}
+        inferred={[]}
+        geAreaMap={{}}
+        onCourseClick={vi.fn()}
+        onToggleCourseCompleted={vi.fn()}
+        onToggleCourseInProgress={vi.fn()}
+        onMoveCourse={vi.fn()}
+        onAddCourse={vi.fn()}
+      />
+    );
+    expect(html).toContain("#e5e7eb"); // grey, matching free elective tiles
+  });
+});
+
+describe("FlowchartGrid custom tile layout", () => {
+  function renderTile(overrides: Partial<import("@/lib/types").CustomCourseEntry> = {}) {
+    return renderToStaticMarkup(
+      <FlowchartGrid
+        flowchart={flowchart}
+        session={{
+          sessionId: "t", studentName: "T", major: "CS", completed: [], inProgress: [],
+          customCourses: {
+            "uuid-1": {
+              course_number: "ACCT 221",
+              title: "Accounting for Non-Business Majors",
+              units: 4,
+              grid_col: 0,
+              status: "planned",
+              ...overrides,
+            },
+          },
+        }}
+        inferred={[]}
+        geAreaMap={{}}
+        onCourseClick={vi.fn()}
+        onToggleCourseCompleted={vi.fn()}
+        onToggleCourseInProgress={vi.fn()}
+        onMoveCourse={vi.fn()}
+        onAddCourse={vi.fn()}
+        onClearCustomAssignment={vi.fn()}
+        onRemoveCustomCourse={vi.fn()}
+        onSetCustomCourseStatus={vi.fn()}
+        onCustomCourseClick={vi.fn()}
+      />
+    );
+  }
+
+  it("renders title before course number (title is prominent, number is secondary)", () => {
+    const html = renderTile();
+
+    const titlePos  = html.indexOf("Accounting for Non-Business Majors");
+    const numberPos = html.indexOf("ACCT 221");
+
+    expect(titlePos).toBeGreaterThan(-1);
+    expect(numberPos).toBeGreaterThan(-1);
+    expect(titlePos).toBeLessThan(numberPos);
+  });
+
+  it("shows units in parentheses format matching other tiles", () => {
+    const html = renderTile();
+
+    expect(html).toContain("ACCT 221 (4)");
+    expect(html).not.toContain("4u");
+  });
+
+  it("checkbox is checked when status is completed", () => {
+    const html = renderTile({ status: "completed" });
+    // React static markup renders checked={true} as checked=""
+    expect(html).toContain('checked=""');
+  });
+
+  it("checkbox is not checked when status is planned", () => {
+    const html = renderTile({ status: "planned" });
+    expect(html).not.toContain('checked=""');
+  });
+
+  it("IP badge is highlighted (bg-amber-500) when status is in_progress", () => {
+    const html = renderTile({ status: "in_progress" });
+    expect(html).toContain("bg-amber-500");
+  });
+
+  it("IP badge is not highlighted when status is planned", () => {
+    const html = renderTile({ status: "planned" });
+    expect(html).not.toContain("bg-amber-500");
+  });
+
+  it("shows ✓ status badge (text-green-800) when completed", () => {
+    const html = renderTile({ status: "completed" });
+    // text-green-800 is specific to the status badge ✓; the legend uses text-green-700
+    expect(html).toContain("text-green-800");
+  });
+
+  it("shows IP status badge inside content area when in_progress", () => {
+    const html = renderTile({ status: "in_progress" });
+    // The status-badge span uses text-[10px] which the legend IP span does not
+    expect(html).toContain('text-[10px] font-bold">IP');
+  });
+
+  it("shows no status badge markup when planned", () => {
+    const html = renderTile({ status: "planned" });
+    expect(html).not.toContain("text-green-800");       // no ✓ badge
+    expect(html).not.toContain('text-[10px] font-bold">IP'); // no IP badge
+  });
+
+  it("shows assignment label with slot course number when assignedToSlotId matches", () => {
+    // GE1B is in the flowchart fixture at grid_col: 0
+    const html = renderTile({ assignedToSlotId: "GE1B" });
+    // Assignment renders "→ GE 1B"; other tiles render "tap to see courses →" (arrow at end)
+    expect(html).toContain("→ GE 1B");
+  });
+
+  it("does not show assignment label when no slot is assigned", () => {
+    const html = renderTile();
+    // "→ " followed by a course number only appears for the assignment label
+    expect(html).not.toContain("→ GE 1B");
+    expect(html).not.toContain("→ ACCT");
+  });
+
+  it("tile is clickable (cursor-pointer class present)", () => {
+    const html = renderTile();
+    expect(html).toContain("cursor-pointer");
+  });
+});
+
+describe("FlowchartGrid custom course unit totals", () => {
+  function renderWithCustom(customCourses: TranscriptSession["customCourses"]) {
+    return renderToStaticMarkup(
+      <FlowchartGrid
+        flowchart={flowchart}
+        session={{ sessionId: "t", studentName: "T", major: "CS", completed: [], inProgress: [], customCourses }}
+        inferred={[]}
+        geAreaMap={{}}
+        onCourseClick={vi.fn()}
+        onToggleCourseCompleted={vi.fn()}
+        onToggleCourseInProgress={vi.fn()}
+        onMoveCourse={vi.fn()}
+        onAddCourse={vi.fn()}
+        onClearCustomAssignment={vi.fn()}
+        onRemoveCustomCourse={vi.fn()}
+        onSetCustomCourseStatus={vi.fn()}
+      />
+    );
+  }
+
+  it("counts completed custom course units as earned", () => {
+    const html = renderWithCustom({
+      "uuid-1": { course_number: "ACCT 221", title: "Accounting", units: 5, grid_col: 0, status: "completed" },
+    });
+    expect(html).toContain("5</span><span class=\"text-gray-400\"> earned");
+  });
+
+  it("counts in-progress custom course units as in-progress", () => {
+    const html = renderWithCustom({
+      "uuid-1": { course_number: "ACCT 221", title: "Accounting", units: 5, grid_col: 0, status: "in_progress" },
+    });
+    expect(html).toContain("+5</span><span class=\"text-gray-400\"> in progress");
+  });
+
+  it("does not count planned custom course units", () => {
+    const html = renderWithCustom({
+      "uuid-1": { course_number: "ACCT 221", title: "Accounting", units: 5, grid_col: 0, status: "planned" },
+    });
+    expect(html).toContain("0</span><span class=\"text-gray-400\"> earned");
+    expect(html).not.toContain("+5");
+  });
+});
+
+describe("FlowchartGrid remove custom tile", () => {
+  it("does not show a covered-by badge after the custom course is removed", () => {
+    // After removal, session.customCourses is empty — no entry → no badge
+    const html = renderToStaticMarkup(
+      <FlowchartGrid
+        flowchart={flowchart}
+        session={{
+          sessionId: "t", studentName: "T", major: "CS", completed: [], inProgress: [],
+          customCourses: {},
+        }}
+        inferred={[]}
+        geAreaMap={{}}
+        onCourseClick={vi.fn()}
+        onToggleCourseCompleted={vi.fn()}
+        onToggleCourseInProgress={vi.fn()}
+        onMoveCourse={vi.fn()}
+        onAddCourse={vi.fn()}
+        onClearCustomAssignment={vi.fn()}
+        onRemoveCustomCourse={vi.fn()}
+        onSetCustomCourseStatus={vi.fn()}
+      />
+    );
+    expect(html).not.toContain("covered by");
+  });
+
+});
+
+describe("FlowchartGrid requirement assignment", () => {
+  it("shows a covered-by badge on a slot when a custom course is assigned to it", () => {
+    const html = renderToStaticMarkup(
+      <FlowchartGrid
+        flowchart={flowchart}
+        session={{
+          sessionId: "t", studentName: "T", major: "CS", completed: [], inProgress: [],
+          customCourses: {
+            "uuid-1": {
+              course_number: "ACCT 221", title: "Accounting", units: 4,
+              grid_col: 0, status: "planned",
+              assignedToSlotId: "GE1B",
+            },
+          },
+        }}
+        inferred={[]}
+        geAreaMap={{}}
+        onCourseClick={vi.fn()}
+        onToggleCourseCompleted={vi.fn()}
+        onToggleCourseInProgress={vi.fn()}
+        onMoveCourse={vi.fn()}
+        onAddCourse={vi.fn()}
+        onClearCustomAssignment={vi.fn()}
+      />
+    );
+    expect(html).toContain("covered by ACCT 221");
+  });
+
+  it("shows a counting-toward label on the custom tile when assigned", () => {
+    const html = renderToStaticMarkup(
+      <FlowchartGrid
+        flowchart={flowchart}
+        session={{
+          sessionId: "t", studentName: "T", major: "CS", completed: [], inProgress: [],
+          customCourses: {
+            "uuid-1": {
+              course_number: "ACCT 221", title: "Accounting", units: 4,
+              grid_col: 0, status: "planned",
+              assignedToSlotId: "GE1B",
+            },
+          },
+        }}
+        inferred={[]}
+        geAreaMap={{}}
+        onCourseClick={vi.fn()}
+        onToggleCourseCompleted={vi.fn()}
+        onToggleCourseInProgress={vi.fn()}
+        onMoveCourse={vi.fn()}
+        onAddCourse={vi.fn()}
+        onClearCustomAssignment={vi.fn()}
+      />
+    );
+    expect(html).toContain("→");
+    expect(html).toContain("GE 1B");
+  });
+});
+
 describe("FlowchartGrid progress bars", () => {
   it("counts completed, inferred, and in-progress courses separately", () => {
     const statuses = new Map<string, CourseStatus>([
