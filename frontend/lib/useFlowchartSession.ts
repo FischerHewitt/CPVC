@@ -438,9 +438,23 @@ export function useFlowchartSession(sessionId: string) {
 
   const toggleElectiveCourseInProgress = useCallback((placeholder: Course, courseNumber: string, units: number) => {
     if (!session) return;
+    // Determine select/deselect by checking only the specific course being clicked.
+    // The full removeSet includes placeholder.course_number, so using it here caused
+    // a first click on a sibling course to enter the deselect branch erroneously.
+    const thisCourseCandidates = courseNumberCandidateSet(courseNumber);
+    const isInProgress = session.inProgress.some((n) => thisCourseCandidates.has(normalizeNum(n)));
+
+    // Build the remove set; when selecting, also include the previously-IP course for
+    // this slot so switching A→B clears A in one click instead of requiring two.
     const removeSet = electiveRemoveSet(placeholder, courseNumber);
+    if (!isInProgress) {
+      const prevCourse = (session.plannedGECourses ?? {})[placeholder.course_number];
+      if (prevCourse) {
+        for (const c of courseNumberCandidateSet(prevCourse)) removeSet.add(c);
+      }
+    }
+
     const placeholderCandidate = normalizeNum(placeholder.course_number);
-    const isInProgress = session.inProgress.some((n) => removeSet.has(normalizeNum(n)));
     const inProgress = isInProgress
       ? session.inProgress.filter((n) => !removeSet.has(normalizeNum(n)))
       : [...session.inProgress.filter((n) => !removeSet.has(normalizeNum(n))), courseNumber, placeholder.course_number];
@@ -457,7 +471,7 @@ export function useFlowchartSession(sessionId: string) {
     setSession(next);
     persistSession(next, { completed, in_progress: inProgress, planned_ge_courses: plannedGECourses, planned_ge_units: plannedGEUnits }, onSyncMissing);
     void refreshInferred(next);
-  }, [session, electiveRemoveSet, refreshInferred]);
+  }, [session, electiveRemoveSet, courseNumberCandidateSet, refreshInferred]);
 
   const planElectiveCourse = useCallback((placeholder: Course, courseNumber: string, units: number) => {
     planGECourse(placeholder.course_number, courseNumber, units);
@@ -530,14 +544,20 @@ export function useFlowchartSession(sessionId: string) {
   }, [session]);
 
   const setSlotUnits = useCallback((courseId: string, units: number | null) => {
-    if (!session) return;
-    const plannedCourseUnits = { ...(session.plannedCourseUnits ?? {}) };
-    if (units === null) delete plannedCourseUnits[courseId];
-    else plannedCourseUnits[courseId] = units;
-    const next = { ...session, plannedCourseUnits };
-    setSession(next);
-    persistSession(next, { planned_course_units: plannedCourseUnits }, onSyncMissing);
-  }, [session]);
+    // Use a functional state updater so this always reads the latest session state.
+    // planGECourse and setSlotUnits are called back-to-back from the same click handler;
+    // without the functional form, setSlotUnits would spread from a stale session snapshot
+    // and silently overwrite planGECourse's plannedGECourses update.
+    setSession((prev) => {
+      if (!prev) return prev;
+      const plannedCourseUnits = { ...(prev.plannedCourseUnits ?? {}) };
+      if (units === null) delete plannedCourseUnits[courseId];
+      else plannedCourseUnits[courseId] = units;
+      const next = { ...prev, plannedCourseUnits };
+      persistSession(next, { planned_course_units: plannedCourseUnits }, onSyncMissing);
+      return next;
+    });
+  }, [onSyncMissing]);
 
   const moveCourse = useCallback((courseId: string, targetCol: number, targetRow: number, targetCourseId?: string) => {
     if (!session || !resolvedFlowchart) return;

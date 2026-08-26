@@ -857,6 +857,7 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "ag_engineering_tech",
             "label": "Agricultural Engineering Technology",
+            "full_flowchart_key": "AGS",
             "slot_overrides": {
                 "AGS_EMP_JRF1": {"course_number": "BRAE 1150", "title": "Design Graphics and CAD for Agricultural Engineering", "units": 2, "prerequisites": [], "quarter_equivalents": ["BRAE 150"], "is_placeholder": False},
                 "AGS_EMP_JRS1": {"course_number": "BRAE 2142", "title": "Agricultural Power and Machinery Management", "units": 3, "prerequisites": [], "quarter_equivalents": ["BRAE 142"], "is_placeholder": False},
@@ -869,6 +870,7 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "agribusiness",
             "label": "Agribusiness",
+            "full_flowchart_key": "AGS",
             "slot_overrides": {
                 "AGS_EMP_JRF1": {"course_number": "AGB 2214", "title": "Agribusiness Financial Accounting", "units": 3, "prerequisites": [], "quarter_equivalents": ["AGB 214"], "is_placeholder": False},
                 "AGS_EMP_JRS1": {"course_number": "AGB 2260", "title": "Agribusiness Data Literacy", "units": 3, "prerequisites": [], "quarter_equivalents": ["AGB 260"], "is_placeholder": False},
@@ -881,6 +883,7 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "animal_science",
             "label": "Animal Science",
+            "full_flowchart_key": "AGS",
             "slot_overrides": {
                 "AGS_EMP_JRF1": {"course_number": "ASCI 2005", "title": "Dairy Fit and Show Enterprise", "units": 1, "prerequisites": [], "quarter_equivalents": ["ASCI 205"], "is_placeholder": False},
                 "AGS_EMP_JRS1": {"course_number": "ASCI 2210", "title": "Meat Science", "units": 2, "prerequisites": [], "quarter_equivalents": ["ASCI 210"], "is_placeholder": False},
@@ -893,6 +896,7 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "plant_crop_soil",
             "label": "Plant, Crop, and Soil Science",
+            "full_flowchart_key": "AGS",
             "slot_overrides": {
                 "AGS_EMP_JRF1": {"course_number": "PLSC 1132", "title": "Introduction to Fruit Crop Production", "units": 4, "prerequisites": [], "quarter_equivalents": ["PLSC 132"], "is_placeholder": False},
                 "AGS_EMP_JRS1": {"course_number": "PLSC 1150", "title": "California Row Crop Production", "units": 4, "prerequisites": [], "quarter_equivalents": ["PLSC 150"], "is_placeholder": False},
@@ -905,6 +909,7 @@ CONCENTRATIONS: dict[str, list[dict]] = {
         {
             "id": "forestry_natural_resources",
             "label": "Forestry and Natural Resources",
+            "full_flowchart_key": "AGS",
             "slot_overrides": {
                 "AGS_EMP_JRF1": {"course_number": "BIO 2217", "title": "Wildlife Conservation Biology", "units": 3, "prerequisites": [], "quarter_equivalents": ["BIO 227"], "is_placeholder": False},
                 "AGS_EMP_JRS1": {"course_number": "NR 1142", "title": "Environmental Management", "units": 4, "prerequisites": [], "quarter_equivalents": ["NR 142"], "is_placeholder": False},

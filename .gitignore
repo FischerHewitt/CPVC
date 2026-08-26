@@ -12,3 +12,9 @@ frontend/.next/
 # OS
 .DS_Store
 **/.DS_Store
+
+# Personal documents (not project artifacts)
+job-interview.txt
+further_investigation.txt
+Transcript_*.pdf
+Course List - *.csv

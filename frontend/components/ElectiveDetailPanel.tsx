@@ -24,6 +24,26 @@ export function electiveCourseActiveStatus(
   return null;
 }
 
+/**
+ * Returns what onSetSlotUnits should receive when a status button is clicked:
+ * - variable-unit or capped: always (all three statuses) — preserves chosen units for tile badge + panel restore
+ * - fixed-unit: only for "planned" (tracks slot occupancy for unit-cap calculation)
+ * - Returns undefined when onSetSlotUnits should NOT be called.
+ */
+export function slotUnitDecision(
+  clickedStatus: string,
+  activeStatus: string | null,
+  isVar: boolean,
+  isCapped: boolean,
+  chosenUnits: number,
+  courseUnits: number,
+): number | null | undefined {
+  const isVarOrCapped = isVar || isCapped;
+  if (!isVarOrCapped && clickedStatus !== "planned") return undefined;
+  const effectiveUnits = isVarOrCapped ? chosenUnits : courseUnits;
+  return activeStatus === clickedStatus ? null : effectiveUnits;
+}
+
 export function isVariableUnit(course: GECourse): boolean {
   return (
     course.units_min !== undefined &&
@@ -200,15 +220,15 @@ function ElectiveCourseRow({
 
   function handleStatusButton(status: GEPanelStatus) {
     const effectiveUnits = (isVar || isCapped) ? chosenUnits : course.units;
-    const deselecting = activeStatus === status;
     if (status === "planned") {
       onPlan(course.course_number, effectiveUnits);
-      onSetSlotUnits?.(deselecting ? null : effectiveUnits);
     } else if (status === "in_progress") {
       onToggleInProgress(course.course_number, effectiveUnits);
     } else {
       onToggle(course.course_number, effectiveUnits);
     }
+    const decision = slotUnitDecision(status, activeStatus, isVar, isCapped ?? false, chosenUnits, course.units);
+    if (decision !== undefined) onSetSlotUnits?.(decision);
   }
 
   function handlePillClick(u: number) {
@@ -583,27 +603,28 @@ export default function ElectiveDetailPanel({
                   const isPlanned = plannedElectiveCourses[course.course_number] === c.course_number;
                   const isVar = isVariableUnit(c);
                   return (
-                    <ElectiveCourseRow
-                      key={c.course_number}
-                      course={c}
-                      completed={hasElectiveStatus(c, completedSet)}
-                      inProgress={hasElectiveStatus(c, inProgressSet)}
-                      planned={isPlanned}
-                      isCapped={isCapped}
-                      plannedSlotUnits={(isCapped || isVar) && isPlanned ? plannedSlotUnits : undefined}
-                      coreqWarning={labCoreqWarning(c.course_number, completedSet, inProgressSet, flowchartCourseNumbers)}
-                      onToggle={(courseNumber, units) => onToggleElectiveCourse(course, courseNumber, units)}
-                      onToggleInProgress={(courseNumber, units) => onToggleElectiveCourseInProgress(course, courseNumber, units)}
-                      onPlan={(courseNumber, units) => {
-                        const deselecting = plannedElectiveCourses[course.course_number] === courseNumber;
-                        onPlanElectiveCourse(course, courseNumber, units);
-                        if (!deselecting) setOverrideCourse(null);
-                      }}
-                      onSetSlotUnits={onSetSlotUnits && currentSlotId
-                        ? (units) => onSetSlotUnits(currentSlotId, units)
-                        : undefined}
-                      onSelect={setSelected}
-                    />
+                    <div key={c.course_number}>
+                      <ElectiveCourseRow
+                        course={c}
+                        completed={hasElectiveStatus(c, completedSet)}
+                        inProgress={hasElectiveStatus(c, inProgressSet)}
+                        planned={isPlanned}
+                        isCapped={isCapped}
+                        plannedSlotUnits={(isCapped || isVar) && isPlanned ? plannedSlotUnits : undefined}
+                        coreqWarning={labCoreqWarning(c.course_number, completedSet, inProgressSet, flowchartCourseNumbers)}
+                        onToggle={(courseNumber, units) => onToggleElectiveCourse(course, courseNumber, units)}
+                        onToggleInProgress={(courseNumber, units) => onToggleElectiveCourseInProgress(course, courseNumber, units)}
+                        onPlan={(courseNumber, units) => {
+                          const deselecting = plannedElectiveCourses[course.course_number] === courseNumber;
+                          onPlanElectiveCourse(course, courseNumber, units);
+                          if (!deselecting) setOverrideCourse(null);
+                        }}
+                        onSetSlotUnits={onSetSlotUnits && currentSlotId
+                          ? (units) => onSetSlotUnits(currentSlotId, units)
+                          : undefined}
+                        onSelect={setSelected}
+                      />
+                    </div>
                   );
                 })}
               </div>

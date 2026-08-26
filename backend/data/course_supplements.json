@@ -581,7 +581,7 @@
   },
   "BOT 3313": {
     "title": "Plant Taxonomy",
-    "units": 3
+    "units": 4
   },
   "BOT 3326": {
     "title": "Plant Ecology",
@@ -689,7 +689,15 @@
   },
   "BUS 3384": {
     "title": "Human Resources Management",
-    "units": 3
+    "units": 3,
+    "course_components": [
+      {"type": "Lecture", "course_number": "BUS 3384", "units": 3},
+      {"type": "Project Lab", "course_number": "BUS 3384A", "units": 1}
+    ]
+  },
+  "BUS 3384A": {
+    "title": "Human Resources Management Project",
+    "units": 1
   },
   "BUS 3392": {
     "title": "Business Application Development",
@@ -769,7 +777,15 @@
   },
   "BUS 4489": {
     "title": "Negotiation",
-    "units": 3
+    "units": 3,
+    "course_components": [
+      {"type": "Lecture", "course_number": "BUS 4489", "units": 3},
+      {"type": "Project Lab", "course_number": "BUS 4489A", "units": 1}
+    ]
+  },
+  "BUS 4489A": {
+    "title": "Negotiation Project",
+    "units": 1
   },
   "BUS 4492": {
     "title": "Project Management",
@@ -2073,7 +2089,7 @@
   },
   "EIM 4480": {
     "title": "Leadership Practice",
-    "units": 2
+    "units": "1-4"
   },
   "ENGL 2290": {
     "title": "Introduction to Linguistics",
@@ -2775,6 +2791,10 @@
     "title": "Materials and Manufacturing Technology",
     "units": 3
   },
+  "ITP 2270": {
+    "title": "Special Topics",
+    "units": "1-4"
+  },
   "ITP 2275": {
     "title": "Industrial Facilities Management",
     "units": 3
@@ -2834,6 +2854,14 @@
   "ITP 4430": {
     "title": "Healthcare Packaging",
     "units": 3
+  },
+  "ITP 4400": {
+    "title": "Special Problems for Advanced Undergraduates",
+    "units": "1-4"
+  },
+  "ITP 4419": {
+    "title": "Internship/Cooperative Education",
+    "units": "1-3"
   },
   "ITP 4475": {
     "title": "Distribution Packaging Dynamics",
@@ -2916,8 +2944,8 @@
     "units": 4
   },
   "KINE 1181": {
-    "title": "Physical Activity and Health",
-    "units": 3
+    "title": "Responding to Emergencies: Comprehensive First Aid, CPR, AED",
+    "units": 2
   },
   "KINE 2278": {
     "title": "Introduction to Athletic Training",
@@ -3413,7 +3441,7 @@
   },
   "NR 2200": {
     "title": "Special Problems for Undergraduates",
-    "units": 2
+    "units": "1-12"
   },
   "NR 2203": {
     "title": "Resource Law Enforcement",
@@ -3461,7 +3489,7 @@
   },
   "NR 3339": {
     "title": "Internship in Natural Resources and Environmental Sciences",
-    "units": 2
+    "units": "1-8"
   },
   "NR 3340": {
     "title": "Wildland Fire Management",
@@ -3477,7 +3505,7 @@
   },
   "NR 4400": {
     "title": "Special Problems for Advanced Undergraduates",
-    "units": 2
+    "units": "1-4"
   },
   "NR 4404": {
     "title": "Environmental Law",
@@ -3516,8 +3544,8 @@
     "units": 3
   },
   "NR 4460": {
-    "title": "Senior Project: Watershed Assessment and Protection",
-    "units": 4
+    "title": "Senior Project - Watershed Assessment and Protection",
+    "units": 3
   },
   "NR 4462": {
     "title": "Senior Project: Applied Resource Analysis and Assessment",
@@ -3536,11 +3564,11 @@
     "units": 4
   },
   "NR 4466": {
-    "title": "Natural Resources Senior Project",
+    "title": "Senior Project - Wildland-Urban Interface Fire Protection",
     "units": 3
   },
   "NR 4475": {
-    "title": "Natural Resources Senior Project",
+    "title": "Senior Project - Forest Stewardship Practices",
     "units": 3
   },
   "NUTR 4460": {

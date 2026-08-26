@@ -4370,6 +4370,30 @@ def test_liberal_studies_concentration_overrides():
     assert hd["LIBS_CON_EL4"]["units"] == 2
     assert hd["LIBS_CON_EL4"]["elective_key"] == "libs_hd_cd_course"
 
+    # Science concentration has a non-empty tips list
+    sci_con = by_id["science"]
+    assert "tips" in sci_con and len(sci_con["tips"]) > 0
+
+
+def test_libs_science_full_flowchart_pickers():
+    fc = FLOWCHARTS["LIBS_SCIENCE"]
+    by_id = {c["id"]: c for c in fc["courses"]}
+
+    assert by_id["SCIENCE_CHEMISTRY_OR_PHYSICS_COURSE"]["elective_key"] == "libs_sci_core"
+    assert by_id["SCIENCE_CHEMISTRY_OR_PHYSICS_COURSE_2"]["elective_key"] == "libs_sci_core"
+    assert by_id["SCIENCE_SCIENCE_CONCENTRATION_APPROVED_ELECTIVE"]["elective_key"] == "libs_sci_approved"
+    assert by_id["SCIENCE_SCIENCE_CONCENTRATION_APPROVED_ELECTIVE_2"]["elective_key"] == "libs_sci_approved"
+
+
+def test_libs_human_development_full_flowchart_pickers():
+    fc = FLOWCHARTS["LIBS_HUMAN_DEVELOPMENT"]
+    by_id = {c["id"]: c for c in fc["courses"]}
+
+    assert by_id["HUMAN_DEVELOPMENT_CHILD_DEVELOPMENT_AND_GROWTH_ELECTIVE"]["elective_key"] == "libs_hd_child_dev"
+    assert by_id["HUMAN_DEVELOPMENT_APPLICATIONS_TO_EDUCATION_AND_ADVOCACY_ELECTIVE"]["elective_key"] == "libs_hd_apps_ed"
+    assert by_id["HUMAN_DEVELOPMENT_SOCIAL_CONTEXT_AND_RELATIONSHIP_ELECTIVE"]["elective_key"] == "libs_hd_social_context"
+    assert by_id["HUMAN_DEVELOPMENT_CHILD_DEVELOPMENT_COURSE"]["elective_key"] == "libs_hd_cd_course"
+
 
 def test_dairy_science_flowchart():
     fc = FLOWCHARTS["DSCI"]

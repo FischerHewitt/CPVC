@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { labCoreqWarning, filterEligibleCourses, isOverrideCourse, electiveCourseActiveStatus, isVariableUnit } from "./ElectiveDetailPanel";
+import { labCoreqWarning, filterEligibleCourses, isOverrideCourse, electiveCourseActiveStatus, isVariableUnit, slotUnitDecision } from "./ElectiveDetailPanel";
 
 describe("labCoreqWarning", () => {
   it("returns undefined for a non-lab course number", () => {
@@ -150,5 +150,62 @@ describe("isVariableUnit", () => {
 
   it("returns false when units_min equals units_max", () => {
     expect(isVariableUnit({ course_number: "X 1000", title: "X", units: 3, units_min: 3, units_max: 3 })).toBe(false);
+  });
+});
+
+describe("slotUnitDecision", () => {
+  // variable-unit course (TH 2285 Internship, 1–3u)
+  it("variable-unit Plan activation: returns chosen units", () => {
+    expect(slotUnitDecision("planned", null, true, false, 3, 1)).toBe(3);
+  });
+
+  it("variable-unit Plan deactivation: returns null to clear", () => {
+    expect(slotUnitDecision("planned", "planned", true, false, 3, 1)).toBeNull();
+  });
+
+  it("variable-unit IP activation: returns chosen units", () => {
+    expect(slotUnitDecision("in_progress", null, true, false, 3, 1)).toBe(3);
+  });
+
+  it("variable-unit IP deactivation: returns null to clear", () => {
+    expect(slotUnitDecision("in_progress", "in_progress", true, false, 3, 1)).toBeNull();
+  });
+
+  it("variable-unit Done activation: returns chosen units", () => {
+    expect(slotUnitDecision("completed", null, true, false, 3, 1)).toBe(3);
+  });
+
+  it("variable-unit Done deactivation: returns null to clear", () => {
+    expect(slotUnitDecision("completed", "completed", true, false, 3, 1)).toBeNull();
+  });
+
+  it("variable-unit defaults to units_min when no pill chosen yet", () => {
+    expect(slotUnitDecision("planned", null, true, false, 1, 1)).toBe(1);
+  });
+
+  // fixed-unit course
+  it("fixed-unit Plan activation: returns course units", () => {
+    expect(slotUnitDecision("planned", null, false, false, 3, 3)).toBe(3);
+  });
+
+  it("fixed-unit Plan deactivation: returns null to clear", () => {
+    expect(slotUnitDecision("planned", "planned", false, false, 3, 3)).toBeNull();
+  });
+
+  it("fixed-unit IP: returns undefined — onSetSlotUnits not called", () => {
+    expect(slotUnitDecision("in_progress", null, false, false, 3, 3)).toBeUndefined();
+  });
+
+  it("fixed-unit Done: returns undefined — onSetSlotUnits not called", () => {
+    expect(slotUnitDecision("completed", null, false, false, 3, 3)).toBeUndefined();
+  });
+
+  // capped (non-variable) course — uses chosenUnits like variable
+  it("capped IP activation: returns chosen units", () => {
+    expect(slotUnitDecision("in_progress", null, false, true, 2, 3)).toBe(2);
+  });
+
+  it("capped Done deactivation: returns null to clear", () => {
+    expect(slotUnitDecision("completed", "completed", false, true, 2, 3)).toBeNull();
   });
 });

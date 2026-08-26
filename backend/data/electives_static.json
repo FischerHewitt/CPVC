@@ -2437,7 +2437,10 @@
       "BUS 3393",
       "BUS 4489",
       "BUS 3310",
-      "BUS 3313"
+      "BUS 3313",
+      "ITP 2270",
+      "ITP 4400",
+      "ITP 4419"
     ],
     "description": "Select an approved elective from the Industrial Technology concentration list. Verify selection with your academic advisor.",
     "title": "IT Concentration Approved Elective"
@@ -2475,7 +2478,10 @@
       "BUS 3393",
       "BUS 4489",
       "BUS 3310",
-      "BUS 3313"
+      "BUS 3313",
+      "ITP 2270",
+      "ITP 4400",
+      "ITP 4419"
     ],
     "description": "Select an approved elective from the Packaging concentration list. Verify selection with your academic advisor.",
     "title": "Packaging Concentration Approved Elective"
@@ -2937,7 +2943,7 @@
       "PHYS 1123",
       "PHYS 1141"
     ],
-    "description": "Science concentration students must include at least 3 units from Chemistry; choose from CHEM or PHYS core offerings.",
+    "description": "Select from approved Chemistry and Physics courses for the Liberal Studies Science concentration.",
     "title": "Science Concentration: Core Science Course"
   },
   "libs_senior_project": {
